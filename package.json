@@ -1,0 +1,32 @@
+{
+  "name": "wibi",
+  "version": "1.0.0",
+  "description": "A beautiful theme.",
+  "main": "index.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blackcater/wibi.git"
+  },
+  "keywords": [
+    "css",
+    "html",
+    "theme",
+    "responsive"
+  ],
+  "author": "blackcater",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/blackcater/wibi/issues"
+  },
+  "homepage": "https://github.com/blackcater/wibi#readme",
+  "devDependencies": {
+    "postcss": "^5.2.15",
+    "postcss-cssnext": "^2.9.0"
+  }
+}
