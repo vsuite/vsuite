@@ -2,6 +2,7 @@ import path from 'path'
 import gulp from 'gulp'
 import eslint from 'gulp-eslint'
 import babel from 'gulp-babel'
+import uglify from 'gulp-uglify'
 import concat from 'gulp-concat'
 import cssnano from 'gulp-cssnano'
 import sourcemap from 'gulp-sourcemaps'
@@ -10,8 +11,8 @@ import cssnext from 'postcss-cssnext'
 import autoprefixer from 'autoprefixer'
 
 
-const SRC = path.parse(__dirname, './assets')
-const DIST = path.parse(__dirname, './dist')
+const SRC = path.resolve(__dirname, './assets')
+const DIST = path.resolve(__dirname, './dist')
 const PATH = {
   FONT: path.resolve(SRC, './font'),
   JS: path.resolve(SRC, './js'),
@@ -77,3 +78,9 @@ gulp.task('pro')
 // 监听js文件变化，实时进行重新测试
 // --------------------------------------------
 gulp.task('test')
+
+// 示例
+// --------------------------------------------
+// 运行 项目示例
+// --------------------------------------------
+gulp.task('examples')
