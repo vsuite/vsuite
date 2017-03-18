@@ -1,7 +1,5 @@
 {
-  "extends": "airbnb-base",
+  "extends": "finger",
   "rules": {},
-  "plugins": [
-    "import"
-  ]
+  "plugins": []
 }
