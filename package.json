@@ -1,22 +1,25 @@
 {
   "name": "wibi",
   "version": "1.0.0",
-  "description": "A beautiful theme.",
+  "description": "A beautiful, simple and clean theme.",
   "main": "index.js",
-  "directories": {
-    "doc": "doc"
-  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "",
+    "dev": "",
+    "pro": "",
+    "test": "",
+    "coverage": "",
+    "e2e": "",
+    "gh": ""
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/blackcater/wibi.git"
   },
   "keywords": [
+    "wibi",
     "css",
     "html",
-    "theme",
     "responsive"
   ],
   "author": "blackcater",
@@ -26,10 +29,10 @@
   },
   "homepage": "https://github.com/blackcater/wibi#readme",
   "devDependencies": {
-    "babel-preset-es2015": "^6.22.0",
-    "babel-preset-stage-1": "^6.22.0",
+    "babel-preset-env": "^1.3.2",
+    "babel-preset-stage-2": "^6.22.0",
     "eslint": "^3.17.1",
-    "eslint-config-finger": "^0.0.2",
+    "eslint-config-finger": "^0.1.1",
     "gulp": "github:gulpjs/gulp#4.0",
     "gulp-babel": "^6.1.2",
     "gulp-concat": "^2.6.1",

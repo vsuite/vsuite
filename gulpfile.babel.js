@@ -15,42 +15,55 @@ import rename from "gulp-rename"
 const FILENAME = "wibi"
 const srcPath = path.resolve(__dirname, "./src")
 const distPath = path.resolve(__dirname, "./dist")
+const docPath = path.resolve(__dirname, "./doc")
 // const testPath = path.resolve(__dirname, "./test")
 // const examplesPath = path.resolve(__dirname, "./examples")
-const SRC_PATH = {
-  FONT: path.resolve(srcPath, "./font"),
-  JS: path.resolve(srcPath, "./js"),
-  CSS: path.resolve(srcPath, "./css"),
+const paths = {
+  // pug files
+  page: {
+    entry: [],
+    all: [],
+  },
+  // sass files
+  style: {
+    entry: [],
+    all: [],
+  },
+  // es6 files
+  script: {
+    entry: [],
+    src: [],
+    test: [],
+  },
+  font: [],
+  image: [],
+  "static": [],
 }
 
-// 默认
-// -------------------------------------------
-// 检测css，js，编译css和js的每个文件。
-// -------------------------------------------
-gulp.task("default")
+// src代码进行书写规范检测
+gulp.task("lint", () => gulp.src(paths.script.src)
+  .
+)
 
-// 开发
-// --------------------------------------------
-// 除了default功能外，需要监听他们变化。监听img，font变化。
-// --------------------------------------------
-gulp.task("dev")
+// test代码进行书写规范检测
+gulp.task("lint:test", () => gulp.src())
 
-// 编译
-// --------------------------------------------
-// 除了default功能外，需要合并并压缩css,js代码。需过测试
-// --------------------------------------------
-// 对JS 进行处理
-gulp.task("js:pro", () => gulp.src(`${SRC_PATH.JS}/**/*.js`)
-  .pipe(eslint())
-  .pipe(eslint.failAfterError())
-  .pipe(babel())
-  .pipe(concat(`${FILENAME}.js`))
-  .pipe(gulp.dest(`${distPath}/js`))
+// 对JS 代码进行编译，放在doc目录下
+gulp.task("js", () => gulp.src(paths.script.entry)
   .pipe(sourcemap.init())
-  .pipe(uglify())
-  .pipe(rename(`${FILENAME}.min.js`))
+  .pipe(babel())
   .pipe(sourcemap.write("."))
-  .pipe(gulp.dest(`${distPath}/js`))
+  .pipe(gulp.dest(path.resolve(docPath, "js")))
+)
+
+// 对JS 编译压缩处理
+gulp.task("js:pro", () => gulp.src(paths.script.entry)
+  .pipe(sourcemap.init())
+  .pipe(babel())
+  .pipe(concat(`${FILENAME}.min.js`))
+  .pipe(uglify())
+  .pipe(sourcemap.write("."))
+  .pipe(gulp.dest(docPath))
 )
 
 // 对css 进行处理
@@ -78,7 +91,24 @@ gulp.task("css:pro", () => gulp.src(`${SRC_PATH.CSS}/**/*.css`)
   .pipe(gulp.dest(`${distPath}/css`))
 )
 
+// 默认
+// -------------------------------------------
+// 检测css，js，编译css和js的每个文件。
+// -------------------------------------------
+gulp.task("default")
 
+// 开发
+// --------------------------------------------
+// 除了default功能外，需要监听他们变化。监听img，font变化。
+// --------------------------------------------
+gulp.task("dev")
+
+
+// 生产
+// --------------------------------------------
+// 会检测js代码规范，通过测试，之后进行sass, js, pug等
+// 文件代码编译，并压缩等
+// --------------------------------------------
 gulp.task("pro")
 
 // 测试
@@ -87,11 +117,11 @@ gulp.task("pro")
 // --------------------------------------------
 gulp.task("test")
 
-// 示例
-// --------------------------------------------
-// 运行 项目示例
-// --------------------------------------------
-gulp.task("examples")
+// // 示例
+// // --------------------------------------------
+// // 运行 项目示例
+// // --------------------------------------------
+// gulp.task("examples")
 
 // 清理
 // --------------------------------------------

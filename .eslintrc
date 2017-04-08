@@ -1,5 +1,3 @@
 {
-  "extends": "finger",
-  "rules": {},
-  "plugins": []
+  "extends": "finger"
 }
