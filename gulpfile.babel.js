@@ -42,11 +42,17 @@ const paths = {
 
 // src代码进行书写规范检测
 gulp.task("lint", () => gulp.src(paths.script.src)
-  .
+  .pipe(eslint())
+  .pipe(eslint.format())
+  .pipe(eslint.failAfterError())
 )
 
 // test代码进行书写规范检测
-gulp.task("lint:test", () => gulp.src())
+gulp.task("lint:test", () => gulp.src(paths.script.test)
+  .pipe(eslint())
+  .pipe(eslint.format())
+  .pipe(eslint.failAfterError())
+)
 
 // 对JS 代码进行编译，放在doc目录下
 gulp.task("js", () => gulp.src(paths.script.entry)
@@ -67,7 +73,7 @@ gulp.task("js:pro", () => gulp.src(paths.script.entry)
 )
 
 // 对css 进行处理
-gulp.task("css:pro", () => gulp.src(`${SRC_PATH.CSS}/**/*.css`)
+gulp.task("css:pro", () => gulp.src(paths.style.entry)
   .pipe(postcss([
     cssnext({
       browsers: [
@@ -83,12 +89,11 @@ gulp.task("css:pro", () => gulp.src(`${SRC_PATH.CSS}/**/*.css`)
       ],
     }),
   ]))
-  .pipe(concat(`${FILENAME}.css`))
   .pipe(sourcemap.init())
   // 压缩css
   .pipe(cssnano())
   .pipe(sourcemap.write("."))
-  .pipe(gulp.dest(`${distPath}/css`))
+  .pipe(gulp.dest(docPath))
 )
 
 // 默认
