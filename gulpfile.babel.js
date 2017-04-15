@@ -3,14 +3,20 @@ import gulp from "gulp"
 import eslint from "gulp-eslint"
 import babel from "gulp-babel"
 import uglify from "gulp-uglify"
-import concat from "gulp-concat"
-import cssnano from "gulp-cssnano"
-import sourcemap from "gulp-sourcemaps"
+import stylus from "gulp-stylus"
 import postcss from "gulp-postcss"
-import cssnext from "postcss-cssnext"
-import rename from "gulp-rename"
+import cssnano from "gulp-cssnano"
+import concat from "gulp-concat"
+import sourcemap from "gulp-sourcemaps"
+import autoprefixer from "autoprefixer"
+import pug from "gulp-pug"
+import imagemin from "gulp-imagemin"
+import BrowserSync from "browser-sync"
+import del from "del"
+import pkg from "./package.json"
 
-
+const browserSync = BrowserSync.create()
+const SECOND = 1000
 // 文件名称
 const FILENAME = "wibi"
 const srcPath = path.resolve(__dirname, "./src")
@@ -60,6 +66,7 @@ gulp.task("js", () => gulp.src(paths.script.entry)
   .pipe(babel())
   .pipe(sourcemap.write("."))
   .pipe(gulp.dest(path.resolve(docPath, "js")))
+  .pipe(browserSync.stream())
 )
 
 // 对JS 编译压缩处理
@@ -69,13 +76,15 @@ gulp.task("js:pro", () => gulp.src(paths.script.entry)
   .pipe(concat(`${FILENAME}.min.js`))
   .pipe(uglify())
   .pipe(sourcemap.write("."))
-  .pipe(gulp.dest(docPath))
+  .pipe(gulp.dest(distPath))
 )
 
-// 对css 进行处理
-gulp.task("css:pro", () => gulp.src(paths.style.entry)
+// 对stylus 进行编译
+gulp.task("css", () => gulp.src(paths.style.entry)
+  .pipe(sourcemap.init())
+  .pipe(stylus())
   .pipe(postcss([
-    cssnext({
+    autoprefixer({
       browsers: [
         "Chrome >= 35",
         "Firefox >= 38",
@@ -89,24 +98,105 @@ gulp.task("css:pro", () => gulp.src(paths.style.entry)
       ],
     }),
   ]))
+  .pipe(sourcemap.write("."))
+  .pipe(gulp.dest(path.resolve(docPath, "css")))
+  .pipe(browserSync.stream())
+)
+
+// 对stylus 进行编译，并压缩
+gulp.task("css:pro", () => gulp.src(paths.style.entry)
   .pipe(sourcemap.init())
-  // 压缩css
+  .pipe(stylus())
+  .pipe(postcss([
+    autoprefixer({
+      browsers: [
+        "Chrome >= 35",
+        "Firefox >= 38",
+        "Edge >= 12",
+        "Explorer >= 10",
+        "iOS >= 8",
+        "Safari >= 8",
+        "Android 2.3",
+        "Android >= 4",
+        "Opera >= 12",
+      ],
+    }),
+  ]))
   .pipe(cssnano())
   .pipe(sourcemap.write("."))
+  .pipe(gulp.dest(distPath))
+)
+
+// 对pug 文件进行处理
+gulp.task("html", () => gulp.src(paths.page.entry)
+  .pipe(sourcemap.init())
+  .pipe(pug({
+    locals: {
+      time: Date.now(),
+      version: pkg.version,
+      build: Math.floor(Date.now() / SECOND),
+    },
+  }))
+  .pipe(sourcemap.write("."))
+  .pipe(gulp.dest(docPath))
+  .pipe(browserSync.stream())
+)
+
+// 图片
+gulp.task("img", () => gulp.src(paths.image)
+  .pipe(imagemin())
+  .pipe(gulp.dest(path.resolve(docPath, "img")))
+  .pipe(browserSync.stream())
+)
+
+// 字体
+gulp.task("font", () => gulp.src(paths.font)
+  .pipe(gulp.dest(path.resolve(docPath, "font")))
+)
+
+// 静态文件
+gulp.task("static", () => gulp.src(paths.font)
   .pipe(gulp.dest(docPath))
 )
+
+// browser-sync
+gulp.task("browser-sync", () => {
+  browserSync.init({ server: { baseDir: docPath } })
+
+  gulp.watch(paths.script.src, ["js"])
+  gulp.watch(paths.style.all, ["css"])
+  gulp.watch(paths.page.all, ["html"])
+  gulp.watch(paths.image, ["img"])
+  gulp.watch(paths.font).on("change", browserSync.reload)
+  gulp.watch(paths.static).on("change", browserSync.reload)
+})
+
+// 清理
+// --------------------------------------------
+// 清理 项目文件
+// --------------------------------------------
+gulp.task("clean", (cb) => {
+  del.sync([distPath])
+  cb()
+})
+
+// 清除测试
+gulp.task("clean:test", (cb) => {
+  del.sync([path.resolve(__dirname, "coverage")])
+  cb()
+})
 
 // 默认
 // -------------------------------------------
 // 检测css，js，编译css和js的每个文件。
 // -------------------------------------------
-gulp.task("default")
+gulp.task("default", gulp.parallel("default"))
 
 // 开发
 // --------------------------------------------
 // 除了default功能外，需要监听他们变化。监听img，font变化。
 // --------------------------------------------
-gulp.task("dev")
+gulp.task("dev", gulp.series(gulp.parallel("html", "css", "js", "img", "font", "static"), "browser-sync"))
 
 
 // 生产
@@ -114,7 +204,7 @@ gulp.task("dev")
 // 会检测js代码规范，通过测试，之后进行sass, js, pug等
 // 文件代码编译，并压缩等
 // --------------------------------------------
-gulp.task("pro")
+gulp.task("pro", gulp.series("clean", gulp.parallel("css:pro", "js:pro")))
 
 // 测试
 // --------------------------------------------
@@ -127,9 +217,3 @@ gulp.task("test")
 // // 运行 项目示例
 // // --------------------------------------------
 // gulp.task("examples")
-
-// 清理
-// --------------------------------------------
-// 清理 项目文件
-// --------------------------------------------
-gulp.task("clean")
