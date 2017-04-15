@@ -7,10 +7,14 @@
     "start": "npm run start",
     "dev": "./node_modules/.bin/gulp",
     "pro": "./node_modules/.bin/gulp pro",
-    "test": "./node_modules/.bin/gulp test",
-    "coverage": "",
+    "lint": "./node_modules/.bin/gulp lint",
+    "lint:test": "./node_modules/.bin/gulp lint:test",
+    "clean": "./node_modules/.bin/gulp clean",
+    "clean:test": "./node_modules/.bin/gulp clean:test",
+    "test": "npm run lint:test && npm run clean:test && node_modules/.bin/jest --config jest.conf.json --coverage",
+    "test:watch": "npm run lint:test && npm run clean:test && node_modules/.bin/jest --config jest.conf.json --coverage --watch",
     "e2e": "testcafe",
-    "gh": "npm run pro && gh-pages -d demo"
+    "gh": "npm run pro && ./node_modules/.bin/gh-pages -d demo"
   },
   "repository": {
     "type": "git",
@@ -36,6 +40,7 @@
     "del": "^2.2.2",
     "eslint": "^3.17.1",
     "eslint-config-finger": "^0.2.0",
+    "gh-pages": "^0.12.0",
     "gulp": "github:gulpjs/gulp#4.0",
     "gulp-babel": "^6.1.2",
     "gulp-concat": "^2.6.1",
