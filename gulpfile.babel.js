@@ -22,28 +22,49 @@ const FILENAME = "wibi"
 const srcPath = path.resolve(__dirname, "./src")
 const distPath = path.resolve(__dirname, "./dist")
 const docPath = path.resolve(__dirname, "./doc")
-// const testPath = path.resolve(__dirname, "./test")
+const testPath = path.resolve(__dirname, "./test")
 // const examplesPath = path.resolve(__dirname, "./examples")
 const paths = {
   // pug files
   page: {
-    entry: [],
-    all: [],
+    entry: [
+      path.resolve(srcPath, "page/*.pug"),
+    ],
+    all: [
+      path.resolve(srcPath, "page/**/*.pug"),
+    ],
   },
   // sass files
   style: {
-    entry: [],
-    all: [],
+    entry: [
+      path.resolve(srcPath, "style/*.styl"),
+      path.resolve(srcPath, "style/themes/*.styl"),
+    ],
+    all: [
+      path.resolve(srcPath, "style/**/*.styl"),
+    ],
   },
   // es6 files
   script: {
-    entry: [],
-    src: [],
-    test: [],
+    entry: [
+      path.resolve(srcPath, "script/index.js"),
+    ],
+    src: [
+      path.resolve(srcPath, "script/**/*.js"),
+    ],
+    test: [
+      path.resolve(testPath, "**/*.js"),
+    ],
   },
-  font: [],
-  image: [],
-  "static": [],
+  font: [
+    path.resolve(srcPath, "font/*"),
+  ],
+  image: [
+    path.resolve(srcPath, "image/*"),
+  ],
+  "static": [
+    path.resolve(srcPath, "static/*"),
+  ],
 }
 
 // src代码进行书写规范检测
@@ -163,10 +184,10 @@ gulp.task("static", () => gulp.src(paths.font)
 gulp.task("browser-sync", () => {
   browserSync.init({ server: { baseDir: docPath } })
 
-  gulp.watch(paths.script.src, ["js"])
-  gulp.watch(paths.style.all, ["css"])
-  gulp.watch(paths.page.all, ["html"])
-  gulp.watch(paths.image, ["img"])
+  gulp.watch(paths.script.src, gulp.parallel("js"))
+  gulp.watch(paths.style.all, gulp.parallel("css"))
+  gulp.watch(paths.page.all, gulp.parallel("html"))
+  gulp.watch(paths.image, gulp.parallel("img"))
   gulp.watch(paths.font).on("change", browserSync.reload)
   gulp.watch(paths.static).on("change", browserSync.reload)
 })
@@ -186,18 +207,11 @@ gulp.task("clean:test", (cb) => {
   cb()
 })
 
-// 默认
-// -------------------------------------------
-// 检测css，js，编译css和js的每个文件。
-// -------------------------------------------
-gulp.task("default", gulp.parallel("default"))
-
 // 开发
 // --------------------------------------------
 // 除了default功能外，需要监听他们变化。监听img，font变化。
 // --------------------------------------------
 gulp.task("dev", gulp.series(gulp.parallel("html", "css", "js", "img", "font", "static"), "browser-sync"))
-
 
 // 生产
 // --------------------------------------------
@@ -206,14 +220,8 @@ gulp.task("dev", gulp.series(gulp.parallel("html", "css", "js", "img", "font", "
 // --------------------------------------------
 gulp.task("pro", gulp.series("clean", gulp.parallel("css:pro", "js:pro")))
 
-// 测试
-// --------------------------------------------
-// 监听js文件变化，实时进行重新测试
-// --------------------------------------------
-gulp.task("test")
-
-// // 示例
-// // --------------------------------------------
-// // 运行 项目示例
-// // --------------------------------------------
-// gulp.task("examples")
+// 默认
+// -------------------------------------------
+// 检测css，js，编译css和js的每个文件。
+// -------------------------------------------
+gulp.task("default", gulp.parallel("dev"))
