@@ -8,11 +8,15 @@ root = true
 end_of_line = lf
 insert_final_newline = true
 
-[*.css]
+[*.styl]
 indent_style = space
-indent_size = 4
+indent_size = 2
 
 [*.js]
+indent_style = space
+indent_size = 2
+
+[*.pug]
 indent_style = space
 indent_size = 2
 
