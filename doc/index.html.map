@@ -1,1 +1,0 @@
-{"version":3,"names":[],"mappings":"","sources":["index.pug"],"sourcesContent":["extends layout/layout\n\nblock content\n  h1 wibi-theme\n"],"file":"index.html"}
