@@ -1,0 +1,34 @@
+# EditorConfig is awesome: http://EditorConfig.org
+
+# top-most EditorConfig file
+root = true
+
+# Unix-style newlines with a newline ending every file
+[*]
+end_of_line = lf
+insert_final_newline = true
+
+# Matches multiple files with brace expansion notation
+# Set default charset
+[*.{js,json,styl,stylus}]
+charset = utf-8
+
+# JSON files
+[*.json]
+indent_style = space
+indent_size = 2
+
+# JavaScript files
+[src/*.js]
+indent_style = space
+indent_size = 2
+
+# stylus files
+[src/*.{styl,stylus}]
+indent_style = space
+indent_size = 2
+
+# pug files
+[src/*.pug]
+indent_style = space
+indent_size = 2
