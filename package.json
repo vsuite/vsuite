@@ -1,0 +1,44 @@
+{
+  "name": "wibi",
+  "version": "1.0.0",
+  "description": "A beautiful theme",
+  "main": "index.js",
+  "repository": "https://github.com/blackcater/wibi.git",
+  "author": "blackcater <blackcater2015@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "",
+    "dev": "",
+    "pro": "",
+    "lint": "",
+    "clean": ""
+  },
+  "devDependencies": {
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.1.1",
+    "babel-preset-env": "^1.6.0",
+    "css-loader": "^0.28.4",
+    "eslint-config-finger": "^0.2.0",
+    "extract-text-webpack-plugin": "^3.0.0",
+    "html-webpack-plugin": "^2.30.1",
+    "pug": "^2.0.0-rc.3",
+    "pug-loader": "^2.3.0",
+    "style-loader": "^0.18.2",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.1",
+    "webpack": "^3.4.1",
+    "webpack-dev-server": "^2.6.1",
+    "xo": "^0.18.2",
+    "xo-loader": "^0.8.0"
+  },
+  "xo": {
+    "extends": "finger",
+    "semicolon": false,
+    "space": 2,
+    "rules": {},
+    "plugins": [],
+    "envs": ["node", "browser"],
+    "ignore": ["test", "dist"],
+    "globals": []
+  }
+}
