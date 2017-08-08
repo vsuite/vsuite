@@ -19,16 +19,16 @@ indent_style = space
 indent_size = 2
 
 # JavaScript files
-[src/*.js]
+[src/**/*.js]
 indent_style = space
 indent_size = 2
 
 # stylus files
-[src/*.{styl,stylus}]
+[src/**/*.styl]
 indent_style = space
 indent_size = 2
 
 # pug files
-[src/*.pug]
+[src/**/*.pug]
 indent_style = space
 indent_size = 2
