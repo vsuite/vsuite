@@ -3,6 +3,7 @@ const webpack = require('webpack')
 
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const DotenvPlugin = require('dotenv-webpack')
+const autoprefixer = require('autoprefixer-stylus')
 
 const config = require('./config')
 
@@ -10,6 +11,8 @@ const srcPath = path.resolve(__dirname, '../src')
 const isDev = process.env.NODE_ENV === 'development'
 const outputPath = isDev ? config.dev.outputPath : config.pro.outputPath
 const envFile = isDev ? config.dev.envFile : config.pro.envFile
+const devTool = isDev ? 'eval-cheap-module-source-map' : 'hidden-source-map'
+const entry = []
 
 const extractLight = new ExtractTextPlugin(path.resolve(outputPath, `css/wibi.${isDev ? '' : 'min.'}css`))
 const extractDark = new ExtractTextPlugin(path.resolve(outputPath, `css/wibi-dark.${isDev ? '' : 'min.'}css`))
@@ -22,16 +25,26 @@ const extractStylusOptions = {
     {
       loader: 'stylus-loader',
       options: {
-        use: [],
+        use: [
+          autoprefixer({ browsers: config.app.browsers })
+        ],
       },
     },
   ],
 }
 
+// 测试环境
+if (isDev) {
+  entry.push(
+    `webpack-dev-server/client?http://${config.app.host}:${config.app.port}`,
+  )
+  entry.push('webpack/hot/only-dev-server')
+}
+
+entry.push(path.resolve(srcPath, 'scripts/index.js'))
+
 module.exports = {
-  entry: {
-    index: path.resolve(srcPath, 'scripts/index.js'),
-  },
+  entry,
   output: {
     filename: `js/wibi.${isDev ? '' : 'min.'}js`,
     path: outputPath,
@@ -78,6 +91,7 @@ module.exports = {
       },
     ],
   },
+  devtool: devTool,
   resolve: {
     alias: {
       scripts: path.resolve(srcPath, 'scripts'),

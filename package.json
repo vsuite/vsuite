@@ -7,13 +7,14 @@
   "author": "blackcater <blackcater2015@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "",
-    "dev": "",
-    "pro": "",
-    "lint": "",
-    "clean": ""
+    "start": "npm run dev",
+    "dev": "cross-env NODE_ENV=development node build/server.js",
+    "pro": "cross-env NODE_ENV=production webpack --config build/webpack.config.pro.js",
+    "lint": "xo",
+    "clean": "rm -rf dist"
   },
   "devDependencies": {
+    "autoprefixer-stylus": "^0.14.0",
     "babel-core": "^6.25.0",
     "babel-loader": "^7.1.1",
     "babel-preset-env": "^1.6.0",
