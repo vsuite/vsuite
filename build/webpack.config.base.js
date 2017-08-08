@@ -1,11 +1,14 @@
 const path = require('path')
 const webpack = require('webpack')
+
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const DotenvPlugin = require('dotenv-webpack')
 
 const config = require('./config')
 
 const srcPath = path.resolve(__dirname, 'src')
 const outputPath = process.env.NODE_ENV === 'development' ? config.dev.outputPath : config.pro.outputPath
+const envFile = process.env.NODE_ENV === 'development' ? config.dev.envFile : config.pro.envFile
 
 const extractLight = new ExtractTextPlugin(path.resolve(outputPath, 'css/wibi.css'))
 const extractDark = new ExtractTextPlugin(path.resolve(outputPath, 'css/wibi-dark.css'))
@@ -86,6 +89,7 @@ module.exports = {
     modules: [srcPath, 'node_modules'],
   },
   plugins: [
+    new DotenvPlugin({ path: envFile }),
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery',

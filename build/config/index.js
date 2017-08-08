@@ -2,15 +2,12 @@ const path = require('path')
 
 module.exports = {
   dev: {
-    env: {
-      NODE_ENV: '"development"',
-    },
+    envFile: path.resolve(__dirname, './.env.dev'),
     outputPath: path.resolve(__dirname, '../test'),
   },
   pro: {
-    env: {
-      NODE_ENV: '"production"',
-    },
+    envFile: path.resolve(__dirname, './.env.pro'),
     outputPath: path.resolve(__dirname, '../dist'),
+    gzip: false,
   },
 }
