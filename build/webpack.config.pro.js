@@ -1,11 +1,17 @@
 const webpack = require('webpack')
 const merge = require('webpack-merge')
+
 const CompressionPlugin = require('compression-webpack-plugin')
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 
 const webpackConfigBase = require('./webpack.config.base')
 const config = require('./config')
 
-const plugins = []
+const plugins = [
+  new webpack.HashedModuleIdsPlugin(),
+  new webpack.NoEmitOnErrorsPlugin(),
+  new UglifyJSPlugin(),
+]
 
 if (config.pro.gzip) {
   plugins.push(

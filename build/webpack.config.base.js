@@ -6,13 +6,14 @@ const DotenvPlugin = require('dotenv-webpack')
 
 const config = require('./config')
 
-const srcPath = path.resolve(__dirname, 'src')
-const outputPath = process.env.NODE_ENV === 'development' ? config.dev.outputPath : config.pro.outputPath
-const envFile = process.env.NODE_ENV === 'development' ? config.dev.envFile : config.pro.envFile
+const srcPath = path.resolve(__dirname, '../src')
+const isDev = process.env.NODE_ENV === 'development'
+const outputPath = isDev ? config.dev.outputPath : config.pro.outputPath
+const envFile = isDev ? config.dev.envFile : config.pro.envFile
 
-const extractLight = new ExtractTextPlugin(path.resolve(outputPath, 'css/wibi.css'))
-const extractDark = new ExtractTextPlugin(path.resolve(outputPath, 'css/wibi-dark.css'))
-const extractTypo = new ExtractTextPlugin(path.resolve(outputPath, 'css/wibi-typo.css'))
+const extractLight = new ExtractTextPlugin(path.resolve(outputPath, `css/wibi.${isDev ? '' : 'min.'}css`))
+const extractDark = new ExtractTextPlugin(path.resolve(outputPath, `css/wibi-dark.${isDev ? '' : 'min.'}css`))
+const extractTypo = new ExtractTextPlugin(path.resolve(outputPath, `css/wibi-typo.${isDev ? '' : 'min.'}css`))
 
 const extractStylusOptions = {
   fallback: 'style-loader',
@@ -32,7 +33,7 @@ module.exports = {
     index: path.resolve(srcPath, 'scripts/index.js'),
   },
   output: {
-    filename: "js/wibi.js",
+    filename: `js/wibi.${isDev ? '' : 'min.'}js`,
     path: outputPath,
   },
   module: {
