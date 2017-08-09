@@ -63,3 +63,9 @@ typings/
 .idea/
 .vscode/
 .hbuilder/
+
+# testcafe
+test/e2e/screenshots/
+
+# jest
+tmp/
