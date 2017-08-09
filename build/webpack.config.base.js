@@ -109,6 +109,13 @@ module.exports = {
       $: 'jquery',
       jQuery: 'jquery',
     }),
+    new webpack.LoaderOptionsPlugin({
+      options: {
+        xo: {
+          emitError: true
+        }
+      }
+    }),
     extractLight,
     extractDark,
     extractTypo,

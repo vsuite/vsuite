@@ -26,7 +26,7 @@ function generateHtmlPluginInstances() {
         new HtmlPlugin({
           title: 'wibi theme testing',
           template: filePath,
-          filename: paths[i],
+          filename: `${path.basename(paths[i], '.pug')}.html`,
           alwaysWriteToDisk: true,
         })
       )
@@ -41,13 +41,10 @@ function generateHtmlPluginInstances() {
 const plugins = [
   new webpack.NamedModulesPlugin(),
   new webpack.NoEmitOnErrorsPlugin(),
+  new webpack.HotModuleReplacementPlugin(),
   ...generateHtmlPluginInstances(),
 ]
 
-const devWebpackConfig = merge(webpackConfigBase, {
+module.exports = merge(webpackConfigBase, {
   plugins,
 })
-
-console.dir(devWebpackConfig)
-
-module.exports = devWebpackConfig
