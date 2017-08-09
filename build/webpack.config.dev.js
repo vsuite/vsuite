@@ -5,7 +5,6 @@ const merge = require('webpack-merge')
 
 const HtmlPlugin = require('html-webpack-plugin')
 const HtmlHarddiskPlugin = require('html-webpack-harddisk-plugin')
-const DashboardPlugin = require('webpack-dashboard/plugin')
 
 const webpackConfigBase = require('./webpack.config.base')
 const config = require('./config')
@@ -43,7 +42,6 @@ const plugins = [
   new webpack.NamedModulesPlugin(),
   new webpack.NoEmitOnErrorsPlugin(),
   new webpack.HotModuleReplacementPlugin(),
-  new DashboardPlugin(),
   ...generateHtmlPluginInstances(),
 ]
 

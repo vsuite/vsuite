@@ -1,29 +1,34 @@
-const fs = require('fs-extra')
-const path = require('path')
 const webpack = require('webpack')
+const chalk = require('chalk')
 const WebpackDevServer = require('webpack-dev-server')
+const errorOverlayMiddleware = require('react-error-overlay/middleware')
+const noopServiceWorkerMiddleware = require('react-dev-utils/noopServiceWorkerMiddleware')
+const clearConsole = require('react-dev-utils/clearConsole')
+
+const isInteractive = process.stdout.isTTY
 
 const webpackConfig = require('./webpack.config.dev')
 const config = require('./config')
 
-// 拷贝public目录下文件
-fs.copySync(
-  path.resolve(__dirname, '../public'),
-  path.resolve(__dirname, '../test')
-)
-
 let server = new WebpackDevServer(webpack(webpackConfig), {
   contentBase: config.dev.outputPath,
   publicPath: '/',
-  proxy: config.app.proxy,
   // 其他配置项
+  clientLogLevel: 'none',
+  watchContentBase: true,
   compress: true,
   hot: true,
-  historyApiFallback: true,
   quiet: true,
   noInfo: true,
+  historyApiFallback: { disableDotRule: true },
   stats: { colors: true },
-  disableHostCheck: true
+  watchOptions: { ignored: /node_modules/ },
+  overlay: false,
+  proxy: config.app.proxy,
+  setup(app) {
+    app.use(errorOverlayMiddleware())
+    app.use(noopServiceWorkerMiddleware())
+  }
 })
 
 server.listen(
@@ -34,6 +39,23 @@ server.listen(
       return console.log(err)
     }
 
-    console.log(`Listening at http://${config.app.host}:${config.app.port}/`);
+    if (isInteractive) {
+      clearConsole()
+    }
+
+    console.log(`
+              ┌──────────────────────────────────────────────────────────┐
+              │                                                          │
+              │                  _       __________  ____                │
+              │                 | |     / /  _/ __ )/  _/                │
+              │                 | | /| / // // __  |/ /                  │
+              │                 | |/ |/ // // /_/ // /                   │
+              │                 |__/|__/___/_____/___/                   │
+              │                                                          │
+              │              ┌─────────────────────────────┐             │
+              └──────────────┤ Simple and Beautiful theme! ├─────────────┘
+                             └─────────────────────────────┘              
+`)
+    console.log(chalk.cyan(`Listening at http://${config.app.host}:${config.app.port}/ \n`));
   }
 )

@@ -4,6 +4,7 @@ const webpack = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const DotenvPlugin = require('dotenv-webpack')
 const autoprefixer = require('autoprefixer-stylus')
+const eslintFormatter = require('react-dev-utils/eslintFormatter')
 
 const config = require('./config')
 
@@ -11,7 +12,7 @@ const srcPath = path.resolve(__dirname, '../src')
 const isDev = process.env.NODE_ENV === 'development'
 const outputPath = isDev ? config.dev.outputPath : config.pro.outputPath
 const envFile = isDev ? config.dev.envFile : config.pro.envFile
-const devTool = isDev ? 'eval-cheap-module-source-map' : 'hidden-source-map'
+const devTool = isDev ? 'cheap-module-source-map' : 'hidden-source-map'
 const entry = []
 
 const extractLight = new ExtractTextPlugin(`css/wibi.${isDev ? '' : 'min.'}css`)
@@ -35,10 +36,12 @@ const extractStylusOptions = {
 
 // 测试环境
 if (isDev) {
-  entry.push(
-    `webpack-dev-server/client?http://${config.app.host}:${config.app.port}`
-  )
-  entry.push('webpack/hot/only-dev-server')
+  // entry.push(
+  //   `webpack-dev-server/client?http://${config.app.host}:${config.app.port}`
+  // )
+  // entry.push('webpack/hot/only-dev-server')
+  entry.push(require.resolve('react-dev-utils/webpackHotDevClient'))
+  entry.push(require.resolve('react-error-overlay'))
 }
 
 entry.push(path.resolve(srcPath, 'scripts/index.js'))
@@ -53,7 +56,20 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
-        use: 'eslint-loader',
+        use: {
+          options: {
+            formatter: eslintFormatter,
+            eslintPath: require.resolve('eslint'),
+            // @remove-on-eject-begin
+            baseConfig: {
+              extends: [require.resolve('eslint-config-finger')],
+            },
+            ignore: false,
+            useEslintrc: false,
+            // @remove-on-eject-end
+          },
+          loader: require.resolve('eslint-loader'),
+        },
         enforce: 'pre',
         include: [path.resolve(srcPath, 'scripts')],
         exclude: /node_modules/,

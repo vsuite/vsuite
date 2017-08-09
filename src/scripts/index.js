@@ -1,4 +1,4 @@
-/* eslint-disable no-console */
+/* eslint-disable */
 import 'styles/dark.styl'
 import 'styles/light.styl'
 import 'styles/typo.styl'
