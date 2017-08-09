@@ -4,6 +4,7 @@ const WebpackDevServer = require('webpack-dev-server')
 const errorOverlayMiddleware = require('react-error-overlay/middleware')
 const noopServiceWorkerMiddleware = require('react-dev-utils/noopServiceWorkerMiddleware')
 const clearConsole = require('react-dev-utils/clearConsole')
+const openBrowser = require('react-dev-utils/openBrowser')
 
 const isInteractive = process.stdout.isTTY
 
@@ -43,7 +44,7 @@ server.listen(
       clearConsole()
     }
 
-    console.log(`
+    console.log(chalk.blue(`
               ┌──────────────────────────────────────────────────────────┐
               │                                                          │
               │                  _       __________  ____                │
@@ -55,7 +56,9 @@ server.listen(
               │              ┌─────────────────────────────┐             │
               └──────────────┤ Simple and Beautiful theme! ├─────────────┘
                              └─────────────────────────────┘              
-`)
-    console.log(chalk.cyan(`Listening at http://${config.app.host}:${config.app.port}/ \n`));
+`))
+    console.log(chalk.cyan(`Listening at http://${config.app.host}:${config.app.port}/ \n`))
+
+    openBrowser(`http://${config.app.host}:${config.app.port}/`)
   }
 )
