@@ -14,9 +14,9 @@ const envFile = isDev ? config.dev.envFile : config.pro.envFile
 const devTool = isDev ? 'eval-cheap-module-source-map' : 'hidden-source-map'
 const entry = []
 
-const extractLight = new ExtractTextPlugin(path.resolve(outputPath, `css/wibi.${isDev ? '' : 'min.'}css`))
-const extractDark = new ExtractTextPlugin(path.resolve(outputPath, `css/wibi-dark.${isDev ? '' : 'min.'}css`))
-const extractTypo = new ExtractTextPlugin(path.resolve(outputPath, `css/wibi-typo.${isDev ? '' : 'min.'}css`))
+const extractLight = new ExtractTextPlugin(`css/wibi.${isDev ? '' : 'min.'}css`)
+const extractDark = new ExtractTextPlugin(`css/wibi-dark.${isDev ? '' : 'min.'}css`)
+const extractTypo = new ExtractTextPlugin(`css/wibi-typo.${isDev ? '' : 'min.'}css`)
 
 const extractStylusOptions = {
   fallback: 'style-loader',
@@ -53,7 +53,7 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
-        use: 'xo-loader',
+        use: 'eslint-loader',
         enforce: 'pre',
         include: [path.resolve(srcPath, 'scripts')],
         exclude: /node_modules/,
@@ -70,15 +70,15 @@ module.exports = {
         include: [path.resolve(srcPath, 'pages')],
       },
       {
-        test: /^light\.styl$/,
+        test: /light\.styl$/,
         use: extractLight.extract(extractStylusOptions),
       },
       {
-        test: /^dark\.styl$/,
+        test: /dark\.styl$/,
         use: extractDark.extract(extractStylusOptions),
       },
       {
-        test: /^typo\.styl$/,
+        test: /typo\.styl$/,
         use: extractTypo.extract(extractStylusOptions),
       },
       {
@@ -108,13 +108,6 @@ module.exports = {
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery',
-    }),
-    new webpack.LoaderOptionsPlugin({
-      options: {
-        xo: {
-          emitError: true
-        }
-      }
     }),
     extractLight,
     extractDark,
