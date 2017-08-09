@@ -36,7 +36,7 @@ const extractStylusOptions = {
 // 测试环境
 if (isDev) {
   entry.push(
-    `webpack-dev-server/client?http://${config.app.host}:${config.app.port}`,
+    `webpack-dev-server/client?http://${config.app.host}:${config.app.port}`
   )
   entry.push('webpack/hot/only-dev-server')
 }

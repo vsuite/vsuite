@@ -7,6 +7,7 @@ const HtmlPlugin = require('html-webpack-plugin')
 const HtmlHarddiskPlugin = require('html-webpack-harddisk-plugin')
 
 const webpackConfigBase = require('./webpack.config.base')
+const config = require('./config')
 
 /**
  * 根据 src/pages 下 文件生成 对应 html 文件。
@@ -32,7 +33,7 @@ function generateHtmlPluginInstances() {
     }
   }
 
-  plugins.push(new HtmlHarddiskPlugin())
+  plugins.push(new HtmlHarddiskPlugin({ outputPath: config.dev.outputPath }))
 
   return plugins
 }
@@ -43,6 +44,10 @@ const plugins = [
   ...generateHtmlPluginInstances(),
 ]
 
-module.exports = merge(webpackConfigBase, {
+const devWebpackConfig = merge(webpackConfigBase, {
   plugins,
 })
+
+console.dir(devWebpackConfig)
+
+module.exports = devWebpackConfig

@@ -17,6 +17,7 @@
     "autoprefixer-stylus": "^0.14.0",
     "babel-core": "^6.25.0",
     "babel-loader": "^7.1.1",
+    "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.6.0",
     "compression-webpack-plugin": "^1.0.0",
     "cross-env": "^5.0.4",
@@ -25,6 +26,7 @@
     "eslint-config-finger": "^0.2.0",
     "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^0.11.2",
+    "fs-extra": "^4.0.1",
     "html-webpack-harddisk-plugin": "^0.1.0",
     "html-webpack-plugin": "^2.30.1",
     "pug": "^2.0.0-rc.3",
@@ -43,16 +45,15 @@
     "extends": "finger",
     "semicolon": false,
     "space": 2,
-    "rules": {},
+    "rules": {
+      "quotes": ["error", "single"]
+    },
     "plugins": [],
     "envs": [
       "node",
       "browser"
     ],
-    "ignore": [
-      "test",
-      "dist"
-    ],
+    "ignores": [],
     "globals": []
   }
 }

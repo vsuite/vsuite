@@ -1,10 +1,18 @@
+const fs = require('fs-extra')
+const path = require('path')
 const webpack = require('webpack')
 const WebpackDevServer = require('webpack-dev-server')
 
 const webpackConfig = require('./webpack.config.dev')
 const config = require('./config')
 
-new WebpackDevServer(webpack(webpackConfig), {
+// 拷贝public目录下文件
+fs.copySync(
+  path.resolve(__dirname, '../public'),
+  path.resolve(__dirname, '../test')
+)
+
+let server = new WebpackDevServer(webpack(webpackConfig), {
   contentBase: config.dev.outputPath,
   publicPath: '/',
   proxy: config.app.proxy,
@@ -17,14 +25,15 @@ new WebpackDevServer(webpack(webpackConfig), {
   stats: { colors: true },
   disableHostCheck: true
 })
-  .listen(
-    config.app.port,
-    config.app.host,
-    (err, result) => {
-      if (err) {
-        return console.log(err)
-      }
 
-      console.log(`Listening at http://${config.app.host}:${config.app.port}/`);
+server.listen(
+  config.app.port,
+  config.app.host,
+  (err, result) => {
+    if (err) {
+      return console.log(err)
     }
-  )
+
+    console.log(`Listening at http://${config.app.host}:${config.app.port}/`);
+  }
+)
