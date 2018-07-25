@@ -1,4 +1,4 @@
-English | [中文版](README-CN.md)
+[English](README.md) | 中文版
 
 <p>
     <a href="https://github.com/the-bcflow"><img alt="logo" width="36" height="36" src="http://oameisqha.bkt.clouddn.com/bcflow.png?roundPic/radius/!50p" alt="the-bcflow">
@@ -13,9 +13,9 @@ English | [中文版](README-CN.md)
   <a href="https://github.com/vsuite/vsuite"><img src="https://img.shields.io/github/license/vsuite/vsuite.svg" alt="License"/></a>
 </p>
 
-<p align="center">VSUITE (Vue Suite) is a set of vue component libraries for enterprise system products.</p>
+<p align="center">VSUITE (Vue Suite 的简写) 是一套 React 组件库，为后台产品而生。</p>
 
-<h2>Install</h2>
+<h2>安装</h2>
 
 ```bash
 > yarn add vsuite

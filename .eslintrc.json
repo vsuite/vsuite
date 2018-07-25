@@ -1,0 +1,33 @@
+{
+  "extends": ["standard", "prettier", "plugin:vue/essential"],
+  "plugins": [
+    "prettier",
+    "standard",
+    "promise",
+    "import",
+    "node"
+  ],
+  "rules": {
+    // prettier
+    "prettier/prettier": "error",
+
+    // basic
+    "indent": [
+      "error",
+      2
+    ],
+    "linebreak-style": [
+      "error",
+      "unix"
+    ],
+    "quotes": [
+      "error",
+      "single"
+    ]
+  },
+  "env": {
+    "es6": true,
+    "node": true,
+    "jest": true
+  }
+}
