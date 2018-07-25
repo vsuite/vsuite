@@ -10,7 +10,16 @@
     "lint": "eslint --fix .",
     "test": "yarn prettier && yarn lint && jest"
   },
-  "dependencies": {},
+  "dependencies": {
+    "async-validator": "^1.8.5",
+    "deepmerge": "^2.1.1",
+    "element-resize-detector": "^1.1.14",
+    "js-calendar": "^1.2.3",
+    "lodash.throttle": "^4.1.1",
+    "popper.js": "^1.14.3",
+    "tinycolor2": "^1.4.1",
+    "v-click-outside-x": "^3.0.3"
+  },
   "devDependencies": {
     "@commitlint/cli": "^7.0.0",
     "@commitlint/config-angular": "^7.0.1",

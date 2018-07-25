@@ -1,0 +1,34 @@
+@import "common";
+@import "mixins/picker";
+
+.@{ns}auto-complete {
+  &-menu > {
+    // Auto complete items style the same to Picker menu items
+    .picker-menu-items-reset;
+
+    margin-top: @border-radius-base;
+    min-width: @picker-content-min-width;
+  }
+
+  // The same to Picker select menu item
+  &-item {
+    .picker-select-item;
+
+    &,
+    &:hover,
+    &:active,
+    &:focus {
+      text-decoration: none;
+    }
+
+    &-focus,
+    &:hover {
+      .picker-item-hover;
+    }
+  }
+
+  .@{ns}input:focus::-webkit-textfield-decoration-container {
+    visibility: hidden;
+    pointer-events: none;
+  }
+}
