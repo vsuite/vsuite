@@ -12,7 +12,7 @@
     "dev": "start-storybook -p 9001 -s ./public,./brand -c .storybook",
     "dist": "",
     "dist:style": "",
-    "lint": "eslint --fix .",
+    "lint": "eslint --fix 'src/**/*.{js,vue}' && stylelint --fix 'src/styles/**/*.less'",
     "test": "yarn prettier && yarn lint && jest",
     "prettier": "prettier --write 'src/**/*.{js,vue}'"
   },
@@ -67,6 +67,8 @@
     "lint-staged": "^7.2.0",
     "prettier": "^1.13.7",
     "style-loader": "^0.21.0",
+    "stylelint": "^9.4.0",
+    "stylelint-config-standard": "^18.2.0",
     "vue": "^2.5.16",
     "vue-loader": "^14.2.2",
     "vue-template-compiler": "^2.5.16"
@@ -81,6 +83,10 @@
     "src/**/*.{js,vue}": [
       "prettier --write",
       "eslint --fix",
+      "git add"
+    ],
+    "src/styles/**/*.less": [
+      "stylelint --fix",
       "git add"
     ]
   },
