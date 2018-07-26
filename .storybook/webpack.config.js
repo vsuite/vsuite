@@ -5,7 +5,7 @@ module.exports = {
     rules: [
       {
         test: [/\.stories\.jsx?$/, /stories\/*\.jsx?$/],
-        loaders: [
+        use: [
           {
             loader: require.resolve('@storybook/addon-storysource/loader'),
             options: {
@@ -22,8 +22,19 @@ module.exports = {
       },
       {
         test: /\.less$/,
-        loaders: ['style-loader', 'css-loader', 'less-loader'],
+        use: [
+          'style-loader',
+          'css-loader',
+          {
+            loader: 'less-loader',
+            options: { javascriptEnabled: true },
+          },
+        ],
         include: path.resolve(__dirname, '../src'),
+      },
+      {
+        test: /\.(eot|svg|ttf|woff2?)$/,
+        use: ['file-loader'],
       },
     ],
   },
@@ -31,6 +42,9 @@ module.exports = {
   resolve: {
     alias: {
       components: path.resolve(__dirname, '../src/components'),
+      langs: path.resolve(__dirname, '../src/langs'),
+      mixins: path.resolve(__dirname, '../src/mixins'),
+      plugins: path.resolve(__dirname, '../src/plugins'),
       styles: path.resolve(__dirname, '../src/styles'),
       utils: path.resolve(__dirname, '../src/utils'),
       '@': path.resolve(__dirname, '../src'),

@@ -1,5 +1,5 @@
 {
-  "extends": ["standard", "prettier", "plugin:vue/essential"],
+  "extends": ["standard", "prettier", "plugin:vue/strongly-recommended"],
   "plugins": [
     "prettier",
     "standard",
@@ -23,7 +23,10 @@
     "quotes": [
       "error",
       "single"
-    ]
+    ],
+
+    // vue
+    "vue/require-default-prop": ["off"]
   },
   "env": {
     "es6": true,

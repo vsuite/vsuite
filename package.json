@@ -8,6 +8,7 @@
   "workspaces": [
     "packages/*"
   ],
+  "files": ["lib"],
   "scripts": {
     "dev": "start-storybook -p 9001 -s ./public,./brand -c .storybook",
     "dist": "",
@@ -17,10 +18,11 @@
     "prettier": "prettier --write 'src/**/*.{js,vue}'"
   },
   "dependencies": {
-    "async-validator": "^1.8.5",
+    "classnames": "^2.2.6",
     "deepmerge": "^2.1.1",
     "element-resize-detector": "^1.1.14",
     "js-calendar": "^1.2.3",
+    "lodash.curry": "^4.1.1",
     "lodash.throttle": "^4.1.1",
     "popper.js": "^1.14.3",
     "tinycolor2": "^1.4.1",
@@ -47,6 +49,7 @@
     "babel-core": "^6.26.3",
     "babel-jest": "^23.4.0",
     "babel-plugin-syntax-jsx": "^6.18.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-plugin-transform-vue-jsx": "^3.7.0",
     "css-loader": "^1.0.0",
     "eslint": "^5.2.0",
@@ -59,9 +62,9 @@
     "eslint-plugin-promise": "^3.8.0",
     "eslint-plugin-standard": "^3.1.0",
     "eslint-plugin-vue": "^4.7.1",
+    "file-loader": "^1.1.11",
     "husky": "^1.0.0-rc.13",
     "jest": "^23.4.1",
-    "jest-vue-preprocessor": "^1.4.0",
     "less": "^3.8.0",
     "less-loader": "^4.1.0",
     "lint-staged": "^7.2.0",
@@ -69,7 +72,9 @@
     "style-loader": "^0.21.0",
     "stylelint": "^9.4.0",
     "stylelint-config-standard": "^18.2.0",
+    "url-loader": "^1.0.1",
     "vue": "^2.5.16",
+    "vue-jest": "^2.6.0",
     "vue-loader": "^14.2.2",
     "vue-template-compiler": "^2.5.16"
   },
@@ -105,7 +110,7 @@
     ],
     "transform": {
       "^.+\\.jsx?$": "babel-jest",
-      ".*\\.(vue)$": "<rootDir>/node_modules/jest-vue-preprocessor"
+      ".*\\.(vue)$": "<rootDir>/node_modules/vue-jest"
     },
     "transformIgnorePatterns": [
       "/node_modules/(?!(@storybook/.*\\.vue$))"

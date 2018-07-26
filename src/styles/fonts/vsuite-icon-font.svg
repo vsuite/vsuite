@@ -2,8 +2,8 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
 <svg xmlns="http://www.w3.org/2000/svg">
 <defs>
-  <font id="rsuite-icon-font" horiz-adv-x="49">
-    <font-face font-family="rsuite-icon-font"
+  <font id="vsuite-icon-font" horiz-adv-x="49">
+    <font-face font-family="vsuite-icon-font"
       units-per-em="1000" ascent="857"
       descent="143" />
     <missing-glyph horiz-adv-x="0" />
