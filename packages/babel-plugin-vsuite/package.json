@@ -1,0 +1,13 @@
+{
+  "name": "babel-plugin-vsuite",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "repository": "https://github.com/vsuite/vsuite.git",
+  "author": "blackcater <blackcater2015@gmail.com>",
+  "scripts": {},
+  "dependencies": {},
+  "devDependencies": {},
+  "license": "MIT",
+  "private": true
+}
