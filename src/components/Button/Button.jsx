@@ -38,6 +38,7 @@ export default {
       const addPrefix = prefix(this.classPrefix);
 
       return [
+        CLASS_PREFIX,
         this.classPrefix,
         addPrefix(this.appearance),
         {
