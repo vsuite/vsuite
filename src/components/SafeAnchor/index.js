@@ -1,3 +1,3 @@
-import SafeAnchor from './safe-anchor.vue';
+import SafeAnchor from './SafeAnchor.jsx';
 
 export default SafeAnchor;

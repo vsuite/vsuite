@@ -1,4 +1,3 @@
-import cls from 'classnames';
 import curry from 'lodash.curry';
 
 import { isArray } from './type';
@@ -7,7 +6,7 @@ function prefix(pre, className) {
   if (!pre || !className) return '';
 
   if (isArray(className)) {
-    return cls(className.filter(name => !!name).map(name => `${pre}-${name}`));
+    return className.filter(name => !!name).map(name => `${pre}-${name}`);
   }
 
   return `${pre}-${className}`;
