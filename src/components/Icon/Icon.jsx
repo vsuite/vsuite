@@ -9,6 +9,7 @@ export default {
   props: {
     icon: VueTypes.oneOfType([VueTypes.string, VueTypes.object]),
     size: VueTypes.oneOf(['lg', '2x', '3x', '4x', '5x']),
+    status: VueTypes.oneOf(['primary', 'success', 'info', 'warning', 'danger']),
     flip: VueTypes.oneOf(['horizontal', 'vertical']),
     stack: VueTypes.oneOf(['1x', '2x']),
     rotate: VueTypes.oneOf([0, 90, 180, 270]),
@@ -32,11 +33,11 @@ export default {
       const addPrefix = prefix(this.classPrefix);
 
       return [
-        CLASS_PREFIX,
         this.classPrefix,
         {
           [addPrefix(this.icon)]: !this.isSvgIcon,
           [addPrefix(this.size)]: this.size,
+          [prefix('text', this.status)]: this.status,
           [addPrefix('spin')]: this.spin,
           [addPrefix('pulse')]: this.pulse,
           [addPrefix('inverse')]: this.inverse,
@@ -53,7 +54,11 @@ export default {
     const Component = this.componentClass;
 
     return (
-      <Component class={this.classes} {...this.$attrs}>
+      <Component
+        class={this.classes}
+        {...this.$attrs}
+        {...{ on: this.$listeners }}
+      >
         {this.isSvgIcon ? (
           <svg style={this.svgStyle} viewBox={this.icon.viewBox}>
             <use xlinkHref={`#${this.icon.id}`} />

@@ -1,26 +1,57 @@
 import VueTypes from 'vue-types';
-import { defaultClassPrefix } from 'utils/prefix';
+import prefix, { defaultClassPrefix } from 'utils/prefix';
 
-const CLASS_PREFIX = 'icon-stack';
+const CLASS_PREFIX = 'icon';
 
 export default {
-  functional: true,
-
   name: 'IconStack',
 
   props: {
+    size: VueTypes.oneOf(['lg', '2x', '3x', '4x', '5x']),
+    status: VueTypes.oneOf(['primary', 'success', 'info', 'warning', 'danger']),
+    flip: VueTypes.oneOf(['horizontal', 'vertical']),
+    rotate: VueTypes.oneOf([0, 90, 180, 270]),
+    spin: VueTypes.bool.def(false),
+    pulse: VueTypes.bool.def(false),
+    inverse: VueTypes.bool.def(false),
+    fixedWidth: VueTypes.bool.def(false),
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
     componentClass: VueTypes.oneOfType([VueTypes.string, VueTypes.object]).def(
       'span'
     ),
   },
 
-  render(h, context) {
-    const { classPrefix, componentClass } = context.props;
-    const classes = [CLASS_PREFIX, classPrefix];
-    const Component = componentClass;
-    const $slots = context.slots();
+  computed: {
+    classes() {
+      const addPrefix = prefix(this.classPrefix);
 
-    return <Component class={classes}>{$slots.default}</Component>;
+      return [
+        prefix(this.classPrefix, 'stack'),
+        {
+          [addPrefix(this.size)]: this.size,
+          [prefix('text', this.status)]: this.satus,
+          [addPrefix('spin')]: this.spin,
+          [addPrefix('pulse')]: this.pulse,
+          [addPrefix('inverse')]: this.inverse,
+          [addPrefix('fw')]: this.fixedWidth,
+          [addPrefix(`flip-${this.flip || ''}`)]: this.flip,
+          [addPrefix(`rotate-${this.rotate || ''}`)]: this.rotate,
+        },
+      ];
+    },
+  },
+
+  render() {
+    const Component = this.componentClass;
+
+    return (
+      <Component
+        class={this.classes}
+        {...this.$attrs}
+        {...{ on: this.$listeners }}
+      >
+        {this.$slots.default}
+      </Component>
+    );
   },
 };

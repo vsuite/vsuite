@@ -38,7 +38,6 @@ export default {
       const addPrefix = prefix(this.classPrefix);
 
       return [
-        CLASS_PREFIX,
         this.classPrefix,
         addPrefix(this.appearance),
         {
@@ -63,6 +62,7 @@ export default {
           role="button"
           href={this.href}
           disabled={this.disabled}
+          {...this.$attrs}
           {...{ on: this.$listeners }}
         >
           {this.loading && spin}
