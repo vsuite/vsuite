@@ -1,8 +1,7 @@
 import { storiesOf } from '@storybook/vue';
 import { withKnobs } from '@storybook/addon-knobs';
+import Icon, { IconStack } from 'components/Icon';
 
-import IconStack from '../IconStack.jsx';
-import Icon from '../Icon.jsx';
 import vsuiteSvgIcon from './vsuite.svg';
 
 const stories = storiesOf('General|Icon', module);

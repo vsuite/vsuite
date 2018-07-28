@@ -1,10 +1,10 @@
 import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, text, selectV2 } from '@storybook/addon-knobs';
+import Button from 'components/Button';
+import Icon from 'components/Icon';
 import zipArray from 'utils/zipArray';
 import { SIZES, COLORS } from 'utils/constant';
-
-import Button from '../Button.jsx';
 
 const stories = storiesOf('General|Button', module);
 const appearanceOptions = zipArray(
@@ -116,6 +116,45 @@ stories.add('link', () => ({
             onClick={action('@click')}
           >
             Download
+          </Button>
+        </div>
+      </div>
+    );
+  },
+}));
+
+stories.add('with icon', () => ({
+  render: h => {
+    return (
+      <div className="container">
+        <div style={{ margin: '15px' }}>
+          <Button color="blue">
+            <Icon icon="facebook-official" /> Facebook
+          </Button>
+        </div>
+        <div style={{ margin: '15px' }}>
+          <Button color="red">
+            <Icon icon="google-plus-circle" /> Google Plus
+          </Button>
+        </div>
+        <div style={{ margin: '15px' }}>
+          <Button color="cyan">
+            <Icon icon="twitter" /> Twitter
+          </Button>
+        </div>
+        <div style={{ margin: '15px' }}>
+          <Button color="blue">
+            <Icon icon="linkedin" /> LinkedIn
+          </Button>
+        </div>
+        <div style={{ margin: '15px' }}>
+          <Button color="green">
+            <Icon icon="wechat" /> WeChat
+          </Button>
+        </div>
+        <div style={{ margin: '15px' }}>
+          <Button color="yellow">
+            <Icon icon="weibo" /> WeiBo
           </Button>
         </div>
       </div>
