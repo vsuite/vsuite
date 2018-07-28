@@ -3,6 +3,7 @@ import { withKnobs } from '@storybook/addon-knobs';
 
 import IconStack from '../IconStack.jsx';
 import Icon from '../Icon.jsx';
+import vsuiteSvgIcon from './vsuite.svg';
 
 const stories = storiesOf('General|Icon', module);
 
@@ -103,16 +104,30 @@ stories.add('stack', () => ({
     return (
       <div className="container">
         <div style={{ margin: '15px' }}>
-          <IconStack>
-            <Icon icon="square" stack="2x" />
-            <Icon icon="terminal" stack="1x" inverse />
-          </IconStack>
+          <span style={{ margin: '10px' }}>
+            <IconStack size="lg">
+              <Icon icon="square" stack="2x" />
+              <Icon icon="terminal" stack="1x" inverse />
+            </IconStack>
+          </span>
+          <span style={{ margin: '10px' }}>
+            <IconStack size="lg">
+              <Icon icon="camera" stack="1x" />
+              <Icon icon="ban" stack="2x" status="danger" />
+            </IconStack>
+          </span>
         </div>
+      </div>
+    );
+  },
+}));
+
+stories.add('svg', () => ({
+  render: h => {
+    return (
+      <div className="container">
         <div style={{ margin: '15px' }}>
-          <IconStack>
-            <Icon icon="camera" stack="1x" />
-            <Icon icon="ban" stack="2x" status="danger" />
-          </IconStack>
+          <Icon icon={vsuiteSvgIcon} size="2x" />
         </div>
       </div>
     );

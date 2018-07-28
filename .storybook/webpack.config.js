@@ -33,8 +33,21 @@ module.exports = {
         include: path.resolve(__dirname, '../src'),
       },
       {
+        test: /\.svg$/,
+        use: [
+          {
+            loader: 'svg-sprite-loader',
+            options: {
+              symbolId: 'icon-[name]'
+            }
+          }
+        ],
+        exclude: path.resolve(__dirname, '../src/styles'),
+      },
+      {
         test: /\.(eot|svg|ttf|woff2?)$/,
         use: ['file-loader'],
+        include: path.resolve(__dirname, '../src/styles'),
       },
     ],
   },

@@ -13,10 +13,6 @@ export default {
     ),
   },
 
-  data() {
-    return {};
-  },
-
   render() {
     const Component = this.componentClass;
     let tabIndex = this.tabIndex;

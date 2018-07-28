@@ -29,10 +29,6 @@ export default {
     ),
   },
 
-  data() {
-    return {};
-  },
-
   computed: {
     classes() {
       const addPrefix = prefix(this.classPrefix);
