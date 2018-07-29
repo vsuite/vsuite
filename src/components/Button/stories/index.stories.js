@@ -168,7 +168,7 @@ stories.add('icon-button', () => ({
     return (
       <div>
         <div style={{ margin: '15px' }}>
-          <IconButton icon="star" />
+          <IconButton style="color: #ccc;" icon="star" />
         </div>
         <div style={{ margin: '15px' }}>
           <IconButton icon="star">Favour</IconButton>
