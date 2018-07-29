@@ -52,15 +52,19 @@ export default {
     const spin = <span class={prefix(this.classPrefix, 'spin')} />;
 
     if (this.href) {
+      const anchorData = {
+        class: this.classes,
+        props: {
+          ...this.$attrs,
+          href: this.href,
+          disabled: this.disabled,
+          role: 'button',
+        },
+        on: { ...this.$listeners },
+      };
+
       return (
-        <SafeAnchor
-          class={this.classes}
-          role="button"
-          href={this.href}
-          disabled={this.disabled}
-          {...this.$attrs}
-          {...{ on: this.$listeners }}
-        >
+        <SafeAnchor {...anchorData}>
           {this.loading && spin}
           {this.$slots.default}
         </SafeAnchor>
@@ -68,19 +72,22 @@ export default {
     }
 
     const Component = this.componentClass;
+    const btnData = {
+      class: this.classes,
+      props: {
+        ...this.$attrs,
+        disabled: this.disabled,
+      },
+      on: { ...this.$listeners },
+    };
 
     // https://stackoverflow.com/questions/41904199/whats-the-point-of-button-type-button
     if (Component === 'button') {
-      this.$attrs.type = this.$attrs.type || 'button';
+      btnData.props.type = this.$attrs.type || 'button';
     }
 
     return (
-      <Component
-        class={this.classes}
-        disabled={this.disabled}
-        {...this.$attrs}
-        {...{ on: this.$listeners }}
-      >
+      <Component {...btnData}>
         {this.loading && spin}
         {this.$slots.default}
       </Component>

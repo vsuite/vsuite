@@ -43,15 +43,12 @@ export default {
 
   render() {
     const Component = this.componentClass;
+    const iconStackData = {
+      class: this.classes,
+      props: this.$attrs,
+      on: this.$listeners,
+    };
 
-    return (
-      <Component
-        class={this.classes}
-        {...this.$attrs}
-        {...{ on: this.$listeners }}
-      >
-        {this.$slots.default}
-      </Component>
-    );
+    return <Component {...iconStackData}>{this.$slots.default}</Component>;
   },
 };

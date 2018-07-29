@@ -1,5 +1,6 @@
 import Icon from './Icon.jsx';
 import IconStack from './IconStack.jsx';
 
-export { IconStack };
+Icon.Stack = IconStack;
+
 export default Icon;

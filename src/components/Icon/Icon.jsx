@@ -52,13 +52,14 @@ export default {
 
   render() {
     const Component = this.componentClass;
+    const iconData = {
+      class: this.classes,
+      props: this.attrs,
+      on: this.$listeners,
+    };
 
     return (
-      <Component
-        class={this.classes}
-        {...this.$attrs}
-        {...{ on: this.$listeners }}
-      >
+      <Component {...iconData}>
         {this.isSvgIcon ? (
           <svg style={this.svgStyle} viewBox={this.icon.viewBox}>
             <use xlinkHref={`#${this.icon.id}`} />

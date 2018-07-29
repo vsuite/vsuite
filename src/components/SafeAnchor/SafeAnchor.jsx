@@ -15,24 +15,24 @@ export default {
 
   render() {
     const Component = this.componentClass;
-    let tabIndex = this.tabIndex;
+    const anchorData = {
+      props: {
+        ...this.$attrs,
+        href: this.href,
+        role: this.role,
+        tabIndex: this.tabIndex,
+      },
+      on: {
+        ...this.$listeners,
+        click: this._onClick,
+      },
+    };
 
     if (this.disabled) {
-      tabIndex = -1;
+      anchorData.props.tabIndex = -1;
     }
 
-    return (
-      <Component
-        href={this.href}
-        role={this.role}
-        tabIndex={tabIndex}
-        onClick={this._onClick}
-        {...this.$attrs}
-        {...{ on: this.listeners }}
-      >
-        {this.$slots.default}
-      </Component>
-    );
+    return <Component {...anchorData}>{this.$slots.default}</Component>;
   },
 
   methods: {

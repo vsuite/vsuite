@@ -2,6 +2,7 @@ import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, text, selectV2 } from '@storybook/addon-knobs';
 import Button from 'components/Button';
+import IconButton from 'components/IconButton';
 import Icon from 'components/Icon';
 import zipArray from 'utils/zipArray';
 import { SIZES, COLORS } from 'utils/constant';
@@ -22,22 +23,22 @@ stories.add('default', () => ({
 
     return (
       <div className="container">
-        <div style={{ margin: '15px' }}>
+        <div style={{ margin: '10px' }}>
           <Button appearance={appearance} onClick={action('@click')}>
             Default
           </Button>
         </div>
-        <div style={{ margin: '15px' }}>
+        <div style={{ margin: '10px' }}>
           <Button appearance={appearance} active onClick={action('@click')}>
             Active
           </Button>
         </div>
-        <div style={{ margin: '15px' }}>
+        <div style={{ margin: '10px' }}>
           <Button appearance={appearance} disabled onClick={action('@click')}>
             Disabled
           </Button>
         </div>
-        <div style={{ margin: '15px' }}>
+        <div style={{ margin: '10px' }}>
           <Button appearance={appearance} loading onClick={action('@click')}>
             Loading
           </Button>
@@ -156,6 +157,29 @@ stories.add('with icon', () => ({
           <Button color="yellow">
             <Icon icon="weibo" /> WeiBo
           </Button>
+        </div>
+      </div>
+    );
+  },
+}));
+
+stories.add('icon-button', () => ({
+  render: h => {
+    return (
+      <div>
+        <div style={{ margin: '15px' }}>
+          <IconButton icon="star" />
+        </div>
+        <div style={{ margin: '15px' }}>
+          <IconButton icon="star">Favour</IconButton>
+        </div>
+        <div style={{ margin: '15px' }}>
+          <IconButton icon="star" appearance="primary" />
+        </div>
+        <div style={{ margin: '15px' }}>
+          <IconButton icon="star" appearance="primary">
+            Favour
+          </IconButton>
         </div>
       </div>
     );
