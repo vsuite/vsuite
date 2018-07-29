@@ -24,9 +24,7 @@ export default {
     block: VueTypes.bool.def(false),
     href: VueTypes.string,
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
-    componentClass: VueTypes.oneOfType([VueTypes.string, VueTypes.object]).def(
-      'button'
-    ),
+    componentClass: VueTypes.string.def('button'),
   },
 
   computed: {
@@ -60,7 +58,7 @@ export default {
           disabled: this.disabled,
           role: 'button',
         },
-        on: { ...this.$listeners },
+        on: this.$listeners,
       };
 
       return (
@@ -74,16 +72,16 @@ export default {
     const Component = this.componentClass;
     const btnData = {
       class: this.classes,
-      props: {
+      attrs: {
         ...this.$attrs,
         disabled: this.disabled,
       },
-      on: { ...this.$listeners },
+      on: this.$listeners,
     };
 
     // https://stackoverflow.com/questions/41904199/whats-the-point-of-button-type-button
     if (Component === 'button') {
-      btnData.props.type = this.$attrs.type || 'button';
+      btnData.attrs.type = this.$attrs.type || 'button';
     }
 
     return (
