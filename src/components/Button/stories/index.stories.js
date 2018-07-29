@@ -2,6 +2,8 @@ import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, text, selectV2 } from '@storybook/addon-knobs';
 import Button from 'components/Button';
+import ButtonGroup from 'components/ButtonGroup';
+import ButtonToolbar from 'components/ButtonToolbar';
 import IconButton from 'components/IconButton';
 import Icon from 'components/Icon';
 import zipArray from 'utils/zipArray';
@@ -180,6 +182,47 @@ stories.add('icon-button', () => ({
           <IconButton icon="star" appearance="primary">
             Favour
           </IconButton>
+        </div>
+      </div>
+    );
+  },
+}));
+
+stories.add('toolbar', () => ({
+  render: h => {
+    return (
+      <div className="container">
+        <div style={{ margin: '15px' }}>
+          <ButtonToolbar>
+            <Button>Prev</Button>
+            <ButtonGroup>
+              <Button>1</Button>
+              <Button>2</Button>
+              <Button>3</Button>
+              <Button>4</Button>
+              <Button>5</Button>
+            </ButtonGroup>
+            <Button>Next</Button>
+          </ButtonToolbar>
+        </div>
+        <div style={{ margin: '15px' }}>
+          <ButtonToolbar>
+            <IconButton icon="file-text" />
+            <IconButton icon="save" />
+            <ButtonGroup>
+              <IconButton icon="bold" />
+              <IconButton icon="italic" />
+              <IconButton icon="underline" />
+              <IconButton icon="strikethrough" />
+            </ButtonGroup>
+            <ButtonGroup>
+              <IconButton icon="align-left" />
+              <IconButton icon="align-center" />
+              <IconButton icon="align-right" />
+              <IconButton icon="align-justify" />
+            </ButtonGroup>
+            <IconButton icon="link" />
+          </ButtonToolbar>
         </div>
       </div>
     );
