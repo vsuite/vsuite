@@ -17,6 +17,7 @@ module.exports = {
       mixins: resolve('mixins'),
       plugins: resolve('plugins'),
       stories: resolveRoot('.storybook/stories'),
+      shares: resolve('shares'),
       styles: resolve('styles'),
       utils: resolve('utils'),
       '@': resolve(),

@@ -46,9 +46,9 @@ module.exports = {
           {
             loader: 'svg-sprite-loader',
             options: {
-              symbolId: 'icon-[name]'
-            }
-          }
+              symbolId: 'icon-[name]',
+            },
+          },
         ],
         exclude: [resolve('styles')],
       },
@@ -67,6 +67,7 @@ module.exports = {
       mixins: resolve('mixins'),
       plugins: resolve('plugins'),
       stories: resolveRoot('.storybook/stories'),
+      shares: resolve('shares'),
       styles: resolve('styles'),
       utils: resolve('utils'),
       '@': resolve(),

@@ -11,5 +11,6 @@ export default {
 <style lang="less" scoped>
 .vs-content {
   position: relative;
+  margin: 15px 0;
 }
 </style>
