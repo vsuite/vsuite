@@ -30,21 +30,19 @@ export default {
     },
 
     classes() {
-      const addPrefix = prefix(this.classPrefix);
-
       return [
         this.classPrefix,
         {
-          [addPrefix(this.icon)]: !this.isSvgIcon,
-          [addPrefix(this.size)]: this.size,
+          [this._addPrefix(this.icon)]: !this.isSvgIcon,
+          [this._addPrefix(this.size)]: this.size,
           [prefix('text', this.status)]: this.status,
-          [addPrefix('spin')]: this.spin,
-          [addPrefix('pulse')]: this.pulse,
-          [addPrefix('inverse')]: this.inverse,
-          [addPrefix('fw')]: this.fixedWidth,
-          [addPrefix(`flip-${this.flip || ''}`)]: this.flip,
-          [addPrefix(`stack-${this.stack || ''}`)]: this.stack,
-          [addPrefix(`rotate-${this.rotate || ''}`)]: this.rotate,
+          [this._addPrefix('spin')]: this.spin,
+          [this._addPrefix('pulse')]: this.pulse,
+          [this._addPrefix('inverse')]: this.inverse,
+          [this._addPrefix('fw')]: this.fixedWidth,
+          [this._addPrefix(`flip-${this.flip || ''}`)]: this.flip,
+          [this._addPrefix(`stack-${this.stack || ''}`)]: this.stack,
+          [this._addPrefix(`rotate-${this.rotate || ''}`)]: this.rotate,
         },
       ];
     },
@@ -67,5 +65,11 @@ export default {
         ) : null}
       </Component>
     );
+  },
+
+  methods: {
+    _addPrefix(cls) {
+      return prefix(this.classPrefix, cls);
+    },
   },
 };

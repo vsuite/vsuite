@@ -23,19 +23,17 @@ export default {
 
   computed: {
     classes() {
-      const addPrefix = prefix(this.classPrefix);
-
       return [
         prefix(this.classPrefix, 'stack'),
         {
-          [addPrefix(this.size)]: this.size,
+          [this._addPrefix(this.size)]: this.size,
           [prefix('text', this.status)]: this.satus,
-          [addPrefix('spin')]: this.spin,
-          [addPrefix('pulse')]: this.pulse,
-          [addPrefix('inverse')]: this.inverse,
-          [addPrefix('fw')]: this.fixedWidth,
-          [addPrefix(`flip-${this.flip || ''}`)]: this.flip,
-          [addPrefix(`rotate-${this.rotate || ''}`)]: this.rotate,
+          [this._addPrefix('spin')]: this.spin,
+          [this._addPrefix('pulse')]: this.pulse,
+          [this._addPrefix('inverse')]: this.inverse,
+          [this._addPrefix('fw')]: this.fixedWidth,
+          [this._addPrefix(`flip-${this.flip || ''}`)]: this.flip,
+          [this._addPrefix(`rotate-${this.rotate || ''}`)]: this.rotate,
         },
       ];
     },
@@ -50,5 +48,11 @@ export default {
     };
 
     return <Component {...iconStackData}>{this.$slots.default}</Component>;
+  },
+
+  methods: {
+    _addPrefix(cls) {
+      return prefix(this.classPrefix, cls);
+    },
   },
 };

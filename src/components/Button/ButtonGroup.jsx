@@ -18,15 +18,13 @@ export default {
 
   computed: {
     classes() {
-      const addPrefix = prefix(this.classPrefix);
-
       return [
         this.classPrefix,
         {
-          [addPrefix('size')]: this.size,
-          [addPrefix('vertical')]: this.vertical,
-          [addPrefix('justified')]: this.justified,
-          [addPrefix('block')]: this.block,
+          [this._addPrefix('size')]: this.size,
+          [this._addPrefix('vertical')]: this.vertical,
+          [this._addPrefix('justified')]: this.justified,
+          [this._addPrefix('block')]: this.block,
         },
       ];
     },
@@ -55,5 +53,11 @@ export default {
         {children}
       </div>
     );
+  },
+
+  methods: {
+    _addPrefix(cls) {
+      return prefix(this.classPrefix, cls);
+    },
   },
 };

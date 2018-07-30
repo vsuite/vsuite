@@ -19,14 +19,12 @@ export default {
 
   computed: {
     classes() {
-      const addPrefix = prefix(this.classPrefix);
-
       return [
         this.classPrefix,
-        addPrefix(`placement-${this.placement}`),
+        this._addPrefix(`placement-${this.placement}`),
         {
-          [addPrefix('circle')]: this.circle,
-          [addPrefix('with-text')]: this.$slots.default,
+          [this._addPrefix('circle')]: this.circle,
+          [this._addPrefix('with-text')]: this.$slots.default,
         },
       ];
     },
@@ -51,5 +49,11 @@ export default {
         {this.$slots.default}
       </Button>
     );
+  },
+
+  methods: {
+    _addPrefix(cls) {
+      return prefix(this.classPrefix, cls);
+    },
   },
 };

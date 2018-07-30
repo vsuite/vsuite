@@ -1,11 +1,12 @@
 {
   "extends": ["standard", "prettier", "plugin:vue/strongly-recommended"],
   "plugins": [
-    "prettier",
-    "standard",
-    "promise",
+    "node",
     "import",
-    "node"
+    "promise",
+    "standard",
+    "prettier",
+    "vue"
   ],
   "rules": {
     // prettier

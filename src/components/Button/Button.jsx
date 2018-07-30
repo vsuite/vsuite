@@ -29,18 +29,16 @@ export default {
 
   computed: {
     classes() {
-      const addPrefix = prefix(this.classPrefix);
-
       return [
         this.classPrefix,
-        addPrefix(this.appearance),
+        this._addPrefix(this.appearance),
         {
-          [addPrefix(this.color)]: true,
-          [addPrefix(this.size)]: true,
-          [addPrefix('active')]: this.active,
-          [addPrefix('disabled')]: this.disabled,
-          [addPrefix('loading')]: this.loading,
-          [addPrefix('block')]: this.block,
+          [this._addPrefix(this.color)]: true,
+          [this._addPrefix(this.size)]: true,
+          [this._addPrefix('active')]: this.active,
+          [this._addPrefix('disabled')]: this.disabled,
+          [this._addPrefix('loading')]: this.loading,
+          [this._addPrefix('block')]: this.block,
         },
       ];
     },
@@ -90,5 +88,11 @@ export default {
         {this.$slots.default}
       </Component>
     );
+  },
+
+  methods: {
+    _addPrefix(cls) {
+      return prefix(this.classPrefix, cls);
+    },
   },
 };

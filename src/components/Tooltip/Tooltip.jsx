@@ -16,11 +16,10 @@ export default {
   },
 
   render() {
-    const addPrefix = prefix(this.classPrefix);
     const classes = [
       this.classPrefix,
       {
-        [addPrefix(`placement-${kebabcase(this.placement || '')}`)]: this
+        [this._addPrefix(`placement-${kebabcase(this.placement || '')}`)]: this
           .placement,
       },
     ];
@@ -38,9 +37,15 @@ export default {
         {...this.$attrs}
         {...{ on: this.$listeners }}
       >
-        <div class={addPrefix('arrow')} />
-        <div class={addPrefix('inner')}>{this.$slots.default}</div>
+        <div class={this._addPrefix('arrow')} />
+        <div class={this._addPrefix('inner')}>{this.$slots.default}</div>
       </div>
     );
+  },
+
+  methods: {
+    _addPrefix(cls) {
+      return prefix(this.classPrefix, cls);
+    },
   },
 };

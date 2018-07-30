@@ -9,16 +9,16 @@
 </template>
 
 <script>
-  import VueTypes from 'vue-types';
+import VueTypes from 'vue-types';
 
-  export default {
-    name: 'vs-demo',
+export default {
+  name: 'vs-demo',
 
-    props: {
-      title: VueTypes.string,
-      desc: VueTypes.string,
-    },
-  }
+  props: {
+    title: VueTypes.string,
+    desc: VueTypes.string,
+  },
+};
 </script>
 
 <style lang="less" scoped>
@@ -34,10 +34,11 @@
   }
 
   .vs-demo-content {
+    position: relative;
     margin: 18px 0;
     padding: 18px 18px 28px;
     border: 1px dashed #f1f1f1;
-    transition: border-color .3s linear;
+    transition: border-color 0.3s linear;
 
     &:hover {
       border: 1px dashed #34c3ff;
