@@ -1,6 +1,7 @@
 import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, text, selectV2 } from '@storybook/addon-knobs';
+import Demo from 'stories/demo';
 import Button from 'components/Button';
 import ButtonGroup from 'components/ButtonGroup';
 import ButtonToolbar from 'components/ButtonToolbar';
@@ -24,7 +25,7 @@ stories.add('default', () => ({
     const appearance = selectV2('appearance', appearanceOptions, 'default');
 
     return (
-      <div className="container">
+      <Demo title="Default">
         <div style={{ margin: '10px' }}>
           <Button appearance={appearance} onClick={action('@click')}>
             Default
@@ -45,7 +46,7 @@ stories.add('default', () => ({
             Loading
           </Button>
         </div>
-      </div>
+      </Demo>
     );
   },
 }));
@@ -56,11 +57,11 @@ stories.add('size & color', () => ({
     const size = selectV2('size', sizeOptions, 'lg');
 
     return (
-      <div style={{ margin: '15px' }}>
+      <Demo title="Size & Color">
         <Button color={color} size={size} onClick={action('@click')}>
           Size & Color
         </Button>
-      </div>
+      </Demo>
     );
   },
 }));
@@ -73,7 +74,7 @@ stories.add('link', () => ({
     const href = text('href', '#');
 
     return (
-      <div className="container">
+      <Demo title="Link">
         <div style={{ margin: '15px' }}>
           <Button
             href={href}
@@ -121,15 +122,15 @@ stories.add('link', () => ({
             Download
           </Button>
         </div>
-      </div>
+      </Demo>
     );
   },
 }));
 
-stories.add('with icon', () => ({
+stories.add('icon', () => ({
   render: h => {
     return (
-      <div className="container">
+      <Demo title="Icon">
         <div style={{ margin: '15px' }}>
           <Button color="blue">
             <Icon icon="facebook-official" /> Facebook
@@ -160,15 +161,15 @@ stories.add('with icon', () => ({
             <Icon icon="weibo" /> WeiBo
           </Button>
         </div>
-      </div>
+      </Demo>
     );
   },
 }));
 
-stories.add('icon-button', () => ({
+stories.add('<IconButton>', () => ({
   render: h => {
     return (
-      <div>
+      <Demo title="<IconButton>">
         <div style={{ margin: '15px' }}>
           <IconButton style="color: #ccc;" icon="star" />
         </div>
@@ -183,15 +184,39 @@ stories.add('icon-button', () => ({
             Favour
           </IconButton>
         </div>
-      </div>
+      </Demo>
     );
   },
 }));
 
-stories.add('toolbar', () => ({
+stories.add('<ButtonGroup>', () => ({
   render: h => {
     return (
-      <div className="container">
+      <Demo title="<ButtonGroup>">
+        <div style={{ margin: '15px' }}>
+          <ButtonGroup>
+            <IconButton icon="align-left" />
+            <IconButton icon="align-center" />
+            <IconButton icon="align-right" />
+            <IconButton icon="align-justify" />
+          </ButtonGroup>
+        </div>
+        <div style={{ margin: '15px' }}>
+          <ButtonGroup justified>
+            <Button>Top</Button>
+            <Button>Middle</Button>
+            <Button>Bottom</Button>
+          </ButtonGroup>
+        </div>
+      </Demo>
+    );
+  },
+}));
+
+stories.add('<ButtonToolbar>', () => ({
+  render: h => {
+    return (
+      <Demo title="<ButtonToolbar>">
         <div style={{ margin: '15px' }}>
           <ButtonToolbar>
             <Button>Prev</Button>
@@ -224,7 +249,7 @@ stories.add('toolbar', () => ({
             <IconButton icon="link" />
           </ButtonToolbar>
         </div>
-      </div>
+      </Demo>
     );
   },
 }));

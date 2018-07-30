@@ -1,5 +1,13 @@
 const path = require('path');
 
+function resolve(relativePath) {
+  return path.resolve(__dirname, '../src', relativePath || '');
+}
+
+function resolveRoot(relativePath) {
+  return path.resolve(__dirname, '..', relativePath || '');
+}
+
 module.exports = {
   module: {
     rules: [
@@ -17,7 +25,7 @@ module.exports = {
             },
           },
         ],
-        include: [path.resolve(__dirname, '../src/components')],
+        include: [resolve('components')],
         enforce: 'pre',
       },
       {
@@ -30,7 +38,7 @@ module.exports = {
             options: { javascriptEnabled: true },
           },
         ],
-        include: path.resolve(__dirname, '../src'),
+        include: [resolve()],
       },
       {
         test: /\.svg$/,
@@ -42,25 +50,26 @@ module.exports = {
             }
           }
         ],
-        exclude: path.resolve(__dirname, '../src/styles'),
+        exclude: [resolve('styles')],
       },
       {
         test: /\.(eot|svg|ttf|woff2?)$/,
         use: ['file-loader'],
-        include: path.resolve(__dirname, '../src/styles'),
+        include: [resolve('styles')],
       },
     ],
   },
 
   resolve: {
     alias: {
-      components: path.resolve(__dirname, '../src/components'),
-      langs: path.resolve(__dirname, '../src/langs'),
-      mixins: path.resolve(__dirname, '../src/mixins'),
-      plugins: path.resolve(__dirname, '../src/plugins'),
-      styles: path.resolve(__dirname, '../src/styles'),
-      utils: path.resolve(__dirname, '../src/utils'),
-      '@': path.resolve(__dirname, '../src'),
+      components: resolve('components'),
+      langs: resolve('langs'),
+      mixins: resolve('mixins'),
+      plugins: resolve('plugins'),
+      stories: resolveRoot('.storybook/stories'),
+      styles: resolve('styles'),
+      utils: resolve('utils'),
+      '@': resolve(),
     },
   },
 };
