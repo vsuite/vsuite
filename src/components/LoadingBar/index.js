@@ -43,7 +43,7 @@ function createLoadingBarInstance() {
           loadingBar.percent = options.percent;
         }
 
-        if (options.status) {
+        if ('status' in options) {
           loadingBar.status = options.status;
         }
 
@@ -150,19 +150,19 @@ export default {
   },
 
   config(options) {
-    if (options.color) {
+    if ('color' in options) {
       loadingBarStore.color = options.color;
     }
 
-    if (options.failedColor) {
+    if ('failedColor' in options) {
       loadingBarStore.failedColor = options.failedColor;
     }
 
-    if (options.height) {
+    if ('height' in options) {
       loadingBarStore.height = options.height;
     }
 
-    if (options.progress) {
+    if ('progress' in options) {
       loadingBarStore.progress = options.progress;
     }
   },
@@ -173,5 +173,7 @@ export default {
     if (!loadingBarStore.instance) return;
 
     loadingBarStore.instance.destroy();
+
+    loadingBarStore.instance = null;
   },
 };
