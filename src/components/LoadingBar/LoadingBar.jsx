@@ -2,8 +2,8 @@ import VueTypes from 'vue-types';
 import tinycolor from 'tinycolor2';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
 
-const CLASS_PREFIX = 'loadingbar';
-const STATUS = {
+const CLASS_PREFIX = 'loading-bar';
+export const STATUS = {
   LOADING: 'active',
   ERROR: 'fail',
 };
@@ -16,13 +16,9 @@ export default {
   name: 'LoadingBar',
 
   props: {
-    color: VueTypes.custom(validColor, '`strokeColor` is not valid').def(
-      '#2196f3'
-    ),
-    failedColor: VueTypes.custom(validColor, '`strokeColor` is not valid').def(
-      '#f44336'
-    ),
-    height: VueTypes.number.def(2),
+    color: VueTypes.custom(validColor, '`strokeColor` is not valid'),
+    failedColor: VueTypes.custom(validColor, '`strokeColor` is not valid').def,
+    height: VueTypes.number,
     progress: VueTypes.bool,
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
   },
@@ -37,9 +33,51 @@ export default {
 
   computed: {
     classes() {
-      return [];
+      return [
+        this.classPrefix,
+        {
+          [this._addPrefix('show')]: this.show,
+          [this._addPrefix(`${this.status || ''}`)]: this.status,
+        },
+      ];
+    },
+
+    percentStyle() {
+      return {
+        width: `${this.percent}%`,
+        height: `${this.height}px`,
+        backgroundColor: this.color ? tinycolor(this.color).toHexString() : '',
+      };
     },
   },
 
+  render() {
+    const loadingBarData = {
+      class: this.classes,
 
+      attrs: this.$attrs,
+
+      on: this.$listeners,
+
+      directives: [{ name: 'show', value: this.show }],
+    };
+
+    return (
+      <transition name="fade">
+        <div {...loadingBarData}>
+          <div class={this._addPrefix('outer')}>
+            <div class={this._addPrefix('inner')}>
+              <div class={this._addPrefix('bg')} style={this.percentStyle} />
+            </div>
+          </div>
+        </div>
+      </transition>
+    );
+  },
+
+  methods: {
+    _addPrefix(cls) {
+      return prefix(this.classPrefix, cls);
+    },
+  },
 };

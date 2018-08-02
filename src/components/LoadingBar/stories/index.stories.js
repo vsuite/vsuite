@@ -1,0 +1,21 @@
+import { storiesOf } from '@storybook/vue';
+import Demo from 'stories/demo';
+import Button from 'components/Button';
+import ButtonGroup from 'components/ButtonGroup';
+import LoadingBar from 'components/LoadingBar';
+
+const stories = storiesOf('General|LoadingBar', module);
+
+stories.add('default', () => ({
+  render: h => {
+    return (
+      <Demo title="Default">
+        <ButtonGroup>
+          <Button onClick={() => LoadingBar.start()}>开始加载</Button>
+          <Button onClick={() => LoadingBar.finish()}>加载完毕</Button>
+          <Button onClick={() => LoadingBar.error()}>加载失败</Button>
+        </ButtonGroup>
+      </Demo>
+    );
+  },
+}));

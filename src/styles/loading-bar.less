@@ -1,10 +1,18 @@
 @import "common";
 
 .@{ns}loading-bar {
-  display: table;
-  table-layout: fixed;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   width: 100%;
-  padding: @progress-line-padding-vertical @progress-line-padding-horizontal;
+  z-index: @zindex-loading-bar;
+  opacity: 0;
+  transition: opacity .2s linear;
+
+  &-show {
+    opacity: 1;
+  }
 
   &-fail {
     color: @progress-status-fail-color !important;
@@ -46,13 +54,8 @@
   &-bg {
     background-color: @progress-bar-fill-bg;
     border-radius: @progress-bar-height/2;
-    transition-timing-function: ease-in-out;
+    transition-timing-function: linear;
     transition-duration: .2s;
     transition-property: width, color;
-  }
-
-  &-inner,
-  &-bg {
-    height: @progress-bar-height;
   }
 }
