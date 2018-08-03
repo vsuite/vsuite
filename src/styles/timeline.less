@@ -1,4 +1,5 @@
 @import "common";
+@import "mixins/timeline";
 
 //
 // Time lines
@@ -12,6 +13,8 @@
   &-item {
     position: relative;
     padding-left: @time-line-item-padding-left;
+
+    .generate-spectrum-timeline-item();
   }
 
   &-item:not(:last-child) &-item-content {
@@ -31,6 +34,13 @@
       background-color: @time-line-dot-default-background-color;
       border-radius: 50%;
     }
+  }
+
+  &-item-dot .@{ns}icon {
+    position: absolute;
+    top: 0;
+    left: -@time-line-tail-width;
+    background-color: @B000;
   }
 
   &-item-custom-dot {

@@ -33,8 +33,8 @@ export default {
         this.classPrefix,
         this._addPrefix(this.appearance),
         {
-          [this._addPrefix(this.color)]: true,
-          [this._addPrefix(this.size)]: true,
+          [this._addPrefix(this.color)]: this.color,
+          [this._addPrefix(this.size)]: this.size,
           [this._addPrefix('active')]: this.active,
           [this._addPrefix('disabled')]: this.disabled,
           [this._addPrefix('loading')]: this.loading,

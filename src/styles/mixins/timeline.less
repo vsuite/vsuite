@@ -1,0 +1,15 @@
+.generate-spectrum-timeline-item(@i:length(@spectrum)) when (@i>0) {
+  .generate-spectrum-timeline-item(@i - 1);
+  @name: extract(@spectrum, @i);
+  @color: @@name;
+
+  &.@{ns}timeline-item-@{name} {
+    .@{ns}timeline-item-dot::before {
+      background-color: @color;
+    }
+
+    .@{ns}icon::before {
+      color: @color;
+    }
+  }
+}
