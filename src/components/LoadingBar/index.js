@@ -35,8 +35,6 @@ function createLoadingBarInstance() {
 
     const loadingBar = wrapper.$children[0];
 
-    console.dir(loadingBar);
-
     loadingBarStore.instance = {
       update(options) {
         if ('percent' in options) {

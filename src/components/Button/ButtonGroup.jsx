@@ -42,14 +42,17 @@ export default {
         });
       }
     });
+    const btnGroupData = {
+      class: this.classes,
+      attrs: {
+        role: 'button',
+        ...this.$attrs,
+      },
+      on: this.$listeners,
+    };
 
     return (
-      <div
-        class={this.classes}
-        role="group"
-        {...this.$attrs}
-        {...{ on: this.$listeners }}
-      >
+      <div {...btnGroupData}>
         {children}
       </div>
     );

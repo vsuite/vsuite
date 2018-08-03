@@ -54,11 +54,8 @@ export default {
   render() {
     const loadingBarData = {
       class: this.classes,
-
       attrs: this.$attrs,
-
       on: this.$listeners,
-
       directives: [{ name: 'show', value: this.show }],
     };
 

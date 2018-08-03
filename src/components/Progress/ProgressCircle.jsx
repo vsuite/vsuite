@@ -116,13 +116,16 @@ export default {
         'fill-opacity': '0',
       },
     };
+    const circleData = {
+      class: this.classes,
+      on: this.$listeners,
+    };
 
     return (
-      <div class={this.classes} {...{ on: this.$listeners }}>
+      <div {...circleData}>
         {this.showInfo ? (
           <span class={this._addPrefix('circle-info')}>{info}</span>
         ) : null}
-
         <svg
           class={this._addPrefix('svg')}
           viewBox="0 0 100 100"

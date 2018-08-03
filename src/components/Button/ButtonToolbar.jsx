@@ -11,15 +11,15 @@ export default {
   },
 
   render() {
-    return (
-      <div
-        class={this.classPrefix}
-        role="toolbar"
-        {...this.$attrs}
-        {...{ on: this.$listeners }}
-      >
-        {this.$slots.default}
-      </div>
-    );
+    const btnToolbarData = {
+      class: this.classPrefix,
+      attrs: {
+        role: 'toolbar',
+        ...this.$attrs,
+      },
+      on: this.$listeners,
+    };
+
+    return <div {...btnToolbarData}>{this.$slots.default}</div>;
   },
 };

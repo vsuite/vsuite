@@ -28,15 +28,15 @@ export default {
       top: this.positionTop,
       opacity: this.visible ? 1 : undefined,
     };
+    const tooltipData = {
+      class: classes,
+      style: styles,
+      attrs: this.$attrs,
+      on: this.$listeners,
+    };
 
     return (
-      <div
-        role="tooltip"
-        class={classes}
-        style={styles}
-        {...this.$attrs}
-        {...{ on: this.$listeners }}
-      >
+      <div {...tooltipData}>
         <div class={this._addPrefix('arrow')} />
         <div class={this._addPrefix('inner')}>{this.$slots.default}</div>
       </div>

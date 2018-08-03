@@ -49,9 +49,14 @@ export default {
     ) : (
       <span class={this._addPrefix('info-status')}>{this.percent}%</span>
     );
+    const lineData = {
+      class: this.classes,
+      attrs: this.$attrs,
+      on: this.$listeners,
+    };
 
     return (
-      <div class={this.classes} {...this.$attrs} {...{ on: this.$listeners }}>
+      <div {...lineData}>
         <div class={this._addPrefix('line-outer')}>
           <div class={this._addPrefix('line-inner')}>
             <div class={this._addPrefix('line-bg')} style={this.percentStyle} />

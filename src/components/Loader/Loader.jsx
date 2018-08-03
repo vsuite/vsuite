@@ -53,8 +53,14 @@ export default {
   },
 
   render() {
+    const loaderData = {
+      class: this.classes,
+      attrs: this.$attrs,
+      on: this.$listeners,
+    };
+
     return (
-      <div class={this.classes} {...this.$attrs} {...{ on: this.$listeners }}>
+      <div {...loaderData}>
         {this.backdrop && <div class={this._addPrefix('backdrop')} />}
         <div class={this.classPrefix} ref="loader">
           <span class={this._addPrefix('spin')} />
