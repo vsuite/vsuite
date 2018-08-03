@@ -96,8 +96,8 @@ export default {
 
     if (this.hasIcon) {
       iconNode = (
-        <span className={this._addPrefix('icon')}>
-          {this.icon && <Icon icon={this.icon} />}
+        <span class={this._addPrefix('icon')}>
+          {this.icon && <Icon icon={this.icon} size="lg" />}
           {this.$slots.icon}
         </span>
       );

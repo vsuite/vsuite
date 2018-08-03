@@ -52,7 +52,8 @@ export default {
       data.style = {
         [isIE10 ? 'msFlexPreferredSize' : 'flexBasis']:
           index < count - 1 ? `${100 / (count - 1)}%` : undefined,
-        maxWidth: index === count - 1 ? `${100 / count}%` : undefined,
+        maxWidth:
+          !this.vertical && index === count - 1 ? `${100 / count}%` : undefined,
       };
       data.props = {
         stepNumber: index + 1,
