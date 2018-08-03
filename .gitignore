@@ -1,6 +1,9 @@
 # editor
 .idea/
 
+# OS
+.DS_Store
+
 # node
 node_modules/
 
