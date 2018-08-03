@@ -10,7 +10,7 @@ function filterEmpty(children) {
   );
 }
 
-function parseStyleText(cssText = '', camel) {
+function parseStyleText(cssText = '', camel = true) {
   const res = {};
   const listDelimiter = /;(?![^(]*\))/g;
   const propertyDelimiter = /:(.+)/;
@@ -35,6 +35,68 @@ function getName(vnode) {
     vnode.componentOptions.Ctor.extendOptions &&
     vnode.componentOptions.Ctor.extendOptions.name
   );
+}
+
+function getClasses(vnode) {
+  const data = vnode.data || {};
+
+  const cls = data.class || data.staticClass;
+  const result = cls;
+
+  if (typeof cls === 'string') {
+    cls
+      .split(' ')
+      .filter(x => !!x)
+      .forEach(c => (result[c.trim()] = true));
+  }
+
+  return result;
+}
+
+function getStyles(vnode, camel = true) {
+  const data = vnode.data || {};
+
+  let style = data.style || data.staticStyle;
+
+  if (typeof styl === 'string') {
+    style = parseStyleText(style, camel);
+  } else if (camel && style) {
+    const res = {};
+
+    Object.keys(style).forEach(k => (res[camelize(k)] = style[k]));
+
+    return res;
+  }
+
+  return style;
+}
+
+function getProps(vnode) {
+  const data = vnode.data || {};
+  const componentOptions = vnode.componentOptions || {};
+
+  return { ...(data.props || {}), ...(componentOptions.propsData || {}) };
+}
+
+function getAttrs(vnode) {
+  const data = vnode.data || {};
+
+  return { ...(data.attrs || {}) };
+}
+
+function getKey(vnode) {
+  return vnode.key;
+}
+
+function getEvents(vnode) {
+  const data = vnode.data || {};
+  const componentOptions = vnode.componentOptions || {};
+
+  if (componentOptions.listeners) {
+    return { ...componentOptions.listeners };
+  }
+
+  return { ...data.on };
 }
 
 function cloneVNode(vnode, deep) {
@@ -169,10 +231,16 @@ function cloneElement(vnode, data, deep) {
 }
 
 export {
+  getName,
+  getClasses,
+  getStyles,
+  getProps,
+  getAttrs,
+  getEvents,
+  getKey,
   cloneElement,
   cloneVNode,
   cloneVNodes,
-  getName,
   filterEmpty,
   parseStyleText,
 };

@@ -1,4 +1,5 @@
 import VueTypes from 'vue-types';
+import invariant from 'utils/invariant';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
 import { getName, cloneElement } from 'utils/node';
 import { SIZES } from 'utils/constant';
@@ -31,17 +32,6 @@ export default {
   },
 
   render() {
-    const children = (this.$slots.default || []).map(vnode => {
-      if (getName(vnode) === 'Button') {
-        return cloneElement(vnode, {
-          props: { componentClass: 'a', role: 'button' },
-        });
-      } else {
-        return cloneElement(vnode, {
-          attrs: { componentClass: 'a', role: 'button' },
-        });
-      }
-    });
     const btnGroupData = {
       class: this.classes,
       attrs: {
@@ -50,12 +40,32 @@ export default {
       },
       on: this.$listeners,
     };
+    let children = this.$slots.default || [];
 
-    return (
-      <div {...btnGroupData}>
-        {children}
-      </div>
-    );
+    if (this.justified) {
+      children = children.map(vnode => {
+        const name = getName(vnode);
+
+        invariant.not(
+          name && name !== 'Button' && name !== 'IconButton',
+          `<${name}> cannot be child of <ButtonGroup>`
+        );
+
+        if (name === 'Button') {
+          return cloneElement(vnode, {
+            props: { componentClass: 'a', role: 'button' },
+          });
+        } else if (name === 'IconButton') {
+          return cloneElement(vnode, {
+            attrs: { componentClass: 'a', role: 'button' },
+          });
+        } else {
+          return vnode;
+        }
+      });
+    }
+
+    return <div {...btnGroupData}>{children}</div>;
   },
 
   methods: {

@@ -29,7 +29,7 @@ stories.add('progress', () => ({
     LoadingBar.config({ progress: false });
 
     return (
-      <Demo title="Progress" desc="Disable progress">
+      <Demo title="Progress" description="Disable progress">
         <ButtonGroup>
           <Button onClick={() => LoadingBar.start()}>开始加载</Button>
           <Button onClick={() => LoadingBar.finish()}>加载完毕</Button>

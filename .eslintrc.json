@@ -1,5 +1,7 @@
 {
-  "extends": ["standard", "prettier", "plugin:vue/strongly-recommended"],
+  "parser": "vue-eslint-parser",
+  "parserOptions": { "parser": "babel-eslint" },
+  "extends": ["eslint:recommended", "standard", "prettier", "plugin:vue/strongly-recommended"],
   "plugins": [
     "node",
     "import",
@@ -10,7 +12,7 @@
   ],
   "rules": {
     // prettier
-    "prettier/prettier": "error",
+    "prettier/prettier": ["error"],
 
     // basic
     "indent": [

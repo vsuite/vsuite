@@ -44,7 +44,7 @@ export default {
 
     return (
       <Button {...iconBtnData}>
-        {this.icon ? <Icon icon={this.icon} /> : null}
+        {this.icon && <Icon icon={this.icon} />}
         {this.$slots.icon}
         {this.$slots.default}
       </Button>

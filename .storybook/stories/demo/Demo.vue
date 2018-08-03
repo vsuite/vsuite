@@ -1,7 +1,7 @@
 <template>
   <div class="vs-demo">
     <h2 class="vs-demo-title">{{title}}</h2>
-    <p class="vs-demo-desc">{{desc}}</p>
+    <p class="vs-demo-desc">{{description}}</p>
     <div class="vs-demo-content">
       <slot></slot>
     </div>
@@ -16,7 +16,7 @@ export default {
 
   props: {
     title: VueTypes.string,
-    desc: VueTypes.string,
+    description: VueTypes.string,
   },
 };
 </script>

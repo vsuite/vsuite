@@ -15,7 +15,7 @@
     "dev": "start-storybook -p 9001 -s ./public,./brand -c .storybook",
     "dist": "",
     "dist:style": "",
-    "lint": "eslint --fix '{.storybook,src}/**/*.{js,vue}' && stylelint --fix 'src/styles/**/*.less'",
+    "lint": "eslint --fix '{.storybook,src}/**/*.{js,jsx,vue}' && stylelint --fix 'src/styles/**/*.less'",
     "test": "yarn prettier && yarn lint && jest",
     "prettier": "prettier --write 'src/**/*.{js,vue}'"
   },
@@ -50,6 +50,7 @@
     "@vue/server-test-utils": "^1.0.0-beta.21",
     "@vue/test-utils": "^1.0.0-beta.21",
     "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.6",
     "babel-helper-vue-jsx-merge-props": "^2.0.3",
     "babel-jest": "^23.4.0",
     "babel-plugin-syntax-jsx": "^6.18.0",
@@ -79,6 +80,7 @@
     "svg-sprite-loader": "^3.8.0",
     "url-loader": "^1.0.1",
     "vue": "^2.5.16",
+    "vue-eslint-parser": "^3.2.2",
     "vue-jest": "^2.6.0",
     "vue-loader": "^14.2.2",
     "vue-template-compiler": "^2.5.16"
@@ -90,7 +92,7 @@
     }
   },
   "lint-staged": {
-    "{.storybook,src}/**/*.{js,vue}": [
+    "{.storybook,src}/**/*.{js,jsx,vue}": [
       "prettier --write",
       "eslint --fix",
       "git add"
