@@ -163,7 +163,7 @@ export default {
         this.vExpanded = !this.vExpanded;
       }
 
-      this.$emit('select', event, this.eventKey);
+      this.$emit('select', this.eventKey, event);
     },
 
     _addPrefix(cls) {
