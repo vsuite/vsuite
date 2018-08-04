@@ -76,11 +76,26 @@ export default {
 
   methods: {
     _renderAnchor(h) {
-      return null;
+      return (
+        <a
+          href={`#${this.id || ''}`}
+          aria-controls={this.collapsible ? this.id : null}
+          class={this.isExpanded ? null : 'collapsed'}
+          aria-expanded={this.isExpanded}
+          aria-selected={this.isExpanded}
+          role={this.headerRole}
+        >
+          {this.header || this.$slots.header}
+        </a>
+      );
     },
 
     _renderCollapsibleTitle(h) {
-      return null;
+      return (
+        <h4 class={this._addPrefix('title')} role="presentation">
+          {this._renderAnchor(h)}
+        </h4>
+      );
     },
 
     _renderHeading(h) {
@@ -113,7 +128,14 @@ export default {
     },
 
     _renderBody(h) {
-      return null;
+      const classes = [
+        this._addPrefix('body'),
+        {
+          [this._addPrefix('body-fill')]: this.bodyFill,
+        },
+      ];
+
+      return <div class={classes}>{this.$slots.default}</div>;
     },
 
     _handleSelect() {},
