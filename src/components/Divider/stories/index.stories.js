@@ -1,6 +1,6 @@
 import { storiesOf } from '@storybook/vue';
 import Demo from 'stories/demo';
-import Content, { Text } from 'stories/content';
+import Content, { Paragraph } from 'stories/content';
 import Divider from 'components/Divider';
 
 const stories = storiesOf('General|Divider', module);
@@ -10,9 +10,9 @@ stories.add('default', () => ({
     return (
       <Demo title="Default">
         <Content>
-          <Text />
+          <Paragraph />
           <Divider />
-          <Text />
+          <Paragraph />
         </Content>
       </Demo>
     );
@@ -24,9 +24,9 @@ stories.add('with-text', () => ({
     return (
       <Demo title="With Text">
         <Content>
-          <Text />
+          <Paragraph />
           <Divider>Second Stage</Divider>
-          <Text />
+          <Paragraph />
         </Content>
       </Demo>
     );

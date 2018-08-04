@@ -1,11 +1,9 @@
-import curry from 'lodash.curry';
-
-import { isArray } from './type';
+import _ from 'lodash';
 
 function prefix(pre, className) {
   if (!pre || !className) return '';
 
-  if (isArray(className)) {
+  if (_.isArray(className)) {
     return className.filter(name => !!name).map(name => `${pre}-${name}`);
   }
 
@@ -14,4 +12,4 @@ function prefix(pre, className) {
 
 export const globalKey = 'vs-';
 export const defaultClassPrefix = name => `${globalKey}${name}`;
-export default curry(prefix);
+export default _.curry(prefix);

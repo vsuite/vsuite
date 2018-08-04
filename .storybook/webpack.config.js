@@ -18,6 +18,7 @@ module.exports = {
             loader: require.resolve('@storybook/addon-storysource/loader'),
             options: {
               prettierConfig: {
+                parser: 'babylon',
                 singleQuote: true,
                 trailingComma: 'es5',
                 bracketSpacing: true,

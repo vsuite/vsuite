@@ -1,4 +1,4 @@
-import curry from 'lodash.curry';
+import _ from 'lodash';
 
 import { SIZES, COLORS, STATUS } from './constant';
 
@@ -9,4 +9,4 @@ function enumCheck(list, val) {
 export const validateSize = val => enumCheck(SIZES, val);
 export const validateStatus = val => enumCheck(STATUS, val);
 export const validateColor = val => enumCheck(COLORS, val);
-export const validateEnum = curry(enumCheck);
+export const validateEnum = _.curry(enumCheck);

@@ -42,7 +42,7 @@ export default {
             role="button"
             tabIndex="-1"
             class={this._addPrefix('icon-close')}
-            onClick={this._onClose}
+            onClick={this._handleClose}
           />
         )}
       </Component>
@@ -54,7 +54,7 @@ export default {
       return prefix(this.classPrefix, cls);
     },
 
-    _onClose(e) {
+    _handleClose(e) {
       this.$emit('close', e);
     },
   },

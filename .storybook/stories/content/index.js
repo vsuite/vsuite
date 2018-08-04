@@ -1,7 +1,7 @@
 import Content from './Content.vue';
-import Text from './Text.vue';
+import Paragraph from './Paragraph.vue';
 
-Content.Text = Text;
+Content.Paragraph = Paragraph;
 
-export { Text };
+export { Paragraph };
 export default Content;

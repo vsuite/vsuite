@@ -22,7 +22,7 @@ export default {
       },
       on: {
         ...this.$listeners,
-        click: this._onClick,
+        click: this._handleClick,
       },
     };
 
@@ -34,7 +34,7 @@ export default {
   },
 
   methods: {
-    _onClick(event) {
+    _handleClick(event) {
       if (this.disabled || !this.href || this.href.trim() === '#') {
         event.preventDefault();
       }

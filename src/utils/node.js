@@ -1,4 +1,4 @@
-import { isArray } from './type';
+import _ from 'lodash';
 
 function camelize(str) {
   return str.replace(/-(\w)/g, (_, c) => (c ? c.toUpperCase() : ''));
@@ -150,7 +150,7 @@ function cloneVNodes(vnodes, deep) {
 function cloneElement(vnode, data, deep) {
   data = data || {};
 
-  if (isArray(vnode)) {
+  if (_.isArray(vnode)) {
     vnode = filterEmpty(vnode)[0];
   }
 
@@ -158,11 +158,11 @@ function cloneElement(vnode, data, deep) {
 
   const cloned = cloneVNode(vnode, deep);
   const mergeCls = (cls1, cls2) => {
-    if (!isArray(cls1)) {
+    if (!_.isArray(cls1)) {
       cls1 = [cls1];
     }
 
-    if (!isArray(cls2)) {
+    if (!_.isArray(cls2)) {
       cls2 = [cls2];
     }
 

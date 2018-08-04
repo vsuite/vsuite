@@ -1,6 +1,6 @@
 import { storiesOf } from '@storybook/vue';
 import Demo from 'stories/demo';
-import Content, { Text } from 'stories/content';
+import Content, { Paragraph } from 'stories/content';
 import Loader from 'components/Loader';
 
 const stories = storiesOf('General|Loader', module);
@@ -76,7 +76,7 @@ stories.add('center', () => ({
     return (
       <Demo title="Center">
         <Content>
-          <Text />
+          <Paragraph />
           <Loader center content="loading" />
         </Content>
       </Demo>
@@ -89,7 +89,7 @@ stories.add('backdrop', () => ({
     return (
       <Demo title="Backdrop">
         <Content>
-          <Text />
+          <Paragraph />
           <Loader center backdrop content="loading" />
         </Content>
       </Demo>
@@ -102,7 +102,7 @@ stories.add('inverse', () => ({
     return (
       <Demo title="Inverse">
         <Content>
-          <Text />
+          <Paragraph />
           <Loader
             style={{ backgroundColor: 'rgba(0, 0, 0, 0.7)' }}
             center

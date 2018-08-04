@@ -1,6 +1,11 @@
 <template>
-  <div class="vs-content-text">
-    <p class="vs-content-text-p" v-for="(p, index) in paragraphs" :key="index" :style="{ width: p }"></p>
+  <div class="vs-content-paragraph">
+    <p
+      class="vs-content-paragraph-p"
+      v-for="(p, index) in paragraphs"
+      :key="index"
+      :style="{ width: p }"
+    ></p>
   </div>
 </template>
 
@@ -10,7 +15,7 @@ import VueTypes from 'vue-types';
 const mocks = ['97%', '100%', '94%', '90%', '98%', '95%', '98%', '40%'];
 
 export default {
-  name: 'vs-content-text',
+  name: 'vs-content-paragraph',
 
   props: {
     size: VueTypes.oneOf(['small', 'middle', 'large']).def('middle'),
@@ -40,8 +45,8 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.vs-content-text {
-  .vs-content-text-p {
+.vs-content-paragraph {
+  .vs-content-paragraph-p {
     margin-top: 10px;
     height: 14px;
     background-color: rgb(205, 205, 205);

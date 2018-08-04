@@ -1,17 +1,15 @@
-import curry from 'lodash.curry';
-
-import { isNullable, isArray } from './type';
+import _ from 'lodash';
 
 function zipArray(leftArr, rightArr) {
-  if (isNullable(leftArr)) return {};
+  if (_.isNil(leftArr)) return {};
 
-  if (!isArray(leftArr)) {
+  if (!_.isArray(leftArr)) {
     leftArr = [leftArr];
   }
 
-  if (isNullable(rightArr)) {
+  if (_.isNil(rightArr)) {
     rightArr = leftArr;
-  } else if (!isArray(rightArr)) {
+  } else if (!_.isArray(rightArr)) {
     rightArr = [rightArr];
   }
 
@@ -22,4 +20,4 @@ function zipArray(leftArr, rightArr) {
   }, {});
 }
 
-export default curry(zipArray);
+export default _.curry(zipArray);

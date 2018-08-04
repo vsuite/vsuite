@@ -1,5 +1,5 @@
 import VueTypes from 'vue-types';
-import kebabcase from 'lodash.kebabcase';
+import _ from 'lodash';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
 
 const CLASS_PREFIX = 'tooltip';
@@ -19,8 +19,10 @@ export default {
     const classes = [
       this.classPrefix,
       {
-        [this._addPrefix(`placement-${kebabcase(this.placement || '')}`)]: this
-          .placement,
+        /* eslint-disable */
+        [this._addPrefix(
+          `placement-${_.kebabCase(this.placement || '')}`
+        )]: this.placement,
       },
     ];
     const styles = {
