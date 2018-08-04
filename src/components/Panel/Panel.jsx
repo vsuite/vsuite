@@ -1,4 +1,5 @@
 import VueTypes from 'vue-types';
+import { Collapse } from 'components/Animation';
 import _ from 'lodash';
 import invariant from 'utils/invariant';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
@@ -16,7 +17,10 @@ export default {
     bodyFill: VueTypes.bool.def(false),
     collapsible: VueTypes.bool.def(false),
     defaultExpanded: VueTypes.bool.def(false),
-    expanded: Boolean,
+    expanded: {
+      type: Boolean,
+      default: undefined,
+    },
     eventKey: VueTypes.any,
     header: VueTypes.string,
     headerRole: VueTypes.string,
@@ -124,7 +128,21 @@ export default {
     },
 
     _renderCollapsibleBody(h) {
-      return null;
+      const data = {
+        class: this._addPrefix('collapse'),
+        attrs: {
+          id: this.id,
+          'aria-hidden': !this.isExpanded,
+          role: this.panelRole,
+        },
+        directives: [{ name: 'show', value: this.isExpanded }],
+      };
+
+      return (
+        <Collapse>
+          <div {...data}>{this._renderBody(h)}</div>
+        </Collapse>
+      );
     },
 
     _renderBody(h) {
@@ -138,7 +156,15 @@ export default {
       return <div class={classes}>{this.$slots.default}</div>;
     },
 
-    _handleSelect() {},
+    _handleSelect(event) {
+      event.selected = true;
+
+      if (event.selected) {
+        this.vExpanded = !this.vExpanded;
+      }
+
+      this.$emit('select', event, this.eventKey);
+    },
 
     _addPrefix(cls) {
       return prefix(this.classPrefix, cls);

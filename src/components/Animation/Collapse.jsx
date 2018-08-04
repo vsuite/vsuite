@@ -35,7 +35,6 @@ export default {
         : this.dimension;
     },
 
-    /* eslint-disable */
     _handleEnter(el) {
       const dimension = this._dimension();
 
