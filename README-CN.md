@@ -13,7 +13,7 @@
   <a href="https://github.com/vsuite/vsuite"><img src="https://img.shields.io/github/license/vsuite/vsuite.svg" alt="License"/></a>
 </p>
 
-<p align="center">VSUITE (Vue Suite 的简写) 是一套 React 组件库，为后台产品而生。</p>
+<p align="center">VSUITE (Vue Suite 的简写) 是一套 Vue 组件库，为后台产品而生。</p>
 
 <h2>安装</h2>
 
