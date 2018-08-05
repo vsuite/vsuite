@@ -10,24 +10,72 @@ export default {
   name: 'Col',
 
   props: {
-    xs: VueTypes.number,
-    sm: VueTypes.number,
-    md: VueTypes.number,
-    lg: VueTypes.number,
+    xs: {
+      type: Number,
+      default: undefined,
+    },
+    sm: {
+      type: Number,
+      default: undefined,
+    },
+    md: {
+      type: Number,
+      default: undefined,
+    },
+    lg: {
+      type: Number,
+      default: undefined,
+    },
 
-    xsOffset: VueTypes.number,
-    smOffset: VueTypes.number,
-    mdOffset: VueTypes.number,
-    lgOffset: VueTypes.number,
+    xsOffset: {
+      type: Number,
+      default: undefined,
+    },
+    smOffset: {
+      type: Number,
+      default: undefined,
+    },
+    mdOffset: {
+      type: Number,
+      default: undefined,
+    },
+    lgOffset: {
+      type: Number,
+      default: undefined,
+    },
 
-    xsPush: VueTypes.number,
-    smPush: VueTypes.number,
-    mdPush: VueTypes.number,
-    lgPush: VueTypes.number,
-    xsPull: VueTypes.number,
-    smPull: VueTypes.number,
-    mdPull: VueTypes.number,
-    lgPull: VueTypes.number,
+    xsPush: {
+      type: Number,
+      default: undefined,
+    },
+    smPush: {
+      type: Number,
+      default: undefined,
+    },
+    mdPush: {
+      type: Number,
+      default: undefined,
+    },
+    lgPush: {
+      type: Number,
+      default: undefined,
+    },
+    xsPull: {
+      type: Number,
+      default: undefined,
+    },
+    smPull: {
+      type: Number,
+      default: undefined,
+    },
+    mdPull: {
+      type: Number,
+      default: undefined,
+    },
+    lgPull: {
+      type: Number,
+      default: undefined,
+    },
 
     xsHidden: VueTypes.bool.def(false),
     smHidden: VueTypes.bool.def(false),
