@@ -9,7 +9,9 @@ export default {
   props: {
     vertical: VueTypes.bool.def(false),
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
-    componentClass: VueTypes.string.def('div'),
+    componentClass: VueTypes.oneOfType([VueTypes.string, VueTypes.object]).def(
+      'div'
+    ),
   },
 
   computed: {

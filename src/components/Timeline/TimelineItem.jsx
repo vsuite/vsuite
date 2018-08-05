@@ -14,7 +14,9 @@ export default {
     color: VueTypes.oneOf(COLORS),
     last: VueTypes.bool.def(false),
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
-    componentClass: VueTypes.string.def('li'),
+    componentClass: VueTypes.oneOfType([VueTypes.string, VueTypes.object]).def(
+      'li'
+    ),
   },
 
   computed: {

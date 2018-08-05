@@ -8,7 +8,9 @@ export default {
     disabled: VueTypes.bool.def(false),
     role: VueTypes.string,
     tabIndex: VueTypes.oneOfType([VueTypes.number, VueTypes.string]),
-    componentClass: VueTypes.string.def('a'),
+    componentClass: VueTypes.oneOfType([VueTypes.string, VueTypes.object]).def(
+      'a'
+    ),
   },
 
   render() {

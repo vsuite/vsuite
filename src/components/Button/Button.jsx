@@ -24,7 +24,9 @@ export default {
     block: VueTypes.bool.def(false),
     href: VueTypes.string,
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
-    componentClass: VueTypes.string.def('button'),
+    componentClass: VueTypes.oneOfType([VueTypes.string, VueTypes.object]).def(
+      'button'
+    ),
   },
 
   computed: {
