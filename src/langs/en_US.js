@@ -1,11 +1,11 @@
 export default {
   _: {
     Pagination: {
-      more: '',
-      prev: '',
-      next: '',
-      first: '',
-      last: '',
+      more: 'More',
+      prev: 'Previous',
+      next: 'Next',
+      first: 'First',
+      last: 'Last',
     },
   },
 };

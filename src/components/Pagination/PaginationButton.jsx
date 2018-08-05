@@ -43,7 +43,7 @@ export default {
 
     return (
       <li class={this.classes}>
-        <Component {...data} />
+        <Component {...data}>{this.$slots.default}</Component>
       </li>
     );
   },
