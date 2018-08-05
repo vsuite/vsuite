@@ -7,6 +7,7 @@ import Divider from 'components/Divider';
 import Icon from 'components/Icon';
 import IconStack from 'components/IconStack';
 import Loader from 'components/Loader';
+import Pagination from 'components/Pagination';
 import Panel from 'components/Panel';
 import PanelGroup from 'components/PanelGroup';
 import ProgressCircle from 'components/ProgressCircle';
@@ -29,6 +30,7 @@ export const components = {
   Icon,
   IconStack,
   Loader,
+  Pagination,
   Panel,
   PanelGroup,
   ProgressCircle,
