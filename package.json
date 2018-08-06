@@ -20,6 +20,7 @@
     "prettier": "prettier --write 'src/**/*.{js,vue}'"
   },
   "dependencies": {
+    "between.js": "^0.1.1",
     "element-resize-detector": "^1.1.14",
     "js-calendar": "^1.2.3",
     "lodash": "^4.17.10",
