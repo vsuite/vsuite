@@ -46,12 +46,14 @@ export const components = {
 };
 export default {
   install(Vue, options) {
+    options = Object.assign({ transfer: false }, options || {});
+
     // register component
     Object.keys(components).forEach(key => Vue.component(key, components[key]));
 
     // global configuration
     Vue.prototype.$VSUITE = {
-      transfer: options.transfer || false,
+      transfer: options.transfer,
     };
 
     // vsuite injected instance methods

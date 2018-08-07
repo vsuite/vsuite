@@ -64,6 +64,7 @@ module.exports = {
   resolve: {
     alias: {
       components: resolve('components'),
+      directives: resolve('directives'),
       langs: resolve('langs'),
       mixins: resolve('mixins'),
       plugins: resolve('plugins'),

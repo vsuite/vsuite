@@ -30,10 +30,11 @@ function parseStyleText(cssText = '', camel = true) {
 
 function getName(vnode) {
   return (
-    vnode.componentOptions &&
-    vnode.componentOptions.Ctor &&
-    vnode.componentOptions.Ctor.extendOptions &&
-    vnode.componentOptions.Ctor.extendOptions.name
+    (vnode.componentOptions &&
+      vnode.componentOptions.Ctor &&
+      vnode.componentOptions.Ctor.extendOptions &&
+      vnode.componentOptions.Ctor.extendOptions.name) ||
+    vnode.tag
   );
 }
 

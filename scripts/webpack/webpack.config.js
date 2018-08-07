@@ -13,6 +13,7 @@ module.exports = {
     extensions: ['.js', '.vue', '.json'],
     alias: {
       components: resolve('components'),
+      directives: resolve('directives'),
       langs: resolve('langs'),
       mixins: resolve('mixins'),
       plugins: resolve('plugins'),

@@ -8,7 +8,7 @@ let message = {};
 let locale = DEFAULT_LOCALE;
 
 export function config(options) {
-  options = options || {};
+  options = Object.assign({}, options || {});
   locale = options.locale || DEFAULT_LOCALE;
   messages = _.merge(messages, options.messages || {});
   message = messages[locale] || {};
