@@ -50,7 +50,9 @@ export default {
     Object.keys(components).forEach(key => Vue.component(key, components[key]));
 
     // global configuration
-    Vue.prototype.$VSUITE = {};
+    Vue.prototype.$VSUITE = {
+      transfer: options.transfer || false,
+    };
 
     // vsuite injected instance methods
     Vue.prototype.$Loading = LoadingBar;

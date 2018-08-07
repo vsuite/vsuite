@@ -26,8 +26,8 @@ export default {
       },
     ];
     const styles = {
-      left: this.positionLeft,
-      top: this.positionTop,
+      // left: this.positionLeft,
+      // top: this.positionTop,
       opacity: this.visible ? 1 : undefined,
     };
     const tooltipData = {
