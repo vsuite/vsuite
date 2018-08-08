@@ -15,7 +15,15 @@ stories.add('default', () => ({
       <Demo title="Default">
         <div style="position: relative; height: 20px;">
           <Tooltip
-            placement="bottom-start"
+            placement="top-start"
+            trigger="click"
+            title="This is a tooltip, triggered by ClickThis is a tooltip, triggered by Click"
+          >
+            <Button>Click</Button>
+          </Tooltip>
+
+          <Tooltip
+            placement="top"
             trigger="click"
             title="This is a tooltip, triggered by Click"
           >
@@ -23,15 +31,7 @@ stories.add('default', () => ({
           </Tooltip>
 
           <Tooltip
-            placement="bottom"
-            trigger="click"
-            title="This is a tooltip, triggered by Click"
-          >
-            <Button>Click</Button>
-          </Tooltip>
-
-          <Tooltip
-            placement="bottom-end"
+            placement="top-end"
             trigger="click"
             title="This is a tooltip, triggered by Click"
           >

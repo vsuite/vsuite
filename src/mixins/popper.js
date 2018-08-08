@@ -43,106 +43,37 @@ export default {
     positionFixed: VueTypes.bool.def(false),
     eventsEnabled: VueTypes.bool,
     removeOnDestroy: VueTypes.bool.def(false),
-
-    // modifiers
-    shift: VueTypes.shape({ enabled: VueTypes.bool }).loose.def({
-      enabled: true,
-    }),
-    offset: VueTypes.shape({
-      enabled: VueTypes.bool,
-      offset: VueTypes.oneOfType([VueTypes.string, VueTypes.number]),
-    }).loose.def({ enabled: true, offset: 0 }),
-    preventOverflow: VueTypes.shape({
-      enabled: VueTypes.bool,
-      priority: VueTypes.array,
-      padding: VueTypes.number,
-      boundariesElement: VueTypes.oneOfType([
-        VueTypes.oneOf(['scrollParent', 'window', 'viewport']),
-        VueTypes.object,
-      ]),
-    }).loose.def({
-      enabled: true,
-      priority: ['left', 'right', 'top', 'bottom'],
-      padding: 5,
-      boundariesElement: 'scrollParent',
-    }),
-    keepTogether: VueTypes.shape({ enabled: VueTypes.bool }).loose.def({
-      enabled: true,
-    }),
-    arrow: VueTypes.shape({
-      enabled: VueTypes.bool,
-      element: VueTypes.oneOfType([VueTypes.string, VueTypes.object]),
-    }).loose.def({ enabled: true, element: '[x-arrow]' }),
-    flip: VueTypes.shape({
-      enabled: VueTypes.bool,
-      behavior: VueTypes.oneOfType([
-        VueTypes.oneOf(['flip', 'clockwise', 'counterclockwise']),
-        VueTypes.array,
-      ]),
-      padding: VueTypes.number,
-      boundariesElement: VueTypes.oneOfType([
-        VueTypes.oneOf(['scrollParent', 'window', 'viewport']),
-        VueTypes.object,
-      ]),
-    }).loose.def({
-      enabled: true,
-      behavior: 'flip',
-      padding: 5,
-      boundariesElement: 'viewport',
-    }),
-    inner: VueTypes.shape({ enabled: VueTypes.bool }).loose.def({
-      enabled: false,
-    }),
-    hide: VueTypes.shape({ enabled: VueTypes.bool }).loose.def({
-      enabled: true,
-    }),
-    computeStyle: VueTypes.shape({
-      enabled: VueTypes.bool,
-      gpuAcceleration: VueTypes.bool,
-      // prettier-ignore
-      x: VueTypes.oneOf(['\'bottom\'', '\'top\'']),
-      // prettier-ignore
-      y: VueTypes.oneOf(['\'left\'', '\'right\''])
-    }).loose.def({
-      enabled: true,
-      gpuAcceleration: true,
-      // prettier-ignore
-      x: '\'bottom\'',
-      // prettier-ignore
-      y: '\'left\''
-    }),
-    applyStyle: VueTypes.shape({ enabled: VueTypes.bool }).loose.def({
-      enabled: true,
-    }),
   },
 
   data() {
     return {
-      vVisible: this.defaultVisible,
+      currentVal: this.defaultVisible,
     };
   },
 
   computed: {
-    cVisible() {
+    show() {
       return (
         !this.disabled &&
-        ((typeof this.visible === 'undefined' ? this.vVisible : this.visible) ||
+        ((typeof this.visible === 'undefined'
+          ? this.currentVal
+          : this.visible) ||
           this.always)
       );
     },
-    cTriggers() {
+    triggerList() {
       return _.isString(this.trigger) ? [this.trigger] : this.trigger;
     },
   },
 
   watch: {
-    cVisible(val) {
+    show(val) {
       if (val) this._updatePopper();
 
       this.$emit(val ? 'show' : 'hide');
       this.$emit('change', val);
     },
-    cTriggers(triggers, oldTriggers) {
+    triggerList(triggers, oldTriggers) {
       const removeListenerList = _.difference(oldTriggers, triggers);
       const addListenerList = _.difference(triggers, oldTriggers);
 
@@ -152,7 +83,7 @@ export default {
   },
 
   mounted() {
-    if (this.cVisible) this._updatePopper();
+    if (this.show) this._updatePopper();
 
     this._addListeners();
   },
@@ -163,7 +94,7 @@ export default {
 
   methods: {
     _addListeners(triggers) {
-      triggers = triggers || this.cTriggers;
+      triggers = triggers || this.triggerList;
 
       const target = this.$refs.reference;
 
@@ -174,19 +105,19 @@ export default {
     },
 
     _removeListeners(triggers) {
-      triggers = triggers || this.cTriggers;
+      triggers = triggers || this.triggerList;
 
       // TODO: remove event listeners
     },
 
     _handleClick() {
-      this.vVisible = !this.vVisible;
+      this.currentVal = !this.currentVal;
     },
 
     _handleRightClick(e) {
       e.preventDefault();
 
-      this.vVisible = !this.vVisible;
+      this.currentVal = !this.currentVal;
 
       return false;
     },
@@ -212,18 +143,7 @@ export default {
         removeOnDestroy: this.removeOnDestroy,
         onCreate: this._handleCreate,
         onUpdate: this._handleUpdate,
-        modifiers: {
-          shift: this.shift,
-          offset: this.offset,
-          preventOverflow: this.preventOverflow,
-          keepTogether: this.keepTogether,
-          arrow: this.arrow,
-          flip: this.flip,
-          inner: this.inner,
-          hide: this.hide,
-          applyStyle: this.applyStyle,
-          computeStyle: this.computeStyle,
-        },
+        modifiers: this.popperJSModifiers || {},
       });
     },
 
