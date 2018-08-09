@@ -2,7 +2,8 @@ import VueTypes from 'vue-types';
 import _ from 'lodash';
 import Popper from 'popper.js';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
-import { on } from 'shares/dom';
+import { transferDom } from 'directives';
+import { directive as clickOutside } from 'v-click-outside-x';
 
 const TRIGGERS = ['click', 'right-click', 'hover', 'focus', 'active'];
 const CLASS_PREFIX = 'tooltip';
@@ -30,17 +31,23 @@ export default {
     defaultVisible: VueTypes.bool.def(false),
     title: VueTypes.string,
     placement: VueTypes.oneOf(Popper.placements).def('auto'),
+    theme: VueTypes.oneOf(['dark', 'light']).def('dark'),
     disabled: VueTypes.bool.def(false),
     always: VueTypes.bool.def(false),
-    trigger: VueTypes.custom(validTrigger).def('click'),
-    delay: VueTypes.number,
+    trigger: VueTypes.custom(validTrigger).def('hover'),
+    delay: VueTypes.number.def(100),
     delayShow: VueTypes.number,
     delayHide: VueTypes.number,
     maxWidth: VueTypes.number.def(250),
+    transfer: VueTypes.bool.def(function() {
+      return this.$VSUITE.transfer || false;
+    }),
 
     // popper
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
   },
+
+  directives: { clickOutside, transferDom },
 
   data() {
     return {
@@ -49,6 +56,14 @@ export default {
   },
 
   computed: {
+    contentClasses() {
+      return [
+        this._addPrefix('content'),
+        {
+          [this._addPrefix(`content-theme-${this.theme}`)]: this.theme,
+        },
+      ];
+    },
     innerClasses() {
       return [
         this._addPrefix('inner'),
@@ -76,48 +91,73 @@ export default {
       this.$emit(val ? 'show' : 'hide');
       this.$emit('change', val);
     },
-    triggerList(triggers, oldTriggers) {
-      const removeListenerList = _.difference(oldTriggers, triggers);
-      const addListenerList = _.difference(triggers, oldTriggers);
-
-      this._removeListeners(removeListenerList);
-      this._addListeners(addListenerList);
+    title() {
+      this._updatePopper();
     },
   },
 
   mounted() {
     if (this.currentVal) this._updatePopper();
-
-    this._addListeners();
-  },
-
-  beforeDestroy() {
-    this._removeListeners();
   },
 
   render() {
     const tooltipData = {
-      class: this._addPrefix('content'),
+      class: this.classPrefix,
+      directives: [{ name: 'click-outside', value: this._handleClickOutside }],
+      on: {},
+      ref: 'container',
+    };
+    const referenceData = {
+      class: this._addPrefix('rel'),
+      on: {},
+      ref: 'reference',
+    };
+    const contentData = {
+      class: this.contentClasses,
       style: {},
-      directives: [{ name: 'show', value: this.currentVal }],
-      ref: 'popper',
+      directives: [
+        { name: 'show', value: this.currentVal },
+        { name: 'transfer-dom' },
+      ],
+      attrs: {
+        'data-transfer': `${this.transfer}`,
+      },
+      ref: 'content',
+    };
+    const arrowData = {
+      class: this._addPrefix('arrow'),
+      ref: 'arrow',
     };
 
     if (this.maxWidth) {
-      tooltipData.style.maxWidth = `${this.maxWidth}px`;
+      contentData.style.maxWidth = `${this.maxWidth}px`;
+    }
+
+    if (~this.triggerList.indexOf('click')) {
+      referenceData.on.click = this._handleClick;
+    }
+
+    if (~this.triggerList.indexOf('right-click')) {
+      referenceData.on.contextmenu = this._handleRightClick;
+    }
+
+    if (~this.triggerList.indexOf('hover')) {
+      tooltipData.on.mouseenter = this._handleMouseEnter;
+      tooltipData.on.mouseleave = this._handleMouseLeave;
+    }
+
+    if (~this.triggerList.indexOf('focus')) {
+      tooltipData.on['!focus'] = this._handleFocus;
+      tooltipData.on['!blur'] = this._handleBlur;
     }
 
     return (
-      <div class={this.classPrefix} ref="container">
-        <div class={this._addPrefix('rel')} ref="reference">
-          {this.$slots.default}
-        </div>
+      <div {...tooltipData}>
+        <div {...referenceData}>{this.$slots.default}</div>
         <transition name="tooltip-fade">
-          <div {...tooltipData}>
-            <div class={this._addPrefix('arrow')} ref="arrow" />
-            <div class={this.innerClasses}>
-              {this.title || this.$slots.title}
-            </div>
+          <div {...contentData}>
+            <div {...arrowData} />
+            <div class={this.innerClasses}>{this.title}</div>
           </div>
         </transition>
       </div>
@@ -125,30 +165,81 @@ export default {
   },
 
   methods: {
-    _addListeners(triggers) {
-      triggers = triggers || this.triggerList;
+    _handleClickOutside() {
+      if (this.always || this.disabled) return;
 
-      const target = this.$refs.reference;
-
-      // click
-      if (~triggers.indexOf('click')) {
-        on(target, 'click', this._handleClick);
-      }
-    },
-
-    _removeListeners(triggers) {
-      triggers = triggers || this.triggerList;
-
-      // TODO: remove event listeners
+      this._handleDelayHide(() => (this.innerVal = false));
     },
 
     _handleClick() {
+      if (this.always || this.disabled) return;
+
+      if (this.innerVal) {
+        this._handleDelayHide(() => (this.innerVal = false));
+      } else {
+        this._handleDelayShow(() => (this.innerVal = true));
+      }
+    },
+
+    _handleRightClick(e) {
+      e.preventDefault();
+
+      if (this.always || this.disabled) return false;
+
       this.innerVal = !this.innerVal;
+
+      this._handleDelayHide(() => (this.innerVal = false));
+    },
+
+    _handleMouseEnter(e) {
+      e.stopPropagation();
+
+      if (this.always || this.disabled) return;
+
+      this._handleDelayShow(() => (this.innerVal = true));
+    },
+
+    _handleMouseLeave(e) {
+      e.stopPropagation();
+
+      if (this.always || this.disabled) return;
+
+      this._handleDelayHide(() => (this.innerVal = false));
+    },
+
+    _handleFocus() {
+      if (this.always || this.disabled) return;
+
+      this._handleDelayShow(() => (this.innerVal = true));
+    },
+
+    _handleBlur() {
+      if (this.always || this.disabled) return;
+
+      this._handleDelayHide(() => (this.innerVal = false));
+    },
+
+    _handleDelayShow(cb) {
+      const delay = this.delayShow || this.delay || 100;
+
+      if (this.delayShowTimer) clearTimeout(this.delayShowTimer);
+      if (this.delayHideTimer) clearTimeout(this.delayHideTimer);
+
+      this.delayShowTimer = setTimeout(cb, delay);
+    },
+
+    _handleDelayHide(cb) {
+      const delay = this.delayHide || this.delay || 100;
+
+      if (this.delayShowTimer) clearTimeout(this.delayShowTimer);
+      if (this.delayHideTimer) clearTimeout(this.delayHideTimer);
+
+      this.delayHideTimer = setTimeout(cb, delay);
     },
 
     _createPopper() {
       const reference = this.$refs.reference;
-      const popper = this.$refs.popper;
+      const popper = this.$refs.content;
       const arrow = this.$refs.arrow;
 
       if (!reference || !popper) return;

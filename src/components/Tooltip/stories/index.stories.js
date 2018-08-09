@@ -9,33 +9,37 @@ const stories = storiesOf('General|Tooltip', module);
 
 stories.addDecorator(withKnobs);
 
+const TRIGGER = 'focus';
+
 stories.add('default', () => ({
   render: h => {
     return (
       <Demo title="Default">
         <div style="position: relative; height: 20px;">
           <Tooltip
-            placement="top-start"
-            trigger="click"
+            placement="bottom-start"
+            trigger={TRIGGER}
             title="This is a tooltip, triggered by ClickThis is a tooltip, triggered by Click"
           >
-            <Button>Click</Button>
+            <Button>{TRIGGER}</Button>
           </Tooltip>
 
           <Tooltip
-            placement="top"
-            trigger="click"
-            title="This is a tooltip, triggered by Click"
+            placement="bottom"
+            trigger={TRIGGER}
+            title="This is a tooltip, triggered by ClickThis is a tooltip, triggered by Click"
+            theme="light"
+            always
           >
-            <Button>Click</Button>
+            <Button>{TRIGGER}</Button>
           </Tooltip>
 
           <Tooltip
             placement="top-end"
-            trigger="click"
+            trigger={TRIGGER}
             title="This is a tooltip, triggered by Click"
           >
-            <Button>Click</Button>
+            <Button>{TRIGGER}</Button>
           </Tooltip>
         </div>
       </Demo>

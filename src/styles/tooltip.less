@@ -26,7 +26,7 @@
 
     // Common style for .placement-top*
     &[x-placement^=top] {
-      margin-bottom: @tooltip-arrow-width;
+      margin-bottom: @tooltip-arrow-gap-lg;
       .set-translate(0, -@tooltip-translate-distance);
 
       .@{ns}tooltip-arrow {
@@ -36,13 +36,13 @@
         .ie11-position(bottom, 1px);
 
         border-width: @tooltip-arrow-width @tooltip-arrow-width 0;
-        border-top-color: @tooltip-arrow-color;
+        border-color: @tooltip-bg transparent transparent;
       }
     }
 
     // Common style for .placement-bottom*
     &[x-placement^=bottom] {
-      margin-top: @tooltip-arrow-width;
+      margin-top: @tooltip-arrow-gap-lg;
       .set-translate(0, @tooltip-translate-distance);
 
       .@{ns}tooltip-arrow {
@@ -52,13 +52,13 @@
         .ie11-position(top, 1px);
 
         border-width: 0 @tooltip-arrow-width @tooltip-arrow-width;
-        border-bottom-color: @tooltip-arrow-color;
+        border-color: transparent transparent @tooltip-bg;
       }
     }
 
     // Common style for .placement-right*
     &[x-placement^=right] {
-      margin-left: @tooltip-arrow-width;
+      margin-left: @tooltip-arrow-gap-lg;
       .set-translate(@tooltip-translate-distance, 0);
 
       .@{ns}tooltip-arrow {
@@ -68,13 +68,13 @@
         .ie11-position(left, 1px);
 
         border-width: @tooltip-arrow-width @tooltip-arrow-width @tooltip-arrow-width 0;
-        border-right-color: @tooltip-arrow-color;
+        border-color: transparent @tooltip-bg transparent transparent;
       }
     }
 
     // Common style for .placement-lef*
     &[x-placement^=left] {
-      margin-right: @tooltip-arrow-width;
+      margin-right: @tooltip-arrow-gap-lg;
       .set-translate(-@tooltip-translate-distance, 0);
 
       .@{ns}tooltip-arrow {
@@ -84,7 +84,80 @@
         .ie11-position(right, 1px);
 
         border-width: @tooltip-arrow-width 0 @tooltip-arrow-width @tooltip-arrow-width;
-        border-left-color: @tooltip-arrow-color;
+        border-color: transparent transparent transparent @tooltip-bg;
+      }
+    }
+  }
+
+  &-content&-content-theme-light {
+    .@{ns}tooltip-inner {
+      color: @tooltip-white-color;
+      background-color: @tooltip-white-bg;
+      box-shadow: @default-box-shadow;
+    }
+
+    .@{ns}tooltip-arrow::after {
+      position: absolute;
+      width: 0;
+      height: 0;
+      content: " ";
+      display: block;
+      border-style: solid;
+    }
+
+    // Common style for .placement-top*
+    &[x-placement^=top] {
+      .@{ns}tooltip-arrow {
+        border-top-color: @tooltip-white-bg-arrow;
+
+        &::after {
+          bottom: 1px;
+          right: -@tooltip-arrow-inner-width;
+          border-width: @tooltip-arrow-inner-width @tooltip-arrow-inner-width 0;
+          border-color: @tooltip-white-bg transparent transparent transparent;
+        }
+      }
+    }
+
+    // Common style for .placement-bottom*
+    &[x-placement^=bottom] {
+      .@{ns}tooltip-arrow {
+        border-bottom-color: @tooltip-white-bg-arrow;
+
+        &::after {
+          top: 1px;
+          left: -@tooltip-arrow-inner-width;
+          border-width: 0 @tooltip-arrow-inner-width @tooltip-arrow-inner-width;
+          border-color: transparent transparent @tooltip-white-bg transparent;
+        }
+      }
+    }
+
+    // Common style for .placement-right*
+    &[x-placement^=right] {
+      .@{ns}tooltip-arrow {
+        border-right-color: @tooltip-white-bg-arrow;
+
+        &::after {
+          left: 1px;
+          bottom: -@tooltip-arrow-inner-width;
+          border-width: @tooltip-arrow-inner-width 0 @tooltip-arrow-inner-width @tooltip-arrow-inner-width;
+          border-color: transparent transparent transparent @tooltip-white-bg;
+        }
+      }
+    }
+
+    // Common style for .placement-lef*
+    &[x-placement^=left] {
+      .@{ns}tooltip-arrow {
+        border-left-color: @tooltip-white-bg-arrow;
+
+        &::after {
+          right: 1px;
+          top: -@tooltip-arrow-inner-width;
+          border-width: @tooltip-arrow-inner-width @tooltip-arrow-inner-width @tooltip-arrow-inner-width 0;
+          border-color: transparent @tooltip-white-bg transparent transparent;
+        }
       }
     }
   }
@@ -102,11 +175,11 @@
   &-inner {
     max-width: @tooltip-max-width;
     padding: 2px 10px;
-    color: @tooltip-color;
     text-align: center;
-    background-color: @tooltip-bg;
     border-radius: @tooltip-border-radius;
     white-space: nowrap;
+    color: @tooltip-color;
+    background-color: @tooltip-bg;
   }
 
   &-inner-with-width {
