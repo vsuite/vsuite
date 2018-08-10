@@ -36,7 +36,7 @@ export default {
     },
     defaultVisible: VueTypes.bool.def(false),
     placement: VueTypes.oneOf(Popper.placements).def('auto'),
-    trigger: VueTypes.custom(validTrigger).def('hover'),
+    trigger: VueTypes.custom(validTrigger).def('click'),
     delay: VueTypes.number.def(100),
     delayShow: VueTypes.number,
     delayHide: VueTypes.number,
@@ -61,11 +61,11 @@ export default {
   },
 
   computed: {
-    classes() {
+    popperClasses() {
       return [
-        this.classPrefix,
+        this._addPrefix('popper'),
         {
-          [this._addPrefix('full')]: this.full,
+          [this._addPrefix('popper-full')]: this.full,
         },
       ];
     },
@@ -82,24 +82,24 @@ export default {
     currentVal(val) {
       if (val) this._updatePopper();
 
-      const content = this.$refs.content;
-      const placement = getAttr(content, 'x-placement');
+      const popper = this.$refs.popper;
+      const placement = getAttr(popper, 'x-placement');
 
-      if (!val && content) {
+      if (!val && popper) {
         if (~placement.indexOf('top')) {
-          addStyle(content, { top: '2px' });
+          addStyle(popper, { top: '2px' });
         }
 
         if (~placement.indexOf('bottom')) {
-          addStyle(content, { top: '-2px' });
+          addStyle(popper, { top: '-2px' });
         }
 
         if (~placement.indexOf('right')) {
-          addStyle(content, { left: '-2px' });
+          addStyle(popper, { left: '-2px' });
         }
 
         if (~placement.indexOf('left')) {
-          addStyle(content, { left: '2px' });
+          addStyle(popper, { left: '2px' });
         }
       }
 
@@ -116,6 +116,8 @@ export default {
   },
 
   updated() {
+    if (!this.currentVal) return;
+
     this.$nextTick(() => this._updatePopper());
   },
 
@@ -126,65 +128,62 @@ export default {
   },
 
   render() {
-    // const tooltipData = {
-    //   class: this.classes,
-    //   directives: [{ name: 'click-outside', value: this._handleClickOutside }],
-    //   on: {},
-    //   ref: 'container',
-    // };
-    // const referenceData = {
-    //   class: this._addPrefix('rel'),
-    //   on: {},
-    //   ref: 'reference',
-    // };
-    // const contentData = {
-    //   class: this.contentClasses,
-    //   style: {},
-    //   directives: [
-    //     { name: 'show', value: this.currentVal },
-    //     { name: 'transfer-dom' },
-    //   ],
-    //   attrs: {
-    //     'data-transfer': `${this.transfer}`,
-    //   },
-    //   ref: 'content',
-    // };
-    // const arrowData = {
-    //   class: this._addPrefix('arrow'),
-    //   ref: 'arrow',
-    // };
-    // if (this.maxWidth) {
-    //   contentData.style.maxWidth = `${this.maxWidth}px`;
-    // }
-    //
-    // if (~this.triggerList.indexOf('click')) {
-    //   referenceData.on.click = this._handleClick;
-    // }
-    //
-    // if (~this.triggerList.indexOf('right-click')) {
-    //   referenceData.on.contextmenu = this._handleRightClick;
-    // }
-    //
-    // if (~this.triggerList.indexOf('active')) {
-    //   referenceData.on.mousedown = this._handleMouseDown;
-    // }
-    //
-    // if (~this.triggerList.indexOf('hover')) {
-    //   tooltipData.on.mouseenter = this._handleMouseEnter;
-    //   tooltipData.on.mouseleave = this._handleMouseLeave;
-    // }
-    //
-    // if (~this.triggerList.indexOf('focus')) {
-    //   tooltipData.on['!focus'] = this._handleFocus;
-    //   tooltipData.on['!blur'] = this._handleBlur;
-    // }
+    const popoverData = {
+      class: this.classPrefix,
+      directives: [{ name: 'click-outside', value: this._handleClickOutside }],
+      on: {},
+      ref: 'container',
+    };
+    const referenceData = {
+      class: this._addPrefix('rel'),
+      on: {},
+      ref: 'reference',
+    };
+    const popperData = {
+      class: this.popperClasses,
+      style: {},
+      directives: [
+        { name: 'show', value: this.currentVal },
+        { name: 'transfer-dom' },
+      ],
+      attrs: {
+        'data-transfer': `${this.transfer}`,
+      },
+      ref: 'popper',
+    };
+    const arrowData = {
+      class: 'arrow',
+      ref: 'arrow',
+    };
+
+    if (~this.triggerList.indexOf('click')) {
+      referenceData.on.click = this._handleClick;
+    }
+
+    if (~this.triggerList.indexOf('right-click')) {
+      referenceData.on.contextmenu = this._handleRightClick;
+    }
+
+    if (~this.triggerList.indexOf('active')) {
+      referenceData.on.mousedown = this._handleMouseDown;
+    }
+
+    if (~this.triggerList.indexOf('hover')) {
+      popoverData.on.mouseenter = this._handleMouseEnter;
+      popoverData.on.mouseleave = this._handleMouseLeave;
+    }
+
+    if (~this.triggerList.indexOf('focus')) {
+      popoverData.on['!focus'] = this._handleFocus;
+      popoverData.on['!blur'] = this._handleBlur;
+    }
 
     return (
-      <div>
-        <div>{this.$slots.default}</div>
+      <div {...popoverData}>
+        <div {...referenceData}>{this.$slots.default}</div>
         <transition name="popover-fade">
-          <div class={this.classes}>
-            <div class="arrow" />
+          <div {...popperData}>
+            <div {...arrowData} />
             {this.$slots.title ||
               (this.title ? (
                 <h3 class={this._addPrefix('title')}>{this.title}</h3>
@@ -267,7 +266,7 @@ export default {
 
     _createPopper() {
       const reference = this.$refs.reference;
-      const popper = this.$refs.content;
+      const popper = this.$refs.popper;
       const arrow = this.$refs.arrow;
 
       if (!reference || !popper) return;

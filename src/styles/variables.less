@@ -697,7 +697,7 @@
 //** Tooltip white background color
 @tooltip-white-bg: #fff;
 //** Tooltip background color for white arrow
-@tooltip-white-bg-arrow: rgba(39, 44, 54, .1);
+@tooltip-white-arrow-bg: rgba(39, 44, 54, .05);
 //** Tooltip whte box shadow
 @tooltip-white-box-shadow: 0 1px 6px rgba(0, 0, 0, .2);
 //** Tooltip opacity
@@ -709,6 +709,8 @@
 @tooltip-arrow-width: 6px;
 //** Tooltip arrow inner with
 @tooltip-arrow-inner-width: 5px;
+//** Tooltip arrow outer width
+@tooltip-arrow-outer-width: @tooltip-arrow-width + 1px;
 //** Tooltip arrow color
 @tooltip-arrow-color: @tooltip-bg;
 //** Tooltip translate distance
@@ -735,9 +737,12 @@
 @popover-translate-distance: 2px;
 
 //** Popover outer arrow width
-@popover-arrow-outer-width: @popover-arrow-width;
+@popover-arrow-outer-width: @popover-arrow-width + 1;
+//** Popover outer arrow bg
+@popover-arrow-outer-bg: rgba(39, 44, 54, .05);
 //** Distance of Arrow and frame.
-@popover-arrow-gap: 4px;
+@popover-arrow-gap-sm: 4px;
+@popover-arrow-gap-lg: 10px;
 
 //== Labels
 //
