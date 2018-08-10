@@ -249,8 +249,16 @@ export default {
     _handleDelayShow(cb) {
       const delay = this.delayShow || this.delay || 100;
 
-      if (this.delayShowTimer) clearTimeout(this.delayShowTimer);
-      if (this.delayHideTimer) clearTimeout(this.delayHideTimer);
+      if (this.delayShowTimer) {
+        clearTimeout(this.delayShowTimer);
+
+        this.delayShowTimer = null;
+      }
+      if (this.delayHideTimer) {
+        clearTimeout(this.delayHideTimer);
+
+        this.delayHideTimer = null;
+      }
 
       this.delayShowTimer = setTimeout(cb, delay);
     },
@@ -258,8 +266,16 @@ export default {
     _handleDelayHide(cb) {
       const delay = this.delayHide || this.delay || 100;
 
-      if (this.delayShowTimer) clearTimeout(this.delayShowTimer);
-      if (this.delayHideTimer) clearTimeout(this.delayHideTimer);
+      if (this.delayShowTimer) {
+        clearTimeout(this.delayShowTimer);
+
+        this.delayShowTimer = null;
+      }
+      if (this.delayHideTimer) {
+        clearTimeout(this.delayHideTimer);
+
+        this.delayHideTimer = null;
+      }
 
       this.delayHideTimer = setTimeout(cb, delay);
     },
