@@ -147,7 +147,7 @@ const EVENTS_MAP = {
   HTMLEvents: 'initEvent',
 };
 
-export const on = function(target, eventName, listener, capture = true) {
+export const on = function(target, eventName, listener, capture = false) {
   if (target.addEventListener) {
     target.addEventListener(eventName, listener, capture);
   } else {
@@ -157,7 +157,7 @@ export const on = function(target, eventName, listener, capture = true) {
   return { off: () => off(target, eventName, listener, capture) };
 };
 
-export const off = function(target, eventName, listener, capture = true) {
+export const off = function(target, eventName, listener, capture = false) {
   if (target.removeEventListener) {
     target.removeEventListener(eventName, listener, capture);
   } else {

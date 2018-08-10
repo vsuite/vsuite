@@ -23,6 +23,11 @@ function validTrigger(val) {
 export default {
   name: 'Tooltip',
 
+  model: {
+    prop: 'visible',
+    event: 'change',
+  },
+
   props: {
     visible: {
       type: Boolean,
@@ -33,7 +38,6 @@ export default {
     placement: VueTypes.oneOf(Popper.placements).def('auto'),
     theme: VueTypes.oneOf(['dark', 'light']).def('dark'),
     disabled: VueTypes.bool.def(false),
-    always: VueTypes.bool.def(false),
     trigger: VueTypes.custom(validTrigger).def('hover'),
     delay: VueTypes.number.def(100),
     delayShow: VueTypes.number,
@@ -75,8 +79,7 @@ export default {
     currentVal() {
       return (
         !this.disabled &&
-        ((typeof this.visible === 'undefined' ? this.innerVal : this.visible) ||
-          this.always)
+        (typeof this.visible === 'undefined' ? this.innerVal : this.visible)
       );
     },
     triggerList() {
@@ -84,6 +87,7 @@ export default {
     },
   },
 
+  // FIXME: check dynamic change the title property
   watch: {
     currentVal(val) {
       if (val) this._updatePopper();
@@ -141,6 +145,10 @@ export default {
       referenceData.on.contextmenu = this._handleRightClick;
     }
 
+    if (~this.triggerList.indexOf('active')) {
+      referenceData.on.mousedown = this._handleMouseDown;
+    }
+
     if (~this.triggerList.indexOf('hover')) {
       tooltipData.on.mouseenter = this._handleMouseEnter;
       tooltipData.on.mouseleave = this._handleMouseLeave;
@@ -166,13 +174,13 @@ export default {
 
   methods: {
     _handleClickOutside() {
-      if (this.always || this.disabled) return;
+      if (this.disabled) return;
 
       this._handleDelayHide(() => (this.innerVal = false));
     },
 
     _handleClick() {
-      if (this.always || this.disabled) return;
+      if (this.disabled) return;
 
       if (this.innerVal) {
         this._handleDelayHide(() => (this.innerVal = false));
@@ -184,17 +192,27 @@ export default {
     _handleRightClick(e) {
       e.preventDefault();
 
-      if (this.always || this.disabled) return false;
+      if (this.disabled) return false;
 
-      this.innerVal = !this.innerVal;
+      if (this.innerVal) {
+        this._handleDelayHide(() => (this.innerVal = false));
+      } else {
+        this._handleDelayShow(() => (this.innerVal = true));
+      }
 
-      this._handleDelayHide(() => (this.innerVal = false));
+      return false;
+    },
+
+    _handleMouseDown() {
+      if (this.disabled) return false;
+
+      this._handleDelayShow(() => (this.innerVal = true));
     },
 
     _handleMouseEnter(e) {
       e.stopPropagation();
 
-      if (this.always || this.disabled) return;
+      if (this.disabled) return;
 
       this._handleDelayShow(() => (this.innerVal = true));
     },
@@ -202,19 +220,19 @@ export default {
     _handleMouseLeave(e) {
       e.stopPropagation();
 
-      if (this.always || this.disabled) return;
+      if (this.disabled) return;
 
       this._handleDelayHide(() => (this.innerVal = false));
     },
 
     _handleFocus() {
-      if (this.always || this.disabled) return;
+      if (this.disabled) return;
 
       this._handleDelayShow(() => (this.innerVal = true));
     },
 
     _handleBlur() {
-      if (this.always || this.disabled) return;
+      if (this.disabled) return;
 
       this._handleDelayHide(() => (this.innerVal = false));
     },

@@ -93,7 +93,7 @@
     .@{ns}tooltip-inner {
       color: @tooltip-white-color;
       background-color: @tooltip-white-bg;
-      box-shadow: @default-box-shadow;
+      box-shadow: @tooltip-white-box-shadow;
     }
 
     .@{ns}tooltip-arrow::after {
@@ -141,8 +141,8 @@
         &::after {
           left: 1px;
           bottom: -@tooltip-arrow-inner-width;
-          border-width: @tooltip-arrow-inner-width 0 @tooltip-arrow-inner-width @tooltip-arrow-inner-width;
-          border-color: transparent transparent transparent @tooltip-white-bg;
+          border-width: @tooltip-arrow-inner-width @tooltip-arrow-inner-width @tooltip-arrow-inner-width 0;
+          border-color: transparent @tooltip-white-bg transparent transparent;
         }
       }
     }
@@ -155,8 +155,8 @@
         &::after {
           right: 1px;
           top: -@tooltip-arrow-inner-width;
-          border-width: @tooltip-arrow-inner-width @tooltip-arrow-inner-width @tooltip-arrow-inner-width 0;
-          border-color: transparent @tooltip-white-bg transparent transparent;
+          border-width: @tooltip-arrow-inner-width 0 @tooltip-arrow-inner-width @tooltip-arrow-inner-width;
+          border-color: transparent transparent transparent @tooltip-white-bg;
         }
       }
     }
