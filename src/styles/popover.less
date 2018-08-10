@@ -76,7 +76,7 @@
 
     // Common style for .placement-top*
     &[x-placement^=top] {
-      margin-top: -@popover-arrow-gap-lg;
+      margin-bottom: @popover-arrow-gap-lg;
       .set-translate(0, -@popover-translate-distance);
 
       > .arrow {
@@ -136,7 +136,7 @@
 
     // Common style for .placement-left*
     &[x-placement^=left] {
-      margin-left: -@popover-arrow-gap-lg;
+      margin-right: @popover-arrow-gap-lg;
       .set-translate(-@popover-translate-distance, 0);
 
       > .arrow {

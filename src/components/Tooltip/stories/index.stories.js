@@ -37,7 +37,7 @@ stories.add('placement', () => ({
 
   render(h) {
     return (
-      <Demo title="placement">
+      <Demo title="Placement">
         <table className="placement-table" cellSpacing={5}>
           <tbody>
             <tr>
@@ -144,7 +144,7 @@ stories.add('always', () => ({
 stories.add('delay', () => ({
   render(h) {
     return (
-      <Demo title="Always">
+      <Demo title="Delay">
         <Tooltip
           delay={1000}
           title="This is a ToolTip for simple text hints. It can replace the title property"
