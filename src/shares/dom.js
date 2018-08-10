@@ -136,6 +136,52 @@ export const removeStyle = function(node, keys) {
   }
 };
 
+export const getAttr = function(node, property) {
+  function getAllAttrs() {
+    // Return an empty object if there are no attributes.
+    const attrs = {};
+    const map = node.attributes;
+
+    if (!(node && node.nodeType === 1)) return {};
+    if (map.length === 0) return {};
+
+    for (let i = 0, attr; (attr = map[i]); i++) {
+      attrs[attr.name] = attr.value;
+    }
+
+    return attrs;
+  }
+
+  if (property) {
+    // Validate input.
+    if (!(node && node.nodeType === 1)) return null;
+
+    return node.getAttribute(property);
+  }
+
+  return getAllAttrs();
+};
+
+export const setAttr = function(node, property, value) {
+  let data = property;
+
+  if (typeof property === 'string') {
+    if (typeof value === 'undefined') return;
+
+    data = { [property]: value };
+  }
+
+  for (const key in data) {
+    node.setAttribute(key, data[key]);
+  }
+};
+
+export const removeAttr = function(node, property) {
+  if (!property) return;
+
+  node.removeAttribute(property);
+};
+
 /**
  * events
  */

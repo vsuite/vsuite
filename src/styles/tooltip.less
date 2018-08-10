@@ -190,14 +190,34 @@
 
 // Tooltip Animation
 .tooltip-fade-enter-active {
-  transition: opacity .15s linear;
+  transition: opacity .15s linear, left .15s ease-in, top .15s ease-in;
 }
 
 .tooltip-fade-leave-active {
-  transition: opacity .1s linear;
+  transition: opacity .1s linear, left .1s ease-out, top .1s ease-out;
 }
 
 .tooltip-fade-enter,
 .tooltip-fade-leave-to {
   opacity: 0;
+
+  // Common style for .placement-top*
+  &[x-placement^=top] {
+    top: 2px;
+  }
+
+  // Common style for .placement-bottom*
+  &[x-placement^=bottom] {
+    top: -2px;
+  }
+
+  // Common style for .placement-right*
+  &[x-placement^=right] {
+    left: -2px;
+  }
+
+  // Common style for .placement-lef*
+  &[x-placement^=left] {
+    left: 2px;
+  }
 }

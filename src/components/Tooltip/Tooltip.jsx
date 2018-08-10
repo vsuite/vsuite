@@ -2,6 +2,7 @@ import VueTypes from 'vue-types';
 import _ from 'lodash';
 import Popper from 'popper.js';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
+import { addStyle, getAttr } from 'shares/dom';
 import { transferDom } from 'directives';
 import { directive as clickOutside } from 'v-click-outside-x';
 
@@ -91,6 +92,27 @@ export default {
   watch: {
     currentVal(val) {
       if (val) this._updatePopper();
+
+      const content = this.$refs.content;
+      const placement = getAttr(content, 'x-placement');
+
+      if (!val && content) {
+        if (~placement.indexOf('top')) {
+          addStyle(content, { top: '2px' });
+        }
+
+        if (~placement.indexOf('bottom')) {
+          addStyle(content, { top: '-2px' });
+        }
+
+        if (~placement.indexOf('right')) {
+          addStyle(content, { left: '-2px' });
+        }
+
+        if (~placement.indexOf('left')) {
+          addStyle(content, { left: '2px' });
+        }
+      }
 
       this.$emit(val ? 'show' : 'hide');
       this.$emit('change', val);
@@ -265,7 +287,7 @@ export default {
       this.popperJS = new Popper(reference, popper, {
         placement: this.placement,
         onCreate: this._handleCreate,
-        onUpdate: this._handleUpdate,
+        // onUpdate: this._handleUpdate,
         modifiers: {
           arrow: {
             element: arrow,
@@ -280,11 +302,6 @@ export default {
 
     _handleCreate() {
       this.$nextTick(this._updatePopper);
-      this.$emit('create');
-    },
-
-    _handleUpdate() {
-      this.$emit('update');
     },
 
     _addPrefix(cls) {
