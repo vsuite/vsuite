@@ -14,7 +14,7 @@
     width: inherit;
   }
 
-  &-content {
+  &-popper {
     // Our parent element can be arbitrary since tooltips are by default inserted as a sibling of their target element.
     // So reset our font and text properties to avoid inheriting weird values.
     .reset-text(@font-family-base, @line-height-small);
@@ -89,7 +89,7 @@
     }
   }
 
-  &-content&-content-theme-light {
+  &-popper&-popper-theme-light {
     .@{ns}tooltip-inner {
       color: @tooltip-white-color;
       background-color: @tooltip-white-bg;
