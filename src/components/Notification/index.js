@@ -1,6 +1,8 @@
 import Vue from 'vue';
+import Icon from 'components/Icon';
 import _ from 'lodash';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
+import { STATUS_ICON_NAMES } from 'utils/constant';
 
 import Notification from './Notification.jsx';
 
@@ -78,7 +80,7 @@ function getPlacementStyle(config) {
 }
 
 function createNotificationInstance(config) {
-  const placement = _.camelCase(config.placeholder || DEFAULT_PLACEMENT);
+  const placement = _.camelCase(config.placement || DEFAULT_PLACEMENT);
 
   if (notificationStore[placement]) return notificationStore[placement];
 
@@ -119,10 +121,10 @@ function createNotificationInstance(config) {
 }
 
 function notice(config) {
+  config = config || {};
+
   let instance = createNotificationInstance(config);
   let duration;
-
-  config = config || {};
 
   if (config.duration === undefined) {
     duration = DEFAULT_DURATION;
@@ -144,7 +146,10 @@ function notice(config) {
 
     return (
       <div class={addPrefix('content')}>
-        <div class={addPrefix('title')}>{title}</div>
+        <div class={addPrefix('title')}>
+          {config.type && <Icon icon={STATUS_ICON_NAMES[config.type]} />}
+          {title}
+        </div>
         <div class={addPrefix('description')}>{description}</div>
       </div>
     );

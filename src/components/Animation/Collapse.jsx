@@ -15,12 +15,12 @@ export default {
     return (
       <transition
         type="transition"
-        enter-class="collapse"
-        enter-active-class="collapsing"
-        enter-to-class="collapse in"
-        leave-class="collapse in"
-        leave-active-class="collapsing"
-        leave-to-class="collapse"
+        enterClass="collapse"
+        enterActiveClass="collapsing"
+        enterToClass="collapse in"
+        leaveClass="collapse in"
+        leaveActiveClass="collapsing"
+        leaveToClass="collapse"
         onBeforeEnter={this._handleEnter}
         onEnter={this._handleEntering}
         onAfterEnter={this._handleEntered}

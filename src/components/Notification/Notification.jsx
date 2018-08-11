@@ -19,7 +19,6 @@ export default {
 
   data() {
     return {
-      animated: false,
       notices: [],
     };
   },
@@ -30,6 +29,13 @@ export default {
         class={this.classPrefix}
         style={{ top: '5px' }}
         tag="div"
+        type="animation"
+        enterActiveClass={this._addPrefix('fade-entering')}
+        enterToClass={this._addPrefix('fade-entered')}
+        leaveActiveClass={`${this._addPrefix('fade-entered')} ${this._addPrefix(
+          'fade-leave-active'
+        )}`}
+        leaveToClass={this._addPrefix('fade-exited')}
       >
         {this.notices.map(notice => {
           const {
@@ -68,7 +74,6 @@ export default {
   methods: {
     add(notice) {
       notice.key = notice.key || getUid();
-      notice.animated = true;
 
       if (!this.notices.some(n => n.key === notice.key)) {
         this.notices.push(notice);
@@ -76,18 +81,6 @@ export default {
     },
 
     remove(key) {
-      this.notices = this.notices.map(x => {
-        if (x.key === key) {
-          return { ...x, animated: false };
-        }
-
-        return x;
-      });
-
-      this.$nextTick(() => setTimeout(() => this._actualRemove(key), 1000));
-    },
-
-    _actualRemove(key) {
       this.notices = this.notices.filter(x => x.key !== key);
     },
 
