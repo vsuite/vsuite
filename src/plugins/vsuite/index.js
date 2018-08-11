@@ -20,6 +20,7 @@ import Timeline from 'components/Timeline';
 import TimelineItem from 'components/TimelineItem';
 
 import LoadingBar from 'components/LoadingBar';
+import Notification from 'components/Notification';
 
 export const components = {
   Button,
@@ -58,5 +59,7 @@ export default {
 
     // vsuite injected instance methods
     Vue.prototype.$Loading = LoadingBar;
+    Vue.prototype.$Notification = Notification;
+    Vue.prototype.$Notice = Notification;
   },
 };

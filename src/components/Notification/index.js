@@ -30,6 +30,12 @@ function addPrefix(cls) {
   return prefix(CLASS_PREFIX, cls);
 }
 
+function formatStyleVal(val) {
+  if (typeof val === 'number') return `${val}px`;
+
+  return val;
+}
+
 function getPlacementStyle(config) {
   let style = {};
   let className;
@@ -39,31 +45,31 @@ function getPlacementStyle(config) {
 
   if (placement === PLACEMENT_TYPES.TOP_LEFT) {
     style = {
-      top,
+      top: formatStyleVal(top),
       left: '24px',
     };
     className = addPrefix('top-left');
   } else if (placement === PLACEMENT_TYPES.TOP_RIGHT) {
     style = {
-      top,
+      top: formatStyleVal(top),
       right: '24px',
     };
     className = addPrefix('top-right');
   } else if (placement === PLACEMENT_TYPES.BOTTOM_LEFT) {
     style = {
-      bottom,
+      bottom: formatStyleVal(bottom),
       left: '24px',
     };
     className = addPrefix('bottom-left');
   } else if (placement === PLACEMENT_TYPES.BOTTOM_RIGHT) {
     style = {
-      bottom,
+      bottom: formatStyleVal(bottom),
       right: '24px',
     };
     className = addPrefix('bottom-right');
   } else {
     style = {
-      top,
+      top: formatStyleVal(top),
       left: '24px',
     };
   }
@@ -191,6 +197,19 @@ export default {
 
     if (notificationStore[placement]) {
       notificationStore[placement].remove(key);
+    }
+  },
+  config(options) {
+    if (options.top !== undefined) {
+      DEFAULT_TOP = options.top;
+    }
+
+    if (options.bottom !== undefined) {
+      DEFAULT_BOTTOM = options.bottom;
+    }
+
+    if (options.duration !== undefined) {
+      DEFAULT_DURATION = options.duration;
     }
   },
 };

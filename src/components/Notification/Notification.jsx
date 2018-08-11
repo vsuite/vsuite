@@ -26,31 +26,42 @@ export default {
 
   render() {
     return (
-      <div class={this.classPrefix} style={{ top: '5px' }}>
-        <transition-group>
-          {this.notices.map(notice => {
-            const { key, type, content, duration, closable, onClose } = notice;
-            const data = {
-              key,
-              props: {
-                type,
-                closable,
-                duration,
-                content,
-                classPrefix: this.classPrefix,
+      <transition-group
+        class={this.classPrefix}
+        style={{ top: '5px' }}
+        tag="div"
+      >
+        {this.notices.map(notice => {
+          const {
+            key,
+            style,
+            type,
+            content,
+            duration,
+            closable,
+            onClose,
+          } = notice;
+          const data = {
+            key,
+            style,
+            props: {
+              type,
+              closable,
+              duration,
+              content,
+              classPrefix: this.classPrefix,
+            },
+            on: {
+              close: () => {
+                this.remove(notice.key);
+                onClose && onClose();
               },
-              on: {
-                close: () => {
-                  this.remove(notice.key);
-                  onClose && onClose();
-                },
-              },
-            };
+            },
+          };
 
-            return <Notice {...data} />;
-          })}
-        </transition-group>
-      </div>
+          return <Notice {...data} />;
+        })}
+      </transition-group>
     );
   },
 
