@@ -1,4 +1,5 @@
 import VueTypes from 'vue-types';
+import _ from 'lodash';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
 import { STATUS } from 'utils/constant';
 
@@ -9,7 +10,11 @@ export default {
 
   props: {
     duration: VueTypes.number,
-    content: VueTypes.oneOfType([VueTypes.string, VueTypes.func]), // slot
+    content: VueTypes.oneOfType([
+      VueTypes.string,
+      VueTypes.arrayOf(VueTypes.oneOfType([VueTypes.string, VueTypes.func])),
+      VueTypes.func,
+    ]), // slot
     closable: VueTypes.bool.def(false),
     type: VueTypes.oneOf(STATUS),
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
@@ -36,14 +41,20 @@ export default {
   },
 
   render(h) {
+    let content = this.$slots.content || this.content;
+
+    if (typeof content === 'function') {
+      content = content(h);
+    }
+
+    if (_.isArray(content)) {
+      content = content.map(c => (typeof c === 'function' ? c(h) : c));
+    }
+
     return (
       <div class={this._addPrefix('notice-wrapper')}>
         <div class={this.classes}>
-          <div class={this._addPrefix('notice-content')}>
-            {this.$slots.content || typeof this.content === 'string'
-              ? this.content
-              : this.content(h)}
-          </div>
+          <div class={this._addPrefix('notice-content')}>{content}</div>
           {this.closable && (
             <div
               class={this._addPrefix('notice-close')}

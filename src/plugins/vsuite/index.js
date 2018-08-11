@@ -19,6 +19,7 @@ import Tag from 'components/Tag';
 import Timeline from 'components/Timeline';
 import TimelineItem from 'components/TimelineItem';
 
+import Alert from 'components/Alert';
 import LoadingBar from 'components/LoadingBar';
 import Notification from 'components/Notification';
 
@@ -59,6 +60,7 @@ export default {
 
     // vsuite injected instance methods
     Vue.prototype.$Loading = LoadingBar;
+    Vue.prototype.$Alert = Alert;
     Vue.prototype.$Notification = Notification;
     Vue.prototype.$Notice = Notification;
   },

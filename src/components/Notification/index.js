@@ -24,9 +24,7 @@ let DEFAULT_PLACEMENT = 'topRight';
 let DEFAULT_TOP = 24;
 let DEFAULT_BOTTOM = 24;
 let DEFAULT_DURATION = 4500;
-let notificationStore = {
-  config: {},
-};
+let notificationStore = {};
 
 function addPrefix(cls) {
   return prefix(CLASS_PREFIX, cls);
