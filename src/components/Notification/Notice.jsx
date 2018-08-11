@@ -62,6 +62,7 @@ export default {
   methods: {
     _handleClose() {
       this._clearCloseTimer();
+      this.$emit('close');
     },
 
     _setClearTimer() {

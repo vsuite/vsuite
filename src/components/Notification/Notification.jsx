@@ -1,6 +1,8 @@
 import VueTypes from 'vue-types';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
 
+import Notice from './Notice.jsx';
+
 const CLASS_PREFIX = 'notification';
 const getUid = () => {
   id += 1;
@@ -23,7 +25,33 @@ export default {
   },
 
   render() {
-    return null;
+    return (
+      <div class={this.classPrefix} style={{ top: '5px' }}>
+        <transition-group>
+          {this.notices.map(notice => {
+            const { key, type, content, duration, closable, onClose } = notice;
+            const data = {
+              key,
+              props: {
+                type,
+                closable,
+                duration,
+                content,
+                classPrefix: this.classPrefix,
+              },
+              on: {
+                close: () => {
+                  this.remove(notice.key);
+                  onClose && onClose();
+                },
+              },
+            };
+
+            return <Notice {...data} />;
+          })}
+        </transition-group>
+      </div>
+    );
   },
 
   methods: {

@@ -19,44 +19,42 @@ function createLoadingBarInstance() {
     progress: loadingBarStore.progress,
   };
 
-  if (!loadingBarStore.instance) {
-    const wrapper = new Vue({
-      render: h => {
-        const loadingBarData = {
-          props: props || {},
-        };
+  if (loadingBarStore.instance) return loadingBarStore.instance;
 
-        return <LoadingBar {...loadingBarData} />;
-      },
-    });
-    const component = wrapper.$mount();
+  const wrapper = new Vue({
+    render: h => {
+      const loadingBarData = {
+        props: props || {},
+      };
 
-    document.body.appendChild(component.$el);
+      return <LoadingBar {...loadingBarData} />;
+    },
+  });
+  const component = wrapper.$mount();
 
-    const loadingBar = wrapper.$children[0];
+  document.body.appendChild(component.$el);
 
-    loadingBarStore.instance = {
-      update(options) {
-        if ('percent' in options) {
-          loadingBar.percent = options.percent;
-        }
+  const loadingBar = wrapper.$children[0];
 
-        if ('status' in options) {
-          loadingBar.status = options.status;
-        }
+  loadingBarStore.instance = {
+    update(options) {
+      if ('percent' in options) {
+        loadingBar.percent = options.percent;
+      }
 
-        if ('show' in options) {
-          loadingBar.show = options.show;
-        }
-      },
-      component: loadingBar,
-      destroy() {
-        document.body.removeChild(
-          document.getElementsByClassName('vs-loading-bar')[0]
-        );
-      },
-    };
-  }
+      if ('status' in options) {
+        loadingBar.status = options.status;
+      }
+
+      if ('show' in options) {
+        loadingBar.show = options.show;
+      }
+    },
+    component: loadingBar,
+    destroy() {
+      document.body.removeChild(component.$el);
+    },
+  };
 
   return loadingBarStore.instance;
 }
