@@ -1,5 +1,7 @@
 import VueTypes from 'vue-types';
 import Button from 'components/Button';
+import { transferDom } from 'directives';
+import { addStyle } from 'shares/dom';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
 import { SIZES } from 'utils/constant';
 
@@ -18,7 +20,6 @@ export default {
       type: Boolean,
       default: undefined,
     },
-    defaultVisible: VueTypes.bool.def(false),
     title: VueTypes.string, // slot
     // header slot
     // default slot
@@ -45,11 +46,7 @@ export default {
     // hide
   },
 
-  data() {
-    return {
-      innerVal: this.defaultVisible || false,
-    };
-  },
+  directives: { transferDom },
 
   computed: {
     classes() {
@@ -60,13 +57,10 @@ export default {
         },
       ];
     },
-    currentVal() {
-      return typeof this.visible === 'undefined' ? this.innerVal : this.visible;
-    },
   },
 
   render(h) {
-    const dialogData = {
+    const dialogWrapperData = {
       directives: [{ name: 'transfer-dom' }],
       attrs: {
         role: 'dialog',
@@ -75,31 +69,34 @@ export default {
     };
     const modalData = {
       class: this.classes,
-      style: { display: 'block' },
       attrs: {
         role: 'dialog',
       },
-      directives: [{ name: 'show', value: this.currentVal }],
+      ref: 'modal',
+    };
+    const dialogData = {
+      class: this._addPrefix('dialog'),
+      directives: [{ name: 'show', value: this.visible }],
     };
 
     return (
-      <div {...dialogData}>
+      <div {...dialogWrapperData}>
         {this.backdrop && this._renderBackdrop(h)}
-        <transition
-          appear
-          type="animation"
-          appearClass="fade"
-          appearActiveClass="fade in"
-          appearToClass="fade in"
-        >
-          <div {...modalData}>
-            <div class={this._addPrefix('dialog')}>
+
+        <div {...modalData}>
+          <transition
+            type="animation"
+            name="fade"
+            onBeforeEnter={this._handleBeforeEnter}
+            onAfterLeave={this._handleAfterLeave}
+          >
+            <div {...dialogData}>
               <div class={this._addPrefix('content')} role="document">
                 <div class={this._addPrefix('header')}>
                   {this.closable && (
                     <button
                       type="button"
-                      class={this._addPrefix('close')}
+                      class={this._addPrefix('header-close')}
                       aria-label="Close"
                       onClick={this._handleClose}
                     >
@@ -124,8 +121,8 @@ export default {
                 </div>
               </div>
             </div>
-          </div>
-        </transition>
+          </transition>
+        </div>
       </div>
     );
   },
@@ -138,25 +135,29 @@ export default {
           role: 'button',
           tabindex: '-1',
         },
-        directives: [{ name: 'show', value: this.currentVal }],
+        directives: [{ name: 'show', value: this.visible }],
       };
 
       return (
-        <transition
-          appear
-          type="transition"
-          appearClass="fade"
-          appearActiveClass="fade in"
-          appearToClass="fade in"
-        >
+        <transition name="fade">
           <div {...data} />
         </transition>
       );
     },
 
+    _handleBeforeEnter() {
+      addStyle(this.$refs.modal, 'display', 'block');
+    },
+
+    _handleAfterLeave() {
+      addStyle(this.$refs.modal, 'display', 'none');
+    },
+
     _handleOk() {},
 
-    _handleClose() {},
+    _handleClose() {
+      this.$emit('change', false);
+    },
 
     _addPrefix(cls) {
       return prefix(this.classPrefix, cls);

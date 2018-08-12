@@ -51,18 +51,6 @@
       margin-right: @modal-full-size-margin;
     }
   }
-
-  // Animations
-  &.fade .@{ns}modal-dialog {
-    // timing: fast-out
-    animation: modalMoveOut .3s cubic-bezier(.4, 0, 1, 1) forwards;
-  }
-
-  &.in .@{ns}modal-dialog {
-    opacity: 0;
-    // timing: ease-in-out
-    animation: modalMoveIn .3s cubic-bezier(.68, -.55, .27, 1.55) forwards;
-  }
 }
 
 .@{ns}modal-open .@{ns}modal {
@@ -76,6 +64,18 @@
   width: auto;
   margin: 30px auto;
   z-index: @zindex-modal;
+
+  &.fade-enter-active {
+    opacity: 0;
+    // timing: ease-in-out
+    animation: modalMoveIn .3s cubic-bezier(.68, -.55, .27, 1.55) forwards;
+  }
+
+  // Animations
+  &.fade-leave-active {
+    // timing: fast-out
+    animation: modalMoveOut .3s cubic-bezier(.4, 0, 1, 1) forwards;
+  }
 }
 
 // Actual modal
@@ -98,15 +98,22 @@
   left: 0;
   z-index: @zindex-modal-background;
   background-color: @modal-backdrop-bg;
+  opacity: @modal-backdrop-opacity;
 
   // Fade for backdrop
-  &.fade {
-    opacity: 0;
+  &.fade-enter-active {
+    opacity: @modal-backdrop-opacity;
     transition: opacity .3s ease-in;
   }
 
-  &.in {
-    opacity: @modal-backdrop-opacity;
+  &.fade-leave-active {
+    opacity: 0;
+    transition: opacity .3s ease-out;
+  }
+
+  &.fade-enter,
+  &.fade-leave-to {
+    opacity: 0;
   }
 }
 
