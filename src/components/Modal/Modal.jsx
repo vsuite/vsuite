@@ -80,9 +80,11 @@ export default {
       if (val) {
         this.$emit('show');
         this._handleAddResizeListener();
+        this._handleAddDocumentKeyup();
       } else {
         this.$emit('hide');
         this._handleRemoveResizeListener();
+        this._handleRemoveDocumentKeyup();
       }
     },
   },
@@ -283,6 +285,28 @@ export default {
 
     _handleWindowResize() {
       this._computedStyles();
+    },
+
+    _handleAddDocumentKeyup() {
+      this.documentKeydownListener = on(
+        document,
+        'keyup',
+        this._handleDocumentKeyup
+      );
+    },
+
+    _handleRemoveDocumentKeyup() {
+      if (this.documentKeydownListener) {
+        this.documentKeydownListener.off();
+
+        this.documentKeydownListener = null;
+      }
+    },
+
+    _handleDocumentKeyup(event) {
+      if (this.keyboard && event.keyCode === 27) {
+        this._handleClose();
+      }
     },
 
     _handleBeforeEnter() {

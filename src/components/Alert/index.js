@@ -103,4 +103,11 @@ export default {
       DEFAULT_DURATION = options.duration;
     }
   },
+  destroy() {
+    if (!alertInstance) return;
+
+    alertInstance.destroy();
+
+    alertInstance = null;
+  },
 };

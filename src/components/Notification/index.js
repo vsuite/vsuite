@@ -215,4 +215,11 @@ export default {
       DEFAULT_DURATION = options.duration;
     }
   },
+  destroy(placement) {
+    if (!notificationStore[placement]) return;
+
+    notificationStore[placement].destroy();
+
+    notificationStore[placement] = null;
+  },
 };
