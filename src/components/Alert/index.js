@@ -51,13 +51,13 @@ function createAlertInstance() {
   const notification = wrapper.$children[0];
 
   alertInstance = {
+    component: notification,
     notice(data) {
       notification.add(data || {});
     },
     remove(key) {
       notification.remove(key);
     },
-    component: notification,
     destroy() {
       document.body.removeChild(component.$el);
     },

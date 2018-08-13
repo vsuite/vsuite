@@ -37,6 +37,7 @@ function createLoadingBarInstance() {
   const loadingBar = wrapper.$children[0];
 
   loadingBarStore.instance = {
+    component: loadingBar,
     update(options) {
       if ('percent' in options) {
         loadingBar.percent = options.percent;
@@ -50,7 +51,6 @@ function createLoadingBarInstance() {
         loadingBar.show = options.show;
       }
     },
-    component: loadingBar,
     destroy() {
       document.body.removeChild(component.$el);
     },

@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Icon from 'components/Icon';
 import _ from 'lodash';
+import renderX from 'utils/render';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
 import { STATUS_ICON_NAMES } from 'utils/constant';
 
@@ -103,13 +104,13 @@ function createNotificationInstance(config) {
   const notification = wrapper.$children[0];
 
   notificationStore[placement] = {
+    component: notification,
     notice(data) {
       notification.add(data || {});
     },
     remove(key) {
       notification.remove(key);
     },
-    component: notification,
     destroy() {
       document.body.removeChild(component.$el);
     },
@@ -131,16 +132,8 @@ function notice(config) {
   }
 
   const content = function(h) {
-    let title = config.title;
-    let description = config.description;
-
-    if (typeof title === 'function') {
-      title = title(h);
-    }
-
-    if (typeof description === 'function') {
-      description = description(h);
-    }
+    let title = renderX(h, config.title);
+    let description = renderX(h, config.description);
 
     return (
       <div class={addPrefix('content')}>

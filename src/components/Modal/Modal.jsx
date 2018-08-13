@@ -40,10 +40,12 @@ export default {
     drag: VueTypes.bool.def(false),
     loading: VueTypes.bool.def(false),
     size: VueTypes.oneOf(SIZES).def('sm'),
+    confirm: VueTypes.bool.def(false),
     header: VueTypes.bool,
     footer: VueTypes.bool,
     okText: VueTypes.string,
     cancelText: VueTypes.string,
+    showCancel: VueTypes.bool,
     transfer: VueTypes.bool.def(function() {
       return this.$VSUITE.transfer || false;
     }),
@@ -188,9 +190,11 @@ export default {
       return (
         <div class={this._addPrefix('footer')}>
           {this.$slots.footer || [
-            <Button onClick={this._handleClose} appearance="subtle">
-              {this.cancelText || this.$t('_.Modal.cancel_text')}
-            </Button>,
+            this.showCancel ? (
+              <Button onClick={this._handleClose} appearance="subtle">
+                {this.cancelText || this.$t('_.Modal.cancel_text')}
+              </Button>
+            ) : null,
             <Button
               onClick={this._handleOk}
               loading={this.vLoading}

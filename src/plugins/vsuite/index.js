@@ -19,6 +19,8 @@ import Tag from 'components/Tag';
 import Timeline from 'components/Timeline';
 import TimelineItem from 'components/TimelineItem';
 
+import Modal from 'components/Modal';
+
 import Alert from 'components/Alert';
 import LoadingBar from 'components/LoadingBar';
 import Notification from 'components/Notification';
@@ -32,6 +34,7 @@ export const components = {
   Icon,
   IconStack,
   Loader,
+  Modal,
   Pagination,
   Panel,
   PanelGroup,
@@ -63,5 +66,6 @@ export default {
     Vue.prototype.$Alert = Alert;
     Vue.prototype.$Notification = Notification;
     Vue.prototype.$Notice = Notification;
+    Vue.prototype.$Modal = Modal;
   },
 };

@@ -1,6 +1,6 @@
 import VueTypes from 'vue-types';
-import _ from 'lodash';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
+import renderX from 'utils/render';
 
 import Notice from './Notice.jsx';
 
@@ -64,21 +64,10 @@ export default {
               },
             },
           };
-          let slotContent = content;
-
-          if (typeof slotContent === 'function') {
-            slotContent = slotContent(h);
-          }
-
-          if (_.isArray(slotContent)) {
-            slotContent = slotContent.map(
-              c => (typeof c === 'function' ? c(h) : c)
-            );
-          }
 
           return (
             <Notice {...data}>
-              <template slot="content">{slotContent}</template>
+              <template slot="content">{renderX(h, content)}</template>
             </Notice>
           );
         })}
