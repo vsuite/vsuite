@@ -28,9 +28,7 @@ export default {
 
       if (this.height) {
         len = Math.ceil(this.height / 24);
-      }
-
-      if (this.size === 'middle') {
+      } else if (this.size === 'middle') {
         len = 8;
       } else if (this.size === 'small') {
         len = 4;
