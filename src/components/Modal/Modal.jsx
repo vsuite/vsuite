@@ -1,7 +1,7 @@
 import VueTypes from 'vue-types';
 import Button from 'components/Button';
 import { transferDom } from 'directives';
-import { addStyle } from 'shares/dom';
+import { addStyle, hasClass } from 'shares/dom';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
 import { SIZES } from 'utils/constant';
 
@@ -35,6 +35,8 @@ export default {
     drag: VueTypes.bool.def(false),
     loading: VueTypes.bool.def(false),
     size: VueTypes.oneOf(SIZES).def('sm'),
+    okText: VueTypes.string,
+    cancelText: VueTypes.string,
     transfer: VueTypes.bool.def(function() {
       return this.$VSUITE.transfer || false;
     }),
@@ -48,6 +50,12 @@ export default {
 
   directives: { transferDom },
 
+  data() {
+    return {
+      vLoading: false,
+    };
+  },
+
   computed: {
     classes() {
       return [
@@ -56,6 +64,19 @@ export default {
           [this._addPrefix(this.size)]: this.size,
         },
       ];
+    },
+  },
+
+  watch: {
+    visible(val) {
+      // reset loading status
+      this.vLoading = false;
+
+      if (val) {
+        this.$emit('show');
+      } else {
+        this.$emit('hide');
+      }
     },
   },
 
@@ -72,6 +93,7 @@ export default {
       attrs: {
         role: 'dialog',
       },
+      on: { click: this._handleModalClick },
       ref: 'modal',
     };
     const dialogData = {
@@ -112,10 +134,14 @@ export default {
                 <div class={this._addPrefix('footer')}>
                   {this.$slots.footer || [
                     <Button onClick={this._handleClose} appearance="subtle">
-                      Cancel
+                      {this.cancelText || this.$t('_.Modal.cancel_text')}
                     </Button>,
-                    <Button onClick={this._handleOk} appearance="primary">
-                      Ok
+                    <Button
+                      onClick={this._handleOk}
+                      loading={this.vLoading}
+                      appearance="primary"
+                    >
+                      {this.okText || this.$t('_.Modal.ok_text')}
                     </Button>,
                   ]}
                 </div>
@@ -135,6 +161,9 @@ export default {
           role: 'button',
           tabindex: '-1',
         },
+        on: {
+          click: this._handleClose,
+        },
         directives: [{ name: 'show', value: this.visible }],
       };
 
@@ -153,9 +182,28 @@ export default {
       addStyle(this.$refs.modal, 'display', 'none');
     },
 
-    _handleOk() {},
+    _handleModalClick(event) {
+      if (
+        hasClass(event.target, this.classPrefix) &&
+        this.backdrop !== 'static'
+      )
+        this._handleClose();
+    },
+
+    _handleOk() {
+      this.$emit('ok');
+
+      if (this.loading) {
+        return (this.vLoading = this.loading);
+      }
+
+      this.$emit('change', false);
+    },
 
     _handleClose() {
+      if (this.vLoading) return;
+
+      this.$emit('cancel');
       this.$emit('change', false);
     },
 

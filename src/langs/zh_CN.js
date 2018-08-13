@@ -7,5 +7,9 @@ export default {
       first: '首页',
       last: '尾页',
     },
+    Modal: {
+      ok_text: '确定',
+      cancel_text: '取消',
+    },
   },
 };

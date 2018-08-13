@@ -104,7 +104,6 @@ export default {
       }
 
       this.$emit(val ? 'show' : 'hide');
-      this.$emit('change', val);
     },
     title() {
       this._updatePopper();
@@ -260,7 +259,11 @@ export default {
         this.delayHideTimer = null;
       }
 
-      this.delayShowTimer = setTimeout(cb, delay);
+      this.delayShowTimer = setTimeout(() => {
+        cb && cb();
+
+        this.$emit('change', true);
+      }, delay);
     },
 
     _handleDelayHide(cb) {
@@ -277,7 +280,11 @@ export default {
         this.delayHideTimer = null;
       }
 
-      this.delayHideTimer = setTimeout(cb, delay);
+      this.delayHideTimer = setTimeout(() => {
+        cb && cb();
+
+        this.$emit('change', false);
+      }, delay);
     },
 
     _createPopper() {

@@ -23,7 +23,9 @@ stories.add('default', () => ({
         <Modal
           visible={this.visible}
           title="Modal Title"
+          loading={true}
           onChange={v => (this.visible = v)}
+          onOk={() => setTimeout(() => (this.visible = false), 2000)}
         >
           <Paragraph size="small" />
         </Modal>

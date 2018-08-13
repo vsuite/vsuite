@@ -7,5 +7,9 @@ export default {
       first: 'First',
       last: 'Last',
     },
+    Modal: {
+      ok_text: 'Ok',
+      cancel_text: 'Cancel',
+    },
   },
 };
