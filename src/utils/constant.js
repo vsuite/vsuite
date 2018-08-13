@@ -22,7 +22,29 @@ export const COLORS = [
   'blue',
   'violet',
 ];
+export const COLORS_TYPES = {
+  RED: 'red',
+  ORANGE: 'orange',
+  YELLOW: 'yellow',
+  GREEN: 'green',
+  CYAN: 'cyan',
+  BLUE: 'blue',
+  VIOLET: 'violet',
+};
 
 export const SIZES = ['lg', 'md', 'sm', 'xs'];
+export const SIZES_TYPES = {
+  LG: 'lg',
+  MD: 'md',
+  SM: 'sm',
+  XS: 'xs',
+};
 
 export const STATUS = ['success', 'warning', 'error', 'info'];
+export const STATUS_TYPES = {
+  SUCCESS: 'success',
+  WARNING: 'warning',
+  WARN: 'warning',
+  ERROR: 'error',
+  INFO: 'info',
+};

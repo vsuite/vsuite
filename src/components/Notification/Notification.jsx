@@ -1,4 +1,5 @@
 import VueTypes from 'vue-types';
+import _ from 'lodash';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
 
 import Notice from './Notice.jsx';
@@ -23,7 +24,7 @@ export default {
     };
   },
 
-  render() {
+  render(h) {
     return (
       <transition-group
         class={this.classPrefix}
@@ -54,7 +55,6 @@ export default {
               type,
               closable,
               duration,
-              content,
               classPrefix: this.classPrefix,
             },
             on: {
@@ -64,8 +64,23 @@ export default {
               },
             },
           };
+          let slotContent = content;
 
-          return <Notice {...data} />;
+          if (typeof slotContent === 'function') {
+            slotContent = slotContent(h);
+          }
+
+          if (_.isArray(slotContent)) {
+            slotContent = slotContent.map(
+              c => (typeof c === 'function' ? c(h) : c)
+            );
+          }
+
+          return (
+            <Notice {...data}>
+              <template slot="content">{slotContent}</template>
+            </Notice>
+          );
         })}
       </transition-group>
     );
