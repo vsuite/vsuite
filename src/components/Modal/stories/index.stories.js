@@ -210,3 +210,50 @@ stories.add('status', () => ({
     },
   },
 }));
+
+stories.add('confirm', () => ({
+  render() {
+    return (
+      <Demo title="Confirm">
+        <Button.Toolbar>
+          <Button onClick={this._handleBasic}>Basic</Button>
+          <Button onClick={this._handleText}>Custom Text</Button>
+          <Button onClick={this._handleAsync}>Async Close</Button>
+        </Button.Toolbar>
+      </Demo>
+    );
+  },
+
+  methods: {
+    _handleBasic() {
+      this.$Modal.confirm({
+        title: 'Title',
+        content: h => [<p>Content of dialog</p>, <p>Content of dialog</p>],
+        onOk: () => {
+          this.$Alert.info('Clicked ok');
+        },
+        onCancel: () => {
+          this.$Alert.info('Clicked cancel');
+        },
+      });
+    },
+    _handleText() {
+      this.$Modal.confirm({
+        title: 'Title',
+        content: h => [<p>Content of dialog</p>, <p>Content of dialog</p>],
+        okText: 'ok',
+        cancelText: 'cancel',
+      });
+    },
+    _handleAsync() {
+      this.$Modal.confirm({
+        title: 'Title',
+        content: h => <p>The dialog box will be closed after 2 seconds</p>,
+        loading: true,
+        onOk: () => {
+          setTimeout(() => this.$Modal.remove(), 2000);
+        },
+      });
+    },
+  },
+}));

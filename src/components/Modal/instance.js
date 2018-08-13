@@ -1,10 +1,32 @@
 import Vue from 'vue';
 import Icon from 'components/Icon';
 import renderX from 'utils/render';
-import { STATUS_TYPES, STATUS_ICON_NAMES } from 'utils/constant';
 
 import Modal from './Modal.jsx';
 
+const STATUS_TYPES = {
+  SUCCESS: 'success',
+  WARNING: 'warning',
+  WARN: 'warning',
+  ERROR: 'error',
+  INFO: 'info',
+  CONFIRM: 'confirm',
+};
+const ICON_NAMES = {
+  info: 'info',
+  success: 'check-circle',
+  error: 'close-circle',
+  warning: 'remind',
+  confirm: 'question-circle',
+};
+const ICON_STATUS = {
+  info: 'info',
+  success: 'success',
+  error: 'error',
+  warning: 'warning',
+  warn: 'warning',
+  confirm: 'warning',
+};
 const modalStore = {
   instance: null,
 };
@@ -35,7 +57,6 @@ function createModalInstance(config) {
         cancelText,
         showCancel,
         onOk,
-        onCancel,
       } = config;
       const modalData = {
         props: {
@@ -64,17 +85,13 @@ function createModalInstance(config) {
         modalData.on.ok = onOk;
       }
 
-      if (onCancel) {
-        modalData.on.cancel = onCancel;
-      }
-
       return (
         <Modal {...modalData}>
           <template slot="title">
             <Icon
               style={{ fontSize: '24px', marginRight: '15px' }}
-              icon={STATUS_ICON_NAMES[config.type]}
-              status={config.type}
+              icon={ICON_NAMES[config.type]}
+              status={ICON_STATUS[config.type]}
             />
             {renderX(h, title)}
           </template>
@@ -85,6 +102,8 @@ function createModalInstance(config) {
 
     methods: {
       remove() {
+        config.onCancel && config.onCancel();
+
         this.visible = false;
         // animation duration
         setTimeout(() => this.destroy(), 300);
@@ -124,7 +143,7 @@ function modal(config) {
 
   if (config.type) {
     config.confirm = true;
-    config.showCancel = false;
+    config.showCancel = config.type === STATUS_TYPES.CONFIRM;
     config.size = config.size || 'xs';
   }
 
@@ -135,6 +154,11 @@ function modal(config) {
 
 export default {
   open(config) {
+    modal(config);
+  },
+  confirm(config) {
+    config.type = STATUS_TYPES.CONFIRM;
+
     modal(config);
   },
   success(config) {
