@@ -3,12 +3,12 @@ import _ from 'lodash';
 function render(h, data) {
   let result = data;
 
-  if (typeof data === 'function') {
-    result = data(h);
+  if (typeof result === 'function') {
+    result = result(h);
   }
 
-  if (_.isArray(data)) {
-    result = data.map(c => (typeof c === 'function' ? c(h) : c));
+  if (_.isArray(result)) {
+    result = result.map(c => (typeof c === 'function' ? c(h) : c));
   }
 
   return result;

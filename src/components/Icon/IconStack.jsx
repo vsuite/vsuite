@@ -8,7 +8,15 @@ export default {
 
   props: {
     size: VueTypes.oneOf(['lg', '2x', '3x', '4x', '5x']),
-    status: VueTypes.oneOf(['primary', 'success', 'info', 'warning', 'danger']),
+    status: VueTypes.oneOf([
+      'primary',
+      'success',
+      'info',
+      'warning',
+      'warn',
+      'danger',
+      'error',
+    ]),
     flip: VueTypes.oneOf(['horizontal', 'vertical']),
     rotate: VueTypes.oneOf([0, 90, 180, 270]),
     spin: VueTypes.bool.def(false),

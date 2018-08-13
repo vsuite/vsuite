@@ -186,3 +186,27 @@ stories.add('overflow', () => ({
     },
   },
 }));
+
+stories.add('status', () => ({
+  render() {
+    return (
+      <Demo title="Status">
+        <Button.Toolbar>
+          <Button onClick={() => this._handleOpen('info')}>Info</Button>
+          <Button onClick={() => this._handleOpen('warn')}>Warn</Button>
+          <Button onClick={() => this._handleOpen('error')}>Error</Button>
+          <Button onClick={() => this._handleOpen('success')}>Sccess</Button>
+        </Button.Toolbar>
+      </Demo>
+    );
+  },
+
+  methods: {
+    _handleOpen(funcName) {
+      this.$Modal[funcName]({
+        title: 'Title',
+        content: h => [<p>Content of dialog</p>, <p>Content of dialog</p>],
+      });
+    },
+  },
+}));

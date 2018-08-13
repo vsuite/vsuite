@@ -55,18 +55,46 @@ function createModalInstance(config) {
           showCancel,
         },
         on: {
-          ok: onOk,
-          cancel: onCancel,
+          cancel: this.remove,
           change: val => (this.visible = val),
         },
       };
 
+      if (onOk) {
+        modalData.on.ok = onOk;
+      }
+
+      if (onCancel) {
+        modalData.on.cancel = onCancel;
+      }
+
       return (
         <Modal {...modalData}>
-          <template slot="title">{renderX(h, title)}</template>
-          <template>{renderX(h, content)}</template>
+          <template slot="title">
+            <Icon
+              style={{ fontSize: '24px', marginRight: '15px' }}
+              icon={STATUS_ICON_NAMES[config.type]}
+              status={config.type}
+            />
+            {renderX(h, title)}
+          </template>
+          <template slot="default">{renderX(h, content)}</template>
         </Modal>
       );
+    },
+
+    methods: {
+      remove() {
+        this.visible = false;
+        // animation duration
+        setTimeout(() => this.destroy(), 300);
+      },
+      destroy() {
+        this.$destroy();
+        document.body.removeChild(this.$el);
+
+        modalStore.instance = null;
+      },
     },
   });
   const component = wrapper.$mount();
@@ -80,26 +108,15 @@ function createModalInstance(config) {
     component: modal,
     show() {
       modal.$parent.visible = true;
-
-      if (timer) {
-        clearTimeout(timer);
-
-        timer = null;
-      }
     },
     remove() {
-      modal.$parent.visible = false;
-
       if (timer) return;
 
-      // animation duration
-      timer = setTimeout(() => this.destroy(), 300);
-    },
-    destroy() {
-      timer = null;
-      document.body.removeChild(component.$el);
+      modal.$parent.remove();
     },
   };
+
+  return modalStore.instance;
 }
 
 function modal(config) {
@@ -108,10 +125,7 @@ function modal(config) {
   if (config.type) {
     config.confirm = true;
     config.showCancel = false;
-
-    config.title = function(h) {
-      return [<Icon icon={STATUS_ICON_NAMES[config.type]} />, config.title];
-    };
+    config.size = config.size || 'xs';
   }
 
   let instance = createModalInstance(config);
@@ -152,7 +166,5 @@ export default {
     if (!modalStore.instance) return;
 
     modalStore.instance.remove();
-
-    modalStore.instance = null;
   },
 };

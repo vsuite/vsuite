@@ -69,6 +69,7 @@ export default {
         {
           [this._addPrefix(this.size)]: this.size,
           [this._addPrefix('full')]: this.full,
+          [this._addPrefix('confirm')]: this.confirm,
         },
       ];
     },
@@ -176,7 +177,7 @@ export default {
               <span aria-hidden="true">&times;</span>
             </button>
           )}
-          {this.title && (
+          {(this.title || this.$slots.title) && (
             <h4 class={this._addPrefix('title')}>
               {this.title || this.$slots.title}
             </h4>
@@ -314,11 +315,11 @@ export default {
     },
 
     _handleBeforeEnter() {
-      addStyle(this.$refs.modal, 'display', 'block');
+      this.$refs.modal && addStyle(this.$refs.modal, 'display', 'block');
     },
 
     _handleAfterLeave() {
-      addStyle(this.$refs.modal, 'display', 'none');
+      this.$refs.modal && addStyle(this.$refs.modal, 'display', 'none');
     },
 
     _handleModalClick(event) {
