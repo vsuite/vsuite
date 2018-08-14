@@ -264,7 +264,8 @@ export default {
             : contentHeight;
 
           if (this.drawer) {
-            bodyStyles.height = contentHeight - (headerHeight + footerHeight);
+            bodyStyles.height = `${contentHeight -
+              (headerHeight + footerHeight)}px`;
           } else {
             /**
              * Header height + Footer height + Dialog margin

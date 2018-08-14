@@ -16,15 +16,6 @@
     overflow: hidden;
   }
 
-  // When fading in the drawer, animate it to slide down
-  &.fade &-dialog {
-    .drawer-animation(cubic-bezier(.4, 0, 1, 1)); //Fast out
-  }
-
-  &.in &-dialog {
-    .drawer-animation(ease-in-out);
-  }
-
   // Drawer sizes
   &-left,
   &-right {
@@ -154,15 +145,22 @@
   left: 0;
   z-index: @zindex-drawer-background;
   background-color: @drawer-backdrop-bg;
+  opacity: @drawer-backdrop-opacity;
 
   // Fade for backdrop
-  &.fade {
-    opacity: 0;
+  &.fade-enter-active {
+    opacity: @drawer-backdrop-opacity;
     transition: opacity .3s ease-in;
   }
 
-  &.in {
-    opacity: @drawer-backdrop-opacity;
+  &.fade-leave-active {
+    opacity: 0;
+    transition: opacity .3s ease-out;
+  }
+
+  &.fade-enter,
+  &.fade-leave-to {
+    opacity: 0;
   }
 }
 
