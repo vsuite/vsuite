@@ -1,5 +1,6 @@
 import VueTypes from 'vue-types';
 import SafeAnchor from 'components/SafeAnchor';
+import Ripple from 'components/Ripple';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
 
 const CLASS_PREFIX = 'pagination-btn';
@@ -43,7 +44,10 @@ export default {
 
     return (
       <li class={this.classes}>
-        <Component {...data}>{this.$slots.default}</Component>
+        <Component {...data}>
+          {this.$slots.default}
+          <Ripple />
+        </Component>
       </li>
     );
   },
