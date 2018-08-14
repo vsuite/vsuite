@@ -271,3 +271,59 @@ stories.add('size', () => ({
     },
   },
 }));
+
+stories.add('full', () => ({
+  data() {
+    return {
+      visible: false,
+      placement: 'right',
+    };
+  },
+
+  render(h) {
+    return (
+      <Demo title="Full">
+        <Button.Toolbar>
+          <Button.Icon
+            icon="angle-left"
+            onClick={() => this._handleOpen('left')}
+          >
+            Left
+          </Button.Icon>
+          <Button.Icon
+            icon="angle-right"
+            onClick={() => this._handleOpen('right')}
+          >
+            Right
+          </Button.Icon>
+          <Button.Icon icon="angle-up" onClick={() => this._handleOpen('top')}>
+            Top
+          </Button.Icon>
+          <Button.Icon
+            icon="angle-down"
+            onClick={() => this._handleOpen('bottom')}
+          >
+            Bottom
+          </Button.Icon>
+        </Button.Toolbar>
+
+        <Drawer
+          full
+          visible={this.visible}
+          title="Drawer Title"
+          placement={this.placement}
+          onChange={v => (this.visible = v)}
+        >
+          <Paragraph />
+        </Drawer>
+      </Demo>
+    );
+  },
+
+  methods: {
+    _handleOpen(placement) {
+      this.visible = !this.visible;
+      this.placement = placement;
+    },
+  },
+}));
