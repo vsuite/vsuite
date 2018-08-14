@@ -156,7 +156,7 @@ export default {
           tabindex: '-1',
         },
         on: {
-          click: this._handleClose,
+          click: this._handleModalClick,
         },
         directives: [{ name: 'show', value: this.visible }],
       };
@@ -339,8 +339,11 @@ export default {
     },
 
     _handleModalClick(event) {
-      if (hasClass(event.target, this.classPrefix) && this.backdrop === true)
-        this._handleClose();
+      const hasCls =
+        hasClass(event.target, this.classPrefix) ||
+        hasClass(event.target, this._addPrefix('backdrop'));
+
+      if (hasCls && this.backdrop === true) this._handleClose();
     },
 
     _handleOk() {

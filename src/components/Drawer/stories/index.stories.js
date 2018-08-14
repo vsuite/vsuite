@@ -37,3 +37,40 @@ stories.add('default', () => ({
     },
   },
 }));
+
+stories.add('backdrop', () => ({
+  data() {
+    return {
+      visible: false,
+      backdrop: true,
+    };
+  },
+
+  render() {
+    return (
+      <Demo title="Backdrop">
+        <Button.Toolbar>
+          <Button onClick={() => this._handleOpen(true)}>true</Button>
+          <Button onClick={() => this._handleOpen(false)}>false</Button>
+          <Button onClick={() => this._handleOpen('static')}>static</Button>
+        </Button.Toolbar>
+
+        <Drawer
+          visible={this.visible}
+          title="Drawer Title"
+          backdrop={this.backdrop}
+          onChange={v => (this.visible = v)}
+        >
+          <Paragraph />
+        </Drawer>
+      </Demo>
+    );
+  },
+
+  methods: {
+    _handleOpen(backdrop) {
+      this.visible = !this.visible;
+      this.backdrop = backdrop;
+    },
+  },
+}));
