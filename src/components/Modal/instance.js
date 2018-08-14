@@ -39,6 +39,12 @@ function createModalInstance(config) {
       return { visible: false };
     },
 
+    watch: {
+      visible(val) {
+        if (!val) return this.remove();
+      },
+    },
+
     render(h) {
       const {
         title,
@@ -57,6 +63,7 @@ function createModalInstance(config) {
         cancelText,
         showCancel,
         onOk,
+        onCancel,
       } = config;
       const modalData = {
         props: {
@@ -76,13 +83,16 @@ function createModalInstance(config) {
           showCancel,
         },
         on: {
-          cancel: this.remove,
           change: val => (this.visible = val),
         },
       };
 
       if (onOk) {
         modalData.on.ok = onOk;
+      }
+
+      if (onCancel) {
+        modalData.on.cancel = onCancel;
       }
 
       return (
@@ -102,9 +112,6 @@ function createModalInstance(config) {
 
     methods: {
       remove() {
-        config.onCancel && config.onCancel();
-
-        this.visible = false;
         // animation duration
         setTimeout(() => this.destroy(), 300);
       },
@@ -121,7 +128,6 @@ function createModalInstance(config) {
   document.body.appendChild(component.$el);
 
   const modal = wrapper.$children[0];
-  let timer = null;
 
   modalStore.instance = {
     component: modal,
@@ -129,9 +135,7 @@ function createModalInstance(config) {
       modal.$parent.visible = true;
     },
     remove() {
-      if (timer) return;
-
-      modal.$parent.remove();
+      modal.$parent.visible = false;
     },
   };
 

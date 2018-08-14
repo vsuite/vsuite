@@ -37,7 +37,7 @@ export default {
     overflow: VueTypes.bool,
     keyboard: VueTypes.bool,
     full: VueTypes.bool.def(false),
-    drag: VueTypes.bool.def(false),
+    drag: VueTypes.bool.def(false), // TODO: support drag property
     loading: VueTypes.bool.def(false),
     size: VueTypes.oneOf(SIZES).def('sm'),
     confirm: VueTypes.bool.def(false),
@@ -46,6 +46,10 @@ export default {
     okText: VueTypes.string,
     cancelText: VueTypes.string,
     showCancel: VueTypes.bool,
+    // drawer
+    drawer: VueTypes.bool.def(false),
+    modalClassNames: VueTypes.any,
+    dialogClassNames: VueTypes.any,
     transfer: VueTypes.bool.def(function() {
       return this.$VSUITE.transfer || false;
     }),
@@ -101,7 +105,7 @@ export default {
       },
     };
     const modalData = {
-      class: this.classes,
+      class: [this.classes, this.modalClassNames],
       style: this.modalStyles,
       attrs: {
         role: 'dialog',
@@ -110,7 +114,7 @@ export default {
       ref: 'modal',
     };
     const dialogData = {
-      class: this._addPrefix('dialog'),
+      class: [this._addPrefix('dialog'), this.dialogClassNames],
       directives: [{ name: 'show', value: this.visible }],
       ref: 'dialog',
     };
@@ -192,7 +196,7 @@ export default {
         <div class={this._addPrefix('footer')}>
           {this.$slots.footer || [
             this.showCancel ? (
-              <Button onClick={this._handleClose} appearance="subtle">
+              <Button onClick={this._handleCancel} appearance="subtle">
                 {this.cancelText || this.$t('_.Modal.cancel_text')}
               </Button>
             ) : null,
@@ -241,9 +245,13 @@ export default {
           // default margin
           let headerHeight = 46;
           let footerHeight = 46;
+          let contentHeight = 30;
 
           const header = dialog.querySelector(`.${this._addPrefix('header')}`);
           const footer = dialog.querySelector(`.${this._addPrefix('footer')}`);
+          const content = dialog.querySelector(
+            `.${this._addPrefix('content')}`
+          );
 
           headerHeight = header
             ? getHeight(header) + headerHeight
@@ -251,16 +259,23 @@ export default {
           footerHeight = footer
             ? getHeight(footer) + headerHeight
             : headerHeight;
+          contentHeight = content
+            ? getHeight(content) + contentHeight
+            : contentHeight;
 
-          /**
-           * Header height + Footer height + Dialog margin
-           */
-          const excludeHeight = headerHeight + footerHeight + 60;
-          const bodyHeight = getHeight(window) - excludeHeight;
+          if (this.drawer) {
+            bodyStyles.height = contentHeight - (headerHeight + footerHeight);
+          } else {
+            /**
+             * Header height + Footer height + Dialog margin
+             */
+            const excludeHeight = headerHeight + footerHeight + 60;
+            const bodyHeight = getHeight(window) - excludeHeight;
 
-          bodyStyles.maxHeight = `${
-            scrollHeight >= bodyHeight ? bodyHeight : scrollHeight
-          }px`;
+            bodyStyles.maxHeight = `${
+              scrollHeight >= bodyHeight ? bodyHeight : scrollHeight
+            }px`;
+          }
         }
 
         styles.bodyStyles = bodyStyles;
@@ -337,10 +352,16 @@ export default {
       this.$emit('change', false);
     },
 
-    _handleClose() {
+    _handleCancel() {
       if (this.vLoading) return;
 
       this.$emit('cancel');
+      this.$emit('change', false);
+    },
+
+    _handleClose() {
+      if (this.vLoading) return;
+
       this.$emit('change', false);
     },
 
