@@ -40,6 +40,8 @@
 
   &-top,
   &-bottom {
+    left: 0;
+
     &.@{ns}drawer-lg {
       .drawer-content-height(@drawer-vertical-lg);
     }
@@ -99,6 +101,8 @@
   }
 
   &-top {
+    top: 0;
+
     .drawer-animation-setting(drawerMoveInTop, drawerMoveOutTop);
 
     .@{ns}drawer-dialog {
@@ -108,6 +112,8 @@
   }
 
   &-bottom {
+    bottom: 0;
+
     .drawer-animation-setting(drawerMoveInBottom, drawerMoveOutBottom);
 
     .@{ns}drawer-dialog {
