@@ -1,5 +1,4 @@
 import { storiesOf } from '@storybook/vue';
-import { action } from '@storybook/addon-actions';
 import { withKnobs, text, selectV2 } from '@storybook/addon-knobs';
 import Demo from 'stories/demo';
 import Button from 'components/Button';
@@ -27,22 +26,20 @@ stories.add('default', () => ({
     return (
       <Demo title="Default">
         <div style={{ margin: '10px' }}>
-          <Button appearance={appearance} onClick={action('@click')}>
-            Default
-          </Button>
+          <Button appearance={appearance}>Default</Button>
         </div>
         <div style={{ margin: '10px' }}>
-          <Button appearance={appearance} active onClick={action('@click')}>
+          <Button appearance={appearance} active>
             Active
           </Button>
         </div>
         <div style={{ margin: '10px' }}>
-          <Button appearance={appearance} disabled onClick={action('@click')}>
+          <Button appearance={appearance} disabled>
             Disabled
           </Button>
         </div>
         <div style={{ margin: '10px' }}>
-          <Button appearance={appearance} loading onClick={action('@click')}>
+          <Button appearance={appearance} loading>
             Loading
           </Button>
         </div>
@@ -58,7 +55,7 @@ stories.add('size & color', () => ({
 
     return (
       <Demo title="Size & Color">
-        <Button color={color} size={size} onClick={action('@click')}>
+        <Button color={color} size={size}>
           Size & Color
         </Button>
       </Demo>
@@ -76,13 +73,7 @@ stories.add('link', () => ({
     return (
       <Demo title="Link">
         <div style={{ margin: '15px' }}>
-          <Button
-            href={href}
-            appearance={appearance}
-            size={size}
-            color={color}
-            onClick={action('@click')}
-          >
+          <Button href={href} appearance={appearance} size={size} color={color}>
             Download
           </Button>
         </div>
@@ -93,7 +84,6 @@ stories.add('link', () => ({
             size={size}
             color={color}
             active
-            onClick={action('@click')}
           >
             Download
           </Button>
@@ -105,7 +95,6 @@ stories.add('link', () => ({
             size={size}
             color={color}
             disabled
-            onClick={action('@click')}
           >
             Download
           </Button>
@@ -117,7 +106,6 @@ stories.add('link', () => ({
             size={size}
             color={color}
             loading
-            onClick={action('@click')}
           >
             Download
           </Button>

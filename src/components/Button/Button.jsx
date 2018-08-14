@@ -2,6 +2,7 @@ import VueTypes from 'vue-types';
 import { COLORS, SIZES } from 'utils/constant';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
 import SafeAnchor from 'components/SafeAnchor';
+import Ripple from 'components/Ripple';
 
 const CLASS_PREFIX = 'btn';
 
@@ -47,7 +48,13 @@ export default {
   },
 
   render() {
-    const spin = <span class={prefix(this.classPrefix, 'spin')} />;
+    const spin = this.loading ? (
+      <span class={prefix(this.classPrefix, 'spin')} />
+    ) : null;
+    const ripple =
+      this.appearance !== 'link' && this.appearance !== 'ghost' ? (
+        <Ripple />
+      ) : null;
 
     if (this.href) {
       const anchorData = {
@@ -63,8 +70,9 @@ export default {
 
       return (
         <SafeAnchor {...anchorData}>
-          {this.loading && spin}
+          {spin}
           {this.$slots.default}
+          {ripple}
         </SafeAnchor>
       );
     }
@@ -86,8 +94,9 @@ export default {
 
     return (
       <Component {...btnData}>
-        {this.loading && spin}
+        {spin}
         {this.$slots.default}
+        {ripple}
       </Component>
     );
   },
