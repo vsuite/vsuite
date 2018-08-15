@@ -17,7 +17,10 @@
     "dist:style": "",
     "lint": "eslint --fix '{.storybook,src}/**/*.{js,jsx,vue}' && stylelint --fix 'src/styles/**/*.less'",
     "test": "yarn prettier && yarn lint && jest",
-    "prettier": "prettier --write 'src/**/*.{js,vue}'"
+    "prettier": "prettier --write 'src/**/*.{js,vue}'",
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs",
+    "docs:deploy": "sh docs/deploy.sh"
   },
   "dependencies": {
     "between.js": "^0.1.1",
@@ -81,7 +84,8 @@
     "vue-eslint-parser": "^3.2.2",
     "vue-jest": "^2.6.0",
     "vue-loader": "^14.2.2",
-    "vue-template-compiler": "^2.5.17"
+    "vue-template-compiler": "^2.5.17",
+    "vuepress": "^0.14.2"
   },
   "husky": {
     "hooks": {
