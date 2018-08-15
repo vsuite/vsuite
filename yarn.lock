@@ -9760,6 +9760,13 @@ vue-jest@^2.6.0:
     tsconfig "^7.0.0"
     vue-template-es2015-compiler "^1.6.0"
 
+vue-json-tree-view@^2.1.4:
+  version "2.1.4"
+  resolved "http://registry.npm.taobao.org/vue-json-tree-view/download/vue-json-tree-view-2.1.4.tgz#b6f8ae2ba2eec4eec5b6f53b90fa187054cad79b"
+  dependencies:
+    lodash "^4.17.4"
+    vue "^2.5.16"
+
 vue-loader@^14.2.2:
   version "14.2.3"
   resolved "http://registry.npm.taobao.org/vue-loader/download/vue-loader-14.2.3.tgz#3b39645c322d956e287d8d36eb77475f78c9b8e0"
@@ -9802,7 +9809,7 @@ vue-types@^1.3.2:
   dependencies:
     lodash.isplainobject "4.0.6"
 
-vue@^2.5.17:
+vue@^2.5.16, vue@^2.5.17:
   version "2.5.17"
   resolved "http://registry.npm.taobao.org/vue/download/vue-2.5.17.tgz#0f8789ad718be68ca1872629832ed533589c6ada"
 

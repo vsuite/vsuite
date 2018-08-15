@@ -11,7 +11,7 @@ export default {
     id: VueTypes.string,
     type: VueTypes.string.def('text'),
     value: VueTypes.oneOfType([VueTypes.string, VueTypes.number]),
-    size: VueTypes.oneOf(SIZES).def('sm'),
+    size: VueTypes.oneOf(SIZES),
     disabled: VueTypes.bool.def(false),
     placeholder: VueTypes.string,
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
