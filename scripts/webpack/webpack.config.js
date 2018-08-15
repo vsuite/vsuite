@@ -10,7 +10,7 @@ function resolveRoot(relativePath) {
 
 module.exports = {
   resolve: {
-    extensions: ['.js', '.vue', '.json'],
+    extensions: ['.js', '.jsx', '.vue', '.json'],
     alias: {
       components: resolve('components'),
       directives: resolve('directives'),

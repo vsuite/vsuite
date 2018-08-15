@@ -62,6 +62,7 @@ module.exports = {
   },
 
   resolve: {
+    extensions: ['.js', '.jsx', '.vue', '.json'],
     alias: {
       components: resolve('components'),
       directives: resolve('directives'),

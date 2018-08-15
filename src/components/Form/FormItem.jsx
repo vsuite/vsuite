@@ -17,7 +17,7 @@ export default {
     help: VueTypes.string, // slot
     tooltip: VueTypes.bool.def(false),
     schema: VueTypes.object,
-    error: VueTypes.oneOf([VueTypes.bool, VueTypes.string]).def(false),
+    error: VueTypes.oneOfType([VueTypes.bool, VueTypes.string]).def(false),
     model: VueTypes.object,
     checkDelay: VueTypes.number.def(500),
     checkTrigger: VueTypes.oneOf(['change', 'blur', 'none']).def('change'),

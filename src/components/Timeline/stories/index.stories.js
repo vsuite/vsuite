@@ -3,7 +3,7 @@ import Demo from 'stories/demo';
 import Timeline from 'components/Timeline';
 import Icon from 'components/Icon';
 
-const stories = storiesOf('Data Display|Timeline');
+const stories = storiesOf('Data Display|Timeline', module);
 
 stories.add('default', () => ({
   render: h => {
