@@ -18,7 +18,6 @@ export default {
     componentClass: VueTypes.oneOfType([VueTypes.string, VueTypes.object]).def(
       'input'
     ),
-    // input, blur, focus, keydown, pressenter
   },
 
   computed: {
@@ -59,7 +58,7 @@ export default {
   methods: {
     _handleInput(event) {
       this.$emit('input', event);
-      this.$emit('change', event);
+      this.$emit('change', event.target.value);
     },
 
     _handleKeydown(event) {
