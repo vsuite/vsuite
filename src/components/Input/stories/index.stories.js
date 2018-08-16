@@ -1,6 +1,8 @@
 import { storiesOf } from '@storybook/vue';
 import Demo from 'stories/demo';
 import Input from 'components/Input';
+import InputGroup from 'components/InputGroup';
+import Icon from 'components/Icon';
 import Row from 'components/Row';
 import Col from 'components/Col';
 
@@ -88,6 +90,13 @@ stories.add('disabled', () => ({
     return (
       <Demo title="Disabled">
         <Input style={{ width: '300px', marginBottom: '10px' }} disabled />
+
+        <InputGroup style={{ width: '300px', marginBottom: '10px' }} disabled>
+          <Input />
+          <InputGroup.Addon>
+            <Icon icon="search" />
+          </InputGroup.Addon>
+        </InputGroup>
       </Demo>
     );
   },

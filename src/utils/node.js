@@ -231,6 +231,18 @@ function cloneElement(vnode, data, deep) {
   return cloned;
 }
 
+function isTextNode(vnode) {
+  return !vnode.componentInstance && !vnode.tag;
+}
+
+function isElementNode(vnode) {
+  return !vnode.componentInstance && vnode.tag;
+}
+
+function isComponentNode(vnode) {
+  return !!vnode.componentInstance;
+}
+
 export {
   getName,
   getClasses,
@@ -239,6 +251,9 @@ export {
   getAttrs,
   getEvents,
   getKey,
+  isTextNode,
+  isElementNode,
+  isComponentNode,
   cloneElement,
   cloneVNode,
   cloneVNodes,

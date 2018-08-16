@@ -58,7 +58,7 @@ export default {
   methods: {
     _handleInput(event) {
       this.$emit('input', event);
-      this.$emit('change', event.target.value);
+      this.$emit('change', event);
     },
 
     _handleKeydown(event) {
