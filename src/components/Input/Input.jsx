@@ -20,6 +20,12 @@ export default {
     ),
   },
 
+  data() {
+    return {
+      currentVal: this.value,
+    };
+  },
+
   computed: {
     classes() {
       return [
@@ -36,7 +42,7 @@ export default {
     const data = {
       class: this.classes,
       domProps: {
-        value: this.value,
+        value: this.currentVal,
       },
       attrs: {
         id: this.id,
@@ -47,7 +53,10 @@ export default {
       },
       on: {
         ...this.$listeners,
+        focus: this.handleFocus,
+        blur: this.handleBlur,
         input: this._handleInput,
+        change: this._handleChange,
         keydown: this._handleKeydown,
       },
     };
@@ -56,9 +65,29 @@ export default {
   },
 
   methods: {
-    _handleInput(event) {
+    _setVal(val, event) {
+      this.currentVal = val;
+
       this.$emit('input', event);
-      this.$emit('change', event);
+      this.$emit('change', val, event);
+
+      this.$nextTick(() => (this.currentVal = this.value));
+    },
+
+    handleFocus(event) {
+      this.$emit('focus', event);
+    },
+
+    handleBlur(event) {
+      this.$emit('blur', event);
+    },
+
+    _handleInput(event) {
+      this._setVal(event.target.value, event);
+    },
+
+    _handleChange(event) {
+      this.$emit('inputChange', event);
     },
 
     _handleKeydown(event) {

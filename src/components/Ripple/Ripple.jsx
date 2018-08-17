@@ -88,8 +88,8 @@ export default {
     _computedPosition(event) {
       const trigger = this.$refs.trigger;
       const offset = getOffset(trigger);
-      const offsetX = (event.pageX || 0) - offset.left;
-      const offsetY = (event.pageY || 0) - offset.top;
+      const offsetX = (event.x || event.pageX || 0) - offset.left;
+      const offsetY = (event.y || event.pageY || 0) - offset.top;
 
       const radiusX = Math.max(offset.width - offsetX, offsetX);
       const radiusY = Math.max(offset.height - offsetY, offsetY);

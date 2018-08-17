@@ -20,6 +20,7 @@ stories.add('default', () => ({
           value={this.value}
           style={{ width: '300px' }}
           placeholder="Default Input"
+          onChange={val => (this.value = val)}
         />
       </Demo>
     );
@@ -53,8 +54,58 @@ stories.add('size', () => ({
               placeholder="Xsmall"
             />
           </Col>
-          <Col xs={24} sm={12} md={8} />
-          <Col xs={24} sm={12} md={8} />
+          <Col xs={24} sm={12} md={8}>
+            <InputGroup style={{ marginBottom: '10px' }} size="lg">
+              <Input placeholder="Large" />
+              <InputGroup.Addon>
+                <Icon icon="search" />
+              </InputGroup.Addon>
+            </InputGroup>
+            <InputGroup style={{ marginBottom: '10px' }} size="md">
+              <Input placeholder="Medium" />
+              <InputGroup.Addon>
+                <Icon icon="search" />
+              </InputGroup.Addon>
+            </InputGroup>
+            <InputGroup style={{ marginBottom: '10px' }} size="sm">
+              <Input placeholder="Small" />
+              <InputGroup.Addon>
+                <Icon icon="search" />
+              </InputGroup.Addon>
+            </InputGroup>
+            <InputGroup style={{ marginBottom: '10px' }} size="xs">
+              <Input placeholder="Xsmall" />
+              <InputGroup.Addon>
+                <Icon icon="search" />
+              </InputGroup.Addon>
+            </InputGroup>
+          </Col>
+          <Col xs={24} sm={12} md={8}>
+            <InputGroup inside style={{ marginBottom: '10px' }} size="lg">
+              <Input placeholder="Large" />
+              <InputGroup.Button>
+                <Icon icon="search" />
+              </InputGroup.Button>
+            </InputGroup>
+            <InputGroup inside style={{ marginBottom: '10px' }} size="md">
+              <Input placeholder="Medium" />
+              <InputGroup.Button>
+                <Icon icon="search" />
+              </InputGroup.Button>
+            </InputGroup>
+            <InputGroup inside style={{ marginBottom: '10px' }} size="sm">
+              <Input placeholder="Small" />
+              <InputGroup.Button>
+                <Icon icon="search" />
+              </InputGroup.Button>
+            </InputGroup>
+            <InputGroup inside style={{ marginBottom: '10px' }} size="xs">
+              <Input placeholder="Xsmall" />
+              <InputGroup.Button>
+                <Icon icon="search" />
+              </InputGroup.Button>
+            </InputGroup>
+          </Col>
         </Row>
       </Demo>
     );
@@ -97,6 +148,24 @@ stories.add('disabled', () => ({
             <Icon icon="search" />
           </InputGroup.Addon>
         </InputGroup>
+      </Demo>
+    );
+  },
+}));
+
+stories.add('control', () => ({
+  data() {
+    return { value: 'please edit me' };
+  },
+
+  render() {
+    return (
+      <Demo title="Control">
+        <Input
+          value={this.value}
+          style={{ width: '300px' }}
+          placeholder="Default Input"
+        />
       </Demo>
     );
   },

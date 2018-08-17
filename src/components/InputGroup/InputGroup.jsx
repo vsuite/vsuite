@@ -1,5 +1,6 @@
 import VueTypes from 'vue-types';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
+import { SIZES } from 'utils/constant';
 import { cloneElement, isElementNode, isComponentNode } from 'utils/node';
 
 const CLASS_PREFIX = 'input-group';
@@ -8,6 +9,7 @@ export default {
   name: 'InputGroup',
 
   props: {
+    size: VueTypes.oneOf(SIZES),
     inside: VueTypes.bool.def(false),
     disabled: VueTypes.bool.def(false),
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
@@ -22,6 +24,7 @@ export default {
       return [
         this.classPrefix,
         {
+          [this._addPrefix(this.size)]: this.size,
           [this._addPrefix('inside')]: this.inside,
           [this._addPrefix('focus')]: this.focus,
           [this._addPrefix('disabled')]: this.disabled,
