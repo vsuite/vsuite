@@ -1,4 +1,5 @@
 import VueTypes from 'vue-types';
+import _ from 'lodash';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
 import { SIZES } from 'utils/constant';
 
@@ -6,6 +7,11 @@ const CLASS_PREFIX = 'input';
 
 export default {
   name: 'Input',
+
+  model: {
+    prop: 'value',
+    event: 'change',
+  },
 
   props: {
     id: VueTypes.string,
@@ -22,7 +28,7 @@ export default {
 
   data() {
     return {
-      currentVal: this.value,
+      innerVal: this.value,
     };
   },
 
@@ -34,6 +40,10 @@ export default {
           [this._addPrefix(this.size)]: this.size,
         },
       ];
+    },
+
+    currentVal() {
+      return _.isUndefined(this.value) ? this.innerVal : this.value;
     },
   },
 
@@ -66,12 +76,11 @@ export default {
 
   methods: {
     _setVal(val, event) {
-      this.currentVal = val;
+      this.innerVal = val;
 
-      this.$emit('input', event);
+      event.target.value = this.currentVal;
+
       this.$emit('change', val, event);
-
-      this.$nextTick(() => (this.currentVal = this.value));
     },
 
     handleFocus(event) {

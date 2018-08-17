@@ -155,15 +155,19 @@ stories.add('disabled', () => ({
 
 stories.add('control', () => ({
   data() {
-    return { value: 'please edit me' };
+    return { value: 'I am controlled' };
   },
 
   render() {
     return (
       <Demo title="Control">
         <Input
-          value={this.value}
+          style={{ width: '300px', marginBottom: '10px' }}
+          placeholder="I am not controlled"
+        />
+        <Input
           style={{ width: '300px' }}
+          value={this.value}
           placeholder="Default Input"
         />
       </Demo>
