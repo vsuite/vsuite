@@ -10,7 +10,7 @@ stories.add('default', () => ({
     return (
       <Demo title="Default">
         <Toggle style={{ marginRight: '8px' }} />
-        <Toggle style={{ marginRight: '8px' }} checked />
+        <Toggle style={{ marginRight: '8px' }} defaultChecked />
       </Demo>
     );
   },
