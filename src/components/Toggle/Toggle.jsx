@@ -72,14 +72,18 @@ export default {
   },
 
   methods: {
+    _setChecked(checked, event) {
+      this.innerChecked = checked;
+
+      this.$emit('change', checked, event);
+    },
+
     _handleClick(event) {
       if (this.disabled) return;
 
       const checked = !this.currentChecked;
 
-      this.innerChecked = checked;
-
-      this.$emit('change', checked, event);
+      this._setChecked(checked, event);
     },
 
     _addPrefix(cls) {
