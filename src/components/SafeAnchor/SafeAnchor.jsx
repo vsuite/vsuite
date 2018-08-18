@@ -7,7 +7,7 @@ export default {
     href: VueTypes.string,
     disabled: VueTypes.bool.def(false),
     role: VueTypes.string,
-    tabIndex: VueTypes.oneOfType([VueTypes.number, VueTypes.string]),
+    tabindex: VueTypes.oneOfType([VueTypes.number, VueTypes.string]),
     componentClass: VueTypes.oneOfType([VueTypes.string, VueTypes.object]).def(
       'a'
     ),
@@ -18,7 +18,7 @@ export default {
     const anchorData = {
       attrs: {
         role: this.role,
-        tabIndex: this.tabIndex,
+        tabindex: this.tabindex,
         href: this.href,
         ...this.$attrs,
       },
@@ -29,7 +29,7 @@ export default {
     };
 
     if (this.disabled) {
-      anchorData.attrs.tabIndex = -1;
+      anchorData.attrs.tabindex = -1;
     }
 
     return <Component {...anchorData}>{this.$slots.default}</Component>;

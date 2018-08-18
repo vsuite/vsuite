@@ -46,7 +46,7 @@ export default {
             <div
               class={this._addPrefix('notice-close')}
               role="button"
-              tabIndex="-1"
+              tabindex="-1"
               onClick={this._handleClose}
             >
               <span class={this._addPrefix('notice-close-x')} />

@@ -120,7 +120,7 @@ export default {
           role="rowHeader"
           class={this._addPrefix('heading')}
           onClick={this._handleSelect}
-          tabIndex={-1}
+          tabindex={-1}
         >
           {header}
         </div>

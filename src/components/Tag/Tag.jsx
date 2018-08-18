@@ -42,7 +42,7 @@ export default {
         {this.closable && (
           <i
             role="button"
-            tabIndex="-1"
+            tabindex="-1"
             class={this._addPrefix('icon-close')}
             onClick={this._handleClose}
           />

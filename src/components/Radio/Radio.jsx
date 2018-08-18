@@ -20,7 +20,7 @@ export default {
     value: VueTypes.any,
     inline: VueTypes.bool.def(false),
     disabled: VueTypes.bool.def(false),
-    tabIndex: VueTypes.number,
+    tabindex: VueTypes.number,
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
   },
 
@@ -50,9 +50,9 @@ export default {
   render() {
     const radioData = {
       class: this.classes,
-      // on: {
-      //   ..._.omit(this.$listeners, ['change']),
-      // },
+      on: {
+        ..._.omit(this.$listeners, ['change']),
+      },
     };
     const iptData = {
       domProps: {
@@ -75,7 +75,7 @@ export default {
           <label>
             <span
               class={this._addPrefix('wrapper')}
-              tabIndex={this.disabled ? -1 : this.tabIndex}
+              tabindex={this.disabled ? -1 : this.tabindex}
             >
               <input {...iptData} />
               <span class={this._addPrefix('inner')} />

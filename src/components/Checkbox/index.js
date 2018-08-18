@@ -1,6 +1,6 @@
 import Checkbox from './Checkbox.jsx';
-import CHeckboxGroup from './CheckboxGroup.jsx';
+import CheckboxGroup from './CheckboxGroup.jsx';
 
-Checkbox.Group = CHeckboxGroup;
+Checkbox.Group = CheckboxGroup;
 
 export default Checkbox;
