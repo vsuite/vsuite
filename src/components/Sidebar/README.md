@@ -1,1 +1,1 @@
-# {{name}}
+# Sidebar
