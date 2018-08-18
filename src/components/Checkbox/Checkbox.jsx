@@ -17,6 +17,10 @@ export default {
       type: Boolean,
       default: undefined,
     },
+    defaultChecked: {
+      type: Boolean,
+      default: undefined,
+    },
     value: VueTypes.any,
     inline: VueTypes.bool.def(false),
     disabled: VueTypes.bool.def(false),
@@ -27,7 +31,9 @@ export default {
 
   data() {
     return {
-      innerChecked: this.checked,
+      innerChecked: _.isUndefined(this.checked)
+        ? this.defaultChecked
+        : this.checked,
     };
   },
 

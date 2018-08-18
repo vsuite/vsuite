@@ -29,10 +29,7 @@ export default {
 
   data() {
     return {
-      innerVal:
-        _.isUndefined(this.value) && !_.isUndefined(this.defaultValue)
-          ? this.defaultValue
-          : this.value,
+      innerVal: _.isUndefined(this.value) ? this.defaultValue : this.value,
     };
   },
 

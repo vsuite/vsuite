@@ -30,6 +30,21 @@ stories.add('default', () => ({
   },
 }));
 
+stories.add('initial', () => ({
+  render() {
+    return (
+      <Demo title="Initial">
+        <Checkbox.Group inline defaultValue={['A']}>
+          <Checkbox value="A">Item A</Checkbox>
+          <Checkbox value="B">Item B</Checkbox>
+          <Checkbox value="C">Item C</Checkbox>
+          <Checkbox value="D">Item D</Checkbox>
+        </Checkbox.Group>
+      </Demo>
+    );
+  },
+}));
+
 stories.add('group', () => ({
   render() {
     return (

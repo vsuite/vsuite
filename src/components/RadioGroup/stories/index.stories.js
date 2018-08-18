@@ -23,6 +23,23 @@ stories.add('default', () => ({
   },
 }));
 
+stories.add('initial', () => ({
+  render() {
+    return (
+      <Demo title="Initial">
+        <Radio.Group defaultValue="A" inline>
+          <Radio value="A">Item A</Radio>
+          <Radio value="B">Item B</Radio>
+          <Radio value="C">Item C</Radio>
+          <Radio value="D" disabled>
+            Item D
+          </Radio>
+        </Radio.Group>
+      </Demo>
+    );
+  },
+}));
+
 stories.add('inline', () => ({
   render() {
     return (

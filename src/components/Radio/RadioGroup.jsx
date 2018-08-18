@@ -17,6 +17,7 @@ export default {
 
   props: {
     value: VueTypes.any,
+    defaultValue: VueTypes.any,
     inline: VueTypes.bool.def(false),
     disabled: VueTypes.bool.def(false),
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
@@ -24,7 +25,7 @@ export default {
 
   data() {
     return {
-      innerVal: this.value,
+      innerVal: _.isUndefined(this.value) ? this.defaultValue : this.value,
     };
   },
 
