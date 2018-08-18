@@ -9,18 +9,23 @@ import Col from 'components/Col';
 const stories = storiesOf('Data Entry|Input', module);
 
 stories.add('default', () => ({
-  data() {
-    return { value: '' };
-  },
-
   render() {
     return (
       <Demo title="Default">
+        <Input style={{ width: '300px' }} placeholder="Default Input" />
+      </Demo>
+    );
+  },
+}));
+
+stories.add('initial', () => ({
+  render() {
+    return (
+      <Demo title="Initial">
         <Input
-          value={this.value}
+          defaultValue="you can delete me"
           style={{ width: '300px' }}
           placeholder="Default Input"
-          onChange={val => (this.value = val)}
         />
       </Demo>
     );

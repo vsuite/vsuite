@@ -14,6 +14,26 @@ stories.add('default', () => ({
   },
 }));
 
+stories.add('placeholder', () => ({
+  render() {
+    return (
+      <Demo title="Placeholder">
+        <InputNumber placeholder="Price" style={{ width: '160px' }} />
+      </Demo>
+    );
+  },
+}));
+
+stories.add('initial', () => ({
+  render() {
+    return (
+      <Demo title="Initial">
+        <InputNumber defaultValue={10} style={{ width: '160px' }} />
+      </Demo>
+    );
+  },
+}));
+
 stories.add('size', () => ({
   render() {
     const styles = { marginBottom: '10px' };

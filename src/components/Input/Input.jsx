@@ -17,6 +17,7 @@ export default {
     id: VueTypes.string,
     type: VueTypes.string.def('text'),
     value: VueTypes.oneOfType([VueTypes.string, VueTypes.number]),
+    defaultValue: VueTypes.oneOfType([VueTypes.string, VueTypes.number]),
     size: VueTypes.oneOf(SIZES),
     disabled: VueTypes.bool.def(false),
     placeholder: VueTypes.string,
@@ -28,7 +29,10 @@ export default {
 
   data() {
     return {
-      innerVal: this.value,
+      innerVal:
+        _.isUndefined(this.value) && !_.isUndefined(this.defaultValue)
+          ? this.defaultValue
+          : this.value,
     };
   },
 

@@ -37,7 +37,8 @@ export default {
     min: VueTypes.number.def(-Infinity),
     max: VueTypes.number.def(Infinity),
     step: VueTypes.number.def(1),
-    value: [String, Number],
+    value: VueTypes.oneOfType([VueTypes.string, VueTypes.number]),
+    defaultValue: VueTypes.oneOfType([VueTypes.string, VueTypes.number]),
     prefix: VueTypes.string, // prefix
     postfix: VueTypes.string, // postfix
     disabled: VueTypes.bool.def(false),
@@ -54,7 +55,10 @@ export default {
 
   data() {
     return {
-      innerVal: this.value,
+      innerVal:
+        _.isUndefined(this.value) && !_.isUndefined(this.defaultValue)
+          ? this.defaultValue
+          : this.value,
     };
   },
 
