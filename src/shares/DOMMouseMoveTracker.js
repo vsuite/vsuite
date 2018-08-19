@@ -31,8 +31,16 @@ class DOMMouseMoveTracker {
    */
   captureMouseMoves(event) {
     if (!this.eventMoveToken && !this.eventUpToken) {
-      this.eventMoveToken = on(this.domNode, 'mousemove', this.onMouseMove);
-      this.eventUpToken = on(this.domNode, 'mouseup', this.onMouseUp);
+      this.eventMoveToken = on(
+        this.domNode,
+        'mousemove',
+        this.onMouseMove.bind(this)
+      );
+      this.eventUpToken = on(
+        this.domNode,
+        'mouseup',
+        this.onMouseUp.bind(this)
+      );
     }
 
     if (!this.isDraggingStatus) {
@@ -92,7 +100,9 @@ class DOMMouseMoveTracker {
     if (this.animationFrameID === null) {
       // The mouse may move faster then the animation frame does.
       // Use `requestAnimationFramePolyfill` to avoid over-updating.
-      this.animationFrameID = requestAnimationFramePolyfill(this.didMouseMove);
+      this.animationFrameID = requestAnimationFramePolyfill(
+        this.didMouseMove.bind(this)
+      );
     }
 
     this.x = x;
