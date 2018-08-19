@@ -1,5 +1,4 @@
 import VueTypes from 'vue-types';
-import Tooltip from 'components/Tooltip';
 import _ from 'lodash';
 import { getOffset, getWidth, getHeight, addStyle, on } from 'shares/dom';
 import DOMMouseMoveTracker from 'shares/DOMMouseMoveTracker';
@@ -188,6 +187,13 @@ export default {
           [this._addPrefix('showtip')]: this.handleDown,
         },
       ];
+      const tooltipData = {
+        class: [this._addTooltipPrefix('popper'), this._addPrefix('tooltip')],
+        attrs: {
+          role: 'tooltip',
+          'x-placement': 'top',
+        },
+      };
 
       return (
         <div
@@ -199,14 +205,12 @@ export default {
           onMouseenter={this._handleMouseEnter}
         >
           {this.tooltip && (
-            <Tooltip
-              visible={true}
-              title={`${this.currentVal}`}
-              class={this._addPrefix('tooltip')}
-              placement="top"
-            >
-              <div style={{ height: '20px' }} />
-            </Tooltip>
+            <div {...tooltipData}>
+              <div class={this._addTooltipPrefix('arrow')} />
+              <div class={this._addTooltipPrefix('inner')}>
+                {this.currentVal}
+              </div>
+            </div>
           )}
           {this.handleTitle ||
             (this.renderHandleTitle && this.renderHandleTitle(h))}
@@ -354,6 +358,10 @@ export default {
 
     _addPrefix(cls) {
       return prefix(this.classPrefix, cls);
+    },
+
+    _addTooltipPrefix(cls) {
+      return prefix(defaultClassPrefix('tooltip'), cls);
     },
   },
 };
