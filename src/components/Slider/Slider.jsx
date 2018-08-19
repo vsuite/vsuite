@@ -163,7 +163,7 @@ export default {
         return (
           <span class={classes}>
             <span class={this._addPrefix('mark-content')}>
-              {this.renderMark(mark)}
+              {this.renderMark(mark, this.currentVal, this)}
             </span>
           </span>
         );
@@ -213,7 +213,8 @@ export default {
             </div>
           )}
           {this.handleTitle ||
-            (this.renderHandleTitle && this.renderHandleTitle(h))}
+            (this.renderHandleTitle &&
+              this.renderHandleTitle(h, this.currentVal, this))}
         </div>
       );
     },
