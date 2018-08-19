@@ -297,11 +297,11 @@ export default {
     },
 
     _handleRemoveResizeListener() {
-      if (this.windowResizeListener) {
-        this.windowResizeListener.off();
+      if (!this.windowResizeListener) return;
 
-        this.windowResizeListener = null;
-      }
+      this.windowResizeListener.off();
+
+      this.windowResizeListener = null;
     },
 
     _handleWindowResize() {
