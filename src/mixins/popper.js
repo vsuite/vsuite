@@ -59,6 +59,12 @@ export default {
     },
   },
 
+  watch: {
+    currentVisible(val) {
+      this.$emit(val ? 'show' : 'hide');
+    },
+  },
+
   mounted() {
     if (this.currentVisible) this._updatePopper();
   },

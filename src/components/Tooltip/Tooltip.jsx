@@ -17,10 +17,6 @@ export default {
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
   },
 
-  data() {
-    return {};
-  },
-
   computed: {
     popperClasses() {
       return [
@@ -63,11 +59,6 @@ export default {
           addStyle(popper, { left: '2px' });
         }
       }
-
-      this.$emit(val ? 'show' : 'hide');
-    },
-    title() {
-      this._updatePopper();
     },
   },
 
