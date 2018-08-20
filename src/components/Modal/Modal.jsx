@@ -23,6 +23,8 @@ export default {
     event: 'change',
   },
 
+  directives: { transferDom },
+
   props: {
     visible: {
       type: Boolean,
@@ -55,8 +57,6 @@ export default {
     }),
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
   },
-
-  directives: { transferDom },
 
   data() {
     return {

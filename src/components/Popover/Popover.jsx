@@ -29,6 +29,8 @@ export default {
     event: 'change',
   },
 
+  directives: { clickOutside, transferDom },
+
   props: {
     visible: {
       type: Boolean,
@@ -51,8 +53,6 @@ export default {
     // popper
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
   },
-
-  directives: { clickOutside, transferDom },
 
   data() {
     return {
