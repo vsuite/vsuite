@@ -24,6 +24,7 @@ stories.add('default', () => ({
 stories.add('pure', () => ({
   render: h => {
     const placements = [
+      'auto',
       'bottom',
       'bottom-start',
       'bottom-end',

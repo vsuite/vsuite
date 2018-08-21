@@ -95,37 +95,49 @@
     // Common style for .placement-top*
     &[x-placement='top'], &[x-placement='bottom'] {
       .@{ns}tooltip-arrow {
-        left: 10px;
+        left: 50%;
+        right: auto;
+        margin-left: -5px;
       }
     }
 
     &[x-placement='top-start'], &[x-placement='bottom-start'] {
       .@{ns}tooltip-arrow {
         left: 10px;
+        right: auto;
+        margin-left: 0;
       }
     }
 
     &[x-placement='top-end'], &[x-placement='bottom-end'] {
       .@{ns}tooltip-arrow {
+        left: auto;
         right: 10px;
+        margin-left: 0;
       }
     }
 
     &[x-placement='left'], &[x-placement^='right'] {
       .@{ns}tooltip-arrow {
-        top: 4px;
+        top: 50%;
+        bottom: auto;
+        margin-top: -@tooltip-arrow-outer-width;
       }
     }
 
     &[x-placement='left-start'], &[x-placement^='right-start'] {
       .@{ns}tooltip-arrow {
         top: 4px;
+        bottom: auto;
+        margin-top: 0;
       }
     }
 
     &[x-placement='left-end'], &[x-placement^='right-end'] {
       .@{ns}tooltip-arrow {
+        top: auto;
         bottom: 4px;
+        margin-top: 0;
       }
     }
   }

@@ -23,6 +23,7 @@ stories.add('default', () => ({
 stories.add('pure', () => ({
   render: h => {
     const placements = [
+      'auto',
       'bottom',
       'bottom-start',
       'bottom-end',
@@ -44,7 +45,7 @@ stories.add('pure', () => ({
             <Tooltip
               pure
               placement={placement}
-              title={`This is a tooltip at \`${placement}\`.`}
+              title={`This is a tooltip ! This is a tooltip ! This is a tooltip ! This is a tooltip ! This is a tooltip ! This is a tooltip ! This is a tooltip ! at \`${placement}\`.`}
             />
           </div>
         ))}
