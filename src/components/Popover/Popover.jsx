@@ -8,11 +8,17 @@ const CLASS_PREFIX = 'popover';
 export default {
   name: 'Popover',
 
+  model: {
+    prop: 'visible',
+    event: 'change',
+  },
+
   mixins: [popperMixin],
 
   props: {
     /* eslint-disable vue/require-prop-types */
     trigger: {
+      ...popperMixin.props.trigger,
       default: 'click',
     },
     title: VueTypes.string,

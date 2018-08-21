@@ -19,11 +19,6 @@ function validTrigger(val) {
 }
 
 export default {
-  model: {
-    prop: 'visible',
-    event: 'change',
-  },
-
   directives: { clickOutside, transferDom },
 
   props: {
@@ -201,23 +196,25 @@ export default {
 
       if (!reference || !popper) return;
 
-      this.popperJS = new Popper(
-        reference,
-        popper,
-        _.merge(
-          {
-            placement: this.placement,
-            onCreate: this._handleCreate,
-            // onUpdate: this._handleUpdate,
-            modifiers: {
-              arrow: {
-                element: arrow,
-              },
+      let options = {
+        placement: this.placement,
+        onCreate: this._handleCreate,
+        // onUpdate: this._handleUpdate,
+      };
+
+      if (arrow) {
+        options = _.merge(options, {
+          modifiers: {
+            arrow: {
+              element: arrow,
             },
           },
-          this.popperOptions || {}
-        )
-      );
+        });
+      }
+
+      options = _.merge(options, this.popperOptions || {});
+
+      this.popperJS = new Popper(reference, popper, options);
     },
 
     _updatePopper() {

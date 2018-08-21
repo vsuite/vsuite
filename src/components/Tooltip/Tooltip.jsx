@@ -8,6 +8,11 @@ const CLASS_PREFIX = 'tooltip';
 export default {
   name: 'Tooltip',
 
+  model: {
+    prop: 'visible',
+    event: 'change',
+  },
+
   mixins: [popperMixin],
 
   props: {

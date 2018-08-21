@@ -167,12 +167,12 @@ export default {
         return (
           <span class={classes}>
             <span class={this._addPrefix('mark-content')}>
-              {(this.$scopedSlots.mark &&
+              {this.$scopedSlots.mark &&
                 this.$scopedSlots.mark({
                   mark,
                   currentVal: this.currentVal,
-                })) ||
-                (this.renderMark && this.renderMark(h, mark, this.currentVal))}
+                })}
+              {this.renderMark && this.renderMark(h, mark, this.currentVal)}
             </span>
           </span>
         );
@@ -221,11 +221,10 @@ export default {
               </div>
             </div>
           )}
-          {(this.$scopedSlots.handleTitle &&
-            this.$scopedSlots.handleTitle({ currentVal: this.currentVal })) ||
-            (this.renderHandleTitle &&
-              this.renderHandleTitle(h, this.currentVal)) ||
-            this.handleTitle}
+          {this.$scopedSlots.handleTitle &&
+            this.$scopedSlots.handleTitle({ currentVal: this.currentVal })}
+          {this.renderHandleTitle && this.renderHandleTitle(h, this.currentVal)}
+          {this.handleTitle}
         </div>
       );
     },
