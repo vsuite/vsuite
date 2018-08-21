@@ -1,4 +1,4 @@
-@import "common";
+@import 'common';
 
 //
 // Popovers
@@ -16,7 +16,7 @@
     // Our parent element can be arbitrary since popovers are by default inserted as a sibling of their target element.
     // So reset our font and text properties to avoid inheriting weird values.
     .reset-text();
-    .drop-shadow(0 1px 8px rgba(0, 0, 0, .12));
+    .drop-shadow(0 1px 8px rgba(0, 0, 0, 0.12));
 
     position: absolute;
     top: 0;
@@ -45,7 +45,7 @@
 
       &::after {
         border-width: @popover-arrow-width;
-        content: "";
+        content: '';
       }
     }
 
@@ -75,7 +75,7 @@
     }
 
     // Common style for .placement-top*
-    &[x-placement^=top] {
+    &[x-placement^='top'] {
       margin-bottom: @popover-arrow-gap-lg;
       .set-translate(0, -@popover-translate-distance);
 
@@ -95,7 +95,7 @@
     }
 
     // Common style for .placement-right*
-    &[x-placement^=right] {
+    &[x-placement^='right'] {
       margin-left: @popover-arrow-gap-lg;
       .set-translate(@popover-translate-distance, 0);
 
@@ -115,7 +115,7 @@
     }
 
     // Common style for .placement-bottom*
-    &[x-placement^=bottom] {
+    &[x-placement^='bottom'] {
       margin-top: @popover-arrow-gap-lg;
       .set-translate(0, @popover-translate-distance);
 
@@ -135,7 +135,7 @@
     }
 
     // Common style for .placement-left*
-    &[x-placement^=left] {
+    &[x-placement^='left'] {
       margin-right: @popover-arrow-gap-lg;
       .set-translate(-@popover-translate-distance, 0);
 
@@ -158,11 +158,11 @@
 
 // Popover Animation
 .popover-fade-enter-active {
-  transition: opacity .15s linear, left .15s ease-in, top .15s ease-in;
+  transition: opacity 0.15s linear, left 0.15s ease-in, top 0.15s ease-in;
 }
 
 .popover-fade-leave-active {
-  transition: opacity .1s linear, left .1s ease-out, top .1s ease-out;
+  transition: opacity 0.1s linear, left 0.1s ease-out, top 0.1s ease-out;
 }
 
 .popover-fade-enter,
@@ -170,22 +170,22 @@
   opacity: 0;
 
   // Common style for .placement-top*
-  &[x-placement^=top] {
+  &[x-placement^='top'] {
     top: 2px;
   }
 
   // Common style for .placement-bottom*
-  &[x-placement^=bottom] {
+  &[x-placement^='bottom'] {
     top: -2px;
   }
 
   // Common style for .placement-right*
-  &[x-placement^=right] {
+  &[x-placement^='right'] {
     left: -2px;
   }
 
   // Common style for .placement-lef*
-  &[x-placement^=left] {
+  &[x-placement^='left'] {
     left: 2px;
   }
 }

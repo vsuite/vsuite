@@ -9158,6 +9158,10 @@ style-search@^0.1.0:
   version "0.1.0"
   resolved "http://registry.npm.taobao.org/style-search/download/style-search-0.1.0.tgz#7958c793e47e32e07d2b5cafe5c0bf8e12e77902"
 
+stylelint-config-prettier@^4.0.0:
+  version "4.0.0"
+  resolved "http://registry.npm.taobao.org/stylelint-config-prettier/download/stylelint-config-prettier-4.0.0.tgz#8c712977be13bd25191ab8b986b5c07a3342a5dc"
+
 stylelint-config-recommended@^2.1.0:
   version "2.1.0"
   resolved "http://registry.npm.taobao.org/stylelint-config-recommended/download/stylelint-config-recommended-2.1.0.tgz#f526d5c771c6811186d9eaedbed02195fee30858"

@@ -1,5 +1,5 @@
-@import "common";
-@import "mixins/drawer";
+@import 'common';
+@import 'mixins/drawer';
 
 // Container that the drawer scrolls within
 .@{ns}drawer {
@@ -61,7 +61,7 @@
 
   // Full page
   &-full {
-    @max-width: ~"calc(100% - @{drawer-full-size-margin})";
+    @max-width: ~'calc(100% - @{drawer-full-size-margin})';
     @max-height: @max-width;
 
     &.@{ns}drawer-top,
@@ -156,12 +156,12 @@
   // Fade for backdrop
   &.fade-enter-active {
     opacity: @drawer-backdrop-opacity;
-    transition: opacity .3s ease-in;
+    transition: opacity 0.3s ease-in;
   }
 
   &.fade-leave-active {
     opacity: 0;
-    transition: opacity .3s ease-out;
+    transition: opacity 0.3s ease-out;
   }
 
   &.fade-enter,

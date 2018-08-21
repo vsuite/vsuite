@@ -11,7 +11,7 @@
 }
 
 .drawer-animation(@timing) {
-  animation-duration: .3s;
+  animation-duration: 0.3s;
   animation-timing-function: @timing;
   animation-fill-mode: forwards;
 }
@@ -26,7 +26,7 @@
     }
 
     &.fade-leave-active {
-      .drawer-animation(cubic-bezier(.4, 0, 1, 1)); //Fast out
+      .drawer-animation(cubic-bezier(0.4, 0, 1, 1)); //Fast out
 
       animation-name: @move-out-animation-name;
     }

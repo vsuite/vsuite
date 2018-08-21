@@ -1,5 +1,5 @@
-@import "common";
-@import "mixins/timeline";
+@import 'common';
+@import 'mixins/timeline';
 
 //
 // Time lines
@@ -27,7 +27,7 @@
     left: 0;
 
     &::before {
-      content: "";
+      content: '';
       display: block;
       width: @time-line-dot-side-length;
       height: @time-line-dot-side-length;
@@ -72,6 +72,6 @@
   // Last item tail need set height.
   &-item:last-child &-item-tail {
     bottom: auto;
-    height: @time-line-dot-center-gap+@time-line-dot-side-length;
+    height: @time-line-dot-center-gap+ @time-line-dot-side-length;
   }
 }

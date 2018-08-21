@@ -1,6 +1,6 @@
-@import "common";
-@import "mixins/button";
-@import "mixins/toggle";
+@import 'common';
+@import 'mixins/button';
+@import 'mixins/toggle';
 
 //
 // Pickers
@@ -23,11 +23,12 @@
   }
 
   &::after {
-    content: "";
+    content: '';
     cursor: pointer;
     position: absolute;
     background-color: @toggle-md-handle-bg;
-    transition: left @toggle-transition, margin-left @toggle-transition, width @toggle-transition;
+    transition: left @toggle-transition, margin-left @toggle-transition,
+      width @toggle-transition;
   }
 
   &-inner {

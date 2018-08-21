@@ -33,7 +33,8 @@
 
 .input-size(@input-height; @padding-vertical; @padding-horizontal; @font-size; @line-height; @border-radius;) {
   height: @input-height;
-  padding: (@padding-vertical - @input-border-width) (@padding-horizontal - @input-border-width);
+  padding: (@padding-vertical - @input-border-width)
+    (@padding-horizontal - @input-border-width);
   font-size: @font-size;
   line-height: @line-height;
 
@@ -43,19 +44,34 @@
 }
 
 .input-lg() {
-  .input-size(@input-height-large; @padding-large-vertical; @padding-base-input-horizontal; @font-size-large; @line-height-large; @input-border-radius);
+  .input-size(
+    @input-height-large; @padding-large-vertical;
+      @padding-base-input-horizontal; @font-size-large; @line-height-large;
+      @input-border-radius
+  );
 }
 
 .input-md() {
-  .input-size(@input-height-base; @padding-base-vertical; @padding-base-input-horizontal; @font-size-base; @line-height-base; @input-border-radius);
+  .input-size(
+    @input-height-base; @padding-base-vertical; @padding-base-input-horizontal;
+      @font-size-base; @line-height-base; @input-border-radius
+  );
 }
 
 .input-sm() {
-  .input-size(@input-height-small; @padding-small-vertical; @padding-base-input-horizontal; @font-size-base; @line-height-base; @input-border-radius);
+  .input-size(
+    @input-height-small; @padding-small-vertical;
+      @padding-base-input-horizontal; @font-size-base; @line-height-base;
+      @input-border-radius
+  );
 }
 
 .input-xs() {
-  .input-size(@input-height-extra-small; @padding-extra-small-vertical; @padding-base-input-horizontal; @font-size-small; @line-height-base; @input-border-radius);
+  .input-size(
+    @input-height-extra-small; @padding-extra-small-vertical;
+      @padding-base-input-horizontal; @font-size-small; @line-height-base;
+      @input-border-radius
+  );
 }
 
 .input-base() {
@@ -63,7 +79,7 @@
 }
 
 .reset-input-group-addon-size(@size-name) {
-  @padding-horizontal-name: ~"padding-@{size-name}-horizontal";
+  @padding-horizontal-name: ~'padding-@{size-name}-horizontal';
 
   @width: @@padding-horizontal-name * 2 - @input-border-width*2 + @font-size-base;
   @padding-horizontal: (@width - @font-size-base)/2;
@@ -74,13 +90,14 @@
 }
 
 .reset-inside-input-group-btn-size(@size-name) {
-  @height: ~"input-height-@{size-name}";
-  @vertical: ~"padding-@{size-name}-vertical";
-  @horizontal: ~"padding-@{size-name}-horizontal";
-  @font-size: ~"font-size-@{size-name}";
+  @height: ~'input-height-@{size-name}';
+  @vertical: ~'padding-@{size-name}-vertical';
+  @horizontal: ~'padding-@{size-name}-horizontal';
+  @font-size: ~'font-size-@{size-name}';
 
   height: @@height - @input-border-width*2;
-  padding: (@@vertical - @input-border-width) (@@horizontal - @input-border-width);
+  padding: (@@vertical - @input-border-width)
+    (@@horizontal - @input-border-width);
   border-radius: 0 @border-radius-base @border-radius-base 0;
 
   > .@{ns}icon {
@@ -95,9 +112,9 @@
 }
 
 .reset-input-group-children-size(@size-name) {
-  @height: ~"input-height-@{size-name}";
+  @height: ~'input-height-@{size-name}';
   @useable-height: @@height - @input-border-width*2;
-  @vertical: ~"padding-@{size-name}-vertical";
+  @vertical: ~'padding-@{size-name}-vertical';
 
   &.@{ns}input-group:not(.@{ns}input-group-inside) {
     > .@{ns}input {

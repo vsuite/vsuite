@@ -1,4 +1,4 @@
-@import "common";
+@import 'common';
 
 //
 // Tooltips
@@ -25,7 +25,7 @@
     font-size: @font-size-small;
 
     // Common style for .placement-top*
-    &[x-placement^=top] {
+    &[x-placement^='top'] {
       margin-bottom: @tooltip-arrow-gap-lg;
       .set-translate(0, -@tooltip-translate-distance);
 
@@ -41,7 +41,7 @@
     }
 
     // Common style for .placement-bottom*
-    &[x-placement^=bottom] {
+    &[x-placement^='bottom'] {
       margin-top: @tooltip-arrow-gap-lg;
       .set-translate(0, @tooltip-translate-distance);
 
@@ -57,7 +57,7 @@
     }
 
     // Common style for .placement-right*
-    &[x-placement^=right] {
+    &[x-placement^='right'] {
       margin-left: @tooltip-arrow-gap-lg;
       .set-translate(@tooltip-translate-distance, 0);
 
@@ -67,13 +67,14 @@
         .edge-position(left, 1px);
         .ie11-position(left, 1px);
 
-        border-width: @tooltip-arrow-outer-width @tooltip-arrow-outer-width @tooltip-arrow-outer-width 0;
+        border-width: @tooltip-arrow-outer-width @tooltip-arrow-outer-width
+          @tooltip-arrow-outer-width 0;
         border-color: transparent @tooltip-bg transparent transparent;
       }
     }
 
     // Common style for .placement-lef*
-    &[x-placement^=left] {
+    &[x-placement^='left'] {
       margin-right: @tooltip-arrow-gap-lg;
       .set-translate(-@tooltip-translate-distance, 0);
 
@@ -83,14 +84,15 @@
         .edge-position(right, 1px);
         .ie11-position(right, 1px);
 
-        border-width: @tooltip-arrow-outer-width 0 @tooltip-arrow-outer-width @tooltip-arrow-outer-width;
+        border-width: @tooltip-arrow-outer-width 0 @tooltip-arrow-outer-width
+          @tooltip-arrow-outer-width;
         border-color: transparent transparent transparent @tooltip-bg;
       }
     }
   }
 
   &-popper&-popper-theme-light {
-    .drop-shadow(0 1px 8px rgba(0, 0, 0, .12));
+    .drop-shadow(0 1px 8px rgba(0, 0, 0, 0.12));
 
     .@{ns}tooltip-inner {
       color: @tooltip-white-color;
@@ -101,13 +103,13 @@
       position: absolute;
       width: 0;
       height: 0;
-      content: " ";
+      content: ' ';
       display: block;
       border-style: solid;
     }
 
     // Common style for .placement-top*
-    &[x-placement^=top] {
+    &[x-placement^='top'] {
       .@{ns}tooltip-arrow {
         border-top-color: @tooltip-white-arrow-bg;
 
@@ -121,7 +123,7 @@
     }
 
     // Common style for .placement-bottom*
-    &[x-placement^=bottom] {
+    &[x-placement^='bottom'] {
       .@{ns}tooltip-arrow {
         border-bottom-color: @tooltip-white-arrow-bg;
 
@@ -135,28 +137,30 @@
     }
 
     // Common style for .placement-right*
-    &[x-placement^=right] {
+    &[x-placement^='right'] {
       .@{ns}tooltip-arrow {
         border-right-color: @tooltip-white-arrow-bg;
 
         &::after {
           left: 1px;
           bottom: -@tooltip-arrow-width;
-          border-width: @tooltip-arrow-width @tooltip-arrow-width @tooltip-arrow-width 0;
+          border-width: @tooltip-arrow-width @tooltip-arrow-width
+            @tooltip-arrow-width 0;
           border-color: transparent @tooltip-white-bg transparent transparent;
         }
       }
     }
 
     // Common style for .placement-lef*
-    &[x-placement^=left] {
+    &[x-placement^='left'] {
       .@{ns}tooltip-arrow {
         border-left-color: @tooltip-white-arrow-bg;
 
         &::after {
           right: 1px;
           top: -@tooltip-arrow-width;
-          border-width: @tooltip-arrow-width 0 @tooltip-arrow-width @tooltip-arrow-width;
+          border-width: @tooltip-arrow-width 0 @tooltip-arrow-width
+            @tooltip-arrow-width;
           border-color: transparent transparent transparent @tooltip-white-bg;
         }
       }
@@ -191,11 +195,11 @@
 
 // Tooltip Animation
 .tooltip-fade-enter-active {
-  transition: opacity .15s linear, left .15s ease-in, top .15s ease-in;
+  transition: opacity 0.15s linear, left 0.15s ease-in, top 0.15s ease-in;
 }
 
 .tooltip-fade-leave-active {
-  transition: opacity .1s linear, left .1s ease-out, top .1s ease-out;
+  transition: opacity 0.1s linear, left 0.1s ease-out, top 0.1s ease-out;
 }
 
 .tooltip-fade-enter,
@@ -203,22 +207,22 @@
   opacity: 0;
 
   // Common style for .placement-top*
-  &[x-placement^=top] {
+  &[x-placement^='top'] {
     top: 2px;
   }
 
   // Common style for .placement-bottom*
-  &[x-placement^=bottom] {
+  &[x-placement^='bottom'] {
     top: -2px;
   }
 
   // Common style for .placement-right*
-  &[x-placement^=right] {
+  &[x-placement^='right'] {
     left: -2px;
   }
 
   // Common style for .placement-lef*
-  &[x-placement^=left] {
+  &[x-placement^='left'] {
     left: 2px;
   }
 }

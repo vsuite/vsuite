@@ -1,4 +1,4 @@
-@import "common";
+@import 'common';
 
 // NavBar
 // --------------------------------------------------
@@ -37,7 +37,8 @@
   // DropDown
   .@{ns}dropdown > .@{ns}dropdown-toggle {
     padding: @nav-bar-padding-vertical @nav-bar-padding-horizontal;
-    padding-right: @nav-bar-padding-horizontal+@dropdown-caret-with+@dropdown-caret-padding;
+    padding-right: @nav-bar-padding-horizontal+ @dropdown-caret-with+
+      @dropdown-caret-padding;
     height: @nav-bar-height;
   }
 
@@ -129,7 +130,9 @@
     .reset-font-color(@nav-bar-subtle-font-color);
   }
 
-  .@{ns}navbar-nav .@{ns}nav-item:not(.@{ns}nav-item-active) > .@{ns}nav-item-content,
+  .@{ns}navbar-nav
+    .@{ns}nav-item:not(.@{ns}nav-item-active)
+    > .@{ns}nav-item-content,
   .@{ns}navbar-nav .@{ns}dropdown .@{ns}dropdown-toggle {
     &:hover,
     &:focus {
@@ -145,7 +148,10 @@
 
   // Active
   .@{ns}navbar-nav .@{ns}nav-item-active > .@{ns}nav-item-content,
-  .@{ns}navbar-nav .@{ns}dropdown .@{ns}dropdown-menu-active ~ .@{ns}dropdown-toggle {
+  .@{ns}navbar-nav
+    .@{ns}dropdown
+    .@{ns}dropdown-menu-active
+    ~ .@{ns}dropdown-toggle {
     background-color: @nav-bar-subtle-active-bg;
     .reset-font-color(@nav-bar-subtle-font-active-color);
   }

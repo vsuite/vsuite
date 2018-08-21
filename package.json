@@ -17,7 +17,7 @@
     "dist:style": "",
     "lint": "eslint --fix '{.storybook,src}/**/*.{js,jsx,vue}' && stylelint --fix 'src/styles/**/*.less'",
     "test": "yarn prettier && yarn lint && jest",
-    "prettier": "prettier --write 'src/**/*.{js,vue}'",
+    "prettier": "stylelint-config-prettier-check && prettier --write 'src/**/*.{js,vue,less}'",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
     "docs:deploy": "sh docs/deploy.sh"
@@ -79,6 +79,7 @@
     "react-dom": "^16.4.2",
     "style-loader": "^0.22.1",
     "stylelint": "^9.5.0",
+    "stylelint-config-prettier": "^4.0.0",
     "stylelint-config-standard": "^18.2.0",
     "svg-sprite-loader": "^3.9.2",
     "url-loader": "^1.1.1",

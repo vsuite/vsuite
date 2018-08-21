@@ -1,5 +1,5 @@
 module.exports = {
-  extends: 'stylelint-config-standard',
+  extends: ['stylelint-config-standard', 'stylelint-config-prettier'],
   rules: {
     // 覆盖 stylelint-config-standard 规则
     // `stylelint-config-standard`中的一些规则并不适用，这里进行了覆盖
@@ -8,8 +8,6 @@ module.exports = {
     // 不检查函数之后是否有空白
     // style-lint 无法区分 less 的 mixin 还是 css function 这里直接禁用掉该检查项
     'function-whitespace-after': null,
-    // 不允许小于1数字的前导零
-    'number-leading-zero': 'never',
 
     // 扩充规则
     // - 启用了最严格的 vendor-prefix 限制，该限制会适用 {@link https://caniuse.com} 的数据进行判断
@@ -73,8 +71,6 @@ module.exports = {
       'root',
       'target',
     ],
-    // 字符串使用双引号
-    'string-quotes': 'double',
     // 禁止给值添加浏览器引擎前缀
     'value-no-vendor-prefix': true,
   },

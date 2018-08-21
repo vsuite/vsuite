@@ -1,12 +1,12 @@
-@import "common";
-@import "mixins/button";
-@import "mixins/picker";
+@import 'common';
+@import 'mixins/button';
+@import 'mixins/picker';
 
 // Calendar Picker
 // ----------------------
 
 // Calendar Picker Name Space
-@clpns: ~"@{ns}@{calendar-picker-prefix}";
+@clpns: ~'@{ns}@{calendar-picker-prefix}';
 
 .@{clpns} {
   background-color: @picker-bg;
@@ -63,7 +63,7 @@
     &:hover,
     &:hover:focus {
       cursor: not-allowed;
-      opacity: .3;
+      opacity: 0.3;
       background: none;
     }
 
@@ -75,7 +75,8 @@
   &-backward,
   &-forward {
     font-size: 0;
-    width: @padding-extra-small-vertical * 2 + @font-size-small * @line-height-small;
+    width: @padding-extra-small-vertical * 2 + @font-size-small *
+      @line-height-small;
 
     &::before {
       font-family: @font-family-icon;
@@ -178,7 +179,7 @@
 
   &-disabled&-is-today &-content,
   &-disabled&-selected &-content {
-    opacity: .3;
+    opacity: 0.3;
   }
 }
 
@@ -186,8 +187,10 @@
   .picker-calendar-cell-content;
 
   .@{clpns}-table-cell-is-today & {
-    border: @calendar-table-cell-content-today-border-width solid @calendar-table-cell-content-today-border-color;
-    padding: @calendar-table-cell-content-padding - @calendar-table-cell-content-today-border-width;
+    border: @calendar-table-cell-content-today-border-width solid
+      @calendar-table-cell-content-today-border-color;
+    padding: @calendar-table-cell-content-padding -
+      @calendar-table-cell-content-today-border-width;
   }
 
   .@{clpns}-table-cell-selected & {
@@ -231,7 +234,7 @@
   }
 
   .@{clpns}-show-month-dropdown &-content {
-    animation: .3s linear slideDown;
+    animation: 0.3s linear slideDown;
   }
 
   &-scroll {
@@ -266,7 +269,7 @@
   &-cell {
     display: inline-block;
     float: left;
-    width: ~"calc((100% - @{calendar-table-cell-content-today-border-width} * 12 ) / 6)";
+    width: ~'calc((100% - @{calendar-table-cell-content-today-border-width} * 12 ) / 6)';
     margin: @calendar-table-cell-padding;
     padding: @calendar-table-cell-content-padding;
     text-align: center;
@@ -298,7 +301,7 @@
   }
 
   .@{clpns}-show-time-dropdown &-content {
-    animation: .3s linear slideDown;
+    animation: 0.3s linear slideDown;
   }
 
   &-row {
@@ -343,7 +346,7 @@
     color: @B800;
     text-align: center;
     cursor: pointer;
-    transition: background-color .3s linear;
+    transition: background-color 0.3s linear;
 
     &-active& {
       &,
@@ -375,7 +378,7 @@
     }
 
     &-active&-disabled& {
-      opacity: .3;
+      opacity: 0.3;
       cursor: not-allowed;
     }
   }
@@ -411,7 +414,7 @@
       position: relative;
 
       &::before {
-        content: "";
+        content: '';
         width: 1px;
         height: 20px;
         background-color: @B200;
@@ -422,7 +425,7 @@
     }
 
     &-disabled {
-      opacity: .3;
+      opacity: 0.3;
       cursor: not-allowed;
 
       .reset-link-text-decoration();
@@ -432,11 +435,13 @@
   &-right-btn-ok {
     .btn;
     .btn-sm;
-    .button-primary-variant(@calendar-right-btn-ok-color; @calendar-right-btn-ok-bg);
+    .button-primary-variant(
+      @calendar-right-btn-ok-color; @calendar-right-btn-ok-bg
+    );
   }
 
   &-right-btn-ok&-btn-disabled {
-    opacity: .3;
+    opacity: 0.3;
     cursor: not-allowed;
 
     &,
@@ -544,7 +549,7 @@
   position: relative;
 
   &::before {
-    content: "";
+    content: '';
     background-color: @H050;
     display: block;
     width: 100%;

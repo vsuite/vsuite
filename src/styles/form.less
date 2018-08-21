@@ -1,5 +1,5 @@
-@import "common";
-@import "mixins/form";
+@import 'common';
+@import 'mixins/form';
 
 //
 // Forms
@@ -20,9 +20,9 @@ label {
 // address browser inconsistencies.
 
 // Focus for file, radio, and checkbox
-input[type="file"]:focus,
-input[type="radio"]:focus,
-input[type="checkbox"]:focus {
+input[type='file']:focus,
+input[type='radio']:focus,
+input[type='checkbox']:focus {
   .tab-focus();
 }
 
@@ -96,10 +96,10 @@ input[type="checkbox"]:focus {
   cursor: not-allowed;
 }
 
-.@{ns}radio input[type="radio"],
-.@{ns}radio-inline input[type="radio"],
-.@{ns}checkbox input[type="checkbox"],
-.@{ns}checkbox-inline input[type="checkbox"] {
+.@{ns}radio input[type='radio'],
+.@{ns}radio-inline input[type='radio'],
+.@{ns}checkbox input[type='checkbox'],
+.@{ns}checkbox-inline input[type='checkbox'] {
   position: absolute;
   top: 0;
   left: 0;
@@ -221,7 +221,7 @@ input[type="checkbox"]:focus {
     background-color: @error-message-background-color;
     border: 1px solid @error-message-border-color;
     border-radius: @border-radius-base;
-    filter: ~"drop-shadow(0 0 6px rgba(0,0,0,.1))";
+    filter: ~'drop-shadow(0 0 6px rgba(0,0,0,.1))';
     z-index: @zindex-error-message;
     color: @error-message-font-color;
     font-size: @error-message-font-size;
@@ -235,14 +235,14 @@ input[type="checkbox"]:focus {
 
     &-show {
       display: block;
-      animation-duration: .3s;
+      animation-duration: 0.3s;
       animation-timing-function: ease-out;
     }
 
     &-arrow {
       &::before,
       &::after {
-        content: "";
+        content: '';
         position: absolute;
         border-color: transparent;
         border-style: solid;
@@ -267,13 +267,14 @@ input[type="checkbox"]:focus {
       .@{ns}error-message-arrow {
         &::before,
         &::after {
-          border-width: 0 @error-message-triangle-width @error-message-triangle-width;
+          border-width: 0 @error-message-triangle-width
+            @error-message-triangle-width;
           border-bottom-color: @error-message-border-color;
           top: -1 * @error-message-triangle-width;
         }
 
         &::after {
-          top: -1*(@error-message-triangle-width - 1);
+          top: -1 * (@error-message-triangle-width - 1);
           border-bottom-color: @error-message-background-color;
         }
       }
@@ -294,13 +295,14 @@ input[type="checkbox"]:focus {
       .@{ns}error-message-arrow {
         &::before,
         &::after {
-          border-width: @error-message-triangle-width @error-message-triangle-width 0;
+          border-width: @error-message-triangle-width
+            @error-message-triangle-width 0;
           border-top-color: @error-message-border-color;
-          bottom: -1*@error-message-triangle-width;
+          bottom: -1 * @error-message-triangle-width;
         }
 
         &::after {
-          bottom: -1*(@error-message-triangle-width - 1);
+          bottom: -1 * (@error-message-triangle-width - 1);
           border-top-color: @error-message-background-color;
         }
       }
@@ -354,13 +356,14 @@ input[type="checkbox"]:focus {
       .@{ns}error-message-arrow {
         &::before,
         &::after {
-          border-width: @error-message-triangle-width 0 @error-message-triangle-width @error-message-triangle-width;
+          border-width: @error-message-triangle-width 0
+            @error-message-triangle-width @error-message-triangle-width;
           border-left-color: @error-message-border-color;
-          right: -1*@error-message-triangle-width;
+          right: -1 * @error-message-triangle-width;
         }
 
         &::after {
-          right: -1*(@error-message-triangle-width - 1);
+          right: -1 * (@error-message-triangle-width - 1);
           border-left-color: @error-message-background-color;
         }
       }
@@ -381,13 +384,14 @@ input[type="checkbox"]:focus {
       .@{ns}error-message-arrow {
         &::before,
         &::after {
-          border-width: @error-message-triangle-width @error-message-triangle-width @error-message-triangle-width 0;
+          border-width: @error-message-triangle-width
+            @error-message-triangle-width @error-message-triangle-width 0;
           border-right-color: @error-message-border-color;
-          left: -1*@error-message-triangle-width;
+          left: -1 * @error-message-triangle-width;
         }
 
         &::after {
-          left: -1*(@error-message-triangle-width - 1);
+          left: -1 * (@error-message-triangle-width - 1);
           border-right-color: @error-message-background-color;
         }
       }
@@ -461,7 +465,8 @@ input[type="checkbox"]:focus {
     }
 
     // Help block
-    .@{ns}form-control-wrapper + .@{ns}help-block:not(.@{ns}help-block-tooltip) {
+    .@{ns}form-control-wrapper
+      + .@{ns}help-block:not(.@{ns}help-block-tooltip) {
       margin-left: @control-label-width + @control-label-margin-right;
     }
 

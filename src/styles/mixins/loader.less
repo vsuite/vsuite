@@ -19,15 +19,18 @@
 
     &-content {
       font-size: @font-size;
-      line-height: unit(@diameter/@font-size);
+      line-height: unit(@diameter / @font-size);
     }
 
     &-vertical & {
-      height: (@diameter + @loader-content-spin-spacing-vertical + @line-height-computed);
+      height: (
+        @diameter + @loader-content-spin-spacing-vertical +
+          @line-height-computed
+      );
     }
 
     &-vertical &-content {
-      line-height: unit(@line-height-computed/@font-size);
+      line-height: unit(@line-height-computed / @font-size);
     }
   }
 }
@@ -35,7 +38,7 @@
 .loader-spin() {
   &::before,
   &::after {
-    content: "";
+    content: '';
     position: absolute;
     left: 0;
     right: 0;
