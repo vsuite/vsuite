@@ -40,7 +40,7 @@ export default {
     disabled: VueTypes.bool.def(false),
     selectOnEnter: VueTypes.bool,
     menuClassName: VueTypes.string,
-    renderItem: VueTypes.func,
+    renderItem: Function,
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
 
     // select
@@ -136,18 +136,24 @@ export default {
       },
       ref: 'popper',
     };
+    const iptData = {
+      props: {
+        ...this.$attrs,
+        disabled: this.disabled,
+        value: this.currentVal,
+      },
+      on: {
+        change: this._handleInputChange,
+        keydown: this._handleInputKeydown,
+      },
+    };
 
     this._addTriggerListeners(referenceData, acData);
 
     return (
       <div {...acData}>
         <div {...referenceData}>
-          <Input
-            disabled={this.disabled}
-            value={this.currentVal}
-            onChange={this._handleInputChange}
-            onKeydown={this._handleInputKeydown}
-          />
+          <Input {...iptData} />
         </div>
         <transition name="picker-fade">
           {this._renderDropdownMenu(h, popperData)}
@@ -169,8 +175,7 @@ export default {
                 renderItem={this.renderItem}
                 onClick={this._handleItemClick}
               >
-                {(this.$scopedSlots.item && this.$scopedSlots.item(item)) ||
-                  item.label}
+                {this.$scopedSlots.item && this.$scopedSlots.item(item)}
               </AutoCompleteItem>
             ))}
           </ul>

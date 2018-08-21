@@ -9,7 +9,7 @@ export default {
   props: {
     focus: VueTypes.bool.def(false),
     itemData: VueTypes.shape({ label: VueTypes.any, value: VueTypes.any }),
-    renderItem: VueTypes.func,
+    renderItem: Function,
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
   },
 
@@ -46,8 +46,9 @@ export default {
     return (
       <li {...liProps}>
         <a {...aProps}>
-          {this.renderItem && this.renderItem(h, this.itemData)}
-          {this.$slots.default}
+          {(this.renderItem && this.renderItem(h, this.itemData)) ||
+            this.$slots.default ||
+            this.itemData.label}
         </a>
       </li>
     );

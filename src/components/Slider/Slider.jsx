@@ -33,8 +33,8 @@ export default {
     handleStyle: VueTypes.object,
     barClassName: VueTypes.string,
     barStyle: VueTypes.object,
-    renderHandleTitle: VueTypes.func,
-    renderMark: VueTypes.func,
+    renderHandleTitle: Function,
+    renderMark: Function,
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
   },
 

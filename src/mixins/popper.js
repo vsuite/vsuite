@@ -164,7 +164,7 @@ export default {
       this.delayShowTimer = setTimeout(() => {
         cb && cb();
 
-        this.$emit('change', true);
+        this.$emit('visible-change', true);
       }, delay);
     },
 
@@ -185,7 +185,7 @@ export default {
       this.delayHideTimer = setTimeout(() => {
         cb && cb();
 
-        this.$emit('change', true);
+        this.$emit('visible-change', false);
       }, delay);
     },
 
