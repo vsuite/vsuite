@@ -18,6 +18,7 @@ export default {
   props: {
     title: VueTypes.string,
     theme: VueTypes.oneOf(['dark', 'light']).def('dark'),
+    pure: VueTypes.bool.def(false),
     maxWidth: VueTypes.number.def(250),
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
   },
@@ -28,6 +29,7 @@ export default {
         this._addPrefix('popper'),
         {
           [this._addPrefix(`popper-theme-${this.theme}`)]: this.theme,
+          [this._addPrefix('popper-pure')]: this.pure,
         },
       ];
     },
@@ -67,7 +69,9 @@ export default {
     },
   },
 
-  render() {
+  render(h) {
+    if (this.pure) return this._renderPure(h);
+
     const tooltipData = {
       class: this.classPrefix,
       directives: [{ name: 'click-outside', value: this._handleClickOutside }],
@@ -112,6 +116,22 @@ export default {
   },
 
   methods: {
+    _renderPure() {
+      const data = {
+        class: this.popperClasses,
+        attrs: {
+          'x-placement': this.placement,
+        },
+      };
+
+      return (
+        <div {...data}>
+          <div class={this._addPrefix('arrow')} />
+          <div class={this.innerClasses}>{this.title}</div>
+        </div>
+      );
+    },
+
     _addPrefix(cls) {
       return prefix(this.classPrefix, cls);
     },

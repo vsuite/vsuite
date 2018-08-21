@@ -20,6 +20,39 @@ stories.add('default', () => ({
   },
 }));
 
+stories.add('pure', () => ({
+  render: h => {
+    const placements = [
+      'bottom',
+      'bottom-start',
+      'bottom-end',
+      'top',
+      'top-start',
+      'top-end',
+      'left',
+      'left-start',
+      'left-end',
+      'right',
+      'right-start',
+      'right-end',
+    ];
+
+    return (
+      <Demo title="Pure">
+        {placements.map(placement => (
+          <div style={{ marginBottom: '10px' }}>
+            <Tooltip
+              pure
+              placement={placement}
+              title={`This is a tooltip at \`${placement}\`.`}
+            />
+          </div>
+        ))}
+      </Demo>
+    );
+  },
+}));
+
 stories.add('placement', () => ({
   methods: {
     _renderTooltip(h, placement) {

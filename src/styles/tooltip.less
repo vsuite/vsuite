@@ -19,9 +19,9 @@
     // So reset our font and text properties to avoid inheriting weird values.
     .reset-text(@font-family-base, @line-height-small);
 
-    position: absolute;
+    position: relative;
     z-index: @zindex-tooltip;
-    display: block;
+    display: inline-block;
     font-size: @font-size-small;
 
     // Common style for .placement-top*
@@ -91,7 +91,46 @@
     }
   }
 
-  &-popper&-popper-theme-light {
+  &-popper&-popper-pure {
+    // Common style for .placement-top*
+    &[x-placement='top'], &[x-placement='bottom'] {
+      .@{ns}tooltip-arrow {
+        left: 10px;
+      }
+    }
+
+    &[x-placement='top-start'], &[x-placement='bottom-start'] {
+      .@{ns}tooltip-arrow {
+        left: 10px;
+      }
+    }
+
+    &[x-placement='top-end'], &[x-placement='bottom-end'] {
+      .@{ns}tooltip-arrow {
+        right: 10px;
+      }
+    }
+
+    &[x-placement='left'], &[x-placement^='right'] {
+      .@{ns}tooltip-arrow {
+        top: 4px;
+      }
+    }
+
+    &[x-placement='left-start'], &[x-placement^='right-start'] {
+      .@{ns}tooltip-arrow {
+        top: 4px;
+      }
+    }
+
+    &[x-placement='left-end'], &[x-placement^='right-end'] {
+      .@{ns}tooltip-arrow {
+        bottom: 4px;
+      }
+    }
+  }
+
+  &-popper-theme-light {
     .drop-shadow(0 1px 8px rgba(0, 0, 0, 0.12));
 
     .@{ns}tooltip-inner {
