@@ -60,7 +60,7 @@ stories.add('graduated', () => ({
           max={60}
           graduated
           progress
-          renderMark={mark => {
+          renderMark={(_, mark) => {
             return mark;
           }}
         />
@@ -72,7 +72,7 @@ stories.add('graduated', () => ({
           progress
           min={64}
           max={512}
-          renderMark={mark => {
+          renderMark={(_, mark) => {
             if (~[64, 128, 256, 512].indexOf(mark)) {
               return <span>{mark} GB</span>;
             }

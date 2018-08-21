@@ -50,6 +50,10 @@ export default {
   },
 
   computed: {
+    hasMark() {
+      return !!this.$scopedSlots.mark || !!this.renderMark;
+    },
+
     classes() {
       return [
         this.classPrefix,
@@ -58,7 +62,7 @@ export default {
           [this._addPrefix('disabled')]: this.disabled,
           [this._addPrefix('graduated')]: this.graduated,
           [this._addPrefix('dragging')]: this.handleDown,
-          [this._addPrefix('with-mark')]: _.isFunction(this.renderMark),
+          [this._addPrefix('with-mark')]: this.hasMark,
         },
       ];
     },
@@ -159,11 +163,16 @@ export default {
         },
       ];
 
-      if (this.renderMark) {
+      if (this.hasMark) {
         return (
           <span class={classes}>
             <span class={this._addPrefix('mark-content')}>
-              {this.renderMark(mark, this.currentVal, this)}
+              {(this.$scopedSlots.mark &&
+                this.$scopedSlots.mark({
+                  mark,
+                  currentVal: this.currentVal,
+                })) ||
+                (this.renderMark && this.renderMark(h, mark, this.currentVal))}
             </span>
           </span>
         );
@@ -212,9 +221,11 @@ export default {
               </div>
             </div>
           )}
-          {this.handleTitle ||
+          {(this.$scopedSlots.handleTitle &&
+            this.$scopedSlots.handleTitle({ currentVal: this.currentVal })) ||
             (this.renderHandleTitle &&
-              this.renderHandleTitle(h, this.currentVal, this))}
+              this.renderHandleTitle(h, this.currentVal)) ||
+            this.handleTitle}
         </div>
       );
     },
