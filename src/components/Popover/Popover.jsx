@@ -24,6 +24,7 @@ export default {
     title: VueTypes.string,
     content: VueTypes.string,
     full: VueTypes.bool.def(false),
+    pure: VueTypes.bool.def(false),
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
   },
 
@@ -32,6 +33,7 @@ export default {
       return [
         this._addPrefix('popper'),
         {
+          [this._addPrefix('popper-pure')]: this.pure,
           [this._addPrefix('popper-full')]: this.full,
         },
       ];
@@ -64,7 +66,9 @@ export default {
     },
   },
 
-  render() {
+  render(h) {
+    if (this.pure) return this._renderPure(h);
+
     const popoverData = {
       class: this.classPrefix,
       directives: [{ name: 'click-outside', value: this._handleClickOutside }],
@@ -115,6 +119,28 @@ export default {
   },
 
   methods: {
+    _renderPure() {
+      const data = {
+        class: this.popperClasses,
+        attrs: {
+          'x-placement': this.placement,
+        },
+      };
+
+      return (
+        <div {...data}>
+          <div class="arrow" />
+          {this.$slots.title ||
+            (this.title ? (
+              <h3 className={this._addPrefix('title')}>{this.title}</h3>
+            ) : null)}
+          <div className={this._addPrefix('content')}>
+            {this.$slots.content || this.content}
+          </div>
+        </div>
+      );
+    },
+
     _addPrefix(cls) {
       return prefix(this.classPrefix, cls);
     },

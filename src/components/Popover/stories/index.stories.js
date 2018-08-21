@@ -21,6 +21,40 @@ stories.add('default', () => ({
   },
 }));
 
+stories.add('pure', () => ({
+  render: h => {
+    const placements = [
+      'bottom',
+      'bottom-start',
+      'bottom-end',
+      'top',
+      'top-start',
+      'top-end',
+      'left',
+      'left-start',
+      'left-end',
+      'right',
+      'right-start',
+      'right-end',
+    ];
+
+    return (
+      <Demo title="Pure">
+        {placements.map(placement => (
+          <div style={{ marginBottom: '10px' }}>
+            <Popover pure placement={placement} title="Title">
+              <template slot="content">
+                <p>This is a Popover </p>
+                <p>{placement}</p>
+              </template>
+            </Popover>
+          </div>
+        ))}
+      </Demo>
+    );
+  },
+}));
+
 stories.add('placement', () => ({
   methods: {
     _renderPopover(h, placement) {

@@ -18,11 +18,9 @@
     .reset-text();
     .drop-shadow(0 1px 8px rgba(0, 0, 0, 0.12));
 
-    position: absolute;
-    top: 0;
-    left: 0;
+    position: relative;
     z-index: @zindex-popover;
-    display: block;
+    display: inline-block;
     padding: 12px;
     font-size: @font-size-base;
     background-color: @popover-bg;
@@ -151,6 +149,57 @@
           border-left-color: @popover-arrow-color;
           bottom: -@popover-arrow-width;
         }
+      }
+    }
+  }
+
+  &-popper&-popper-pure {
+    // Common style for .placement-top*
+    &[x-placement='top'], &[x-placement='bottom'] {
+      .arrow {
+        left: 12px;
+        right: auto;
+        margin-left: 0;
+      }
+    }
+
+    &[x-placement='top-start'], &[x-placement='bottom-start'] {
+      .arrow {
+        left: 12px;
+        right: auto;
+        margin-left: 0;
+      }
+    }
+
+    &[x-placement='top-end'], &[x-placement='bottom-end'] {
+      .arrow {
+        left: auto;
+        right: 12px;
+        margin-left: 0;
+      }
+    }
+
+    &[x-placement='left'], &[x-placement^='right'] {
+      .arrow {
+        top: 12px;
+        bottom: auto;
+        margin-top: 0;
+      }
+    }
+
+    &[x-placement='left-start'], &[x-placement^='right-start'] {
+      .arrow {
+        top: 12px;
+        bottom: auto;
+        margin-top: 0;
+      }
+    }
+
+    &[x-placement='left-end'], &[x-placement^='right-end'] {
+      .arrow {
+        top: auto;
+        bottom: 12px;
+        margin-top: 0;
       }
     }
   }
