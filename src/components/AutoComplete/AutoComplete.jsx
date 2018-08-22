@@ -173,7 +173,7 @@ export default {
                 focus={this.focusItemValue === item.value}
                 itemData={item}
                 renderItem={this.renderItem}
-                onClick={this._handleItemClick}
+                onSelect={this._handleItemClick}
               >
                 {this.$scopedSlots.item && this.$scopedSlots.item(item)}
               </AutoCompleteItem>
@@ -268,12 +268,12 @@ export default {
       this._setVal(value, event);
     },
 
-    _addPickerPrefix(cls) {
-      return prefix(defaultClassPrefix('picker'), cls);
-    },
-
     _addPrefix(cls) {
       return prefix(this.classPrefix, cls);
+    },
+
+    _addPickerPrefix(cls) {
+      return prefix(defaultClassPrefix('picker'), cls);
     },
   },
 };

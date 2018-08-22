@@ -56,7 +56,7 @@ export default {
 
   methods: {
     _handleClick(event) {
-      this.$emit('click', { ...this.itemData }, event);
+      this.$emit('select', { ...this.itemData }, event);
     },
 
     _addPrefix(cls) {
