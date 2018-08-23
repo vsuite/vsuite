@@ -1,4 +1,5 @@
 import VueTypes from 'vue-types';
+import _ from 'lodash';
 import popperMixin from 'mixins/popper';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
 
@@ -119,20 +120,18 @@ export default {
       );
     },
 
-    _renderMenu() {
-      return (
-        <DropdownMenu
-          style={this.menuStyle}
-          // expanded={false}
-          // collapsible={false}
-          // openKeys={openKeys}
-          activeKey={this.activeKey}
-          onSelect={this._handleSelect}
-          // onToggle={this._handleToggle}
-        >
-          {this.$slots.default}
-        </DropdownMenu>
-      );
+    _renderMenu(h, popperData) {
+      const data = _.merge(popperData, {
+        style: this.menuStyle,
+        props: {
+          activeKey: this.activeKey,
+        },
+        on: {
+          select: this._handleSelect,
+        },
+      });
+
+      return <DropdownMenu {...data}>{this.$slots.default}</DropdownMenu>;
     },
 
     _handleSelect() {},

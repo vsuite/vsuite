@@ -190,9 +190,13 @@ export default {
     },
 
     _createPopper() {
-      const reference = this.$refs.reference;
-      const popper = this.$refs.popper;
-      const arrow = this.$refs.arrow;
+      const reference =
+        (this.$refs.reference && this.$refs.reference.$el) ||
+        this.$refs.reference;
+      const popper =
+        (this.$refs.popper && this.$refs.popper.$el) || this.$refs.popper;
+      const arrow =
+        (this.$refs.arrow && this.$refs.arrow.$el) || this.$refs.arrow;
 
       if (!reference || !popper) return;
 

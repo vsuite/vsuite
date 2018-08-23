@@ -7,6 +7,7 @@ export default {
   name: 'DropdownMenu',
 
   props: {
+    activeKey: VueTypes.any,
     title: VueTypes.string,
     icon: VueTypes.string,
     pullLeft: VueTypes.bool.def(false),
