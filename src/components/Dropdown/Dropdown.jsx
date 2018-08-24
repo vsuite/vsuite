@@ -134,18 +134,6 @@ export default {
       return <DropdownMenu {...data}>{this.$slots.default}</DropdownMenu>;
     },
 
-    _openPopper() {
-      if (!this.currentVisible) {
-        this.$nextTick(() => (this.innerVisible = true));
-      }
-    },
-
-    _closePopper() {
-      if (this.currentVisible) {
-        this.$nextTick(() => (this.innerVisible = false));
-      }
-    },
-
     _handleSelect(eventKey, event) {
       this._closePopper();
 

@@ -99,6 +99,18 @@ export default {
       }
     },
 
+    _openPopper() {
+      if (!this.currentVisible) {
+        this._handleDelayShow(() => (this.innerVisible = true));
+      }
+    },
+
+    _closePopper() {
+      if (this.currentVisible) {
+        this._handleDelayHide(() => (this.innerVisible = false));
+      }
+    },
+
     _handleClickOutside() {
       this._handleDelayHide(() => (this.innerVisible = false));
     },
@@ -162,9 +174,11 @@ export default {
       }
 
       this.delayShowTimer = setTimeout(() => {
-        cb && cb();
+        this.$nextTick(() => {
+          cb && cb();
 
-        this.$emit('visible-change', true);
+          this.$emit('visible-change', true);
+        });
       }, delay);
     },
 
@@ -183,9 +197,11 @@ export default {
       }
 
       this.delayHideTimer = setTimeout(() => {
-        cb && cb();
+        this.$nextTick(() => {
+          cb && cb();
 
-        this.$emit('visible-change', false);
+          this.$emit('visible-change', false);
+        });
       }, delay);
     },
 

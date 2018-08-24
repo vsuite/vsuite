@@ -190,18 +190,6 @@ export default {
       this.$emit('change', val, event);
     },
 
-    _openPopper() {
-      if (!this.currentVisible) {
-        this.$nextTick(() => (this.innerVisible = true));
-      }
-    },
-
-    _closePopper() {
-      if (this.currentVisible) {
-        this.$nextTick(() => (this.innerVisible = false));
-      }
-    },
-
     _handleItemClick(item, event) {
       const value = item.value;
 
