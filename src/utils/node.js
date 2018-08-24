@@ -85,6 +85,17 @@ function getAttrs(vnode) {
   return { ...(data.attrs || {}) };
 }
 
+function getAllProps(vnode) {
+  const data = vnode.data || {};
+  const componentOptions = vnode.componentOptions || {};
+
+  return {
+    ...(data.props || {}),
+    ...(data.attrs || {}),
+    ...(componentOptions.propsData || {}),
+  };
+}
+
 function getKey(vnode) {
   return vnode.key;
 }
@@ -98,6 +109,14 @@ function getEvents(vnode) {
   }
 
   return { ...data.on };
+}
+
+function getChildren(vnode) {
+  if (vnode.componentOptions) {
+    return vnode.componentOptions.children;
+  }
+
+  return vnode.children;
 }
 
 function cloneVNode(vnode, deep) {
@@ -249,7 +268,9 @@ export {
   getStyles,
   getProps,
   getAttrs,
+  getAllProps,
   getEvents,
+  getChildren,
   getKey,
   isTextNode,
   isElementNode,

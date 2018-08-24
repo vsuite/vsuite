@@ -134,7 +134,23 @@ export default {
       return <DropdownMenu {...data}>{this.$slots.default}</DropdownMenu>;
     },
 
-    _handleSelect() {},
+    _openPopper() {
+      if (!this.currentVisible) {
+        this.$nextTick(() => (this.innerVisible = true));
+      }
+    },
+
+    _closePopper() {
+      if (this.currentVisible) {
+        this.$nextTick(() => (this.innerVisible = false));
+      }
+    },
+
+    _handleSelect(eventKey, event) {
+      this._closePopper();
+
+      this.$emit('select', eventKey, event);
+    },
 
     _addPrefix(cls) {
       return prefix(this.classPrefix, cls);

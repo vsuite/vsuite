@@ -14,6 +14,7 @@ export default {
     panel: VueTypes.bool.def(false),
     active: VueTypes.bool.def(false),
     disabled: VueTypes.bool.def(false),
+    submenu: VueTypes.bool.def(false),
     eventKey: VueTypes.any,
     tabindex: VueTypes.number.def(-1),
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
@@ -29,7 +30,7 @@ export default {
         this.classPrefix,
         {
           // [this._addPrefix('expand')]
-          // [this._addPrefix('submenu')]
+          [this._addPrefix('submenu')]: this.submenu,
           // [this._addPrefix('open')]
           [this._addPrefix('disabled')]: this.disabled,
           // [_addPrefix(`pull-${pullLeft ? 'left' : 'right'}`)]: pullLeft
@@ -52,6 +53,7 @@ export default {
       class: this._addPrefix('content'),
       props: {},
       attrs: { tabindex: this.tabindex },
+      on: { click: this._handleClick },
     };
 
     if (typeof Component === 'string') {
@@ -65,7 +67,7 @@ export default {
 
     return (
       <li class={this.classes} role="presentation">
-        <Component>
+        <Component {...data}>
           {this.$slots.icon || (this.icon && <Icon icon={this.icon} />)}
           {this.$slots.default}
         </Component>
@@ -74,6 +76,13 @@ export default {
   },
 
   methods: {
+    _handleClick(event) {
+      if (this.disabled) return event.preventDefault();
+
+      this.$emit('click', event);
+      this.$emit('select', this.eventKey, event);
+    },
+
     _addPrefix(cls) {
       return prefix(this.classPrefix, cls);
     },
