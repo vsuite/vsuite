@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import _ from 'lodash';
 import Icon from 'components/Icon';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
 import { STATUS_ICON_NAMES } from 'utils/constant';
@@ -35,10 +36,7 @@ function createAlertInstance() {
       const notificationData = {
         class: addPrefix('alert'),
         style: { top: formatStyleVal(DEFAULT_TOP) },
-        props: {
-          duration: DEFAULT_DURATION,
-          classPrefix: CLASS_PREFIX,
-        },
+        props: { classPrefix: CLASS_PREFIX },
       };
 
       return <Notification {...notificationData} />;
@@ -80,18 +78,43 @@ function notice(content, duration = DEFAULT_DURATION, onClose, type) {
 
 export default {
   success(content, duration, onClose) {
+    if (_.isFunction(duration)) {
+      onClose = duration;
+      duration = undefined;
+    }
+
     notice(content, duration, onClose, ALERT_TYPES.SUCCESS);
   },
   error(content, duration, onClose) {
+    if (_.isFunction(duration)) {
+      onClose = duration;
+      duration = undefined;
+    }
+
     notice(content, duration, onClose, ALERT_TYPES.ERROR);
   },
   info(content, duration, onClose) {
+    if (_.isFunction(duration)) {
+      onClose = duration;
+      duration = undefined;
+    }
+
     notice(content, duration, onClose, ALERT_TYPES.INFO);
   },
   warning(content, duration, onClose) {
+    if (_.isFunction(duration)) {
+      onClose = duration;
+      duration = undefined;
+    }
+
     notice(content, duration, onClose, ALERT_TYPES.WARNING);
   },
   warn(content, duration, onClose) {
+    if (_.isFunction(duration)) {
+      onClose = duration;
+      duration = undefined;
+    }
+
     notice(content, duration, onClose, ALERT_TYPES.WARNING);
   },
   config(options) {
