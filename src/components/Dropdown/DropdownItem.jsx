@@ -32,6 +32,7 @@ export default {
           // [this._addPrefix('expand')]
           [this._addPrefix('submenu')]: this.submenu,
           // [this._addPrefix('open')]
+          [this._addPrefix('active')]: this.active,
           [this._addPrefix('disabled')]: this.disabled,
           // [_addPrefix(`pull-${pullLeft ? 'left' : 'right'}`)]: pullLeft
         },

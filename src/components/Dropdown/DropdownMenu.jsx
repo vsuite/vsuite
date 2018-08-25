@@ -81,18 +81,19 @@ export default {
             const props = getAllProps(vnode);
             const events = getEvents(vnode);
             const data = {
-              props: {
-                ...props,
-                active,
-                placement: this.pullLeft ? 'left-start' : 'right-start',
-                submenu: true,
-                componentClass: 'div',
-              },
+              props: { title: props.title },
               on: events,
             };
 
             return (
-              <DropdownItemPopper {...data}>
+              <DropdownItemPopper
+                {...props}
+                {...data}
+                active={active}
+                placement={this.pullLeft ? 'left-start' : 'right-start'}
+                submenu
+                componentClass="div"
+              >
                 {itemAndStatus.items}
               </DropdownItemPopper>
             );
