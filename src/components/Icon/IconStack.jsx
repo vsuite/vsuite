@@ -1,5 +1,6 @@
 import VueTypes from 'vue-types';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
+import { splitDataByComponent } from 'utils/split';
 
 const CLASS_PREFIX = 'icon';
 
@@ -49,11 +50,14 @@ export default {
 
   render() {
     const Component = this.componentClass;
-    const iconStackData = {
-      class: this.classes,
-      props: this.$attrs,
-      on: this.$listeners,
-    };
+    const iconStackData = splitDataByComponent(
+      {
+        class: this.classes,
+        splitProps: this.$attrs,
+        on: this.$listeners,
+      },
+      Component
+    );
 
     return <Component {...iconStackData}>{this.$slots.default}</Component>;
   },
