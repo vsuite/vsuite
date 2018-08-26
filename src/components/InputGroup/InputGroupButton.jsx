@@ -1,6 +1,8 @@
 import VueTypes from 'vue-types';
-import Button from 'components/Button';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
+import { splitDataByComponent } from 'utils/split';
+
+import Button from 'components/Button';
 
 const CLASS_PREFIX = 'input-group-btn';
 
@@ -12,14 +14,17 @@ export default {
   },
 
   render() {
-    const data = {
-      class: this.classPrefix,
-      props: {
-        ...this.$attrs,
-        componentClass: 'a',
+    const data = splitDataByComponent(
+      {
+        class: this.classPrefix,
+        splitProps: {
+          ...this.$attrs,
+          componentClass: 'a',
+        },
+        on: this.$listeners,
       },
-      on: this.$listeners,
-    };
+      Button
+    );
 
     return <Button {...data}>{this.$slots.default}</Button>;
   },

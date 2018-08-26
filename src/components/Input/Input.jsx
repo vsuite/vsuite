@@ -1,6 +1,7 @@
 import VueTypes from 'vue-types';
 import _ from 'lodash';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
+import { splitDataByComponent } from 'utils/split';
 import { SIZES } from 'utils/constant';
 
 const CLASS_PREFIX = 'input';
@@ -50,27 +51,30 @@ export default {
 
   render() {
     const Component = this.componentClass;
-    const data = {
-      class: this.classes,
-      domProps: {
-        value: this.currentVal,
+    const data = splitDataByComponent(
+      {
+        class: this.classes,
+        domProps: {
+          value: this.currentVal,
+        },
+        splitProps: {
+          id: this.id,
+          type: this.type,
+          disabled: this.disabled,
+          placeholder: this.placeholder,
+          ...this.$attrs,
+        },
+        on: {
+          ...this.$listeners,
+          focus: this.handleFocus,
+          blur: this.handleBlur,
+          input: this._handleInput,
+          change: this._handleChange,
+          keydown: this._handleKeydown,
+        },
       },
-      attrs: {
-        id: this.id,
-        type: this.type,
-        disabled: this.disabled,
-        placeholder: this.placeholder,
-        ...this.$attrs,
-      },
-      on: {
-        ...this.$listeners,
-        focus: this.handleFocus,
-        blur: this.handleBlur,
-        input: this._handleInput,
-        change: this._handleChange,
-        keydown: this._handleKeydown,
-      },
-    };
+      Component
+    );
 
     return <Component {...data} />;
   },

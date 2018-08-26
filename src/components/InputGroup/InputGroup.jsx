@@ -1,7 +1,7 @@
 import VueTypes from 'vue-types';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
-import { SIZES } from 'utils/constant';
 import { cloneElement, isElementNode, isComponentNode } from 'utils/node';
+import { SIZES } from 'utils/constant';
 
 const CLASS_PREFIX = 'input-group';
 
