@@ -1,5 +1,6 @@
 import VueTypes from 'vue-types';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
+import { splitDataByComponent } from 'utils/split';
 
 const CLASS_PREFIX = 'divider';
 
@@ -32,11 +33,14 @@ export default {
 
   render() {
     const Component = this.componentClass;
-    const dividerData = {
-      class: this.classes,
-      attrs: this.$attrs,
-      on: this.$listeners,
-    };
+    const dividerData = splitDataByComponent(
+      {
+        class: this.classes,
+        splitProps: this.$attrs,
+        on: this.$listeners,
+      },
+      Component
+    );
 
     return (
       <Component {...dividerData}>
