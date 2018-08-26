@@ -1,11 +1,13 @@
 import VueTypes from 'vue-types';
 import _ from 'lodash';
-import Icon from 'components/Icon';
-import Button from 'components/Button';
-import Input from 'components/Input';
-import InputGroup from 'components/InputGroup';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
+import { splitDataByComponent } from 'utils/split';
 import { SIZES } from 'utils/constant';
+
+import InputGroup from 'components/InputGroup';
+import Input from 'components/Input';
+import Button from 'components/Button';
+import Icon from 'components/Icon';
 
 const CLASS_PREFIX = 'input-number';
 
@@ -82,30 +84,36 @@ export default {
   },
 
   render() {
-    const iptGroupData = {
-      class: this.classPrefix,
-      props: {
-        ..._.pick(this.$attrs, ['inside']),
-        disabled: this.disabled,
-        size: this.size,
+    const iptGroupData = splitDataByComponent(
+      {
+        class: this.classPrefix,
+        splitProps: {
+          ...this.$attrs,
+          disabled: this.disabled,
+          size: this.size,
+        },
       },
-    };
-    const iptData = {
-      props: {
-        type: 'text',
-        ..._.omit(this.$attrs, ['inside']),
-        step: this.step,
-        value: _.isNil(this.currentVal) ? '' : this.currentVal,
-        disabled: this.disabled,
+      InputGroup
+    );
+    const iptData = splitDataByComponent(
+      {
+        splitProps: {
+          type: 'text',
+          ...this.$attrs,
+          step: this.step,
+          value: _.isNil(this.currentVal) ? '' : this.currentVal,
+          disabled: this.disabled,
+        },
+        on: {
+          focus: this._handleFocus,
+          blur: this._handleBlur,
+          change: this._handleChange,
+          keydown: this._handleKeydown,
+          wheel: this._handleWheel,
+        },
       },
-      on: {
-        focus: this._handleFocus,
-        blur: this._handleBlur,
-        change: this._handleChange,
-        keydown: this._handleKeydown,
-        wheel: this._handleWheel,
-      },
-    };
+      Input
+    );
 
     return (
       <InputGroup {...iptGroupData}>
