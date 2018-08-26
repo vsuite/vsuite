@@ -1,9 +1,11 @@
 import VueTypes from 'vue-types';
 import _ from 'lodash';
-import Input from 'components/Input';
 import popperMixin from 'mixins/popper';
 import onMenuKeydown from 'shares/onMenuKeydown';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
+import { splitDataByComponent } from 'utils/split';
+
+import Input from 'components/Input';
 
 import AutoCompleteItem from './AutoCompleteItem.jsx';
 
@@ -136,17 +138,20 @@ export default {
       },
       ref: 'popper',
     };
-    const iptData = {
-      props: {
-        ...this.$attrs,
-        disabled: this.disabled,
-        value: this.currentVal,
+    const iptData = splitDataByComponent(
+      {
+        splitProps: {
+          ...this.$attrs,
+          disabled: this.disabled,
+          value: this.currentVal,
+        },
+        on: {
+          change: this._handleInputChange,
+          keydown: this._handleInputKeydown,
+        },
       },
-      on: {
-        change: this._handleInputChange,
-        keydown: this._handleInputKeydown,
-      },
-    };
+      Input
+    );
 
     this._addTriggerListeners(referenceData, acData);
 
