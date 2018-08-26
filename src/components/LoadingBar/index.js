@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import { splitPropsByComponent } from 'utils/split';
 
 import LoadingBar, { STATUS } from './LoadingBar.jsx';
 
@@ -23,9 +24,7 @@ function createLoadingBarInstance() {
 
   const wrapper = new Vue({
     render: h => {
-      const loadingBarData = {
-        props: props || {},
-      };
+      const loadingBarData = splitPropsByComponent(props || {}, LoadingBar);
 
       return <LoadingBar {...loadingBarData} />;
     },
