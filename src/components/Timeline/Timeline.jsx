@@ -2,6 +2,7 @@ import VueTypes from 'vue-types';
 import invariant from 'utils/invariant';
 import { defaultClassPrefix } from 'utils/prefix';
 import { getName, cloneElement } from 'utils/node';
+import { splitDataByComponent } from 'utils/split';
 
 const CLASS_PREFIX = 'timeline';
 
@@ -17,11 +18,14 @@ export default {
 
   render() {
     const Component = this.componentClass;
-    const timelineData = {
-      class: this.classPrefix,
-      attrs: this.$attrs,
-      on: this.$listeners,
-    };
+    const timelineData = splitDataByComponent(
+      {
+        class: this.classPrefix,
+        splitProps: this.$attrs,
+        on: this.$listeners,
+      },
+      Component
+    );
     const children = this.$slots.default || [];
     const count = children.length;
     const items = children.map((vnode, index) => {

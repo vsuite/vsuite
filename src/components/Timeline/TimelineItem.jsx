@@ -1,8 +1,10 @@
 import VueTypes from 'vue-types';
-import Icon from 'components/Icon';
 import invariant from 'utils/invariant';
 import { COLORS } from 'utils/constant';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
+import { splitDataByComponent } from 'utils/split';
+
+import Icon from 'components/Icon';
 
 const CLASS_PREFIX = 'timeline-item';
 
@@ -42,11 +44,14 @@ export default {
 
   render() {
     const Component = this.componentClass;
-    const timelineItemData = {
-      class: this.classes,
-      attrs: this.$attrs,
-      on: this.$listeners,
-    };
+    const timelineItemData = splitDataByComponent(
+      {
+        class: this.classes,
+        splitProps: this.$attrs,
+        on: this.$listeners,
+      },
+      Component
+    );
 
     return (
       <Component {...timelineItemData}>
