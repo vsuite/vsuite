@@ -3,6 +3,7 @@ import SafeAnchor from 'components/SafeAnchor';
 import Icon from 'components/Icon';
 import invariant from 'utils/invariant';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
+import { splitDataByComponent } from 'utils/split';
 import { PAGINATION_ICON_NAMES, SIZES } from 'utils/constant';
 
 import PaginationButton from './PaginationButton.jsx';
@@ -64,21 +65,23 @@ export default {
 
   methods: {
     _renderItem(h, data, children) {
-      if (!data.props.disabled) {
+      if (!data.splitProps.disabled) {
         data.on = {
           ...(data.on || {}),
           select: this._handleSelect,
         };
       }
 
-      data.props = {
-        ...(data.props || {}),
+      data.splitProps = {
+        ...(data.splitProps || {}),
         componentClass: this.buttonComponentClass,
       };
       children =
         typeof children === 'string' || children.length ? children : [children];
 
-      return h(PaginationButton, data, children);
+      const btnData = splitDataByComponent(data, PaginationButton);
+
+      return <PaginationButton {...btnData}>{children}</PaginationButton>;
     },
 
     _renderFirst(h) {
@@ -93,7 +96,7 @@ export default {
         h,
         {
           key: 'first',
-          props: {
+          splitProps: {
             eventKey: 1,
             disabled: this.activePage === 1,
           },
@@ -117,7 +120,7 @@ export default {
         h,
         {
           key: 'prev',
-          props: {
+          splitProps: {
             eventKey: this.activePage - 1,
             disabled: this.activePage === 1,
           },
@@ -162,7 +165,7 @@ export default {
             h,
             {
               key: pagenumber,
-              props: {
+              splitProps: {
                 eventKey: pagenumber,
                 active: pagenumber === this.activePage,
               },
@@ -178,7 +181,7 @@ export default {
             h,
             {
               key: 'ellipsisFirst',
-              props: { disabled: true },
+              splitProps: { disabled: true },
             },
             <span aria-label="More">
               {this.ellipsis && <Icon icon={PAGINATION_ICON_NAMES.more} />}
@@ -192,7 +195,7 @@ export default {
             h,
             {
               key: 1,
-              props: { eventKey: 1 },
+              splitProps: { eventKey: 1 },
             },
             '1'
           )
@@ -205,7 +208,7 @@ export default {
             h,
             {
               key: 'ellipsis',
-              props: { disabled: true },
+              splitProps: { disabled: true },
             },
             <span aria-label="More">
               {this.ellipsis && <Icon icon={PAGINATION_ICON_NAMES.more} />}
@@ -220,7 +223,7 @@ export default {
               h,
               {
                 key: this.pages,
-                props: {
+                splitProps: {
                   eventKey: this.pages,
                   disabled: false,
                 },
@@ -246,7 +249,7 @@ export default {
         h,
         {
           key: 'next',
-          props: {
+          splitProps: {
             eventKey: this.activePage + 1,
             disabled: this.activePage >= this.pages,
           },
@@ -270,7 +273,7 @@ export default {
         h,
         {
           key: 'last',
-          props: {
+          splitProps: {
             eventKey: this.pages,
             disabled: this.activePage >= this.pages,
           },
