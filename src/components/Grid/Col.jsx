@@ -1,6 +1,7 @@
 import VueTypes from 'vue-types';
 import _ from 'lodash';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
+import { splitDataByComponent } from 'utils/split';
 
 const CLASS_PREFIX = 'col';
 const Sizes = ['xs', 'sm', 'md', 'lg'];
@@ -107,11 +108,14 @@ export default {
       classes[this._addPrefix(`${size}-pull-${pull}`)] = pull >= 0;
     });
 
-    const colData = {
-      class: classes,
-      attrs: this.$attrs,
-      on: this.$listeners,
-    };
+    const colData = splitDataByComponent(
+      {
+        class: classes,
+        splitProps: this.$attrs,
+        on: this.$listeners,
+      },
+      Component
+    );
 
     return <Component {...colData}>{this.$slots.default}</Component>;
   },

@@ -1,5 +1,6 @@
 import VueTypes from 'vue-types';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
+import { splitDataByComponent } from 'utils/split';
 
 const CLASS_PREFIX = 'grid-container';
 
@@ -22,11 +23,14 @@ export default {
 
   render(h) {
     const Component = this.componentClass;
-    const gridData = {
-      class: this.classes,
-      attrs: this.$attrs,
-      on: this.$listeners,
-    };
+    const gridData = splitDataByComponent(
+      {
+        class: this.classes,
+        splitProps: this.$attrs,
+        on: this.$listeners,
+      },
+      Component
+    );
 
     return <Component {...gridData}>{this.$slots.default}</Component>;
   },

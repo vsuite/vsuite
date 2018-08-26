@@ -1,6 +1,7 @@
 import VueTypes from 'vue-types';
 import invariant from 'utils/invariant';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
+import { splitDataByComponent } from 'utils/split';
 import { getName, cloneElement } from 'utils/node';
 
 const CLASS_PREFIX = 'row';
@@ -20,12 +21,15 @@ export default {
   },
 
   render(h) {
-    const rowData = {
-      class: this.classPrefix,
-      attrs: this.$attrs,
-      on: this.$listeners,
-    };
     const Component = this.componentClass;
+    let rowData = splitDataByComponent(
+      {
+        class: this.classPrefix,
+        splitProps: this.$attrs,
+        on: this.$listeners,
+      },
+      Component
+    );
     let children = this.$slots.default || [];
 
     if (typeof this.gutter !== 'undefined') {
