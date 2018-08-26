@@ -1,4 +1,5 @@
 import VueTypes from 'vue-types';
+import { splitDataByComponent } from 'utils/split';
 
 export default {
   name: 'SafeAnchor',
@@ -15,22 +16,21 @@ export default {
 
   render() {
     const Component = this.componentClass;
-    const anchorData = {
-      attrs: {
-        role: this.role,
-        tabindex: this.tabindex,
-        href: this.href,
-        ...this.$attrs,
+    const anchorData = splitDataByComponent(
+      {
+        splitProps: {
+          ...this.$attrs,
+          role: this.role,
+          tabindex: this.disabled ? -1 : this.tabindex,
+          href: this.href,
+        },
+        on: {
+          ...this.$listeners,
+          click: this._handleClick,
+        },
       },
-      on: {
-        ...this.$listeners,
-        click: this._handleClick,
-      },
-    };
-
-    if (this.disabled) {
-      anchorData.attrs.tabindex = -1;
-    }
+      Component
+    );
 
     return <Component {...anchorData}>{this.$slots.default}</Component>;
   },

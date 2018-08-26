@@ -1,6 +1,8 @@
 import VueTypes from 'vue-types';
 import { COLORS, SIZES } from 'utils/constant';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
+import { splitDataByComponent } from 'utils/split';
+
 import SafeAnchor from 'components/SafeAnchor';
 import Ripple from 'components/Ripple';
 
@@ -57,16 +59,19 @@ export default {
       ) : null;
 
     if (this.href) {
-      const anchorData = {
-        class: this.classes,
-        props: {
-          ...this.$attrs,
-          href: this.href,
-          disabled: this.disabled,
-          role: 'button',
+      const anchorData = splitDataByComponent(
+        {
+          class: this.classes,
+          splitProps: {
+            ...this.$attrs,
+            href: this.href,
+            disabled: this.disabled,
+            role: 'button',
+          },
+          on: this.$listeners,
         },
-        on: this.$listeners,
-      };
+        SafeAnchor
+      );
 
       return (
         <SafeAnchor {...anchorData}>
@@ -78,19 +83,22 @@ export default {
     }
 
     const Component = this.componentClass;
-    const btnData = {
-      class: this.classes,
-      attrs: {
-        ...this.$attrs,
-        disabled: this.disabled,
+    const btnData = splitDataByComponent(
+      {
+        class: this.classes,
+        splitProps: {
+          ...this.$attrs,
+          disabled: this.disabled,
+          // https://stackoverflow.com/questions/41904199/whats-the-point-of-button-type-button
+          type:
+            Component === 'button'
+              ? this.$attrs.type || 'button'
+              : this.$attrs.type,
+        },
+        on: this.$listeners,
       },
-      on: this.$listeners,
-    };
-
-    // https://stackoverflow.com/questions/41904199/whats-the-point-of-button-type-button
-    if (Component === 'button') {
-      btnData.attrs.type = this.$attrs.type || 'button';
-    }
+      Component
+    );
 
     return (
       <Component {...btnData}>

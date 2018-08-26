@@ -10,7 +10,7 @@ export default {
   name: 'ButtonGroup',
 
   props: {
-    size: VueTypes.oneOfType(SIZES),
+    size: VueTypes.oneOf(SIZES),
     vertical: VueTypes.bool.def(false),
     justified: VueTypes.bool.def(false),
     block: VueTypes.bool.def(false),
@@ -22,7 +22,7 @@ export default {
       return [
         this.classPrefix,
         {
-          [this._addPrefix('size')]: this.size,
+          [this._addPrefix(this.size)]: this.size,
           [this._addPrefix('vertical')]: this.vertical,
           [this._addPrefix('justified')]: this.justified,
           [this._addPrefix('block')]: this.block,
