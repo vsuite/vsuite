@@ -1,9 +1,10 @@
 import VueTypes from 'vue-types';
 import _ from 'lodash';
-import Tooltip from 'components/Tooltip';
 import { getOffset, getWidth, getHeight, addStyle, on } from 'shares/dom';
 import DOMMouseMoveTracker from 'shares/DOMMouseMoveTracker';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
+
+import Tooltip from 'components/Tooltip';
 
 const CLASS_PREFIX = 'slider';
 

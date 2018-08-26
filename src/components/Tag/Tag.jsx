@@ -1,5 +1,6 @@
 import VueTypes from 'vue-types';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
+import { splitDataByComponent } from 'utils/split';
 import { COLORS } from 'utils/constant';
 
 const CLASS_PREFIX = 'tag';
@@ -30,11 +31,14 @@ export default {
 
   render() {
     const Component = this.componentClass;
-    const tagData = {
-      class: this.classes,
-      attrs: this.$attrs,
-      on: this.$listeners,
-    };
+    const tagData = splitDataByComponent(
+      {
+        class: this.classes,
+        splitProps: this.$attrs,
+        on: this.$listeners,
+      },
+      Component
+    );
 
     return (
       <Component {...tagData}>
