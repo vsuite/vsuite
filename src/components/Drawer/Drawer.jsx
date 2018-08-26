@@ -1,5 +1,6 @@
 import VueTypes from 'vue-types';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
+import { splitDataByComponent } from 'utils/split';
 
 import Modal from '../Modal/Modal.jsx';
 
@@ -14,15 +15,18 @@ export default {
   },
 
   render() {
-    const data = {
-      props: {
-        ...this.$attrs,
-        drawer: true,
-        modalClassNames: this._addPrefix(this.placement),
-        classPrefix: this.classPrefix,
+    const data = splitDataByComponent(
+      {
+        splitProps: {
+          ...this.$attrs,
+          drawer: true,
+          modalClassNames: this._addPrefix(this.placement),
+          classPrefix: this.classPrefix,
+        },
+        on: this.$listeners,
       },
-      on: this.$listeners,
-    };
+      Modal
+    );
 
     return (
       <Modal {...data}>
