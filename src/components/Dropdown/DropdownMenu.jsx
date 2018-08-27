@@ -85,7 +85,7 @@ export default {
                 splitProps: {
                   ...props,
                   title: props.title,
-                  placement: this.pullLeft ? 'left-start' : 'right-start',
+                  placement: props.pullLeft ? 'left-start' : 'right-start',
                   componentClass: 'div',
                   submenu: true,
                   active,
@@ -109,8 +109,6 @@ export default {
     },
 
     _isActive(vnode, activeKey) {
-      if (!activeKey) return false;
-
       const props = getProps(vnode);
       const children = getChildren(vnode);
 

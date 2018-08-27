@@ -93,7 +93,9 @@ export default {
       ref: 'popper',
     };
 
-    this._addTriggerListeners(referenceData, dropdownData);
+    if (!this.disabled) {
+      this._addTriggerListeners(referenceData, dropdownData);
+    }
 
     return (
       <Component {...dropdownData}>
@@ -112,6 +114,7 @@ export default {
           class={this.toggleClassName}
           icon={this.icon}
           noCaret={this.noCaret}
+          disabled={this.disabled}
           tabindex={this.tabindex}
           componentClass={this.toggleComponentClass}
         >

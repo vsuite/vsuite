@@ -168,7 +168,13 @@ export function splitPropsByComponent(data, Component) {
     }
   }
 
-  const keys = Object.keys((Component && Component.props) || {});
+  const compProps = (Component && Component.props) || {};
+  const compMixins = (Component && Component.mixins) || [];
+  let keys = Object.keys(compProps);
+
+  compMixins.forEach(
+    mixin => (keys = keys.concat(Object.keys((mixin && mixin.props) || {})))
+  );
 
   data = data || {};
 
