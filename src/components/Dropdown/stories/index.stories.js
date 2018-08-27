@@ -5,6 +5,7 @@ import Dropdown from 'components/Dropdown';
 import ButtonToolbar from 'components/ButtonToolbar';
 import ButtonGroup from 'components/ButtonGroup';
 import IconButton from 'components/IconButton';
+import Popover from 'components/Popover';
 import Button from 'components/Button';
 import Icon from 'components/Icon';
 
@@ -372,3 +373,75 @@ stories.add('composition', () => ({
     );
   },
 }));
+
+stories.add('menu', () => ({
+  render() {
+    return (
+      <Demo title="Menu">
+        <Dropdown.Menu
+          style={{
+            width: '200px',
+            border: '1px solid #ddd',
+          }}
+        >
+          <Dropdown.Item>New File</Dropdown.Item>
+          <Dropdown.Item>New File with Current Profile</Dropdown.Item>
+          <Dropdown.Item>Download As...</Dropdown.Item>
+          <Dropdown.Item>Export PDF</Dropdown.Item>
+          <Dropdown.Item>Export HTML</Dropdown.Item>
+          <Dropdown.Item>Settings</Dropdown.Item>
+          <Dropdown.Item>About</Dropdown.Item>
+        </Dropdown.Menu>
+      </Demo>
+    );
+  },
+}));
+
+stories.add('& popper', () => ({
+  render() {
+    return (
+      <Demo title="& Popper">
+        <Popover placement="bottom-start" full ref="popover">
+          <Button>File</Button>
+          <Dropdown.Menu slot="content" onSelect={this._handleSelect}>
+            <Dropdown.Item eventKey={1}>New File</Dropdown.Item>
+            <Dropdown.Item eventKey={2}>
+              New File with Current Profile
+            </Dropdown.Item>
+            <Dropdown.Item eventKey={3}>Download As...</Dropdown.Item>
+            <Dropdown.Item eventKey={4}>Export PDF</Dropdown.Item>
+            <Dropdown.Item eventKey={5}>Export HTML</Dropdown.Item>
+            <Dropdown.Item eventKey={6}>Settings</Dropdown.Item>
+            <Dropdown.Item eventKey={7}>About</Dropdown.Item>
+          </Dropdown.Menu>
+        </Popover>
+      </Demo>
+    );
+  },
+
+  methods: {
+    _handleSelect() {
+      this.$refs.popover.hide();
+    },
+  },
+}));
+
+// stories.add('& router-link', () => ({
+//   render() {
+//     return (
+//       <Demo title="& Router Link">
+//         <Dropdown title="Menu">
+//           <Dropdown.Item componentClass="router-link" to="/guide/introduction">
+//             Guide
+//           </Dropdown.Item>
+//           <Dropdown.Item componentClass="router-link" to="/components/overview">
+//             Components
+//           </Dropdown.Item>
+//           <Dropdown.Item componentClass="router-link" to="/tools/palette">
+//             Tools
+//           </Dropdown.Item>
+//         </Dropdown>
+//       </Demo>
+//     );
+//   },
+// }));

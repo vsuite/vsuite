@@ -165,6 +165,10 @@ export function splitPropsByComponent(data, Component) {
 
     if (vue && vue.options && vue.options.components) {
       Component = vue.options.components[Component];
+
+      if (Component) {
+        Component = Component.options;
+      }
     }
   }
 

@@ -75,6 +75,14 @@ export default {
   },
 
   methods: {
+    show() {
+      this._openPopper();
+    },
+
+    hide() {
+      this._closePopper();
+    },
+
     _addTriggerListeners(referenceData, containerData) {
       if (~this.triggerList.indexOf('click')) {
         referenceData.on.click = this._handleClick;
