@@ -2,6 +2,7 @@ import VueTypes from 'vue-types';
 import _ from 'lodash';
 import popperMixin from 'mixins/popper';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
+import { splitDataByComponent } from 'utils/split';
 
 import DropdownToggle from './DropdownToggle.jsx';
 import DropdownMenu from './DropdownMenu.jsx';
@@ -59,13 +60,18 @@ export default {
 
   render(h) {
     const Component = this.componentClass;
-    const dropdownData = {
-      class: this.classes,
-      attrs: { role: 'menu' },
-      directives: [{ name: 'click-outside', value: this._handleClickOutside }],
-      on: {},
-      ref: 'container',
-    };
+    const dropdownData = splitDataByComponent(
+      {
+        class: this.classes,
+        splitProps: { role: 'menu' },
+        directives: [
+          { name: 'click-outside', value: this._handleClickOutside },
+        ],
+        on: {},
+        ref: 'container',
+      },
+      Component
+    );
     const referenceData = {
       class: this._addPrefix('rel'),
       on: {},

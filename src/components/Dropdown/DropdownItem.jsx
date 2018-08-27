@@ -2,6 +2,7 @@ import VueTypes from 'vue-types';
 import SafeAnchor from 'components/SafeAnchor';
 import Icon from 'components/Icon';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
+import { splitDataByComponent } from 'utils/split';
 
 const CLASS_PREFIX = 'dropdown-item';
 
@@ -50,21 +51,17 @@ export default {
     }
 
     const Component = this.componentClass;
-    let data = {
-      class: this._addPrefix('content'),
-      props: {},
-      attrs: { tabindex: this.tabindex },
-      on: { click: this._handleClick },
-    };
-
-    if (typeof Component === 'string') {
-      data.attrs = {
-        ...this.$attrs,
-        ...data.attrs,
-      };
-    } else {
-      data.props = this.$attrs;
-    }
+    let data = splitDataByComponent(
+      {
+        class: this._addPrefix('content'),
+        splitProps: {
+          ...this.$attrs,
+          tabindex: this.tabindex,
+        },
+        on: { ...this.$listeners, click: this._handleClick },
+      },
+      Component
+    );
 
     return (
       <li class={this.classes} role="presentation">

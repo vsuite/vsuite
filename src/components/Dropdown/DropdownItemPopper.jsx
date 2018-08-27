@@ -3,6 +3,7 @@ import Icon from 'components/Icon';
 import Ripple from 'components/Ripple';
 import popperMixin from 'mixins/popper';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
+import { splitDataByComponent } from 'utils/split';
 
 import DropdownItem from './DropdownItem.jsx';
 
@@ -20,13 +21,18 @@ export default {
   },
 
   render() {
-    const dipData = {
-      class: this._addPrefix(`pull-${this.pullLeft ? 'left' : 'right'}`),
-      props: { ...this.$attrs },
-      directives: [{ name: 'click-outside', value: this._handleClickOutside }],
-      on: {},
-      ref: 'container',
-    };
+    const dipData = splitDataByComponent(
+      {
+        class: this._addPrefix(`pull-${this.pullLeft ? 'left' : 'right'}`),
+        splitProps: this.$attrs,
+        directives: [
+          { name: 'click-outside', value: this._handleClickOutside },
+        ],
+        on: {},
+        ref: 'reference',
+      },
+      DropdownItem
+    );
     const referenceData = {
       class: this._addPrefix('toggle'),
       attrs: {
@@ -34,7 +40,7 @@ export default {
         tabindex: -1,
       },
       on: {},
-      ref: 'reference',
+      ref: 'wrapper',
     };
     const popperData = {
       class: [this.classPrefix, this._addPickerPrefix('menu')],
@@ -42,7 +48,7 @@ export default {
       directives: [
         {
           name: 'show',
-          value: this.currentVisible && this.focusableList.length,
+          value: this.currentVisible,
         },
         { name: 'transfer-dom' },
       ],

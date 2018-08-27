@@ -1,6 +1,7 @@
 import VueTypes from 'vue-types';
 import _ from 'lodash';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
+import { splitDataByComponent } from 'utils/split';
 import {
   getName,
   getProps,
@@ -25,8 +26,6 @@ export default {
     pullLeft: VueTypes.bool.def(false),
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
   },
-
-  computed: {},
 
   render(h) {
     const children = this.$slots.default || [];
@@ -64,6 +63,7 @@ export default {
 
           if (name === 'DropdownItem') {
             return cloneElement(vnode, {
+              key: index,
               props: {
                 active,
               },
@@ -80,20 +80,23 @@ export default {
             );
             const props = getAllProps(vnode);
             const events = getEvents(vnode);
-            const data = {
-              props: { title: props.title },
-              on: events,
-            };
+            const data = splitDataByComponent(
+              {
+                splitProps: {
+                  ...props,
+                  title: props.title,
+                  placement: this.pullLeft ? 'left-start' : 'right-start',
+                  componentClass: 'div',
+                  submenu: true,
+                  active,
+                },
+                on: events,
+              },
+              DropdownItemPopper
+            );
 
             return (
-              <DropdownItemPopper
-                {...props}
-                {...data}
-                active={active}
-                placement={this.pullLeft ? 'left-start' : 'right-start'}
-                submenu
-                componentClass="div"
-              >
+              <DropdownItemPopper {...data}>
                 {itemAndStatus.items}
               </DropdownItemPopper>
             );

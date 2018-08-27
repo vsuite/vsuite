@@ -3,6 +3,7 @@ import Button from 'components/Button';
 import Ripple from 'components/Ripple';
 import Icon from 'components/Icon';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
+import { splitDataByComponent } from 'utils/split';
 
 const CLASS_PREFIX = 'dropdown-toggle';
 
@@ -18,7 +19,7 @@ export default {
     ),
   },
 
-  render(h) {
+  render() {
     if (this.$slots.title) {
       const data = {
         class: [this.classPrefix, this._addPrefix('custom-title')],
@@ -43,14 +44,14 @@ export default {
       };
     }
 
-    if (typeof Component === 'string') {
-      btnData.attrs = this.$attrs;
-    } else {
-      btnData.props = {
-        ...btnData.props,
-        ...this.$attrs,
-      };
-    }
+    btnData = splitDataByComponent(
+      {
+        ...btnData,
+        splitProps: this.$attrs,
+      },
+      Component,
+      true
+    );
 
     return (
       <Component {...btnData}>
