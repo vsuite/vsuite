@@ -99,10 +99,10 @@ export default {
 
     return (
       <Component {...dropdownData}>
-        <div {...referenceData}>{this._renderToggle(h)}</div>
         <transition name="picker-fade">
           {this._renderMenu(h, popperData)}
         </transition>
+        <div {...referenceData}>{this._renderToggle(h)}</div>
       </Component>
     );
   },

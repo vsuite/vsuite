@@ -9,7 +9,7 @@ import Popover from 'components/Popover';
 import Button from 'components/Button';
 import Icon from 'components/Icon';
 
-const stories = storiesOf('Data Entry|Dropdown', module);
+const stories = storiesOf('Navigation|Dropdown', module);
 
 stories.add('default', () => ({
   render() {

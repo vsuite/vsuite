@@ -55,7 +55,7 @@ export default {
             tooltip: false,
             active: _.isUndefined(this.activeKey)
               ? props.active
-              : shallowEqual(this.activeKey, this.eventKey),
+              : shallowEqual(this.activeKey, props.eventKey),
           },
           on: {
             select: this._handleSelect,
