@@ -2,7 +2,7 @@ import VueTypes from 'vue-types';
 import _ from 'lodash';
 import { cloneElement, getName, getProps } from 'utils/node';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
-import shadowEqual from 'utils/shadowEqual';
+import shallowEqual from 'utils/shallowEqual';
 import invariant from 'utils/invariant';
 
 const CLASS_PREFIX = 'radio-group';
@@ -54,7 +54,7 @@ export default {
         props: {
           inline: this.inline,
           disabled: this.disabled || childProps.disabled,
-          checked: shadowEqual(this.currentVal, childProps.value),
+          checked: shallowEqual(this.currentVal, childProps.value),
         },
         on: { change: this._handleChange },
       });

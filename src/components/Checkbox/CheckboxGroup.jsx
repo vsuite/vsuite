@@ -2,7 +2,7 @@ import VueTypes from 'vue-types';
 import _ from 'lodash';
 import { cloneElement, getName, getProps } from 'utils/node';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
-import shadowEqual from 'utils/shadowEqual';
+import shallowEqual from 'utils/shallowEqual';
 import invariant from 'utils/invariant';
 
 const CLASS_PREFIX = 'checkbox-group';
@@ -55,7 +55,7 @@ export default {
         props: {
           inline: this.inline,
           disabled: this.disabled || childProps.disabled,
-          checked: this.currentVal.some(i => shadowEqual(i, childProps.value)),
+          checked: this.currentVal.some(i => shallowEqual(i, childProps.value)),
         },
         on: { change: this._handleChange },
       });

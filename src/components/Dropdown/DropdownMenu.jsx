@@ -10,7 +10,7 @@ import {
   getChildren,
   cloneElement,
 } from 'utils/node';
-import shallowEqual from 'utils/shadowEqual';
+import shallowEqual from 'utils/shallowEqual';
 
 import DropdownItemPopper from './DropdownItemPopper.jsx';
 
