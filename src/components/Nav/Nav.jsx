@@ -9,6 +9,8 @@ const CLASS_PREFIX = 'nav';
 export default {
   name: 'Nav',
 
+  inject: ['$vNavbar'],
+
   props: {
     appearance: VueTypes.oneOf(['default', 'subtle', 'tabs']).def('default'),
     reversed: VueTypes.bool.def(false),
@@ -21,7 +23,7 @@ export default {
 
   computed: {
     classes() {
-      const navbar = false;
+      const navbar = !!this.$vNavbar;
       const sidenav = false;
 
       return [

@@ -30,12 +30,12 @@
 
   // Reset border-radius
   .@{ns}nav-item:not(.@{ns}nav-item-disabled) > .@{ns}nav-item-content,
-  .@{ns}dropdown > .@{ns}dropdown-toggle {
+  .@{ns}dropdown > .@{ns}dropdown-rel > .@{ns}dropdown-toggle {
     border-radius: 0;
   }
 
   // DropDown
-  .@{ns}dropdown > .@{ns}dropdown-toggle {
+  .@{ns}dropdown > .@{ns}dropdown-rel > .@{ns}dropdown-toggle {
     padding: @nav-bar-padding-vertical @nav-bar-padding-horizontal;
     padding-right: @nav-bar-padding-horizontal+ @dropdown-caret-with+
       @dropdown-caret-padding;
@@ -64,7 +64,7 @@
   }
 
   .@{ns}nav-item-active > .@{ns}nav-item-content,
-  .@{ns}dropdown .@{ns}dropdown-menu-active ~ .@{ns}dropdown-toggle {
+  .@{ns}dropdown .@{ns}dropdown-menu-active ~ .@{ns}dropdown-rel > .@{ns}dropdown-toggle {
     &,
     &:hover,
     &:focus,
@@ -85,7 +85,7 @@
     color: @nav-bar-inverse-font-color;
   }
 
-  .@{ns}dropdown .@{ns}dropdown-menu-active ~ .@{ns}dropdown-toggle,
+  .@{ns}dropdown .@{ns}dropdown-menu-active ~ .@{ns}dropdown-rel > .@{ns}dropdown-toggle,
   .@{ns}dropdown .@{ns}dropdown-toggle,
   .@{ns}nav-item-active > .@{ns}nav-item-content,
   .@{ns}nav-item > .@{ns}nav-item-content {
@@ -93,7 +93,7 @@
   }
 
   .@{ns}nav-item-active > .@{ns}nav-item-content,
-  .@{ns}dropdown .@{ns}dropdown-menu-active ~ .@{ns}dropdown-toggle {
+  .@{ns}dropdown .@{ns}dropdown-menu-active ~ .@{ns}dropdown-rel > .@{ns}dropdown-toggle {
     &,
     &:hover,
     &:focus,
@@ -151,7 +151,7 @@
   .@{ns}navbar-nav
     .@{ns}dropdown
     .@{ns}dropdown-menu-active
-    ~ .@{ns}dropdown-toggle {
+    ~ .@{ns}dropdown-rel > .@{ns}dropdown-toggle {
     background-color: @nav-bar-subtle-active-bg;
     .reset-font-color(@nav-bar-subtle-font-active-color);
   }
