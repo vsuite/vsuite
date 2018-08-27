@@ -1,7 +1,12 @@
 import { storiesOf } from '@storybook/vue';
 import Demo from 'stories/demo';
-import ButtonToolbar from 'components/ButtonToolbar';
+
 import Dropdown from 'components/Dropdown';
+import ButtonToolbar from 'components/ButtonToolbar';
+import ButtonGroup from 'components/ButtonGroup';
+import IconButton from 'components/IconButton';
+import Button from 'components/Button';
+import Icon from 'components/Icon';
 
 const stories = storiesOf('Data Entry|Dropdown', module);
 
@@ -277,6 +282,90 @@ stories.add('multi-level', () => ({
             <Dropdown.Item>Item 4</Dropdown.Item>
             <Dropdown.Item>Item 5</Dropdown.Item>
             <Dropdown.Item>Item 6</Dropdown.Item>
+          </Dropdown>
+        </ButtonToolbar>
+      </Demo>
+    );
+  },
+}));
+
+stories.add('custom', () => ({
+  render() {
+    return (
+      <Demo title="Custom">
+        <ButtonToolbar>
+          <Dropdown title="More...">
+            <Dropdown.Item>
+              <Icon icon="edit2" /> Edit
+            </Dropdown.Item>
+            <Dropdown.Item>
+              <Icon icon="eye" /> View
+            </Dropdown.Item>
+            <Dropdown.Item>
+              <Icon icon="trash" /> Delete
+            </Dropdown.Item>
+          </Dropdown>
+
+          <Dropdown>
+            <Button appearance="primary" slot="title">
+              New
+            </Button>
+            <Dropdown.Item>
+              <Icon icon="user" /> New User
+            </Dropdown.Item>
+            <Dropdown.Item>
+              <Icon icon="group" /> New Group
+            </Dropdown.Item>
+          </Dropdown>
+          <Dropdown>
+            <IconButton appearance="primary" icon="plus" circle slot="title" />
+            <Dropdown.Item>
+              <Icon icon="user" /> New User
+            </Dropdown.Item>
+            <Dropdown.Item>
+              <Icon icon="group" /> New Group
+            </Dropdown.Item>
+          </Dropdown>
+        </ButtonToolbar>
+      </Demo>
+    );
+  },
+}));
+
+stories.add('composition', () => ({
+  render() {
+    return (
+      <Demo title="Composition">
+        <ButtonToolbar>
+          <Dropdown
+            title="Save"
+            appearance="default"
+            toggleComponentClass={Button}
+          >
+            <Dropdown.Item>Save as...</Dropdown.Item>
+            <Dropdown.Item>Save & New</Dropdown.Item>
+          </Dropdown>
+
+          <ButtonGroup>
+            <Button>Save</Button>
+            <Dropdown placement="bottom-end">
+              <IconButton icon="angle-double-down" slot="title" />
+              <Dropdown.Item icon="save">Save as...</Dropdown.Item>
+              <Dropdown.Item icon="save">Save & New</Dropdown.Item>
+            </Dropdown>
+          </ButtonGroup>
+
+          <Dropdown>
+            <IconButton icon="plus" placement="left" slot="title">
+              {' '}
+              New
+            </IconButton>
+            <Dropdown.Item icon="user">New User</Dropdown.Item>
+            <Dropdown.Item icon="group">New Group</Dropdown.Item>
+            <Dropdown.Menu icon="group" title="More">
+              <Dropdown.Item icon="user">New User</Dropdown.Item>
+              <Dropdown.Item icon="group">New Group</Dropdown.Item>
+            </Dropdown.Menu>
           </Dropdown>
         </ButtonToolbar>
       </Demo>

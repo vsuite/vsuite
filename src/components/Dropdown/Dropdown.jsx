@@ -109,15 +109,23 @@ export default {
 
   methods: {
     _renderToggle() {
+      const data = splitDataByComponent(
+        {
+          class: this.toggleClassName,
+          splitProps: {
+            ...this.$attrs,
+            icon: this.icon,
+            noCaret: this.noCaret,
+            disabled: this.disabled,
+            tabindex: this.tabindex,
+            componentClass: this.toggleComponentClass,
+          },
+        },
+        DropdownToggle
+      );
+
       return (
-        <DropdownToggle
-          class={this.toggleClassName}
-          icon={this.icon}
-          noCaret={this.noCaret}
-          disabled={this.disabled}
-          tabindex={this.tabindex}
-          componentClass={this.toggleComponentClass}
-        >
+        <DropdownToggle {...data}>
           {this.title}
           {this.$slots.title && (
             <template slot="title">{this.$slots.title}</template>
