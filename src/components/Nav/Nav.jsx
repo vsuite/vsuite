@@ -9,6 +9,12 @@ const CLASS_PREFIX = 'nav';
 export default {
   name: 'Nav',
 
+  provide() {
+    return {
+      $vNav: this,
+    };
+  },
+
   inject: {
     $vNavbar: { from: '$vNavbar', default: false },
     $vSidenav: { from: '$vSidenav', default: false },
@@ -93,6 +99,7 @@ export default {
   methods: {
     _handleSelect(eventKey, event) {
       this.$emit('select', eventKey, event);
+      this.$vSidenav && this.$vSidenav._handleSelect(eventKey, event);
     },
 
     _addPrefix(cls) {

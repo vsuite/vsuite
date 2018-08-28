@@ -20,6 +20,7 @@ export default {
     title: VueTypes.string,
     pullLeft: VueTypes.bool.def(false),
     expanded: VueTypes.bool.def(false),
+    collapsible: VueTypes.bool.def(false),
     sidenav: VueTypes.bool.def(false),
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
   },
@@ -50,7 +51,7 @@ export default {
       ref: 'popper',
     };
 
-    if (!this.sidenav) {
+    if (!this.sidenav || !this.collapsible) {
       dipData = _.merge(dipData, {
         directives: [
           { name: 'click-outside', value: this._handleClickOutside },

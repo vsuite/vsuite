@@ -26,7 +26,6 @@ export default {
     componentClass: VueTypes.oneOfType([VueTypes.string, VueTypes.object]).def(
       'div'
     ),
-    // select, openChange
   },
 
   data() {

@@ -112,6 +112,7 @@ export default {
                   componentClass: 'div',
                   submenu: true,
                   sidenav: this.sidenav,
+                  collapsible: this.collapsible,
                   expanded,
                   active,
                 },

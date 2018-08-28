@@ -31,14 +31,13 @@ export default {
     classes() {
       return [
         this.classPrefix,
+        this._addPrefix(`pull-${this.pullLeft ? 'left' : 'right'}`),
         {
           [this._addPrefix(this.expanded ? 'expand' : 'collapse')]:
             this.submenu && this.sidenav,
           [this._addPrefix('submenu')]: this.submenu,
           [this._addPrefix('active')]: this.active,
           [this._addPrefix('disabled')]: this.disabled,
-          [this._addPrefix(`pull-${this.pullLeft ? 'left' : 'right'}`)]: this
-            .pullLeft,
         },
       ];
     },

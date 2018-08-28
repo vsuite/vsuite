@@ -16,6 +16,7 @@ export default {
   mixins: [popperMixin],
 
   inject: {
+    $vNav: { from: '$vNav', default: false },
     $vSidenav: { from: '$vSidenav', default: false },
   },
 
@@ -96,7 +97,7 @@ export default {
       ref: 'popper',
     };
 
-    if (!this.sidenav) {
+    if (!this.sidenav || !this.collapsible) {
       const referenceData = {
         class: this._addPrefix('rel'),
         ref: 'reference',
@@ -204,7 +205,9 @@ export default {
       this._closePopper();
 
       this.$emit('select', eventKey, event);
-      this.$vSidenav && this.$vSidenav._handleSelect(eventKey, event);
+      !this.$vNav &&
+        this.$vSidenav &&
+        this.$vSidenav._handleSelect(eventKey, event);
     },
 
     _addPrefix(cls) {
