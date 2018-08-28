@@ -9812,6 +9812,10 @@ velocity-animate@^1.4.0:
   version "1.5.1"
   resolved "http://registry.npm.taobao.org/velocity-animate/download/velocity-animate-1.5.1.tgz#606837047bab8fbfb59a636d1d82ecc3f7bd71a6"
 
+velocity-animate@^2.0.5:
+  version "2.0.5"
+  resolved "http://registry.npm.taobao.org/velocity-animate/download/velocity-animate-2.0.5.tgz#35130c89887b3e9cfaa26b515b921dec9d2e2a57"
+
 velocity-react@^1.3.1:
   version "1.4.1"
   resolved "http://registry.npm.taobao.org/velocity-react/download/velocity-react-1.4.1.tgz#1d0b41859cdf2521c08a8b57f44e93ed2d54b5fc"

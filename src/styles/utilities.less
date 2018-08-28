@@ -59,35 +59,3 @@
 .fade-leave-to {
   opacity: 0;
 }
-
-.collapse {
-  display: none;
-
-  &.in {
-    display: block;
-  }
-
-  tr&.in {
-    display: table-row;
-  }
-
-  tbody&.in {
-    display: table-row-group;
-  }
-}
-
-.collapsing {
-  display: block;
-  position: relative;
-  height: 0;
-  overflow: hidden;
-  transition: height 0.35s ease, visibility 0.35s ease;
-
-  tr& {
-    display: table-row;
-  }
-
-  tbody& {
-    display: table-row-group;
-  }
-}

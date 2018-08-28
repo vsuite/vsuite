@@ -1,33 +1,22 @@
 import VueTypes from 'vue-types';
 import _ from 'lodash';
-import { addStyle } from 'shares/dom';
+import Velocity from 'velocity-animate';
 
 export default {
   name: 'Collapse',
 
   props: {
-    dimension: VueTypes.oneOfType([VueTypes.string, VueTypes.func]).def(
-      'height'
-    ),
+    direction: VueTypes.oneOf(['height', 'width']).def('height'),
   },
 
   render() {
     return (
       <transition
         {...this.$attrs}
-        type="transition"
-        enterClass="collapse"
-        enterActiveClass="collapsing"
-        enterToClass="collapse in"
-        leaveClass="collapse in"
-        leaveActiveClass="collapsing"
-        leaveToClass="collapse"
+        css={false}
         onBeforeEnter={this._handleEnter}
         onEnter={this._handleEntering}
-        onAfterEnter={this._handleEntered}
-        onBeforeLeave={this._handleExit}
         onLeave={this._handleExiting}
-        onAfterLeave={this._handleExited}
       >
         {this.$slots.default}
       </transition>
@@ -35,54 +24,25 @@ export default {
   },
 
   methods: {
-    _dimension() {
-      return typeof this.dimension === 'function'
-        ? this.dimension()
-        : this.dimension;
-    },
-
     _handleEnter(el) {
-      const dimension = this._dimension();
-
-      addStyle(el, dimension, '0px');
+      el.style[this.direction] = 0;
+      el.style.overflow = 'hidden';
     },
 
-    _handleEntering(el) {
-      const dimension = this._dimension();
-
-      requestAnimationFrame(() => {
-        addStyle(
-          el,
-          dimension,
-          _.get(el, `scroll${_.capitalize(dimension)}`) + 'px'
-        );
-      });
-    },
-
-    _handleEntered(el) {
-      const dimension = this._dimension();
-
-      addStyle(el, dimension, 'auto');
-    },
-
-    _handleExit(el) {
-      const dimension = this._dimension();
-
-      addStyle(
+    _handleEntering(el, done) {
+      Velocity(
         el,
-        dimension,
-        _.get(el, `scroll${_.capitalize(dimension)}`) + 'px'
+        { height: _.get(el, _.camelCase(`scroll-${this.direction}`)) },
+        { duration: 350, easing: 'ease-in-out', complete: done }
       );
     },
 
-    _handleExiting(el) {
-      const dimension = this._dimension();
-
-      requestAnimationFrame(() => {
-        addStyle(el, dimension, '0px');
-      });
+    _handleExiting(el, done) {
+      Velocity(
+        el,
+        { height: 0 },
+        { duration: 350, easing: 'ease-in-out', complete: done }
+      );
     },
-
-    _handleExited(el) {},
   },
 };
