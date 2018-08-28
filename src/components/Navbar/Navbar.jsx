@@ -7,6 +7,12 @@ const CLASS_PREFIX = 'navbar';
 export default {
   name: 'Navbar',
 
+  provide() {
+    return {
+      $vNavbar: this.hasChildContext && this,
+    };
+  },
+
   props: {
     appearance: VueTypes.oneOf(['default', 'inverse', 'subtle']).def('default'),
     hasChildContext: VueTypes.bool,
@@ -14,12 +20,6 @@ export default {
     componentClass: VueTypes.oneOfType([VueTypes.string, VueTypes.object]).def(
       'div'
     ),
-  },
-
-  provide() {
-    return {
-      $vNavbar: this.hasChildContext && this,
-    };
   },
 
   computed: {

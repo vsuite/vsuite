@@ -7,7 +7,7 @@ import { splitDataByComponent } from 'utils/split';
 const CLASS_PREFIX = 'dropdown-item';
 
 export default {
-  name: 'DropdownItem',
+  name: 'DropdownMenuItem',
 
   props: {
     icon: VueTypes.string,
@@ -15,14 +15,16 @@ export default {
     panel: VueTypes.bool.def(false),
     active: VueTypes.bool.def(false),
     disabled: VueTypes.bool.def(false),
-    submenu: VueTypes.bool.def(false),
     eventKey: VueTypes.any,
+    expanded: VueTypes.bool.def(false),
+    pullLeft: VueTypes.bool.def(false),
+    submenu: VueTypes.bool.def(false),
+    sidenav: VueTypes.bool.def(false),
     tabindex: VueTypes.number.def(-1),
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
     componentClass: VueTypes.oneOfType([VueTypes.string, VueTypes.object]).def(
       SafeAnchor
     ),
-    // select
   },
 
   computed: {
@@ -30,12 +32,13 @@ export default {
       return [
         this.classPrefix,
         {
-          // [this._addPrefix('expand')]
+          [this._addPrefix(this.expanded ? 'expand' : 'collapse')]:
+            this.submenu && this.sidenav,
           [this._addPrefix('submenu')]: this.submenu,
-          // [this._addPrefix('open')]
           [this._addPrefix('active')]: this.active,
           [this._addPrefix('disabled')]: this.disabled,
-          // [_addPrefix(`pull-${pullLeft ? 'left' : 'right'}`)]: pullLeft
+          [this._addPrefix(`pull-${this.pullLeft ? 'left' : 'right'}`)]: this
+            .pullLeft,
         },
       ];
     },

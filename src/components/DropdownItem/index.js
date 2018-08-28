@@ -1,3 +1,3 @@
-import DropdownItem from '../Dropdown/DropdownItem.jsx';
+import DropdownItem from '../Dropdown/DropdownMenuItem.jsx';
 
 export default DropdownItem;

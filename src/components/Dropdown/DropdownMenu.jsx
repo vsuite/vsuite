@@ -12,7 +12,9 @@ import {
 } from 'utils/node';
 import shallowEqual from 'utils/shallowEqual';
 
-import DropdownItemPopper from './DropdownItemPopper.jsx';
+import { Collapse } from 'components/Animation';
+
+import DropdownMenuItemPopper from './DropdownMenuItemPopper.jsx';
 
 const CLASS_PREFIX = 'dropdown-menu';
 
@@ -24,13 +26,17 @@ export default {
     title: VueTypes.string,
     icon: VueTypes.string,
     pullLeft: VueTypes.bool.def(false),
+    sidenav: VueTypes.bool.def(false),
+    expanded: VueTypes.bool,
+    collapsible: VueTypes.bool.def(false),
+    openKeys: VueTypes.arrayOf(VueTypes.any),
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
   },
 
   render(h) {
     const children = this.$slots.default || [];
     const { items, active } = this._getItemsAndStatus(h, children);
-    const data = {
+    let data = {
       class: [
         this.classPrefix,
         {
@@ -43,10 +49,23 @@ export default {
       },
     };
 
-    return <ul {...data}>{items}</ul>;
+    if (this.sidenav) {
+      data = _.merge(data, {
+        attrs: {
+          'aria-hidden': !this.expanded,
+        },
+        directives: [{ name: 'show', value: this.expanded }],
+      });
+    }
+
+    return this._renderCollapse(h, <ul {...data}>{items}</ul>);
   },
 
   methods: {
+    _renderCollapse(h, children) {
+      return <Collapse>{children}</Collapse>;
+    },
+
     _getItemsAndStatus(h, children) {
       let hasActiveItem = false;
 
@@ -55,20 +74,21 @@ export default {
           const name = getName(vnode);
           let active = false;
 
-          if (name === 'DropdownMenu' || name === 'DropdownItem') {
+          if (name === 'DropdownMenu' || name === 'DropdownMenuItem') {
             active = this._isActive(vnode, this.activeKey);
 
             if (active) hasActiveItem = true;
           }
 
-          if (name === 'DropdownItem') {
+          if (name === 'DropdownMenuItem') {
             return cloneElement(vnode, {
               key: index,
               props: {
+                sidenav: this.sidenav,
                 active,
               },
               on: {
-                select: this._handleItemSelect,
+                select: this._handleSelect,
               },
             });
           }
@@ -80,6 +100,9 @@ export default {
             );
             const props = getAllProps(vnode);
             const events = getEvents(vnode);
+            const expanded = this.openKeys.some(key =>
+              shallowEqual(key, props.eventKey)
+            );
             const data = splitDataByComponent(
               {
                 splitProps: {
@@ -88,17 +111,22 @@ export default {
                   placement: props.pullLeft ? 'left-start' : 'right-start',
                   componentClass: 'div',
                   submenu: true,
+                  sidenav: this.sidenav,
+                  expanded,
                   active,
                 },
-                on: events,
+                on: {
+                  ...events,
+                  toggle: this._handleToggle,
+                },
               },
-              DropdownItemPopper
+              DropdownMenuItemPopper
             );
 
             return (
-              <DropdownItemPopper {...data}>
+              <DropdownMenuItemPopper {...data}>
                 {itemAndStatus.items}
-              </DropdownItemPopper>
+              </DropdownMenuItemPopper>
             );
           }
 
@@ -125,7 +153,7 @@ export default {
           .filter(vnode => {
             const name = getName(vnode);
 
-            return name === 'DropdownItem' || name === 'DropdownMenu';
+            return name === 'DropdownMenuItem' || name === 'DropdownMenu';
           })
           .some(vnode => this._isActive(vnode, activeKey))
       )
@@ -134,7 +162,11 @@ export default {
       return props.active;
     },
 
-    _handleItemSelect(eventKey, event) {
+    _handleToggle(eventKey, event) {
+      this.$emit('toggle', eventKey, event);
+    },
+
+    _handleSelect(eventKey, event) {
       this.$emit('select', eventKey, event);
     },
 

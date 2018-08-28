@@ -14,6 +14,7 @@ export default {
   render() {
     return (
       <transition
+        {...this.$attrs}
         type="transition"
         enterClass="collapse"
         enterActiveClass="collapsing"

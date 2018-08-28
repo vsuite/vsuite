@@ -1,9 +1,11 @@
 import VueTypes from 'vue-types';
+import _ from 'lodash';
+import prefix, { defaultClassPrefix } from 'utils/prefix';
+import { splitDataByComponent } from 'utils/split';
+
 import Button from 'components/Button';
 import Ripple from 'components/Ripple';
 import Icon from 'components/Icon';
-import prefix, { defaultClassPrefix } from 'utils/prefix';
-import { splitDataByComponent } from 'utils/split';
 
 const CLASS_PREFIX = 'dropdown-toggle';
 
@@ -24,6 +26,7 @@ export default {
       const data = {
         class: [this.classPrefix, this._addPrefix('custom-title')],
         attrs: this.$attrs,
+        on: this.$listeners,
       };
 
       return (
@@ -35,13 +38,18 @@ export default {
     }
 
     const Component = this.componentClass;
-    let btnData = { class: this.classPrefix, props: {}, attrs: {} };
+    let btnData = {
+      class: this.classPrefix,
+      on: this.$listeners,
+    };
 
     if (Component.name === Button.name) {
-      btnData.props = {
-        componentClass: 'a',
-        appearance: 'subtle',
-      };
+      btnData = _.merge(btnData, {
+        props: {
+          componentClass: 'a',
+          appearance: 'subtle',
+        },
+      });
     }
 
     btnData = splitDataByComponent(

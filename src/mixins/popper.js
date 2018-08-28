@@ -84,6 +84,9 @@ export default {
     },
 
     _addTriggerListeners(referenceData, containerData) {
+      referenceData.on = referenceData.on || {};
+      containerData.on = containerData.on || {};
+
       if (~this.triggerList.indexOf('click')) {
         referenceData.on.click = this._handleClick;
       }

@@ -9,7 +9,10 @@ const CLASS_PREFIX = 'nav';
 export default {
   name: 'Nav',
 
-  inject: ['$vNavbar'],
+  inject: {
+    $vNavbar: { from: '$vNavbar', default: false },
+    $vSidenav: { from: '$vSidenav', default: false },
+  },
 
   props: {
     appearance: VueTypes.oneOf(['default', 'subtle', 'tabs']).def('default'),
@@ -24,7 +27,7 @@ export default {
   computed: {
     classes() {
       const navbar = !!this.$vNavbar;
-      const sidenav = false;
+      const sidenav = !!this.$vSidenav;
 
       return [
         this.classPrefix,
@@ -35,7 +38,7 @@ export default {
           [`${globalKey}sidenav-nav`]: sidenav,
           [this._addPrefix('horizontal')]:
             navbar || (!this.vertical && !sidenav),
-          [this._addPrefix('vertical')]: this.vertical || this.sidebar,
+          [this._addPrefix('vertical')]: this.vertical || sidenav,
           [this._addPrefix('justified')]: this.justified,
           [this._addPrefix('reversed')]: this.reversed,
         },
@@ -53,8 +56,7 @@ export default {
       if (name === 'NavItem') {
         return cloneElement(vnode, {
           props: {
-            // tooltip: this.sidenav && !this.expanded,
-            tooltip: false,
+            tooltip: this.$vSidenav && !this.$vSidenav.expanded,
             active: _.isUndefined(this.activeKey)
               ? props.active
               : shallowEqual(this.activeKey, props.eventKey),

@@ -3,6 +3,7 @@ import _ from 'lodash';
 import popperMixin from 'mixins/popper';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
 import { splitDataByComponent } from 'utils/split';
+import shallowEqual from 'utils/shallowEqual';
 
 import DropdownToggle from './DropdownToggle.jsx';
 import DropdownMenu from './DropdownMenu.jsx';
@@ -14,6 +15,10 @@ export default {
 
   mixins: [popperMixin],
 
+  inject: {
+    $vSidenav: { from: '$vSidenav', default: false },
+  },
+
   props: {
     /* eslint-disable vue/require-prop-types */
     placement: {
@@ -24,6 +29,7 @@ export default {
       ...popperMixin.props.trigger,
       default: 'click',
     },
+    eventKey: VueTypes.any,
     activeKey: VueTypes.any,
     title: VueTypes.string, // slot
     icon: VueTypes.string, // slot
@@ -44,6 +50,22 @@ export default {
   },
 
   computed: {
+    openKeys() {
+      return (this.$vSidenav && this.$vSidenav.currentOpenKeys) || [];
+    },
+
+    expanded() {
+      return this.openKeys.some(key => shallowEqual(key, this.eventKey));
+    },
+
+    collapsible() {
+      return this.$vSidenav && this.$vSidenav.expanded;
+    },
+
+    sidenav() {
+      return !!this.$vSidenav;
+    },
+
     classes() {
       return [
         this.classPrefix,
@@ -52,7 +74,8 @@ export default {
           [this._addPrefix('disabled')]: this.disabled,
           [this._addPrefix('no-caret')]: this.noCaret,
           [this._addPrefix('open')]: this.currentVisible,
-          // [addPrefix(menuExpanded ? 'expand' : 'collapse')]: sidenav
+          [this._addPrefix(this.expanded ? 'expand' : 'collapse')]: this
+            .sidenav,
         },
       ];
     },
@@ -60,49 +83,62 @@ export default {
 
   render(h) {
     const Component = this.componentClass;
-    const dropdownData = splitDataByComponent(
+    let dropdownData = splitDataByComponent(
       {
         class: this.classes,
         splitProps: { role: 'menu' },
-        directives: [
-          { name: 'click-outside', value: this._handleClickOutside },
-        ],
-        on: {},
         ref: 'container',
       },
       Component
     );
-    const referenceData = {
-      class: this._addPrefix('rel'),
-      on: {},
-      ref: 'reference',
-    };
-    const popperData = {
+    let popperData = {
       class: [this._addPickerPrefix('menu')],
-      style: {},
-      directives: [
-        {
-          name: 'show',
-          value: this.currentVisible,
-        },
-        { name: 'transfer-dom' },
-      ],
-      attrs: {
-        'data-transfer': `${this.transfer}`,
-      },
       ref: 'popper',
     };
 
-    if (!this.disabled) {
-      this._addTriggerListeners(referenceData, dropdownData);
+    if (!this.sidenav) {
+      const referenceData = {
+        class: this._addPrefix('rel'),
+        ref: 'reference',
+      };
+
+      dropdownData = _.merge(dropdownData, {
+        directives: [
+          { name: 'click-outside', value: this._handleClickOutside },
+        ],
+      });
+
+      popperData = _.merge(popperData, {
+        directives: [
+          {
+            name: 'show',
+            value: this.currentVisible,
+          },
+          { name: 'transfer-dom' },
+        ],
+        attrs: {
+          'data-transfer': `${this.transfer}`,
+        },
+      });
+
+      if (!this.disabled) {
+        this._addTriggerListeners(referenceData, dropdownData);
+      }
+
+      return (
+        <Component {...dropdownData}>
+          <transition name="picker-fade">
+            {this._renderMenu(h, popperData)}
+          </transition>
+          <div {...referenceData}>{this._renderToggle(h)}</div>
+        </Component>
+      );
     }
 
     return (
       <Component {...dropdownData}>
-        <transition name="picker-fade">
-          {this._renderMenu(h, popperData)}
-        </transition>
-        <div {...referenceData}>{this._renderToggle(h)}</div>
+        {this._renderMenu(h, popperData)}
+        {this._renderToggle(h)}
       </Component>
     );
   },
@@ -120,6 +156,7 @@ export default {
             tabindex: this.tabindex,
             componentClass: this.toggleComponentClass,
           },
+          on: { click: event => this._handleToggle(this.eventKey, event) },
         },
         DropdownToggle
       );
@@ -142,8 +179,13 @@ export default {
         style: this.menuStyle,
         props: {
           activeKey: this.activeKey,
+          sidenav: this.sidenav,
+          expanded: this.expanded,
+          collapsible: this.collapsible,
+          openKeys: this.openKeys,
         },
         on: {
+          toggle: this._handleToggle,
           select: this._handleSelect,
         },
       });
@@ -151,10 +193,18 @@ export default {
       return <DropdownMenu {...data}>{this.$slots.default}</DropdownMenu>;
     },
 
+    _handleToggle(eventKey, event) {
+      if (!this.sidenav) return;
+
+      this.$emit('toggle', eventKey, event);
+      this.$vSidenav && this.$vSidenav._handleOpenChange(eventKey, event);
+    },
+
     _handleSelect(eventKey, event) {
       this._closePopper();
 
       this.$emit('select', eventKey, event);
+      this.$vSidenav && this.$vSidenav._handleSelect(eventKey, event);
     },
 
     _addPrefix(cls) {
