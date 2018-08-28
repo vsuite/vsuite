@@ -1,6 +1,9 @@
 # editor
 .idea/
 
+# gtm
+/.gtm/
+
 # OS
 .DS_Store
 
