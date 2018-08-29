@@ -64,17 +64,6 @@ export default {
     return (
       <transition
         appear
-        // type="animation"
-        // enterActiveClass={this._addPrefix(['collapse-in', 'collapsing']).join(
-        //   ' '
-        // )}
-        // enterToClass={this._addPrefix('collapse-in')}
-        // leaveActiveClass={this._addPrefix(['collapse-out', 'collapsing']).join(
-        //   ' '
-        // )}
-        // leaveToClass={this._addPrefix('collapse-out')}
-        // onAfterEnter={this._handleAfterEnter}
-        // onAfterLeave={this._handleAfterLeave}
         onBeforeEnter={this._handleEnter}
         onEnter={this._handleEntering}
         onAfterEnter={this._handleEntered}

@@ -28,7 +28,7 @@ export default {
     },
     trigger: {
       ...popperMixin.props.trigger,
-      default: 'click',
+      default: 'hover',
     },
     eventKey: VueTypes.any,
     activeKey: VueTypes.any,

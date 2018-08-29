@@ -42,6 +42,8 @@ export default {
 
     _handleEntered(el) {
       removeClass(el, 'collapsing');
+
+      el.style[this.direction] = 'auto';
     },
 
     _handleExit(el) {

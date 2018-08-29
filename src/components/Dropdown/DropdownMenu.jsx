@@ -63,7 +63,7 @@ export default {
 
   methods: {
     _renderCollapse(h, children) {
-      return <Collapse>{children}</Collapse>;
+      return <Collapse appear>{children}</Collapse>;
     },
 
     _getItemsAndStatus(h, children) {
