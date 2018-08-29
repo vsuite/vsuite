@@ -59,3 +59,18 @@
 .fade-leave-to {
   opacity: 0;
 }
+
+.collapsing {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  transition: height 0.35s ease, visibility 0.35s ease;
+
+  tr& {
+    display: table-row;
+  }
+
+  tbody& {
+    display: table-row-group;
+  }
+}

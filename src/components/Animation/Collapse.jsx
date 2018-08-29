@@ -1,6 +1,6 @@
 import VueTypes from 'vue-types';
 import _ from 'lodash';
-import Velocity from 'velocity-animate';
+import { addClass, removeClass } from 'shares/dom';
 
 export default {
   name: 'Collapse',
@@ -13,10 +13,12 @@ export default {
     return (
       <transition
         {...this.$attrs}
-        css={false}
         onBeforeEnter={this._handleEnter}
         onEnter={this._handleEntering}
+        onAfterEnter={this._handleEntered}
+        onBeforeLeave={this._handleExit}
         onLeave={this._handleExiting}
+        onAfterLeave={this._handleExited}
       >
         {this.$slots.default}
       </transition>
@@ -25,24 +27,43 @@ export default {
 
   methods: {
     _handleEnter(el) {
-      el.style[this.direction] = 0;
-      el.style.overflow = 'hidden';
+      el.style[this.direction] = '0';
     },
 
-    _handleEntering(el, done) {
-      Velocity(
-        el,
-        { height: _.get(el, _.camelCase(`scroll-${this.direction}`)) },
-        { duration: 350, easing: 'ease-in-out', complete: done }
-      );
+    _handleEntering(el) {
+      const val = _.get(el, _.camelCase(`scroll-${this.direction}`));
+
+      if (val) {
+        addClass(el, 'collapsing');
+
+        el.style[this.direction] = `${val}px`;
+      }
     },
 
-    _handleExiting(el, done) {
-      Velocity(
-        el,
-        { height: 0 },
-        { duration: 350, easing: 'ease-in-out', complete: done }
-      );
+    _handleEntered(el) {
+      removeClass(el, 'collapsing');
+    },
+
+    _handleExit(el) {
+      const val = _.get(el, _.camelCase(`scroll-${this.direction}`));
+
+      if (val) {
+        el.style[this.direction] = `${val}px`;
+      }
+    },
+
+    _handleExiting(el) {
+      const val = _.get(el, _.camelCase(`scroll-${this.direction}`));
+
+      if (val) {
+        addClass(el, 'collapsing');
+
+        el.style[this.direction] = '0px';
+      }
+    },
+
+    _handleExited(el) {
+      removeClass(el, 'collapsing');
     },
   },
 };
