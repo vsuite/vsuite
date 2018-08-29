@@ -3,7 +3,7 @@ import _ from 'lodash';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
 import shallowEqual from 'utils/shallowEqual';
 import { splitDataByComponent } from 'utils/split';
-import { addClass } from 'shares/dom';
+import { addClass, removeClass } from 'shares/dom';
 
 const CLASS_PREFIX = 'sidenav';
 
@@ -64,17 +64,23 @@ export default {
     return (
       <transition
         appear
-        type="animation"
-        enterActiveClass={this._addPrefix(['collapse-in', 'collapsing']).join(
-          ' '
-        )}
-        enterToClass={this._addPrefix('collapse-in')}
-        leaveActiveClass={this._addPrefix(['collapse-out', 'collapsing']).join(
-          ' '
-        )}
-        leaveToClass={this._addPrefix('collapse-out')}
-        onAfterEnter={this._handleAfterEnter}
-        onAfterLeave={this._handleAfterLeave}
+        // type="animation"
+        // enterActiveClass={this._addPrefix(['collapse-in', 'collapsing']).join(
+        //   ' '
+        // )}
+        // enterToClass={this._addPrefix('collapse-in')}
+        // leaveActiveClass={this._addPrefix(['collapse-out', 'collapsing']).join(
+        //   ' '
+        // )}
+        // leaveToClass={this._addPrefix('collapse-out')}
+        // onAfterEnter={this._handleAfterEnter}
+        // onAfterLeave={this._handleAfterLeave}
+        onBeforeEnter={this._handleEnter}
+        onEnter={this._handleEntering}
+        onAfterEnter={this._handleEntered}
+        onBeforeLeave={this._handleExit}
+        onLeave={this._handleExiting}
+        onAfterLeave={this._handleExited}
       >
         <Component {...data}>{this.$slots.default}</Component>
       </transition>
@@ -82,20 +88,30 @@ export default {
   },
 
   methods: {
-    _handleAfterEnter() {
-      const sidenav = this.$refs.sidenav || this.$refs.sidenav.$el;
-
-      if (!sidenav) return;
-
-      addClass(sidenav, this._addPrefix('collapse-in'));
+    _handleEnter(el) {
+      removeClass(el, this._addPrefix('collapse-out'));
     },
 
-    _handleAfterLeave() {
-      const sidenav = this.$refs.sidenav || this.$refs.sidenav.$el;
+    _handleEntering(el) {
+      addClass(el, this._addPrefix(['collapse-in', 'collapsing']));
+    },
 
-      if (!sidenav) return;
+    _handleEntered(el) {
+      removeClass(el, this._addPrefix('collapsing'));
+    },
 
-      addClass(sidenav, this._addPrefix('collapse-out'));
+    _handleExit(el) {
+      removeClass(el, this._addPrefix('collapse-in'));
+    },
+
+    _handleExiting(el) {
+      addClass(el, this._addPrefix(['collapse-out', 'collapsing']));
+    },
+
+    _handleExited(el) {
+      removeClass(el, this._addPrefix('collapsing'));
+
+      el.style.display = 'block';
     },
 
     _handleSelect(eventKey, event) {

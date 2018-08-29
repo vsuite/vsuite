@@ -1,4 +1,6 @@
 import VueTypes from 'vue-types';
+import _ from 'lodash';
+import popperMixin from 'mixins/popper';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
 import { splitDataByComponent } from 'utils/split';
 
@@ -12,7 +14,14 @@ const CLASS_PREFIX = 'nav-item';
 export default {
   name: 'NavItem',
 
+  mixins: [popperMixin],
+
   props: {
+    /* eslint-disable vue/require-prop-types */
+    placement: {
+      ...popperMixin.props.placement,
+      default: 'right',
+    },
     active: VueTypes.bool.def(false),
     disabled: VueTypes.bool.def(false),
     divider: VueTypes.bool.def(false),
@@ -49,7 +58,7 @@ export default {
     }
 
     const Component = this.componentClass;
-    const data = splitDataByComponent(
+    const btnData = splitDataByComponent(
       {
         class: this._addPrefix('content'),
         splitProps: {
@@ -64,33 +73,63 @@ export default {
       },
       Component
     );
-    const item = (
-      <Component {...data}>
-        {this.$slots.icon || (this.icon && <Icon icon={this.icon} />)}
-        <span class={this._addPrefix('text')}>{this.$slots.default}</span>
-        <Ripple />
-      </Component>
-    );
+    let liData = {
+      class: this.classes,
+      attrs: { role: 'presentation' },
+    };
+
+    if (this.tooltip) {
+      const tooltipData = {
+        directives: [
+          { name: 'show', value: this.currentVisible },
+          { name: 'transfer-dom' },
+        ],
+        props: {
+          pure: true,
+        },
+        attrs: {
+          'data-transfer': 'true',
+        },
+        ref: 'popper',
+      };
+
+      liData = _.merge(liData, {
+        directives: [
+          { name: 'click-outside', value: this._handleClickOutside },
+        ],
+        ref: 'reference',
+      });
+
+      this._addTriggerListeners(btnData, liData);
+
+      return (
+        <li {...liData}>
+          <Component {...btnData}>
+            {this.$slots.icon || (this.icon && <Icon icon={this.icon} />)}
+            <span class={this._addPrefix('text')}>{this.$slots.default}</span>
+            <Ripple />
+          </Component>
+          <transition name="tooltip-fade">
+            <Tooltip {...tooltipData}>
+              <template slot="title">{this.$slots.default}</template>
+            </Tooltip>
+          </transition>
+        </li>
+      );
+    }
 
     return (
-      <li class={this.classes} role="presentation">
-        {this.tooltip
-          ? this._renderWithTooltip(h, item, this.$slots.default)
-          : item}
+      <li {...liData}>
+        <Component {...btnData}>
+          {this.$slots.icon || (this.icon && <Icon icon={this.icon} />)}
+          <span class={this._addPrefix('text')}>{this.$slots.default}</span>
+          <Ripple />
+        </Component>
       </li>
     );
   },
 
   methods: {
-    _renderWithTooltip(h, item, children) {
-      return (
-        <Tooltip placement="right">
-          {children}
-          <template slot="content">{item}</template>
-        </Tooltip>
-      );
-    },
-
     _handleClick(event) {
       if (this.disabled) return;
 

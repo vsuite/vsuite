@@ -108,7 +108,9 @@ export default {
         <transition name="tooltip-fade">
           <div {...popperData}>
             <div {...arrowData} />
-            <div class={this.innerClasses}>{this.title}</div>
+            <div class={this.innerClasses}>
+              {this.title || this.$slots.title}
+            </div>
           </div>
         </transition>
       </div>
@@ -127,7 +129,7 @@ export default {
       return (
         <div {...data}>
           <div class={this._addPrefix('arrow')} />
-          <div class={this.innerClasses}>{this.title}</div>
+          <div class={this.innerClasses}>{this.title || this.$slots.title}</div>
         </div>
       );
     },

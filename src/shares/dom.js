@@ -1,6 +1,7 @@
 /**
  * classNames
  */
+import _ from 'lodash';
 import invariant from 'utils/invariant';
 
 export const hasClass = function(target, className) {
@@ -12,28 +13,40 @@ export const hasClass = function(target, className) {
 };
 
 export const addClass = function(target, className) {
-  if (className) {
-    if (target.classList) {
-      target.classList.add(className);
-    } else if (!hasClass(target, className)) {
-      target.className = `${target.className} ${className}`;
+  function add(className) {
+    if (className) {
+      if (target.classList) {
+        target.classList.add(className);
+      } else if (!hasClass(target, className)) {
+        target.className = `${target.className} ${className}`;
+      }
     }
   }
+
+  const list = _.isArray(className) ? className : [className];
+
+  list.forEach(add);
 
   return target;
 };
 
 export const removeClass = function(target, className) {
-  if (className) {
-    if (target.classList) {
-      target.classList.remove(className);
-    } else {
-      target.className = target.className
-        .replace(new RegExp(`(^|\\s)${className}(?:\\s|$)`, 'g'), '$1')
-        .replace(/\s+/g, ' ') // multiple spaces to one
-        .replace(/^\s*|\s*$/g, ''); // trim the ends
+  function remove(className) {
+    if (className) {
+      if (target.classList) {
+        target.classList.remove(className);
+      } else {
+        target.className = target.className
+          .replace(new RegExp(`(^|\\s)${className}(?:\\s|$)`, 'g'), '$1')
+          .replace(/\s+/g, ' ') // multiple spaces to one
+          .replace(/^\s*|\s*$/g, ''); // trim the ends
+      }
     }
   }
+
+  const list = _.isArray(className) ? className : [className];
+
+  list.forEach(remove);
 
   return target;
 };
