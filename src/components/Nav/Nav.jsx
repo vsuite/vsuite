@@ -50,6 +50,18 @@ export default {
         },
       ];
     },
+
+    currentActiveKey() {
+      const sidenav = !!this.$vSidenav;
+
+      if (sidenav) {
+        const snActiveKey = this.$vSidenav && this.$vSidenav.activeKey;
+
+        return _.isUndefined(snActiveKey) ? this.activeKey : snActiveKey;
+      }
+
+      return this.activeKey;
+    },
   },
 
   render() {
@@ -63,9 +75,9 @@ export default {
         return cloneElement(vnode, {
           props: {
             tooltip: this.$vSidenav && !this.$vSidenav.expanded,
-            active: _.isUndefined(this.activeKey)
+            active: _.isUndefined(this.currentActiveKey)
               ? props.active
-              : shallowEqual(this.activeKey, props.eventKey),
+              : shallowEqual(this.currentActiveKey, props.eventKey),
           },
           on: {
             select: this._handleSelect,
@@ -76,7 +88,7 @@ export default {
       if (name === 'Dropdown') {
         return cloneElement(vnode, {
           props: {
-            activeKey: this.activeKey,
+            activeKey: this.currentActiveKey,
             componentClass: 'li',
           },
           on: {
