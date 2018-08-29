@@ -113,13 +113,26 @@ stories.add('expanded', () => ({
     };
   },
 
-  render() {
+  render(h) {
     return (
       <Demo title="Expanded">
-        <div style={{ width: '250px' }}>
-          <Toggle onChange={this._handleToggle} checked={this.expanded} />
-          <hr />
+        <Toggle onChange={this._handleToggle} checked={this.expanded} />
+        <hr />
+        {this._renderSidenav(h)}
+        {this._renderSidenav(h, 'inverse')}
+        {this._renderSidenav(h, 'subtle')}
+      </Demo>
+    );
+  },
+
+  methods: {
+    _renderSidenav(h, appearance) {
+      return (
+        <div
+          style={{ display: 'inline-block', width: '250px', margin: '10px' }}
+        >
           <Sidenav
+            appearance={appearance}
             expanded={this.expanded}
             openKeys={this.openKeys}
             activeKey={this.activeKey}
@@ -165,11 +178,9 @@ stories.add('expanded', () => ({
             </Sidenav.Body>
           </Sidenav>
         </div>
-      </Demo>
-    );
-  },
+      );
+    },
 
-  methods: {
     _handleToggle() {
       this.expanded = !this.expanded;
     },

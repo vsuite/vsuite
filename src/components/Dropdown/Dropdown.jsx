@@ -28,7 +28,13 @@ export default {
     },
     trigger: {
       ...popperMixin.props.trigger,
-      default: 'hover',
+      default() {
+        const sidenav = !!this.$vSidenav;
+
+        if (sidenav) return 'hover';
+
+        return 'click';
+      },
     },
     eventKey: VueTypes.any,
     activeKey: VueTypes.any,
@@ -60,6 +66,12 @@ export default {
     },
 
     collapsible() {
+      // when sidenav is collapsed, we will use popper.js, but when it is expanded we need destroy popper.js instance
+      if (this.$vSidenav && this.$vSidenav.expanded) {
+        // fix memory leak
+        this._destroyPopper();
+      }
+
       return this.$vSidenav && this.$vSidenav.expanded;
     },
 
@@ -195,7 +207,10 @@ export default {
     },
 
     _handleToggle(eventKey, event) {
+      // If there is no sidenav, we don't need to trigger toggle event
       if (!this.sidenav) return;
+      // If sidenav is collapsed, we also don't need to trigger toggle event
+      if (this.$vSidenav && !this.$vSidenav.expanded) return;
 
       this.$emit('toggle', eventKey, event);
       this.$vSidenav && this.$vSidenav._handleOpenChange(eventKey, event);
@@ -205,6 +220,8 @@ export default {
       this._closePopper();
 
       this.$emit('select', eventKey, event);
+
+      // Nav will pass select event to dropdown, do not re-trigger this event
       !this.$vNav &&
         this.$vSidenav &&
         this.$vSidenav._handleSelect(eventKey, event);

@@ -69,9 +69,7 @@ export default {
   },
 
   beforeDestroy() {
-    if (this.popperJS) {
-      this.popperJS.destroy();
-    }
+    this._destroyPopper();
   },
 
   methods: {
@@ -250,6 +248,13 @@ export default {
 
     _updatePopper() {
       this.popperJS ? this.popperJS.update() : this._createPopper();
+    },
+
+    _destroyPopper() {
+      if (this.popperJS) {
+        this.popperJS.destroy();
+        this.popperJS = undefined;
+      }
     },
 
     _handleCreate() {
