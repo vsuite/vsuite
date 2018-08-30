@@ -132,7 +132,6 @@ export default {
         class: this._addPrefix('collapse'),
         attrs: {
           id: this.id,
-          'aria-hidden': !this.isExpanded,
           role: this.panelRole,
         },
         directives: [{ name: 'show', value: this.isExpanded }],

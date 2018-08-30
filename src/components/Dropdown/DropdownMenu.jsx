@@ -51,9 +51,6 @@ export default {
 
     if (this.sidenav) {
       data = _.merge(data, {
-        attrs: {
-          'aria-hidden': !this.expanded,
-        },
         directives: [{ name: 'show', value: this.expanded }],
       });
     }

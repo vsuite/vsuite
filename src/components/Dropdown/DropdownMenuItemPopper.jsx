@@ -88,9 +88,6 @@ export default {
     }
 
     popperData = _.merge(popperData, {
-      attrs: {
-        'aria-hidden': !this.expanded,
-      },
       directives: [{ name: 'show', value: this.expanded }],
     });
 
