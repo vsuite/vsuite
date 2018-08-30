@@ -174,6 +174,7 @@ export function splitPropsByComponent(data, Component) {
 
   const compProps = (Component && Component.props) || {};
   const compMixins = (Component && Component.mixins) || [];
+  let res = {};
   let keys = Object.keys(compProps);
 
   compMixins.forEach(
@@ -182,7 +183,27 @@ export function splitPropsByComponent(data, Component) {
 
   data = data || {};
 
-  return splitProps(data, keys);
+  // special processing for domProps
+  if (Component === 'input') {
+    const valueIndex = keys.indexOf('value');
+    const checkedIndex = keys.indexOf('checked');
+
+    // exists value property
+    if (~valueIndex) {
+      res = _.merge(res, { domProps: { value: data.value } });
+
+      keys.splice(valueIndex, 1);
+    }
+
+    // exisys checked property
+    if (~checkedIndex) {
+      res = _.merge(res, { domProps: { checked: data.checked } });
+
+      keys.splice(checkedIndex, 1);
+    }
+  }
+
+  return _.merge(res, splitProps(data, keys));
 }
 
 export function splitDataByComponent(data, Component, def = false) {

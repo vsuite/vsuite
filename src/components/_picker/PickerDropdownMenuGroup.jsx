@@ -12,8 +12,11 @@ export default {
   props: {
     title: VueTypes.string,
     caret: VueTypes.bool,
-    expanded: VueTypes.bool,
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
+  },
+
+  data() {
+    return { expanded: true };
   },
 
   computed: {
@@ -58,7 +61,9 @@ export default {
 
   methods: {
     _handleClickGroup(event) {
-      this.$emit('toggle', !this.expanded, event);
+      this.expanded = !this.expanded;
+
+      this.$emit('toggle', event);
     },
 
     _addPrefix(cls) {

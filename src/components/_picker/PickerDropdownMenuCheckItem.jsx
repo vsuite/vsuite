@@ -64,7 +64,7 @@ export default {
     _handleChange(checked, value, event) {
       if (this.disabled) return;
 
-      this.$emit('select', checked, value, event);
+      this.$emit('select', value, event, checked);
     },
 
     _handleKeydown(event) {

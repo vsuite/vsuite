@@ -262,6 +262,23 @@ function isComponentNode(vnode) {
   return !!vnode.componentInstance;
 }
 
+function vueToString(vnode) {
+  const strings = [];
+  const toString = vnode => {
+    const children = getChildren(vnode) || [];
+
+    if (children.length) {
+      return children.forEach(child => toString(child));
+    }
+
+    if (isTextNode(vnode)) return strings.push(vnode.text);
+  };
+
+  toString(vnode);
+
+  return strings;
+}
+
 export {
   getName,
   getClasses,
@@ -279,5 +296,6 @@ export {
   cloneVNode,
   cloneVNodes,
   filterEmpty,
+  vueToString,
   parseStyleText,
 };
