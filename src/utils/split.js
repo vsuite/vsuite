@@ -159,7 +159,9 @@ export function splitProps(data, keys) {
   };
 }
 
-export function splitPropsByComponent(data, Component) {
+export function splitPropsByComponent(data, element) {
+  let Component = element;
+
   if (_.isString(Component) && !~BUILDIN_ELEMENT_NAMES.indexOf(Component)) {
     const vue = Vue || window.Vue;
 
@@ -181,29 +183,29 @@ export function splitPropsByComponent(data, Component) {
     mixin => (keys = keys.concat(Object.keys((mixin && mixin.props) || {})))
   );
 
-  data = data || {};
+  const props = _.cloneDeep(data || {});
 
   // special processing for domProps
-  if (Component === 'input') {
-    const valueIndex = keys.indexOf('value');
-    const checkedIndex = keys.indexOf('checked');
+  if (element === 'input') {
+    const valueIndex = Object.keys(props).indexOf('value');
+    const checkedIndex = Object.keys(props).indexOf('checked');
 
     // exists value property
     if (~valueIndex) {
-      res = _.merge(res, { domProps: { value: data.value } });
+      res = _.merge(res, { domProps: { value: props.value } });
 
-      keys.splice(valueIndex, 1);
+      delete props.value;
     }
 
     // exisys checked property
     if (~checkedIndex) {
-      res = _.merge(res, { domProps: { checked: data.checked } });
+      res = _.merge(res, { domProps: { checked: props.checked } });
 
-      keys.splice(checkedIndex, 1);
+      delete props.checked;
     }
   }
 
-  return _.merge(res, splitProps(data, keys));
+  return _.merge(res, splitProps(props, keys));
 }
 
 export function splitDataByComponent(data, Component, def = false) {

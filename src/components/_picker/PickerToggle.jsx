@@ -44,7 +44,7 @@ export default {
         {this.hasValue ? (
           <span class={this._addPrefix('value')}>{this.$slots.default}</span>
         ) : (
-          <span className={this._addPrefix('placeholder')}>
+          <span class={this._addPrefix('placeholder')}>
             {this.$slots.default}
           </span>
         )}

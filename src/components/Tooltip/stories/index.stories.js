@@ -72,7 +72,7 @@ stories.add('placement', () => ({
   render(h) {
     return (
       <Demo title="Placement">
-        <table className="placement-table" cellSpacing={5}>
+        <table class="placement-table" cellSpacing={5}>
           <tbody>
             <tr>
               <td />

@@ -97,11 +97,11 @@ export default {
     },
 
     dataList() {
-      return [].concat(this.data, this.newData);
+      return [].concat(this.data || [], this.newData || []);
     },
 
     dataWithCacheList() {
-      return [].concat(this.dataList, this.cacheData);
+      return [].concat(this.dataList, this.cacheData || []);
     },
   },
 
@@ -122,6 +122,7 @@ export default {
           [this._addPrefix('focused')]: this.currentVisible,
         }
       ),
+      directives: [{ name: 'click-outside', value: this._handleClickOutside }],
       attrs: { tanindex: -1, role: 'menu' },
       on: { keydown: this._handleKeydown, click: this._handleClick },
       ref: 'reference',
@@ -334,9 +335,9 @@ export default {
     },
 
     _shouldDisplay(label, searchKeyword) {
-      const word = _.isUndefined(searchKeyword)
-        ? this.searchKeyword
-        : searchKeyword;
+      const word =
+        (_.isUndefined(searchKeyword) ? this.searchKeyword : searchKeyword) ||
+        '';
 
       if (!_.trim(word)) return true;
 
@@ -383,7 +384,11 @@ export default {
 
     _handleKeydown() {},
 
-    _handleSearch() {},
+    _handleSearch(val, event) {
+      this.searchKeyword = val;
+
+      this.$emit('search', val, event);
+    },
 
     _handleClean() {},
 

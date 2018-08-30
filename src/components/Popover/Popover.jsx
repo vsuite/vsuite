@@ -132,9 +132,9 @@ export default {
           <div class="arrow" />
           {this.$slots.title ||
             (this.title ? (
-              <h3 className={this._addPrefix('title')}>{this.title}</h3>
+              <h3 class={this._addPrefix('title')}>{this.title}</h3>
             ) : null)}
-          <div className={this._addPrefix('content')}>
+          <div class={this._addPrefix('content')}>
             {this.$slots.content || this.content}
           </div>
         </div>

@@ -50,7 +50,7 @@ export default {
           onClick={this._handleClickGroup}
         >
           <span>{this.$slots.title || this.title}</span>
-          {this.caret && <span className={this._addPrefix('caret')} />}
+          {this.caret && <span class={this._addPrefix('caret')} />}
         </div>
         <Collapse>
           <ul {...listData}>{this.$slots.default}</ul>

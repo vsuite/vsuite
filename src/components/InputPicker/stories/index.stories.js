@@ -3,7 +3,7 @@ import Demo from 'stories/demo';
 
 import InputPicker from 'components/InputPicker';
 
-const stories = storiesOf('Data Entry|InputPucker', module);
+const stories = storiesOf('Data Entry|InputPicker', module);
 const data = [
   {
     label: 'Eugenia',

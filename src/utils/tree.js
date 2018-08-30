@@ -22,7 +22,7 @@ function findNode(nodes, checker) {
 
 function filterNodes(nodes, checker) {
   const find = (nodes = []) => {
-    nodes.filter(item => {
+    return nodes.filter(item => {
       if (_.isArray(item.children)) {
         const nextChildren = find(item.children);
 

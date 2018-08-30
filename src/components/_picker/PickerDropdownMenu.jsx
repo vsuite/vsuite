@@ -50,7 +50,7 @@ export default {
 
   methods: {
     _renderItems(h) {
-      function createMenuItems(items, groupId = 0) {
+      const createMenuItems = (items, groupId = 0) => {
         return items.map((item, index) => {
           const value = item[this.valueKey];
           const label = item[this.labelKey];
@@ -114,7 +114,7 @@ export default {
             </PickerDropdownMenuItem>
           );
         });
-      }
+      };
 
       return createMenuItems(this.data);
     },

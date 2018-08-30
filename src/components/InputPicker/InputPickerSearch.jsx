@@ -36,15 +36,20 @@ export default {
 
   render() {
     const Component = this.componentClass;
-    let iptData = splitDataByComponent({
-      class: this._addPrefix('input'),
-      splitProps: this.$attrs,
-      on: {
-        ...this.$listeners,
-        value: this.currentVal,
-        input: this._handleInput,
+    let iptData = splitDataByComponent(
+      {
+        class: this._addPrefix('input'),
+        splitProps: {
+          ...this.$attrs,
+          value: this.currentVal,
+        },
+        on: {
+          ...this.$listeners,
+          input: this._handleInput,
+        },
       },
-    });
+      Component
+    );
 
     return (
       <div class={this.classPrefix}>

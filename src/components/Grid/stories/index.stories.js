@@ -378,7 +378,7 @@ stories.add('nesting', () => ({
               </Row>
             </Col>
             <Col xs={12}>
-              <Row className="show-grid">
+              <Row class="show-grid">
                 <Col xs={12}>
                   <Row class="show-grid">
                     <Col xs={12}>
