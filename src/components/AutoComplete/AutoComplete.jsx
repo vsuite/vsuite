@@ -5,6 +5,7 @@ import onMenuKeydown from 'shares/onMenuKeydown';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
 import { splitDataByComponent } from 'utils/split';
 
+import { PickerMenuWrapper } from 'components/_picker';
 import Input from 'components/Input';
 
 import AutoCompleteItem from './AutoCompleteItem.jsx';
@@ -69,11 +70,7 @@ export default {
     },
 
     popperClasses() {
-      return [
-        this._addPrefix('menu'),
-        this._addPickerPrefix('menu'),
-        this.menuClassName,
-      ];
+      return [this._addPrefix('menu'), this.menuClassName];
     },
 
     currentVal() {
@@ -170,7 +167,7 @@ export default {
   methods: {
     _renderDropdownMenu(h, popperData) {
       return (
-        <div {...popperData}>
+        <PickerMenuWrapper {...popperData}>
           <ul role="menu">
             {this.focusableList.map(item => (
               <AutoCompleteItem
@@ -184,7 +181,7 @@ export default {
               </AutoCompleteItem>
             ))}
           </ul>
-        </div>
+        </PickerMenuWrapper>
       );
     },
 
@@ -263,10 +260,6 @@ export default {
 
     _addPrefix(cls) {
       return prefix(this.classPrefix, cls);
-    },
-
-    _addPickerPrefix(cls) {
-      return prefix(defaultClassPrefix('picker'), cls);
     },
   },
 };

@@ -47,7 +47,7 @@ export default {
       ref: 'wrapper',
     };
     let popperData = {
-      class: [this.classPrefix, this._addPickerPrefix('menu')],
+      class: [this.classPrefix],
       ref: 'popper',
     };
 
@@ -126,10 +126,6 @@ export default {
 
     _addPrefix(cls) {
       return prefix(this.classPrefix, cls);
-    },
-
-    _addPickerPrefix(cls) {
-      return prefix(defaultClassPrefix('picker'), cls);
     },
   },
 };

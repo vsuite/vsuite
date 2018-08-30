@@ -104,10 +104,7 @@ export default {
       },
       Component
     );
-    let popperData = {
-      class: [this._addPickerPrefix('menu')],
-      ref: 'popper',
-    };
+    let popperData = { ref: 'popper' };
 
     if (!this.sidenav || !this.collapsible) {
       const referenceData = {
@@ -229,10 +226,6 @@ export default {
 
     _addPrefix(cls) {
       return prefix(this.classPrefix, cls);
-    },
-
-    _addPickerPrefix(cls) {
-      return prefix(defaultClassPrefix('picker'), cls);
     },
   },
 };
