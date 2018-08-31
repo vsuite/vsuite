@@ -86,25 +86,25 @@ export default {
       containerData.on = containerData.on || {};
 
       if (~this.triggerList.indexOf('click')) {
-        referenceData.on.click = this._handleClick;
+        referenceData.on.click = this._handlePopperClick;
       }
 
       if (~this.triggerList.indexOf('right-click')) {
-        referenceData.on.contextmenu = this._handleRightClick;
+        referenceData.on.contextmenu = this._handlePopperRightClick;
       }
 
       if (~this.triggerList.indexOf('active')) {
-        referenceData.on.mousedown = this._handleMouseDown;
+        referenceData.on.mousedown = this._handlePopperMouseDown;
       }
 
       if (~this.triggerList.indexOf('hover')) {
-        containerData.on.mouseenter = this._handleMouseEnter;
-        containerData.on.mouseleave = this._handleMouseLeave;
+        containerData.on.mouseenter = this._handlePopperMouseEnter;
+        containerData.on.mouseleave = this._handlePopperMouseLeave;
       }
 
       if (~this.triggerList.indexOf('focus')) {
-        containerData.on['!focus'] = this._handleFocus;
-        containerData.on['!blur'] = this._handleBlur;
+        containerData.on['!focus'] = this._handlePopperFocus;
+        containerData.on['!blur'] = this._handlePopperBlur;
       }
     },
 
@@ -124,7 +124,7 @@ export default {
       this._handleDelayHide(() => (this.innerVisible = false));
     },
 
-    _handleClick() {
+    _handlePopperClick() {
       if (this.innerVisible) {
         this._handleDelayHide(() => (this.innerVisible = false));
       } else {
@@ -132,7 +132,7 @@ export default {
       }
     },
 
-    _handleRightClick(e) {
+    _handlePopperRightClick(e) {
       e.preventDefault();
 
       if (this.innerVisible) {
@@ -144,7 +144,7 @@ export default {
       return false;
     },
 
-    _handleMouseDown() {
+    _handlePopperMouseDown() {
       this._handleDelayShow(() => (this.innerVisible = true));
     },
 
@@ -154,17 +154,17 @@ export default {
       this._handleDelayShow(() => (this.innerVisible = true));
     },
 
-    _handleMouseLeave(e) {
+    _handlePopperMouseLeave(e) {
       e.stopPropagation();
 
       this._handleDelayHide(() => (this.innerVisible = false));
     },
 
-    _handleFocus() {
+    _handlePopperFocus() {
       this._handleDelayShow(() => (this.innerVisible = true));
     },
 
-    _handleBlur() {
+    _handlePopperBlur() {
       this._handleDelayHide(() => (this.innerVisible = false));
     },
 

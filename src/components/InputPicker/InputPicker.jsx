@@ -41,7 +41,7 @@ export default {
     },
     trigger: {
       ...popperMixin.props.trigger,
-      default: 'active',
+      default: 'click',
     },
     value: VueTypes.any,
     defaultValue: VueTypes.any,
@@ -131,9 +131,9 @@ export default {
       {
         splitProps: {
           ...this.$attrs,
-          componentClass: this.toggleComponentClass,
+          hasValue,
           cleanable: this.cleanable && !this.disabled,
-          // hasValue
+          componentClass: this.toggleComponentClass,
         },
         on: {
           clean: this._handleClean,
@@ -230,6 +230,7 @@ export default {
               : PickerDropdownMenuItem,
             classPrefix: menuClassPrefix,
           },
+          on: { select: this._handleSelect },
         },
         PickerDropdownMenu
       );
@@ -372,12 +373,36 @@ export default {
       };
     },
 
-    _setVal(val, event) {
-      const formattedVal = this.multiple ? val || [] : val;
+    _setVal(val, item, event) {
+      this.innerVal = val;
 
-      this.innerVal = formattedVal;
+      this.$emit('change', val, event);
+      this.$emit('select', val, item, event);
+    },
 
-      this.$emit('change', _.clone(formattedVal), event);
+    _handleSelect(value, item, event, checked) {
+      let newVal = _.cloneDeep(value);
+
+      if (this.multiple && checked) {
+        // add new item
+        newVal.push(value);
+      } else if (this.multiple && !checked) {
+        // remove old item
+        newVal.splice(_.findIndex(newVal, v => shallowEqual(v, value)), 1);
+      } else {
+        newVal = value;
+      }
+
+      this.focusItemValue = value;
+
+      if (this.multiple) {
+        this.searchKeyword = '';
+      }
+
+      // close popper
+      this._closePopper();
+
+      this._setVal(newVal, item, event);
     },
 
     _handleClick() {},
