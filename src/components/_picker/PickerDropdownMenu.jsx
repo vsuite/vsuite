@@ -66,14 +66,14 @@ export default {
             return (
               <PickerDropdownMenuGroup
                 key={onlyKey}
-                title={
-                  this.renderMenuGroup
-                    ? this.renderMenuGroup(h, item.groupTitle, item)
-                    : item.groupTitle
-                }
                 classPrefix={this._addPrefix('group')}
                 onToggle={this._handleToggle}
               >
+                <template slot="title">
+                  {this.renderMenuGroup
+                    ? this.renderMenuGroup(h, item.groupTitle, item)
+                    : item.groupTitle}
+                </template>
                 {createMenuItems(item.children, onlyKey)}
               </PickerDropdownMenuGroup>
             );

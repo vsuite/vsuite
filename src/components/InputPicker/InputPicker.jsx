@@ -69,7 +69,6 @@ export default {
     renderMenuItem: Function,
     renderMenuGroup: Function,
     renderValue: Function,
-    renderExtraFooter: Function,
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
     // change, select, search, toggle
   },
@@ -242,9 +241,9 @@ export default {
 
       return (
         <PickerMenuWrapper {...popperData}>
+          {this.$slots.header}
           {this.renderMenu ? this.renderMenu(h, menu) : menu}
-          {this.$slots.footer ||
-            (this.renderExtraFooter && this.renderExtraFooter)}
+          {this.$slots.footer}
         </PickerMenuWrapper>
       );
     },
@@ -389,6 +388,13 @@ export default {
         newVal.splice(_.findIndex(newVal, v => shallowEqual(v, value)), 1);
       } else {
         newVal = value;
+      }
+
+      // if new create item
+      if (item && item.create) {
+        delete item.create;
+
+        this.newData.push(item);
       }
 
       this.focusItemValue = value;

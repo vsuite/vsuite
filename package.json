@@ -51,6 +51,7 @@
     "@storybook/vue": "^3.4.10",
     "@vue/server-test-utils": "^1.0.0-beta.24",
     "@vue/test-utils": "^1.0.0-beta.24",
+    "axios": "^0.18.0",
     "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.6",
     "babel-helper-vue-jsx-merge-props": "^2.0.3",

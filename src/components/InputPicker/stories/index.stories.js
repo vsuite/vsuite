@@ -1,7 +1,10 @@
 import { storiesOf } from '@storybook/vue';
+import _ from 'lodash';
+import axios from 'axios';
 import Demo from 'stories/demo';
 
 import InputPicker from 'components/InputPicker';
+import Icon from 'components/Icon';
 
 const stories = storiesOf('Data Entry|InputPicker', module);
 const data = [
@@ -90,7 +93,7 @@ stories.add('default', () => ({
 stories.add('block', () => ({
   render() {
     return (
-      <Demo title="Default">
+      <Demo title="Block">
         <InputPicker block data={data} />
       </Demo>
     );
@@ -100,9 +103,150 @@ stories.add('block', () => ({
 stories.add('groupBy', () => ({
   render() {
     return (
-      <Demo title="groupBy">
+      <Demo title="GroupBy">
         <InputPicker data={data} groupBy="role" style={{ width: '224px' }} />
       </Demo>
     );
+  },
+}));
+
+stories.add('creatable', () => ({
+  render() {
+    return (
+      <Demo title="Creatable">
+        <InputPicker creatable data={data} style={{ width: '224px' }} />
+        <hr />
+        <InputPicker
+          creatable
+          data={data}
+          style={{ width: '224px' }}
+          groupBy="role"
+        />
+      </Demo>
+    );
+  },
+}));
+
+stories.add('custom', () => ({
+  render() {
+    return (
+      <Demo title="Custom">
+        <InputPicker
+          style={{ width: '224px' }}
+          data={data}
+          groupBy="role"
+          placeholder="Select User"
+          renderMenuItem={(h, label, item) => {
+            return (
+              <div>
+                <i class="vs-icon vs-icon-user" /> {label}
+              </div>
+            );
+          }}
+          renderMenuGroup={(h, label, item) => {
+            return (
+              <div>
+                <i class="vs-icon vs-icon-group" /> {label} - (
+                {item.children.length})
+              </div>
+            );
+          }}
+          renderValue={(h, label, item) => {
+            return (
+              <div>
+                <span style={{ color: '#575757' }}>
+                  <i class="vs-icon vs-icon-user" /> User :
+                </span>{' '}
+                {label}
+              </div>
+            );
+          }}
+        />
+      </Demo>
+    );
+  },
+}));
+
+stories.add('disabled', () => ({
+  render() {
+    return (
+      <Demo title="Disabled">
+        <InputPicker
+          data={data}
+          defaultValue={'Julius'}
+          disabled
+          style={{ width: '224px' }}
+        />
+        <hr />
+        <p>禁用选项</p>
+        <InputPicker
+          data={data}
+          defaultValue={'Julius'}
+          disabledItemValues={['Eugenia', 'Travon', 'Vincenza']}
+          style={{ width: '224px' }}
+        />
+      </Demo>
+    );
+  },
+}));
+
+stories.add('request', () => ({
+  data() {
+    this._getUsers('vue');
+
+    return {
+      items: [],
+      loading: true,
+    };
+  },
+
+  render() {
+    return (
+      <Demo title="Request">
+        <InputPicker
+          style={{ width: '224px' }}
+          data={this.items}
+          labelKey="login"
+          valueKey="id"
+          onSearch={_.debounce(this._handleSearch.bind(this), 300)}
+          renderMenu={(h, menu) => {
+            if (this.loading) {
+              return (
+                <p
+                  style={{ padding: '4px', color: '#999', textAlign: 'center' }}
+                >
+                  <Icon icon="spinner" spin /> Loading...
+                </p>
+              );
+            }
+
+            return menu;
+          }}
+        />
+      </Demo>
+    );
+  },
+
+  methods: {
+    _handleSearch(val) {
+      this.loading = true;
+
+      this._getUsers(val || 'vue');
+    },
+
+    _getUsers(word) {
+      axios
+        .get('https://api.github.com/search/users', { params: { q: word } })
+        .then(({ data }) => {
+          this.items = data.items || [];
+          this.loading = false;
+        })
+        .catch(e => {
+          /* eslint-disable no-console */
+          console.log('Oops, error', e);
+
+          this.loading = false;
+        });
+    },
   },
 }));
