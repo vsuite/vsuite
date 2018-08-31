@@ -45,6 +45,7 @@ export default {
         },
         on: {
           ...this.$listeners,
+          change: this._handleChange,
           input: this._handleInput,
         },
       },
@@ -69,6 +70,10 @@ export default {
 
     _handleInput(event) {
       this._setVal(event.target.value, event);
+    },
+
+    _handleChange(event) {
+      this.$emit('inputChange', event);
     },
 
     _addPrefix(cls) {

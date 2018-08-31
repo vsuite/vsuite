@@ -41,7 +41,7 @@ export default {
     },
     trigger: {
       ...popperMixin.props.trigger,
-      default: 'click',
+      default: 'focus',
     },
     value: VueTypes.any,
     defaultValue: VueTypes.any,
@@ -123,9 +123,12 @@ export default {
         }
       ),
       directives: [{ name: 'click-outside', value: this._handleClickOutside }],
-      attrs: { tanindex: -1, role: 'menu' },
+      attrs: { tabindex: -1, role: 'menu' },
       on: { keydown: this._handleKeydown, click: this._handleClick },
       ref: 'reference',
+    };
+    const wrapperData = {
+      class: this._addPrefix('tag-wrapper'),
     };
     const toggleData = splitDataByComponent(
       {
@@ -155,7 +158,7 @@ export default {
       ref: 'popper',
     };
 
-    this._addTriggerListeners(referenceData, referenceData);
+    this._addTriggerListeners(wrapperData, wrapperData);
 
     return (
       <div {...referenceData}>
@@ -164,7 +167,7 @@ export default {
             ? null
             : displayElement || this.$t('_.InputPicker.placeholder')}
         </PickerToggle>
-        <div class={this._addPrefix('tag-wrapper')}>
+        <div {...wrapperData}>
           {tags}
           {displaySearchInput && this._renderInputSearch(h)}
         </div>
@@ -415,7 +418,14 @@ export default {
       this.$emit('search', val, event);
     },
 
-    _handleClean() {},
+    _handleClean(event) {
+      if (this.disabled) return;
+
+      this.focusItemValue = null;
+      this.searchKeyword = '';
+
+      this._setVal(this.multiple ? [] : null, event);
+    },
 
     _handleRemoveItem() {},
 

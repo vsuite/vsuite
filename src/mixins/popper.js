@@ -148,7 +148,7 @@ export default {
       this._handleDelayShow(() => (this.innerVisible = true));
     },
 
-    _handleMouseEnter(e) {
+    _handlePopperMouseEnter(e) {
       e.stopPropagation();
 
       this._handleDelayShow(() => (this.innerVisible = true));

@@ -66,7 +66,6 @@ export default {
 
   methods: {
     _handleClean(event) {
-      event.preventDefault();
       event.stopPropagation();
 
       this.$emit('clean', event);
