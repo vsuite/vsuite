@@ -67,7 +67,7 @@ export default {
     _handleKeydown(event) {
       if (this.disabled) return;
 
-      this.$emit('keydown', this.value, event);
+      this.$emit('keydown', event);
     },
 
     _addPrefix(cls) {

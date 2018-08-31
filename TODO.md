@@ -1,0 +1,4 @@
+- responsive size
+- title, $slots.title, $scopedSlots.title, renderTitle
+- renderX
+- not trigger event when disabled

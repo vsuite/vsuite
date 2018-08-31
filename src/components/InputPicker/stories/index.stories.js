@@ -250,3 +250,18 @@ stories.add('request', () => ({
     },
   },
 }));
+
+stories.add('controlled', () => ({
+  render() {
+    return (
+      <Demo title="Controlled">
+        <InputPicker
+          visible
+          value={'Julius'}
+          data={data}
+          style={{ width: '224px' }}
+        />
+      </Demo>
+    );
+  },
+}));

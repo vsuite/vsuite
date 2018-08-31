@@ -217,7 +217,9 @@ export default {
             valueKey: this.valueKey,
             labelKey: this.labelKey,
             disabledItemValues: this.disabledItemValues,
-            activeItemValues: this.multiple ? this.value : [this.value],
+            activeItemValues: this.multiple
+              ? this.currentVal
+              : [this.currentVal],
             focusItemValue: this.focusItemValue,
             renderMenuGroup: this.renderMenuGroup,
             renderMenuItem: this._renderMenuItem,
@@ -378,7 +380,7 @@ export default {
     },
 
     _handleSelect(value, item, event, checked) {
-      let newVal = _.cloneDeep(value);
+      let newVal = _.cloneDeep(this.currentVal);
 
       if (this.multiple && checked) {
         // add new item
@@ -401,10 +403,10 @@ export default {
 
       if (this.multiple) {
         this.searchKeyword = '';
+      } else {
+        // close popper
+        this._closePopper();
       }
-
-      // close popper
-      this._closePopper();
 
       this._setVal(newVal, item, event);
     },

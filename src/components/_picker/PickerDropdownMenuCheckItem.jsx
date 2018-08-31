@@ -1,8 +1,6 @@
 import VueTypes from 'vue-types';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
 
-import Checkbox from 'components/Checkbox';
-
 const CLASS_PREFIX = 'picker';
 
 export default {
@@ -16,7 +14,6 @@ export default {
     focus: VueTypes.bool.def(false),
     // getItemData: Function,
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
-    // select, keydown
   },
 
   computed: {
@@ -34,37 +31,43 @@ export default {
 
   render() {
     const data = {
-      attrs: {
-        ...this.$attrs,
-        role: 'menuitem',
-      },
+      attrs: { ...this.$attrs, role: 'menuitem' },
     };
-    const checkProps = {
+    const labelProps = {
       class: this.classes,
-      props: {
-        checked: this.active,
-        disabled: this.disabled,
-        value: this.value,
-      },
-      attrs: {
-        tabindex: -1,
-        role: 'presentation',
-      },
-      on: { change: this._handleChange, keydown: this._handleKeydown },
+      attrs: { tabindex: -1, role: 'presentation' },
+      on: { keydown: this._handleKeydown },
+    };
+    const iptProps = {
+      domProps: { checked: this.active },
+      attrs: { type: 'checkbox', disabled: this.disabled },
+      on: { input: this._handleChange },
     };
 
     return (
       <li {...data}>
-        <Checkbox {...checkProps}>{this.$slots.default}</Checkbox>
+        <div class={this._addPrefix('checker')}>
+          <label {...labelProps}>
+            <span class={this._addPrefix('wrapper')}>
+              <input {...iptProps} />
+              <span class={this._addPrefix('inner')} />
+            </span>
+            {this.$slots.default}
+          </label>
+        </div>
       </li>
     );
   },
 
   methods: {
-    _handleChange(checked, value, event) {
+    _handleChange(event) {
       if (this.disabled) return;
 
-      this.$emit('select', value, event, checked);
+      const checked = event.target.checked;
+
+      event.target.checked = this.active;
+
+      this.$emit('select', this.value, event, checked);
     },
 
     _handleKeydown(event) {

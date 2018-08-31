@@ -28,7 +28,7 @@ export default {
     dropdownMenuItemComponentClass: VueTypes.oneOfType([
       VueTypes.string,
       VueTypes.object,
-    ]),
+    ]).def(PickerDropdownMenuItem),
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
   },
 
@@ -84,6 +84,8 @@ export default {
             );
           }
 
+          const ComponentPickerDropdownMenuItem = this
+            .dropdownMenuItemComponentClass;
           const disabled =
             !_.isUndefined(this.disabledItemValues) &&
             this.disabledItemValues.some(val => shallowEqual(val, value));
@@ -95,7 +97,7 @@ export default {
             shallowEqual(this.focusItemValue, value);
 
           return (
-            <PickerDropdownMenuItem
+            <ComponentPickerDropdownMenuItem
               // getItemData={this.getItemData.bind(this, item)}
               key={`${groupId}-${onlyKey}`}
               value={value}
@@ -109,7 +111,7 @@ export default {
               {this.renderMenuItem
                 ? this.renderMenuItem(h, label, item)
                 : label}
-            </PickerDropdownMenuItem>
+            </ComponentPickerDropdownMenuItem>
           );
         });
       };
