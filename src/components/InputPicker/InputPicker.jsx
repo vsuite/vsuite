@@ -185,12 +185,7 @@ export default {
       );
 
       popperData = _.merge(popperData, {
-        class: [
-          this.menuClassName,
-          menuClassPrefix,
-          // FIXME
-          // this._addPrefix(`placement-${_.kebabCase(this.placement)}`),
-        ],
+        class: [this.menuClassName, menuClassPrefix],
         style: this.menuStyle,
         on: { keydown: this._handleKeydown },
       });
@@ -211,7 +206,7 @@ export default {
       }
 
       if (this.groupBy) {
-        filteredData = getDataGroupBy(filteredData);
+        filteredData = getDataGroupBy(filteredData, this.groupBy);
       }
 
       const menuData = splitDataByComponent(

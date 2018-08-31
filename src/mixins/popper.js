@@ -104,7 +104,7 @@ export default {
 
       if (~this.triggerList.indexOf('focus')) {
         containerData.on['!focus'] = this._handlePopperFocus;
-        containerData.on['!blur'] = this._handlePopperBlur;
+        // containerData.on['!blur'] = this._handlePopperBlur;
       }
     },
 

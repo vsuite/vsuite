@@ -86,3 +86,23 @@ stories.add('default', () => ({
     );
   },
 }));
+
+stories.add('block', () => ({
+  render() {
+    return (
+      <Demo title="Default">
+        <InputPicker block data={data} />
+      </Demo>
+    );
+  },
+}));
+
+stories.add('groupBy', () => ({
+  render() {
+    return (
+      <Demo title="groupBy">
+        <InputPicker data={data} groupBy="role" style={{ width: '224px' }} />
+      </Demo>
+    );
+  },
+}));

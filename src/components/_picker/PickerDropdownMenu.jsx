@@ -30,8 +30,6 @@ export default {
       VueTypes.object,
     ]),
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
-    // select
-    // toggle
   },
 
   render(h) {
