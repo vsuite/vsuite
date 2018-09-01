@@ -36,7 +36,7 @@ export default {
     const labelProps = {
       class: this.classes,
       attrs: { tabindex: -1, role: 'presentation' },
-      on: { keydown: this._handleKeydown },
+      on: { click: this._handleClick, keydown: this._handleKeydown },
     };
     const iptProps = {
       domProps: { checked: this.active },
@@ -60,6 +60,12 @@ export default {
   },
 
   methods: {
+    _handleClick(event) {
+      event.stopPropagation();
+
+      this.$emit('click', event);
+    },
+
     _handleChange(event) {
       if (this.disabled) return;
 

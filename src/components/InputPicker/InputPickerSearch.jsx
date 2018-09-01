@@ -48,6 +48,7 @@ export default {
           change: this._handleChange,
           input: this._handleInput,
         },
+        ref: 'input',
       },
       Component
     );
@@ -60,6 +61,14 @@ export default {
   },
 
   methods: {
+    focus() {
+      this.$refs.input && this.$refs.input.focus();
+    },
+
+    blur() {
+      this.$refs.input && this.$refs.input.blur();
+    },
+
     _setVal(val, event) {
       this.innerVal = val;
 

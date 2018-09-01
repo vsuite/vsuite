@@ -161,7 +161,11 @@ export default {
     },
 
     _handlePopperFocus() {
-      this._handleDelayShow(() => (this.innerVisible = true));
+      this._handleDelayShow(() => {
+        this.innerVisible = true;
+
+        this._handleAfterPopperFocus && this._handleAfterPopperFocus();
+      });
     },
 
     _handlePopperBlur() {

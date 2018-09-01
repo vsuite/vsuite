@@ -17,9 +17,11 @@ import {
   PickerToggle,
   getToggleWrapperClassName,
 } from 'components/_picker';
+import AutosizeInput from 'components/AutosizeInput';
 import Tag from 'components/Tag';
 
 import InputPickerSearch from './InputPickerSearch.jsx';
+import { getWidth } from 'shares/dom';
 
 const CLASS_PREFIX = 'picker';
 
@@ -102,6 +104,14 @@ export default {
     dataWithCacheList() {
       return [].concat(this.dataList, this.cacheData || []);
     },
+  },
+
+  mounted() {
+    const reference = this.$refs.reference;
+
+    if (reference) {
+      this.maxWidth = getWidth(reference);
+    }
   },
 
   render(h) {
@@ -267,8 +277,8 @@ export default {
 
       if (this.multiple) {
         props = _.merge(props, {
-          // componentClass: InputAutosize // react-input-autosize
-          // inputStyle: { maxWidth: this.maxWidth - 63 },
+          componentClass: AutosizeInput,
+          inputStyle: { maxWidth: `${this.maxWidth - 63}px` },
         });
       }
 
@@ -281,6 +291,7 @@ export default {
           on: {
             change: this._handleSearch,
           },
+          ref: 'search',
         },
         InputPickerSearch
       );
@@ -379,6 +390,14 @@ export default {
       this.$emit('select', val, item, event);
     },
 
+    _handleAfterPopperFocus() {
+      this.$nextTick(() => this.$refs.search && this.$refs.search.focus());
+    },
+
+    _handleClick() {
+      this.$refs.search && this.$refs.search.focus();
+    },
+
     _handleSelect(value, item, event, checked) {
       let newVal = _.cloneDeep(this.currentVal);
 
@@ -411,9 +430,7 @@ export default {
       this._setVal(newVal, item, event);
     },
 
-    _handleClick() {},
-
-    _handleKeydown() {},
+    _handleKeydown(event) {},
 
     _handleSearch(val, event) {
       this.searchKeyword = val;
