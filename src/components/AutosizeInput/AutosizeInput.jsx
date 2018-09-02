@@ -52,21 +52,13 @@ export default {
     minWidth: VueTypes.oneOfType([VueTypes.number, VueTypes.string]).def(1),
     placeholder: VueTypes.string,
     placeholderIsMinWidth: VueTypes.bool.def(false),
-    // autosize, change
   },
 
   data() {
     return {
-      innerVal: _.isUndefined(this.value) ? this.defaultValue : this.val,
       inputId: generateId(),
       inputWidth: this.minWidth,
     };
-  },
-
-  computed: {
-    currentVal() {
-      return _.isUndefined(this.value) ? this.innerVal : this.value;
-    },
   },
 
   watch: {
@@ -92,7 +84,8 @@ export default {
   },
 
   render() {
-    const sizerValue = this.currentVal || '';
+    const sizerValue =
+      (_.isUndefined(this.value) ? this.defaultValue : this.value) || '';
 
     const inputStyle = {
       boxSizing: 'content-box',
@@ -107,17 +100,13 @@ export default {
         style: inputStyle,
         splitProps: {
           ...this.$attrs,
-          value: this.currentVal,
+          value: sizerValue,
           defaultValue: this.defaultValue,
           type: this.type,
           uid: this.uid,
           placeholder: this.placeholder,
         },
-        on: {
-          ...this.$listeners,
-          change: this._handleChange,
-          input: this._handleInput,
-        },
+        on: _.omit(this.$listeners, ['autosize']),
         ref: 'input',
       },
       'input'
@@ -219,22 +208,6 @@ export default {
       if (newInputWidth !== this.inputWidth) {
         this.inputWidth = newInputWidth;
       }
-    },
-
-    _setVal(val, event) {
-      this.innerVal = val;
-
-      event.target.value = this.currentVal;
-
-      this.$emit('change', val, event);
-    },
-
-    _handleChange(event) {
-      this.$emit('inputChange', event);
-    },
-
-    _handleInput(event) {
-      this._setVal(event.target.value, event);
     },
   },
 };

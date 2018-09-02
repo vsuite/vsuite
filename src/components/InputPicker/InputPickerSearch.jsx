@@ -3,6 +3,8 @@ import _ from 'lodash';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
 import { splitDataByComponent } from 'utils/split';
 
+import AutosizeInput from 'components/AutosizeInput';
+
 const CLASS_PREFIX = 'picker-search';
 
 export default {
@@ -35,27 +37,27 @@ export default {
   },
 
   render() {
-    const Component = this.componentClass;
-    let iptData = splitDataByComponent(
+    const iptData = splitDataByComponent(
       {
+        key: 'input',
         class: this._addPrefix('input'),
         splitProps: {
           ...this.$attrs,
           value: this.currentVal,
         },
         on: {
-          ...this.$listeners,
+          ..._.omit(this.$listeners, ['inputChange']),
           change: this._handleChange,
           input: this._handleInput,
         },
         ref: 'input',
       },
-      Component
+      AutosizeInput
     );
 
     return (
       <div class={this.classPrefix}>
-        <Component {...iptData}>{this.$slots.default}</Component>
+        <AutosizeInput {...iptData}>{this.$slots.default}</AutosizeInput>
       </div>
     );
   },
@@ -72,13 +74,15 @@ export default {
     _setVal(val, event) {
       this.innerVal = val;
 
-      event.target.value = this.currentVal;
-
       this.$emit('change', val, event);
     },
 
     _handleInput(event) {
-      this._setVal(event.target.value, event);
+      const val = event.target.value;
+
+      event.target.value = this.currentVal;
+
+      this._setVal(val, event);
     },
 
     _handleChange(event) {

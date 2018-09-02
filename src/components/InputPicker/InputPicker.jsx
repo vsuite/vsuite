@@ -17,7 +17,6 @@ import {
   PickerToggle,
   getToggleWrapperClassName,
 } from 'components/_picker';
-import AutosizeInput from 'components/AutosizeInput';
 import Tag from 'components/Tag';
 
 import InputPickerSearch from './InputPickerSearch.jsx';
@@ -272,21 +271,12 @@ export default {
         : newLabel;
     },
 
-    _renderInputSearch(h) {
-      let props = { componentClass: 'input' };
-
-      if (this.multiple) {
-        props = _.merge(props, {
-          componentClass: AutosizeInput,
-          inputStyle: { maxWidth: `${this.maxWidth - 63}px` },
-        });
-      }
-
+    _renderInputSearch() {
       const data = splitDataByComponent(
         {
           splitProps: {
-            ...props,
             value: this.currentVisible ? this.searchKeyword : '',
+            inputStyle: { maxWidth: `${this.maxWidth - 63}px` },
           },
           on: {
             change: this._handleSearch,
@@ -388,10 +378,6 @@ export default {
 
       this.$emit('change', val, event);
       this.$emit('select', val, item, event);
-    },
-
-    _handleAfterPopperFocus() {
-      this.$nextTick(() => this.$refs.search && this.$refs.search.focus());
     },
 
     _handleClick() {
