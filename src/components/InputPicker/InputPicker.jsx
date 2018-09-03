@@ -298,7 +298,10 @@ export default {
 
       return tags
         .map((tag, index) => {
-          const { isValid, displayElement } = this._getLabelByValue(h, tag);
+          const { isValid, displayElement, activeItem } = this._getLabelByValue(
+            h,
+            tag
+          );
 
           if (!isValid) return null;
 
@@ -307,7 +310,7 @@ export default {
               key={index}
               closable={!this.disabled}
               title={_.isString(displayElement) ? displayElement : undefined}
-              onClose={event => this._handleRemoveItem(tag, event)}
+              onClose={event => this._handleRemoveItem(activeItem, tag, event)}
             >
               {displayElement}
             </Tag>
@@ -334,7 +337,7 @@ export default {
         }
       }
 
-      return { isValid: !!activeItem, displayElement };
+      return { activeItem, isValid: !!activeItem, displayElement };
     },
 
     _shouldDisplay(label, searchKeyword) {
@@ -393,7 +396,7 @@ export default {
         down: this._handleFocusNext,
         up: this._handleFocusPrev,
         enter: this._handleFocusCurrent,
-        del: this.multiple ? this._handleFocusDel : null,
+        del: this.multiple && !this.searchKeyword ? this._handleFocusDel : null,
         esc: this._closePopper,
       });
     },
@@ -433,7 +436,7 @@ export default {
       let groupItems;
 
       this._walkFocusItem(list, (x, index, list) => {
-        const res = shallowEqual(x[this.labelKey], focusVal);
+        const res = shallowEqual(x[this.valueKey], focusVal);
 
         if (index === 0 && !firstItem) {
           firstItem = x;
@@ -449,11 +452,11 @@ export default {
 
       if (groupItems && nFocusItem) {
         // find focus item
-        this.focusItemValue = nFocusItem[this.labelKey];
+        this.focusItemValue = nFocusItem[this.valueKey];
       }
 
       if (!groupItems) {
-        this.focusItemValue = firstItem[this.labelKey];
+        this.focusItemValue = firstItem[this.valueKey];
       }
 
       this.$nextTick(
@@ -469,7 +472,7 @@ export default {
       let groupItems;
 
       this._walkFocusItem(list, (x, index, list) => {
-        const res = shallowEqual(x[this.labelKey], focusVal);
+        const res = shallowEqual(x[this.valueKey], focusVal);
 
         if (index === 0 && !firstItem) {
           firstItem = x;
@@ -485,11 +488,11 @@ export default {
 
       if (groupItems && nFocusItem) {
         // find focus item
-        this.focusItemValue = nFocusItem[this.labelKey];
+        this.focusItemValue = nFocusItem[this.valueKey];
       }
 
       if (!groupItems) {
-        this.focusItemValue = firstItem[this.labelKey];
+        this.focusItemValue = firstItem[this.valueKey];
       }
 
       this.$nextTick(
@@ -503,7 +506,7 @@ export default {
       let currentItem;
 
       this._walkFocusItem(list, (x, index, list) => {
-        const res = shallowEqual(x[this.labelKey], focusVal);
+        const res = shallowEqual(x[this.valueKey], focusVal);
 
         if (res) {
           currentItem = x;
@@ -515,7 +518,7 @@ export default {
       if (!currentItem) return;
 
       this._handleSelect(
-        currentItem[this.labelKey],
+        currentItem[this.valueKey],
         currentItem,
         event,
         this.multiple
@@ -530,7 +533,7 @@ export default {
       const len = this.currentVal.length;
       const item = this.currentVal[len - 1];
 
-      if (item) this._handleSelect(item[this.labelKey], item, event, false);
+      if (item) this._handleSelect(item[this.valueKey], item, event, false);
     },
 
     _handleSelect(value, item, event, checked) {
@@ -580,7 +583,11 @@ export default {
       this._setVal(this.multiple ? [] : null, event);
     },
 
-    _handleRemoveItem() {},
+    _handleRemoveItem(item, tag, event) {
+      if (this.disabled) return;
+
+      this._handleSelect(tag, item, event, false);
+    },
 
     _addPrefix(cls) {
       return prefix(this.classPrefix, cls);

@@ -3,7 +3,7 @@ import Demo from 'stories/demo';
 
 import Breadcrumb from 'components/Breadcrumb';
 
-const stories = storiesOf('Navigation|Breadcrumb');
+const stories = storiesOf('Navigation|Breadcrumb', module);
 
 stories.add('default', () => ({
   render() {
