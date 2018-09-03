@@ -1,10 +1,12 @@
 import VueTypes from 'vue-types';
 import _ from 'lodash';
 import popperMixin from 'mixins/popper';
-import { filterNodes, findNode } from 'utils/tree';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
-import { splitDataByComponent } from 'utils/split';
+import { getWidth } from 'shares/dom';
+import onMenuKeydown from 'shares/onMenuKeydown';
 import { vueToString } from 'utils/node';
+import { filterNodes, findNode } from 'utils/tree';
+import { splitDataByComponent } from 'utils/split';
 import getDataGroupBy from 'utils/getDataGroupBy';
 import shallowEqual from 'utils/shallowEqual';
 import invariant from 'utils/invariant';
@@ -18,7 +20,6 @@ import {
 import Tag from 'components/Tag';
 
 import InputPickerSearch from './InputPickerSearch.jsx';
-import { getWidth } from 'shares/dom';
 
 const CLASS_PREFIX = 'picker';
 
@@ -100,6 +101,29 @@ export default {
 
     dataWithCacheList() {
       return [].concat(this.dataList, this.cacheData || []);
+    },
+
+    focusableDataList() {
+      let filteredData = filterNodes(this.dataList, item =>
+        this._shouldDisplay(item[this.labelKey])
+      );
+
+      if (
+        this.creatable &&
+        this.searchKeyword &&
+        !findNode(
+          this.dataList,
+          item => item[this.labelKey] === this.searchKeyword
+        )
+      ) {
+        filteredData.push(this._createOption(this.searchKeyword));
+      }
+
+      if (this.groupBy) {
+        filteredData = getDataGroupBy(filteredData, this.groupBy);
+      }
+
+      return filteredData;
     },
   },
 
@@ -196,29 +220,10 @@ export default {
         on: { keydown: this._handleKeydown },
       });
 
-      let filteredData = filterNodes(this.dataList, item =>
-        this._shouldDisplay(item[this.labelKey])
-      );
-
-      if (
-        this.creatable &&
-        this.searchKeyword &&
-        !findNode(
-          this.dataList,
-          item => item[this.labelKey] === this.searchKeyword
-        )
-      ) {
-        filteredData.push(this._createOption(this.searchKeyword));
-      }
-
-      if (this.groupBy) {
-        filteredData = getDataGroupBy(filteredData, this.groupBy);
-      }
-
       const menuData = splitDataByComponent(
         {
           splitProps: {
-            data: filteredData,
+            data: this.focusableDataList,
             group: !_.isUndefined(this.groupBy),
             checkable: this.multiple,
             maxHeight: this.maxHeight,
@@ -235,10 +240,11 @@ export default {
             classPrefix: menuClassPrefix,
           },
           on: { select: this._handleSelect },
+          ref: 'menu',
         },
         PickerDropdownMenu
       );
-      const menu = filteredData.length ? (
+      const menu = this.focusableDataList.length ? (
         <PickerDropdownMenu {...menuData} />
       ) : (
         <div class={this._addPrefix('none')}>
@@ -380,6 +386,153 @@ export default {
       this.$refs.search && this.$refs.search.focus();
     },
 
+    _handleKeydown(event) {
+      event.stopPropagation();
+
+      onMenuKeydown(event, {
+        down: this._handleFocusNext,
+        up: this._handleFocusPrev,
+        enter: this._handleFocusCurrent,
+        del: this.multiple ? this._handleFocusDel : null,
+        esc: this._closePopper,
+      });
+    },
+
+    _walkFocusItem(list, fn, offset = 0) {
+      const len = list.length;
+
+      for (let i = offset; i < len; i++) {
+        const item = list[i];
+        let res;
+
+        if (item.children) {
+          const pList = i - 1 < 0 ? [] : list[i - 1].children;
+          const nList = i + 1 >= len ? [] : list[i + 1].children;
+
+          res = this._walkFocusItem(
+            [].concat(pList, item.children, nList),
+            fn,
+            pList.length
+          );
+        } else {
+          res = fn && fn(item, i, list) && i;
+        }
+
+        if (!_.isNumber(res)) res = -1;
+        if (res !== -1) return true;
+      }
+
+      return false;
+    },
+
+    _handleFocusNext() {
+      const focusVal = this.focusItemValue;
+      const list = this.focusableDataList;
+      let firstItem;
+      let nFocusItem;
+      let groupItems;
+
+      this._walkFocusItem(list, (x, index, list) => {
+        const res = shallowEqual(x[this.labelKey], focusVal);
+
+        if (index === 0 && !firstItem) {
+          firstItem = x;
+        }
+
+        if (res) {
+          groupItems = list;
+          nFocusItem = groupItems[index + 1];
+        }
+
+        return res;
+      });
+
+      if (groupItems && nFocusItem) {
+        // find focus item
+        this.focusItemValue = nFocusItem[this.labelKey];
+      }
+
+      if (!groupItems) {
+        this.focusItemValue = firstItem[this.labelKey];
+      }
+
+      this.$nextTick(
+        () => this.$refs.menu && this.$refs.menu.updateScrollPosition()
+      );
+    },
+
+    _handleFocusPrev() {
+      const focusVal = this.focusItemValue;
+      const list = this.focusableDataList;
+      let firstItem;
+      let nFocusItem;
+      let groupItems;
+
+      this._walkFocusItem(list, (x, index, list) => {
+        const res = shallowEqual(x[this.labelKey], focusVal);
+
+        if (index === 0 && !firstItem) {
+          firstItem = x;
+        }
+
+        if (res) {
+          groupItems = list;
+          nFocusItem = groupItems[index - 1];
+        }
+
+        return res;
+      });
+
+      if (groupItems && nFocusItem) {
+        // find focus item
+        this.focusItemValue = nFocusItem[this.labelKey];
+      }
+
+      if (!groupItems) {
+        this.focusItemValue = firstItem[this.labelKey];
+      }
+
+      this.$nextTick(
+        () => this.$refs.menu && this.$refs.menu.updateScrollPosition()
+      );
+    },
+
+    _handleFocusCurrent(event) {
+      const focusVal = this.focusItemValue;
+      const list = this.focusableDataList;
+      let currentItem;
+
+      this._walkFocusItem(list, (x, index, list) => {
+        const res = shallowEqual(x[this.labelKey], focusVal);
+
+        if (res) {
+          currentItem = x;
+        }
+
+        return res;
+      });
+
+      if (!currentItem) return;
+
+      this._handleSelect(
+        currentItem[this.labelKey],
+        currentItem,
+        event,
+        this.multiple
+          ? !this.currentVal.some(x => shallowEqual(x, focusVal))
+          : false
+      );
+    },
+
+    _handleFocusDel(event) {
+      if (!this.multiple) return;
+
+      const len = this.currentVal.length;
+      const item = this.currentVal[len - 1];
+
+      if (item) this._handleSelect(item[this.labelKey], item, event, false);
+    },
+
     _handleSelect(value, item, event, checked) {
       let newVal = _.cloneDeep(this.currentVal);
 
@@ -410,10 +563,6 @@ export default {
       }
 
       this._setVal(newVal, item, event);
-    },
-
-    _handleKeydown(event) {
-      event.stopPropagation();
     },
 
     _handleSearch(val, event) {

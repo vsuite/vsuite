@@ -135,8 +135,20 @@ export default {
       return createMenuItems(this.data);
     },
 
+    _handleSelect(item, value, event, checked) {
+      this.$emit('select', value, item, event, checked);
+    },
+
+    _handleToggle(event) {
+      this.$emit('toggle', event);
+    },
+
+    _addPrefix(cls) {
+      return prefix(this.classPrefix, cls);
+    },
+
     // update scroll position
-    _updateScrollPosition() {
+    updateScrollPosition() {
       const menuBodyContainer =
         this.$refs.menuBodyContainer || this.$refs.menuBodyContainer.$el;
 
@@ -157,18 +169,6 @@ export default {
       } else if (position.top > sTop + sHeight) {
         scrollTop(menuBodyContainer, Math.max(0, position.top - sHeight + 32));
       }
-    },
-
-    _handleSelect(item, value, event, checked) {
-      this.$emit('select', value, item, event, checked);
-    },
-
-    _handleToggle(event) {
-      this.$emit('toggle', event);
-    },
-
-    _addPrefix(cls) {
-      return prefix(this.classPrefix, cls);
     },
   },
 };
