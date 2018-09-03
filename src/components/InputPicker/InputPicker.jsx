@@ -12,8 +12,6 @@ import invariant from 'utils/invariant';
 import {
   PickerMenuWrapper,
   PickerDropdownMenu,
-  PickerDropdownMenuItem,
-  PickerDropdownMenuCheckItem,
   PickerToggle,
   getToggleWrapperClassName,
 } from 'components/_picker';
@@ -132,7 +130,7 @@ export default {
       ),
       directives: [{ name: 'click-outside', value: this._handleClickOutside }],
       attrs: { tabindex: -1, role: 'menu' },
-      on: { keydown: this._handleKeydown, click: this._handleClick },
+      on: { click: this._handleClick, keydown: this._handleKeydown },
       ref: 'reference',
     };
     const wrapperData = {
@@ -222,6 +220,7 @@ export default {
           splitProps: {
             data: filteredData,
             group: !_.isUndefined(this.groupBy),
+            checkable: this.multiple,
             maxHeight: this.maxHeight,
             valueKey: this.valueKey,
             labelKey: this.labelKey,
@@ -233,9 +232,6 @@ export default {
             renderMenuGroup: this.renderMenuGroup,
             renderMenuItem: this._renderMenuItem,
             dropdownMenuItemClassPrefix: `${menuClassPrefix}-item`,
-            dropdownMenuItemComponentClass: this.multiple
-              ? PickerDropdownMenuCheckItem
-              : PickerDropdownMenuItem,
             classPrefix: menuClassPrefix,
           },
           on: { select: this._handleSelect },
@@ -416,7 +412,9 @@ export default {
       this._setVal(newVal, item, event);
     },
 
-    _handleKeydown(event) {},
+    _handleKeydown(event) {
+      event.stopPropagation();
+    },
 
     _handleSearch(val, event) {
       this.searchKeyword = val;

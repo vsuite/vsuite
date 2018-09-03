@@ -57,8 +57,7 @@ export default {
 
   methods: {
     _handleClick(event) {
-      // event.preventDefault();
-      // event.stopPropagation();
+      event.stopPropagation();
 
       if (this.disabled) return;
 

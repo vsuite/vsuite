@@ -1,4 +1,5 @@
 import VueTypes from 'vue-types';
+import _ from 'lodash';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
 import { splitDataByComponent } from 'utils/split';
 
@@ -35,6 +36,7 @@ export default {
           role: 'button',
           tabindex: -1,
         },
+        on: _.omit(this.$listeners, ['clean']),
       },
       Component
     );

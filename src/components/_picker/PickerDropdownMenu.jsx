@@ -7,6 +7,7 @@ import invariant from 'utils/invariant';
 
 import PickerDropdownMenuGroup from './PickerDropdownMenuGroup.jsx';
 import PickerDropdownMenuItem from './PickerDropdownMenuItem.jsx';
+import PickerDropdownMenuCheckItem from './PickerDropdownMenuCheckItem.jsx';
 
 const CLASS_PREFIX = 'picker';
 
@@ -22,13 +23,10 @@ export default {
     maxHeight: VueTypes.number.def(320),
     valueKey: VueTypes.string.def('value'),
     labelKey: VueTypes.string.def('label'),
+    checkable: VueTypes.bool.def(false),
     renderMenuGroup: Function,
     renderMenuItem: Function,
     dropdownMenuItemClassPrefix: VueTypes.string,
-    dropdownMenuItemComponentClass: VueTypes.oneOfType([
-      VueTypes.string,
-      VueTypes.object,
-    ]).def(PickerDropdownMenuItem),
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
   },
 
@@ -84,8 +82,6 @@ export default {
             );
           }
 
-          const ComponentPickerDropdownMenuItem = this
-            .dropdownMenuItemComponentClass;
           const disabled =
             !_.isUndefined(this.disabledItemValues) &&
             this.disabledItemValues.some(val => shallowEqual(val, value));
@@ -96,8 +92,28 @@ export default {
             !_.isUndefined(this.focusItemValue) &&
             shallowEqual(this.focusItemValue, value);
 
+          if (this.checkable) {
+            return (
+              <PickerDropdownMenuCheckItem
+                // getItemData={this.getItemData.bind(this, item)}
+                key={`${groupId}-${onlyKey}`}
+                value={value}
+                active={active}
+                disabled={disabled}
+                focus={focus}
+                classPrefix={this.dropdownMenuItemClassPrefix}
+                ref={`${groupId}-${onlyKey}`}
+                onSelect={(...args) => this._handleSelect(item, ...args)}
+              >
+                {this.renderMenuItem
+                  ? this.renderMenuItem(h, label, item)
+                  : label}
+              </PickerDropdownMenuCheckItem>
+            );
+          }
+
           return (
-            <ComponentPickerDropdownMenuItem
+            <PickerDropdownMenuItem
               // getItemData={this.getItemData.bind(this, item)}
               key={`${groupId}-${onlyKey}`}
               value={value}
@@ -111,7 +127,7 @@ export default {
               {this.renderMenuItem
                 ? this.renderMenuItem(h, label, item)
                 : label}
-            </ComponentPickerDropdownMenuItem>
+            </PickerDropdownMenuItem>
           );
         });
       };
