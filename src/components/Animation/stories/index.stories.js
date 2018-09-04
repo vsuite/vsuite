@@ -1,7 +1,8 @@
 import { storiesOf } from '@storybook/vue';
-import Demo from 'stories/demo';
-import { Fade, Collapse } from 'components/Animation';
+
 import Button from 'components/Button';
+import { Fade, Collapse } from 'components/Animation';
+import Demo from 'stories/demo';
 
 const stories = storiesOf('Utils|Animation', module);
 

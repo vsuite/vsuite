@@ -1,8 +1,9 @@
 import { storiesOf } from '@storybook/vue';
-import Demo from 'stories/demo';
-import { Paragraph } from 'stories/content';
+
 import Button from 'components/Button';
 import Modal from 'components/Modal';
+import Demo from 'stories/demo';
+import { Paragraph } from 'stories/content';
 
 const stories = storiesOf('General|Modal', module);
 

@@ -1,7 +1,8 @@
 import { storiesOf } from '@storybook/vue';
+
+import Checkbox from 'components/Checkbox';
 import Demo from 'stories/demo';
 import JsonView from 'stories/json-view';
-import Checkbox from 'components/Checkbox';
 
 const stories = storiesOf('Data Entry|CheckboxGroup', module);
 

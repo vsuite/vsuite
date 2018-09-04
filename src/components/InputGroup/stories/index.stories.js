@@ -1,9 +1,10 @@
 import { storiesOf } from '@storybook/vue';
-import Demo from 'stories/demo';
+
 import Icon from 'components/Icon';
 import Input from 'components/Input';
 import InputNumber from 'components/InputNumber';
 import InputGroup from 'components/InputGroup';
+import Demo from 'stories/demo';
 
 const stories = storiesOf('Data Entry|InputGroup', module);
 

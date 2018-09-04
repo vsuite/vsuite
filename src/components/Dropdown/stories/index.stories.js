@@ -1,5 +1,4 @@
 import { storiesOf } from '@storybook/vue';
-import Demo from 'stories/demo';
 
 import Dropdown from 'components/Dropdown';
 import ButtonToolbar from 'components/ButtonToolbar';
@@ -8,6 +7,7 @@ import IconButton from 'components/IconButton';
 import Popover from 'components/Popover';
 import Button from 'components/Button';
 import Icon from 'components/Icon';
+import Demo from 'stories/demo';
 
 const stories = storiesOf('Navigation|Dropdown', module);
 

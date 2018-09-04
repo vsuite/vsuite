@@ -1,10 +1,10 @@
 import { storiesOf } from '@storybook/vue';
-import Demo from 'stories/demo';
 
 import Dropdown from 'components/Dropdown';
 import Row from 'components/Row';
 import Col from 'components/Col';
 import Nav from 'components/Nav';
+import Demo from 'stories/demo';
 
 const stories = storiesOf('Navigation|Nav', module);
 

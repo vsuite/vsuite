@@ -1,7 +1,8 @@
 import { storiesOf } from '@storybook/vue';
-import Demo from 'stories/demo';
+
 import Pagination from 'components/Pagination';
 import Divider from 'components/Divider';
+import Demo from 'stories/demo';
 
 const stories = storiesOf('Navigation|Pagination', module);
 

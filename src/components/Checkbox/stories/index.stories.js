@@ -1,6 +1,7 @@
 import { storiesOf } from '@storybook/vue';
-import Demo from 'stories/demo';
+
 import Checkbox from 'components/Checkbox';
+import Demo from 'stories/demo';
 
 const stories = storiesOf('Data Entry|Checkbox', module);
 

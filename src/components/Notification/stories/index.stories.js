@@ -1,7 +1,8 @@
 import { storiesOf } from '@storybook/vue';
+
+import Button from 'components/Button';
 import Demo from 'stories/demo';
 import { Paragraph } from 'stories/content';
-import Button from 'components/Button';
 
 const stories = storiesOf('General|Notification', module);
 

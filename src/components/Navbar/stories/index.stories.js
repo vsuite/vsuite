@@ -1,9 +1,9 @@
 import { storiesOf } from '@storybook/vue';
-import Demo from 'stories/demo';
 
 import Dropdown from 'components/Dropdown';
 import Navbar from 'components/Navbar';
 import Nav from 'components/Nav';
+import Demo from 'stories/demo';
 
 import './style.less';
 

@@ -1,11 +1,11 @@
 import { storiesOf } from '@storybook/vue';
-import Demo from 'stories/demo';
 
 import Button from 'components/Button';
 import ButtonGroup from 'components/ButtonGroup';
 import ButtonToolbar from 'components/ButtonToolbar';
 import IconButton from 'components/IconButton';
 import Icon from 'components/Icon';
+import Demo from 'stories/demo';
 
 import SvgIcon from './vsuite.svg';
 

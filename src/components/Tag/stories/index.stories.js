@@ -1,7 +1,8 @@
 import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
-import Demo from 'stories/demo';
+
 import Tag from 'components/Tag';
+import Demo from 'stories/demo';
 
 const stories = storiesOf('Data Display|Tag', module);
 

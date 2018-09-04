@@ -1,7 +1,8 @@
 import { storiesOf } from '@storybook/vue';
-import Demo from 'stories/demo';
+
 import Toggle from 'components/Toggle';
 import Icon from 'components/Icon';
+import Demo from 'stories/demo';
 
 const stories = storiesOf('Data Entry|Toggle', module);
 

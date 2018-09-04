@@ -1,7 +1,8 @@
 import { storiesOf } from '@storybook/vue';
+
+import Message from 'components/Message';
 import Demo from 'stories/demo';
 import Content, { Paragraph } from 'stories/content';
-import Message from 'components/Message';
 
 const stories = storiesOf('General|Message', module);
 

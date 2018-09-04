@@ -1,8 +1,9 @@
 import { storiesOf } from '@storybook/vue';
-import Demo from 'stories/demo';
+
 import Slider from 'components/Slider';
 import Row from 'components/Row';
 import Col from 'components/Col';
+import Demo from 'stories/demo';
 
 import './style.less';
 

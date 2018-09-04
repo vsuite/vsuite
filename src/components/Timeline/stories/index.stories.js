@@ -1,7 +1,8 @@
 import { storiesOf } from '@storybook/vue';
-import Demo from 'stories/demo';
+
 import Timeline from 'components/Timeline';
 import Icon from 'components/Icon';
+import Demo from 'stories/demo';
 
 const stories = storiesOf('Data Display|Timeline', module);
 

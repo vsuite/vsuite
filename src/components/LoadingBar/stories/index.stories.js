@@ -1,8 +1,9 @@
 import { storiesOf } from '@storybook/vue';
-import Demo from 'stories/demo';
+
 import Button from 'components/Button';
 import ButtonGroup from 'components/ButtonGroup';
 import LoadingBar from 'components/LoadingBar';
+import Demo from 'stories/demo';
 
 const stories = storiesOf('General|LoadingBar', module);
 

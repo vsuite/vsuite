@@ -1,7 +1,8 @@
 import { storiesOf } from '@storybook/vue';
+
+import Panel from 'components/Panel';
 import Demo from 'stories/demo';
 import Content, { Paragraph } from 'stories/content';
-import Panel from 'components/Panel';
 
 const stories = storiesOf('Data Display|PanelGroup', module);
 

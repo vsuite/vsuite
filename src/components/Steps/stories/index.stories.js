@@ -1,7 +1,8 @@
 import { storiesOf } from '@storybook/vue';
-import Demo from 'stories/demo';
+
 import Steps, { STATUS } from 'components/Steps';
 import Button from 'components/Button';
+import Demo from 'stories/demo';
 
 const stories = storiesOf('Navigation|Steps', module);
 

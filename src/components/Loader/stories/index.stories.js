@@ -1,7 +1,8 @@
 import { storiesOf } from '@storybook/vue';
+
+import Loader from 'components/Loader';
 import Demo from 'stories/demo';
 import Content, { Paragraph } from 'stories/content';
-import Loader from 'components/Loader';
 
 const stories = storiesOf('General|Loader', module);
 

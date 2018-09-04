@@ -1,10 +1,10 @@
 import { storiesOf } from '@storybook/vue';
-import Demo from 'stories/demo';
 
 import Toggle from 'components/Toggle';
 import Dropdown from 'components/Dropdown';
 import Sidenav from 'components/Sidenav';
 import Nav from 'components/Nav';
+import Demo from 'stories/demo';
 
 const stories = storiesOf('Navigation|Sidenav', module);
 

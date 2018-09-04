@@ -1,8 +1,9 @@
 import { storiesOf } from '@storybook/vue';
-import Demo from 'stories/demo';
-import { Paragraph } from 'stories/content';
+
 import Drawer from 'components/Drawer';
 import Button from 'components/Button';
+import Demo from 'stories/demo';
+import { Paragraph } from 'stories/content';
 
 const stories = storiesOf('General|Drawer', module);
 

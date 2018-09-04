@@ -1,8 +1,9 @@
 import { storiesOf } from '@storybook/vue';
-import Demo from 'stories/demo';
+
 import AutoComplete from 'components/AutoComplete';
 import InputGroup from 'components/InputGroup';
 import Icon from 'components/Icon';
+import Demo from 'stories/demo';
 
 const stories = storiesOf('Data Entry|AutoComplete', module);
 

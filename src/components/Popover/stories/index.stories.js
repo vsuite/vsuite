@@ -1,7 +1,8 @@
 import { storiesOf } from '@storybook/vue';
-import Demo from 'stories/demo';
+
 import Popover from 'components/Popover';
 import Button from 'components/Button';
+import Demo from 'stories/demo';
 
 const stories = storiesOf('General|Popover', module);
 

@@ -1,8 +1,9 @@
 import { storiesOf } from '@storybook/vue';
 import { withKnobs } from '@storybook/addon-knobs';
-import Demo from 'stories/demo';
+
 import Icon from 'components/Icon';
 import IconStack from 'components/IconStack';
+import Demo from 'stories/demo';
 
 import vsuiteSvgIcon from './vsuite.svg';
 

@@ -1,10 +1,11 @@
 import { storiesOf } from '@storybook/vue';
-import Demo from 'stories/demo';
+
 import Container from 'components/Container';
 import Header from 'components/Header';
 import Content from 'components/Content';
 import Footer from 'components/Footer';
 import Sidebar from 'components/Sidebar';
+import Demo from 'stories/demo';
 
 import './style.less';
 

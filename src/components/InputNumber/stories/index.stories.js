@@ -1,6 +1,7 @@
 import { storiesOf } from '@storybook/vue';
-import Demo from 'stories/demo';
+
 import InputNumber from 'components/InputNumber';
+import Demo from 'stories/demo';
 
 const stories = storiesOf('Data Entry|InputNumber', module);
 

@@ -1,10 +1,11 @@
 import { storiesOf } from '@storybook/vue';
-import Demo from 'stories/demo';
-import Content from 'stories/content';
+
 import ProgressLine from 'components/ProgressLine';
 import ProgressCircle from 'components/ProgressCircle';
 import Button from 'components/Button';
 import ButtonGroup from 'components/ButtonGroup';
+import Demo from 'stories/demo';
+import Content from 'stories/content';
 
 const stories = storiesOf('General|Progress', module);
 

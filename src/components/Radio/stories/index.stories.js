@@ -1,6 +1,7 @@
 import { storiesOf } from '@storybook/vue';
-import Demo from 'stories/demo';
+
 import Radio from 'components/Radio';
+import Demo from 'stories/demo';
 
 const stories = storiesOf('Data Entry|Radio', module);
 

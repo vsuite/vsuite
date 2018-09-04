@@ -1,7 +1,8 @@
 import { storiesOf } from '@storybook/vue';
+
+import Divider from 'components/Divider';
 import Demo from 'stories/demo';
 import Content, { Paragraph } from 'stories/content';
-import Divider from 'components/Divider';
 
 const stories = storiesOf('General|Divider', module);
 
