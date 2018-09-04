@@ -74,7 +74,7 @@ export default {
       this.$emit('change', val, event);
     },
 
-    _handleChange(_, value, event) {
+    _handleChange(value, _, event) {
       this._setVal(value, event);
     },
 

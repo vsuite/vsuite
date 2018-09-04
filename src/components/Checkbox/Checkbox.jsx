@@ -99,12 +99,10 @@ export default {
     _setChecked(checked, event) {
       this.innerChecked = checked;
 
-      event.target.checked = this.currentChecked;
-
       this.$emit(
         'change',
-        checked,
         _.isUndefined(this.value) ? checked : this.value,
+        checked,
         event
       );
     },
@@ -112,7 +110,11 @@ export default {
     _handleChange(event) {
       event.stopPropagation();
 
-      this._setChecked(event.target.checked, event);
+      const value = event.target.checked;
+
+      event.target.checked = this.currentChecked;
+
+      this._setChecked(value, event);
     },
 
     _addPrefix(cls) {

@@ -70,19 +70,21 @@ export default {
 
   methods: {
     _setVal(val) {
-      const index = this.innerVal.indexOf(val);
+      this.innerVal = val;
 
-      if (index !== -1) {
-        this.innerVal.splice(index, 1);
-      } else {
-        this.innerVal.push(val);
-      }
-
-      this.$emit('change', _.cloneDeep(this.innerVal), event);
+      this.$emit('change', val, event);
     },
 
-    _handleChange(_, value, event) {
-      this._setVal(value, event);
+    _handleChange(value, checked, event) {
+      const newVal = _.cloneDeep(this.currentVal);
+
+      if (checked) {
+        newVal.push(value);
+      } else {
+        newVal.splice(_.findIndex(newVal, v => shallowEqual(v, value)), 1);
+      }
+
+      this._setVal(newVal, event);
     },
 
     _addPrefix(cls) {
