@@ -197,7 +197,7 @@ export default {
           {this.$slots.footer || [
             this.showCancel ? (
               <Button onClick={this._handleCancel} appearance="subtle">
-                {this.cancelText || this.$t('_.Modal.cancel_text')}
+                {this.cancelText || this.$t('_.Modal.cancelText')}
               </Button>
             ) : null,
             <Button
@@ -205,7 +205,7 @@ export default {
               loading={this.vLoading}
               appearance="primary"
             >
-              {this.okText || this.$t('_.Modal.ok_text')}
+              {this.okText || this.$t('_.Modal.okText')}
             </Button>,
           ]}
         </div>

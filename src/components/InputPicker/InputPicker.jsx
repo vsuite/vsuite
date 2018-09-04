@@ -54,7 +54,7 @@ export default {
     valueKey: VueTypes.string.def('value'),
     labelKey: VueTypes.string.def('label'),
     groupBy: VueTypes.any,
-    placeholder: VueTypes.string, // slot
+    placeholder: VueTypes.string,
     searchable: VueTypes.bool,
     cleanable: VueTypes.bool,
     creatable: VueTypes.bool.def(false),
@@ -70,7 +70,6 @@ export default {
     renderMenuGroup: Function,
     renderValue: Function,
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
-    // change, select, search, toggle
   },
 
   data() {
@@ -195,7 +194,7 @@ export default {
         <PickerToggle {...toggleData}>
           {searching || (this.multiple && hasValue)
             ? null
-            : displayElement || this.$t('_.InputPicker.placeholder')}
+            : displayElement || this.$t('_.Picker.placeholder')}
         </PickerToggle>
         <div {...wrapperData}>
           {tags}
@@ -327,7 +326,7 @@ export default {
       const activeItem = findNode(this.dataWithCacheList, item =>
         shallowEqual(item[this.valueKey], value)
       );
-      let displayElement = this.placeholder;
+      let displayElement = this.$slots.placeholder || this.placeholder;
 
       if (_.get(activeItem, this.labelKey)) {
         displayElement = _.get(activeItem, this.labelKey);
