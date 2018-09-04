@@ -1,12 +1,13 @@
 import { storiesOf } from '@storybook/vue';
-// import _ from 'lodash';
-// import axios from 'axios';
-import Demo from 'stories/demo';
+import _ from 'lodash';
+import axios from 'axios';
+import shallowEqual from 'utils/shallowEqual';
 
+import Demo from 'stories/demo';
 import CheckPicker from 'components/CheckPicker';
 import Checkbox from 'components/Checkbox';
 import Button from 'components/Button';
-// import Icon from 'components/Icon';
+import Icon from 'components/Icon';
 
 const stories = storiesOf('Data Entry|CheckPicker', module);
 const data = [
@@ -289,7 +290,6 @@ stories.add('footer', () => ({
         <CheckPicker
           style={{ width: '224px' }}
           data={data}
-          placeholder="请选择"
           value={this.value}
           onChange={this._handleChange}
           ref="picker"
@@ -301,18 +301,16 @@ stories.add('footer', () => ({
               checked={this.checkAll}
               onChange={this._handleCheckAll}
             >
-              全选
+              Select All
             </Checkbox>
 
             <Button
               style={footerButtonStyle}
               appearance="primary"
               size="sm"
-              onClick={() => {
-                this.picker.trigger.hide();
-              }}
+              onClick={() => this.$refs.picker.hide()}
             >
-              确定
+              Ok
             </Button>
           </div>
         </CheckPicker>
@@ -321,8 +319,110 @@ stories.add('footer', () => ({
   },
 
   methods: {
-    _handleChange() {},
+    _handleChange(value) {
+      const allValue = data.map(item => item.value);
 
-    _handleCheckAll() {},
+      this.value = value;
+      this.indeterminate = value.length > 0 && value.length < allValue.length;
+      this.checkAll = value.length === allValue.length;
+    },
+
+    _handleCheckAll(value, checked) {
+      const allValue = data.map(item => item.value);
+
+      this.value = checked ? allValue : [];
+      this.indeterminate = false;
+      this.checkAll = checked;
+    },
+  },
+}));
+
+stories.add('request', () => ({
+  data() {
+    this._getUsers('vue');
+
+    return {
+      value: [],
+      items: [],
+      cacheItems: [],
+      loading: true,
+    };
+  },
+
+  render() {
+    return (
+      <Demo title="Request">
+        <CheckPicker
+          style={{ width: '300px' }}
+          value={this.value}
+          data={this.items}
+          cacheData={this.cacheItems}
+          labelKey="login"
+          valueKey="id"
+          onChange={this._handleChange}
+          onSearch={_.debounce(this._handleSearch.bind(this), 300)}
+          renderMenu={(h, menu) => {
+            if (this.loading) {
+              return (
+                <p
+                  style={{ padding: '4px', color: '#999', textAlign: 'center' }}
+                >
+                  <Icon icon="spinner" spin /> Loading...
+                </p>
+              );
+            }
+
+            return menu;
+          }}
+        />
+      </Demo>
+    );
+  },
+
+  methods: {
+    _handleChange(val) {
+      this.value = val;
+    },
+
+    _handleSearch(val) {
+      this.loading = true;
+
+      this._getUsers(val || 'vue');
+    },
+
+    _getUsers(word) {
+      axios
+        .get('https://api.github.com/search/users', { params: { q: word } })
+        .then(({ data }) => {
+          this.cacheItems.push(
+            ...this.items.filter(x =>
+              this.value.some(y => shallowEqual(x.id, y))
+            )
+          );
+          this.items = data.items || [];
+          this.loading = false;
+        })
+        .catch(e => {
+          /* eslint-disable no-console */
+          console.log('Oops, error', e);
+
+          this.loading = false;
+        });
+    },
+  },
+}));
+
+stories.add('controlled', () => ({
+  render() {
+    return (
+      <Demo title="Controlled">
+        <CheckPicker
+          style={{ width: '300px' }}
+          visible
+          value={['Julius']}
+          data={data}
+        />
+      </Demo>
+    );
   },
 }));
