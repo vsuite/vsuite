@@ -1,12 +1,14 @@
 import { storiesOf } from '@storybook/vue';
-import _ from 'lodash';
-import axios from 'axios';
+// import _ from 'lodash';
+// import axios from 'axios';
 import Demo from 'stories/demo';
 
-import SelectPicker from 'components/SelectPicker';
-import Icon from 'components/Icon';
+import CheckPicker from 'components/CheckPicker';
+import Checkbox from 'components/Checkbox';
+import Button from 'components/Button';
+// import Icon from 'components/Icon';
 
-const stories = storiesOf('Data Entry|SelectPicker', module);
+const stories = storiesOf('Data Entry|CheckPicker', module);
 const data = [
   {
     label: 'Eugenia',
@@ -84,7 +86,7 @@ stories.add('default', () => ({
   render() {
     return (
       <Demo title="Default">
-        <SelectPicker style={{ width: '224px' }} data={data} />
+        <CheckPicker style={{ width: '224px' }} data={data} />
       </Demo>
     );
   },
@@ -94,14 +96,14 @@ stories.add('appearance', () => ({
   render() {
     return (
       <Demo title="Appearance">
-        <SelectPicker
+        <CheckPicker
           style={{ width: '224px' }}
           data={data}
           appearance="default"
           placeholder="Default"
         />
         <hr />
-        <SelectPicker
+        <CheckPicker
           style={{ width: '224px' }}
           data={data}
           appearance="subtle"
@@ -116,7 +118,7 @@ stories.add('block', () => ({
   render() {
     return (
       <Demo title="Block">
-        <SelectPicker block data={data} />
+        <CheckPicker block data={data} />
       </Demo>
     );
   },
@@ -126,7 +128,7 @@ stories.add('groupBy', () => ({
   render() {
     return (
       <Demo title="GroupBy">
-        <SelectPicker style={{ width: '224px' }} data={data} groupBy="role" />
+        <CheckPicker style={{ width: '224px' }} data={data} groupBy="role" />
       </Demo>
     );
   },
@@ -140,26 +142,26 @@ stories.add('placement', () => ({
           <tbody>
             <tr>
               <td />
-              <td>{this._renderSelectPicker(h, 'bottom-start')}</td>
-              <td>{this._renderSelectPicker(h, 'bottom-end')}</td>
+              <td>{this._renderCheckPicker(h, 'bottom-start')}</td>
+              <td>{this._renderCheckPicker(h, 'bottom-end')}</td>
               <td />
             </tr>
             <tr>
-              <td>{this._renderSelectPicker(h, 'right-start')}</td>
+              <td>{this._renderCheckPicker(h, 'right-start')}</td>
               <td />
               <td />
-              <td>{this._renderSelectPicker(h, 'left-start')}</td>
+              <td>{this._renderCheckPicker(h, 'left-start')}</td>
             </tr>
             <tr>
-              <td>{this._renderSelectPicker(h, 'right-end')}</td>
+              <td>{this._renderCheckPicker(h, 'right-end')}</td>
               <td />
               <td />
-              <td>{this._renderSelectPicker(h, 'left-end')}</td>
+              <td>{this._renderCheckPicker(h, 'left-end')}</td>
             </tr>
             <tr>
               <td />
-              <td>{this._renderSelectPicker(h, 'top-start')}</td>
-              <td>{this._renderSelectPicker(h, 'top-end')}</td>
+              <td>{this._renderCheckPicker(h, 'top-start')}</td>
+              <td>{this._renderCheckPicker(h, 'top-end')}</td>
               <td />
             </tr>
           </tbody>
@@ -169,9 +171,9 @@ stories.add('placement', () => ({
   },
 
   methods: {
-    _renderSelectPicker(h, placement) {
+    _renderCheckPicker(h, placement) {
       return (
-        <SelectPicker
+        <CheckPicker
           data={data}
           placement={placement}
           placeholder={placement}
@@ -185,8 +187,8 @@ stories.add('custom', () => ({
   render() {
     return (
       <Demo title="Custom">
-        <SelectPicker
-          style={{ width: '224px' }}
+        <CheckPicker
+          block
           data={data}
           groupBy="role"
           placeholder="Select User"
@@ -205,14 +207,14 @@ stories.add('custom', () => ({
               </div>
             );
           }}
-          renderValue={(h, label, item) => {
+          renderValue={(h, value, items) => {
             return (
-              <div>
+              <span>
                 <span style={{ color: '#575757' }}>
-                  <i class="vs-icon vs-icon-user" /> User :
+                  <i class="vs-icon vs-icon-user" /> Users :
                 </span>{' '}
-                {label}
-              </div>
+                {value.join(' , ')}
+              </span>
             );
           }}
         />
@@ -225,18 +227,18 @@ stories.add('disabled', () => ({
   render() {
     return (
       <Demo title="Disabled">
-        <SelectPicker
+        <CheckPicker
           style={{ width: '224px' }}
           data={data}
-          defaultValue={'Julius'}
+          defaultValue={['Julius']}
           disabled
         />
         <hr />
         <p>禁用选项</p>
-        <SelectPicker
+        <CheckPicker
           style={{ width: '224px' }}
           data={data}
-          defaultValue={'Julius'}
+          defaultValue={['Julius']}
           disabledItemValues={['Eugenia', 'Travon', 'Vincenza']}
         />
       </Demo>
@@ -248,10 +250,10 @@ stories.add('searchable', () => ({
   render() {
     return (
       <Demo title="Searchable">
-        <SelectPicker style={{ width: '224px' }} data={data} />
+        <CheckPicker style={{ width: '224px' }} data={data} />
         <hr />
         <p>禁用搜索</p>
-        <SelectPicker
+        <CheckPicker
           style={{ width: '224px' }}
           data={data}
           searchable={false}
@@ -261,78 +263,66 @@ stories.add('searchable', () => ({
   },
 }));
 
-stories.add('request', () => ({
+stories.add('footer', () => ({
   data() {
-    this._getUsers('vue');
-
     return {
-      items: [],
-      loading: true,
+      indeterminate: false,
+      checkAll: false,
+      value: [],
     };
   },
 
   render() {
-    return (
-      <Demo title="Request">
-        <SelectPicker
-          style={{ width: '224px' }}
-          data={this.items}
-          labelKey="login"
-          valueKey="id"
-          onSearch={_.debounce(this._handleSearch.bind(this), 300)}
-          renderMenu={(h, menu) => {
-            if (this.loading) {
-              return (
-                <p
-                  style={{ padding: '4px', color: '#999', textAlign: 'center' }}
-                >
-                  <Icon icon="spinner" spin /> Loading...
-                </p>
-              );
-            }
+    const footerStyles = {
+      padding: '10px 2px',
+      borderTop: '1px solid #e5e5e5',
+    };
 
-            return menu;
-          }}
-        />
+    const footerButtonStyle = {
+      float: 'right',
+      marginRight: '10px',
+      marginTop: '2px',
+    };
+
+    return (
+      <Demo title="Footer">
+        <CheckPicker
+          style={{ width: '224px' }}
+          data={data}
+          placeholder="请选择"
+          value={this.value}
+          onChange={this._handleChange}
+          ref="picker"
+        >
+          <div style={footerStyles} slot="footer">
+            <Checkbox
+              inline
+              indeterminate={this.indeterminate}
+              checked={this.checkAll}
+              onChange={this._handleCheckAll}
+            >
+              全选
+            </Checkbox>
+
+            <Button
+              style={footerButtonStyle}
+              appearance="primary"
+              size="sm"
+              onClick={() => {
+                this.picker.trigger.hide();
+              }}
+            >
+              确定
+            </Button>
+          </div>
+        </CheckPicker>
       </Demo>
     );
   },
 
   methods: {
-    _handleSearch(val) {
-      this.loading = true;
+    _handleChange() {},
 
-      this._getUsers(val || 'vue');
-    },
-
-    _getUsers(word) {
-      axios
-        .get('https://api.github.com/search/users', { params: { q: word } })
-        .then(({ data }) => {
-          this.items = data.items || [];
-          this.loading = false;
-        })
-        .catch(e => {
-          /* eslint-disable no-console */
-          console.log('Oops, error', e);
-
-          this.loading = false;
-        });
-    },
-  },
-}));
-
-stories.add('controlled', () => ({
-  render() {
-    return (
-      <Demo title="Controlled">
-        <SelectPicker
-          visible
-          value={'Julius'}
-          data={data}
-          style={{ width: '224px' }}
-        />
-      </Demo>
-    );
+    _handleCheckAll() {},
   },
 }));

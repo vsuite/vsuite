@@ -21,7 +21,7 @@ import {
 const CLASS_PREFIX = 'picker';
 
 export default {
-  name: 'SelectPicker',
+  name: 'CheckPicker',
 
   model: {
     prop: 'value',
@@ -40,8 +40,8 @@ export default {
       ...popperMixin.props.trigger,
       default: 'click',
     },
-    value: VueTypes.any,
-    defaultValue: VueTypes.any,
+    value: VueTypes.arrayOf(VueTypes.any),
+    defaultValue: VueTypes.arrayOf(VueTypes.any).def([]),
     appearance: VueTypes.oneOf(['default', 'subtle']).def('default'),
     data: VueTypes.arrayOf(VueTypes.any).def([]),
     cacheData: VueTypes.arrayOf(VueTypes.any).def([]),
@@ -70,7 +70,8 @@ export default {
   },
 
   data() {
-    const initVal = _.isUndefined(this.value) ? this.defaultValue : this.value;
+    const initVal =
+      (_.isUndefined(this.value) ? this.defaultValue : this.value) || [];
 
     invariant.not(
       this.groupBy === this.valueKey || this.groupBy === this.labelKey,
@@ -79,14 +80,14 @@ export default {
 
     return {
       innerVal: initVal,
-      focusItemValue: initVal,
+      focusItemValue: initVal[0],
       searchKeyword: '',
     };
   },
 
   computed: {
     currentVal() {
-      return _.isUndefined(this.value) ? this.innerVal : this.value;
+      return (_.isUndefined(this.value) ? this.innerVal : this.value) || [];
     },
 
     dataWithCacheList() {
@@ -107,16 +108,26 @@ export default {
   },
 
   render(h) {
-    const { isValid, displayElement } = this._getLabelByValue(
-      h,
-      this.currentVal
+    const hasValue = !!(this.currentVal && this.currentVal.length);
+    const selectedItems = this.currentVal.map(x =>
+      findNode(this.dataWithCacheList, item =>
+        shallowEqual(item[this.valueKey], x)
+      )
     );
+    let selectedLabel = hasValue
+      ? this.$t('_.CheckPicker.selectedValues', [selectedItems.length])
+      : this.$slots.placeholder || this.placeholder;
+
+    if (this.renderValue && hasValue) {
+      selectedLabel = this.renderValue(h, this.currentVal, selectedItems);
+    }
+
     const referenceData = {
       class: getToggleWrapperClassName(
-        'select',
+        'check',
         this._addPrefix,
         this,
-        isValid
+        hasValue
       ),
       directives: [{ name: 'click-outside', value: this._handleClickOutside }],
       attrs: { tabindex: -1, role: 'menu' },
@@ -126,7 +137,7 @@ export default {
     const toggleData = splitDataByComponent({
       splitProps: {
         ...this.$attrs,
-        hasValue: isValid,
+        hasValue,
         cleanable: this.cleanable && !this.disabled,
         componentClass: this.toggleComponentClass,
       },
@@ -146,7 +157,7 @@ export default {
     return (
       <div {...referenceData}>
         <PickerToggle {...toggleData}>
-          {displayElement || this.$t('_.Picker.placeholder')}
+          {selectedLabel || this.$t('_.Picker.placeholder')}
         </PickerToggle>
         <transition name="picker-fade">
           {this._renderDropdownMenu(h, popperData)}
@@ -158,7 +169,7 @@ export default {
   methods: {
     _renderDropdownMenu(h, popperData) {
       popperData = _.merge(popperData, {
-        class: [this._addPrefix('select-menu'), this.menuClassName],
+        class: [this._addPrefix('check-menu'), this.menuClassName],
         style: this.menuStyle,
         on: { keydown: this._handleKeydown },
       });
@@ -168,16 +179,17 @@ export default {
           splitProps: {
             data: this.focusableDataList,
             group: !_.isUndefined(this.groupBy),
+            checkable: true,
             maxHeight: this.maxHeight,
             valueKey: this.valueKey,
             labelKey: this.labelKey,
             disabledItemValues: this.disabledItemValues,
-            activeItemValues: [this.currentVal],
+            activeItemValues: this.currentVal,
             focusItemValue: this.focusItemValue,
             renderMenuGroup: this.renderMenuGroup,
             renderMenuItem: this.renderMenuItem,
-            dropdownMenuItemClassPrefix: this._addPrefix('select-menu-item'),
-            classPrefix: this._addPrefix('select-menu'),
+            dropdownMenuItemClassPrefix: this._addPrefix('check-menu-item'),
+            classPrefix: this._addPrefix('check-menu'),
           },
           on: { select: this._handleSelect },
           ref: 'menu',
@@ -201,23 +213,6 @@ export default {
           {this.$slots.footer}
         </PickerMenuWrapper>
       );
-    },
-
-    _getLabelByValue(h, value) {
-      const activeItem = findNode(this.dataWithCacheList, item =>
-        shallowEqual(item[this.valueKey], value)
-      );
-      let displayElement = this.$slots.placeholder || this.placeholder;
-
-      if (_.get(activeItem, this.labelKey)) {
-        displayElement = _.get(activeItem, this.labelKey);
-
-        if (this.renderValue) {
-          displayElement = this.renderValue(h, value, activeItem);
-        }
-      }
-
-      return { activeItem, isValid: !!activeItem, displayElement };
     },
 
     _shouldDisplay(label, searchKeyword) {
@@ -248,13 +243,20 @@ export default {
       this.$emit('select', val, item, event);
     },
 
-    _handleSelect(value, item, event) {
+    _handleSelect(value, item, event, checked) {
+      let newVal = _.cloneDeep(this.currentVal);
+
+      if (checked) {
+        // add new item
+        newVal.push(value);
+      } else {
+        // remove old item
+        newVal.splice(_.findIndex(newVal, v => shallowEqual(v, value)), 1);
+      }
+
       this.focusItemValue = value;
 
-      // close popper
-      this._closePopper();
-
-      this._setVal(value, item, event);
+      this._setVal(newVal, item, event);
     },
 
     _handleClean(event) {
@@ -263,7 +265,7 @@ export default {
       this.focusItemValue = null;
       this.searchKeyword = '';
 
-      this._setVal(null, null, event);
+      this._setVal([], null, event);
     },
 
     _handleSearch(val, event) {
@@ -399,7 +401,12 @@ export default {
 
       if (!currentItem) return;
 
-      this._handleSelect(currentItem[this.valueKey], currentItem, event, false);
+      this._handleSelect(
+        currentItem[this.valueKey],
+        currentItem,
+        event,
+        !this.currentVal.some(x => shallowEqual(x, focusVal))
+      );
     },
 
     _addPrefix(cls) {
