@@ -39,7 +39,7 @@ export default {
 
   methods: {
     _handleChange(val, event) {
-      this.$emit(val, event);
+      this.$emit('change', val, event);
     },
 
     _addPrefix(cls) {

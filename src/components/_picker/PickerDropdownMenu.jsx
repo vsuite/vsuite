@@ -148,7 +148,7 @@ export default {
     },
 
     // update scroll position
-    updateScrollPosition() {
+    _updateScrollPosition() {
       const menuBodyContainer =
         this.$refs.menuBodyContainer || this.$refs.menuBodyContainer.$el;
 

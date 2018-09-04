@@ -13,7 +13,7 @@ function getToggleWrapperClassName(name, prefix, props, hasValue, classes) {
       [prefix('has-value')]: hasValue,
       [prefix('disabled')]: disabled,
       [prefix('cleanable')]: hasValue && cleanable,
-      ...classes,
+      ...(classes || {}),
     },
   ];
 }

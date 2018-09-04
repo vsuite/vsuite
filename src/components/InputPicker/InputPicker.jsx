@@ -61,15 +61,15 @@ export default {
     multiple: VueTypes.bool.def(false),
     menuClassName: VueTypes.string,
     menuStyle: VueTypes.object,
-    toggleComponentClass: VueTypes.oneOfType([
-      VueTypes.string,
-      VueTypes.object,
-    ]),
     renderMenu: Function,
     renderMenuItem: Function,
     renderMenuGroup: Function,
     renderValue: Function,
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
+    toggleComponentClass: VueTypes.oneOfType([
+      VueTypes.string,
+      VueTypes.object,
+    ]),
   },
 
   data() {
@@ -82,8 +82,8 @@ export default {
 
     return {
       innerVal: this.multiple ? initVal || [] : initVal,
-      searchKeyword: '',
       focusItemValue: this.multiple ? (initVal || [])[0] : initVal,
+      searchKeyword: '',
       newData: [],
       maxWidth: 100,
     };
@@ -167,27 +167,20 @@ export default {
           cleanable: this.cleanable && !this.disabled,
           componentClass: this.toggleComponentClass,
         },
-        on: {
-          clean: this._handleClean,
-        },
+        on: { clean: this._handleClean },
       },
       PickerToggle
     );
     const popperData = {
       directives: [
-        {
-          name: 'show',
-          value: this.currentVisible,
-        },
+        { name: 'show', value: this.currentVisible },
         { name: 'transfer-dom' },
       ],
-      attrs: {
-        'data-transfer': `${this.transfer}`,
-      },
+      attrs: { 'data-transfer': `${this.transfer}` },
       ref: 'popper',
     };
 
-    this._addTriggerListeners(wrapperData, wrapperData);
+    if (!this.disabled) this._addTriggerListeners(wrapperData, wrapperData);
 
     return (
       <div {...referenceData}>
@@ -384,6 +377,59 @@ export default {
       this.$emit('select', val, item, event);
     },
 
+    _handleSelect(value, item, event, checked) {
+      let newVal = _.cloneDeep(this.currentVal);
+
+      if (this.multiple && checked) {
+        // add new item
+        newVal.push(value);
+      } else if (this.multiple && !checked) {
+        // remove old item
+        newVal.splice(_.findIndex(newVal, v => shallowEqual(v, value)), 1);
+      } else {
+        newVal = value;
+      }
+
+      // if new create item
+      if (item && item.create) {
+        delete item.create;
+
+        this.newData.push(item);
+      }
+
+      this.focusItemValue = value;
+
+      if (this.multiple) {
+        this.searchKeyword = '';
+      } else {
+        // close popper
+        this._closePopper();
+      }
+
+      this._setVal(newVal, item, event);
+    },
+
+    _handleSearch(val, event) {
+      this.searchKeyword = val;
+
+      this.$emit('search', val, event);
+    },
+
+    _handleClean(event) {
+      if (this.disabled) return;
+
+      this.focusItemValue = null;
+      this.searchKeyword = '';
+
+      this._setVal(this.multiple ? [] : null, null, event);
+    },
+
+    _handleRemoveItem(item, tag, event) {
+      if (this.disabled) return;
+
+      this._handleSelect(tag, item, event, false);
+    },
+
     _handleClick() {
       this.$refs.search && this.$refs.search.focus();
     },
@@ -459,7 +505,7 @@ export default {
       }
 
       this.$nextTick(
-        () => this.$refs.menu && this.$refs.menu.updateScrollPosition()
+        () => this.$refs.menu && this.$refs.menu._updateScrollPosition()
       );
     },
 
@@ -495,7 +541,7 @@ export default {
       }
 
       this.$nextTick(
-        () => this.$refs.menu && this.$refs.menu.updateScrollPosition()
+        () => this.$refs.menu && this.$refs.menu._updateScrollPosition()
       );
     },
 
@@ -533,59 +579,6 @@ export default {
       const item = this.currentVal[len - 1];
 
       if (item) this._handleSelect(item[this.valueKey], item, event, false);
-    },
-
-    _handleSelect(value, item, event, checked) {
-      let newVal = _.cloneDeep(this.currentVal);
-
-      if (this.multiple && checked) {
-        // add new item
-        newVal.push(value);
-      } else if (this.multiple && !checked) {
-        // remove old item
-        newVal.splice(_.findIndex(newVal, v => shallowEqual(v, value)), 1);
-      } else {
-        newVal = value;
-      }
-
-      // if new create item
-      if (item && item.create) {
-        delete item.create;
-
-        this.newData.push(item);
-      }
-
-      this.focusItemValue = value;
-
-      if (this.multiple) {
-        this.searchKeyword = '';
-      } else {
-        // close popper
-        this._closePopper();
-      }
-
-      this._setVal(newVal, item, event);
-    },
-
-    _handleSearch(val, event) {
-      this.searchKeyword = val;
-
-      this.$emit('search', val, event);
-    },
-
-    _handleClean(event) {
-      if (this.disabled) return;
-
-      this.focusItemValue = null;
-      this.searchKeyword = '';
-
-      this._setVal(this.multiple ? [] : null, event);
-    },
-
-    _handleRemoveItem(item, tag, event) {
-      if (this.disabled) return;
-
-      this._handleSelect(tag, item, event, false);
     },
 
     _addPrefix(cls) {
