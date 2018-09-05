@@ -83,7 +83,7 @@ export default {
       let newLabel = this.label;
 
       if (this.renderTreeNode) {
-        newLabel = this.renderTreeNode(h, newLabel);
+        newLabel = this.renderTreeNode(h, this.node);
       }
 
       const data = {

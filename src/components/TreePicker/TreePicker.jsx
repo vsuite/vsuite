@@ -222,6 +222,8 @@ export default {
             disabled: this.disabledItemValues.some(x => shallowEqual(x, value)),
             uniqueKey: key,
             classPrefix,
+            renderTreeIcon: this.renderTreeIcon,
+            renderTreeNode: this.renderTreeNode,
           },
           on: { select: this._handleSelect, toggle: this._handleToggle },
         },
@@ -279,7 +281,7 @@ export default {
         displayElement = _.get(activeItem, this.labelKey);
 
         if (this.renderValue) {
-          displayElement = this.renderValue(h, value, activeItem);
+          displayElement = this.renderValue(h, activeItem, value);
         }
       }
 

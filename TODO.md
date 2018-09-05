@@ -2,3 +2,5 @@
 - title, $slots.title, $scopedSlots.title, renderTitle
 - renderX
 - not trigger event when disabled
+- all picker support keypath(valueKey, labelKey, childrenKey)
+- all picker disabled value also can selected by keydown
