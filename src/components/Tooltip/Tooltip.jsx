@@ -18,7 +18,7 @@ export default {
   props: {
     title: VueTypes.string,
     theme: VueTypes.oneOf(['dark', 'light']).def('dark'),
-    pure: VueTypes.bool.def(false),
+    inline: VueTypes.bool.def(false),
     maxWidth: VueTypes.number.def(250),
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
   },
@@ -29,7 +29,7 @@ export default {
         this._addPrefix('popper'),
         {
           [this._addPrefix(`popper-theme-${this.theme}`)]: this.theme,
-          [this._addPrefix('popper-pure')]: this.pure,
+          [this._addPrefix('popper-inline')]: this.inline,
         },
       ];
     },
@@ -70,7 +70,7 @@ export default {
   },
 
   render(h) {
-    if (this.pure) return this._renderPure(h);
+    if (this.inline) return this._renderTooltip(h);
 
     const tooltipData = {
       class: this.classPrefix,
@@ -118,7 +118,7 @@ export default {
   },
 
   methods: {
-    _renderPure() {
+    _renderTooltip() {
       const data = {
         class: this.popperClasses,
         attrs: {

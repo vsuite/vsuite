@@ -21,7 +21,7 @@ stories.add('default', () => ({
   },
 }));
 
-stories.add('pure', () => ({
+stories.add('inline', () => ({
   render: h => {
     const placements = [
       'auto',
@@ -40,11 +40,11 @@ stories.add('pure', () => ({
     ];
 
     return (
-      <Demo title="Pure">
+      <Demo title="Inline">
         {placements.map(placement => (
           <div style={{ marginBottom: '10px' }}>
             <Tooltip
-              pure
+              inline
               placement={placement}
               title={`This is a tooltip ! This is a tooltip ! This is a tooltip ! This is a tooltip ! This is a tooltip ! This is a tooltip ! This is a tooltip ! at \`${placement}\`.`}
             />

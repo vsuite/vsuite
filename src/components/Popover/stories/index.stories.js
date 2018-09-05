@@ -22,7 +22,7 @@ stories.add('default', () => ({
   },
 }));
 
-stories.add('pure', () => ({
+stories.add('inline', () => ({
   render: h => {
     const placements = [
       'auto',
@@ -41,10 +41,10 @@ stories.add('pure', () => ({
     ];
 
     return (
-      <Demo title="Pure">
+      <Demo title="Inline">
         {placements.map(placement => (
           <div style={{ marginBottom: '10px' }}>
-            <Popover pure placement={placement} title="Title">
+            <Popover inline placement={placement} title="Title">
               <template slot="content">
                 <p>This is a Popover </p>
                 <p>{placement}</p>

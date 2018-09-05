@@ -23,6 +23,10 @@
     background-color: @picker-tree-node-active-bg;
   }
 
+  &-focus > .@{tpns}-view-node-label {
+    background-color: @picker-tree-node-hover-bg;
+  }
+
   > .@{tpns}-view-node-label {
     margin: 0;
     padding: @picker-tree-node-padding-vertical
@@ -102,17 +106,6 @@
 
   > .@{tpns}-view-custom-icon {
     .node-item-prepend-icon;
-  }
-}
-
-// node children
-.@{tpns}-view-node-children {
-  > .@{tpns}-view-children {
-    display: none;
-
-    .@{tpns}-view-open& {
-      display: block;
-    }
   }
 }
 

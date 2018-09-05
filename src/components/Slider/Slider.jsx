@@ -210,7 +210,7 @@ export default {
         >
           {this.tooltip && (
             <Tooltip
-              pure
+              inline
               class={this._addPrefix('tooltip')}
               title={`${this.currentVal}`}
             />

@@ -1,27 +1,39 @@
 export default [
   {
     label: '中国',
-    value: 1,
+    value: {
+      id: 1,
+    },
     children: [
       {
         label: '北京市',
-        value: 2,
+        value: {
+          id: 2,
+        },
       },
       {
         label: '福建省',
-        value: 3,
+        value: {
+          id: 3,
+        },
         children: [
           {
             label: '福州市',
-            value: 36,
+            value: {
+              id: 36,
+            },
           },
           {
             label: '南平市',
-            value: 37,
+            value: {
+              id: 37,
+            },
           },
           {
             label: '泉州市',
-            value: 38,
+            value: {
+              id: 38,
+            },
           },
           {
             label: '莆田市',

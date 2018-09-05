@@ -85,7 +85,7 @@ export default {
           { name: 'transfer-dom' },
         ],
         props: {
-          pure: true,
+          inline: true,
         },
         attrs: {
           'data-transfer': 'true',

@@ -1,12 +1,12 @@
 import _ from 'lodash';
 
-function findNode(nodes, checker) {
+function findNode(nodes, checker, childrenKey = 'children') {
   const find = (nodes = []) => {
     for (let i = 0, len = nodes.length; i < len; i++) {
       const item = nodes[i];
 
-      if (_.isArray(item.children)) {
-        const node = find(item.children);
+      if (_.isArray(_.get(item, childrenKey))) {
+        const node = find(_.get(item, childrenKey));
 
         if (node) return node;
       }
@@ -20,14 +20,14 @@ function findNode(nodes, checker) {
   return find(nodes);
 }
 
-function filterNodes(nodes, checker) {
+function filterNodes(nodes, checker, childrenKey = 'children') {
   const find = (nodes = []) => {
     return nodes.filter(item => {
-      if (_.isArray(item.children)) {
-        const nextChildren = find(item.children);
+      if (_.isArray(_.get(item, childrenKey))) {
+        const nextChildren = find(_.get(item, childrenKey));
 
         if (nextChildren.length) {
-          item.children = nextChildren;
+          _.set(item, childrenKey, nextChildren);
 
           return true;
         }

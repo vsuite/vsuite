@@ -1,7 +1,6 @@
 import VueTypes from 'vue-types';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
 
-import Input from 'components/Input';
 import { splitDataByComponent } from 'utils/split';
 
 const CLASS_PREFIX = 'picker-search-bar';
@@ -24,22 +23,22 @@ export default {
           value: this.value,
           placeholder: this.placeholder,
         },
-        on: { change: this._handleChange },
+        on: { input: this._handleChange },
       },
-      Input
+      'input'
     );
 
     return (
       <div class={this.classPrefix}>
-        <Input {...iptData} />
+        <input {...iptData} />
         {this.$slots.default}
       </div>
     );
   },
 
   methods: {
-    _handleChange(val, event) {
-      this.$emit('change', val, event);
+    _handleChange(event) {
+      this.$emit('change', event.target.value, event);
     },
 
     _addPrefix(cls) {

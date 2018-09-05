@@ -24,7 +24,7 @@ export default {
     title: VueTypes.string,
     content: VueTypes.string,
     full: VueTypes.bool.def(false),
-    pure: VueTypes.bool.def(false),
+    inline: VueTypes.bool.def(false),
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
   },
 
@@ -33,7 +33,7 @@ export default {
       return [
         this._addPrefix('popper'),
         {
-          [this._addPrefix('popper-pure')]: this.pure,
+          [this._addPrefix('popper-inline')]: this.inline,
           [this._addPrefix('popper-full')]: this.full,
         },
       ];
@@ -67,7 +67,7 @@ export default {
   },
 
   render(h) {
-    if (this.pure) return this._renderPure(h);
+    if (this.inline) return this._renderPopover(h);
 
     const popoverData = {
       class: this.classPrefix,
@@ -119,7 +119,7 @@ export default {
   },
 
   methods: {
-    _renderPure() {
+    _renderPopover() {
       const data = {
         class: this.popperClasses,
         attrs: {
