@@ -46,90 +46,81 @@ export default {
 
   methods: {
     _renderItems(h) {
-      const createMenuItems = (items, groupId = 0) => {
-        return items.map((item, index) => {
-          const value = item[this.valueKey];
-          const label = item[this.labelKey];
-
-          invariant.not(
-            _.isUndefined(label) && _.isUndefined(item.groupTitle),
-            `labelKey "${this.labelKey}" is not defined in "data" : ${index}`
-          );
-
-          const onlyKey =
-            _.isString(value) || _.isNumber(value) ? value : index;
-
-          // PickerDropdownMenuGroup
-          if (this.group && _.isArray(item.children)) {
-            return (
-              <PickerDropdownMenuGroup
-                key={onlyKey}
-                classPrefix={this._addPrefix('group')}
-                onToggle={this._handleToggle}
-              >
-                <template slot="title">
-                  {this.renderMenuGroup
-                    ? this.renderMenuGroup(h, item.groupTitle, item)
-                    : item.groupTitle}
-                </template>
-                {createMenuItems(item.children, onlyKey)}
-              </PickerDropdownMenuGroup>
-            );
-          } else {
+      const createMenuItems = items => {
+        return items.map(
+          ({ key, label, value, visible, data, children }, index) => {
             invariant.not(
-              _.isUndefined(value) && !_.isArray(item.children),
+              _.isUndefined(label),
+              `labelKey "${this.labelKey}" is not defined in "data" : ${index}`
+            );
+
+            // PickerDropdownMenuGroup
+            if (this.group && children) {
+              const data = {
+                key,
+                directives: [{ name: 'show', value: visible }],
+                props: { classPrefix: this._addPrefix('group') },
+                on: { toggle: this._handleToggle },
+              };
+
+              return (
+                <PickerDropdownMenuGroup {...data}>
+                  <template slot="title">
+                    {this.renderMenuGroup
+                      ? this.renderMenuGroup(h, label, data)
+                      : label}
+                  </template>
+                  {createMenuItems(children)}
+                </PickerDropdownMenuGroup>
+              );
+            }
+
+            invariant.not(
+              _.isUndefined(value) && !children,
               `valueKey "${this.valueKey}" is not defined in "data" : ${index} `
             );
-          }
 
-          const disabled =
-            !_.isUndefined(this.disabledItemValues) &&
-            this.disabledItemValues.some(val => shallowEqual(val, value));
-          const active =
-            !_.isUndefined(this.activeItemValues) &&
-            this.activeItemValues.some(val => shallowEqual(val, value));
-          const focus =
-            !_.isUndefined(this.focusItemValue) &&
-            shallowEqual(this.focusItemValue, value);
+            const disabled =
+              !_.isUndefined(this.disabledItemValues) &&
+              this.disabledItemValues.some(val => shallowEqual(val, value));
+            const active =
+              !_.isUndefined(this.activeItemValues) &&
+              this.activeItemValues.some(val => shallowEqual(val, value));
+            const focus =
+              !_.isUndefined(this.focusItemValue) &&
+              shallowEqual(this.focusItemValue, value);
+            const itemData = {
+              key,
+              directives: [{ name: 'show', value: visible }],
+              props: {
+                value,
+                active,
+                disabled,
+                focus,
+                classPrefix: this.dropdownMenuItemClassPrefix,
+              },
+              on: { select: (...args) => this._handleSelect(data, ...args) },
+            };
 
-          if (this.checkable) {
+            if (this.checkable) {
+              return (
+                <PickerDropdownMenuCheckItem {...itemData}>
+                  {this.renderMenuItem
+                    ? this.renderMenuItem(h, label, data)
+                    : label}
+                </PickerDropdownMenuCheckItem>
+              );
+            }
+
             return (
-              <PickerDropdownMenuCheckItem
-                // getItemData={this.getItemData.bind(this, item)}
-                key={`${groupId}-${onlyKey}`}
-                value={value}
-                active={active}
-                disabled={disabled}
-                focus={focus}
-                classPrefix={this.dropdownMenuItemClassPrefix}
-                ref={`${groupId}-${onlyKey}`}
-                onSelect={(...args) => this._handleSelect(item, ...args)}
-              >
+              <PickerDropdownMenuItem {...itemData}>
                 {this.renderMenuItem
-                  ? this.renderMenuItem(h, label, item)
+                  ? this.renderMenuItem(h, label, data)
                   : label}
-              </PickerDropdownMenuCheckItem>
+              </PickerDropdownMenuItem>
             );
           }
-
-          return (
-            <PickerDropdownMenuItem
-              // getItemData={this.getItemData.bind(this, item)}
-              key={`${groupId}-${onlyKey}`}
-              value={value}
-              active={active}
-              disabled={disabled}
-              focus={focus}
-              classPrefix={this.dropdownMenuItemClassPrefix}
-              ref={`${groupId}-${onlyKey}`}
-              onSelect={(...args) => this._handleSelect(item, ...args)}
-            >
-              {this.renderMenuItem
-                ? this.renderMenuItem(h, label, item)
-                : label}
-            </PickerDropdownMenuItem>
-          );
-        });
+        );
       };
 
       return createMenuItems(this.data);

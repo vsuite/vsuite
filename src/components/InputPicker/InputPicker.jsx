@@ -5,7 +5,7 @@ import prefix, { defaultClassPrefix } from 'utils/prefix';
 import { getWidth } from 'shares/dom';
 import onMenuKeydown from 'shares/onMenuKeydown';
 import { vueToString } from 'utils/node';
-import { filterNodes, findNode } from 'utils/tree';
+import { mapNode, findNode, flattenNodes } from 'utils/tree';
 import { splitDataByComponent } from 'utils/split';
 import getDataGroupBy from 'utils/getDataGroupBy';
 import shallowEqual from 'utils/shallowEqual';
@@ -94,35 +94,51 @@ export default {
       return _.isUndefined(this.value) ? this.innerVal : this.value;
     },
 
-    dataList() {
+    rawData() {
       return [].concat(this.data || [], this.newData || []);
     },
 
-    dataWithCacheList() {
-      return [].concat(this.dataList, this.cacheData || []);
+    rawDataWithCache() {
+      return [].concat(this.rawData, this.cacheData || []);
     },
 
-    focusableDataList() {
-      let filteredData = filterNodes(this.dataList, item =>
-        this._shouldDisplay(item[this.labelKey])
-      );
+    dataList() {
+      let list = [...this.rawData];
 
       if (
         this.creatable &&
         this.searchKeyword &&
-        !findNode(
-          this.dataList,
-          item => item[this.labelKey] === this.searchKeyword
+        !findNode(this.rawData, item =>
+          this._shouldDisplay(_.get(item, this.labelKey), this.searchKeyword)
         )
       ) {
-        filteredData.push(this._createOption(this.searchKeyword));
+        list.push(this._createOption(this.searchKeyword));
       }
 
       if (this.groupBy) {
-        filteredData = getDataGroupBy(filteredData, this.groupBy);
+        list = getDataGroupBy(list, this.groupBy);
       }
 
-      return filteredData;
+      return mapNode(list, (data, index, layer, children) => {
+        const value = _.get(data, this.valueKey);
+        const label = _.get(data, this.labelKey);
+
+        return {
+          key: `${layer}-${
+            _.isNumber(value) || _.isString(value) ? value : index
+          }`,
+          label,
+          value,
+          data,
+          visible: children
+            ? children.some(child => child.visible)
+            : this._shouldDisplay(label, this.searchKeyword),
+        };
+      });
+    },
+
+    flatDataList() {
+      return flattenNodes(this.dataList);
     },
   },
 
@@ -187,7 +203,9 @@ export default {
         <PickerToggle {...toggleData}>
           {searching || (this.multiple && hasValue)
             ? null
-            : displayElement || this.$t('_.Picker.placeholder')}
+            : displayElement ||
+              this.placeholder ||
+              this.$t('_.Picker.placeholder')}
         </PickerToggle>
         <div {...wrapperData}>
           {tags}
@@ -215,7 +233,7 @@ export default {
       const menuData = splitDataByComponent(
         {
           splitProps: {
-            data: this.focusableDataList,
+            data: this.dataList,
             group: !_.isUndefined(this.groupBy),
             checkable: this.multiple,
             maxHeight: this.maxHeight,
@@ -236,7 +254,7 @@ export default {
         },
         PickerDropdownMenu
       );
-      const menu = this.focusableDataList.length ? (
+      const menu = this.dataList.length ? (
         <PickerDropdownMenu {...menuData} />
       ) : (
         <div class={this._addPrefix('none')}>
@@ -290,21 +308,17 @@ export default {
 
       return tags
         .map((tag, index) => {
-          const { isValid, displayElement, activeItem } = this._getLabelByValue(
-            h,
-            tag
-          );
+          const { item, label, exists } = this._getLabelByValue(h, tag);
 
-          if (!isValid) return null;
+          if (!exists) return null;
 
           return (
             <Tag
               key={index}
               closable={!this.disabled}
-              title={_.isString(displayElement) ? displayElement : undefined}
-              onClose={event => this._handleRemoveItem(activeItem, tag, event)}
+              onClose={event => this._handleRemoveItem(item, tag, event)}
             >
-              {displayElement}
+              {label}
             </Tag>
           );
         })
@@ -316,20 +330,16 @@ export default {
     },
 
     _getLabelByValue(h, value) {
-      const activeItem = findNode(this.dataWithCacheList, item =>
-        shallowEqual(item[this.valueKey], value)
+      const item = findNode(this.rawDataWithCache, item =>
+        shallowEqual(_.get(item, this.valueKey), value)
       );
-      let displayElement = this.$slots.placeholder || this.placeholder;
+      let label = _.get(item, this.labelKey);
 
-      if (_.get(activeItem, this.labelKey)) {
-        displayElement = _.get(activeItem, this.labelKey);
-
-        if (this.renderValue) {
-          displayElement = this.renderValue(h, value, activeItem);
-        }
+      if (this.renderValue) {
+        label = this.renderValue(h, label, item);
       }
 
-      return { activeItem, isValid: !!activeItem, displayElement };
+      return { item, exists: !!item, label };
     },
 
     _shouldDisplay(label, searchKeyword) {
@@ -354,20 +364,16 @@ export default {
     },
 
     _createOption(value) {
+      let data = { create: true };
+
+      _.set(data, this.valueKey, value);
+      _.set(data, this.labelKey, value);
+
       if (this.groupBy) {
-        return {
-          create: true,
-          [this.groupBy]: this.$t('_.InputPicker.newItem'),
-          [this.valueKey]: value,
-          [this.labelKey]: value,
-        };
+        _.set(data, this.groupBy, this.$t('_.InputPicker.newItem'));
       }
 
-      return {
-        create: true,
-        [this.valueKey]: value,
-        [this.labelKey]: value,
-      };
+      return data;
     },
 
     _setVal(val, item, event) {
@@ -446,135 +452,21 @@ export default {
       });
     },
 
-    _walkFocusItem(list, fn, offset = 0) {
-      const len = list.length;
-
-      for (let i = offset; i < len; i++) {
-        const item = list[i];
-        let res;
-
-        if (item.children) {
-          const pList = i - 1 < 0 ? [] : list[i - 1].children;
-          const nList = i + 1 >= len ? [] : list[i + 1].children;
-
-          res = this._walkFocusItem(
-            [].concat(pList, item.children, nList),
-            fn,
-            pList.length
-          );
-        } else {
-          res = fn && fn(item, i, list) && i;
-        }
-
-        if (!_.isNumber(res)) res = -1;
-        if (res !== -1) return true;
-      }
-
-      return false;
-    },
-
     _handleFocusNext() {
-      const focusVal = this.focusItemValue;
-      const list = this.focusableDataList;
-      let firstItem;
-      let nFocusItem;
-      let groupItems;
-
-      this._walkFocusItem(list, (x, index, list) => {
-        const res = shallowEqual(x[this.valueKey], focusVal);
-
-        if (index === 0 && !firstItem) {
-          firstItem = x;
-        }
-
-        if (res) {
-          groupItems = list;
-          nFocusItem = groupItems[index + 1];
-        }
-
-        return res;
-      });
-
-      if (groupItems && nFocusItem) {
-        // find focus item
-        this.focusItemValue = nFocusItem[this.valueKey];
-      }
-
-      if (!groupItems) {
-        this.focusItemValue = firstItem[this.valueKey];
-      }
-
       this.$nextTick(
         () => this.$refs.menu && this.$refs.menu._updateScrollPosition()
       );
     },
 
     _handleFocusPrev() {
-      const focusVal = this.focusItemValue;
-      const list = this.focusableDataList;
-      let firstItem;
-      let nFocusItem;
-      let groupItems;
-
-      this._walkFocusItem(list, (x, index, list) => {
-        const res = shallowEqual(x[this.valueKey], focusVal);
-
-        if (index === 0 && !firstItem) {
-          firstItem = x;
-        }
-
-        if (res) {
-          groupItems = list;
-          nFocusItem = groupItems[index - 1];
-        }
-
-        return res;
-      });
-
-      if (groupItems && nFocusItem) {
-        // find focus item
-        this.focusItemValue = nFocusItem[this.valueKey];
-      }
-
-      if (!groupItems) {
-        this.focusItemValue = firstItem[this.valueKey];
-      }
-
       this.$nextTick(
         () => this.$refs.menu && this.$refs.menu._updateScrollPosition()
       );
     },
 
-    _handleFocusCurrent(event) {
-      const focusVal = this.focusItemValue;
-      const list = this.focusableDataList;
-      let currentItem;
-
-      this._walkFocusItem(list, (x, index, list) => {
-        const res = shallowEqual(x[this.valueKey], focusVal);
-
-        if (res) {
-          currentItem = x;
-        }
-
-        return res;
-      });
-
-      if (!currentItem) return;
-
-      this._handleSelect(
-        currentItem[this.valueKey],
-        currentItem,
-        event,
-        this.multiple
-          ? !this.currentVal.some(x => shallowEqual(x, focusVal))
-          : false
-      );
-    },
+    _handleFocusCurrent(event) {},
 
     _handleFocusDel(event) {
-      if (!this.multiple) return;
-
       const len = this.currentVal.length;
       const item = this.currentVal[len - 1];
 

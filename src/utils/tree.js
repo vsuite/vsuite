@@ -1,6 +1,50 @@
 import _ from 'lodash';
+import emptyFunction from 'utils/emptyFunction';
 
-function findNode(nodes, checker, childrenKey = 'children') {
+function flattenNodes(nodes, leaf = true, childrenKey = 'children') {
+  const list = [];
+  const flatten = (nodes = []) => {
+    nodes.forEach(node => {
+      const children = _.get(node, childrenKey);
+
+      if (!children) list.push(node);
+      if (children && !leaf) list.push(node);
+      if (children) flatten(children);
+    });
+  };
+
+  flatten(nodes);
+
+  return list;
+}
+
+function mapNode(
+  nodes,
+  func = emptyFunction.thatReturnsArgument,
+  childrenKey = 'children'
+) {
+  const map = (nodes = [], layer = 0) => {
+    return nodes.map((node, index) => {
+      let children = _.get(node, childrenKey);
+
+      if (children) {
+        children = map(children, layer + 1);
+      }
+
+      if (!children) return func(node, index, layer + 1, children);
+
+      return { ...func(node, index, layer + 1, children), children };
+    });
+  };
+
+  return map(nodes);
+}
+
+function findNode(
+  nodes,
+  checker = emptyFunction.thatReturnsTrue,
+  childrenKey = 'children'
+) {
   const find = (nodes = []) => {
     for (let i = 0, len = nodes.length; i < len; i++) {
       const item = nodes[i];
@@ -20,7 +64,11 @@ function findNode(nodes, checker, childrenKey = 'children') {
   return find(nodes);
 }
 
-function filterNodes(nodes, checker, childrenKey = 'children') {
+function filterNodes(
+  nodes,
+  checker = emptyFunction.thatReturnsTrue,
+  childrenKey = 'children'
+) {
   const find = (nodes = []) => {
     return nodes.filter(item => {
       if (_.isArray(_.get(item, childrenKey))) {
@@ -40,4 +88,4 @@ function filterNodes(nodes, checker, childrenKey = 'children') {
   return find(_.cloneDeep(nodes));
 }
 
-export { filterNodes, findNode };
+export { mapNode, findNode, filterNodes, flattenNodes };

@@ -11,7 +11,7 @@ function getDataGroupBy(data = [], key) {
   });
 
   return _.toPairs(tempData).map(item => ({
-    groupTitle: item[0],
+    label: item[0],
     children: item[1],
   }));
 }
