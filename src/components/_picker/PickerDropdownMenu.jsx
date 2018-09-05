@@ -56,7 +56,7 @@ export default {
 
             // PickerDropdownMenuGroup
             if (this.group && children) {
-              const data = {
+              const groupData = {
                 key,
                 directives: [{ name: 'show', value: visible }],
                 props: { classPrefix: this._addPrefix('group') },
@@ -64,7 +64,7 @@ export default {
               };
 
               return (
-                <PickerDropdownMenuGroup {...data}>
+                <PickerDropdownMenuGroup {...groupData}>
                   <template slot="title">
                     {this.renderMenuGroup
                       ? this.renderMenuGroup(h, label, data)

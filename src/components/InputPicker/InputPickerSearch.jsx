@@ -17,23 +17,10 @@ export default {
 
   props: {
     value: String,
-    defaultValue: VueTypes.string,
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
     componentClass: VueTypes.oneOfType([VueTypes.string, VueTypes.object]).def(
       'input'
     ),
-  },
-
-  data() {
-    return {
-      innerVal: _.isUndefined(this.value) ? this.defaultValue : this.value,
-    };
-  },
-
-  computed: {
-    currentVal() {
-      return _.isUndefined(this.value) ? this.innerVal : this.value;
-    },
   },
 
   render() {
@@ -43,7 +30,7 @@ export default {
         class: this._addPrefix('input'),
         splitProps: {
           ...this.$attrs,
-          value: this.currentVal,
+          value: this.value,
         },
         on: {
           ..._.omit(this.$listeners, ['inputChange']),
@@ -71,18 +58,10 @@ export default {
       this.$refs.input && this.$refs.input.blur();
     },
 
-    _setVal(val, event) {
-      this.innerVal = val;
-
-      this.$emit('change', val, event);
-    },
-
     _handleInput(event) {
       const val = event.target.value;
 
-      event.target.value = this.currentVal;
-
-      this._setVal(val, event);
+      this.$emit('change', val, event);
     },
 
     _handleChange(event) {

@@ -151,9 +151,9 @@ export default {
   },
 
   render(h) {
-    const { isValid, displayElement } = this._renderSingleValue(h);
+    const { exists, label } = this._renderSingleValue(h);
     const tags = this._renderMultiValue(h);
-    const hasValue = this.multiple ? !!_.get(tags, 'length') : isValid;
+    const hasValue = this.multiple ? !!_.get(tags, 'length') : exists;
     const searching = !!this.searchKeyword && this.currentVisible;
     const displaySearchInput = this.searchable && !this.disabled;
     const referenceData = {
@@ -203,9 +203,9 @@ export default {
         <PickerToggle {...toggleData}>
           {searching || (this.multiple && hasValue)
             ? null
-            : displayElement ||
-              this.placeholder ||
-              this.$t('_.Picker.placeholder')}
+            : hasValue
+              ? label
+              : this.placeholder || this.$t('_.Picker.placeholder')}
         </PickerToggle>
         <div {...wrapperData}>
           {tags}
@@ -290,9 +290,7 @@ export default {
             value: this.currentVisible ? this.searchKeyword : '',
             inputStyle: { maxWidth: `${this.maxWidth - 63}px` },
           },
-          on: {
-            change: this._handleSearch,
-          },
+          on: { change: this._handleSearch },
           ref: 'search',
         },
         InputPickerSearch
@@ -453,18 +451,59 @@ export default {
     },
 
     _handleFocusNext() {
+      const val = this.focusItemValue;
+      const list = this.flatDataList.filter(
+        x =>
+          x.visible &&
+          !this.disabledItemValues.some(y => shallowEqual(y, x.value))
+      );
+      const length = list.length;
+      const index = _.findIndex(list, x => shallowEqual(x.value, val));
+
+      if (!length) return;
+      if (index === -1) this.focusItemValue = list[0] && list[0].value;
+      if (index + 1 < length) this.focusItemValue = list[index + 1].value;
+
       this.$nextTick(
         () => this.$refs.menu && this.$refs.menu._updateScrollPosition()
       );
     },
 
     _handleFocusPrev() {
+      const val = this.focusItemValue;
+      const list = this.flatDataList.filter(
+        x =>
+          x.visible &&
+          !this.disabledItemValues.some(y => shallowEqual(y, x.value))
+      );
+      const length = list.length;
+      const index = _.findIndex(list, x => shallowEqual(x.value, val));
+
+      if (!length) return;
+      if (index === -1) this.focusItemValue = list[0] && list[0].value;
+      if (index - 1 >= 0) this.focusItemValue = list[index - 1].value;
+
       this.$nextTick(
         () => this.$refs.menu && this.$refs.menu._updateScrollPosition()
       );
     },
 
-    _handleFocusCurrent(event) {},
+    _handleFocusCurrent(event) {
+      const item = _.find(this.flatDataList, x =>
+        shallowEqual(x.value, this.focusItemValue)
+      );
+
+      if (!item) return;
+
+      this._handleSelect(
+        item.value,
+        item.data,
+        event,
+        this.multiple
+          ? !this.currentVal.some(x => shallowEqual(x, item.value))
+          : false
+      );
+    },
 
     _handleFocusDel(event) {
       const len = this.currentVal.length;
