@@ -38,6 +38,16 @@ stories.add('appearance', () => ({
   },
 }));
 
+stories.add('leaf', () => ({
+  render() {
+    return (
+      <Demo title="Leaf">
+        <TreePicker style={{ width: '246px' }} leaf data={data} />
+      </Demo>
+    );
+  },
+}));
+
 stories.add('block', () => ({
   render() {
     return (
@@ -52,7 +62,7 @@ stories.add('placement', () => ({
   render(h) {
     return (
       <Demo title="Placement">
-        <table>
+        <table id="customTable">
           <tbody>
             <tr>
               <td />

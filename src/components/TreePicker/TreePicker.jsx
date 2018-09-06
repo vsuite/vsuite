@@ -115,15 +115,9 @@ export default {
           } else if (this.leaf) {
             visible = children.some(child => child.visible);
           } else {
-            const labelVisible = this._shouldDisplay(label, this.searchKeyword);
-
-            if (labelVisible) {
-              visible = labelVisible;
-
-              children.forEach(child => (child.visible = true));
-            } else {
-              visible = children.some(child => child.visible);
-            }
+            visible =
+              this._shouldDisplay(label, this.searchKeyword) ||
+              children.some(child => child.visible);
           }
 
           return {
@@ -141,7 +135,7 @@ export default {
     },
 
     flatDataList() {
-      return flattenNodes(this.dataList);
+      return flattenNodes(this.dataList, this.leaf);
     },
   },
 
@@ -245,6 +239,7 @@ export default {
             layer,
             value,
             label,
+            branch: this.leaf && !!children,
             focus: shallowEqual(value, this.focusItemValue),
             active: shallowEqual(value, this.currentVal),
             disabled: this.disabledItemValues.some(x => shallowEqual(x, value)),
@@ -258,7 +253,7 @@ export default {
         TreePickerNode
       );
 
-      if (children.length) {
+      if (children) {
         layer += 1;
 
         const expand = this._getNodeExpand(node);
@@ -334,34 +329,34 @@ export default {
       }
     },
 
-    _setVal(val, node, event) {
+    _setVal(val, data, event) {
       this.innerVal = val;
 
       this.$emit('change', val, event);
-      this.$emit('select', val, node, event);
+      this.$emit('select', val, data, event);
     },
 
     _handleSelect(item, event) {
-      // const value = node.value;
-      //
-      // this.focusItemValue = value;
-      //
-      // // close popper
-      // this._closePopper();
-      //
-      // this._setVal(value, node, event);
+      const value = item.value;
+
+      this.focusItemValue = value;
+
+      // close popper
+      this._closePopper();
+
+      this._setVal(value, item.data, event);
     },
 
     _handleToggle(item, event) {
-      // const index = this.expandKeys.indexOf(uniqueKey);
-      //
-      // if (index === -1) {
-      //   this.expandKeys.push(uniqueKey);
-      // } else {
-      //   this.expandKeys.splice(index, 1);
-      // }
-      //
-      // this.$emit('toggle', node, event);
+      const index = this.expandKeys.indexOf(item.key);
+
+      if (index === -1) {
+        this.expandKeys.push(item.key);
+      } else {
+        this.expandKeys.splice(index, 1);
+      }
+
+      this.$emit('toggle', item.data, event);
     },
 
     _handleSearch(value, event) {
@@ -413,11 +408,49 @@ export default {
       }
     },
 
-    _handleFocusNext() {},
+    _handleFocusNext() {
+      const val = this.focusItemValue;
+      const list = this.flatDataList.filter(
+        x =>
+          x.visible &&
+          !this.disabledItemValues.some(y => shallowEqual(y, x.value))
+      );
+      const length = list.length;
+      const index = _.findIndex(list, x => shallowEqual(x.value, val));
 
-    _handleFocusPrev() {},
+      if (!length) return;
+      if (index === -1) this.focusItemValue = list[0] && list[0].value;
+      if (index + 1 < length) this.focusItemValue = list[index + 1].value;
 
-    _handleFocusCurrent(event) {},
+      this.$nextTick(() => this._updateScrollPosition());
+    },
+
+    _handleFocusPrev() {
+      const val = this.focusItemValue;
+      const list = this.flatDataList.filter(
+        x =>
+          x.visible &&
+          !this.disabledItemValues.some(y => shallowEqual(y, x.value))
+      );
+      const length = list.length;
+      const index = _.findIndex(list, x => shallowEqual(x.value, val));
+
+      if (!length) return;
+      if (index === -1) this.focusItemValue = list[0] && list[0].value;
+      if (index - 1 >= 0) this.focusItemValue = list[index - 1].value;
+
+      this.$nextTick(() => this._updateScrollPosition());
+    },
+
+    _handleFocusCurrent(event) {
+      const item = _.find(this.flatDataList, x =>
+        shallowEqual(x.value, this.focusItemValue)
+      );
+
+      if (!item) return;
+
+      this._handleSelect(item, event);
+    },
 
     _addPrefix(cls) {
       return prefix(this.classPrefix, cls);

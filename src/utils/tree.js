@@ -1,6 +1,23 @@
 import _ from 'lodash';
 import emptyFunction from 'utils/emptyFunction';
 
+function modifyNode(
+  nodes,
+  func = emptyFunction,
+  recurse = false,
+  childrenKey = 'children'
+) {
+  const modify = (nodes = []) => {
+    nodes.forEach(node => {
+      func(node);
+
+      if (recurse) modify(_.get(node, childrenKey));
+    });
+  };
+
+  modify(nodes);
+}
+
 function flattenNodes(nodes, leaf = true, childrenKey = 'children') {
   const list = [];
   const flatten = (nodes = []) => {
@@ -88,4 +105,4 @@ function filterNodes(
   return find(_.cloneDeep(nodes));
 }
 
-export { mapNode, findNode, filterNodes, flattenNodes };
+export { modifyNode, mapNode, findNode, filterNodes, flattenNodes };

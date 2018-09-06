@@ -13,6 +13,7 @@ export default {
     layer: VueTypes.number,
     value: VueTypes.any,
     label: VueTypes.any,
+    branch: VueTypes.bool.def(false),
     focus: VueTypes.bool.def(false),
     active: VueTypes.bool.def(false),
     disabled: VueTypes.bool.def(false),
@@ -27,6 +28,7 @@ export default {
         this._addPrefix('node'),
         {
           'text-muted': this.disabled,
+          [this._addPrefix('node-branch')]: this.branch,
           [this._addPrefix('node-focus')]: this.focus,
           [this._addPrefix('node-active')]: this.active,
           [this._addPrefix('node-disabled')]: this.disabled,
@@ -109,7 +111,9 @@ export default {
 
       if (this.disabled) return;
 
-      this.$emit('select', this.node, event);
+      this.branch
+        ? this.$emit('toggle', this.node, event)
+        : this.$emit('select', this.node, event);
     },
 
     _addPrefix(cls) {
