@@ -348,12 +348,14 @@ export default {
     },
 
     _handleToggle(item, event) {
-      const index = this.expandKeys.indexOf(item.key);
+      if (!(item.children && item.children.length === 0)) {
+        const index = this.expandKeys.indexOf(item.key);
 
-      if (index === -1) {
-        this.expandKeys.push(item.key);
-      } else {
-        this.expandKeys.splice(index, 1);
+        if (index === -1) {
+          this.expandKeys.push(item.key);
+        } else {
+          this.expandKeys.splice(index, 1);
+        }
       }
 
       this.$emit('toggle', item.data, event);

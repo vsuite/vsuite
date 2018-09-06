@@ -1,7 +1,10 @@
 import { storiesOf } from '@storybook/vue';
+import _ from 'lodash';
+import { mapNode } from 'utils/tree';
 import data from 'stories/data/city';
 
 import TreePicker from 'components/TreePicker';
+import Icon from 'components/Icon';
 import Demo from 'stories/demo';
 
 const stories = storiesOf('Data Entry|TreePicker', module);
@@ -145,17 +148,130 @@ stories.add('custom', () => ({
               </span>
             );
           }}
-          renderValue={(h, activeNode, placeholder) => {
-            return activeNode ? (
+          renderValue={(h, label) => {
+            return (
               <span>
-                <i class="vs-icon vs-icon-map-marker" /> {activeNode.label}
+                <i class="vs-icon vs-icon-map-marker" /> {label}
               </span>
-            ) : (
-              placeholder
             );
           }}
         />
       </Demo>
     );
+  },
+}));
+
+stories.add('async', () => ({
+  data() {
+    return {
+      data: [],
+      value: [],
+      requestId: 0,
+    };
+  },
+
+  render() {
+    return (
+      <Demo title="Async">
+        <TreePicker
+          style={{ width: '272px' }}
+          data={this.data}
+          value={this.value}
+          onShow={this._handleShow}
+          onChange={this._handleChange}
+          onToggle={this._handleToggle}
+          renderMenu={(h, menu) => {
+            if (this.data.length === 0) {
+              return (
+                <p
+                  style={{ padding: '4px', color: '#999', textAlign: 'center' }}
+                >
+                  <Icon spin icon="spinner" /> 加载中...
+                </p>
+              );
+            }
+
+            return menu;
+          }}
+          renderTreeIcon={this._renderTreeIcon}
+        />
+      </Demo>
+    );
+  },
+
+  methods: {
+    _renderTreeIcon(h, data) {
+      if (!data.loading) return null;
+
+      return <Icon icon="spinner" spin />;
+    },
+
+    _handleChange(value) {
+      this.value = value;
+    },
+
+    _handleToggle(data) {
+      if (data.requestId) {
+        this._setLoading(data.requestId);
+      }
+    },
+
+    _handleShow() {
+      if (this.data.length === 0) {
+        setTimeout(() => {
+          this.data = [
+            {
+              label: 'Parent Node',
+              value: '0',
+              children: [],
+              requestId: ++this.requestId,
+            },
+          ];
+        }, 1000);
+      }
+    },
+
+    _setLoading(requestId) {
+      const data = _.cloneDeep(this.data);
+
+      this.data = mapNode(data, node => {
+        if (node.requestId === requestId) {
+          return { ...node, loading: true };
+        }
+
+        return node;
+      });
+
+      setTimeout(() => {
+        const data = _.cloneDeep(this.data);
+
+        this.data = mapNode(data, (node, _, __, children) => {
+          if (node.requestId === requestId) {
+            const value1 = ++this.requestId;
+            const value2 = ++this.requestId;
+
+            children.push({
+              label: 'Child Node',
+              value: `${value1}`,
+              children: [],
+              requestId: value1,
+            });
+            children.push({
+              label: 'Child Node',
+              value: `${value2}`,
+              children: [],
+              requestId: value2,
+            });
+
+            delete node.loading;
+            delete node.requestId;
+
+            return node;
+          }
+
+          return node;
+        });
+      }, 1000);
+    },
   },
 }));

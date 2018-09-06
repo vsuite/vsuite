@@ -57,7 +57,7 @@ export default {
       );
 
       if (this.renderTreeIcon) {
-        const customIcon = this.renderTreeIcon(h, this.node);
+        const customIcon = this.renderTreeIcon(h, this.node.data);
 
         expandIcon = customIcon ? (
           <div class={this._addPrefix('custom-icon')}>{customIcon}</div>
@@ -84,7 +84,7 @@ export default {
       let newLabel = this.label;
 
       if (this.renderTreeNode) {
-        newLabel = this.renderTreeNode(h, this.node);
+        newLabel = this.renderTreeNode(h, this.node.data);
       }
 
       const data = {
