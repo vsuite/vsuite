@@ -64,11 +64,28 @@ stories.add('groupBy', () => ({
   },
 }));
 
+stories.add('creatable', () => ({
+  render() {
+    return (
+      <Demo title="Creatable">
+        <CheckPicker style={{ width: '224px' }} creatable data={data} />
+        <hr />
+        <CheckPicker
+          style={{ width: '224px' }}
+          creatable
+          data={data}
+          groupBy="role"
+        />
+      </Demo>
+    );
+  },
+}));
+
 stories.add('placement', () => ({
   render(h) {
     return (
       <Demo title="Placement">
-        <table>
+        <table id="customTable">
           <tbody>
             <tr>
               <td />
