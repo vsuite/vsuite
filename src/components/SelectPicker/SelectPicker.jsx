@@ -228,15 +228,15 @@ export default {
       );
     },
 
-    _renderMenuItem(h, label, item) {
-      const newLabel = item.create ? (
+    _renderMenuItem(h, label, data) {
+      const newLabel = data.create ? (
         <span>{this.$t('_.InputPicker.createOption', [label])}</span>
       ) : (
         label
       );
 
       return this.renderMenuItem
-        ? this.renderMenuItem(h, newLabel, item)
+        ? this.renderMenuItem(h, newLabel, data)
         : newLabel;
     },
 

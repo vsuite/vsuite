@@ -341,7 +341,7 @@ export default {
       this.$emit('select', val, node, event);
     },
 
-    _handleSelect(node, event) {
+    _handleSelect(item, event) {
       // const value = node.value;
       //
       // this.focusItemValue = value;
@@ -352,7 +352,7 @@ export default {
       // this._setVal(value, node, event);
     },
 
-    _handleToggle(uniqueKey, node, event) {
+    _handleToggle(item, event) {
       // const index = this.expandKeys.indexOf(uniqueKey);
       //
       // if (index === -1) {

@@ -144,7 +144,7 @@ export default {
     const hasValue = !!(this.currentVal && this.currentVal.length);
     const selectedItems = this.currentVal.map(x =>
       findNode(this.rawDataWithCache, item =>
-        shallowEqual(item[this.valueKey], x)
+        shallowEqual(_.get(item, this.valueKey), x)
       )
     );
     let selectedLabel = hasValue
@@ -246,15 +246,15 @@ export default {
       );
     },
 
-    _renderMenuItem(h, label, item) {
-      const newLabel = item.create ? (
+    _renderMenuItem(h, label, data) {
+      const newLabel = data.create ? (
         <span>{this.$t('_.InputPicker.createOption', [label])}</span>
       ) : (
         label
       );
 
       return this.renderMenuItem
-        ? this.renderMenuItem(h, newLabel, item)
+        ? this.renderMenuItem(h, newLabel, data)
         : newLabel;
     },
 
