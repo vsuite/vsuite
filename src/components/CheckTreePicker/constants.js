@@ -1,0 +1,5 @@
+export const CHECK_STATUS = {
+  CHECKED: 1,
+  INDETERMINATE: 0,
+  UNCHECKED: -1,
+};

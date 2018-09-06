@@ -1,25 +1,32 @@
 import VueTypes from 'vue-types';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
 
-const CLASS_PREFIX = '';
+import { CHECK_STATUS } from './constants';
+
+const CLASS_PREFIX = 'prefix';
 const INITIAL_PADDING = 12;
 const PADDING = 16;
 
 export default {
-  name: 'TreePickerNode',
+  name: 'CheckTreePickerNode',
 
   props: {
     node: VueTypes.object,
     layer: VueTypes.number,
     value: VueTypes.any,
     label: VueTypes.any,
-    branch: VueTypes.bool.def(false),
+    status: {
+      type: Number,
+      default: undefined,
+    },
     focus: VueTypes.bool.def(false),
     active: VueTypes.bool.def(false),
     disabled: VueTypes.bool.def(false),
+    disabledCheckbox: VueTypes.bool.def(false),
     renderTreeIcon: Function,
     renderTreeNode: Function,
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
+    // toggle, select
   },
 
   computed: {
@@ -28,22 +35,25 @@ export default {
         this._addPrefix('node'),
         {
           'text-muted': this.disabled,
-          [this._addPrefix('node-branch')]: this.branch,
-          [this._addPrefix('node-focus')]: this.focus,
-          [this._addPrefix('node-active')]: this.active,
-          [this._addPrefix('node-disabled')]: this.disabled,
+          [this._addPrefix('indeterminate')]:
+            this.status === CHECK_STATUS.INDETERMINATE,
+          [this._addPrefix('checked')]: this.status === CHECK_STATUS.CHECKED,
+          [this._addPrefix('focus')]: this.focus,
+          [this._addPrefix('active')]: this.active,
+          [this._addPrefix('disabled')]: this.disabled,
+          [this._addPrefix('disabled-checkbox')]: this.disabledCheckbox,
         },
       ];
     },
   },
 
   render(h) {
-    const style = {
+    const styles = {
       paddingLeft: `${this.layer * PADDING + INITIAL_PADDING}px`,
     };
 
     return (
-      <div style={style} class={this.classes}>
+      <div style={styles} class={this.classes}>
         {this._renderIcon(h)}
         {this._renderLabel(h)}
       </div>
@@ -81,37 +91,45 @@ export default {
     },
 
     _renderLabel(h) {
-      const newLabel = this.renderTreeNode
+      const disabledCheckbox = this.disabledCheckbox || this.branch;
+      const custom = this.renderTreeNode
         ? this.renderTreeNode(h, this.node.data)
         : this.label;
-
+      const input = (
+        <span class={this._addPrefix('input-wrapper')}>
+          <input
+            class={this._addPrefix('input')}
+            type="checkbox"
+            disabled={this.disabled}
+            onInput={this._handleChange}
+          />
+          <span class={this._addPrefix('inner')} />
+        </span>
+      );
       const data = {
-        class: this._addPrefix('node-label'),
-        attrs: {
-          role: 'button',
-          tabindex: -1,
-          title: this.label,
-        },
-        on: { click: this._handleSelect },
+        class: this._addPrefix('checknode-label'),
+        attrs: { role: 'button', tabindex: -1 },
+        on: { click: this._handleClick },
       };
 
-      return <span {...data}>{newLabel}</span>;
+      return (
+        <span {...data}>
+          {!disabledCheckbox ? input : null}
+          {custom}
+        </span>
+      );
     },
 
-    _handleToggle(event) {
+    _handleClick() {},
+
+    _handleChange(event) {
+      event.stopPropagation();
+    },
+
+    _handleToggle() {
       event.stopPropagation();
 
       this.$emit('toggle', this.node, event);
-    },
-
-    _handleSelect(event) {
-      event.stopPropagation();
-
-      if (this.disabled) return;
-
-      this.branch
-        ? this.$emit('toggle', this.node, event)
-        : this.$emit('select', this.node, event);
     },
 
     _addPrefix(cls) {
