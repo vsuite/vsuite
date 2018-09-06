@@ -4,8 +4,6 @@ import FlexboxGrid from 'components/FlexboxGrid';
 import Divider from 'components/Divider';
 import Demo from 'stories/demo';
 
-import './style.less';
-
 const stories = storiesOf('Layout|FlexboxGrid', module);
 
 stories.add('default', () => ({

@@ -108,7 +108,7 @@ export default {
       if (
         this.creatable &&
         this.searchKeyword &&
-        !findNode(this.rawData, item =>
+        !findNode(list, item =>
           this._shouldDisplay(_.get(item, this.labelKey), this.searchKeyword)
         )
       ) {

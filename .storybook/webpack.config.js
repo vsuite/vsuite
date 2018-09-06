@@ -39,7 +39,7 @@ module.exports = {
             options: { javascriptEnabled: true },
           },
         ],
-        include: [resolve()],
+        include: [resolve(), resolveRoot('.storybook')],
       },
       {
         test: /\.svg$/,

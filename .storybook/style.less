@@ -1,0 +1,127 @@
+.vs-demo {
+  .vs-btn-toolbar + .vs-btn-toolbar {
+    margin-top: 10px;
+  }
+
+  .navbar-brand {
+    padding: 18px 20px;
+    display: inline-block;
+    font-family: Raleway, Hiragino Sans GB, sans-serif;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+}
+
+.show-grid {
+  & [class*='vs-col-'] {
+    padding: 10px 5px;
+    color: #fff;
+    background-color: #34c3ff;
+    text-align: center;
+    margin-top: 6px;
+    margin-bottom: 6px;
+
+    &:nth-child(2n) {
+      background-color: rgba(52, 195, 255, 0.8);
+    }
+
+    & [class*='vs-col-'] {
+      background-color: #2792bf;
+
+      &:nth-child(2n) {
+        background-color: rgba(39, 146, 191, 0.9);
+      }
+
+      & [class*='vs-col-'] {
+        background-color: #1a6280;
+
+        &:nth-child(2n) {
+          background-color: rgba(26, 98, 128, 0.9);
+        }
+      }
+    }
+  }
+
+  .vs-flex-box-grid-item {
+    margin-top: 6px;
+    margin-bottom: 6px;
+    padding: 10px 5px;
+    color: #fff;
+    text-align: center;
+    background-color: #34c3ff;
+
+    &:nth-child(2n) {
+      background-color: rgba(52, 195, 255, 0.8);
+    }
+  }
+}
+
+.show-col {
+  background: #34c3ff;
+  color: #fff;
+  padding: 10px;
+}
+
+.show-container {
+  & > .vs-container {
+    margin-bottom: 40px;
+  }
+
+  .vs-header,
+  .vs-content,
+  .vs-footer,
+  .vs-sidebar {
+    color: #fff;
+    text-align: center;
+  }
+
+  .vs-header,
+  .vs-footer {
+    line-height: 56px;
+    background: #56cdff;
+  }
+
+  .vs-content {
+    line-height: 120px;
+    background: #78d7ff;
+  }
+
+  .vs-sidebar {
+    line-height: 120px;
+    background: #34c3ff;
+  }
+}
+
+#customSlider {
+  margin-top: 18px;
+
+  .vs-slider-handle {
+    top: -6px;
+    background-color: #34c3ff;
+    text-align: center;
+    padding: 3px;
+    margin-left: -16px;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+
+    &:hover {
+      box-shadow: 0 0 0 4px fade(#9be1ff, 40);
+    }
+
+    &::before {
+      display: none;
+    }
+  }
+
+  &.vs-slider-dragging .vs-slider-handle,
+  &.vs-slider-dragging .vs-slider-handle:hover {
+    box-shadow: none;
+    transform: scale(1.2);
+  }
+}
+
+#customTable {
+  td {
+    padding: 10px;
+  }
+}

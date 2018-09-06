@@ -9,8 +9,6 @@ import Demo from 'stories/demo';
 
 import SvgIcon from './vsuite.svg';
 
-import './style.less';
-
 const stories = storiesOf('General|Button', module);
 
 stories.add('default', () => ({

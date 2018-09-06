@@ -7,8 +7,6 @@ import Footer from 'components/Footer';
 import Sidebar from 'components/Sidebar';
 import Demo from 'stories/demo';
 
-import './style.less';
-
 const stories = storiesOf('Layout|Container', module);
 
 stories.add('default', () => ({

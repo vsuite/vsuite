@@ -5,8 +5,6 @@ import Navbar from 'components/Navbar';
 import Nav from 'components/Nav';
 import Demo from 'stories/demo';
 
-import './style.less';
-
 const stories = storiesOf('Navigation|Navbar', module);
 
 stories.add('default', () => ({

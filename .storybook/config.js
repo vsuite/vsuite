@@ -7,7 +7,7 @@ setOptions({
 });
 
 function loadStories() {
-  require('../src/index.stories');
+  require('./index.stories');
 }
 
 configure(loadStories, module);

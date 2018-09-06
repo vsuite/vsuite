@@ -2,9 +2,11 @@ import Vue from 'vue';
 import TreeView from 'vue-json-tree-view';
 import zhCN from 'langs/zh_CN';
 
-import VSuite from './index';
+import VSuite from '@/index';
 
-import './styles/index.less';
+import 'styles/index.less';
+
+import './style.less';
 
 Vue.use(VSuite, {
   // locale: 'zh_CN',
@@ -12,6 +14,6 @@ Vue.use(VSuite, {
 });
 Vue.use(TreeView);
 
-const req = require.context('./components', true, /\.stories\.js$/);
+const req = require.context('../src/components', true, /\.stories\.js$/);
 
 req.keys().forEach(filename => req(filename));

@@ -5,8 +5,6 @@ import Row from 'components/Row';
 import Col from 'components/Col';
 import Demo from 'stories/demo';
 
-import './style.less';
-
 const stories = storiesOf('Layout|Grid', module);
 
 stories.add('default', () => ({
