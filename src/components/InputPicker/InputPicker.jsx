@@ -314,7 +314,9 @@ export default {
             <Tag
               key={index}
               closable={!this.disabled}
-              onClose={event => this._handleRemoveItem(item, tag, event)}
+              onClose={event =>
+                this._handleRemoveItem({ value: tag, data: item }, event)
+              }
             >
               {label}
             </Tag>
@@ -374,14 +376,15 @@ export default {
       return data;
     },
 
-    _setVal(val, item, event) {
+    _setVal(val, data, event) {
       this.innerVal = val;
 
       this.$emit('change', val, event);
-      this.$emit('select', val, item, event);
+      this.$emit('select', val, data, event);
     },
 
-    _handleSelect(value, item, event, checked) {
+    _handleSelect(item, event, checked) {
+      const { value, data } = item;
       let newVal = _.cloneDeep(this.currentVal);
 
       if (this.multiple && checked) {
@@ -395,10 +398,10 @@ export default {
       }
 
       // if new create item
-      if (item && item.create) {
-        delete item.create;
+      if (data && data.create) {
+        delete data.create;
 
-        this.newData.push(item);
+        this.newData.push(data);
       }
 
       this.focusItemValue = value;
@@ -410,7 +413,13 @@ export default {
         this._closePopper();
       }
 
-      this._setVal(newVal, item, event);
+      this._setVal(newVal, data, event);
+    },
+
+    _handleRemoveItem(item, event) {
+      if (this.disabled) return;
+
+      this._handleSelect(item, event, false);
     },
 
     _handleSearch(val, event) {
@@ -426,12 +435,6 @@ export default {
       this.searchKeyword = '';
 
       this._setVal(this.multiple ? [] : null, null, event);
-    },
-
-    _handleRemoveItem(item, tag, event) {
-      if (this.disabled) return;
-
-      this._handleSelect(tag, item, event, false);
     },
 
     _handleClick() {
@@ -496,8 +499,7 @@ export default {
       if (!item) return;
 
       this._handleSelect(
-        item.value,
-        item.data,
+        item,
         event,
         this.multiple
           ? !this.currentVal.some(x => shallowEqual(x, item.value))
@@ -507,9 +509,12 @@ export default {
 
     _handleFocusDel(event) {
       const len = this.currentVal.length;
-      const item = this.currentVal[len - 1];
+      const value = this.currentVal[len - 1];
+      const data = findNode(this.rawDataWithCache, item =>
+        shallowEqual(_.get(item, this.valueKey), value)
+      );
 
-      if (item) this._handleSelect(item[this.valueKey], item, event, false);
+      if (value) this._handleSelect({ value, data }, event, false);
     },
 
     _addPrefix(cls) {

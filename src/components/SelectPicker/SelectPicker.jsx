@@ -287,18 +287,20 @@ export default {
       return data;
     },
 
-    _setVal(val, item, event) {
+    _setVal(val, data, event) {
       this.innerVal = val;
 
       this.$emit('change', val, event);
-      this.$emit('select', val, item, event);
+      this.$emit('select', val, data, event);
     },
 
-    _handleSelect(value, item, event) {
-      if (item && item.create) {
-        delete item.create;
+    _handleSelect(item, event) {
+      const { value, data } = item;
 
-        this.newData.push(item);
+      if (data && data.create) {
+        delete data.create;
+
+        this.newData.push(data);
       }
 
       this.focusItemValue = value;
@@ -306,7 +308,7 @@ export default {
       // close popper
       this._closePopper();
 
-      this._setVal(value, item, event);
+      this._setVal(value, data, event);
     },
 
     _handleSearch(val, event) {
@@ -380,7 +382,7 @@ export default {
 
       if (!item) return;
 
-      this._handleSelect(item.value, item.data, event, false);
+      this._handleSelect(item, event, false);
     },
 
     _addPrefix(cls) {

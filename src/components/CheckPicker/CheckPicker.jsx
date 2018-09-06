@@ -299,7 +299,8 @@ export default {
       this.$emit('select', val, item, event);
     },
 
-    _handleSelect(value, item, event, checked) {
+    _handleSelect(item, event, checked) {
+      const { value, data } = item;
       let newVal = _.cloneDeep(this.currentVal);
 
       if (checked) {
@@ -311,15 +312,15 @@ export default {
       }
 
       // if new create item
-      if (item && item.create) {
-        delete item.create;
+      if (data && data.create) {
+        delete data.create;
 
-        this.newData.push(item);
+        this.newData.push(data);
       }
 
       this.focusItemValue = value;
 
-      this._setVal(newVal, item, event);
+      this._setVal(newVal, data, event);
     },
 
     _handleSearch(val, event) {
@@ -394,8 +395,7 @@ export default {
       if (!item) return;
 
       this._handleSelect(
-        item.value,
-        item.data,
+        item,
         event,
         !this.currentVal.some(x => shallowEqual(x, item.value))
       );

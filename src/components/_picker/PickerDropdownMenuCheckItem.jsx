@@ -73,7 +73,7 @@ export default {
 
       event.target.checked = this.active;
 
-      this.$emit('select', this.value, event, checked);
+      this.$emit('select', event, checked);
     },
 
     _handleKeydown(event) {

@@ -16,7 +16,6 @@ export default {
     focus: VueTypes.bool.def(false),
     active: VueTypes.bool.def(false),
     disabled: VueTypes.bool.def(false),
-    uniqueKey: VueTypes.string,
     renderTreeIcon: Function,
     renderTreeNode: Function,
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
@@ -74,7 +73,7 @@ export default {
         on: { click: this._handleToggle },
       };
 
-      return this.node && this.node.children && this.node.children.length ? (
+      return this.node && this.node.children ? (
         <div {...data}>{expandIcon}</div>
       ) : null;
     },
@@ -102,7 +101,7 @@ export default {
     _handleToggle(event) {
       event.stopPropagation();
 
-      this.$emit('toggle', this.uniqueKey, this.node, event);
+      this.$emit('toggle', this.node, event);
     },
 
     _handleSelect(event) {

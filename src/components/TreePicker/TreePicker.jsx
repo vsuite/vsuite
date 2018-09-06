@@ -4,7 +4,7 @@ import popperMixin from 'mixins/popper';
 import onMenuKeydown from 'shares/onMenuKeydown';
 import { getHeight, getPosition, scrollTop } from 'shares/dom';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
-import { filterNodes, findNode } from 'utils/tree';
+import { findNode, flattenNodes, mapNode } from 'utils/tree';
 import invariant from 'utils/invariant';
 import { vueToString } from 'utils/node';
 import { splitDataByComponent } from 'utils/split';
@@ -63,6 +63,7 @@ export default {
     placeholder: VueTypes.string,
     searchable: VueTypes.bool,
     cleanable: VueTypes.bool,
+    leaf: VueTypes.bool.def(false),
     menuClassName: VueTypes.string,
     menuStyle: VueTypes.object,
     renderMenu: Function,
@@ -97,34 +98,60 @@ export default {
       return _.isUndefined(this.value) ? this.innerVal : this.value;
     },
 
-    dataWithCacheList() {
+    rawDataWithCache() {
       return [].concat(this.data || [], this.cacheData || []);
     },
 
-    focusableDataList() {
-      return filterNodes(
+    dataList() {
+      return mapNode(
         this.data,
-        item => this._shouldDisplay(item[this.labelKey]),
+        (data, index, layer, children) => {
+          const value = _.get(data, this.valueKey);
+          const label = _.get(data, this.labelKey);
+          let visible = true;
+
+          if (!children) {
+            visible = this._shouldDisplay(label, this.searchKeyword);
+          } else if (this.leaf) {
+            visible = children.some(child => child.visible);
+          } else {
+            const labelVisible = this._shouldDisplay(label, this.searchKeyword);
+
+            if (labelVisible) {
+              visible = labelVisible;
+
+              children.forEach(child => (child.visible = true));
+            } else {
+              visible = children.some(child => child.visible);
+            }
+          }
+
+          return {
+            key: `${layer}-${
+              _.isNumber(value) || _.isString(value) ? value : index
+            }`,
+            label,
+            value,
+            data,
+            visible,
+          };
+        },
         this.childrenKey
       );
+    },
+
+    flatDataList() {
+      return flattenNodes(this.dataList);
     },
   },
 
   render(h) {
     if (this.inline) return this._renderTree(h);
 
-    const { isValid, displayElement } = this._getLabelByValue(
-      h,
-      this.currentVal
-    );
+    const { exists, label } = this._getLabelByValue(h, this.currentVal);
 
     const referenceData = {
-      class: getToggleWrapperClassName(
-        'select',
-        this._addPrefix,
-        this,
-        isValid
-      ),
+      class: getToggleWrapperClassName('select', this._addPrefix, this, exists),
       directives: [{ name: 'click-outside', value: this._handleClickOutside }],
       attrs: { tabindex: -1, role: 'menu' },
       on: { keydown: this._handleKeydown },
@@ -133,7 +160,7 @@ export default {
     const toggleData = splitDataByComponent({
       splitProps: {
         ...this.$attrs,
-        hasValue: isValid,
+        hasValue: exists,
         cleanable: this.cleanable && !this.disabled,
         componentClass: this.toggleComponentClass,
       },
@@ -153,7 +180,7 @@ export default {
     return (
       <div {...referenceData}>
         <PickerToggle {...toggleData}>
-          {displayElement || this.$t('_.Picker.placeholder')}
+          {exists ? label : this.placeholder || this.$t('_.Picker.placeholder')}
         </PickerToggle>
         <transition name="picker-fade">
           {this._renderDropdownMenu(h, popperData)}
@@ -193,8 +220,8 @@ export default {
       // tree root
       const layer = 0;
       const classPrefix = this._addPrefix('tree-view');
-      const nodes = this.focusableDataList.map((data, index) =>
-        this._renderTreeNode(h, data, index, layer, classPrefix, `${layer}-`)
+      const nodes = this.dataList.map((data, index) =>
+        this._renderTreeNode(h, data, index, layer, classPrefix)
       );
 
       return (
@@ -204,11 +231,12 @@ export default {
       );
     },
 
-    _renderTreeNode(h, node, index, layer, classPrefix, ref) {
-      const key = this._getNodeKey(node, index, ref);
-      const children = node[this.childrenKey] || [];
-      const value = node[this.valueKey];
-      const label = node[this.labelKey];
+    _renderTreeNode(h, node, index, layer, classPrefix) {
+      const key = node.key;
+      const label = node.label;
+      const value = node.value;
+      const visible = node.visible;
+      const children = node.children;
       const data = splitDataByComponent(
         {
           key,
@@ -220,11 +248,11 @@ export default {
             focus: shallowEqual(value, this.focusItemValue),
             active: shallowEqual(value, this.currentVal),
             disabled: this.disabledItemValues.some(x => shallowEqual(x, value)),
-            uniqueKey: key,
             classPrefix,
             renderTreeIcon: this.renderTreeIcon,
             renderTreeNode: this.renderTreeNode,
           },
+          directives: [{ name: 'show', value: visible }],
           on: { select: this._handleSelect, toggle: this._handleToggle },
         },
         TreePickerNode
@@ -233,32 +261,26 @@ export default {
       if (children.length) {
         layer += 1;
 
-        const expand = this._getNodeExpand(key);
+        const expand = this._getNodeExpand(node);
+        const divData = {
+          key,
+          class: [
+            prefix(classPrefix, 'node-children'),
+            { [prefix(classPrefix, 'open')]: expand },
+          ],
+        };
         const childrenData = {
           class: prefix(classPrefix, 'children'),
-          directives: [{ name: 'show', value: expand }],
+          directives: [{ name: 'show', value: visible && expand }],
         };
 
         return (
-          <div
-            class={[
-              prefix(classPrefix, 'node-children'),
-              { [prefix(classPrefix, 'open')]: expand },
-            ]}
-            key={key}
-          >
+          <div {...divData}>
             <TreePickerNode {...data} />
             <Collapse>
               <div {...childrenData}>
                 {children.map((child, i) =>
-                  this._renderTreeNode(
-                    h,
-                    child,
-                    i,
-                    layer,
-                    classPrefix,
-                    `${key}-`
-                  )
+                  this._renderTreeNode(h, child, i, layer, classPrefix)
                 )}
               </div>
             </Collapse>
@@ -270,22 +292,25 @@ export default {
     },
 
     _getLabelByValue(h, value) {
-      const activeItem = findNode(
-        this.dataWithCacheList,
-        item => shallowEqual(item[this.valueKey], value),
-        this.childrenKey
+      const item = findNode(this.rawDataWithCache, item =>
+        shallowEqual(_.get(item, this.valueKey), value)
       );
-      let displayElement = this.$slots.placeholder || this.placeholder;
+      let label = _.get(item, this.labelKey);
 
-      if (_.get(activeItem, this.labelKey)) {
-        displayElement = _.get(activeItem, this.labelKey);
-
-        if (this.renderValue) {
-          displayElement = this.renderValue(h, activeItem, value);
-        }
+      if (this.renderValue) {
+        label = this.renderValue(h, label, item);
       }
 
-      return { activeItem, isValid: !!activeItem, displayElement };
+      return { item, exists: !!item, label };
+    },
+
+    _getNodeExpand(node) {
+      if (node.children && node.children.length === 0) return false;
+      if (!_.isUndefined(this.expandAll)) return this.expandAll;
+
+      return this.expandKeys.some(k => shallowEqual(k, node.key))
+        ? !this.defaultExpandAll
+        : this.defaultExpandAll;
     },
 
     _shouldDisplay(label, searchKeyword) {
@@ -309,26 +334,6 @@ export default {
       }
     },
 
-    _getNodeKey(node, index, prefix) {
-      if (!node) return prefix || '';
-
-      const value = node[this.valueKey];
-
-      if (_.isString(value) || _.isNumber(value)) {
-        return `${prefix || ''}${value}`;
-      }
-
-      return `${prefix || ''}${index}`;
-    },
-
-    _getNodeExpand(key) {
-      if (!_.isUndefined(this.expandAll)) return this.expandAll;
-
-      return this.expandKeys.some(k => shallowEqual(k, key))
-        ? !this.defaultExpandAll
-        : this.defaultExpandAll;
-    },
-
     _setVal(val, node, event) {
       this.innerVal = val;
 
@@ -337,14 +342,32 @@ export default {
     },
 
     _handleSelect(node, event) {
-      const value = node[this.valueKey];
+      // const value = node.value;
+      //
+      // this.focusItemValue = value;
+      //
+      // // close popper
+      // this._closePopper();
+      //
+      // this._setVal(value, node, event);
+    },
 
-      this.focusItemValue = value;
+    _handleToggle(uniqueKey, node, event) {
+      // const index = this.expandKeys.indexOf(uniqueKey);
+      //
+      // if (index === -1) {
+      //   this.expandKeys.push(uniqueKey);
+      // } else {
+      //   this.expandKeys.splice(index, 1);
+      // }
+      //
+      // this.$emit('toggle', node, event);
+    },
 
-      // close popper
-      this._closePopper();
+    _handleSearch(value, event) {
+      this.searchKeyword = value;
 
-      this._setVal(value, node, event);
+      this.$emit('search', value, event);
     },
 
     _handleClean(event) {
@@ -357,25 +380,6 @@ export default {
       this._setVal(null, null, null, event);
     },
 
-    _handleToggle(uniqueKey, node, event) {
-      const index = this.expandKeys.indexOf(uniqueKey);
-
-      if (index === -1) {
-        this.expandKeys.push(uniqueKey);
-      } else {
-        this.expandKeys.splice(index, 1);
-      }
-
-      this.$emit('toggle', node, event);
-    },
-
-    _handleSearch(value, event) {
-      this.searchKeyword = value;
-      this.expandKeys = [];
-
-      this.$emit('search', value, event);
-    },
-
     _handleKeydown(event) {
       event.stopPropagation();
 
@@ -385,21 +389,6 @@ export default {
         enter: this._handleFocusCurrent,
         esc: this._closePopper,
       });
-    },
-
-    _flattenFocusableItems(items, list) {
-      list = list || [];
-
-      if (!items) return;
-      if (!_.isArray(items)) {
-        list.push(items);
-      }
-
-      const children = _.isArray(items) ? items : items[this.childrenKey] || [];
-
-      children.forEach(child => this._flattenFocusableItems(child, list));
-
-      return list;
     },
 
     _updateScrollPosition() {
@@ -424,44 +413,11 @@ export default {
       }
     },
 
-    _handleFocusNext() {
-      const focusVal = this.focusItemValue;
-      const list = this._flattenFocusableItems(this.focusableDataList);
-      const len = list.length;
-      const index = _.findIndex(list, x =>
-        shallowEqual(x[this.valueKey], focusVal)
-      );
+    _handleFocusNext() {},
 
-      if (index + 1 >= len) return;
+    _handleFocusPrev() {},
 
-      this.focusItemValue = list[index === -1 ? 0 : index + 1][this.valueKey];
-
-      this.$nextTick(() => this._updateScrollPosition());
-    },
-
-    _handleFocusPrev() {
-      const focusVal = this.focusItemValue;
-      const list = this._flattenFocusableItems(this.focusableDataList);
-      const index = _.findIndex(list, x =>
-        shallowEqual(x[this.valueKey], focusVal)
-      );
-
-      if (index - 1 < 0) return;
-
-      this.focusItemValue = list[index === -1 ? 0 : index - 1][this.valueKey];
-
-      this.$nextTick(() => this._updateScrollPosition());
-    },
-
-    _handleFocusCurrent(event) {
-      const focusVal = this.focusItemValue;
-      const list = this._flattenFocusableItems(this.focusableDataList);
-      const item = _.find(list, x => shallowEqual(x[this.valueKey], focusVal));
-
-      if (!item) return;
-
-      this._handleSelect(item, event);
-    },
+    _handleFocusCurrent(event) {},
 
     _addPrefix(cls) {
       return prefix(this.classPrefix, cls);

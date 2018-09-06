@@ -61,7 +61,7 @@ export default {
 
       if (this.disabled) return;
 
-      this.$emit('select', this.value, event);
+      this.$emit('select', event);
     },
 
     _handleKeydown(event) {
