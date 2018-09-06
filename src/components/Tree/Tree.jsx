@@ -1,43 +1,34 @@
 import { splitDataByComponent } from 'utils/split';
 
-import InputPicker from 'components/InputPicker';
+import TreePicker from 'components/TreePicker';
 
 export default {
-  name: 'TagPicker',
+  name: 'Tree',
 
   render() {
     const data = splitDataByComponent(
       {
         splitProps: {
+          defaultExpandAll: false,
           ...this.$attrs,
-          multiple: true,
+          inline: true,
         },
         scopedSlots: this.$scopedSlots,
         on: this.$listeners,
         ref: 'picker',
       },
-      InputPicker
+      TreePicker
     );
 
     return (
-      <InputPicker {...data}>
+      <TreePicker {...data}>
         {this.$slots.header && (
           <template slot="header">{this.$slots.header}</template>
         )}
         {this.$slots.footer && (
           <template slot="footer">{this.$slots.footer}</template>
         )}
-      </InputPicker>
+      </TreePicker>
     );
-  },
-
-  methods: {
-    show() {
-      this.$refs.picker.show();
-    },
-
-    close() {
-      this.$refs.picker.close();
-    },
   },
 };
