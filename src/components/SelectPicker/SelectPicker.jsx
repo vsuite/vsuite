@@ -171,7 +171,11 @@ export default {
     return (
       <div {...referenceData}>
         <PickerToggle {...toggleData}>
-          {exists ? label : this.placeholder || this.$t('_.Picker.placeholder')}
+          {exists
+            ? label
+            : this.$slots.placeholder ||
+              this.placeholder ||
+              this.$t('_.Picker.placeholder')}
         </PickerToggle>
         <transition name="picker-fade">
           {this._renderDropdownMenu(h, popperData)}

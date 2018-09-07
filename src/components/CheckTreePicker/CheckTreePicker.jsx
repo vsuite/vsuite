@@ -128,6 +128,9 @@ export default {
             visible =
               this._shouldDisplay(label, this.searchKeyword) ||
               children.some(child => child.visible);
+            status = this.currentVal.some(x => shallowEqual(x, value))
+              ? CHECK_STATUS.CHECKED
+              : CHECK_STATUS.UNCHECKED;
           }
 
           return {
@@ -161,7 +164,9 @@ export default {
     );
     let selectedLabel = hasValue
       ? this.$t('_.CheckTreePicker.selectedValues', [selectedItems.length])
-      : this.placeholder || this.$t('_.Picker.placeholder');
+      : this.$slots.placeholder ||
+        this.placeholder ||
+        this.$t('_.Picker.placeholder');
 
     if (this.renderValue && hasValue) {
       selectedLabel = this.renderValue(h, this.currentVal, selectedItems);
@@ -361,7 +366,7 @@ export default {
     _handleSelect(isChecked, item, event) {
       const newVal = _.cloneDeep(this.currentVal);
       const list = [];
-      let result = [];
+      let result = newVal;
 
       if (this.cascade) {
         eachNode(
@@ -374,6 +379,10 @@ export default {
         result = isChecked
           ? _.unionWith(newVal, list, shallowEqual)
           : _.differenceWith(newVal, list, shallowEqual);
+      } else if (isChecked) {
+        result.push(item.value);
+      } else {
+        result.splice(_.findIndex(result, v => shallowEqual(v, item.value)), 1);
       }
 
       this._setVal(result, event);

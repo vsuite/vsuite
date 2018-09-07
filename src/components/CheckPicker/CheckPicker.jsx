@@ -149,7 +149,9 @@ export default {
     );
     let selectedLabel = hasValue
       ? this.$t('_.CheckPicker.selectedValues', [selectedItems.length])
-      : this.placeholder || this.$t('_.Picker.placeholder');
+      : this.$slots.placeholder ||
+        this.placeholder ||
+        this.$t('_.Picker.placeholder');
 
     if (this.renderValue && hasValue) {
       selectedLabel = this.renderValue(h, this.currentVal, selectedItems);

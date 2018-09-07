@@ -205,7 +205,9 @@ export default {
             ? null
             : hasValue
               ? label
-              : this.placeholder || this.$t('_.Picker.placeholder')}
+              : this.$slots.placeholder ||
+                this.placeholder ||
+                this.$t('_.Picker.placeholder')}
         </PickerToggle>
         <div {...wrapperData}>
           {tags}
