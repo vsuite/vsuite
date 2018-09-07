@@ -2,7 +2,7 @@ import VueTypes from 'vue-types';
 import _ from 'lodash';
 import popperMixin from 'mixins/popper';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
-import { findNode, flattenNodes, mapNode } from 'utils/tree';
+import { eachNode, findNode, flattenNodes, mapNode } from 'utils/tree';
 import { splitDataByComponent } from 'utils/split';
 import { vueToString } from 'utils/node';
 import shallowEqual from 'utils/shallowEqual';
@@ -18,6 +18,8 @@ import {
 import CheckTreePickerNode from './CheckTreePickerNode.jsx';
 
 import { CHECK_STATUS } from './constants';
+import onMenuKeydown from 'shares/onMenuKeydown';
+import { getHeight, getPosition, scrollTop } from 'shares/dom';
 
 const CLASS_PREFIX = 'picker';
 
@@ -55,6 +57,7 @@ export default {
     block: VueTypes.bool.def(false),
     disabled: VueTypes.bool.def(false),
     disabledItemValues: VueTypes.arrayOf(VueTypes.any).def([]),
+    disabledCheckboxValues: VueTypes.arrayOf(VueTypes.any).def([]),
     maxHeight: VueTypes.number.def(320),
     valueKey: VueTypes.string.def('value'),
     labelKey: VueTypes.string.def('label'),
@@ -83,7 +86,7 @@ export default {
 
     return {
       innerVal: initVal,
-      focusItemVal: initVal[0],
+      focusItemValue: initVal[0],
       expandKeys: [],
       searchKeyword: '',
     };
@@ -91,7 +94,7 @@ export default {
 
   computed: {
     currentVal() {
-      return _.isUndefined(this.value) ? this.innerVal : this.value;
+      return (_.isUndefined(this.value) ? this.innerVal : this.value) || [];
     },
 
     rawDataWithCache() {
@@ -143,7 +146,7 @@ export default {
     },
 
     flatDataList() {
-      return flattenNodes(this.dataList, this.leaf);
+      return flattenNodes(this.dataList, false);
     },
   },
 
@@ -271,8 +274,11 @@ export default {
             label,
             status,
             focus: shallowEqual(value, this.focusItemValue),
-            active: shallowEqual(value, this.currentVal),
+            active: this.currentVal.some(x => shallowEqual(x, value)),
             disabled: this.disabledItemValues.some(x => shallowEqual(x, value)),
+            disabledCheckbox: this.disabledCheckboxValues.some(x =>
+              shallowEqual(x, value)
+            ),
             classPrefix,
             renderTreeIcon: this.renderTreeIcon,
             renderTreeNode: this.renderTreeNode,
@@ -346,22 +352,145 @@ export default {
       }
     },
 
-    _setVal(val, data, event) {
+    _setVal(val, event) {
       this.innerVal = val;
 
       this.$emit('change', val, event);
-      this.$emit('select', val, data, event);
     },
 
-    _handleSelect() {},
+    _handleSelect(isChecked, item, event) {
+      const newVal = _.cloneDeep(this.currentVal);
+      const list = [];
+      let result = [];
 
-    _handleToggle() {},
+      if (this.cascade) {
+        eachNode(
+          [item],
+          ({ value }) => list.push(value),
+          true,
+          this.childrenKey
+        );
 
-    _handleSearch() {},
+        result = isChecked
+          ? _.unionWith(newVal, list, shallowEqual)
+          : _.differenceWith(newVal, list, shallowEqual);
+      }
 
-    _handleClean() {},
+      this._setVal(result, event);
+    },
 
-    _handleKeydown() {},
+    _handleToggle(item, event) {
+      if (!(item.children && item.children.length === 0)) {
+        const index = this.expandKeys.indexOf(item.key);
+
+        if (index === -1) {
+          this.expandKeys.push(item.key);
+        } else {
+          this.expandKeys.splice(index, 1);
+        }
+      }
+
+      this.$emit('toggle', item.data, event);
+    },
+
+    _handleSearch(value, event) {
+      this.searchKeyword = value;
+
+      this.$emit('search', value, event);
+    },
+
+    _handleClean(event) {
+      if (this.disabled) return;
+
+      this.focusItemValue = null;
+      this.searchKeyword = '';
+      this.expandKeys = [];
+
+      this._setVal(null, event);
+    },
+
+    _handleKeydown(event) {
+      event.stopPropagation();
+
+      onMenuKeydown(event, {
+        down: this._handleFocusNext,
+        up: this._handleFocusPrev,
+        enter: this._handleFocusCurrent,
+        esc: this._closePopper,
+      });
+    },
+
+    _updateScrollPosition() {
+      const container = this.$refs.container || this.$refs.container.$el;
+
+      if (!container) return;
+
+      const activeItem = container.querySelector(
+        `.${this._addPrefix('checktree-view-node-focus')}`
+      );
+
+      if (!activeItem) return;
+
+      const position = getPosition(activeItem, container);
+      const sTop = scrollTop(container);
+      const sHeight = getHeight(container);
+
+      if (position.top < sTop) {
+        scrollTop(container, Math.max(0, position.top - 20));
+      } else if (position.top > sTop + sHeight) {
+        scrollTop(container, Math.max(0, position.top - sHeight + 32));
+      }
+    },
+
+    _handleFocusNext() {
+      const val = this.focusItemValue;
+      const list = this.flatDataList.filter(
+        x =>
+          x.visible &&
+          !this.disabledItemValues.some(y => shallowEqual(y, x.value))
+      );
+      const length = list.length;
+      const index = _.findIndex(list, x => shallowEqual(x.value, val));
+
+      if (!length) return;
+      if (index === -1) this.focusItemValue = list[0] && list[0].value;
+      if (index + 1 < length) this.focusItemValue = list[index + 1].value;
+
+      this.$nextTick(() => this._updateScrollPosition());
+    },
+
+    _handleFocusPrev() {
+      const val = this.focusItemValue;
+      const list = this.flatDataList.filter(
+        x =>
+          x.visible &&
+          !this.disabledItemValues.some(y => shallowEqual(y, x.value))
+      );
+      const length = list.length;
+      const index = _.findIndex(list, x => shallowEqual(x.value, val));
+
+      if (!length) return;
+      if (index === -1) this.focusItemValue = list[0] && list[0].value;
+      if (index - 1 >= 0) this.focusItemValue = list[index - 1].value;
+
+      this.$nextTick(() => this._updateScrollPosition());
+    },
+
+    _handleFocusCurrent(event) {
+      const item = _.find(this.flatDataList, x =>
+        shallowEqual(x.value, this.focusItemValue)
+      );
+
+      if (!item) return;
+
+      let isChecked = false;
+
+      if (item.status !== CHECK_STATUS.CHECKED) {
+        isChecked = true;
+      }
+
+      this._handleSelect(isChecked, item, event);
+    },
 
     _addPrefix(cls) {
       return prefix(this.classPrefix, cls);

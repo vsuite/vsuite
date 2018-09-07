@@ -374,7 +374,7 @@ export default {
       this.searchKeyword = '';
       this.expandKeys = [];
 
-      this._setVal(null, null, null, event);
+      this._setVal(null, null, event);
     },
 
     _handleKeydown(event) {

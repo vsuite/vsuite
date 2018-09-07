@@ -4,7 +4,7 @@ import data from 'stories/data/city';
 import CheckTreePicker from 'components/CheckTreePicker';
 import Demo from 'stories/demo';
 
-const stories = storiesOf('Data Entry|CheckTreePicker');
+const stories = storiesOf('Data Entry|CheckTreePicker', module);
 
 stories.add('default', () => ({
   render() {

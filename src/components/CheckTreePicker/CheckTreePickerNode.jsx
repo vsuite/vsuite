@@ -35,13 +35,14 @@ export default {
         this._addPrefix('node'),
         {
           'text-muted': this.disabled,
-          [this._addPrefix('indeterminate')]:
+          [this._addPrefix('node-indeterminate')]:
             this.status === CHECK_STATUS.INDETERMINATE,
-          [this._addPrefix('checked')]: this.status === CHECK_STATUS.CHECKED,
-          [this._addPrefix('focus')]: this.focus,
-          [this._addPrefix('active')]: this.active,
-          [this._addPrefix('disabled')]: this.disabled,
-          [this._addPrefix('disabled-checkbox')]: this.disabledCheckbox,
+          [this._addPrefix('node-checked')]:
+            this.status === CHECK_STATUS.CHECKED,
+          [this._addPrefix('node-focus')]: this.focus,
+          [this._addPrefix('node-active')]: this.active,
+          [this._addPrefix('node-disabled')]: this.disabled,
+          [this._addPrefix('node-disabled-checkbox')]: this.disabledCheckbox,
         },
       ];
     },
@@ -91,7 +92,7 @@ export default {
     },
 
     _renderLabel(h) {
-      const disabledCheckbox = this.disabledCheckbox || this.branch;
+      const disabledCheckbox = this.disabledCheckbox;
       const custom = this.renderTreeNode
         ? this.renderTreeNode(h, this.node.data)
         : this.label;
@@ -101,7 +102,6 @@ export default {
             class={this._addPrefix('input')}
             type="checkbox"
             disabled={this.disabled}
-            onInput={this._handleChange}
           />
           <span class={this._addPrefix('inner')} />
         </span>
@@ -120,10 +120,18 @@ export default {
       );
     },
 
-    _handleClick() {},
-
-    _handleChange(event) {
+    _handleClick(event) {
       event.stopPropagation();
+
+      if (this.disabled || this.disabledCheckbox) return;
+
+      let isChecked = false;
+
+      if (this.status !== CHECK_STATUS.CHECKED) {
+        isChecked = true;
+      }
+
+      this.$emit('select', isChecked, this.node, event);
     },
 
     _handleToggle() {
