@@ -276,7 +276,9 @@ export default {
       const index = len - 1;
       const curr = index < 0 ? 0 : index;
       const item = this.focusPaths[index];
-      const list = this.panelList[curr];
+      const list = this.panelList[curr].filter(
+        x => !this.disabledItemValues.some(y => shallowEqual(y, x.value))
+      );
       const pos = _.findIndex(list, x => x.key === (item && item.key));
 
       if (pos + 1 >= list.length) return;
@@ -297,7 +299,9 @@ export default {
       const index = len - 1;
       const curr = index < 0 ? 0 : index;
       const item = this.focusPaths[index];
-      const list = this.panelList[curr];
+      const list = this.panelList[curr].filter(
+        x => !this.disabledItemValues.some(y => shallowEqual(y, x.value))
+      );
       const pos = _.findIndex(list, x => x.key === (item && item.key));
 
       if (pos !== -1 && pos - 1 < 0) return;
@@ -319,17 +323,11 @@ export default {
 
       if (len >= num) return;
 
-      const index = len - 1;
-      const curr = index < 0 ? 0 : index;
-      const item = this.focusPaths[index];
-      const list = this.panelList[curr];
-      const pos = _.findIndex(list, x => x.key === (item && item.key));
+      const list = this.panelList[len].filter(
+        x => !this.disabledItemValues.some(y => shallowEqual(y, x.value))
+      );
 
-      if (pos === -1) {
-        this.focusPaths.splice(curr, len, list[0]);
-      } else {
-        this.focusPaths.push(this.panelList[num - 1][0]);
-      }
+      if (list[0]) this.focusPaths.push(list[0]);
 
       this.$nextTick(
         () => this.$refs.menu && this.$refs.menu._updateScrollPosition()
@@ -341,17 +339,7 @@ export default {
 
       if (len <= 1) return;
 
-      const index = len - 1;
-      const curr = index < 0 ? 0 : index;
-      const item = this.focusPaths[index];
-      const list = this.panelList[curr];
-      const pos = _.findIndex(list, x => x.key === (item && item.key));
-
-      if (pos === -1) {
-        this.focusPaths.splice(curr, len, list[0]);
-      } else {
-        this.focusPaths.pop();
-      }
+      this.focusPaths.pop();
 
       this.$nextTick(
         () => this.$refs.menu && this.$refs.menu._updateScrollPosition()
