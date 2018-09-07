@@ -116,18 +116,22 @@ export default {
               ? CHECK_STATUS.CHECKED
               : CHECK_STATUS.UNCHECKED;
           } else if (this.cascade) {
-            visible = children.some(child => child.visible);
-            status = children.every(
-              child => child.status === CHECK_STATUS.CHECKED
-            )
-              ? CHECK_STATUS.CHECKED
-              : children.every(child => child.status === CHECK_STATUS.UNCHECKED)
-                ? CHECK_STATUS.UNCHECKED
-                : CHECK_STATUS.INDETERMINATE;
+            visible = children.length
+              ? children.some(child => child.visible)
+              : true;
+            status = children.length
+              ? children.every(child => child.status === CHECK_STATUS.CHECKED)
+                ? CHECK_STATUS.CHECKED
+                : children.every(
+                    child => child.status === CHECK_STATUS.UNCHECKED
+                  )
+                  ? CHECK_STATUS.UNCHECKED
+                  : CHECK_STATUS.INDETERMINATE
+              : CHECK_STATUS.UNCHECKED;
           } else {
             visible =
               this._shouldDisplay(label, this.searchKeyword) ||
-              children.some(child => child.visible);
+              (children.length ? children.some(child => child.visible) : true);
             status = this.currentVal.some(x => shallowEqual(x, value))
               ? CHECK_STATUS.CHECKED
               : CHECK_STATUS.UNCHECKED;

@@ -113,11 +113,13 @@ export default {
           if (!children) {
             visible = this._shouldDisplay(label, this.searchKeyword);
           } else if (this.leaf) {
-            visible = children.some(child => child.visible);
+            visible = children.length
+              ? children.some(child => child.visible)
+              : true;
           } else {
             visible =
               this._shouldDisplay(label, this.searchKeyword) ||
-              children.some(child => child.visible);
+              (children.length ? children.some(child => child.visible) : true);
           }
 
           return {
