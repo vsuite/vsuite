@@ -1,6 +1,7 @@
 import VueTypes from 'vue-types';
 import _ from 'lodash';
 import popperMixin from 'mixins/popper';
+import onMenuKeydown from 'shares/onMenuKeydown';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
 import { findNode, mapNode } from 'utils/tree';
 import { splitDataByComponent } from 'utils/split';
@@ -227,13 +228,152 @@ export default {
       return { item, exists: !!item, label: labels };
     },
 
-    _setVal(val, event) {},
+    _setVal(val, event) {
+      this.innerVal = val;
 
-    _handleSelect() {},
+      this.$emit('change', val, event);
+    },
 
-    _handleClean(event) {},
+    _handleSelect(item, layer, event) {
+      this.focusPaths.splice(layer, this.focusPaths.length, item);
 
-    _handleKeydown(event) {},
+      if (!item.children) {
+        this.activePaths = [...this.focusPaths];
+
+        // close popper
+        this._closePopper();
+
+        this._setVal(item.value, event);
+      }
+
+      this.$emit('select', this.focusPaths, event);
+    },
+
+    _handleClean(event) {
+      if (this.disabled) return;
+
+      this.activePaths = [];
+      this.focusPaths = [];
+
+      this._setVal(null, event);
+    },
+
+    _handleKeydown(event) {
+      event.stopPropagation();
+
+      onMenuKeydown(event, {
+        down: this._handleFocusDown,
+        up: this._handleFocusUp,
+        right: this._handleFocusRight,
+        left: this._handleFocusLeft,
+        enter: this._handleFocusCurrent,
+        esc: this._closePopper,
+      });
+    },
+
+    _handleFocusDown() {
+      const len = this.focusPaths.length;
+      const index = len - 1;
+      const curr = index < 0 ? 0 : index;
+      const item = this.focusPaths[index];
+      const list = this.panelList[curr];
+      const pos = _.findIndex(list, x => x.key === (item && item.key));
+
+      if (pos + 1 >= list.length) return;
+
+      if (pos === -1) {
+        this.focusPaths.splice(curr, len, list[0]);
+      } else {
+        this.focusPaths.splice(curr, len, list[pos + 1]);
+      }
+
+      this.$nextTick(
+        () => this.$refs.menu && this.$refs.menu._updateScrollPosition()
+      );
+    },
+
+    _handleFocusUp() {
+      const len = this.focusPaths.length;
+      const index = len - 1;
+      const curr = index < 0 ? 0 : index;
+      const item = this.focusPaths[index];
+      const list = this.panelList[curr];
+      const pos = _.findIndex(list, x => x.key === (item && item.key));
+
+      if (pos !== -1 && pos - 1 < 0) return;
+
+      if (pos === -1) {
+        this.focusPaths.splice(curr, len, list[0]);
+      } else {
+        this.focusPaths.splice(curr, len, list[pos - 1]);
+      }
+
+      this.$nextTick(
+        () => this.$refs.menu && this.$refs.menu._updateScrollPosition()
+      );
+    },
+
+    _handleFocusRight() {
+      const len = this.focusPaths.length;
+      const num = this.panelList.length;
+
+      if (len >= num) return;
+
+      const index = len - 1;
+      const curr = index < 0 ? 0 : index;
+      const item = this.focusPaths[index];
+      const list = this.panelList[curr];
+      const pos = _.findIndex(list, x => x.key === (item && item.key));
+
+      if (pos === -1) {
+        this.focusPaths.splice(curr, len, list[0]);
+      } else {
+        this.focusPaths.push(this.panelList[num - 1][0]);
+      }
+
+      this.$nextTick(
+        () => this.$refs.menu && this.$refs.menu._updateScrollPosition()
+      );
+    },
+
+    _handleFocusLeft() {
+      const len = this.focusPaths.length;
+
+      if (len <= 1) return;
+
+      const index = len - 1;
+      const curr = index < 0 ? 0 : index;
+      const item = this.focusPaths[index];
+      const list = this.panelList[curr];
+      const pos = _.findIndex(list, x => x.key === (item && item.key));
+
+      if (pos === -1) {
+        this.focusPaths.splice(curr, len, list[0]);
+      } else {
+        this.focusPaths.pop();
+      }
+
+      this.$nextTick(
+        () => this.$refs.menu && this.$refs.menu._updateScrollPosition()
+      );
+    },
+
+    _handleFocusCurrent(event) {
+      const len = this.focusPaths.length;
+
+      if (len <= 0) return;
+
+      const index = len - 1;
+      const curr = index < 0 ? 0 : index;
+      const item = this.focusPaths[index];
+      const list = this.panelList[curr];
+      const node = _.find(list, x => x.key === (item && item.key));
+
+      if (!node) return;
+      if (node.children) return;
+
+      this._handleSelect(node, this.focusPaths.length - 1, event);
+    },
 
     _addPrefix(cls) {
       return prefix(this.classPrefix, cls);

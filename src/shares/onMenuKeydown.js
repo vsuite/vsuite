@@ -1,5 +1,5 @@
 function onMenuKeydown(event, events) {
-  const { down, up, enter, del, esc } = events;
+  const { down, up, right, left, enter, del, esc } = events;
   const keyCode = event.keyCode;
 
   if (keyCode === 40) {
@@ -9,6 +9,14 @@ function onMenuKeydown(event, events) {
   } else if (keyCode === 38) {
     // up
     up && up(event);
+    event.preventDefault();
+  } else if (keyCode === 39) {
+    // right
+    right && right(event);
+    event.preventDefault();
+  } else if (keyCode === 37) {
+    // left
+    left && left(event);
     event.preventDefault();
   } else if (keyCode === 13) {
     // enter

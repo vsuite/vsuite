@@ -1,5 +1,6 @@
 import VueTypes from 'vue-types';
 import _ from 'lodash';
+import { getHeight, getPosition, scrollTop } from 'shares/dom';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
 import shallowEqual from 'utils/shallowEqual';
 
@@ -23,7 +24,11 @@ export default {
   },
 
   render(h) {
-    return <div class={this._addPrefix('items')}>{this._renderCascade(h)}</div>;
+    return (
+      <div class={this._addPrefix('items')} ref="container">
+        {this._renderCascade(h)}
+      </div>
+    );
   },
 
   methods: {
@@ -59,19 +64,18 @@ export default {
     _renderCascadeNode(h, child, layer) {
       const activeItem = this.activePaths[layer];
       const focusItem = this.focusPaths[layer];
+      const active =
+        !_.isUndefined(activeItem) &&
+        shallowEqual(activeItem.value, child.value);
+      const focus =
+        !_.isUndefined(focusItem) && shallowEqual(focusItem.value, child.value);
 
       return (
         <PickerDropdownMenuItem
           key={child.key}
           value={child.value}
-          active={
-            !_.isUndefined(activeItem) &&
-            shallowEqual(activeItem.value, child.value)
-          }
-          focus={
-            !_.isUndefined(focusItem) &&
-            shallowEqual(focusItem.value, child.value)
-          }
+          active={this.focusPaths.length ? false : active}
+          focus={focus}
           disabled={this.disabledItemValues.some(x =>
             shallowEqual(x, child.value)
           )}
@@ -88,6 +92,31 @@ export default {
 
     _handleSelect(child, layer, event) {
       this.$emit('select', child, layer, event);
+    },
+
+    _updateScrollPosition() {
+      const container = this.$refs.container || this.$refs.container.$el;
+      const columns = container.querySelectorAll(
+        `.${this._addPrefix('column')}`
+      );
+
+      columns.forEach(column => {
+        const activeItem = column.querySelector(
+          `.${this._addPrefix('item-focus')}`
+        );
+
+        if (!activeItem) return;
+
+        const position = getPosition(activeItem, column);
+        const sTop = scrollTop(column);
+        const sHeight = getHeight(column);
+
+        if (position.top < sTop) {
+          scrollTop(column, Math.max(0, position.top - 20));
+        } else if (position.top > sTop + sHeight) {
+          scrollTop(column, Math.max(0, position.top - sHeight + 32));
+        }
+      });
     },
 
     _addPrefix(cls) {
