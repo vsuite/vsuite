@@ -1,7 +1,10 @@
 import { storiesOf } from '@storybook/vue';
+import _ from 'lodash';
+import { mapNode } from 'utils/tree';
 import data from 'stories/data/province';
 
 import Cascader from 'components/Cascader';
+import Icon from 'components/Icon';
 import Demo from 'stories/demo';
 
 const stories = storiesOf('Data Entry|Cascader', module);
@@ -130,5 +133,138 @@ stories.add('disabled', () => ({
         />
       </Demo>
     );
+  },
+}));
+
+stories.add('custom', () => ({
+  render() {
+    return (
+      <Demo title="Custom">
+        <Cascader
+          style={{ width: '224px' }}
+          valueKey="name"
+          labelKey="name"
+          data={data}
+          renderMenuItem={(h, label, item) => {
+            return (
+              <div>
+                <i class="vs-icon vs-icon-circle" /> {label}
+              </div>
+            );
+          }}
+          renderValue={(h, datasets) => {
+            return datasets.map(item => item.name).join(' : ');
+          }}
+        />
+      </Demo>
+    );
+  },
+}));
+
+stories.add('async', () => ({
+  data() {
+    return {
+      data: [],
+      value: [],
+      requestId: 0,
+    };
+  },
+
+  render() {
+    return (
+      <Demo title="Async">
+        <Cascader
+          style={{ width: '272px' }}
+          data={this.data}
+          value={this.value}
+          onShow={this._handleShow}
+          onChange={this._handleChange}
+          onSelect={this._handleSelect}
+          renderMenu={(h, menu, data) => {
+            if (this.data.length === 0 || (data && data.loading)) {
+              return (
+                <p
+                  style={{ padding: '4px', color: '#999', textAlign: 'center' }}
+                >
+                  <Icon spin icon="spinner" /> 加载中...
+                </p>
+              );
+            }
+
+            return menu;
+          }}
+        />
+      </Demo>
+    );
+  },
+
+  methods: {
+    _handleChange(value) {
+      this.value = value;
+    },
+
+    _handleSelect({ data }) {
+      if (data.requestId) {
+        this._setLoading(data.requestId);
+      }
+    },
+
+    _handleShow() {
+      if (this.data.length === 0) {
+        setTimeout(() => {
+          this.data = [
+            {
+              label: 'Parent Node',
+              value: '0',
+              children: [],
+              requestId: ++this.requestId,
+            },
+          ];
+        }, 1000);
+      }
+    },
+
+    _setLoading(requestId) {
+      const data = _.cloneDeep(this.data);
+
+      this.data = mapNode(data, node => {
+        if (node.requestId === requestId) {
+          return { ...node, loading: true };
+        }
+
+        return node;
+      });
+
+      setTimeout(() => {
+        const data = _.cloneDeep(this.data);
+
+        this.data = mapNode(data, (node, _, __, children) => {
+          if (node.requestId === requestId) {
+            const value1 = ++this.requestId;
+            const value2 = ++this.requestId;
+
+            children.push({
+              label: 'Child Node',
+              value: `${value1}`,
+              children: [],
+              requestId: value1,
+            });
+            children.push({
+              label: 'Child Node',
+              value: `${value2}`,
+              children: [],
+              requestId: value2,
+            });
+
+            delete node.loading;
+            delete node.requestId;
+
+            return node;
+          }
+
+          return node;
+        });
+      }, 1000);
+    },
   },
 }));

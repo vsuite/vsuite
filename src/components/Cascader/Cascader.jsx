@@ -107,7 +107,7 @@ export default {
       let curr = this.dataList;
       const list = [curr];
 
-      this.focusPaths.forEach(({ key }) => {
+      this.focusPaths.forEach(key => {
         const node = findNode(curr, x => x.key === key);
 
         if (node && node.children) {
@@ -208,8 +208,13 @@ export default {
         shallowEqual(_.get(item, this.valueKey), value)
       );
       let labels = [];
+      let nodes = this.activePaths.map(key =>
+        findNode(this.dataList, x => x.key === key)
+      );
 
-      this.activePaths.forEach(({ key, label }, index) => {
+      nodes.forEach((node, index) => {
+        const { key, label } = node;
+
         labels.push(<span key={key}>{label}</span>);
 
         if (index < this.activePaths.length - 1) {
@@ -222,7 +227,7 @@ export default {
       });
 
       if (this.renderValue) {
-        labels = this.renderValue(h, this.activePaths);
+        labels = this.renderValue(h, nodes.map(node => node.data));
       }
 
       return { item, exists: !!item, label: labels };
@@ -235,7 +240,7 @@ export default {
     },
 
     _handleSelect(item, layer, event) {
-      this.focusPaths.splice(layer, this.focusPaths.length, item);
+      this.focusPaths.splice(layer, this.focusPaths.length, item.key);
 
       if (!item.children) {
         this.activePaths = [...this.focusPaths];
@@ -246,7 +251,7 @@ export default {
         this._setVal(item.value, event);
       }
 
-      this.$emit('select', this.focusPaths, event);
+      this.$emit('select', item, event);
     },
 
     _handleClean(event) {
@@ -275,18 +280,20 @@ export default {
       const len = this.focusPaths.length;
       const index = len - 1;
       const curr = index < 0 ? 0 : index;
-      const item = this.focusPaths[index];
+      const key = this.focusPaths[index];
       const list = this.panelList[curr].filter(
         x => !this.disabledItemValues.some(y => shallowEqual(y, x.value))
       );
-      const pos = _.findIndex(list, x => x.key === (item && item.key));
+      const pos = _.findIndex(list, x => x.key === key);
 
       if (pos + 1 >= list.length) return;
 
-      if (pos === -1) {
-        this.focusPaths.splice(curr, len, list[0]);
+      if (pos === -1 && list[0]) {
+        this.focusPaths.splice(curr, len, list[0].key);
+      } else if (pos !== -1 && list[pos + 1]) {
+        this.focusPaths.splice(curr, len, list[pos + 1].key);
       } else {
-        this.focusPaths.splice(curr, len, list[pos + 1]);
+        return;
       }
 
       this.$nextTick(
@@ -298,18 +305,20 @@ export default {
       const len = this.focusPaths.length;
       const index = len - 1;
       const curr = index < 0 ? 0 : index;
-      const item = this.focusPaths[index];
+      const key = this.focusPaths[index];
       const list = this.panelList[curr].filter(
         x => !this.disabledItemValues.some(y => shallowEqual(y, x.value))
       );
-      const pos = _.findIndex(list, x => x.key === (item && item.key));
+      const pos = _.findIndex(list, x => x.key === key);
 
       if (pos !== -1 && pos - 1 < 0) return;
 
-      if (pos === -1) {
-        this.focusPaths.splice(curr, len, list[0]);
+      if (pos === -1 && list[0]) {
+        this.focusPaths.splice(curr, len, list[0].key);
+      } else if (pos !== -1 && list[pos - 1]) {
+        this.focusPaths.splice(curr, len, list[pos - 1].key);
       } else {
-        this.focusPaths.splice(curr, len, list[pos - 1]);
+        return;
       }
 
       this.$nextTick(
@@ -327,7 +336,8 @@ export default {
         x => !this.disabledItemValues.some(y => shallowEqual(y, x.value))
       );
 
-      if (list[0]) this.focusPaths.push(list[0]);
+      if (list[0]) this.focusPaths.push(list[0].key);
+      else return;
 
       this.$nextTick(
         () => this.$refs.menu && this.$refs.menu._updateScrollPosition()
@@ -353,9 +363,9 @@ export default {
 
       const index = len - 1;
       const curr = index < 0 ? 0 : index;
-      const item = this.focusPaths[index];
+      const key = this.focusPaths[index];
       const list = this.panelList[curr];
-      const node = _.find(list, x => x.key === (item && item.key));
+      const node = _.find(list, x => x.key === key);
 
       if (!node) return;
       if (node.children) return;

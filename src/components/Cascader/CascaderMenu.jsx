@@ -5,6 +5,7 @@ import prefix, { defaultClassPrefix } from 'utils/prefix';
 import shallowEqual from 'utils/shallowEqual';
 
 import { PickerDropdownMenuItem } from 'components/_picker';
+import { findNode } from 'utils/tree';
 
 const CLASS_PREFIX = '';
 
@@ -40,13 +41,16 @@ export default {
             {children.map(child => this._renderCascadeNode(h, child, layer))}
           </ul>
         );
-        const parent = this.focusPaths[layer - 1];
+        const parentKey = this.focusPaths[layer - 1];
+        const parent =
+          parentKey &&
+          findNode(this.items[layer - 1], x => x.key === parentKey);
 
         return (
           <div
             key={`${layer}_${children.length}`}
             style={{
-              height: `${this.menuHeight}px`,
+              maxHeight: `${this.menuHeight}px`,
               width: `${this.menuWidth}px`,
             }}
             class={this._addPrefix('column')}
@@ -62,13 +66,10 @@ export default {
     },
 
     _renderCascadeNode(h, child, layer) {
-      const activeItem = this.activePaths[layer];
-      const focusItem = this.focusPaths[layer];
-      const active =
-        !_.isUndefined(activeItem) &&
-        shallowEqual(activeItem.value, child.value);
-      const focus =
-        !_.isUndefined(focusItem) && shallowEqual(focusItem.value, child.value);
+      const activeKey = this.activePaths[layer];
+      const focusKey = this.focusPaths[layer];
+      const active = !_.isUndefined(activeKey) && activeKey === child.key;
+      const focus = !_.isUndefined(focusKey) && focusKey === child.key;
 
       return (
         <PickerDropdownMenuItem
