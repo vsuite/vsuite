@@ -25,6 +25,9 @@ export default {
         {this.$slots.header && (
           <template slot="header">{this.$slots.header}</template>
         )}
+        {this.$slots.placeholder && (
+          <template slot="placeholder">{this.$slots.placeholder}</template>
+        )}
         {this.$slots.footer && (
           <template slot="footer">{this.$slots.footer}</template>
         )}

@@ -1,26 +1,27 @@
 import { splitDataByComponent } from 'utils/split';
 
-import InputPicker from 'components/InputPicker';
+import CheckTreePicker from 'components/CheckTreePicker';
 
 export default {
-  name: 'TagPicker',
+  name: 'CheckTree',
 
   render() {
     const data = splitDataByComponent(
       {
         splitProps: {
+          defaultExpandAll: false,
           ...this.$attrs,
-          multiple: true,
+          inline: true,
         },
         scopedSlots: this.$scopedSlots,
         on: this.$listeners,
         ref: 'picker',
       },
-      InputPicker
+      CheckTreePicker
     );
 
     return (
-      <InputPicker {...data}>
+      <CheckTreePicker {...data}>
         {this.$slots.header && (
           <template slot="header">{this.$slots.header}</template>
         )}
@@ -30,17 +31,7 @@ export default {
         {this.$slots.footer && (
           <template slot="footer">{this.$slots.footer}</template>
         )}
-      </InputPicker>
+      </CheckTreePicker>
     );
-  },
-
-  methods: {
-    show() {
-      this.$refs.picker.show();
-    },
-
-    close() {
-      this.$refs.picker.close();
-    },
   },
 };
