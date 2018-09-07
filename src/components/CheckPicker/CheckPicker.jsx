@@ -292,11 +292,10 @@ export default {
       return data;
     },
 
-    _setVal(val, item, event) {
+    _setVal(val, event) {
       this.innerVal = val;
 
       this.$emit('change', val, event);
-      this.$emit('select', val, item, event);
     },
 
     _handleSelect(item, event, checked) {
@@ -320,7 +319,7 @@ export default {
 
       this.focusItemValue = value;
 
-      this._setVal(newVal, data, event);
+      this._setVal(newVal, event);
     },
 
     _handleSearch(val, event) {
@@ -335,7 +334,7 @@ export default {
       this.focusItemValue = null;
       this.searchKeyword = '';
 
-      this._setVal([], null, event);
+      this._setVal([], event);
     },
 
     _handleKeydown(event) {

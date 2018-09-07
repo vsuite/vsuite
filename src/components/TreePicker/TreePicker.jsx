@@ -329,11 +329,10 @@ export default {
       }
     },
 
-    _setVal(val, data, event) {
+    _setVal(val, event) {
       this.innerVal = val;
 
       this.$emit('change', val, event);
-      this.$emit('select', val, data, event);
     },
 
     _handleSelect(item, event) {
@@ -344,7 +343,7 @@ export default {
       // close popper
       this._closePopper();
 
-      this._setVal(value, item.data, event);
+      this._setVal(value, event);
     },
 
     _handleToggle(item, event) {
@@ -374,7 +373,7 @@ export default {
       this.searchKeyword = '';
       this.expandKeys = [];
 
-      this._setVal(null, null, event);
+      this._setVal(null, event);
     },
 
     _handleKeydown(event) {

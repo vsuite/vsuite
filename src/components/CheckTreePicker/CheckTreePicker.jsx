@@ -406,7 +406,7 @@ export default {
       this.searchKeyword = '';
       this.expandKeys = [];
 
-      this._setVal(null, event);
+      this._setVal([], event);
     },
 
     _handleKeydown(event) {
