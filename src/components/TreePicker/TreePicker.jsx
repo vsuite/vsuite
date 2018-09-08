@@ -394,7 +394,9 @@ export default {
     },
 
     _updateScrollPosition() {
-      const container = this.$refs.container || this.$refs.container.$el;
+      const container =
+        (this.$refs.container && this.$refs.container.$el) ||
+        this.$refs.container;
 
       if (!container) return;
 

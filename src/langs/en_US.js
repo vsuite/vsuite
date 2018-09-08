@@ -54,7 +54,7 @@ export default {
       createOption: 'Create option "{{0}}"',
     },
     Uploader: {
-      inited: 'Initial',
+      init: 'Initial',
       progress: 'Uploading',
       error: 'Error',
       complete: 'Finished',

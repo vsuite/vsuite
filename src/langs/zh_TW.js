@@ -54,7 +54,7 @@ export default {
       createOption: '新建選項 "{{0}}"',
     },
     Uploader: {
-      inited: '初始狀態',
+      init: '初始狀態',
       progress: '上傳中',
       error: '上傳出錯',
       complete: '上傳完成',

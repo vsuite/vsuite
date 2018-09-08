@@ -141,7 +141,8 @@ export default {
     // update scroll position
     _updateScrollPosition() {
       const menuBodyContainer =
-        this.$refs.menuBodyContainer || this.$refs.menuBodyContainer.$el;
+        (this.$refs.menuBodyContainer && this.$refs.menuBodyContainer.$el) ||
+        this.$refs.menuBodyContainer;
 
       if (!menuBodyContainer) return;
 
