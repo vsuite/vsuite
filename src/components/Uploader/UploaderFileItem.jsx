@@ -2,6 +2,8 @@ import VueTypes from 'vue-types';
 import _ from 'lodash';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
 
+import { STATUS, TYPES } from './constant';
+
 const CLASS_PREFIX = 'uploader-file-item';
 const getSize = size => {
   const K = 1024;
@@ -27,13 +29,20 @@ export default {
 
   props: {
     file: VueTypes.shape({
-      fileKey: VueTypes.oneOfType([VueTypes.string, VueTypes.number]),
+      key: VueTypes.oneOfType([VueTypes.string, VueTypes.number]),
       name: VueTypes.string,
-      blobFile: File,
-      status: VueTypes.oneOf(['init', 'uploading', 'error', 'finish']),
+      rawFile: File,
+      status: VueTypes.oneOf([
+        STATUS.START,
+        STATUS.UPLOAD,
+        STATUS.FAILED,
+        STATUS.SUCCESS,
+      ]),
       progress: VueTypes.number,
     }),
-    type: VueTypes.oneOf(['text', 'picture-text', 'picture']).def('text'),
+    type: VueTypes.oneOf([TYPES.TEXT, TYPES.PIC, TYPES.PIC_TEXT]).def(
+      TYPES.TEXT
+    ),
     disabled: VueTypes.bool.def(false),
     maxFileSize: VueTypes.number.def(5 << 20), // 5MB
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
@@ -55,7 +64,7 @@ export default {
         this.classPrefix,
         this._addPrefix(this.type),
         {
-          [this._addPrefix('has-error')]: this.file.status === 'error',
+          [this._addPrefix('has-error')]: this.file.status === STATUS.FAILED,
           [this._addPrefix('disabled')]: this.disabled,
         },
       ];
@@ -63,7 +72,7 @@ export default {
   },
 
   render(h) {
-    if (this.type === 'picture') {
+    if (this.type === TYPES.PIC) {
       return (
         <div class={this.classes}>
           {this._renderLoading(h)}
@@ -74,7 +83,7 @@ export default {
       );
     }
 
-    if (this.type === 'picture-text') {
+    if (this.type === TYPES.PIC_TEXT) {
       return (
         <div class={this.classes}>
           {this._renderLoading(h)}
@@ -116,11 +125,11 @@ export default {
     },
 
     _renderFileSize() {
-      const { status, blobFile } = this.file;
+      const { status, rawFile } = this.file;
 
-      if (status !== 'error' && blobFile && blobFile.size) {
+      if (status !== STATUS.FAILED && rawFile && rawFile.size) {
         return (
-          <span class={this._addPrefix('size')}>{getSize(blobFile.size)}</span>
+          <span class={this._addPrefix('size')}>{getSize(rawFile.size)}</span>
         );
       }
 
@@ -130,7 +139,7 @@ export default {
     _renderErrorStatus() {
       const { status } = this.file;
 
-      if (status === 'error') {
+      if (status === STATUS.FAILED) {
         return (
           <div class={this._addPrefix('status')}>
             {this.$t('_.Uploader.error')}
@@ -160,7 +169,7 @@ export default {
 
     _renderLoading() {
       const { status } = this.file;
-      const uploading = status === 'uploading';
+      const uploading = status === STATUS.UPLOAD;
       const classes = [
         this._addPrefix('icon-wrapper'),
         {
@@ -176,15 +185,15 @@ export default {
     },
 
     _renderPreview() {
-      const { blobFile } = this.file;
+      const { rawFile } = this.file;
 
-      if (this.previewImage && blobFile) {
+      if (this.previewImage && rawFile) {
         return (
           <div class={this._addPrefix('preview')}>
             <img
               role="presentation"
               src={this.previewImage}
-              alt={blobFile.name}
+              alt={rawFile.name}
               onClick={this._handlePreview}
             />
           </div>
@@ -196,7 +205,7 @@ export default {
 
     _renderProgressBar() {
       const { progress = 0, status } = this.file;
-      const show = !this.disabled && status === 'uploading';
+      const show = !this.disabled && status === STATUS.UPLOAD;
       const visibility = show ? 'visible' : 'hidden';
       const wrapStyle = {
         visibility,
@@ -230,17 +239,17 @@ export default {
     _handleRemove(event) {
       if (this.disabled) return;
 
-      this.$emit('remove', this.file.fileKey, event);
+      this.$emit('remove', this.file.key, event);
     },
 
     _getThumbnail(cb) {
-      if (~['picture-text', 'picture'].indexOf(this.type)) {
+      if (~[TYPES.PIC, TYPES.PIC_TEXT].indexOf(this.type)) {
         return;
       }
 
       if (
-        !this.file.blobFile ||
-        _.get(this.file, 'blobFile.size') > this.maxFileSize
+        !this.file.rawFile ||
+        _.get(this.file, 'rawFile.size') > this.maxFileSize
       ) {
         return;
       }
@@ -248,7 +257,7 @@ export default {
       const reader = new FileReader();
 
       reader.onloaded = () => cb(reader.result);
-      reader.readAsDataURL(this.file.blobFile);
+      reader.readAsDataURL(this.file.rawFile);
     },
 
     _addPrefix(cls) {

@@ -18,7 +18,6 @@ export default {
     componentClass: VueTypes.oneOfType([VueTypes.string, VueTypes.object]).def(
       Button
     ),
-    // change
   },
 
   computed: {
@@ -55,7 +54,6 @@ export default {
           accept={this.accept}
           ref="input"
           onInput={this._handleInput}
-          onChange={this._handleChange}
         />
         {this.$slots.default || (
           <Component {...cmpData}>{this.$t('_.Uploader.upload')}</Component>
@@ -65,6 +63,13 @@ export default {
   },
 
   methods: {
+    _cleanInput() {
+      const input =
+        (this.$refs.input && this.$refs.input.$el) || this.$refs.input;
+
+      input.value = '';
+    },
+
     _handleClick(event) {
       event.stopPropagation();
 
@@ -74,9 +79,9 @@ export default {
       input && input.click();
     },
 
-    _handleInput() {},
-
-    _handleChange() {},
+    _handleInput(event) {
+      this.$emit('change', event);
+    },
 
     _addPrefix(cls) {
       return prefix(this.classPrefix, cls);

@@ -6,14 +6,26 @@ import { splitDataByComponent } from 'utils/split';
 import UploaderTrigger from './UploaderTrigger.jsx';
 import UploaderFileItem from './UploaderFileItem.jsx';
 
+import { STATUS, TYPES } from './constant';
+
 const CLASS_PREFIX = 'uploader';
 const FILE_TYPE = {
+  key: VueTypes.oneOfType([VueTypes.string, VueTypes.number]),
   name: VueTypes.string,
-  fileKey: VueTypes.oneOfType([VueTypes.string, VueTypes.number]),
-  blobFile: File,
-  status: VueTypes.oneOf(['init', 'uploading', 'error', 'finish']),
+  rawFile: File,
+  status: VueTypes.oneOf([
+    STATUS.START,
+    STATUS.UPLOAD,
+    STATUS.FAILED,
+    STATUS.SUCCESS,
+  ]),
   progress: VueTypes.number,
 };
+const guid = (num = 8) =>
+  (Math.random() * 1e18)
+    .toString(36)
+    .slice(0, num)
+    .toUpperCase();
 
 export default {
   name: 'Uploader',
@@ -25,8 +37,11 @@ export default {
 
   props: {
     name: VueTypes.string.def('file'),
-    type: VueTypes.oneOf(['text', 'picture', 'picture-text']).def('text'),
+    type: VueTypes.oneOf([TYPES.TEXT, TYPES.PIC, TYPES.PIC_TEXT]).def(
+      TYPES.TEXT
+    ),
     action: VueTypes.string,
+    headers: VueTypes.object.def({}),
     accept: VueTypes.string,
     timeout: VueTypes.number,
     autoUpload: VueTypes.bool,
@@ -35,11 +50,13 @@ export default {
     defaultValue: VueTypes.arrayOf(VueTypes.shape(FILE_TYPE)).def([]),
     data: VueTypes.object,
     multiple: VueTypes.bool.def(false),
+    drag: VueTypes.bool.def(false),
+    paste: VueTypes.bool.def(false),
     disabled: VueTypes.bool.def(false),
     disabledFileItem: VueTypes.bool.def(false),
     withCredentials: VueTypes.bool.def(false),
-    shouldUpload: Function,
-    shouldQueueUpdate: Function,
+    showUploadList: VueTypes.bool,
+    beforeUpload: Function,
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
     toggleComponentClass: VueTypes.oneOfType([
       VueTypes.string,
@@ -65,7 +82,7 @@ export default {
   render(h) {
     return (
       <div class={[this.classPrefix, this._addPrefix(this.type)]}>
-        {this.type === 'picture'
+        {this.type === TYPES.PIC
           ? [this._renderFileItems(h), this._renderTrigger(h)]
           : [this._renderTrigger(h), this._renderFileItems(h)]}
       </div>
@@ -86,6 +103,7 @@ export default {
             componentClass: this.toggleComponentClass,
           },
           on: { change: this._handleTriggerChange },
+          ref: 'trigger',
         },
         UploaderTrigger
       );
@@ -98,7 +116,7 @@ export default {
         <div key="items" class={this._addPrefix('file-items')}>
           {this.currentVal.map((file, index) => (
             <UploaderFileItem
-              key={file.fileKey || index}
+              key={file.key || index}
               file={file}
               type={this.type}
               disabled={this.disabledFileItem}
@@ -118,7 +136,23 @@ export default {
 
     _handleRemove() {},
 
-    _handleTriggerChange() {},
+    _handleTriggerChange(event) {
+      const fileList = this.currentVal;
+      const files = event.target.files || [];
+      const newFileList = [];
+
+      Array.from(files).forEach(file => {
+        newFileList.push({
+          key: guid(),
+          name: file.name,
+          rawFile: file,
+          status: STATUS.START,
+        });
+      });
+
+      /* eslint-disable */
+      const nextFileList = [...fileList, ...newFileList];
+    },
 
     _addPrefix(cls) {
       return prefix(this.classPrefix, cls);
