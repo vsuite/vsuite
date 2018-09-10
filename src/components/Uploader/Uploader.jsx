@@ -328,6 +328,8 @@ export default {
       return prefix(this.classPrefix, cls);
     },
 
-    upload(files) {},
+    upload(files) {
+      this._handleUpload(files);
+    },
   },
 };
