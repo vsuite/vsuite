@@ -8,7 +8,7 @@ export default {
   name: 'CalendarMonthDropdownItem',
 
   props: {
-    date: VueTypes.object,
+    date: VueTypes.any,
     month: VueTypes.number,
     year: VueTypes.number,
     active: VueTypes.bool.def(false),

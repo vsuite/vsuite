@@ -25,7 +25,7 @@ export default {
       type: Number,
       default: undefined,
     },
-    pageDate: VueTypes.object,
+    pageDate: VueTypes.any,
     disabledDate: Function,
     disabledHours: Function,
     disabledMinutes: Function,

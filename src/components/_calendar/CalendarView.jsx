@@ -12,7 +12,7 @@ export default {
   name: 'CalendarView',
 
   props: {
-    activeDate: VueTypes.object.def(moment()),
+    activeDate: VueTypes.any.def(moment()),
     isoWeek: VueTypes.bool.def(false),
     disabledDate: Function,
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),

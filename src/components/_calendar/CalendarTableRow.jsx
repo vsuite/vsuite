@@ -8,8 +8,8 @@ export default {
   name: 'CalendarTableRow',
 
   props: {
-    weekendDate: VueTypes.object,
-    selected: VueTypes.object.def(moment()),
+    weekendDate: VueTypes.any,
+    selected: VueTypes.any.def(moment()),
     disabledDate: Function,
     inSameMonth: Function,
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),

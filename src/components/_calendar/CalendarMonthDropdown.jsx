@@ -16,7 +16,7 @@ export default {
   name: 'CalendarMonthDropdown',
 
   props: {
-    date: VueTypes.object.def(moment()),
+    date: VueTypes.any.def(moment()),
     show: VueTypes.bool.def(false),
     limitStartYear: VueTypes.number.def(5),
     limitEndYear: VueTypes.number.def(5),

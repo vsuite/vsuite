@@ -8,7 +8,7 @@ export default {
   name: 'CalendarHeader',
 
   props: {
-    date: VueTypes.object.def(moment()),
+    date: VueTypes.any.def(moment()),
     format: VueTypes.string,
     showMonth: VueTypes.bool.def(false),
     showDate: VueTypes.bool.def(false),
@@ -40,7 +40,7 @@ export default {
         this._addPrefix('title'),
         this._addPrefix('title-date'),
         {
-          [this.addPrefix('error')]:
+          [this._addPrefix('error')]:
             this.disabledDate && this.disabledDate(this.date),
         },
       ];
@@ -51,7 +51,7 @@ export default {
         this._addPrefix('title'),
         this._addPrefix('title-time'),
         {
-          [this.addPrefix('error')]:
+          [this._addPrefix('error')]:
             this.disabledTime && this.disabledTime(this.date),
         },
       ];

@@ -17,7 +17,7 @@ export default {
   name: 'CalendarTimeDropdown',
 
   props: {
-    date: VueTypes.object,
+    date: VueTypes.any,
     show: VueTypes.bool.def(false),
     format: VueTypes.string,
     disabledDate: Function,

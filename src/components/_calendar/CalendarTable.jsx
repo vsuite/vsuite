@@ -11,7 +11,7 @@ export default {
 
   props: {
     rows: VueTypes.arrayOf(VueTypes.any).def([]),
-    selected: VueTypes.object,
+    selected: VueTypes.any,
     isoWeek: VueTypes.bool.def(false),
     disabledDate: Function,
     inSameMonth: Function,
