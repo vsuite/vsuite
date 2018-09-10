@@ -73,14 +73,6 @@ export default {
   },
 
   methods: {
-    show() {
-      this._openPopper();
-    },
-
-    hide() {
-      this._closePopper();
-    },
-
     _addTriggerListeners(referenceData, containerData) {
       referenceData.on = referenceData.on || {};
       containerData.on = containerData.on || {};
@@ -259,6 +251,14 @@ export default {
 
     _handleCreate() {
       this.$nextTick(this._updatePopper);
+    },
+
+    show() {
+      this._openPopper();
+    },
+
+    hide() {
+      this._closePopper();
     },
   },
 };

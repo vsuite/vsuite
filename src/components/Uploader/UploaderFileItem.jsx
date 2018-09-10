@@ -96,7 +96,7 @@ export default {
     }
 
     return (
-      <div className={this.classes}>
+      <div class={this.classes}>
         {this._renderLoading(h)}
         {this._renderFilePanel(h)}
         {this._renderProgressBar(h)}
@@ -243,7 +243,7 @@ export default {
     },
 
     _getThumbnail(cb) {
-      if (~[TYPES.PIC, TYPES.PIC_TEXT].indexOf(this.type)) {
+      if (!~[TYPES.PIC, TYPES.PIC_TEXT].indexOf(this.type)) {
         return;
       }
 
@@ -256,7 +256,7 @@ export default {
 
       const reader = new FileReader();
 
-      reader.onloaded = () => cb(reader.result);
+      reader.onloadend = () => cb && cb(reader.result);
       reader.readAsDataURL(this.file.rawFile);
     },
 

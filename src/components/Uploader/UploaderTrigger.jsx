@@ -1,8 +1,9 @@
 import VueTypes from 'vue-types';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
+import { cloneElement } from 'utils/node';
+import { splitDataByComponent } from 'utils/split';
 
 import Button from 'components/Button';
-import { splitDataByComponent } from 'utils/split';
 
 const CLASS_PREFIX = 'uploader-trigger';
 
@@ -43,6 +44,13 @@ export default {
       },
       Component
     );
+    const child = this.$slots.default && this.$slots.default[0];
+    const trigger =
+      child &&
+      cloneElement(child, {
+        class: this._addPrefix('btn'),
+        on: { click: this._handleClick },
+      });
 
     return (
       <div class={this.classes} onClick={this._handleClick}>
@@ -55,7 +63,7 @@ export default {
           ref="input"
           onInput={this._handleInput}
         />
-        {this.$slots.default || (
+        {trigger || (
           <Component {...cmpData}>{this.$t('_.Uploader.upload')}</Component>
         )}
       </div>

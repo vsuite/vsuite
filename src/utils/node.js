@@ -203,44 +203,47 @@ function cloneElement(vnode, data, deep) {
   cloned.data = {
     ...cloned.data,
     ...data,
-    class: mergeCls(cloned.data.class || [], data.class || []),
-    style: mergeStyles(cloned.data.style || {}, data.style || {}),
+    class: mergeCls(_.get(cloned, 'data.class') || [], data.class || []),
+    style: mergeStyles(_.get(cloned, 'data.style') || {}, data.style || {}),
     attrs: {
-      ...(cloned.data.attrs || {}),
+      ...(_.get(cloned, 'data.attrs') || {}),
       ...(data.attrs || {}),
     },
     domProps: {
-      ...(cloned.data.domProps || {}),
+      ...(_.get(cloned, 'data.domProps') || {}),
       ...(data.domProps || {}),
     },
     nativeOn: {
-      ...(cloned.data.nativeOn || {}),
+      ...(_.get(cloned, 'data.nativeOn') || {}),
       ...(data.nativeOn || {}),
     },
-    directives: [...(cloned.data.directives || []), ...(data.directives || [])],
+    directives: [
+      ...(_.get(cloned, 'data.directives') || []),
+      ...(data.directives || []),
+    ],
     scopedSlots: {
-      ...(cloned.data.scopedSlots || {}),
+      ...(_.get(cloned, 'data.scopedSlots') || {}),
       ...(data.scopedSlots || {}),
     },
-    slot: data.slot || cloned.data.slot,
-    key: data.key || cloned.data.key,
-    ref: data.ref || cloned.data.ref,
+    slot: data.slot || _.get(cloned, 'data.slot'),
+    key: data.key || _.get(cloned, 'data.key'),
+    ref: data.ref || _.get(cloned, 'data.ref'),
   };
 
   if (cloned.componentOptions) {
     cloned.componentOptions = {
       ...cloned.componentOptions,
       listeners: {
-        ...(cloned.componentOptions.listeners || {}),
+        ...(_.get(cloned, 'componentOptions.listeners') || {}),
         ...(data.on || {}),
       },
       propsData: {
-        ...(cloned.componentOptions.propsData || {}),
+        ...(_.get(cloned, 'componentOptions.propsData') || {}),
         ...(data.props || {}),
       },
     };
   } else {
-    cloned.data.on = { ...(vnode.data.on || {}), ...(data.on || {}) };
+    cloned.data.on = { ...(_.get(vnode, 'data.on') || {}), ...(data.on || {}) };
   }
 
   if (data.key) {
