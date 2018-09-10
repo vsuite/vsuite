@@ -27,6 +27,21 @@ const guid = (num = 8) =>
     .toString(36)
     .slice(0, num)
     .toUpperCase();
+const getFiles = event => {
+  if (event.dataTransfer && typeof event.dataTransfer === 'object') {
+    return event.dataTransfer.files;
+  }
+
+  if (event.clipboardData) {
+    return event.clipboardData.files;
+  }
+
+  if (event.target) {
+    return event.target.files;
+  }
+
+  return [];
+};
 
 export default {
   name: 'Uploader',
@@ -48,8 +63,8 @@ export default {
     data: VueTypes.object.def({}),
     autoUpload: VueTypes.bool,
     maxFileSize: VueTypes.number.def(5 << 20),
-    fileList: VueTypes.arrayOf(VueTypes.shape(FILE_TYPE)),
-    defaultFileList: VueTypes.arrayOf(VueTypes.shape(FILE_TYPE)).def([]),
+    fileList: VueTypes.arrayOf(VueTypes.shape(FILE_TYPE).loose),
+    defaultFileList: VueTypes.arrayOf(VueTypes.shape(FILE_TYPE).loose).def([]),
     multiple: VueTypes.bool.def(false),
     drag: VueTypes.bool.def(false),
     paste: VueTypes.bool.def(false),
@@ -87,8 +102,14 @@ export default {
     return (
       <div class={[this.classPrefix, this._addPrefix(this.type)]}>
         {this.type === TYPES.PIC
-          ? [this._renderFileItems(h), this._renderTrigger(h)]
-          : [this._renderTrigger(h), this._renderFileItems(h)]}
+          ? [
+              this.showUploadList ? this._renderFileItems(h) : null,
+              this._renderTrigger(h),
+            ]
+          : [
+              this._renderTrigger(h),
+              this.showUploadList ? this._renderFileItems(h) : null,
+            ]}
       </div>
     );
   },
@@ -104,6 +125,8 @@ export default {
             multiple: this.multiple,
             disabled: this.disabled,
             accept: this.accept,
+            drag: this.drag,
+            paste: this.paste,
             componentClass: this.toggleComponentClass,
           },
           on: { change: this._handleTriggerChange },
@@ -135,10 +158,6 @@ export default {
     },
 
     _createFile(file) {
-      if (!file.rawFile) {
-        file = { rawFile: file };
-      }
-
       return {
         ...file,
         key: file.key || guid(),
@@ -230,7 +249,7 @@ export default {
 
     _handleTriggerChange(event) {
       const fileList = this.currentFileList;
-      const files = event.target.files || [];
+      const files = getFiles(event);
       const newFileList = [];
 
       Array.from(files).forEach(file => {

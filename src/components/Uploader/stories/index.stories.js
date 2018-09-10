@@ -60,16 +60,84 @@ stories.add('default-file-list', () => ({
         <Uploader
           defaultFileList={[
             {
+              key: 1,
               name: 'file1.jpg',
-              fileKey: 1,
+              status: 'finish',
+              progress: 100,
             },
             {
+              key: 2,
               name: 'file2.jpg',
-              fileKey: 2,
+              status: 'finish',
+              progress: 100,
             },
           ]}
           action="//jsonplaceholder.typicode.com/posts/"
         />
+      </Demo>
+    );
+  },
+}));
+
+stories.add('disabled', () => ({
+  render() {
+    return (
+      <Demo title="Disabled">
+        <Uploader
+          disabled
+          disabledFileItem
+          defaultFileList={[
+            {
+              key: 1,
+              name: 'file1.jpg',
+              status: 'finish',
+              progress: 100,
+            },
+            {
+              key: 2,
+              name: 'file2.jpg',
+              status: 'finish',
+              progress: 100,
+            },
+          ]}
+          action="//jsonplaceholder.typicode.com/posts/"
+        />
+      </Demo>
+    );
+  },
+}));
+
+stories.add('drag', () => ({
+  render() {
+    return (
+      <Demo title="Drag">
+        <Uploader
+          drag
+          type="picture"
+          action="//jsonplaceholder.typicode.com/posts/"
+        >
+          <button>
+            <Icon icon="cloud-upload" size="lg" />
+          </button>
+        </Uploader>
+      </Demo>
+    );
+  },
+}));
+
+stories.add('paste', () => ({
+  render() {
+    return (
+      <Demo title="Paste">
+        <Uploader
+          paste
+          type="picture"
+          action="//jsonplaceholder.typicode.com/posts/"
+        >
+          <div style={{ width: '200px', lineHeight: '66px' }}>
+            <Icon icon="cloud-upload" size="lg" />
+          </div>
+        </Uploader>
       </Demo>
     );
   },

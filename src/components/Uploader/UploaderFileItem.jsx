@@ -39,7 +39,7 @@ export default {
         STATUS.SUCCESS,
       ]),
       progress: VueTypes.number,
-    }),
+    }).loose,
     type: VueTypes.oneOf([TYPES.TEXT, TYPES.PIC, TYPES.PIC_TEXT]).def(
       TYPES.TEXT
     ),
