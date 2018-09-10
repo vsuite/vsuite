@@ -31,11 +31,8 @@ export default {
       lengthMenuInfo: '每頁 {{0}} 條',
       totalInfo: '共 {{0}} 條數據',
     },
-    DatePicker: {
-      ...Calendar,
-    },
+    Calendar,
     DateRangePicker: {
-      ...Calendar,
       last7Days: '最近 7 天',
     },
     Picker: {

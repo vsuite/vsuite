@@ -31,11 +31,8 @@ export default {
       lengthMenuInfo: '{{0}} / page',
       totalInfo: 'total: {{0}}',
     },
-    DatePicker: {
-      ...Calendar,
-    },
+    Calendar: Calendar,
     DateRangePicker: {
-      ...Calendar,
       last7Days: 'Last 7 Days',
     },
     Picker: {
