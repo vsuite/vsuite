@@ -80,9 +80,8 @@ export default {
   },
 
   data() {
-    const initVal = _.isUndefined(this.value)
-      ? this.defaultValue
-      : this.value || [];
+    const initVal =
+      (_.isUndefined(this.value) ? this.defaultValue : this.value) || [];
 
     return {
       innerVal: initVal,

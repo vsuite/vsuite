@@ -4,7 +4,7 @@ import moment from 'moment';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
 import { getPosition, scrollTop } from 'shares/dom';
 
-import { scrollTopAnimation } from './util';
+import { scrollTopAnimation } from './utils';
 
 const CLASS_PREFIX = 'calendar-time-dropdown';
 const RANGES = {

@@ -33,6 +33,7 @@ export default {
     },
     Calendar: Calendar,
     DateRangePicker: {
+      ...Calendar,
       last7Days: 'Last 7 Days',
     },
     Picker: {

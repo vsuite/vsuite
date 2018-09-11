@@ -5,7 +5,7 @@ import { scrollTop } from 'shares/dom';
 
 import CalendarMonthDropdownItem from './CalendarMonthDropdownItem.jsx';
 
-import { scrollTopAnimation } from './util';
+import { scrollTopAnimation } from './utils';
 
 const CLASS_PREFIX = 'calendar-month-dropdown';
 const MIN_YEAR = 1950;

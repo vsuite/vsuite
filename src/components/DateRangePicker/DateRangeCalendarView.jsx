@@ -40,7 +40,7 @@ export default {
           selected={this.value}
           hoverValue={this.hoverValue}
           isoWeek={this.isoWeek}
-          inSameMonth={this._inSameThisMonthDate}
+          inSameMonth={this._inSameThisMonthDate.bind(this)}
           disabledDate={this.disabledDate}
           {...listeners}
         />

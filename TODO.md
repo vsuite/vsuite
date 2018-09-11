@@ -1,6 +1,9 @@
-- responsive size
-- title, $slots.title, $scopedSlots.title, renderTitle
-- renderX
-- not trigger event when disabled
-- all picker support keypath(valueKey, labelKey, childrenKey)
-- all picker disabled value also can selected by keydown
+- 响应式尺寸问题
+- x, $slots.x, $scopedSlots.x, renderX 统一写法
+- 参数 render
+- 所有组件 props 排序，注释与整理
+- data entry 组件 变动事件 数据可以修改 cloneDeep
+- nativeOn 事件支持
+- Object.freeze 对特别组件进行性能优化
+- 代码注释补全
+- .d.ts 定义文件

@@ -15,7 +15,7 @@ export default {
     selected: VueTypes.arrayOf(VueTypes.any),
     hoverValue: VueTypes.arrayOf(VueTypes.any),
     isoWeek: VueTypes.bool.def(false),
-    isSameMonth: Function,
+    inSameMonth: Function,
     disabledDate: Function,
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
   },

@@ -7,7 +7,7 @@ import CalendarMonthDropdown from './CalendarMonthDropdown.jsx';
 import CalendarTimeDropdown from './CalendarTimeDropdown.jsx';
 
 import { CALENDAR_STATE } from './constant';
-import { shouldDate, shouldMonth, shouldTime, disabledTime } from './util';
+import { shouldDate, shouldMonth, shouldTime, disabledTime } from './utils';
 
 const CLASS_PREFIX = 'calendar';
 

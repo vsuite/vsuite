@@ -1,29 +1,85 @@
-/*
- * Copyright (c) 2015-present, blackcater all right reserved.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 import VueTypes from 'vue-types';
-import prefix, { defaultClassPrefix } from 'utils/prefix';
+import _ from 'lodash';
+import moment from 'moment';
 
-const CLASS_PREFIX = '';
+import { CALENDAR_STATE } from 'components/_calendar';
+
+import DateRangeCalendar from './DateRangeCalendar.jsx';
 
 export default {
   name: 'DateRangePicker',
 
   props: {
-    classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
+    format: VueTypes.string.def('YYYY-MM-DD'),
+    isoWeek: VueTypes.bool.def(false),
+    limitStartYear: {
+      type: Number,
+      default: undefined,
+    },
+    limitEndYear: {
+      type: Number,
+      default: undefined,
+    },
+    sequence: VueTypes.number,
+    value: VueTypes.arrayOf(VueTypes.any).def([]),
+    hoverValue: VueTypes.arrayOf(VueTypes.any),
+    calendarDate: VueTypes.arrayOf(VueTypes.any).def(() => {
+      const date = moment();
+
+      return [date.clone(), date.clone().add(1, 'month')];
+    }),
+    disabledDate: Function,
+  },
+
+  data() {
+    return { calendarState: null };
   },
 
   render() {
-    return null;
+    const listeners = { on: _.pick(this.$listeners, ['select', 'mousemove']) };
+
+    return (
+      <DateRangeCalendar
+        format={this.format}
+        isoWeek={this.isoWeek}
+        value={this.value}
+        hoverValue={this.hoverValue}
+        calendarDate={this.calendarDate}
+        calendarState={this.calendarState}
+        sequence={this.sequence}
+        limitStartYear={this.limitStartYear}
+        limitEndYear={this.limitEndYear}
+        disabledDate={this.disabledDate}
+        {...listeners}
+        onMove-forword={this._handleMoveForward}
+        onMove-backward={this._handleMoveBackward}
+        onToggle-month-dropdown={this._handleToggleMonthDropdown}
+        onChange-page-date={this._handleChangePageDate}
+      />
+    );
   },
 
   methods: {
-    _addPrefix(cls) {
-      return prefix(this.classPrefix, cls);
+    _handleMoveBackward(date) {
+      this.$emit('change-calendar-date', this.sequence, date);
+    },
+
+    _handleMoveForward(date) {
+      this.$emit('change-calendar-date', this.sequence, date);
+    },
+
+    _handleToggleMonthDropdown() {
+      if (this.calendarState === CALENDAR_STATE.MONTH) {
+        this.calendarState = null;
+      } else {
+        this.calendarState = CALENDAR_STATE.MONTH;
+      }
+    },
+
+    _handleChangePageDate(date) {
+      this.calendarState = null;
+
+      this.$emit('change-calendar-date', this.sequence, date);
     },
   },
 };

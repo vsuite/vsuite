@@ -4,7 +4,7 @@ import prefix, { defaultClassPrefix } from 'utils/prefix';
 
 import CalendarTable from './CalendarTable.jsx';
 
-import { getMonthView } from './util';
+import { getMonthView } from './utils';
 
 const CLASS_PREFIX = 'calendar-view';
 
