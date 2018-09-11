@@ -93,6 +93,14 @@ export default {
         this.pageDate = nextVal;
       }
     },
+    currentVisible(val) {
+      if (val) {
+        this.$nextTick(
+          () =>
+            this.$refs.calendar && this.$refs.calendar._updateScrollPosition()
+        );
+      }
+    },
   },
 
   render(h) {
@@ -194,9 +202,7 @@ export default {
           onToggle-time-dropdown={this._handleToggleTimeDropdown}
           onChange-page-date={this._handleChangePageDate}
           onChange-page-time={this._handleChangePageTime}
-          calendarRef={ref => {
-            this.calendar = ref;
-          }}
+          ref="calendar"
         />
       );
     },

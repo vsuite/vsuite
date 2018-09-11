@@ -37,32 +37,55 @@ export default {
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
   },
 
+  computed: {
+    showDate() {
+      return shouldDate(this.format);
+    },
+
+    showMonth() {
+      return shouldMonth(this.format);
+    },
+
+    showTime() {
+      return shouldTime(this.format);
+    },
+
+    onlyShowMonth() {
+      return this.showMonth && !this.showDate && !this.showTime;
+    },
+
+    onlyShowTime() {
+      return this.showTime && !this.showDate && !this.showMonth;
+    },
+
+    dropMonth() {
+      return this.calendarState === CALENDAR_STATE.MONTH || this.onlyShowMonth;
+    },
+
+    dropTime() {
+      return this.calendarState === CALENDAR_STATE.TIME || this.onlyShowTime;
+    },
+
+    classes() {
+      return [
+        this.classPrefix,
+        {
+          [this._addPrefix('show-time-dropdown')]: this.dropTime,
+          [this._addPrefix('show-month-dropdown')]: this.dropMonth,
+        },
+      ];
+    },
+  },
+
   render() {
-    const showMonth = shouldMonth(this.format);
-    const showDate = shouldDate(this.format);
-    const showTime = shouldTime(this.format);
-
-    const onlyShowTime = showTime && !showDate && !showMonth;
-    const onlyShowMonth = showMonth && !showDate && !showTime;
-    const dropTime = this.calendarState === CALENDAR_STATE.TIME || onlyShowTime;
-    const dropMonth =
-      this.calendarState === CALENDAR_STATE.MONTH || onlyShowMonth;
-    const classes = [
-      this.classPrefix,
-      {
-        [this._addPrefix('show-time-dropdown')]: dropTime,
-        [this._addPrefix('show-month-dropdown')]: dropMonth,
-      },
-    ];
-
     return (
-      <div class={classes}>
+      <div class={this.classes}>
         <CalendarHeader
           date={this.pageDate}
           format={this.format}
-          showMonth={showMonth}
-          showDate={showDate}
-          showTime={showTime}
+          showMonth={this.showMonth}
+          showDate={this.showDate}
+          showTime={this.showTime}
           disabledDate={this._disabledDate}
           disabledTime={this._disabledTime}
           onMove-forward={this._handleMoveForward}
@@ -70,7 +93,7 @@ export default {
           onToggle-month-dropdown={this._handleToggleMonthDropdown}
           onToggle-time-dropdown={this._handleToggleTimeDropdown}
         />
-        {showDate && (
+        {this.showDate && (
           <CalendarView
             key="MonthView"
             activeDate={this.pageDate}
@@ -79,20 +102,21 @@ export default {
             onSelect={this._handleSelect}
           />
         )}
-        {showMonth && (
+        {this.showMonth && (
           <CalendarMonthDropdown
             date={this.pageDate}
-            show={dropMonth}
+            show={this.dropMonth}
             limitStartYear={this.limitStartYear}
             limitEndYear={this.limitEndYear}
             onSelect={this._handleChangePageMonth}
+            ref="month"
           />
         )}
-        {showTime && (
+        {this.showTime && (
           <CalendarTimeDropdown
             date={this.pageDate}
             format={this.format}
-            show={dropTime}
+            show={this.dropTime}
             disabledHours={this.disabledHours}
             disabledMinutes={this.disabledMinutes}
             disabledSeconds={this.disabledSeconds}
@@ -100,6 +124,7 @@ export default {
             hideMinutes={this.hideMinutes}
             hideSeconds={this.hideSeconds}
             onSelect={this._handleChangePageTime}
+            ref="time"
           />
         )}
       </div>
@@ -145,6 +170,16 @@ export default {
 
     _handleChangePageTime(timeDate, event) {
       this.$emit('change-page-time', timeDate, event);
+    },
+
+    _updateScrollPosition() {
+      if (this.showMonth && this.dropMonth) {
+        this.$refs.month && this.$refs.month._updateScrollPosition();
+      }
+
+      if (this.showTime && this.dropTime) {
+        this.$refs.time && this.$refs.time._updateScrollPosition();
+      }
     },
 
     _addPrefix(cls) {
