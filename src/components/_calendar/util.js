@@ -11,6 +11,34 @@ export const shouldDate = format =>
 export const shouldOnlyTime = format =>
   /([Hhms])/.test(format) && !/([YMD])/.test(format);
 
+export function disabledTime(instance, date) {
+  const keys = [
+    'disabledHours',
+    'disabledMinutes',
+    'disabledSeconds',
+    'hideHours',
+    'hideHours',
+    'hideMinutes',
+    'hideSeconds',
+  ];
+
+  return keys.some(key => {
+    if (/(Hours)/.test(key)) {
+      return instance[key] && instance[key](date.hours(), date);
+    }
+
+    if (/(Minutes)/.test(key)) {
+      return instance[key] && instance[key](date.minutes(), date);
+    }
+
+    if (/(Seconds)/.test(key)) {
+      return instance[key] && instance[key](date.seconds(), date);
+    }
+
+    return false;
+  });
+}
+
 export function getMonthView(monthDate, isoWeek) {
   let firstDayOfMonth = monthDate.day();
   let distance = 0 - firstDayOfMonth;

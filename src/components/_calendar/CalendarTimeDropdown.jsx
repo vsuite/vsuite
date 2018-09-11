@@ -65,8 +65,13 @@ export default {
   },
 
   render(h) {
+    const data = {
+      class: this.classPrefix,
+      directives: [{ name: 'show', value: this.show }],
+    };
+
     return (
-      <div class={this.classPrefix}>
+      <div {...data}>
         <div class={this._addPrefix('content')} ref="content">
           <div class={this._addPrefix('row')}>
             {this._renderColumn(h, 'hours', this.time.hours)}

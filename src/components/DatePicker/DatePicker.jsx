@@ -10,7 +10,11 @@ import {
   PickerMenuWrapper,
   getToggleWrapperClassName,
 } from 'components/_picker';
-import Calendar, { shouldOnlyTime } from 'components/_calendar';
+import Calendar, {
+  CALENDAR_STATE,
+  shouldOnlyTime,
+  disabledTime,
+} from 'components/_calendar';
 
 import DatePickerToolbar from './DatePickerToolbar.jsx';
 
@@ -65,8 +69,6 @@ export default {
     menuClassName: VueTypes.string,
     menuStyle: VueTypes.object,
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
-    // change, changeCalendarDate, toggleMonthDropdown, toggleTimeDropdown
-    // select, previewMonth, nextMonth, ok
   },
 
   data() {
@@ -87,7 +89,7 @@ export default {
 
   watch: {
     currentVal(nextVal, preVal) {
-      if (!nextVal.isSame(preVal, 'day')) {
+      if (nextVal && !nextVal.isSame(preVal, 'day')) {
         this.pageDate = nextVal;
       }
     },
@@ -160,7 +162,7 @@ export default {
             <DatePickerToolbar
               ranges={this.ranges}
               pageDate={this.pageDate}
-              disabledHandler={this._disabledToolbarHandler}
+              disabledHandle={this._disabledToolbarHandle}
               onShortcut={this._handleShortcutPageDate}
               onOk={this._handleOk}
             />
@@ -185,13 +187,13 @@ export default {
           isoWeek={this.isoWeek}
           calendarState={this.calendarState}
           pageDate={this.pageDate}
-          onMoveForword={this._handleMoveForward}
-          onMoveBackward={this._handleMoveBackward}
+          onMove-forward={this._handleMoveForward}
+          onMove-backward={this._handleMoveBackward}
           onSelect={this._handleSelect}
-          onToggleMonthDropdown={this._handleToggleMonthDropdown}
-          onToggleTimeDropdown={this._handleToggleTimeDropdown}
-          onChangePageDate={this._handleChangePageDate}
-          onChangePageTime={this._handleChangePageTime}
+          onToggle-month-dropdown={this._handleToggleMonthDropdown}
+          onToggle-time-dropdown={this._handleToggleTimeDropdown}
+          onChange-page-date={this._handleChangePageDate}
+          onChange-page-time={this._handleChangePageTime}
           calendarRef={ref => {
             this.calendar = ref;
           }}
@@ -207,27 +209,110 @@ export default {
         : this.$slots.placeholder || this.placeholder || this.format;
     },
 
-    _disabledToolbarHandler() {},
+    _disabledToolbarHandle(date) {
+      const allowDate = this.disabledDate ? this.disabledDate(date) : false;
+      const allowTime = disabledTime(this, date);
 
-    _handleOk() {},
+      return allowDate || allowTime;
+    },
 
-    _handleClean() {},
+    _setVal(date, event) {
+      this.innerVal = date;
 
-    _handleShortcutPageDate() {},
+      this.$emit('change', date, event);
+    },
 
-    _handleSelect() {},
+    _setPageDate(date, event) {
+      this.pageDate = date;
 
-    _handleMoveBackward() {},
+      this.$emit('change-calendar-date', date, event);
+    },
 
-    _handleMoveForward() {},
+    _handleOk(event) {
+      this._closePopper();
 
-    _handleToggleMonthDropdown() {},
+      this._setVal(this.pageDate, event);
 
-    _handleToggleTimeDropdown() {},
+      this.$emit('ok', this.pageDate, event);
+    },
 
-    _handleChangePageDate() {},
+    _handleClean(event) {
+      if (this.disabled) return;
 
-    _handleChangePageTime() {},
+      this.pageDate = moment();
+
+      this._setVal(null, event);
+    },
+
+    _handleShortcutPageDate(date, close, event) {
+      this._setVal(date, event);
+
+      if (close !== false) {
+        this._closePopper();
+      }
+    },
+
+    _handleSelect(date, event) {
+      this._setPageDate(date, event);
+
+      this.$emit('select', date, event);
+    },
+
+    _handleMoveBackward(date, event) {
+      this._setPageDate(date, event);
+
+      this.$emit('next-month', date, event);
+    },
+
+    _handleMoveForward(date, event) {
+      this._setPageDate(date, event);
+
+      this.$emit('prev-month', date, event);
+    },
+
+    _handleToggleMonthDropdown(event) {
+      let toggle;
+
+      if (this.calendarState === CALENDAR_STATE.MONTH) {
+        toggle = false;
+
+        this.calendarState = null;
+      } else {
+        toggle = true;
+
+        this.calendarState = CALENDAR_STATE.MONTH;
+      }
+
+      this.$emit('toggle-month-dropdown', toggle, event);
+    },
+
+    _handleToggleTimeDropdown(event) {
+      let toggle;
+
+      if (this.calendarState === CALENDAR_STATE.TIME) {
+        toggle = false;
+
+        this.calendarState = null;
+      } else {
+        toggle = true;
+
+        this.calendarState = CALENDAR_STATE.TIME;
+      }
+
+      this.$emit('toggle-time-dropdown', toggle, event);
+    },
+
+    _handleChangePageDate(date, event) {
+      this.calendarState = null;
+
+      this._setPageDate(date, event);
+    },
+
+    _handleChangePageTime(date, event) {
+      this.calendarState = null;
+
+      this._setPageDate(date, event);
+    },
 
     _addPrefix(cls) {
       return prefix(this.classPrefix, cls);

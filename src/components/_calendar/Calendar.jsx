@@ -7,7 +7,7 @@ import CalendarMonthDropdown from './CalendarMonthDropdown.jsx';
 import CalendarTimeDropdown from './CalendarTimeDropdown.jsx';
 
 import { CALENDAR_STATE } from './constant';
-import { shouldDate, shouldMonth, shouldTime } from './util';
+import { shouldDate, shouldMonth, shouldTime, disabledTime } from './util';
 
 const CLASS_PREFIX = 'calendar';
 
@@ -65,10 +65,10 @@ export default {
           showTime={showTime}
           disabledDate={this._disabledDate}
           disabledTime={this._disabledTime}
-          onMoveForword={this._handleMoveForword}
-          onMoveBackward={this._handleMoveBackward}
-          onToggleMonthDropdown={this._handleToggleMonthDropdown}
-          onToggleTimeDropdown={this._handleToggleTimeDropdown}
+          onMove-forward={this._handleMoveForward}
+          onMove-backward={this._handleMoveBackward}
+          onToggle-month-dropdown={this._handleToggleMonthDropdown}
+          onToggle-time-dropdown={this._handleToggleTimeDropdown}
         />
         {showDate && (
           <CalendarView
@@ -112,35 +112,11 @@ export default {
     },
 
     _disabledTime(date) {
-      const keys = [
-        'disabledHours',
-        'disabledMinutes',
-        'disabledSeconds',
-        'hideHours',
-        'hideHours',
-        'hideMinutes',
-        'hideSeconds',
-      ];
-
-      return keys.some(key => {
-        if (/(Hours)/.test(key)) {
-          return this[key] && this[key](date.hours(), date);
-        }
-
-        if (/(Minutes)/.test(key)) {
-          return this[key] && this[key](date.minutes(), date);
-        }
-
-        if (/(Seconds)/.test(key)) {
-          return this[key] && this[key](date.seconds(), date);
-        }
-
-        return false;
-      });
+      return disabledTime(this, date);
     },
 
-    _handleSelect(date) {
-      this.$emit('select', date);
+    _handleSelect(date, event) {
+      this.$emit('select', date, event);
     },
 
     _handleMoveBackward(event) {
@@ -151,7 +127,7 @@ export default {
       );
     },
 
-    _handleMoveForword(event) {
+    _handleMoveForward(event) {
       this.$emit('move-forward', this.pageDate.clone().add(1, 'month'), event);
     },
 

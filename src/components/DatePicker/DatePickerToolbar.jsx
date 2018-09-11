@@ -80,7 +80,7 @@ export default {
             [this._addPrefix('btn-disabled')]: disabled,
           },
         ],
-        on: disabled ? {} : { ok: this._handleOk },
+        on: disabled ? {} : { click: this._handleOk },
       };
 
       return (

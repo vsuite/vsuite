@@ -62,10 +62,10 @@ export default {
       return days;
     },
 
-    _handleSelect(date, disabled) {
+    _handleSelect(date, disabled, event) {
       if (disabled) return;
 
-      this.$emit('select', date);
+      this.$emit('select', date, event);
     },
 
     _addPrefix(cls) {

@@ -33,8 +33,13 @@ export default {
   },
 
   render(h) {
+    const data = {
+      class: this.classPrefix,
+      directives: [{ name: 'show', value: this.show }],
+    };
+
     return (
-      <div class={this.classPrefix}>
+      <div {...data}>
         <div class={this._addPrefix('content')}>
           <div class={this._addPrefix('scroll')} ref="scroll">
             {this._renderBlock(h)}

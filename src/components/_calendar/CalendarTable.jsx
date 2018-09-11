@@ -38,8 +38,8 @@ export default {
   },
 
   methods: {
-    _handleSelect(date) {
-      this.$emit('select', date);
+    _handleSelect(date, event) {
+      this.$emit('select', date, event);
     },
 
     _addPrefix(cls) {
