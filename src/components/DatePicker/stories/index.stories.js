@@ -229,3 +229,13 @@ stories.add('shortcut', () => ({
     );
   },
 }));
+
+stories.add('controlled', () => ({
+  render() {
+    return (
+      <Demo title="Controlled">
+        <DatePicker style={{ width: '280px' }} visible value={moment()} />
+      </Demo>
+    );
+  },
+}));
