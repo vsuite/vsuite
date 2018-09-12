@@ -193,13 +193,17 @@ export default {
 
     _getDateString(value) {
       const nextValue = value || this.currentVal;
-      const startDate = _.get(nextValue, '0');
-      const endDate = _.get(nextValue, '1');
+      let startDate = _.get(nextValue, '0');
+      let endDate = _.get(nextValue, '1');
 
-      if (startDate && endDate) {
-        return `${startDate.format(this.format)} ~ ${endDate.format(
-          this.format
-        )}`;
+      if (startDate || endDate) {
+        if (!startDate || startDate.isAfter(endDate)) {
+          [startDate, endDate] = [endDate, startDate];
+        }
+
+        return `${startDate ? startDate.format(this.format) : this.format} ~ ${
+          endDate ? endDate.format(this.format) : this.format
+        }`;
       }
 
       return (
@@ -394,7 +398,7 @@ export default {
 
       if (this.doneSelected && !_.isUndefined(this.hoverRange)) {
         this.currentHoverDate = date;
-        this.hoverValue = nextHoverValue;
+        this.hoverVal = nextHoverValue;
 
         return;
       } else if (this.doneSelected) {
@@ -413,7 +417,6 @@ export default {
           nextHoverValue[1].isAfter(this.hoverVal[1])
             ? nextHoverValue[1]
             : this.hoverVal[1],
-          nextValue[2],
         ];
       }
 
@@ -423,11 +426,11 @@ export default {
       }
 
       this.currentHoverDate = date;
-      this.selectVal = nextValue;
+      this.selectVal = [...nextValue];
     },
 
     _handleChangeCalendarDate(index, date) {
-      this.calendarDate[index] = date;
+      this.calendarDate.splice(index, 1, date);
     },
 
     _addPrefix(cls) {

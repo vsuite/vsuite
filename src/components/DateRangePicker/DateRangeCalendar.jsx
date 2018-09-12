@@ -44,7 +44,7 @@ export default {
     },
 
     dropMonth() {
-      return this.calendarState === 'DROP_MONTH';
+      return this.calendarState === CALENDAR_STATE.MONTH;
     },
 
     classes() {
@@ -90,7 +90,7 @@ export default {
           disabledBackward={this.disabledBackward}
           disabledForword={this.disabledForward}
           onMove-backward={this._handleMoveBackward}
-          onMove-forword={this._handleMoveForward}
+          onMove-forward={this._handleMoveForward}
           onToggle-month-dropdown={this._handleToggleMonthDropdown}
         />
 

@@ -21,7 +21,7 @@ export default {
   },
 
   render() {
-    const listeners = { on: this.listeners };
+    const listeners = { on: this.$listeners };
 
     return (
       <div class={this.classPrefix}>

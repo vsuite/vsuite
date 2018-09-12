@@ -51,7 +51,7 @@ export default {
         limitEndYear={this.limitEndYear}
         disabledDate={this.disabledDate}
         {...listeners}
-        onMove-forword={this._handleMoveForward}
+        onMove-forward={this._handleMoveForward}
         onMove-backward={this._handleMoveBackward}
         onToggle-month-dropdown={this._handleToggleMonthDropdown}
         onChange-page-date={this._handleChangePageDate}

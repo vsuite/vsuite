@@ -123,8 +123,11 @@ export default {
         if (!disabled) {
           listeners = {
             on: {
-              mouseenter: this._handleMouseenter.bind(this, thisDate),
-              click: _.debounce(this._handleSelect.bind(this, thisDate), 100),
+              mouseenter: event => this._handleMouseenter(thisDate, event),
+              click: _.debounce(
+                event => this._handleSelect(thisDate, event),
+                100
+              ),
             },
           };
         }
