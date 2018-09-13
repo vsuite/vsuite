@@ -79,3 +79,13 @@ stories.add('size', () => ({
     },
   },
 }));
+
+stories.add('disabled', () => ({
+  render: h => {
+    return (
+      <Demo title="Disabled">
+        <Pagination disabled pages={10} activePage={1} prev last next first />
+      </Demo>
+    );
+  },
+}));

@@ -24,6 +24,7 @@ export default {
     last: VueTypes.bool.def(false),
     prev: VueTypes.bool.def(false),
     next: VueTypes.bool.def(false),
+    disabled: VueTypes.oneOfType([VueTypes.bool, VueTypes.func]).def(false),
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
     buttonComponentClass: VueTypes.oneOfType([
       VueTypes.string,
@@ -65,6 +66,14 @@ export default {
 
   methods: {
     _renderItem(h, data, children) {
+      let disabled = data.splitProps.disabled || false;
+
+      if (typeof this.disabled === 'function') {
+        disabled = this.disabled(data.splitProps.eventKey);
+      } else if (typeof this.disabled === 'boolean') {
+        disabled = this.disabled;
+      }
+
       if (!data.splitProps.disabled) {
         data.on = {
           ...(data.on || {}),
@@ -74,6 +83,7 @@ export default {
 
       data.splitProps = {
         ...(data.splitProps || {}),
+        disabled,
         componentClass: this.buttonComponentClass,
       };
       children =

@@ -17,9 +17,8 @@ export const isSafari =
     !window.safari || window.safari.pushNotification
   );
 
-/*eslint-disable */
 // Internet Explorer 6-11
-export const isIE = !!navigator.userAgent.match(/MSIE/);
+export const isIE = /MSIE |Trident\/|Edge\//.test(window.navigator.userAgent);
 
 export const isIE8 = !!navigator.userAgent.match(/MSIE 8.0/);
 export const isIE9 = !!navigator.userAgent.match(/MSIE 9.0/);

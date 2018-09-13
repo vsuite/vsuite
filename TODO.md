@@ -7,3 +7,4 @@
 - Object.freeze 对特别组件进行性能优化
 - 代码注释补全
 - .d.ts 定义文件
+- auto-complete 组件无法输入中文

@@ -47,9 +47,7 @@ export default {
 
       for (let i = 0; i < 7; i += 1) {
         const thisDate = moment(this.weekendDate).add(i, 'd');
-        const selectValue = [this.selectedStartDate, this.selectedEndDate].sort(
-          (a, b) => (a ? a.unix() : 0) - (b ? b.unix() : 0)
-        );
+        const selectValue = [this.selectedStartDate, this.selectedEndDate];
         const disabled =
           this.disabledDate &&
           this.disabledDate(

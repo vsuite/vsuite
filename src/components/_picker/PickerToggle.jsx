@@ -3,6 +3,8 @@ import _ from 'lodash';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
 import { splitDataByComponent } from 'utils/split';
 
+import Ripple from 'components/Ripple';
+
 const CLASS_PREFIX = 'picker-toggle';
 
 export default {
@@ -62,6 +64,7 @@ export default {
             </span>
           )}
         {this.caret && <span class={this._addPrefix('caret')} />}
+        <Ripple />
       </Component>
     );
   },
