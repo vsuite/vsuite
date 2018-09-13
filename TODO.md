@@ -7,4 +7,4 @@
 - Object.freeze 对特别组件进行性能优化
 - 代码注释补全
 - .d.ts 定义文件
-- auto-complete 组件无法输入中文
+= input 类组件，修改 dom 的 value 或 check 值时机问题。（过早，会出现输入法消失问题）

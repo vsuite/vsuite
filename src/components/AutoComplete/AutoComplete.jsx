@@ -2,11 +2,10 @@ import VueTypes from 'vue-types';
 import _ from 'lodash';
 import popperMixin from 'mixins/popper';
 import onMenuKeydown from 'shares/onMenuKeydown';
-import prefix, { defaultClassPrefix } from 'utils/prefix';
+import prefix, { defaultClassPrefix, globalKey } from 'utils/prefix';
 import { splitDataByComponent } from 'utils/split';
 
 import { PickerMenuWrapper } from 'components/_picker';
-import Input from 'components/Input';
 
 import AutoCompleteItem from './AutoCompleteItem.jsx';
 
@@ -137,17 +136,18 @@ export default {
     };
     const iptData = splitDataByComponent(
       {
+        class: `${globalKey}input`,
         splitProps: {
           ...this.$attrs,
           disabled: this.disabled,
           value: this.currentVal,
         },
         on: {
-          change: this._handleInputChange,
-          keydown: this._handleInputKeydown,
+          input: this._handleInputChange,
+          // keydown: this._handleInputKeydown,
         },
       },
-      Input
+      'input'
     );
 
     this._addTriggerListeners(referenceData, acData);
@@ -155,7 +155,7 @@ export default {
     return (
       <div {...acData}>
         <div {...referenceData}>
-          <Input {...iptData} />
+          <input {...iptData} />
         </div>
         <transition name="picker-fade">
           {this._renderDropdownMenu(h, popperData)}
@@ -189,6 +189,8 @@ export default {
       this.innerVal = val;
       this.focusItemValue = val;
 
+      event.target.value = this.currentVal;
+
       this.$emit('change', val, event);
     },
 
@@ -201,9 +203,9 @@ export default {
       this.$emit('select', item, event);
     },
 
-    _handleInputChange(val, event) {
+    _handleInputChange(event) {
       this._openPopper();
-      this._setVal(val, event);
+      this._setVal(event.target.value, event);
     },
 
     _handleInputKeydown(event) {
