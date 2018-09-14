@@ -16,9 +16,12 @@ export default {
   },
 
   props: {
-    name: VueTypes.string.isRequired,
+    name: VueTypes.string,
     label: VueTypes.string, // slot
     help: VueTypes.string, // slot
+    rule: VueTypes.any,
+    isRequired: VueTypes.bool.def(false),
+    defaultValue: VueTypes.any,
     htmlFor: VueTypes.string,
     srOnly: VueTypes.bool.def(false),
     errorMessage: VueTypes.string,

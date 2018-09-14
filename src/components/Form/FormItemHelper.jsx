@@ -29,9 +29,9 @@ export default {
   render() {
     if (this.tooltip) {
       return (
-        <Tooltip>
+        <Tooltip class={this._addPrefix('tooltip')} placement="top-end">
           <template slot="title">{this.$slots.default}</template>
-          <span class={this.classes}>
+          <span class={this.classPrefix}>
             <Icon icon="question-circle-o" />
           </span>
         </Tooltip>

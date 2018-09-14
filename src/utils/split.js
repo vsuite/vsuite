@@ -150,7 +150,7 @@ const BUILDIN_ELEMENT_NAMES = [
 ];
 
 export function splitProps(data, keys) {
-  data = data || {};
+  data = _.omitBy(data || {}, _.isUndefined);
   keys = keys || [];
 
   return {

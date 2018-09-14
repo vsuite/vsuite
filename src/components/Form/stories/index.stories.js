@@ -12,10 +12,15 @@ stories.add('default', () => ({
     return (
       <Demo title="Default">
         <Form>
-          <Form.Item label="Username" name="name" help="Required">
+          <Form.Item
+            label="Username"
+            name="name"
+            help="Required"
+            helpTooltip={false}
+          >
             <Input />
           </Form.Item>
-          <Form.Item label="Email" name="email" help="Required" tooltip>
+          <Form.Item label="Email" name="email" help="Required">
             <Input type="email" />
           </Form.Item>
           <Form.Item label="Password" name="password">

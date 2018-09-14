@@ -1,6 +1,7 @@
 import VueTypes from 'vue-types';
 import _ from 'lodash';
 import Popper from 'popper.js';
+import { SchemaModel } from 'schema-typed';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
 
 const CLASS_PREFIX = 'form';
@@ -18,9 +19,10 @@ export default {
     layout: VueTypes.oneOf(['horizontal', 'vertical', 'inline']).def(
       'vertical'
     ),
+    fluid: VueTypes.bool.def(false),
     value: VueTypes.object,
     defaultValue: VueTypes.object.def(() => ({})),
-    model: VueTypes.any, // schema
+    model: VueTypes.any.def(() => SchemaModel({})), // schema
     checkDelay: VueTypes.number.def(500),
     checkTrigger: VueTypes.oneOf(['change', 'blur', 'focus']).def('change'),
     errorPlacement: VueTypes.oneOf(Popper.placements).def('bottom-start'),
@@ -40,19 +42,49 @@ export default {
     currentVal() {
       return _.isUndefined(this.value) ? this.innerVal : this.value;
     },
+
+    classes() {
+      return [
+        this.classPrefix,
+        this._addPrefix(this.layout),
+        this._addPrefix(
+          this.fluid && this.layout === 'vertical' ? 'fluid' : 'fixed-width'
+        ),
+      ];
+    },
   },
 
   render() {
-    return null;
+    return (
+      <form
+        class={this.classes}
+        onSubmit={this._handleSubmit}
+        onReset={this._handleReset}
+      >
+        {this.$slots.default}
+      </form>
+    );
   },
 
   methods: {
+    _handleSubmit(e) {
+      e.preventDefault();
+
+      this.$emit('submit');
+    },
+
+    _handleReset(e) {
+      e.preventDefault();
+
+      this.$emit('reset');
+    },
+
     _addPrefix(cls) {
       return prefix(this.classPrefix, cls);
     },
 
-    check() {},
+    validate() {},
 
-    cleanErrors() {},
+    resetFields() {},
   },
 };

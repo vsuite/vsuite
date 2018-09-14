@@ -152,6 +152,7 @@ input[type='checkbox']:focus {
   min-height: @line-height-computed;
   line-height: @line-height-base;
   font-size: @font-size-base;
+  cursor: pointer;
 
   &-tooltip {
     display: inline-block;
@@ -439,6 +440,10 @@ input[type='checkbox']:focus {
 
   .@{ns}help-block:not(.@{ns}help-block-tooltip) {
     padding-top: 4px;
+  }
+
+  .@{ns}help-block-tooltip .@{ns}help-block {
+    padding-top: 0;
   }
 
   .@{ns}form-control-wrapper {

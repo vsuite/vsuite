@@ -15,7 +15,7 @@ export default {
   },
 
   props: {
-    id: VueTypes.string,
+    id: String,
     type: VueTypes.string.def('text'),
     value: VueTypes.oneOfType([VueTypes.string, VueTypes.number]),
     defaultValue: VueTypes.oneOfType([VueTypes.string, VueTypes.number]),

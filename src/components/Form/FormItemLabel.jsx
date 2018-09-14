@@ -1,7 +1,7 @@
 import VueTypes from 'vue-types';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
 
-const CLASS_PREFIX = 'form-group';
+const CLASS_PREFIX = 'control-label';
 
 export default {
   name: 'FormItemLabel',
