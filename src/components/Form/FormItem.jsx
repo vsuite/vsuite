@@ -1,4 +1,5 @@
 import VueTypes from 'vue-types';
+import _ from 'lodash';
 import Popper from 'popper.js';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
 
@@ -26,8 +27,10 @@ export default {
     srOnly: VueTypes.bool.def(false),
     errorMessage: VueTypes.string,
     errorPlacement: VueTypes.oneOf(Popper.placements),
-    errorTooltip: VueTypes.bool,
-    helpTooltip: VueTypes.bool,
+    helpTooltip: {
+      type: Boolean,
+      default: undefined,
+    },
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
   },
 
@@ -41,6 +44,20 @@ export default {
           // [this._addPrefix('has-warning')]:
         },
       ];
+    },
+    hTooltip() {
+      return (
+        (_.isUndefined(this.helpTooltip)
+          ? this.$vForm && this.$vForm.helpTooltip
+          : this.helpTooltip) || false
+      );
+    },
+    ePlacement() {
+      return (
+        (_.isUndefined(this.errorPlacement)
+          ? this.$vForm && this.$vForm.errorPlacement
+          : this.errorPlacement) || 'bottom-start'
+      );
     },
   },
 
@@ -68,7 +85,11 @@ export default {
     },
 
     _renderItem() {
-      return <FormItemControl>{this.$slots.default}</FormItemControl>;
+      return (
+        <FormItemControl placement={this.ePlacement}>
+          {this.$slots.default}
+        </FormItemControl>
+      );
     },
 
     _renderHelper() {
@@ -77,7 +98,7 @@ export default {
       if (!hasHelper) return null;
 
       return (
-        <FormItemHelper htmlFor={this.htmlFor} tooltip={this.helpTooltip}>
+        <FormItemHelper htmlFor={this.htmlFor} tooltip={this.hTooltip}>
           {this.$slots.help || this.help}
         </FormItemHelper>
       );

@@ -11,7 +11,7 @@ export default {
 
   props: {
     htmlFor: VueTypes.string,
-    tooltip: VueTypes.bool,
+    tooltip: VueTypes.bool.def(false),
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
   },
 

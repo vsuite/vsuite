@@ -26,8 +26,7 @@ export default {
     checkDelay: VueTypes.number.def(500),
     checkTrigger: VueTypes.oneOf(['change', 'blur', 'focus']).def('change'),
     errorPlacement: VueTypes.oneOf(Popper.placements).def('bottom-start'),
-    errorTooltip: VueTypes.bool,
-    helpTooltip: VueTypes.bool,
+    helpTooltip: VueTypes.bool.def(false),
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
     // change, error, check
   },
