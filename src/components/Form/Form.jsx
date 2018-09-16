@@ -25,6 +25,7 @@ export default {
     model: VueTypes.any.def(() => SchemaModel({})), // schema
     checkDelay: VueTypes.number.def(500),
     checkTrigger: VueTypes.oneOf(['change', 'blur', 'focus']).def('change'),
+    errorShow: VueTypes.bool.def(false),
     errorPlacement: VueTypes.oneOf(Popper.placements).def('bottom-start'),
     helpTooltip: VueTypes.bool.def(false),
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),

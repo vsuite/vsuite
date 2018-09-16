@@ -1,4 +1,5 @@
 import VueTypes from 'vue-types';
+import Popper from 'popper.js';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
 
 import FormItemError from './FormItemError.jsx';
@@ -10,7 +11,10 @@ export default {
   name: 'FormItemControl',
 
   props: {
-    error: VueTypes.any.def(false),
+    htmlFor: VueTypes.string,
+    errorShow: VueTypes.any.def(false),
+    errorMessage: VueTypes.string,
+    errorPlacement: VueTypes.oneOf(Popper.placements).def('bottom-start'),
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
   },
 
@@ -19,8 +23,9 @@ export default {
       {
         class: this._addPrefix('message-wrapper'),
         splitProps: {
-          ...this.$attrs,
-          show: !!this.error,
+          htmlFor: this.htmlFor,
+          show: !!this.errorShow,
+          placement: this.errorPlacement,
         },
       },
       FormItemError
@@ -30,7 +35,7 @@ export default {
       <div class={this._addPrefix('wrapper')}>
         {this.$slots.default}
         <FormItemError {...errorData}>
-          {this.$slots.error || this.error}
+          {this.$slots.errorMessage || this.errorMessage}
         </FormItemError>
       </div>
     );

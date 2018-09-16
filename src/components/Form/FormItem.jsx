@@ -25,12 +25,10 @@ export default {
     defaultValue: VueTypes.any,
     htmlFor: VueTypes.string,
     srOnly: VueTypes.bool.def(false),
+    errorShow: { type: Boolean, default: undefined },
     errorMessage: VueTypes.string,
     errorPlacement: VueTypes.oneOf(Popper.placements),
-    helpTooltip: {
-      type: Boolean,
-      default: undefined,
-    },
+    helpTooltip: { type: Boolean, default: undefined },
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
   },
 
@@ -50,6 +48,13 @@ export default {
         (_.isUndefined(this.helpTooltip)
           ? this.$vForm && this.$vForm.helpTooltip
           : this.helpTooltip) || false
+      );
+    },
+    eShow() {
+      return (
+        (_.isUndefined(this.errorShow)
+          ? this.$vForm && this.$vForm.errorShow
+          : this.errorShow) || false
       );
     },
     ePlacement() {
@@ -84,10 +89,21 @@ export default {
       );
     },
 
-    _renderItem() {
+    _renderItem(h) {
+      const errorScoped = this.$scopedSlots && this.$scopedSlots.errorMessage;
+      const localError = this.$slots.errorMessage || this.errorMessage;
+      const error = errorScoped
+        ? errorScoped(h, this.eShow, localError)
+        : localError;
+
       return (
-        <FormItemControl placement={this.ePlacement}>
+        <FormItemControl
+          htmlFor={this.htmlFor}
+          errorShow={this.eShow}
+          errorPlacement={this.ePlacement}
+        >
           {this.$slots.default}
+          <template slot="errorMessage">{error}</template>
         </FormItemControl>
       );
     },
