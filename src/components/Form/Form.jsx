@@ -1,7 +1,6 @@
 import VueTypes from 'vue-types';
 import _ from 'lodash';
 import Popper from 'popper.js';
-import { SchemaModel } from 'schema-typed';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
 
 const CLASS_PREFIX = 'form';
@@ -22,7 +21,7 @@ export default {
     fluid: VueTypes.bool.def(false),
     value: VueTypes.object,
     defaultValue: VueTypes.object.def(() => ({})),
-    model: VueTypes.any.def(() => SchemaModel({})), // schema
+    rules: VueTypes.any.def(() => ({})), // schema
     checkDelay: VueTypes.number.def(500),
     checkTrigger: VueTypes.oneOf(['change', 'blur', 'focus']).def('change'),
     errorShow: VueTypes.bool.def(false),

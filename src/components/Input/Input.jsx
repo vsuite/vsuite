@@ -3,6 +3,7 @@ import _ from 'lodash';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
 import { splitDataByComponent } from 'utils/split';
 import { SIZES } from 'utils/constant';
+import { findComponentUpward } from 'utils/find';
 
 const CLASS_PREFIX = 'input';
 
@@ -66,8 +67,8 @@ export default {
         },
         on: {
           ...this.$listeners,
-          focus: this.handleFocus,
-          blur: this.handleBlur,
+          focus: this._handleFocus,
+          blur: this._handleBlur,
           input: this._handleInput,
           change: this._handleChange,
           keydown: this._handleKeydown,
@@ -83,21 +84,38 @@ export default {
     _setVal(val, event) {
       this.innerVal = val;
 
-      event.target.value = this.currentVal;
-
       this.$emit('change', val, event);
+
+      if (findComponentUpward(this, 'FormItem', false)) {
+        this.$parent.dispatch('change', val);
+      }
     },
 
-    handleFocus(event) {
+    _resetVal(event) {
+      this.$nextTick(() => {
+        if (event.target.value === this.currentVal) return;
+
+        event.target.value = this.currentVal;
+      });
+    },
+
+    _handleFocus(event) {
       this.$emit('focus', event);
     },
 
-    handleBlur(event) {
+    _handleBlur(event) {
       this.$emit('blur', event);
+
+      if (findComponentUpward(this, 'FormItem', false)) {
+        this.$parent.dispatch('blur', this.currentVal);
+      }
     },
 
     _handleInput(event) {
-      this._setVal(event.target.value, event);
+      const value = event.target.value;
+
+      this._setVal(value, event);
+      this._resetVal(event);
     },
 
     _handleChange(event) {

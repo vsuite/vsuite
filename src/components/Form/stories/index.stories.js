@@ -1,4 +1,5 @@
 import { storiesOf } from '@storybook/vue';
+import { StringType } from 'shares/schema';
 
 import Form from 'components/Form';
 import Input from 'components/Input';
@@ -7,6 +8,7 @@ import Toggle from 'components/Toggle';
 import Modal from 'components/Modal';
 import SelectPicker from 'components/SelectPicker';
 import Demo from 'stories/demo';
+import JsonView from 'stories/json-view';
 
 const stories = storiesOf('Data Entry|Form', module);
 
@@ -30,7 +32,7 @@ stories.add('default', () => ({
           <Form.Item>
             <Button.Toolbar>
               <Button appearance="primary">Submit</Button>
-              <Button appearance="default">Cancel</Button>
+              <Button appearance="default">Reset</Button>
             </Button.Toolbar>
           </Form.Item>
         </Form>
@@ -59,7 +61,7 @@ stories.add('fluid', () => ({
           <Form.Item>
             <Button.Toolbar>
               <Button appearance="primary">Submit</Button>
-              <Button appearance="default">Cancel</Button>
+              <Button appearance="default">Reset</Button>
             </Button.Toolbar>
           </Form.Item>
         </Form>
@@ -88,7 +90,7 @@ stories.add('horizontal', () => ({
           <Form.Item>
             <Button.Toolbar>
               <Button appearance="primary">Submit</Button>
-              <Button appearance="default">Cancel</Button>
+              <Button appearance="default">Reset</Button>
             </Button.Toolbar>
           </Form.Item>
         </Form>
@@ -289,6 +291,57 @@ stories.add('error', () => ({
 
     _handlePlacementChange(placement) {
       this.errorPlacement = placement;
+    },
+  },
+}));
+
+stories.add('validate form', () => ({
+  data() {
+    return {
+      formValue: {},
+      rules: {
+        name: StringType().isRequired('用户名不能为空'),
+        email: StringType().isEmail('邮箱不符合规范'),
+      },
+    };
+  },
+
+  render() {
+    return (
+      <Demo title="Validate Form">
+        <JsonView data={this.formValue} />
+
+        <hr />
+
+        <Form
+          value={this.formValue}
+          rules={this.rules}
+          onChange={this._handleFormChange}
+        >
+          <Form.Item name="name">
+            <Input placeholder="Username" />
+          </Form.Item>
+          <Form.Item name="email">
+            <Input placeholder="Email Address" />
+          </Form.Item>
+          <Form.Item>
+            <Button.Toolbar>
+              <Button type="submit" appearance="primary">
+                Submit
+              </Button>
+              <Button type="reset" appearance="default">
+                Reset
+              </Button>
+            </Button.Toolbar>
+          </Form.Item>
+        </Form>
+      </Demo>
+    );
+  },
+
+  methods: {
+    _handleFormChange(value) {
+      this.formValue = value;
     },
   },
 }));

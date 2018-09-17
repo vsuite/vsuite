@@ -1,10 +1,9 @@
 import VueTypes from 'vue-types';
 import _ from 'lodash';
 import Popper from 'popper.js';
-import prefix, { defaultClassPrefix } from 'utils/prefix';
+import prefix, { defaultClassPrefix, globalKey } from 'utils/prefix';
 
 import FormItemLabel from './FormItemLabel.jsx';
-import FormItemControl from './FormItemControl.jsx';
 import FormItemError from './FormItemError.jsx';
 import FormItemHelper from './FormItemHelper.jsx';
 
@@ -107,21 +106,20 @@ export default {
         : localError;
 
       return (
-        <FormItemControl>
+        <div class={`${globalKey}form-control-wrapper`}>
           {this.$slots.default}
-          <template slot="error">
-            {errorScoped && error}
-            {!errorScoped && (
-              <FormItemError
-                show={this.eShow}
-                placement={this.ePlacement}
-                htmlFor={this.htmlFor}
-              >
-                {error}
-              </FormItemError>
-            )}
-          </template>
-        </FormItemControl>
+          {errorScoped && error}
+          {!errorScoped && (
+            <FormItemError
+              class={`${globalKey}form-control-message-wrapper`}
+              show={this.eShow}
+              placement={this.ePlacement}
+              htmlFor={this.htmlFor}
+            >
+              {error}
+            </FormItemError>
+          )}
+        </div>
       );
     },
 
