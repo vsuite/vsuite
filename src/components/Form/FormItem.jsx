@@ -5,6 +5,7 @@ import prefix, { defaultClassPrefix } from 'utils/prefix';
 
 import FormItemLabel from './FormItemLabel.jsx';
 import FormItemControl from './FormItemControl.jsx';
+import FormItemError from './FormItemError.jsx';
 import FormItemHelper from './FormItemHelper.jsx';
 
 const CLASS_PREFIX = 'form-group';
@@ -90,20 +91,36 @@ export default {
     },
 
     _renderItem(h) {
-      const errorScoped = this.$scopedSlots && this.$scopedSlots.errorMessage;
+      const errorDefaultScoped = _.get(
+        this.$vForm,
+        '$scopedSlots.errorMessage'
+      );
+      const errorScoped =
+        _.get(this, '$scopedSlots.errorMessage') || errorDefaultScoped;
       const localError = this.$slots.errorMessage || this.errorMessage;
       const error = errorScoped
-        ? errorScoped(h, this.eShow, localError)
+        ? errorScoped(h, {
+            show: this.eShow,
+            error: localError,
+            placement: this.ePlacement,
+          })
         : localError;
 
       return (
-        <FormItemControl
-          htmlFor={this.htmlFor}
-          errorShow={this.eShow}
-          errorPlacement={this.ePlacement}
-        >
+        <FormItemControl>
           {this.$slots.default}
-          <template slot="errorMessage">{error}</template>
+          <template slot="error">
+            {errorScoped && error}
+            {!errorScoped && (
+              <FormItemError
+                show={this.eShow}
+                placement={this.ePlacement}
+                htmlFor={this.htmlFor}
+              >
+                {error}
+              </FormItemError>
+            )}
+          </template>
         </FormItemControl>
       );
     },

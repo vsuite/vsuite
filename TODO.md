@@ -7,4 +7,7 @@
 - Object.freeze 对特别组件进行性能优化
 - 代码注释补全
 - .d.ts 定义文件
-= input 类组件，修改 dom 的 value 或 check 值时机问题。（过早，会出现输入法消失问题）
+- input 类组件，修改 dom 的 value 或 check 值时机问题。（过早，会出现输入法消失问题）
+- moment.js 切换为 date-fns
+- 是否可以移除 lodash.js 库
+- render 方法请勿使用多个参数的形式，整合为一个 object

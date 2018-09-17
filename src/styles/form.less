@@ -254,8 +254,8 @@ input[type='checkbox']:focus {
     // Placement
     // == Bottom Left && Bottom Right && Top Left && Top Right
     // FIXME: use x-placement
-    &-placement-bottom-left,
-    &-placement-bottom-right {
+    &-placement-bottom-start,
+    &-placement-bottom-end {
       bottom: -1px; // Error message width form-control has 1px gap
 
       .@{ns}error-message {
@@ -282,8 +282,8 @@ input[type='checkbox']:focus {
       }
     }
 
-    &-placement-top-left,
-    &-placement-top-right {
+    &-placement-top-start,
+    &-placement-top-end {
       top: -1px; // Error message width form-control has 1px gap
 
       .@{ns}error-message {
@@ -310,8 +310,8 @@ input[type='checkbox']:focus {
       }
     }
 
-    &-placement-bottom-left,
-    &-placement-top-left {
+    &-placement-bottom-start,
+    &-placement-top-start {
       left: 0;
 
       .@{ns}error-message {
@@ -326,8 +326,8 @@ input[type='checkbox']:focus {
       }
     }
 
-    &-placement-bottom-right,
-    &-placement-top-right {
+    &-placement-bottom-end,
+    &-placement-top-end {
       right: 0;
 
       .@{ns}error-message {
@@ -343,8 +343,8 @@ input[type='checkbox']:focus {
     }
 
     // == Left Top && Left Bottom Right && Top && Right Bottom
-    &-placement-left-top,
-    &-placement-left-bottom {
+    &-placement-left-start,
+    &-placement-left-end {
       left: -1px;
 
       .@{ns}error-message {
@@ -371,8 +371,8 @@ input[type='checkbox']:focus {
       }
     }
 
-    &-placement-right-top,
-    &-placement-right-bottom {
+    &-placement-right-start,
+    &-placement-right-end {
       right: -1px;
 
       .@{ns}error-message {
@@ -399,8 +399,8 @@ input[type='checkbox']:focus {
       }
     }
 
-    &-placement-left-top,
-    &-placement-right-top {
+    &-placement-left-start,
+    &-placement-right-start {
       top: 0;
 
       .@{ns}error-message {
@@ -415,8 +415,8 @@ input[type='checkbox']:focus {
       }
     }
 
-    &-placement-left-bottom,
-    &-placement-right-bottom {
+    &-placement-left-end,
+    &-placement-right-end {
       bottom: 0;
 
       .@{ns}error-message {

@@ -240,17 +240,12 @@ stories.add('error', () => ({
 
     return (
       <Demo title="Error">
-        <Form>
-          <Form.Item
-            name="email"
-            errorShow={this.showErrors}
-            errorMessage="This field is required"
-          >
+        <Form errorShow={this.showErrors} errorPlacement={this.errorPlacement}>
+          <Form.Item name="email" errorMessage="This field is required">
             <Input placeholder="Email" />
           </Form.Item>
           <Form.Item
             name="age"
-            errorShow={this.showErrors}
             errorMessage="This field is required"
             scopedSlots={{ errorMessage: this._renderError }}
           >
@@ -277,14 +272,15 @@ stories.add('error', () => ({
   },
 
   methods: {
-    _renderError(h, show, message) {
+    _renderError(h, { show, error, placement }) {
       const styles = {
         display: show ? 'block' : 'none',
         color: 'red',
         marginTop: '6px',
+        textAlign: /-start/.test(placement) ? 'left' : 'right',
       };
 
-      return <div style={styles}>{message}</div>;
+      return <div style={styles}>{error}</div>;
     },
 
     _handleShowChange(checked) {
