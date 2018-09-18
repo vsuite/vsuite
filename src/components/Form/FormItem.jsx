@@ -183,18 +183,20 @@ export default {
 
     _attachForm() {
       if (!this.$vForm) return;
+      if (!this.name) return;
 
       this.$vForm._attachField(this);
     },
 
     _detachForm() {
       if (!this.$vForm) return;
+      if (!this.name) return;
 
       this.$vForm._detachField(this);
     },
 
     _validateField() {
-      if (_.isUndefined(this.fieldValue)) return;
+      if (!this.name) return;
 
       const { hasError, errorMessage } = this.fieldRule.check(
         this.fieldValue,
@@ -206,6 +208,15 @@ export default {
       }
 
       this.innerErrorShow = hasError;
+
+      return hasError ? errorMessage : null;
+    },
+
+    _resetField() {
+      if (!this.name) return;
+
+      this.innerErrorShow = false;
+      this.innerErrorMessage = '';
     },
 
     _addPrefix(cls) {
@@ -213,6 +224,7 @@ export default {
     },
 
     dispatch: _.debounce(function(trigger) {
+      if (!this.name) return;
       if (_.get(this.$vForm, 'checkTrigger') !== trigger) return;
 
       this._validateField();

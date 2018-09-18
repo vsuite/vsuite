@@ -304,7 +304,9 @@ stories.add('validate form', () => ({
       },
       rules: {
         name: StringType().isRequired('用户名不能为空'),
-        email: StringType().isEmail('邮箱不符合规范'),
+        email: StringType()
+          .isEmail('邮箱不符合规范')
+          .isRequired('邮箱不能为空'),
       },
     };
   },
@@ -316,7 +318,12 @@ stories.add('validate form', () => ({
 
         <hr />
 
-        <Form value={this.formValue} rules={this.rules}>
+        <Form
+          value={this.formValue}
+          rules={this.rules}
+          onSubmit={this._handleSubmit}
+          onReset={this._handleReset}
+        >
           <Form.Item name="name">
             <Input
               placeholder="Username"
@@ -346,5 +353,15 @@ stories.add('validate form', () => ({
     );
   },
 
-  methods: {},
+  methods: {
+    _handleSubmit(hasError) {
+      if (hasError) return;
+
+      this.$Alert.info('submit');
+    },
+
+    _handleReset() {
+      this.$Alert.info('reset');
+    },
+  },
 }));
