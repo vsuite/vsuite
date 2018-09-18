@@ -298,7 +298,10 @@ stories.add('error', () => ({
 stories.add('validate form', () => ({
   data() {
     return {
-      formValue: {},
+      formValue: {
+        name: '',
+        email: '',
+      },
       rules: {
         name: StringType().isRequired('用户名不能为空'),
         email: StringType().isEmail('邮箱不符合规范'),
@@ -313,16 +316,20 @@ stories.add('validate form', () => ({
 
         <hr />
 
-        <Form
-          value={this.formValue}
-          rules={this.rules}
-          onChange={this._handleFormChange}
-        >
+        <Form value={this.formValue} rules={this.rules}>
           <Form.Item name="name">
-            <Input placeholder="Username" />
+            <Input
+              placeholder="Username"
+              value={this.formValue.name}
+              onChange={val => (this.formValue.name = val)}
+            />
           </Form.Item>
           <Form.Item name="email">
-            <Input placeholder="Email Address" />
+            <Input
+              placeholder="Email Address"
+              value={this.formValue.email}
+              onChange={val => (this.formValue.email = val)}
+            />
           </Form.Item>
           <Form.Item>
             <Button.Toolbar>
@@ -339,9 +346,5 @@ stories.add('validate form', () => ({
     );
   },
 
-  methods: {
-    _handleFormChange(value) {
-      this.formValue = value;
-    },
-  },
+  methods: {},
 }));

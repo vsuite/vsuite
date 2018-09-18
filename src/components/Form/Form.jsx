@@ -1,5 +1,4 @@
 import VueTypes from 'vue-types';
-import _ from 'lodash';
 import Popper from 'popper.js';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
 
@@ -20,11 +19,13 @@ export default {
     ),
     fluid: VueTypes.bool.def(false),
     value: VueTypes.object,
-    defaultValue: VueTypes.object.def(() => ({})),
     rules: VueTypes.any.def(() => ({})), // schema
     checkDelay: VueTypes.number.def(500),
-    checkTrigger: VueTypes.oneOf(['change', 'blur', 'focus']).def('change'),
-    errorShow: VueTypes.bool.def(false),
+    checkTrigger: VueTypes.oneOf(['change', 'blur', 'none']).def('change'),
+    errorShow: {
+      type: Boolean,
+      default: undefined,
+    },
     errorPlacement: VueTypes.oneOf(Popper.placements).def('bottom-start'),
     helpTooltip: VueTypes.bool.def(false),
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
@@ -32,16 +33,10 @@ export default {
   },
 
   data() {
-    return {
-      innerVal: _.isUndefined(this.value) ? this.defaultValue : this.value,
-    };
+    return { fields: [] };
   },
 
   computed: {
-    currentVal() {
-      return _.isUndefined(this.value) ? this.innerVal : this.value;
-    },
-
     classes() {
       return [
         this.classPrefix,
@@ -76,6 +71,14 @@ export default {
       e.preventDefault();
 
       this.$emit('reset');
+    },
+
+    _attachField(field) {
+      this.fields.push(field);
+    },
+
+    _detachField(field) {
+      this.fields.splice(this.fields.indexOf(field), 1);
     },
 
     _addPrefix(cls) {

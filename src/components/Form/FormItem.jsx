@@ -17,7 +17,7 @@ export default {
   },
 
   props: {
-    name: VueTypes.string,
+    name: String,
     label: VueTypes.string, // slot
     help: VueTypes.string, // slot
     rule: VueTypes.any,
@@ -26,10 +26,25 @@ export default {
     htmlFor: VueTypes.string,
     srOnly: VueTypes.bool.def(false),
     errorShow: { type: Boolean, default: undefined },
-    errorMessage: VueTypes.string,
+    errorMessage: String,
     errorPlacement: VueTypes.oneOf(Popper.placements),
     helpTooltip: { type: Boolean, default: undefined },
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
+  },
+
+  data() {
+    return {
+      innerErrorShow: false,
+      innerErrorMessage: '',
+    };
+  },
+
+  mounted() {
+    this._attachForm();
+  },
+
+  beforeDestroy() {
+    this._detachForm();
   },
 
   computed: {
@@ -43,24 +58,55 @@ export default {
         },
       ];
     },
+
+    fieldValue() {
+      if (!this.$vForm) return;
+      if (_.isUndefined(this.name)) return;
+
+      return _.get(this.$vForm.value, this.name);
+    },
+
+    fieldRule() {
+      if (!this.$vForm) return this.rule;
+
+      return this.rule || _.get(this.$vForm.rules, this.name);
+    },
+
     hTooltip() {
+      const helpTooltip = _.get(this.$vForm, 'helpTooltip');
+
       return (
-        (_.isUndefined(this.helpTooltip)
-          ? this.$vForm && this.$vForm.helpTooltip
-          : this.helpTooltip) || false
+        (_.isUndefined(this.helpTooltip) ? helpTooltip : this.helpTooltip) ||
+        false
       );
     },
+
     eShow() {
+      const errorShow = _.get(this.$vForm, 'errorShow');
+
       return (
         (_.isUndefined(this.errorShow)
-          ? this.$vForm && this.$vForm.errorShow
+          ? _.isUndefined(errorShow)
+            ? this.innerErrorShow
+            : errorShow
           : this.errorShow) || false
       );
     },
+
+    eMessage() {
+      return (
+        (_.isUndefined(this.errorMessage)
+          ? this.innerErrorMessage
+          : this.errorMessage) || ''
+      );
+    },
+
     ePlacement() {
+      const errorPlacement = _.get(this.$vForm, 'errorPlacement');
+
       return (
         (_.isUndefined(this.errorPlacement)
-          ? this.$vForm && this.$vForm.errorPlacement
+          ? errorPlacement
           : this.errorPlacement) || 'bottom-start'
       );
     },
@@ -96,7 +142,7 @@ export default {
       );
       const errorScoped =
         _.get(this, '$scopedSlots.errorMessage') || errorDefaultScoped;
-      const localError = this.$slots.errorMessage || this.errorMessage;
+      const localError = this.$slots.errorMessage || this.eMessage;
       const error = errorScoped
         ? errorScoped(h, {
             show: this.eShow,
@@ -135,8 +181,41 @@ export default {
       );
     },
 
+    _attachForm() {
+      if (!this.$vForm) return;
+
+      this.$vForm._attachField(this);
+    },
+
+    _detachForm() {
+      if (!this.$vForm) return;
+
+      this.$vForm._detachField(this);
+    },
+
+    _validateField() {
+      if (_.isUndefined(this.fieldValue)) return;
+
+      const { hasError, errorMessage } = this.fieldRule.check(
+        this.fieldValue,
+        this.$vForm.value
+      );
+
+      if (hasError) {
+        this.innerErrorMessage = errorMessage;
+      }
+
+      this.innerErrorShow = hasError;
+    },
+
     _addPrefix(cls) {
       return prefix(this.classPrefix, cls);
     },
+
+    dispatch: _.debounce(function(trigger) {
+      if (_.get(this.$vForm, 'checkTrigger') !== trigger) return;
+
+      this._validateField();
+    }, _.get(this.$vForm, 'checkDelay') || 500),
   },
 };

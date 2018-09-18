@@ -87,7 +87,7 @@ export default {
       this.$emit('change', val, event);
 
       if (findComponentUpward(this, 'FormItem', false)) {
-        this.$parent.dispatch('change', val);
+        this.$parent.dispatch('change');
       }
     },
 
@@ -107,7 +107,7 @@ export default {
       this.$emit('blur', event);
 
       if (findComponentUpward(this, 'FormItem', false)) {
-        this.$parent.dispatch('blur', this.currentVal);
+        this.$parent.dispatch('blur');
       }
     },
 
