@@ -102,30 +102,28 @@ export default {
           return reject(new Error('`fields` is not a string or array value!'));
         }
 
-        let errorMap = {};
+        const total = this.fields.length;
+        let count = 0;
+        let msgMap = {};
 
         this.fields.forEach(field => {
-          const name = field.name;
+          field._validateField(error => {
+            count++;
 
-          if (fields && fields.indexOf(name) === -1) return;
+            // has error
+            if (error) {
+              _.set(msgMap, field.name, error);
+            }
 
-          // TODO: 异步获取校验结果
-          const error = field._validateField();
+            // finished
+            if (count === total) {
+              const hasError = !_.isEmpty(msgMap);
 
-          if (error) {
-            _.set(errorMap, name, error);
-          }
+              cb && cb(hasError ? msgMap : null);
+              resolve(hasError ? msgMap : null);
+            }
+          });
         });
-
-        if (_.isEmpty(errorMap)) {
-          cb && cb(null);
-
-          return resolve(null);
-        }
-
-        cb && cb(errorMap);
-
-        return resolve(errorMap);
       });
     },
 

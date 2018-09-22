@@ -200,21 +200,20 @@ export default {
       this.$vForm._detachField(this);
     },
 
-    _validateField() {
-      if (!this.name) return;
-
-      const { hasError, errorMessage } = this.fieldRule.check(
+    _validateField(cb) {
+      this.fieldRule.check(
         this.fieldValue,
-        this.$vForm.value
+        this.$vForm.value,
+        ({ hasError, errorMessage }) => {
+          if (hasError) {
+            this.innerErrorMessage = errorMessage;
+          }
+
+          this.innerErrorShow = hasError;
+
+          cb && cb(hasError ? errorMessage : null);
+        }
       );
-
-      if (hasError) {
-        this.innerErrorMessage = errorMessage;
-      }
-
-      this.innerErrorShow = hasError;
-
-      return hasError ? errorMessage : null;
     },
 
     _resetField() {

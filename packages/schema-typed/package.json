@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Schema for data modeling & validation",
   "main": "lib/index.js",
+  "module": "src/index.js",
   "scripts": {
     "lint": "eslint --fix '{src,test}/**/*.js'",
     "prettier": "prettier --write '{src,test}/**/*.js'",

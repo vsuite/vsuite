@@ -7,7 +7,7 @@ import {
   DateType,
   ArrayType,
   ObjectType,
-} from 'schema-typed';
+} from '@vsuite/schema-typed';
 
 export {
   Schema,
