@@ -1,7 +1,11 @@
 import { storiesOf } from '@storybook/vue';
-import { StringType } from 'shares/schema';
+import { BooleanType, StringType, ArrayType } from 'shares/schema';
 
 import Form from 'components/Form';
+import Radio from 'components/Radio';
+import RadioGroup from 'components/RadioGroup';
+import Checkbox from 'components/Checkbox';
+import CheckboxGroup from 'components/CheckboxGroup';
 import Input from 'components/Input';
 import Button from 'components/Button';
 import Toggle from 'components/Toggle';
@@ -338,6 +342,140 @@ stories.add('validate form', () => ({
               onChange={val => (this.formValue.email = val)}
             />
           </Form.Item>
+          <Form.Item>
+            <Button.Toolbar>
+              <Button type="submit" appearance="primary">
+                Submit
+              </Button>
+              <Button type="reset" appearance="default">
+                Reset
+              </Button>
+            </Button.Toolbar>
+          </Form.Item>
+        </Form>
+      </Demo>
+    );
+  },
+
+  methods: {
+    _handleSubmit(hasError) {
+      if (hasError) return;
+
+      this.$Alert.info('submit');
+    },
+
+    _handleReset() {
+      this.$Alert.info('reset');
+    },
+  },
+}));
+
+stories.add('form component', () => ({
+  data() {
+    return {
+      formValue: {
+        radio: false,
+        radioGroup: '',
+        checkbox: false,
+        checkboxGroup: [],
+        input: '',
+        textarea: '',
+      },
+      rules: {
+        radio: BooleanType()
+          /* eslint-disable standard/no-callback-literal */
+          .addRule((v, _, cb) => cb(v === true))
+          .isRequired('radio cannot be empty'),
+        radioGroup: StringType().isRequired('radioGroup cannot be empty'),
+        checkbox: BooleanType()
+          .addRule((v, _, cb) => cb(v === true))
+          .isRequired('checkbox cannot be empty'),
+        checkboxGroup: ArrayType()
+          .of(StringType())
+          .isRequired('checkbox cannot be empty'),
+        input: StringType().isRequired('input cannot be empty'),
+        textarea: StringType().isRequired('textarea cannot be empty'),
+      },
+    };
+  },
+
+  render() {
+    return (
+      <Demo title="Form Component">
+        <JsonView data={this.formValue} />
+
+        <hr />
+
+        <Form
+          value={this.formValue}
+          rules={this.rules}
+          onSubmit={this._handleSubmit}
+          onReset={this._handleReset}
+        >
+          {/* Radio */}
+          <Form.Item name="radio">
+            <Radio
+              checked={this.formValue.radio}
+              onChange={val => (this.formValue.radio = val)}
+            >
+              Radio
+            </Radio>
+          </Form.Item>
+
+          {/* RadioGroup */}
+          <Form.Item name="radioGroup">
+            <RadioGroup
+              inline
+              value={this.formValue.radioGroup}
+              onChange={val => (this.formValue.radioGroup = val)}
+            >
+              <Radio value="radio1">Radio1</Radio>
+              <Radio value="radio2">Radio2</Radio>
+            </RadioGroup>
+          </Form.Item>
+
+          {/* Checkbox */}
+          <Form.Item name="checkbox">
+            <Checkbox
+              checked={this.formValue.checkbox}
+              onChange={val => (this.formValue.checkbox = val)}
+            >
+              Checkbox
+            </Checkbox>
+          </Form.Item>
+
+          {/* CheckboxGroup */}
+          <Form.Item name="checkboxGroup">
+            <CheckboxGroup
+              inline
+              value={this.formValue.checkboxGroup}
+              onChange={val => (this.formValue.checkboxGroup = val)}
+            >
+              <Checkbox value="checkbox1">Checkbox1</Checkbox>
+              <Checkbox value="checkbox2">Checkbox2</Checkbox>
+            </CheckboxGroup>
+          </Form.Item>
+
+          {/* Input */}
+          <Form.Item name="input">
+            <Input
+              placeholder="Input"
+              value={this.formValue.input}
+              onChange={val => (this.formValue.input = val)}
+            />
+          </Form.Item>
+
+          {/* Input Textarea */}
+          <Form.Item name="textarea">
+            <Input
+              componentClass="textarea"
+              rows={3}
+              placeholder="Textarea"
+              value={this.formValue.textarea}
+              onChange={val => (this.formValue.textarea = val)}
+            />
+          </Form.Item>
+
           <Form.Item>
             <Button.Toolbar>
               <Button type="submit" appearance="primary">

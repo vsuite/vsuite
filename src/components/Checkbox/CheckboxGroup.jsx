@@ -4,6 +4,7 @@ import { cloneElement, getName, getProps } from 'utils/node';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
 import shallowEqual from 'utils/shallowEqual';
 import invariant from 'utils/invariant';
+import { findComponentUpward } from 'utils/find';
 
 const CLASS_PREFIX = 'checkbox-group';
 
@@ -73,6 +74,10 @@ export default {
       this.innerVal = val;
 
       this.$emit('change', val, event);
+
+      if (findComponentUpward(this, 'FormItem', false)) {
+        this.$parent.dispatch('change');
+      }
     },
 
     _handleChange(value, checked, event) {

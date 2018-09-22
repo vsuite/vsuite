@@ -2,6 +2,7 @@ import VueTypes from 'vue-types';
 import _ from 'lodash';
 import { cloneElement, getName, getProps } from 'utils/node';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
+import { findComponentUpward } from 'utils/find';
 import shallowEqual from 'utils/shallowEqual';
 import invariant from 'utils/invariant';
 
@@ -72,6 +73,10 @@ export default {
       this.innerVal = val;
 
       this.$emit('change', val, event);
+
+      if (findComponentUpward(this, 'FormItem', false)) {
+        this.$parent.dispatch('change');
+      }
     },
 
     _handleChange(value, _, event) {

@@ -201,6 +201,8 @@ export default {
     },
 
     _validateField(cb) {
+      if (!this.fieldRule) return cb && cb(null);
+
       this.fieldRule.check(
         this.fieldValue,
         this.$vForm.value,

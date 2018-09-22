@@ -1,6 +1,7 @@
 import VueTypes from 'vue-types';
 import _ from 'lodash';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
+import { findComponentUpward } from 'utils/find';
 
 const CLASS_PREFIX = 'checkbox';
 
@@ -105,6 +106,18 @@ export default {
         checked,
         event
       );
+
+      if (findComponentUpward(this, 'FormItem', false)) {
+        this.$parent.dispatch('change');
+      }
+    },
+
+    _resetChecked(event) {
+      this.$nextTick(() => {
+        if (event.target.checked === this.currentChecked) return;
+
+        event.target.checked = this.currentChecked;
+      });
     },
 
     _handleChange(event) {
@@ -112,9 +125,8 @@ export default {
 
       const value = event.target.checked;
 
-      event.target.checked = this.currentChecked;
-
       this._setChecked(value, event);
+      this._resetChecked(event);
     },
 
     _addPrefix(cls) {
