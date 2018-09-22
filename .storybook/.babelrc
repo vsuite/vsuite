@@ -1,7 +1,7 @@
 {
   "plugins": [
-    "syntax-jsx",
-    "transform-object-rest-spread",
-    "transform-vue-jsx"
+    "@babel/plugin-syntax-jsx",
+    "transform-vue-jsx",
+    "transform-object-rest-spread"
   ]
 }

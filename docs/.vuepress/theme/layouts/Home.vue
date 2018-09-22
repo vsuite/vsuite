@@ -8,18 +8,18 @@
 </template>
 
 <script>
-  export default {
-    name: 'HomeLayout',
+export default {
+  name: 'HomeLayout',
 
-    mounted() {
-      console.dir(this);
-    },
-  }
+  mounted() {
+    console.dir(this);
+  },
+};
 </script>
 
 <style lang="less">
-  .container {
-    margin: 50px;
-    text-align: center;
-  }
+.container {
+  margin: 50px;
+  text-align: center;
+}
 </style>

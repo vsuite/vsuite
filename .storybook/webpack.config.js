@@ -32,13 +32,18 @@ module.exports = {
       {
         test: /\.less$/,
         use: [
-          'style-loader',
+          'vue-style-loader',
           'css-loader',
           {
             loader: 'less-loader',
             options: { javascriptEnabled: true },
           },
         ],
+        include: [resolve(), resolveRoot('.storybook')],
+      },
+      {
+        test: /\.css/,
+        use: ['vue-style-loader', 'css-loader'],
         include: [resolve(), resolveRoot('.storybook')],
       },
       {

@@ -1,0 +1,42 @@
+{
+  "name": "@vsuite/schema-typed",
+  "version": "1.0.0",
+  "description": "Schema for data modeling & validation",
+  "main": "lib/index.js",
+  "scripts": {
+    "lint": "eslint --fix '{src,test}/**/*.js'",
+    "prettier": "prettier --write '{src,test}/**/*.js'",
+    "clean": "rm -rf lib/ coverage/",
+    "build": "npm run clean && babel -d lib/ src/",
+    "test-watch": "jest --watch",
+    "test-once": "jest",
+    "test-coverage": "jest --coverage",
+    "test": "npm run lint && npm run test-once",
+    "prepublish": "npm run lint && npm run prettier && npm run test && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rsuite/schema-typed.git"
+  },
+  "keywords": [
+    "schema",
+    "validation"
+  ],
+  "contributors": [
+    "A2ZH",
+    "Simon Guo <simonguo.2009@gmail.com>"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rsuite/schema-typed/issues"
+  },
+  "files": [
+    "src",
+    "lib"
+  ],
+  "homepage": "https://github.com/rsuite/schema-typed#readme",
+  "dependencies": {
+    "lodash": "^4.17.11"
+  },
+  "devDependencies": {}
+}

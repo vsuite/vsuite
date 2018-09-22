@@ -41,6 +41,11 @@ export default {
 
   mounted() {
     this._attachForm();
+
+    this.dispatch = _.debounce(
+      this._dispatch.bind(this),
+      _.get(this.$vForm, 'checkDelay') || 500
+    );
   },
 
   beforeDestroy() {
@@ -219,15 +224,15 @@ export default {
       this.innerErrorMessage = '';
     },
 
-    _addPrefix(cls) {
-      return prefix(this.classPrefix, cls);
-    },
-
-    dispatch: _.debounce(function(trigger) {
+    _dispatch(trigger) {
       if (!this.name) return;
       if (_.get(this.$vForm, 'checkTrigger') !== trigger) return;
 
       this._validateField();
-    }, _.get(this.$vForm, 'checkDelay') || 500),
+    },
+
+    _addPrefix(cls) {
+      return prefix(this.classPrefix, cls);
+    },
   },
 };

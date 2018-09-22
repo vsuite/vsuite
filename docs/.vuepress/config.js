@@ -9,7 +9,8 @@ module.exports = {
     '/': {
       lang: 'en-US', // this will be set as the lang attribute on <html>
       title: 'vsuite',
-      description: 'VSUITE (Vue Suite) is a set of vue component libraries for enterprise system products.',
+      description:
+        'VSUITE (Vue Suite) is a set of vue component libraries for enterprise system products.',
     },
     '/zh/': {
       lang: 'zh-CN',

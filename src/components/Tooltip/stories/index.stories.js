@@ -1,13 +1,10 @@
 import { storiesOf } from '@storybook/vue';
-import { withKnobs } from '@storybook/addon-knobs';
 
 import Tooltip from 'components/Tooltip';
 import Button from 'components/Button';
 import Demo from 'stories/demo';
 
 const stories = storiesOf('General|Tooltip', module);
-
-stories.addDecorator(withKnobs);
 
 stories.add('default', () => ({
   render: h => {

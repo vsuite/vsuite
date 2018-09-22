@@ -2,7 +2,7 @@
 .idea/
 
 # gtm
-/.gtm/
+.gtm/
 
 # OS
 .DS_Store
@@ -17,4 +17,3 @@ yarn-error.log*
 
 # build
 dist/
-/lib/
