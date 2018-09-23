@@ -11,3 +11,4 @@
 - moment.js 切换为 date-fns
 - 是否可以移除 lodash.js 库
 - render 方法请勿使用多个参数的形式，整合为一个 object
+- Input 组件支持 prefix 和 suffix 属性

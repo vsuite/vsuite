@@ -1,6 +1,7 @@
 import VueTypes from 'vue-types';
 import _ from 'lodash';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
+import { findComponentUpward } from 'utils/find';
 import { SIZES } from 'utils/constant';
 
 const CLASS_PREFIX = 'btn-toggle';
@@ -82,6 +83,10 @@ export default {
       this.innerChecked = checked;
 
       this.$emit('change', checked, event);
+
+      if (findComponentUpward(this, 'FormItem', false)) {
+        this.$parent.dispatch('change');
+      }
     },
 
     _handleClick(event) {

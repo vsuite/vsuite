@@ -1,18 +1,21 @@
 import { storiesOf } from '@storybook/vue';
-import { BooleanType, StringType, ArrayType } from 'shares/schema';
+import { BooleanType, NumberType, StringType, ArrayType } from 'shares/schema';
 
 import Form from 'components/Form';
 import Radio from 'components/Radio';
 import RadioGroup from 'components/RadioGroup';
 import Checkbox from 'components/Checkbox';
 import CheckboxGroup from 'components/CheckboxGroup';
-import Input from 'components/Input';
-import Button from 'components/Button';
 import Toggle from 'components/Toggle';
+import Input from 'components/Input';
+import InputNumber from 'components/InputNumber';
+import AutoComplete from 'components/AutoComplete';
+import Button from 'components/Button';
 import Modal from 'components/Modal';
 import SelectPicker from 'components/SelectPicker';
 import Demo from 'stories/demo';
 import JsonView from 'stories/json-view';
+import Icon from 'components/Icon';
 
 const stories = storiesOf('Data Entry|Form', module);
 
@@ -378,8 +381,11 @@ stories.add('form component', () => ({
         radioGroup: '',
         checkbox: false,
         checkboxGroup: [],
+        toggle: false,
         input: '',
         textarea: '',
+        inputnumber: '',
+        autoComplete: '',
       },
       rules: {
         radio: BooleanType()
@@ -393,8 +399,13 @@ stories.add('form component', () => ({
         checkboxGroup: ArrayType()
           .of(StringType())
           .isRequired('checkbox cannot be empty'),
+        toggle: BooleanType()
+          .addRule((v, _, cb) => cb(v === true))
+          .isRequired('toggle cannot be empty'),
         input: StringType().isRequired('input cannot be empty'),
         textarea: StringType().isRequired('textarea cannot be empty'),
+        inputnumber: NumberType().isRequired('inputnumber cannot be empty'),
+        autoComplete: StringType().isRequired('autoComplete cannot be empty'),
       },
     };
   },
@@ -456,6 +467,17 @@ stories.add('form component', () => ({
             </CheckboxGroup>
           </Form.Item>
 
+          {/* Toggle */}
+          <Form.Item name="toggle">
+            <Toggle
+              checked={this.formValue.toggle}
+              onChange={val => (this.formValue.toggle = val)}
+            >
+              <Icon slot="open" icon="check" />
+              <Icon slot="close" icon="close" />
+            </Toggle>
+          </Form.Item>
+
           {/* Input */}
           <Form.Item name="input">
             <Input
@@ -473,6 +495,31 @@ stories.add('form component', () => ({
               placeholder="Textarea"
               value={this.formValue.textarea}
               onChange={val => (this.formValue.textarea = val)}
+            />
+          </Form.Item>
+
+          {/* InputNumber */}
+          <Form.Item name="inputnumber">
+            <InputNumber
+              prefix="$"
+              value={this.formValue.inputnumber}
+              onChange={val => (this.formValue.inputnumber = val)}
+            />
+          </Form.Item>
+
+          {/* Autocomplete */}
+          <Form.Item name="autoComplete">
+            <AutoComplete
+              data={[
+                'HYPER Advertiser',
+                'HYPER Web Analytics',
+                'HYPER Video Analytics',
+                'HYPER DMP',
+                'HYPER Ad Serving',
+                'HYPER Data Discovery',
+              ]}
+              value={this.formValue.autoComplete}
+              onChange={val => (this.formValue.autoComplete = val)}
             />
           </Form.Item>
 

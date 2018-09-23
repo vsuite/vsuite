@@ -2,9 +2,9 @@ import VueTypes from 'vue-types';
 import _ from 'lodash';
 import { cloneElement, getName, getProps } from 'utils/node';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
+import { findComponentUpward } from 'utils/find';
 import shallowEqual from 'utils/shallowEqual';
 import invariant from 'utils/invariant';
-import { findComponentUpward } from 'utils/find';
 
 const CLASS_PREFIX = 'checkbox-group';
 

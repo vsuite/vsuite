@@ -8,6 +8,7 @@ import InputGroup from 'components/InputGroup';
 import Input from 'components/Input';
 import Button from 'components/Button';
 import Icon from 'components/Icon';
+import { findComponentUpward } from 'utils/find';
 
 const CLASS_PREFIX = 'input-number';
 
@@ -151,6 +152,10 @@ export default {
       this.innerVal = val;
 
       this.$emit('change', val, event);
+
+      if (findComponentUpward(this, 'FormItem', this)) {
+        this.$parent.dispatch('change');
+      }
     },
 
     // focus
@@ -165,6 +170,10 @@ export default {
       this.$emit('blur', event);
 
       this._setVal(this._getSafeValue(targetValue), event);
+
+      if (findComponentUpward(this, 'FormItem', this)) {
+        this.$parent.dispatch('blur');
+      }
     },
 
     // click add btn

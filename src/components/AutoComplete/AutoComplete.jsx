@@ -4,6 +4,7 @@ import popperMixin from 'mixins/popper';
 import onMenuKeydown from 'shares/onMenuKeydown';
 import prefix, { defaultClassPrefix, globalKey } from 'utils/prefix';
 import { splitDataByComponent } from 'utils/split';
+import { findComponentUpward } from 'utils/find';
 
 import { PickerMenuWrapper } from 'components/_picker';
 
@@ -144,13 +145,16 @@ export default {
         },
         on: {
           input: this._handleInputChange,
-          // keydown: this._handleInputKeydown,
+          blur: this._handleBlur,
+          keydown: this._handleInputKeydown,
         },
       },
       'input'
     );
 
-    this._addTriggerListeners(referenceData, acData);
+    if (!this.disabled) {
+      this._addTriggerListeners(referenceData, acData);
+    }
 
     return (
       <div {...acData}>
@@ -189,9 +193,19 @@ export default {
       this.innerVal = val;
       this.focusItemValue = val;
 
-      event.target.value = this.currentVal;
-
       this.$emit('change', val, event);
+
+      if (findComponentUpward(this, 'FormItem', false)) {
+        this.$parent.dispatch('change');
+      }
+    },
+
+    _resetVal(event) {
+      this.$nextTick(() => {
+        if (event.target.value === this.currentVal) return;
+
+        event.target.value = this.currentVal;
+      });
     },
 
     _handleItemClick(item, event) {
@@ -204,8 +218,19 @@ export default {
     },
 
     _handleInputChange(event) {
+      const value = event.target.value;
+
       this._openPopper();
-      this._setVal(event.target.value, event);
+      this._setVal(value, event);
+      this._resetVal(event);
+    },
+
+    _handleBlur(event) {
+      this.$emit('blur', event);
+
+      if (findComponentUpward(this, 'FormItem', false)) {
+        this.$parent.dispatch('blur');
+      }
     },
 
     _handleInputKeydown(event) {
