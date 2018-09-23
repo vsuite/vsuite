@@ -1,9 +1,20 @@
+import VueTypes from 'vue-types';
 import { splitDataByComponent } from 'utils/split';
 
 import InputPicker from 'components/InputPicker';
+import { findComponentUpward } from 'utils/find';
 
 export default {
   name: 'TagPicker',
+
+  model: {
+    prop: 'value',
+    event: 'change',
+  },
+
+  props: {
+    value: VueTypes.any,
+  },
 
   render() {
     const data = splitDataByComponent(
@@ -11,9 +22,14 @@ export default {
         splitProps: {
           ...this.$attrs,
           multiple: true,
+          value: this.value,
         },
         scopedSlots: this.$scopedSlots,
-        on: this.$listeners,
+        on: {
+          ...this.$listeners,
+          change: this._handleChange,
+          blur: this._handleBlur,
+        },
         ref: 'picker',
       },
       InputPicker
@@ -35,6 +51,22 @@ export default {
   },
 
   methods: {
+    _handleChange(val, event) {
+      this.$emit('change', val, event);
+
+      if (findComponentUpward(this, 'FormItem', false)) {
+        this.$parent.dispatch('change');
+      }
+    },
+
+    _handleBlur(event) {
+      this.$emit('blur', event);
+
+      if (findComponentUpward(this, 'FormItem', false)) {
+        this.$parent.dispatch('blur');
+      }
+    },
+
     show() {
       this.$refs.picker.show();
     },

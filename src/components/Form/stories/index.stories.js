@@ -1,5 +1,6 @@
 import { storiesOf } from '@storybook/vue';
 import { BooleanType, NumberType, StringType, ArrayType } from 'shares/schema';
+import users from 'stories/data/user';
 
 import Form from 'components/Form';
 import Radio from 'components/Radio';
@@ -10,6 +11,8 @@ import Toggle from 'components/Toggle';
 import Input from 'components/Input';
 import InputNumber from 'components/InputNumber';
 import AutoComplete from 'components/AutoComplete';
+import InputPicker from 'components/InputPicker';
+import TagPicker from 'components/TagPicker';
 import Button from 'components/Button';
 import Modal from 'components/Modal';
 import SelectPicker from 'components/SelectPicker';
@@ -386,6 +389,8 @@ stories.add('form component', () => ({
         textarea: '',
         inputnumber: '',
         autoComplete: '',
+        inputPicker: '',
+        tagPicker: [],
       },
       rules: {
         radio: BooleanType()
@@ -406,6 +411,10 @@ stories.add('form component', () => ({
         textarea: StringType().isRequired('textarea cannot be empty'),
         inputnumber: NumberType().isRequired('inputnumber cannot be empty'),
         autoComplete: StringType().isRequired('autoComplete cannot be empty'),
+        inputPicker: StringType().isRequired('inputPicker cannot be empty'),
+        tagPicker: ArrayType()
+          .of(StringType())
+          .isRequired('tagPicker cannot be empty'),
       },
     };
   },
@@ -520,6 +529,24 @@ stories.add('form component', () => ({
               ]}
               value={this.formValue.autoComplete}
               onChange={val => (this.formValue.autoComplete = val)}
+            />
+          </Form.Item>
+
+          {/* InputPicker */}
+          <Form.Item name="inputPicker">
+            <InputPicker
+              data={users}
+              value={this.formValue.inputPicker}
+              onChange={val => (this.formValue.inputPicker = val)}
+            />
+          </Form.Item>
+
+          {/* TagPicker */}
+          <Form.Item name="tagPicker">
+            <TagPicker
+              data={users}
+              value={this.formValue.tagPicker}
+              onChange={val => (this.formValue.tagPicker = val)}
             />
           </Form.Item>
 

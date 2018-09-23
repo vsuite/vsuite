@@ -7,6 +7,7 @@ import onMenuKeydown from 'shares/onMenuKeydown';
 import { vueToString } from 'utils/node';
 import { mapNode, findNode, flattenNodes } from 'utils/tree';
 import { splitDataByComponent } from 'utils/split';
+import { findComponentUpward } from 'utils/find';
 import getDataGroupBy from 'utils/getDataGroupBy';
 import shallowEqual from 'utils/shallowEqual';
 import invariant from 'utils/invariant';
@@ -292,7 +293,7 @@ export default {
             value: this.currentVisible ? this.searchKeyword : '',
             inputStyle: { maxWidth: `${this.maxWidth - 63}px` },
           },
-          on: { change: this._handleSearch },
+          on: { change: this._handleSearch, blur: this._handleBlur },
           ref: 'search',
         },
         InputPickerSearch
@@ -382,6 +383,10 @@ export default {
       this.innerVal = val;
 
       this.$emit('change', val, event);
+
+      if (findComponentUpward(this, 'FormItem', false)) {
+        this.$parent.dispatch('change');
+      }
     },
 
     _handleSelect(item, event, checked) {
@@ -427,6 +432,14 @@ export default {
       this.searchKeyword = val;
 
       this.$emit('search', val, event);
+    },
+
+    _handleBlur(event) {
+      this.$emit('blur', event);
+
+      if (findComponentUpward(this, 'FormItem', false)) {
+        this.$parent.dispatch('blur');
+      }
     },
 
     _handleClean(event) {
