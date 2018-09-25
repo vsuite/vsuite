@@ -3,6 +3,7 @@ import _ from 'lodash';
 import popperMixin from 'mixins/popper';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
 import { splitDataByComponent } from 'utils/split';
+import { findComponentUpward } from 'utils/find';
 
 import {
   PickerMenuWrapper,
@@ -322,6 +323,10 @@ export default {
       this.innerVal = value;
 
       this.$emit('change', value, event);
+
+      if (findComponentUpward(this, 'FormItem', false)) {
+        this.$parent.dispatch('change');
+      }
     },
 
     _handleOK(event) {

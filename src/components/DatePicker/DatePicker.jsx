@@ -4,6 +4,7 @@ import moment from 'moment';
 import popperMixin from 'mixins/popper';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
 import { splitDataByComponent } from 'utils/split';
+import { findComponentUpward } from 'utils/find';
 
 import {
   PickerToggle,
@@ -226,6 +227,10 @@ export default {
       this.innerVal = date;
 
       this.$emit('change', date, event);
+
+      if (findComponentUpward(this, 'FormItem', false)) {
+        this.$parent.dispatch('change');
+      }
     },
 
     _setPageDate(date, event) {

@@ -1,6 +1,14 @@
 import { storiesOf } from '@storybook/vue';
-import { BooleanType, NumberType, StringType, ArrayType } from 'shares/schema';
+import {
+  BooleanType,
+  NumberType,
+  StringType,
+  ArrayType,
+  ObjectType,
+  DateType,
+} from 'shares/schema';
 import users from 'stories/data/user';
+import city from 'stories/data/city';
 
 import Form from 'components/Form';
 import Radio from 'components/Radio';
@@ -15,6 +23,9 @@ import InputPicker from 'components/InputPicker';
 import TagPicker from 'components/TagPicker';
 import SelectPicker from 'components/SelectPicker';
 import CheckPicker from 'components/CheckPicker';
+import Cascader from 'components/Cascader';
+import DatePicker from 'components/DatePicker';
+import DateRangePicker from 'components/DateRangePicker';
 import Button from 'components/Button';
 import Modal from 'components/Modal';
 import Demo from 'stories/demo';
@@ -394,6 +405,9 @@ stories.add('form component', () => ({
         tagPicker: [],
         selectPicker: '',
         checkPicker: [],
+        cascader: '',
+        datePicker: '',
+        dateRangePicker: [],
       },
       rules: {
         radio: BooleanType()
@@ -422,6 +436,15 @@ stories.add('form component', () => ({
         checkPicker: ArrayType()
           .of(StringType())
           .isRequired('checkPicker cannot be empty'),
+        cascader: ObjectType()
+          .shape({
+            id: NumberType().isRequired('id cannot be empty'),
+          })
+          .isRequired('cascader cannot be empty'),
+        datePicker: DateType().isRequired('datePicker cannot be empty'),
+        dateRangePicker: ArrayType()
+          .of(DateType())
+          .isRequired('dateRangePicker cannot be empty'),
       },
     };
   },
@@ -576,10 +599,29 @@ stories.add('form component', () => ({
           </Form.Item>
 
           {/* Cascader */}
+          <Form.Item name="cascader" label="Cascader">
+            <Cascader
+              data={city}
+              value={this.formValue.cascader}
+              onChange={val => (this.formValue.cascader = val)}
+            />
+          </Form.Item>
 
           {/* DatePicker */}
+          <Form.Item name="datePicker" label="DatePicker">
+            <DatePicker
+              value={this.formValue.datePicker}
+              onChange={val => (this.formValue.datePicker = val)}
+            />
+          </Form.Item>
 
           {/* DateRangePicker */}
+          <Form.Item name="dateRangePicker" label="DateRangePicker">
+            <DateRangePicker
+              value={this.formValue.dateRangePicker}
+              onChange={val => (this.formValue.dateRangePicker = val)}
+            />
+          </Form.Item>
 
           {/* Slider */}
 

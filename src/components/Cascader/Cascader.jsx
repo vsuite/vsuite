@@ -5,6 +5,7 @@ import onMenuKeydown from 'shares/onMenuKeydown';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
 import { findNode, mapNode } from 'utils/tree';
 import { splitDataByComponent } from 'utils/split';
+import { findComponentUpward } from 'utils/find';
 import shallowEqual from 'utils/shallowEqual';
 
 import {
@@ -237,6 +238,10 @@ export default {
       this.innerVal = val;
 
       this.$emit('change', val, event);
+
+      if (findComponentUpward(this, 'FormItem', false)) {
+        this.$parent.dispatch('change');
+      }
     },
 
     _handleSelect(item, layer, event) {
