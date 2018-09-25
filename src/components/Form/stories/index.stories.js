@@ -13,9 +13,10 @@ import InputNumber from 'components/InputNumber';
 import AutoComplete from 'components/AutoComplete';
 import InputPicker from 'components/InputPicker';
 import TagPicker from 'components/TagPicker';
+import SelectPicker from 'components/SelectPicker';
+import CheckPicker from 'components/CheckPicker';
 import Button from 'components/Button';
 import Modal from 'components/Modal';
-import SelectPicker from 'components/SelectPicker';
 import Demo from 'stories/demo';
 import JsonView from 'stories/json-view';
 import Icon from 'components/Icon';
@@ -391,6 +392,8 @@ stories.add('form component', () => ({
         autoComplete: '',
         inputPicker: '',
         tagPicker: [],
+        selectPicker: '',
+        checkPicker: [],
       },
       rules: {
         radio: BooleanType()
@@ -415,6 +418,10 @@ stories.add('form component', () => ({
         tagPicker: ArrayType()
           .of(StringType())
           .isRequired('tagPicker cannot be empty'),
+        selectPicker: StringType().isRequired('selectPicker cannot be empty'),
+        checkPicker: ArrayType()
+          .of(StringType())
+          .isRequired('checkPicker cannot be empty'),
       },
     };
   },
@@ -433,7 +440,7 @@ stories.add('form component', () => ({
           onReset={this._handleReset}
         >
           {/* Radio */}
-          <Form.Item name="radio">
+          <Form.Item name="radio" label="Radio">
             <Radio
               checked={this.formValue.radio}
               onChange={val => (this.formValue.radio = val)}
@@ -443,7 +450,7 @@ stories.add('form component', () => ({
           </Form.Item>
 
           {/* RadioGroup */}
-          <Form.Item name="radioGroup">
+          <Form.Item name="radioGroup" label="Radio Group">
             <RadioGroup
               inline
               value={this.formValue.radioGroup}
@@ -455,7 +462,7 @@ stories.add('form component', () => ({
           </Form.Item>
 
           {/* Checkbox */}
-          <Form.Item name="checkbox">
+          <Form.Item name="checkbox" label="Checkbox">
             <Checkbox
               checked={this.formValue.checkbox}
               onChange={val => (this.formValue.checkbox = val)}
@@ -465,7 +472,7 @@ stories.add('form component', () => ({
           </Form.Item>
 
           {/* CheckboxGroup */}
-          <Form.Item name="checkboxGroup">
+          <Form.Item name="checkboxGroup" label="Checkbox Group">
             <CheckboxGroup
               inline
               value={this.formValue.checkboxGroup}
@@ -477,7 +484,7 @@ stories.add('form component', () => ({
           </Form.Item>
 
           {/* Toggle */}
-          <Form.Item name="toggle">
+          <Form.Item name="toggle" label="Toggle">
             <Toggle
               checked={this.formValue.toggle}
               onChange={val => (this.formValue.toggle = val)}
@@ -488,7 +495,7 @@ stories.add('form component', () => ({
           </Form.Item>
 
           {/* Input */}
-          <Form.Item name="input">
+          <Form.Item name="input" label="Input">
             <Input
               placeholder="Input"
               value={this.formValue.input}
@@ -497,7 +504,7 @@ stories.add('form component', () => ({
           </Form.Item>
 
           {/* Input Textarea */}
-          <Form.Item name="textarea">
+          <Form.Item name="textarea" label="Textarea">
             <Input
               componentClass="textarea"
               rows={3}
@@ -508,7 +515,7 @@ stories.add('form component', () => ({
           </Form.Item>
 
           {/* InputNumber */}
-          <Form.Item name="inputnumber">
+          <Form.Item name="inputnumber" label="InputNumber">
             <InputNumber
               prefix="$"
               value={this.formValue.inputnumber}
@@ -517,7 +524,7 @@ stories.add('form component', () => ({
           </Form.Item>
 
           {/* Autocomplete */}
-          <Form.Item name="autoComplete">
+          <Form.Item name="autoComplete" label="AutoComplete">
             <AutoComplete
               data={[
                 'HYPER Advertiser',
@@ -533,7 +540,7 @@ stories.add('form component', () => ({
           </Form.Item>
 
           {/* InputPicker */}
-          <Form.Item name="inputPicker">
+          <Form.Item name="inputPicker" label="InputPicker">
             <InputPicker
               data={users}
               value={this.formValue.inputPicker}
@@ -542,13 +549,41 @@ stories.add('form component', () => ({
           </Form.Item>
 
           {/* TagPicker */}
-          <Form.Item name="tagPicker">
+          <Form.Item name="tagPicker" label="TagPicker">
             <TagPicker
               data={users}
               value={this.formValue.tagPicker}
               onChange={val => (this.formValue.tagPicker = val)}
             />
           </Form.Item>
+
+          {/* SelectPicker */}
+          <Form.Item name="selectPicker" label="SelectPicker">
+            <SelectPicker
+              data={users}
+              value={this.formValue.selectPicker}
+              onChange={val => (this.formValue.selectPicker = val)}
+            />
+          </Form.Item>
+
+          {/* CheckPicker */}
+          <Form.Item name="checkPicker" label="CheckPicker">
+            <CheckPicker
+              data={users}
+              value={this.formValue.checkPicker}
+              onChange={val => (this.formValue.checkPicker = val)}
+            />
+          </Form.Item>
+
+          {/* Cascader */}
+
+          {/* DatePicker */}
+
+          {/* DateRangePicker */}
+
+          {/* Slider */}
+
+          {/* Uploader */}
 
           <Form.Item>
             <Button.Toolbar>

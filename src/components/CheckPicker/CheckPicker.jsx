@@ -5,6 +5,7 @@ import onMenuKeydown from 'shares/onMenuKeydown';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
 import { findNode, flattenNodes, mapNode } from 'utils/tree';
 import { splitDataByComponent } from 'utils/split';
+import { findComponentUpward } from 'utils/find';
 import { vueToString } from 'utils/node';
 import getDataGroupBy from 'utils/getDataGroupBy';
 import shallowEqual from 'utils/shallowEqual';
@@ -298,6 +299,10 @@ export default {
       this.innerVal = val;
 
       this.$emit('change', val, event);
+
+      if (findComponentUpward(this, 'FormItem', false)) {
+        this.$parent.dispatch('change');
+      }
     },
 
     _handleSelect(item, event, checked) {

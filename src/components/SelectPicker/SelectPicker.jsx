@@ -7,6 +7,7 @@ import { mapNode, findNode, flattenNodes } from 'utils/tree';
 import { splitDataByComponent } from 'utils/split';
 import { vueToString } from 'utils/node';
 import getDataGroupBy from 'utils/getDataGroupBy';
+import { findComponentUpward } from 'utils/find';
 import shallowEqual from 'utils/shallowEqual';
 import invariant from 'utils/invariant';
 
@@ -295,6 +296,10 @@ export default {
       this.innerVal = val;
 
       this.$emit('change', val, event);
+
+      if (findComponentUpward(this, 'FormItem', false)) {
+        this.$parent.dispatch('change');
+      }
     },
 
     _handleSelect(item, event) {
