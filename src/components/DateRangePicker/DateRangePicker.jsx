@@ -376,7 +376,7 @@ export default {
         }
 
         nextValue[0] = setTimingMargin(nextValue[0]);
-        nextValue[1] = setTimingMargin(nextValue[1]);
+        nextValue[1] = setTimingMargin(nextValue[1], 'right');
 
         this.calendarDate = getCalendarDate(nextValue);
       }
