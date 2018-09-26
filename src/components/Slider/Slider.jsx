@@ -5,6 +5,7 @@ import DOMMouseMoveTracker from 'shares/DOMMouseMoveTracker';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
 
 import Tooltip from 'components/Tooltip';
+import { findComponentUpward } from 'utils/find';
 
 const CLASS_PREFIX = 'slider';
 
@@ -310,6 +311,10 @@ export default {
       this.innerVal = val;
 
       this.$emit('change', val, event);
+
+      if (findComponentUpward(this, 'FormItem', false)) {
+        this.$parent.dispatch('change');
+      }
     },
 
     _calculateValue(offset) {

@@ -26,6 +26,7 @@ import CheckPicker from 'components/CheckPicker';
 import Cascader from 'components/Cascader';
 import DatePicker from 'components/DatePicker';
 import DateRangePicker from 'components/DateRangePicker';
+import Slider from 'components/Slider';
 import Button from 'components/Button';
 import Modal from 'components/Modal';
 import Demo from 'stories/demo';
@@ -408,6 +409,7 @@ stories.add('form component', () => ({
         cascader: '',
         datePicker: '',
         dateRangePicker: [],
+        slider: undefined,
       },
       rules: {
         radio: BooleanType()
@@ -445,6 +447,7 @@ stories.add('form component', () => ({
         dateRangePicker: ArrayType()
           .of(DateType())
           .isRequired('dateRangePicker cannot be empty'),
+        slider: NumberType().isRequired('slider cannot be empty'),
       },
     };
   },
@@ -624,6 +627,13 @@ stories.add('form component', () => ({
           </Form.Item>
 
           {/* Slider */}
+          <Form.Item name="slider" label="Slider">
+            <Slider
+              value={this.formValue.slider}
+              onChange={val => (this.formValue.slider = val)}
+              progress
+            />
+          </Form.Item>
 
           {/* Uploader */}
 
