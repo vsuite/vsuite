@@ -662,3 +662,171 @@ stories.add('form component', () => ({
     },
   },
 }));
+
+stories.add('keypath', () => ({
+  data() {
+    return {
+      formValue: {
+        name: '',
+        email: '',
+        websites: ['', ''],
+      },
+    };
+  },
+
+  render() {
+    return (
+      <Demo title="Validate Form">
+        <JsonView data={this.formValue} />
+
+        <hr />
+
+        <Form
+          value={this.formValue}
+          rules={this.rules}
+          onSubmit={this._handleSubmit}
+          onReset={this._handleReset}
+        >
+          <Form.Item
+            name="name"
+            rule={StringType().isRequired('用户名不能为空')}
+          >
+            <Input
+              placeholder="Username"
+              value={this.formValue.name}
+              onChange={val => (this.formValue.name = val)}
+            />
+          </Form.Item>
+          <Form.Item
+            name="email"
+            rule={StringType()
+              .isEmail('邮箱不符合规范')
+              .isRequired('邮箱不能为空')}
+          >
+            <Input
+              placeholder="Email Address"
+              value={this.formValue.email}
+              onChange={val => (this.formValue.email = val)}
+            />
+          </Form.Item>
+          <Form.Item
+            name="websites[0]"
+            rule={StringType()
+              .isURL('网站')
+              .isRequired('网站必须')}
+          >
+            <Input
+              placeholder="Website 1"
+              value={this.formValue.websites[0]}
+              onChange={val => this.$set(this.formValue.websites, '0', val)}
+            />
+          </Form.Item>
+          <Form.Item
+            name="websites[1]"
+            rule={StringType()
+              .isURL('网站')
+              .isRequired('网站必须')}
+          >
+            <Input
+              placeholder="Website 2"
+              value={this.formValue.websites[1]}
+              onChange={val => this.$set(this.formValue.websites, '1', val)}
+            />
+          </Form.Item>
+          <Form.Item>
+            <Button.Toolbar>
+              <Button type="submit" appearance="primary">
+                Submit
+              </Button>
+              <Button type="reset" appearance="default">
+                Reset
+              </Button>
+            </Button.Toolbar>
+          </Form.Item>
+        </Form>
+      </Demo>
+    );
+  },
+
+  methods: {
+    _handleSubmit(hasError) {
+      if (hasError) return;
+
+      this.$Alert.info('submit');
+    },
+
+    _handleReset() {
+      this.$Alert.info('reset');
+    },
+  },
+}));
+
+stories.add('trigger', () => ({
+  data() {
+    return {
+      formValue: { email: '' },
+      trigger: 'change',
+    };
+  },
+
+  render() {
+    return (
+      <Demo title="Validate Form">
+        <JsonView data={this.formValue} />
+
+        <hr />
+
+        <RadioGroup value={this.trigger} onChange={val => (this.trigger = val)}>
+          <Radio value="change">Change</Radio>
+          <Radio value="blur">Blur</Radio>
+          <Radio value="none">None</Radio>
+        </RadioGroup>
+
+        <hr />
+
+        <Form
+          value={this.formValue}
+          checkTrigger={this.trigger}
+          onSubmit={this._handleSubmit}
+          onReset={this._handleReset}
+        >
+          <Form.Item
+            label="邮箱"
+            name="email"
+            rule={StringType()
+              .isEmail('邮箱格式不正确')
+              .isRequired('邮箱不能为空')}
+          >
+            <Input
+              placeholder="Email"
+              value={this.formValue.email}
+              onChange={val => (this.formValue.email = val)}
+            />
+          </Form.Item>
+          <Form.Item>
+            <Button.Toolbar>
+              <Button type="submit" appearance="primary">
+                Submit
+              </Button>
+              <Button type="reset" appearance="default">
+                Reset
+              </Button>
+            </Button.Toolbar>
+          </Form.Item>
+        </Form>
+      </Demo>
+    );
+  },
+
+  methods: {
+    _handleSubmit(hasError) {
+      if (hasError) return;
+
+      this.$Alert.info('submit');
+    },
+
+    _handleReset() {
+      this.$Alert.info('reset');
+    },
+  },
+}));
