@@ -635,8 +635,6 @@ stories.add('form component', () => ({
             />
           </Form.Item>
 
-          {/* Uploader */}
-
           <Form.Item>
             <Button.Toolbar>
               <Button type="submit" appearance="primary">
