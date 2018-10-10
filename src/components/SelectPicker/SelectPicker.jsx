@@ -1,7 +1,7 @@
 import VueTypes from 'vue-types';
 import _ from 'lodash';
 import popperMixin from 'mixins/popper';
-import onMenuKeydown from 'shares/onMenuKeydown';
+import onMenuKeydown from 'utils/onMenuKeydown';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
 import { mapNode, findNode, flattenNodes } from 'utils/tree';
 import { splitDataByComponent } from 'utils/split';

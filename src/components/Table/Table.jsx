@@ -1,6 +1,8 @@
 import VueTypes from 'vue-types';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
 
+import TableScrollbar from './TableScrollbar.jsx';
+
 const CLASS_PREFIX = '';
 
 export default {
@@ -11,7 +13,11 @@ export default {
   },
 
   render() {
-    return null;
+    return (
+      <div>
+        <TableScrollbar />
+      </div>
+    );
   },
 
   methods: {

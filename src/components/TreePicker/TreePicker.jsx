@@ -1,7 +1,7 @@
 import VueTypes from 'vue-types';
 import _ from 'lodash';
 import popperMixin from 'mixins/popper';
-import onMenuKeydown from 'shares/onMenuKeydown';
+import onMenuKeydown from 'utils/onMenuKeydown';
 import { getHeight, getPosition, scrollTop } from 'shares/dom';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
 import { findNode, flattenNodes, mapNode } from 'utils/tree';

@@ -6,6 +6,8 @@ import { eachNode, findNode, flattenNodes, mapNode } from 'utils/tree';
 import { splitDataByComponent } from 'utils/split';
 import { vueToString } from 'utils/node';
 import shallowEqual from 'utils/shallowEqual';
+import onMenuKeydown from 'utils/onMenuKeydown';
+import { getHeight, getPosition, scrollTop } from 'shares/dom';
 
 import { Collapse } from 'components/Animation';
 import {
@@ -18,8 +20,6 @@ import {
 import CheckTreePickerNode from './CheckTreePickerNode.jsx';
 
 import { CHECK_STATUS } from './constants';
-import onMenuKeydown from 'shares/onMenuKeydown';
-import { getHeight, getPosition, scrollTop } from 'shares/dom';
 
 const CLASS_PREFIX = 'picker';
 

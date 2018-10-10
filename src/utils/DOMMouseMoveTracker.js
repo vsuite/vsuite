@@ -1,4 +1,4 @@
-import { on } from './dom';
+import { on } from '../shares/dom';
 import cancelAnimationFramePolyfill from './cancelAnimationFrame';
 import requestAnimationFramePolyfill from './requestAnimationFrame';
 

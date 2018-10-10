@@ -3,7 +3,7 @@ import _ from 'lodash';
 import popperMixin from 'mixins/popper';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
 import { getWidth } from 'shares/dom';
-import onMenuKeydown from 'shares/onMenuKeydown';
+import onMenuKeydown from 'utils/onMenuKeydown';
 import { vueToString } from 'utils/node';
 import { mapNode, findNode, flattenNodes } from 'utils/tree';
 import { splitDataByComponent } from 'utils/split';

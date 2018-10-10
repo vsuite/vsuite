@@ -1,5 +1,5 @@
 import { scrollTop } from 'shares/dom';
-import requestAnimationFrame from 'shares/requestAnimationFrame';
+import requestAnimationFrame from 'utils/requestAnimationFrame';
 
 export const shouldTime = format => /([Hhms])/.test(format);
 

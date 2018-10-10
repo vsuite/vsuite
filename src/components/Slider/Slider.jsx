@@ -1,7 +1,7 @@
 import VueTypes from 'vue-types';
 import _ from 'lodash';
 import { getOffset, getWidth, getHeight, addStyle, on } from 'shares/dom';
-import DOMMouseMoveTracker from 'shares/DOMMouseMoveTracker';
+import DOMMouseMoveTracker from 'utils/DOMMouseMoveTracker';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
 
 import Tooltip from 'components/Tooltip';
