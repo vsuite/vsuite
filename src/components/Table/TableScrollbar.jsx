@@ -1,8 +1,9 @@
 import VueTypes from 'vue-types';
 import _ from 'lodash';
-import { addStyle } from 'shares/dom';
+import { addStyle, getOffset } from 'shares/dom';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
 import translateDOMPositionXY from 'utils/translateDOMPositionXY';
+import DOMMouseMoveTracker from 'utils/DOMMouseMoveTracker';
 
 import { SCROLLBAR_MIN_WIDTH } from './constants';
 
@@ -16,7 +17,6 @@ export default {
     length: VueTypes.number.def(1),
     scrollLength: VueTypes.number.def(1),
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
-    // onScroll, onMousedown
   },
 
   data() {
@@ -53,6 +53,14 @@ export default {
     },
   },
 
+  mounted() {
+    this._initBarOffset();
+  },
+
+  beforeDestroy() {
+    this._releaseMouseMoves();
+  },
+
   render() {
     const barData = {
       ref: 'bar',
@@ -79,6 +87,32 @@ export default {
   },
 
   methods: {
+    _initBarOffset() {
+      setTimeout(() => {
+        const $bar = this.$refs.bar;
+
+        this.$set(this, 'barOffset', getOffset($bar));
+      }, 1);
+    },
+
+    _getMouseMoveTracker() {
+      return (
+        this.mouseMoveTracker ||
+        new DOMMouseMoveTracker(
+          this._handleDragMove,
+          this._handleDragEnd,
+          document.body
+        )
+      );
+    },
+
+    _releaseMouseMoves() {
+      if (this.mouseMoveTracker) {
+        this.mouseMoveTracker.releaseMouseMoves();
+        this.mouseMoveTracker = null;
+      }
+    },
+
     _updateScrollBarPosition(delta, forceDelta) {
       const max =
         this.scrollLength && this.length
@@ -101,6 +135,12 @@ export default {
       }
 
       addStyle(this.$refs.handle, styles);
+    },
+
+    _resetScrollBarPosition(forceDelta = 0) {
+      this.scrollOffset = 0;
+
+      this._updateScrollBarPosition(0, forceDelta);
     },
 
     _handleScroll(delta, event) {
@@ -133,10 +173,36 @@ export default {
       this._handleScroll(nextDelta, event);
     },
 
-    _handleMouseDown() {},
+    _handleDragMove(deltaX, deltaY, event) {
+      if (!this.mouseMoveTracker || !this.mouseMoveTracker.isDragging()) {
+        return;
+      }
+
+      this._handleScroll(this.vertical ? deltaY : deltaX, event);
+    },
+
+    _handleDragEnd() {
+      this._releaseMouseMoves();
+      this.handlePressed = false;
+    },
+
+    _handleMouseDown(event) {
+      this.mouseMoveTracker = this._getMouseMoveTracker();
+
+      this.mouseMoveTracker.captureMouseMoves(event);
+      this.handlePressed = true;
+
+      this.$emit('mousedown', event);
+    },
 
     _addPrefix(cls) {
       return prefix(this.classPrefix, cls);
+    },
+
+    onWheelScroll(delta) {
+      const nextDelta = delta / (this.scrollLength / this.length);
+
+      this._updateScrollBarPosition(nextDelta);
     },
   },
 };
