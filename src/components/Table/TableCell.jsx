@@ -14,7 +14,6 @@ export default {
     left: VueTypes.number,
     width: VueTypes.number,
     height: VueTypes.number.def(36),
-    headerHeight: VueTypes.number.def(36),
     firstColumn: VueTypes.bool.def(false),
     lastColumn: VueTypes.bool.def(false),
     hasChildren: VueTypes.bool.def(false),
@@ -51,7 +50,7 @@ export default {
       !this.isHeaderCell && this.firstColumn
         ? this.width - layerWidth
         : this.width;
-    const nextHeight = this.isHeaderCell ? this.headerHeight : this.height;
+    const nextHeight = this.height;
 
     const children = this.$slots.default;
 

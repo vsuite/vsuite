@@ -2,6 +2,8 @@
 
 Column:
   // type: 'index', 'selection', 'expand'
+  title: string,
+  key: string,
   width: number,
   minWidth: number | 200,
   // maxWidth: number,
@@ -12,4 +14,5 @@ Column:
   fixed: boolean | false,
   resizable: boolean | false,
   sortable: boolean | false,
+  filterable: boolean | false,
   flex: number | false,
