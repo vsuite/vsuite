@@ -1,6 +1,10 @@
 import VueTypes from 'vue-types';
+import _ from 'lodash';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
 import invariant from 'utils/invariant';
+
+import TableCell from './TableCell.jsx';
+import TableHeaderCell from './TableHeaderCell.jsx';
 
 import { formatColumns } from './utils';
 
@@ -26,6 +30,7 @@ export default {
     wordWrap: VueTypes.bool.def(false),
     showHeader: VueTypes.bool,
     data: VueTypes.arrayOf(VueTypes.object).def([]),
+    dataKey: VueTypes.string,
     columns: VueTypes.arrayOf(VueTypes.object).def([]),
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
 
@@ -89,17 +94,38 @@ export default {
     },
   },
 
-  render() {
+  render(h) {
     // const { headerCells, bodyCells, allColumnsWidth } = this._generateCells();
     // const rowWidth =
     //   allColumnsWidth > this.width ? allColumnsWidth : this.width;
 
     // console.dir(this.columnList);
 
-    return null;
+    const children = this.$slots.default;
+    const { headerCells, bodyCells, allColumnsWidth } = this._generateCells();
+    const rowWidth =
+      allColumnsWidth > this.width ? allColumnsWidth : this.width;
+    const style = {
+      width: this.width || 'auto',
+      height: this.tableH,
+    };
+
+    return (
+      <div class={this.classes} style={style}>
+        {this.showHeader && this._renderTableHeader(h, headerCells, rowWidth)}
+        {children && this._renderTableBody(h, bodyCells, rowWidth)}
+        {this.showHeader && this._renderMouseArea(h)};
+      </div>
+    );
   },
 
   methods: {
+    _renderTableHeader() {},
+
+    _renderMouseArea() {},
+
+    _renderTableBody() {},
+
     _generateCells() {
       let left = 0; // Cell left margin
       const headerCells = []; // Table header cell
@@ -136,28 +162,25 @@ export default {
         }
 
         // FIXME: headerHeight 通过 columns 和默认高度计算得出
-
-        // const cellProps = {
-        //   left,
-        //   index,
-        //   headerHeight: this.headerHeight,
-        //   key: index,
-        //   width: nextWidth,
-        //   height: this.rowHeight,
-        //   firstColumn: index === 0,
-        //   lastColumn: index === this.columnList.length - 1,
-        // };
-
         if (this.showHeader && this.headerHeight) {
-          // const headerCellProps = {
-          //   // dataKey: columnChildren[1].props.dataKey,
-          //   // isHeaderCell: true,
-          //   // sortable: column.props.sortable,
-          //   // sortColumn,
-          //   // sortType,
-          //   // onSortColumn,
-          //   // flexGrow
-          // };
+          const headerCellData = {
+            key: index,
+            props: {
+              index,
+              left,
+              width: nextWidth,
+              height: this.headerHeight,
+              firstColumn: index === 0,
+              lastColumn: index === this.columnList.length - 1,
+            },
+            // dataKey: columnChildren[1].props.dataKey,
+            // isHeaderCell: true,
+            // sortable: column.props.sortable,
+            // sortColumn,
+            // sortType,
+            // onSortColumn,
+            // flexGrow
+          };
           //
           // if (resizable) {
           //   // _.merge(headerCellProps, {
@@ -168,12 +191,36 @@ export default {
           //   // });
           // }
 
-          // todo
-          headerCells.push(null);
+          headerCells.push(<TableHeaderCell {...headerCellData} />);
         }
 
-        // todo
-        bodyCells.push(null);
+        const cellData = {
+          props: {
+            index,
+            left,
+            width: nextWidth,
+            height: this.rowHeight,
+            firstColumn: index === 0,
+            lastColumn: index === this.columnList.length - 1,
+          },
+        };
+
+        this.data.forEach((d, rowIndex) => {
+          if (!bodyCells[rowIndex]) {
+            bodyCells[rowIndex] = [];
+          }
+
+          const data = _.merge(cellData, {
+            key: this.dataKey ? _.get(d, this.dataKey) : `${rowIndex}-${index}`,
+            props: {
+              rowIndex: rowIndex,
+              rowKey: key,
+              rowData: d,
+            },
+          });
+
+          bodyCells[rowIndex].push(<TableCell {...data} />);
+        });
 
         left += nextWidth;
       });

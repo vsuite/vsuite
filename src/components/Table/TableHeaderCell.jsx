@@ -1,5 +1,6 @@
 import VueTypes from 'vue-types';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
+import { splitDataByComponent } from 'utils/split';
 
 import TableCell from './TableCell.jsx';
 
@@ -40,17 +41,25 @@ export default {
 
   render(h) {
     const children = this.$slots.default;
+    const cellData = splitDataByComponent(
+      {
+        props: {
+          left: this.left,
+          width: this.width,
+          height: this.height,
+          isHeaderCell: true,
+        },
+        splitProps: { ...this.$attrs },
+      },
+      TableCell
+    );
 
     return (
       <div class={this.classes}>
-        <TableCell
-          left={this.left}
-          width={this.width}
-          height={this.height}
-          isHeaderCell={true}
-        >
+        <TableCell {...cellData}>
           {children}
           {this._renderSortColumn(h)}
+          {this._renderFilterColumn(h)}
         </TableCell>
         {this._renderResizeSpanner(h)}
       </div>
@@ -59,6 +68,8 @@ export default {
 
   methods: {
     _renderSortColumn() {},
+
+    _renderFilterColumn() {},
 
     _renderResizeSpanner() {},
 

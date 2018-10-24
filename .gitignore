@@ -17,3 +17,6 @@ yarn-error.log*
 
 # build
 dist/
+
+# storybook
+.cache/

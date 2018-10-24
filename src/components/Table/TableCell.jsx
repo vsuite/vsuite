@@ -9,6 +9,7 @@ export default {
   name: 'TableCell',
 
   props: {
+    index: VueTypes.number,
     align: VueTypes.oneOf(['left', 'center', 'right']).def('left'),
     dataKey: VueTypes.string,
     left: VueTypes.number,
