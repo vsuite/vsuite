@@ -3,7 +3,9 @@ import _ from 'lodash';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
 import invariant from 'utils/invariant';
 
+import TableRow from './TableRow.jsx';
 import TableCell from './TableCell.jsx';
+import TableCellGroup from './TableCellGroup.jsx';
 import TableHeaderCell from './TableHeaderCell.jsx';
 
 import { formatColumns } from './utils';
@@ -102,31 +104,68 @@ export default {
     // console.dir(this.columnList);
 
     const children = this.$slots.default;
-    const { headerCells, bodyCells, allColumnsWidth } = this._generateCells();
+    const { headerCells, bodyCells, allColumnsWidth } = this._generateCells(h);
     const rowWidth =
       allColumnsWidth > this.width ? allColumnsWidth : this.width;
-    const style = {
-      width: this.width || 'auto',
-      height: this.tableH,
+    const styles = {
+      width: this.width ? `${this.width}px` : 'auto',
+      height: `${this.tableH}px`,
     };
 
     return (
-      <div class={this.classes} style={style}>
+      <div class={this.classes} style={styles} ref="table">
         {this.showHeader && this._renderTableHeader(h, headerCells, rowWidth)}
         {children && this._renderTableBody(h, bodyCells, rowWidth)}
-        {this.showHeader && this._renderMouseArea(h)};
+        {this.showHeader && this._renderMouseArea(h)}
       </div>
     );
   },
 
   methods: {
-    _renderTableHeader() {},
+    _renderTableHeader(h, cells, rowWidth) {
+      const data = {
+        ref: 'tableHeader',
+        props: {
+          top: 0,
+          width: rowWidth,
+          height: this.headerHeight,
+          isHeaderRow: true,
+        },
+      };
 
-    _renderMouseArea() {},
+      return (
+        <div class={this._addPrefix('header-row-wrapper')} ref="headerWrapper">
+          {this._renderRow(h, data, cells)}
+        </div>
+      );
+    },
 
-    _renderTableBody() {},
+    _renderTableBody(h, cells, rowWidth) {},
 
-    _generateCells() {
+    _renderMouseArea(h) {
+      const styles = { height: `${this.tableH}px` };
+
+      return (
+        <div
+          class={this._addPrefix('mouse-area')}
+          style={styles}
+          ref="mouseArea"
+        >
+          <span style={{ height: `${this.headerHeight - 1}px` }} />
+        </div>
+      );
+    },
+
+    _renderRow(h, data, cells, shouldRenderExpanded, rowData) {
+      return (
+        <TableRow {...data}>
+          <TableCellGroup>{cells}</TableCellGroup>
+          {/* TODO: renderExpand */}
+        </TableRow>
+      );
+    },
+
+    _generateCells(h) {
       let left = 0; // Cell left margin
       const headerCells = []; // Table header cell
       const bodyCells = []; // Table body cell
@@ -145,11 +184,24 @@ export default {
       );
 
       this.columnList.forEach((column, index) => {
-        const { key, width, minWidth, resizable, flex } = column;
+        const {
+          title,
+          key,
+          width,
+          minWidth,
+          resizable,
+          flex,
+          renderTitle,
+        } = column;
 
         invariant.not(
           resizable && flex,
-          `Cannot set 'resizable' and 'flex' together, column index: ${index}`
+          `[Table] COLUMN ${index}: cannot set 'resizable' and 'flex' together`
+        );
+
+        invariant.not(
+          renderTitle && !_.isFunction(renderTitle),
+          `[Table] column ${index}: 'renderTitle' should be a function`
         );
 
         let nextWidth = this[`${key}_${index}_width`] || width || 0;
@@ -191,7 +243,11 @@ export default {
           //   // });
           // }
 
-          headerCells.push(<TableHeaderCell {...headerCellData} />);
+          headerCells.push(
+            <TableHeaderCell {...headerCellData}>
+              {renderTitle ? renderTitle(h, this.data, index) : title}
+            </TableHeaderCell>
+          );
         }
 
         const cellData = {

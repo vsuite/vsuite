@@ -28,7 +28,7 @@ export default {
     contentStyle: VueTypes.object.def(() => ({})),
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
 
-    renderCell: VueTypes.func,
+    renderCell: Function,
   },
 
   computed: {
@@ -56,13 +56,13 @@ export default {
     const children = this.$slots.default;
 
     const styles = {
-      width: nextWidth,
-      height: nextHeight,
+      width: `${nextWidth}px`,
+      height: `${nextHeight}px`,
       zIndex: this.layer,
       left:
-        !this.isHeaderCell && this.firstColumn
+        (!this.isHeaderCell && this.firstColumn
           ? this.left + layerWidth
-          : this.left,
+          : this.left) + 'px',
     };
 
     const contentStyles = {
