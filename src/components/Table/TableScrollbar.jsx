@@ -87,66 +87,10 @@ export default {
   },
 
   methods: {
-    _initBarOffset() {
-      setTimeout(() => {
-        const $bar = this.$refs.bar;
-
-        this.$set(this, 'barOffset', getOffset($bar));
-      }, 1);
-    },
-
-    _getMouseMoveTracker() {
-      return (
-        this.mouseMoveTracker ||
-        new DOMMouseMoveTracker(
-          this._handleDragMove,
-          this._handleDragEnd,
-          document.body
-        )
-      );
-    },
-
-    _releaseMouseMoves() {
-      if (this.mouseMoveTracker) {
-        this.mouseMoveTracker.releaseMouseMoves();
-        this.mouseMoveTracker = null;
-      }
-    },
-
-    _updateScrollBarPosition(delta, forceDelta) {
-      const max =
-        this.scrollLength && this.length
-          ? this.length - (this.length / this.scrollLength) * this.length
-          : 0;
-      const styles = {};
-
-      if (_.isUndefined(forceDelta)) {
-        this.scrollOffset += delta;
-        this.scrollOffset = Math.max(this.scrollOffset, 0);
-        this.scrollOffset = Math.min(this.scrollOffset, max);
-      } else {
-        this.scrollOffset = forceDelta || 0;
-      }
-
-      if (this.vertical) {
-        translateDOMPositionXY(styles, 0, this.scrollOffset);
-      } else {
-        translateDOMPositionXY(styles, this.scrollOffset, 0);
-      }
-
-      addStyle(this.$refs.handle, styles);
-    },
-
-    _resetScrollBarPosition(forceDelta = 0) {
-      this.scrollOffset = 0;
-
-      this._updateScrollBarPosition(0, forceDelta);
-    },
-
     _handleScroll(delta, event) {
       const scrollDelta = delta * (this.scrollLength / this.length);
 
-      this._updateScrollBarPosition(delta);
+      this.updateScrollBarPosition(delta);
 
       this.$emit('scroll', scrollDelta, event);
     },
@@ -195,14 +139,70 @@ export default {
       this.$emit('mousedown', event);
     },
 
+    _initBarOffset() {
+      setTimeout(() => {
+        const $bar = this.$refs.bar;
+
+        this.$set(this, 'barOffset', getOffset($bar));
+      }, 1);
+    },
+
+    _getMouseMoveTracker() {
+      return (
+        this.mouseMoveTracker ||
+        new DOMMouseMoveTracker(
+          this._handleDragMove,
+          this._handleDragEnd,
+          document.body
+        )
+      );
+    },
+
+    _releaseMouseMoves() {
+      if (this.mouseMoveTracker) {
+        this.mouseMoveTracker.releaseMouseMoves();
+        this.mouseMoveTracker = null;
+      }
+    },
+
     _addPrefix(cls) {
       return prefix(this.classPrefix, cls);
+    },
+
+    resetScrollBarPosition(forceDelta = 0) {
+      this.scrollOffset = 0;
+
+      this.updateScrollBarPosition(0, forceDelta);
+    },
+
+    updateScrollBarPosition(delta, forceDelta) {
+      const max =
+        this.scrollLength && this.length
+          ? this.length - (this.length / this.scrollLength) * this.length
+          : 0;
+      const styles = {};
+
+      if (_.isUndefined(forceDelta)) {
+        this.scrollOffset += delta;
+        this.scrollOffset = Math.max(this.scrollOffset, 0);
+        this.scrollOffset = Math.min(this.scrollOffset, max);
+      } else {
+        this.scrollOffset = forceDelta || 0;
+      }
+
+      if (this.vertical) {
+        translateDOMPositionXY(styles, 0, this.scrollOffset);
+      } else {
+        translateDOMPositionXY(styles, this.scrollOffset, 0);
+      }
+
+      addStyle(this.$refs.handle, styles);
     },
 
     onWheelScroll(delta) {
       const nextDelta = delta / (this.scrollLength / this.length);
 
-      this._updateScrollBarPosition(nextDelta);
+      this.updateScrollBarPosition(nextDelta);
     },
   },
 };

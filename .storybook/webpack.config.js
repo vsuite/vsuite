@@ -11,24 +11,24 @@ function resolveRoot(relativePath) {
 module.exports = {
   module: {
     rules: [
-      {
-        test: [/\.stories\.jsx?$/, /stories\/*\.jsx?$/],
-        use: [
-          {
-            loader: require.resolve('@storybook/addon-storysource/loader'),
-            options: {
-              prettierConfig: {
-                parser: 'babylon',
-                singleQuote: true,
-                trailingComma: 'es5',
-                bracketSpacing: true,
-              },
-            },
-          },
-        ],
-        include: [resolve('components')],
-        enforce: 'pre',
-      },
+      // {
+      //   test: [/\.stories\.jsx?$/, /stories\/*\.jsx?$/],
+      //   use: [
+      //     {
+      //       loader: require.resolve('@storybook/addon-storysource/loader'),
+      //       options: {
+      //         prettierConfig: {
+      //           parser: 'babylon',
+      //           singleQuote: true,
+      //           trailingComma: 'es5',
+      //           bracketSpacing: true,
+      //         },
+      //       },
+      //     },
+      //   ],
+      //   include: [resolve('components')],
+      //   enforce: 'pre',
+      // },
       {
         test: /\.less$/,
         use: [
