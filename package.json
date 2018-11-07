@@ -143,6 +143,17 @@
       "json",
       "vue"
     ],
+    "moduleNameMapper": {
+      "^components/(.*)$": "<rootDir>/src/components/$1",
+      "^directives/(.*)$": "<rootDir>/src/directives/$1",
+      "^langs/(.*)$": "<rootDir>/src/langs/$1",
+      "^mixins/(.*)$": "<rootDir>/src/mixins/$1",
+      "^plugins/(.*)$": "<rootDir>/src/plugins/$1",
+      "^shares/(.*)$": "<rootDir>/src/shares/$1",
+      "^styles/(.*)$": "<rootDir>/src/styles/$1",
+      "^utils/(.*)$": "<rootDir>/src/utils/$1",
+      "^@/(.*)$": "<rootDir>/src/$1"
+    },
     "bail": true
   },
   "browserslist": [

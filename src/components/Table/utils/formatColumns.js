@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import invariant from 'utils/invariant';
 
 function travelColumn(column, func) {
   const children = (column && column.children) || [];
@@ -15,10 +16,21 @@ function travelColumn(column, func) {
   return column;
 }
 
+// deal with title property
+function title(col, index) {
+  invariant.not(
+    col.title === null || col.title === undefined,
+    `[Table] COLUMN ${index}: \`title\` is required`
+  );
+}
+
 function formatColumns(columns = []) {
-  return _.cloneDeep(columns).map(column => {
+  return _.cloneDeep(columns).map((column, index) => {
     return travelColumn(column, col => {
       const children = (col && col.children) || [];
+
+      // title
+      title(col, index, children);
 
       // width
       col.width =

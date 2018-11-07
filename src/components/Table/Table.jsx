@@ -13,6 +13,7 @@ import TableHeaderCell from './TableHeaderCell.jsx';
 import TableScrollbar from './TableScrollbar.jsx';
 
 import { formatColumns } from './utils';
+import { TABLE_DEFAULT_HEIGHT } from './constants';
 
 const CLASS_PREFIX = 'table';
 
@@ -21,13 +22,15 @@ export default {
 
   props: {
     width: VueTypes.number,
-    height: VueTypes.number.def(200),
+    height: VueTypes.custom(v => {
+      if (typeof v === 'number') return true;
+      if (typeof v === 'string' && v === 'auto') return true;
+
+      return false;
+    }, '`height` must be a number or string `auto`').def(TABLE_DEFAULT_HEIGHT),
     minHeight: VueTypes.number,
-    rowHeight: VueTypes.number.def(46),
-    rowExpandedHeight: VueTypes.number.def(200),
-    headerHeight: VueTypes.number.def(40),
-    autoHeight: VueTypes.bool.def(false),
-    disabledScroll: VueTypes.bool.def(false),
+    maxHeight: VueTypes.number,
+    scrollbar: VueTypes.bool,
     hover: VueTypes.bool,
     loading: VueTypes.bool.def(false),
     loadAnimation: VueTypes.bool.def(false),
@@ -106,7 +109,7 @@ export default {
 
     // height of table
     tableH() {
-      return this.autoHeight
+      return this.height === 'auto'
         ? Math.max(this.headerH + this.contentH, this.minHeight)
         : this.height;
     },
@@ -223,7 +226,7 @@ export default {
     },
 
     _renderScrollbar(h) {
-      if (this.disabledScroll) {
+      if (!this.scrollbar) {
         return null;
       }
 
@@ -351,7 +354,7 @@ export default {
         this.$refs.scrollbarY && this.$refs.scrollbarY.resetScrollBarPosition();
       }
 
-      if (!this.autoHeight) {
+      if (this.height !== 'auto') {
         // 这里 -10 是为了让滚动条不挡住内容部分
         this.minScrollY = -(totalH - this.height) - 10;
       }
