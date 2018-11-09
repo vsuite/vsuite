@@ -14,3 +14,4 @@ Column:
   sortable: boolean | false,
   filterable: boolean | false,
   flex: number | false,
+****
