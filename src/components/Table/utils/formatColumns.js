@@ -48,30 +48,54 @@ function width(col, index, children) {
     `[Table] COLUMN ${index}: \`maxWidth\` cannot smaller than zero`
   );
 
-  // min-width
-  col.minWidth = Math.max(
-    children.reduce(
-      (p, v) => p + (v.minWidth || v.width || CELL_MINI_WIDTH),
-      0
-    ),
-    col.minWidth || col.width || CELL_MINI_WIDTH
-  );
-
-  // max-width
-  col.maxWidth = Math.min(
-    children.reduce((p, v) => p + (v.maxWidth || v.width || Infinity), 0) ||
-      Infinity,
-    col.maxWidth || col.width || Infinity
-  );
+  const hasChildren = children.length > 0;
+  const isPerfect = hasChildren && children.every(c => !!c.width);
+  const totalW = children.reduce((p, v) => p + (v.width || 0), 0);
 
   // width
-  const w = children.reduce((p, v) => p + (v.width || 0), 0);
+  col.width = isPerfect ? totalW : col.width || null;
 
-  col.width = children.every(c => !!c.width)
-    ? w > (col.width || 0)
-      ? w
-      : col.width || null
-    : null;
+  // min-width
+  col.minWidth = isPerfect
+    ? totalW
+    : hasChildren
+    ? Math.max(
+        children.reduce(
+          (p, v) => p + (v.minWidth || v.width || CELL_MINI_WIDTH),
+          0
+        ),
+        col.minWidth || col.width || CELL_MINI_WIDTH
+      )
+    : col.minWidth || col.width || CELL_MINI_WIDTH;
+
+  // max-width
+  col.maxWidth = isPerfect
+    ? totalW
+    : hasChildren
+    ? Math.min(
+        children.reduce((p, v) => p + (v.maxWidth || v.width || Infinity), 0),
+        col.maxWidth || col.width || Infinity
+      )
+    : col.maxWidth || col.width || Infinity;
+
+  invariant.not(
+    col.maxWidth < col.minWidth,
+    `[Table] COLUMN ${index}: \`maxWidth\` cannot smaller than \`minWidth\``
+  );
+
+  if (col.minWidth === col.maxWidth) {
+    col.width = col.minWidth;
+
+    return;
+  }
+
+  invariant(
+    !_.isNumber(col.width) ||
+      (_.isNumber(col.width) &&
+        col.width >= col.minWidth &&
+        col.width <= col.maxWidth),
+    `[Table] COLUMN ${index}: \`width\` must bigger than \`minWidth\` and smaller than \`maxWidth\``
+  );
 }
 
 function formatColumns(columns = []) {
@@ -88,31 +112,21 @@ function formatColumns(columns = []) {
       // width
       width(col, index, children);
 
-      // width
-      col.width =
-        children.reduce((p, v) => p + (v.width || 0), 0) || col.width || 0;
-
-      // minWidth
-      col.minWidth =
-        children.reduce((p, v) => p + (v.minWidth || 0), 0) ||
-        col.minWidth ||
-        0;
-
       // align
-      col.align = col.align || 'left';
+      // col.align = col.align || 'left';
 
       // fixed
-      col.fixed = children.some(c => !!c.fixed) || col.fixed || false;
+      // col.fixed = children.some(c => !!c.fixed) || col.fixed || false;
 
       // resizable
-      col.resizable = col.resizable || false;
+      // col.resizable = col.resizable || false;
 
       // sortable
-      col.sortable = col.sortable || false;
+      // col.sortable = col.sortable || false;
 
       // flex
-      col.flex =
-        children.reduce((p, v) => p + (v.flex || 0), 0) || col.flex || 0;
+      // col.flex =
+      //   children.reduce((p, v) => p + (v.flex || 0), 0) || col.flex || 0;
     });
   });
 }
