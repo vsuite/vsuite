@@ -1,7 +1,12 @@
 import _ from 'lodash';
 import invariant from 'utils/invariant';
 
-import { CELL_MINI_WIDTH } from '../constants';
+import {
+  CELL_MINI_WIDTH,
+  CELL_ALIGN,
+  CELL_FIXED,
+  CELL_TYPE,
+} from '../constants';
 
 function travelColumn(column, func) {
   const children = (column && column.children) || [];
@@ -31,7 +36,7 @@ function key(col) {
   col.key = col.key || null;
 }
 
-// deal with width property
+// deal with width, minWidth and maxWidth property
 function width(col, index, children) {
   invariant.not(
     _.isNumber(col.width) && col.width <= 0,
@@ -98,6 +103,49 @@ function width(col, index, children) {
   );
 }
 
+// text style
+function text(col, index, children) {
+  invariant.not(
+    col.align && _.isUndefined(CELL_ALIGN[col.align]),
+    `[Table] COLUMN ${index}: \`align\` = ${col.align} is not supported`
+  );
+
+  invariant.not(
+    col.fixed && _.isUndefined(CELL_FIXED[col.fixed]),
+    `[Table] COLUMN ${index}: \`fixed\` = ${col.fixed} is not supported`
+  );
+
+  invariant.not(
+    children.length && children.some(x => !_.isUndefined(CELL_FIXED[x.fixed])),
+    `[Table] COLUMN ${index}: \`fixed\` cannot be set for children`
+  );
+
+  invariant.not(
+    col.type && _.isUndefined(CELL_TYPE[col.type]),
+    `[Table] COLUMN ${index}: \`type\` = ${col.type} is not supported`
+  );
+
+  col.className = col.className || '';
+  col.style = col.style || {};
+  col.type = col.type || null;
+  col.align = col.align || CELL_ALIGN.LEFT;
+  col.fixed = col.fixed || false;
+  col.ellipsis = col.ellipsis || false;
+  col.tooltip = col.tooltip || false;
+}
+
+// sort
+function sort() {}
+
+// filter
+function filter() {}
+
+// resize
+function resize() {}
+
+// flex
+function flex() {}
+
 function formatColumns(columns = []) {
   return _.cloneDeep(columns).map((column, index) => {
     return travelColumn(column, col => {
@@ -112,11 +160,20 @@ function formatColumns(columns = []) {
       // width
       width(col, index, children);
 
-      // align
-      // col.align = col.align || 'left';
+      // text
+      text(col, index, children);
 
-      // fixed
-      // col.fixed = children.some(c => !!c.fixed) || col.fixed || false;
+      // sort
+      sort(col, index, children);
+
+      // filter
+      filter(col, index, children);
+
+      // resize
+      resize(col, index, children);
+
+      // flex
+      flex(col, index, children);
 
       // resizable
       // col.resizable = col.resizable || false;

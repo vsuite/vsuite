@@ -1,5 +1,5 @@
 import formatColumns from './formatColumns';
-import { CELL_MINI_WIDTH } from '../constants';
+import { CELL_ALIGN, CELL_MINI_WIDTH } from '../constants';
 
 describe('@formatColumns', () => {
   // title
@@ -454,6 +454,40 @@ describe('@formatColumns', () => {
             maxWidth: Infinity,
           },
         ],
+      },
+    ]);
+  });
+
+  // text
+  it('`text`', () => {
+    expect(() =>
+      formatColumns([{ title: 'title1', align: 'top' }])
+    ).toThrowError('[Table] COLUMN 0: `align` = top is not supported');
+
+    expect(() =>
+      formatColumns([{ title: 'title1', fixed: 'top' }])
+    ).toThrowError('[Table] COLUMN 0: `fixed` = top is not supported');
+
+    expect(() =>
+      formatColumns([
+        { title: 'title1', children: [{ title: 'title11', fixed: true }] },
+      ])
+    ).toThrowError('[Table] COLUMN 0: `fixed` cannot be set for children');
+
+    expect(() =>
+      formatColumns([{ title: 'title1', type: 'input' }])
+    ).toThrowError('[Table] COLUMN 0: `type` = input is not supported');
+
+    expect(formatColumns([{ title: 'title1' }])).toMatchObject([
+      {
+        title: 'title1',
+        className: '',
+        style: {},
+        type: null,
+        align: CELL_ALIGN.LEFT,
+        fixed: false,
+        ellipsis: false,
+        tooltip: false,
       },
     ]);
   });
