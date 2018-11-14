@@ -1,5 +1,6 @@
 import VueTypes from 'vue-types';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
+import translateDOMPositionXY from 'utils/translateDOMPositionXY';
 
 const CLASS_PREFIX = 'table-row';
 
@@ -31,6 +32,8 @@ export default {
       height: `${this.height}px`,
     };
     const children = this.$slots.default;
+
+    translateDOMPositionXY(styles, 0, this.top);
 
     return (
       <div class={this.classes} style={styles}>

@@ -3,8 +3,9 @@ import _ from 'lodash';
 import onResize from 'element-resize-event';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
 import WheelHandler from 'utils/WheelHandler';
+import translateDOMPositionXY from 'utils/translateDOMPositionXY';
 import { cloneElement, getKey } from 'utils/node';
-import { getWidth, getHeight } from 'shares/dom';
+import { getWidth, getHeight, addStyle, toggleClass } from 'shares/dom';
 
 import TableRow from './TableRow.jsx';
 import TableCell from './TableCell.jsx';
@@ -44,6 +45,7 @@ export default {
     cellBordered: VueTypes.bool.def(false),
     wordWrap: VueTypes.bool.def(false),
     showHeader: VueTypes.bool,
+    disabledScroll: VueTypes.bool.def(false),
     isTree: VueTypes.bool.def(false),
     data: VueTypes.arrayOf(VueTypes.object).def([]),
     dataKey: VueTypes.string,
@@ -77,6 +79,9 @@ export default {
 
       scrollX: 0,
       scrollY: 0,
+
+      touchX: 0,
+      touchY: 0,
 
       minScrollX: 0,
       minScrollY: 0,
@@ -127,6 +132,11 @@ export default {
     // format columns
     columnList() {
       return formatColumns(this.columns);
+    },
+
+    // TODO: shouldFixedColumn
+    shouldFixedColumn() {
+      return false;
     },
   },
 
@@ -399,14 +409,6 @@ export default {
       );
     },
 
-    _handleTouchStart() {},
-
-    _handleTouchMove() {},
-
-    _handleScrollX() {},
-
-    _handleScrollY() {},
-
     _handleResize() {},
 
     _handleResizeStart() {},
@@ -415,9 +417,152 @@ export default {
 
     _handleResizeEnd() {},
 
-    _shouldHandleWheelX() {},
+    _handleTouchStart(event) {
+      const { pageX, pageY } = event.touches ? event.touches[0] : {};
 
-    _shouldHandleWheelY() {},
+      this.touchX = pageX;
+      this.touchY = pageY;
+
+      this.$emit('touch-start', event);
+    },
+
+    _handleTouchMove(event) {
+      event.stopPropagation();
+      event.preventDefault();
+
+      const { pageX: nextPageX, pageY: nextPageY } = event.touches
+        ? event.touches[0]
+        : {};
+      const deltaX = this.touchX - nextPageX;
+      const deltaY = this.touchY - nextPageY;
+
+      this._handleWheel(deltaX, deltaY);
+
+      this.$refs.scrollbarX && this.$refs.scrollbarX.onWheelScroll(deltaX);
+      this.$refs.scrollbarY && this.$refs.scrollbarY.onWheelScroll(deltaY);
+
+      this.touchX = nextPageX;
+      this.touchY = nextPageY;
+
+      this.$emit('touch-move', event);
+    },
+
+    _handleWheel(deltaX, deltaY) {
+      if (!this.$refs.table) {
+        return;
+      }
+
+      const nextScrollX = this.scrollX - deltaX;
+      const nextScrollY = this.scrollY - deltaY;
+
+      this.scrollY = Math.min(
+        0,
+        nextScrollY < this.minScrollY ? this.minScrollY : nextScrollY
+      );
+      this.scrollX = Math.min(
+        0,
+        nextScrollX < this.minScrollX ? this.minScrollX : nextScrollX
+      );
+
+      this._updatePosition();
+
+      this.$emit('scroll', this.scrollX, this.scrollY);
+    },
+
+    _handleScrollX(delta) {
+      this._handleWheel(delta, 0);
+    },
+
+    _handleScrollY(delta) {
+      this._handleWheel(delta, 0);
+    },
+
+    _updatePosition() {
+      // 当存在锁定列情况处理
+      if (this.shouldFixedColumn) {
+        this._updatePositionByFixedCell();
+      } else {
+        const wheelStyle = {};
+        const headerStyle = {};
+
+        translateDOMPositionXY(wheelStyle, this.scrollX, this.scrollY);
+        translateDOMPositionXY(headerStyle, this.scrollX, 0);
+
+        this.$refs.wheelWrapper &&
+          addStyle(this.$refs.wheelWrapper, wheelStyle);
+        this.$refs.headerWrapper &&
+          addStyle(this.$refs.headerWrapper, headerStyle);
+      }
+
+      if (this.$refs.tableHeader) {
+        toggleClass(
+          this.$refs.tableHeader,
+          this._addPrefix('cell-group-shadow'),
+          this.scrollY < 0
+        );
+      }
+    },
+
+    _updatePositionByFixedCell() {
+      const wheelGroupStyle = {};
+      const wheelStyle = {};
+      const scrollGroups =
+        (this.$refs.table &&
+          this.$refs.table.querySelectorAll(
+            `.${this._addPrefix('cell-group-scroll')}`
+          )) ||
+        [];
+      const fixedGroups =
+        (this.$refs.table &&
+          this.$refs.table.querySelectorAll(
+            `.${this._addPrefix('cell-group-fixed')}`
+          )) ||
+        [];
+
+      translateDOMPositionXY(wheelGroupStyle, this.scrollX, 0);
+      translateDOMPositionXY(wheelStyle, 0, this.scrollY);
+
+      Array.from(scrollGroups).forEach(group => {
+        addStyle(group, wheelGroupStyle);
+      });
+
+      if (this.$refs.wheelWrapper) {
+        addStyle(this.$refs.wheelWrapper, wheelStyle);
+      }
+
+      const shadowClassName = this._addPrefix('cell-group-shadow');
+      const condition = this.scrollX < 0;
+
+      Array.from(fixedGroups).forEach(group => {
+        toggleClass(group, shadowClassName, condition);
+      });
+    },
+
+    _shouldHandleWheelX(delta) {
+      if (delta === 0 || this.disabledScroll || this.loading) {
+        return false;
+      }
+
+      if (this.tableW && this.contentW <= this.tableW) {
+        return false;
+      }
+
+      return (
+        (delta >= 0 && this.scrollX > this.minScrollX) ||
+        (delta < 0 && this.scrollX < 0)
+      );
+    },
+
+    _shouldHandleWheelY(delta) {
+      if (delta === 0 || this.disabledScroll || this.loading) {
+        return false;
+      }
+
+      return (
+        (delta >= 0 && this.scrollY > this.minScrollY) ||
+        (delta < 0 && this.scrollY < 0)
+      );
+    },
 
     // calculate the with of table
     _calculateTableWidth() {
@@ -446,7 +591,7 @@ export default {
       }
 
       // 这里 -10 是为了让滚动条不挡住内容部分
-      this.minScrollX = -(contentW - this.contentW) - 10;
+      this.minScrollX = -(contentW - this.tableW) - 10;
       this.contentW = contentW;
     },
 
