@@ -210,24 +210,20 @@ export default {
 
           // TODO: expandedRowHeight & custom rowHeight
 
+          const props = {
+            key: `row_${i}`,
+            index: i,
+            top,
+            layer: 0,
+            width: rowWidth,
+            height: nextRowHeight,
+          };
+
           bodyHeight += nextRowHeight;
 
           !this.isTree && (top += nextRowHeight);
 
-          return this._renderRowData(
-            h,
-            cells[i],
-            {
-              key: `row_${i}`,
-              index: i,
-              top,
-              layer: 0,
-              width: rowWidth,
-              height: nextRowHeight,
-            },
-            d,
-            false
-          );
+          return this._renderRowData(h, cells[i], props, d, false);
         });
       }
 
