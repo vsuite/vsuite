@@ -1,10 +1,10 @@
 import VueTypes from 'vue-types';
 import _ from 'lodash';
+import onResize from 'element-resize-event';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
 import WheelHandler from 'utils/WheelHandler';
-import invariant from 'utils/invariant';
+import { cloneElement, getKey } from 'utils/node';
 import { getWidth, getHeight } from 'shares/dom';
-import onResize from 'element-resize-event';
 
 import TableRow from './TableRow.jsx';
 import TableCell from './TableCell.jsx';
@@ -13,7 +13,12 @@ import TableHeaderCell from './TableHeaderCell.jsx';
 import TableScrollbar from './TableScrollbar.jsx';
 
 import { formatColumns } from './utils';
-import { TABLE_DEFAULT_HEIGHT } from './constants';
+import {
+  TABLE_DEFAULT_HEIGHT,
+  TABLE_HEADER_DEFAULT_HEIGHT,
+  ROW_DEFAULT_HEIGHT,
+  CELL_PADDING_HEIGHT,
+} from './constants';
 
 const CLASS_PREFIX = 'table';
 
@@ -24,12 +29,13 @@ export default {
     width: VueTypes.number,
     height: VueTypes.custom(v => {
       if (typeof v === 'number') return true;
-      if (typeof v === 'string' && v === 'auto') return true;
 
-      return false;
+      return typeof v === 'string' && v === 'auto';
     }, '`height` must be a number or string `auto`').def(TABLE_DEFAULT_HEIGHT),
     minHeight: VueTypes.number,
     maxHeight: VueTypes.number,
+    headerHeight: VueTypes.number.def(TABLE_HEADER_DEFAULT_HEIGHT),
+    rowHeight: VueTypes.number.def(ROW_DEFAULT_HEIGHT),
     scrollbar: VueTypes.bool,
     hover: VueTypes.bool,
     loading: VueTypes.bool.def(false),
@@ -38,6 +44,7 @@ export default {
     cellBordered: VueTypes.bool.def(false),
     wordWrap: VueTypes.bool.def(false),
     showHeader: VueTypes.bool,
+    isTree: VueTypes.bool.def(false),
     data: VueTypes.arrayOf(VueTypes.object).def([]),
     dataKey: VueTypes.string,
     columns: VueTypes.arrayOf(VueTypes.object).def([]),
@@ -110,7 +117,10 @@ export default {
     // height of table
     tableH() {
       return this.height === 'auto'
-        ? Math.max(this.headerH + this.contentH, this.minHeight)
+        ? Math.min(
+            Math.max(this.headerH + this.contentH, this.minHeight),
+            this.maxHeight
+          )
         : this.height;
     },
 
@@ -121,6 +131,8 @@ export default {
   },
 
   mounted() {
+    // console.dir(this.columnList);
+
     this._calculateTableWidth();
     this._calculateTableContentWidth();
     this._calculateTableContentHeight();
@@ -136,11 +148,10 @@ export default {
     //   allColumnsWidth > this.width ? allColumnsWidth : this.width;
 
     // console.dir(this.columnList);
-    const { headerCells, bodyCells, allColumnsWidth } = this._generateCells(h);
-    const rowWidth =
-      allColumnsWidth > this.width ? allColumnsWidth : this.width;
+    const { headerCells, bodyCells, totalWidth } = this._generateCells(h);
+    const rowWidth = totalWidth > this.tableW ? totalWidth : this.tableW;
     const styles = {
-      width: this.width ? `${this.width}px` : 'auto',
+      width: this.tableW ? `${this.tableW}px` : 'auto',
       height: `${this.tableH}px`,
     };
 
@@ -169,7 +180,7 @@ export default {
 
       return (
         <div class={this._addPrefix('header-row-wrapper')} ref="headerWrapper">
-          {this._renderRow(h, data, cells)}
+          {this._renderRow(h, cells, data)}
         </div>
       );
     },
@@ -177,9 +188,38 @@ export default {
     _renderTableBody(h, cells, rowWidth) {
       if (!this.columnList.length) return null;
 
-      // let top = 0;
+      let top = 0;
       let bodyHeight = 0;
       let rows = null;
+
+      // data is not empty
+      if (this.data.length > 0) {
+        rows = _.cloneDeep(this.data).map((d, i) => {
+          let nextRowHeight =
+            (this.rowHeightList && this.rowHeightList[i]) || this.rowHeight;
+
+          // TODO: expandedRowHeight & custom rowHeight
+
+          bodyHeight += nextRowHeight;
+
+          !this.isTree && (top += nextRowHeight);
+
+          return this._renderRowData(
+            h,
+            cells[i],
+            {
+              key: `row_${i}`,
+              index: i,
+              top,
+              layer: 0,
+              width: rowWidth,
+              height: nextRowHeight,
+            },
+            d,
+            false
+          );
+        });
+      }
 
       const bodyStyles = {
         top: `${this.headerH}px`,
@@ -189,7 +229,7 @@ export default {
       const wheelStyles = {
         position: 'absolute',
         height: `${bodyHeight}px`,
-        minHeight: `${this.tableH}px`,
+        minHeight: `${this.tableH - this.headerH}px`,
       };
 
       return (
@@ -216,9 +256,76 @@ export default {
       );
     },
 
-    _renderRow(h, data, cells, shouldRenderExpanded, rowData) {
+    _renderRowData(h, cells, props, data, shouldRenderExpanded) {
+      const hasChildren =
+        this.isTree && data.children && Array.isArray(data.children);
+      const rowCells = cells.map(cell =>
+        cloneElement(cell, {
+          key: `${getKey(cell)}_${props.layer}`,
+          props: {
+            layer: props.layer,
+            height: props.height,
+            rowIndex: props.index,
+            rowData: data,
+            wordWrap: this.wordWrap,
+            hasChildren,
+          },
+        })
+      );
+      const row = this._renderRow(
+        h,
+        rowCells,
+        {
+          key: props.index,
+          props: {
+            top: props.top,
+            width: props.width,
+            height: props.height,
+          },
+          on: {
+            click: () => this.$emit('row-click', data, props.index),
+          },
+        },
+        shouldRenderExpanded
+      );
+
+      if (!hasChildren) return row;
+
+      // isTree
+      props.layer += 1;
+
+      // expanded tree
+      const open = false;
+      const childrenClasses = [
+        this._addPrefix('row-has-children'),
+        {
+          [this._addPrefix('row-open')]: open,
+        },
+      ];
+
       return (
-        <TableRow {...data}>
+        <div class={childrenClasses} key={props.index} data-layer={props.layer}>
+          {row}
+          <div class={this._addPrefix('row-children')}>
+            {data.children.map((child, index) =>
+              this._renderRowData(
+                h,
+                cells,
+                {
+                  ...props,
+                  index,
+                },
+                child
+              )
+            )}
+          </div>
+        </div>
+      );
+    },
+
+    _renderRow(h, cells, rowData, shouldRenderExpanded) {
+      return (
+        <TableRow {...rowData}>
           <TableCellGroup>{cells}</TableCellGroup>
           {/* TODO: renderExpand */}
         </TableRow>
@@ -300,6 +407,14 @@ export default {
 
     _handleScrollY() {},
 
+    _handleResize() {},
+
+    _handleResizeStart() {},
+
+    _handleResizeMove() {},
+
+    _handleResizeEnd() {},
+
     _shouldHandleWheelX() {},
 
     _shouldHandleWheelY() {},
@@ -363,7 +478,29 @@ export default {
     },
 
     // calculate the max height of row of table
-    _calculateRowMaxHeight() {},
+    _calculateRowMaxHeight() {
+      if (!this.wordWrap) return;
+
+      const $table = this.$refs.table;
+
+      if (!$table) return;
+
+      const $rows = $table.querySelectorAll(`.${this._addPrefix('row')}`) || [];
+
+      this.rowHeightList = [];
+
+      $rows.forEach($row => {
+        const $cells =
+          $row.querySelectorAll(`.${this._addPrefix('cell-wrap')}`) || [];
+        let maxHeight = 0;
+
+        $cells.forEach(
+          $cell => (maxHeight = Math.max(maxHeight, getHeight($cell)))
+        );
+
+        this.rowHeightList.push(maxHeight + CELL_PADDING_HEIGHT);
+      });
+    },
 
     _generateCells(h) {
       let left = 0; // Cell left margin
@@ -379,103 +516,93 @@ export default {
       }
 
       const [totalFlex, totalWidth] = this.columnList.reduce(
-        (p, v) => [p[0] + v.flex || 0, p[1] + v.width || 0],
+        (p, v, i) => {
+          if (!this.columnWidthMap || !this.columnWidthMap[`column_${i}`]) {
+            this.columnWidthMap = this.columnWidthMap || {};
+            this.columnWidthMap[`column_${i}`] = v.minWidth;
+          }
+
+          const width = this.columnWidthMap[`column_${i}`];
+
+          return [p[0] + (v.flex || 0), p[1] + (width || 0)];
+        },
         [0, 0]
       );
 
       this.columnList.forEach((column, index) => {
-        const {
-          title,
-          key,
-          width,
-          minWidth,
-          resizable,
-          flex,
-          renderTitle,
-        } = column;
-
-        invariant.not(
-          resizable && flex,
-          `[Table] COLUMN ${index}: cannot set 'resizable' and 'flex' together`
-        );
-
-        invariant.not(
-          renderTitle && !_.isFunction(renderTitle),
-          `[Table] column ${index}: 'renderTitle' should be a function`
-        );
-
-        let nextWidth = this[`${key}_${index}_width`] || width || 0;
+        const { title, key, resizable, flex, renderHeader } = column;
+        const columnKey = `column_${index}`;
+        let nextWidth = this.columnWidthMap[columnKey];
 
         if (this.tableW && flex && totalFlex) {
           nextWidth = Math.max(
             ((this.tableW - totalWidth) / totalFlex) * flex,
-            minWidth || 60
+            nextWidth
           );
         }
 
         // FIXME: headerHeight 通过 columns 和默认高度计算得出
-        if (this.showHeader && this.headerH) {
-          const headerCellData = {
-            key: index,
-            props: {
-              index,
-              left,
-              width: nextWidth,
-              height: this.headerH,
-              firstColumn: index === 0,
-              lastColumn: index === this.columnList.length - 1,
-            },
-            // dataKey: columnChildren[1].props.dataKey,
-            // isHeaderCell: true,
-            // sortable: column.props.sortable,
-            // sortColumn,
-            // sortType,
-            // onSortColumn,
-            // flexGrow
-          };
-          //
-          // if (resizable) {
-          //   // _.merge(headerCellProps, {
-          //   //   onResize,
-          //   //   onColumnResizeEnd: this.handleColumnResizeEnd,
-          //   //   onColumnResizeStart: this.handleColumnResizeStart,
-          //   //   onColumnResizeMove: this.handleColumnResizeMove
-          //   // });
-          // }
-
-          headerCells.push(
-            <TableHeaderCell {...headerCellData}>
-              {renderTitle ? renderTitle(h, this.data, index) : title}
-            </TableHeaderCell>
-          );
-        }
-
         const cellData = {
           props: {
             index,
             left,
             width: nextWidth,
-            height: this.rowHeight,
+            height: this.headerH,
             firstColumn: index === 0,
             lastColumn: index === this.columnList.length - 1,
           },
         };
 
-        this.data.forEach((d, rowIndex) => {
-          if (!bodyCells[rowIndex]) {
-            bodyCells[rowIndex] = [];
+        if (this.showHeader && this.headerH) {
+          let headerCellData = _.merge(cellData, {
+            key: columnKey,
+            props: {
+              // dataKey: columnChildren[1].props.dataKey,
+              // isHeaderCell: true,
+              // sortable: column.props.sortable,
+              // sortColumn,
+              // sortType,
+              // onSortColumn,
+              // flexGrow
+            },
+          });
+
+          if (resizable) {
+            headerCellData = _.merge(headerCellData, {
+              on: {
+                resize: this._handleResize,
+                'column-resize-start': this._handleResizeStart,
+                'column-resize-move': this._handleResizeMove,
+                'column-resize-end': this._handleResizeEnd,
+              },
+            });
           }
 
+          headerCells.push(
+            <TableHeaderCell {...headerCellData}>
+              {renderHeader ? renderHeader(h) : title}
+            </TableHeaderCell>
+          );
+        }
+
+        this.data.forEach((d, i) => {
+          if (!bodyCells[i]) {
+            bodyCells[i] = [];
+          }
+
+          const rowKey = this.dataKey ? _.get(d, this.dataKey) : `row_${i}`;
           const data = _.merge(cellData, {
-            key: this.dataKey ? _.get(d, this.dataKey) : `${rowIndex}-${index}`,
+            key: `${rowKey}_${index}`,
             props: {
-              rowIndex: rowIndex,
-              rowKey: key,
+              height: this.rowHeight,
+              rowIndex: i,
+              rowKey,
+              rowDataKey: key,
               rowData: d,
             },
           });
 
-          bodyCells[rowIndex].push(<TableCell {...data} />);
+          bodyCells[i].push(<TableCell {...data} />);
         });
 
         left += nextWidth;
@@ -484,7 +611,7 @@ export default {
       return {
         headerCells,
         bodyCells,
-        allColumnsWidth: left,
+        totalWidth: left,
       };
     },
 
