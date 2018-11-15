@@ -12,18 +12,18 @@ export const LAYER_WIDTH = 30;
 export const SCROLLBAR_MIN_WIDTH = 20;
 
 export const CELL_ALIGN = {
-  LEFT: 'left',
-  CENTER: 'center',
-  RIGHT: 'right',
+  left: 'left',
+  center: 'center',
+  right: 'right',
 };
 export const CELL_FIXED = {
   [true]: 'left',
-  LEFT: 'left',
-  RIGHT: 'right',
+  left: 'left',
+  right: 'right',
 };
 export const CELL_TYPE = {
-  RADIO: 'radio',
-  CHECKBOX: 'checkbox',
-  INDEX: 'index',
-  EXPAND: 'expand',
+  radio: 'radio',
+  checkbox: 'checkbox',
+  index: 'index',
+  expand: 'expand',
 };

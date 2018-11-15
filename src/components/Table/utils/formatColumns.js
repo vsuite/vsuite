@@ -141,7 +141,20 @@ function sort() {}
 function filter() {}
 
 // resize
-function resize() {}
+function resize(col, index, children) {
+  // TODO: Support resizable in children column
+  invariant.not(
+    children.length > 0 && children.some(x => x.resizable),
+    `[Table] COLUMN ${index}: \`resizable\` cannot set to children`
+  );
+
+  invariant.not(
+    col.width && col.resizable,
+    `[Table] COLUMN ${index}: \`resizable\` cannot work with \`width\` property. You can use \`minWidth\` instead.`
+  );
+
+  col.resizable = col.resizable || false;
+}
 
 // flex
 function flex() {}

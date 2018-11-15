@@ -66,31 +66,32 @@ stories.add('resizable', () => ({
     return {
       columns: [
         {
-          width: 70,
+          minWidth: 70,
           title: 'Id',
           key: 'id',
+          align: 'center',
           resizable: true,
         },
         {
-          width: 200,
+          minWidth: 200,
           title: 'First Name',
           key: 'firstName',
           resizable: true,
         },
         {
-          width: 200,
+          minWidth: 200,
           title: 'Last Name',
           key: 'lastName',
           resizable: true,
         },
         {
-          width: 200,
+          minWidth: 200,
           title: 'City',
           key: 'city',
           resizable: true,
         },
         {
-          width: 300,
+          minWidth: 300,
           title: 'Company Name',
           key: 'companyName',
           resizable: true,

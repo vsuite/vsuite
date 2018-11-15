@@ -491,4 +491,23 @@ describe('@formatColumns', () => {
       },
     ]);
   });
+
+  // resizable
+  it('`resizable`', () => {
+    expect(() =>
+      formatColumns([
+        { title: 'title1', children: [{ title: 'title11', resizable: true }] },
+      ])
+    ).toThrowError('[Table] COLUMN 0: `resizable` cannot set to children');
+
+    expect(() =>
+      formatColumns([{ title: 'title1', width: 200, resizable: true }])
+    ).toThrowError(
+      '[Table] COLUMN 0: `resizable` cannot work with `width` property. You can use `minWidth` instead.'
+    );
+
+    expect(formatColumns([{ title: 'title1' }])).toMatchObject([
+      { title: 'title1', resizable: false },
+    ]);
+  });
 });

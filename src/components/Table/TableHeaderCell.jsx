@@ -3,6 +3,7 @@ import prefix, { defaultClassPrefix } from 'utils/prefix';
 import { splitDataByComponent } from 'utils/split';
 
 import TableCell from './TableCell.jsx';
+import TableResizer from './TableResizer.jsx';
 
 const CLASS_PREFIX = 'table-cell-header';
 
@@ -15,6 +16,7 @@ export default {
     flex: VueTypes.number,
     width: VueTypes.number,
     height: VueTypes.number.def(36),
+    resizable: VueTypes.bool.def(false),
     fixed: VueTypes.bool.def(false),
     sortType: VueTypes.oneOf(['asc', 'desc', '']).def(''),
     sortable: VueTypes.bool.def(false),
@@ -25,6 +27,13 @@ export default {
     // onSort
     // onResizeStart, onResizeEnd, onResize
     // onFilter
+  },
+
+  data() {
+    return {
+      columnWidth: this.width,
+      initialEvent: null,
+    };
   },
 
   computed: {
@@ -71,7 +80,34 @@ export default {
 
     _renderFilterColumn() {},
 
-    _renderResizeSpanner() {},
+    _renderResizeSpanner() {
+      if (!this.resizable) return null;
+
+      return (
+        <TableResizer
+          columnWidth={this.columnWidth}
+          columnLeft={this.left}
+          columnFixed={this.fixed}
+          height={this.height ? this.height - 1 : undefined}
+          initialEvent={this.initialEvent}
+          onColumnResizeStart={this._handleColumnResizeStart}
+          onColumnResizeMove={this._handleColumnResizeMove}
+          onColumnResizeEnd={this._handleColumnResizeEnd}
+        />
+      );
+    },
+
+    _handleColumnResizeStart() {
+      // column-resize-start
+    },
+
+    _handleColumnResizeMove(...args) {
+      this.$emit('column-resize-move', ...args);
+    },
+
+    _handleColumnResizeEnd() {
+      // column-resize-end
+    },
 
     _addPrefix(cls) {
       return prefix(this.classPrefix, cls);

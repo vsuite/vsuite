@@ -5,6 +5,7 @@
   width: ~'@{value}@{ie-suffix}';
 
   // IE 11
+
   @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
     & {
       width: @value;
@@ -24,6 +25,7 @@
   border-style: ~'@{value}@{ie-suffix}';
 
   // IE 11
+
   @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
     & {
       border-style: @value;
@@ -35,6 +37,7 @@
   text-align: ~'@{value}@{ie-suffix}';
 
   // IE 11
+
   @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
     & {
       text-align: ~'@{value}@{ie-suffix}';
@@ -46,6 +49,7 @@
   position: ~'@{value}@{ie-suffix}';
 
   // IE 11
+
   @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
     & {
       position: ~'@{value}@{ie-suffix}';
@@ -57,6 +61,7 @@
   z-index: ~'@{value}@{ie-suffix}';
 
   // IE 11
+
   @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
     & {
       z-index: ~'@{value}@{ie-suffix}';
@@ -68,6 +73,7 @@
   top: ~'@{value}@{ie-suffix}';
 
   // IE 11
+
   @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
     & {
       top: ~'@{value}@{ie-suffix}';
@@ -79,6 +85,7 @@
   left: ~'@{value}@{ie-suffix}';
 
   // IE 11
+
   @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
     & {
       left: ~'@{value}@{ie-suffix}';
@@ -90,6 +97,7 @@
   transform: ~'@{value}@{ie-suffix}';
 
   // IE 11
+
   @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
     & {
       transform: ~'@{value}@{ie-suffix}';
@@ -199,13 +207,23 @@
 
 // Safari border-radius + overflow: hidden + CSS transform fix
 // @link https://gist.github.com/ayamflow/b602ab436ac9f05660d9c15190f4fd7b
-/* stylelint-disable */
 .safari-border-radius-overflow-hidden() {
-  -webkit-mask-image: -webkit-radial-gradient(white, black);
+  -webkit-mask-image: -webkit-radial-gradient(
+    white,
+    black
+  ); /* stylelint-disable-line property-no-vendor-prefix */
 }
-/* stylelint-enable */
 
 // ie10
 .ie10-visibility(@value) when (@ie-polyfill = true) {
   visibility: ~'@{value}@{ie-suffix}';
+}
+
+// Safari
+.safari-visibility(@value) {
+  @media not all and (min-resolution: 0.001dpcm) {
+    & {
+      visibility: @value;
+    }
+  }
 }

@@ -20,6 +20,7 @@ import {
   ROW_DEFAULT_HEIGHT,
   CELL_PADDING_HEIGHT,
 } from './constants';
+import { splitDataByComponent } from 'utils/split';
 
 const CLASS_PREFIX = 'table';
 
@@ -152,6 +153,13 @@ export default {
       onResize(this.$refs.table, _.debounce(this._calculateTableWidth, 400));
   },
 
+  updated() {
+    this._calculateTableContentWidth();
+    this._calculateTableContentHeight();
+    this._calculateRowMaxHeight();
+    this._updatePosition();
+  },
+
   render(h) {
     // const { headerCells, bodyCells, allColumnsWidth } = this._generateCells();
     // const rowWidth =
@@ -161,7 +169,7 @@ export default {
     const { headerCells, bodyCells, totalWidth } = this._generateCells(h);
     const rowWidth = totalWidth > this.tableW ? totalWidth : this.tableW;
     const styles = {
-      width: this.tableW ? `${this.tableW}px` : 'auto',
+      width: this.width || 'auto',
       height: `${this.tableH}px`,
     };
 
@@ -671,7 +679,15 @@ export default {
       );
 
       this.columnList.forEach((column, index) => {
-        const { title, key, resizable, flex, render, renderHeader } = column;
+        const {
+          title,
+          key,
+          align,
+          resizable,
+          flex,
+          render,
+          renderHeader,
+        } = column;
         const columnKey = `column_${index}`;
         let nextWidth = this.columnWidthMap[columnKey];
 
@@ -684,20 +700,23 @@ export default {
 
         // FIXME: headerHeight 通过 columns 和默认高度计算得出
         const cellData = {
-          props: {
+          splitProps: {
             index,
             left,
             width: nextWidth,
             height: this.headerH,
             firstColumn: index === 0,
             lastColumn: index === this.columnList.length - 1,
+            // properties
+            align,
           },
         };
 
         if (this.showHeader && this.headerH) {
           let headerCellData = _.merge(cellData, {
             key: columnKey,
-            props: {
+            splitProps: {
+              resizable,
               // dataKey: columnChildren[1].props.dataKey,
               // isHeaderCell: true,
               // sortable: column.props.sortable,
@@ -719,6 +738,11 @@ export default {
             });
           }
 
+          headerCellData = splitDataByComponent(
+            headerCellData,
+            TableHeaderCell
+          );
+
           headerCells.push(
             <TableHeaderCell {...headerCellData}>
               {renderHeader ? renderHeader(h) : title}
@@ -732,16 +756,19 @@ export default {
           }
 
           const rowKey = this.dataKey ? _.get(d, this.dataKey) : `row_${i}`;
-          const data = _.merge(cellData, {
-            key: `${rowKey}_${index}`,
-            props: {
-              height: this.rowHeight,
-              rowIndex: i,
-              rowKey,
-              rowDataKey: key,
-              rowData: d,
-            },
-          });
+          const data = splitDataByComponent(
+            _.merge(cellData, {
+              key: `${rowKey}_${index}`,
+              splitProps: {
+                height: this.rowHeight,
+                rowIndex: i,
+                rowKey,
+                rowDataKey: key,
+                rowData: d,
+              },
+            }),
+            TableCell
+          );
 
           bodyCells[i].push(
             <TableCell {...data}>
