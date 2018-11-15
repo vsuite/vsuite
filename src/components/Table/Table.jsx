@@ -671,7 +671,7 @@ export default {
       );
 
       this.columnList.forEach((column, index) => {
-        const { title, key, resizable, flex, renderHeader } = column;
+        const { title, key, resizable, flex, render, renderHeader } = column;
         const columnKey = `column_${index}`;
         let nextWidth = this.columnWidthMap[columnKey];
 
@@ -743,7 +743,11 @@ export default {
             },
           });
 
-          bodyCells[i].push(<TableCell {...data} />);
+          bodyCells[i].push(
+            <TableCell {...data}>
+              {render ? render(h, _.get(d, key), d, i) : _.get(d, key)}
+            </TableCell>
+          );
         });
 
         left += nextWidth;
