@@ -83,6 +83,14 @@ export default {
     _renderResizeSpanner() {
       if (!this.resizable) return null;
 
+      const data = {
+        on: {
+          'column-resize-start': this._handleColumnResizeStart,
+          'column-resize-move': this._handleColumnResizeMove,
+          'column-resize-end': this._handleColumnResizeEnd,
+        },
+      };
+
       return (
         <TableResizer
           columnWidth={this.columnWidth}
@@ -90,23 +98,33 @@ export default {
           columnFixed={this.fixed}
           height={this.height ? this.height - 1 : undefined}
           initialEvent={this.initialEvent}
-          onColumnResizeStart={this._handleColumnResizeStart}
-          onColumnResizeMove={this._handleColumnResizeMove}
-          onColumnResizeEnd={this._handleColumnResizeEnd}
+          {...data}
         />
       );
     },
 
-    _handleColumnResizeStart() {
-      // column-resize-start
+    _handleColumnResizeStart(event) {
+      this.initialEvent = event;
+
+      this.$emit(
+        'column-resize-start',
+        this.columnWidth,
+        this.left,
+        this.fixed
+      );
     },
 
     _handleColumnResizeMove(...args) {
       this.$emit('column-resize-move', ...args);
     },
 
-    _handleColumnResizeEnd() {
-      // column-resize-end
+    _handleColumnResizeEnd(columnWidth, cursorDelta) {
+      this.columnWidth = columnWidth;
+
+      // this.$emit('column-resize-end', columnWidth, cursorDelta)
+
+      // onColumnResizeEnd && onColumnResizeEnd(columnWidth, cursorDelta, dataKey, index);
+      // onResize && onResize(columnWidth, dataKey);
     },
 
     _addPrefix(cls) {

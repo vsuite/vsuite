@@ -7,6 +7,7 @@ import {
   CELL_FIXED,
   CELL_TYPE,
 } from '../constants';
+let keyMap = {};
 
 function travelColumn(column, func) {
   const children = (column && column.children) || [];
@@ -27,30 +28,43 @@ function travelColumn(column, func) {
 function title(col, index) {
   invariant.not(
     col.title === null || col.title === undefined,
-    `[Table] COLUMN ${index}: \`title\` is required`
+    `[Table] COLUMN ${index}: \`title\` is required.`
   );
 }
 
-// deal with key property
-function key(col) {
-  col.key = col.key || null;
+// deal with key, dataIndex property
+function key(col, index) {
+  col.dataIndex = col.dataIndex || null;
+  col.key = col.key || col.dataIndex || null;
+
+  invariant.not(
+    col.key === null || col.key === undefined,
+    `[Table] COLUMN ${index}: \`key\` is required. You also can use \`dataIndex\` instead.`
+  );
+
+  invariant.not(
+    keyMap[col.key],
+    `[Table] COLUMN ${index}: \`key\` should be unique.`
+  );
+
+  keyMap[col.key] = true;
 }
 
 // deal with width, minWidth and maxWidth property
 function width(col, index, children) {
   invariant.not(
     _.isNumber(col.width) && col.width <= 0,
-    `[Table] COLUMN ${index}: \`width\` cannot smaller than zero`
+    `[Table] COLUMN ${index}: \`width\` cannot smaller than zero.`
   );
 
   invariant.not(
     _.isNumber(col.minWidth) && col.minWidth <= 0,
-    `[Table] COLUMN ${index}: \`minWidth\` cannot smaller than zero`
+    `[Table] COLUMN ${index}: \`minWidth\` cannot smaller than zero.`
   );
 
   invariant.not(
     _.isNumber(col.maxWidth) && col.maxWidth <= 0,
-    `[Table] COLUMN ${index}: \`maxWidth\` cannot smaller than zero`
+    `[Table] COLUMN ${index}: \`maxWidth\` cannot smaller than zero.`
   );
 
   const hasChildren = children.length > 0;
@@ -85,7 +99,7 @@ function width(col, index, children) {
 
   invariant.not(
     col.maxWidth < col.minWidth,
-    `[Table] COLUMN ${index}: \`maxWidth\` cannot smaller than \`minWidth\``
+    `[Table] COLUMN ${index}: \`maxWidth\` cannot smaller than \`minWidth\`.`
   );
 
   if (col.minWidth === col.maxWidth) {
@@ -99,7 +113,7 @@ function width(col, index, children) {
       (_.isNumber(col.width) &&
         col.width >= col.minWidth &&
         col.width <= col.maxWidth),
-    `[Table] COLUMN ${index}: \`width\` must bigger than \`minWidth\` and smaller than \`maxWidth\``
+    `[Table] COLUMN ${index}: \`width\` must bigger than \`minWidth\` and smaller than \`maxWidth\`.`
   );
 }
 
@@ -107,22 +121,22 @@ function width(col, index, children) {
 function text(col, index, children) {
   invariant.not(
     col.align && _.isUndefined(CELL_ALIGN[col.align]),
-    `[Table] COLUMN ${index}: \`align\` = ${col.align} is not supported`
+    `[Table] COLUMN ${index}: \`align\` = ${col.align} is not supported.`
   );
 
   invariant.not(
     col.fixed && _.isUndefined(CELL_FIXED[col.fixed]),
-    `[Table] COLUMN ${index}: \`fixed\` = ${col.fixed} is not supported`
+    `[Table] COLUMN ${index}: \`fixed\` = ${col.fixed} is not supported.`
   );
 
   invariant.not(
     children.length && children.some(x => !_.isUndefined(CELL_FIXED[x.fixed])),
-    `[Table] COLUMN ${index}: \`fixed\` cannot be set for children`
+    `[Table] COLUMN ${index}: \`fixed\` cannot be set for children.`
   );
 
   invariant.not(
     col.type && _.isUndefined(CELL_TYPE[col.type]),
-    `[Table] COLUMN ${index}: \`type\` = ${col.type} is not supported`
+    `[Table] COLUMN ${index}: \`type\` = ${col.type} is not supported.`
   );
 
   col.className = col.className || '';
@@ -145,7 +159,7 @@ function resize(col, index, children) {
   // TODO: Support resizable in children column
   invariant.not(
     children.length > 0 && children.some(x => x.resizable),
-    `[Table] COLUMN ${index}: \`resizable\` cannot set to children`
+    `[Table] COLUMN ${index}: \`resizable\` cannot set to children.`
   );
 
   invariant.not(
@@ -160,6 +174,8 @@ function resize(col, index, children) {
 function flex() {}
 
 function formatColumns(columns = []) {
+  keyMap = {};
+
   return _.cloneDeep(columns).map((column, index) => {
     return travelColumn(column, col => {
       const children = (col && col.children) || [];

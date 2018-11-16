@@ -666,12 +666,12 @@ export default {
 
       const [totalFlex, totalWidth] = this.columnList.reduce(
         (p, v, i) => {
-          if (!this.columnWidthMap || !this.columnWidthMap[`column_${i}`]) {
+          if (!this.columnWidthMap || !this.columnWidthMap[v.key]) {
             this.columnWidthMap = this.columnWidthMap || {};
-            this.columnWidthMap[`column_${i}`] = v.minWidth;
+            this.columnWidthMap[v.key] = v.minWidth;
           }
 
-          const width = this.columnWidthMap[`column_${i}`];
+          const width = this.columnWidthMap[v.key];
 
           return [p[0] + (v.flex || 0), p[1] + (width || 0)];
         },
@@ -680,16 +680,16 @@ export default {
 
       this.columnList.forEach((column, index) => {
         const {
-          title,
           key,
+          title,
+          dataIndex,
           align,
           resizable,
           flex,
           render,
           renderHeader,
         } = column;
-        const columnKey = `column_${index}`;
-        let nextWidth = this.columnWidthMap[columnKey];
+        let nextWidth = this.columnWidthMap[key];
 
         if (this.tableW && flex && totalFlex) {
           nextWidth = Math.max(
@@ -714,7 +714,7 @@ export default {
 
         if (this.showHeader && this.headerH) {
           let headerCellData = _.merge(cellData, {
-            key: columnKey,
+            key,
             splitProps: {
               resizable,
               // dataKey: columnChildren[1].props.dataKey,
@@ -772,7 +772,11 @@ export default {
 
           bodyCells[i].push(
             <TableCell {...data}>
-              {render ? render(h, _.get(d, key), d, i) : _.get(d, key)}
+              {render
+                ? dataIndex
+                  ? render(h, _.get(d, dataIndex), d, i)
+                  : render(h, d, i)
+                : _.get(d, dataIndex)}
             </TableCell>
           );
         });

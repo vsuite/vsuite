@@ -4,23 +4,62 @@ import { CELL_ALIGN, CELL_MINI_WIDTH } from '../constants';
 describe('@formatColumns', () => {
   // title
   it('`title`', () => {
-    expect(() => formatColumns([{}, { title: 'title2' }])).toThrowError(
-      '[Table] COLUMN 0: `title` is required'
-    );
-
-    expect(() => formatColumns([{ title: '' }, {}])).toThrowError(
-      '[Table] COLUMN 1: `title` is required'
-    );
+    expect(() =>
+      formatColumns([{ key: 'key1' }, { title: 'title2', key: 'key2' }])
+    ).toThrowError('[Table] COLUMN 0: `title` is required.');
 
     expect(() =>
-      formatColumns([{ title: 'title1', children: [{}] }])
-    ).toThrowError('[Table] COLUMN 0: `title` is required');
+      formatColumns([{ title: '', key: 'key1' }, { key: 'key2' }])
+    ).toThrowError('[Table] COLUMN 1: `title` is required.');
+
+    expect(() =>
+      formatColumns([
+        { title: 'title1', key: 'key1', children: [{ key: 'key11' }] },
+      ])
+    ).toThrowError('[Table] COLUMN 0: `title` is required.');
   });
 
   // key
   it('`key`', () => {
-    expect(formatColumns([{ title: 'title1' }])).toMatchObject([
-      { title: 'title1', key: null },
+    expect(() => formatColumns([{ title: 'title1' }])).toThrowError(
+      '[Table] COLUMN 0: `key` is required. You also can use `dataIndex` instead.'
+    );
+    expect(() =>
+      formatColumns([
+        { title: 'title1', key: 'key1', children: [{ title: 'title11' }] },
+      ])
+    ).toThrowError(
+      '[Table] COLUMN 0: `key` is required. You also can use `dataIndex` instead.'
+    );
+    expect(() =>
+      formatColumns([
+        { title: 'title1', key: 'key1' },
+        { title: 'title2', key: 'key1' },
+      ])
+    ).toThrowError('[Table] COLUMN 1: `key` should be unique.');
+    expect(() =>
+      formatColumns([
+        {
+          title: 'title1',
+          key: 'key1',
+          children: [{ title: 'title11', key: 'key1' }],
+        },
+      ])
+    ).toThrowError('[Table] COLUMN 0: `key` should be unique.');
+
+    expect(
+      formatColumns([
+        {
+          title: 'title1',
+          dataIndex: 'key1',
+        },
+      ])
+    ).toMatchObject([
+      {
+        title: 'title1',
+        key: 'key1',
+        dataIndex: 'key1',
+      },
     ]);
 
     expect(
@@ -28,46 +67,50 @@ describe('@formatColumns', () => {
         {
           title: 'title1',
           key: 'key1',
-          children: [{ title: 'title11', key: 'key11' }, { title: 'title12' }],
+          children: [{ title: 'title11', dataIndex: 'key11' }],
         },
       ])
     ).toMatchObject([
       {
         title: 'title1',
         key: 'key1',
-        children: [
-          { title: 'title11', key: 'key11' },
-          { title: 'title12', key: null },
-        ],
+        dataIndex: null,
+        children: [{ title: 'title11', key: 'key11', dataIndex: 'key11' }],
       },
     ]);
   });
 
   // width, minWidth and maxWidth
   it('`width`', () => {
-    expect(() => formatColumns([{ title: 'title1', width: 0 }])).toThrowError(
-      '[Table] COLUMN 0: `width` cannot smaller than zero'
-    );
+    expect(() =>
+      formatColumns([{ title: 'title1', key: 'key1', width: 0 }])
+    ).toThrowError('[Table] COLUMN 0: `width` cannot smaller than zero');
 
     expect(() =>
-      formatColumns([{ title: 'title1', minWidth: 0 }])
+      formatColumns([{ title: 'title1', key: 'key1', minWidth: 0 }])
     ).toThrowError('[Table] COLUMN 0: `minWidth` cannot smaller than zero');
 
     expect(() =>
-      formatColumns([{ title: 'title1', maxWidth: 0 }])
+      formatColumns([{ title: 'title1', key: 'key1', maxWidth: 0 }])
     ).toThrowError('[Table] COLUMN 0: `maxWidth` cannot smaller than zero');
 
     expect(() =>
-      formatColumns([{ title: 'title1', minWidth: 300, maxWidth: 100 }])
+      formatColumns([
+        { title: 'title1', key: 'key1', minWidth: 300, maxWidth: 100 },
+      ])
     ).toThrowError(
       '[Table] COLUMN 0: `maxWidth` cannot smaller than `minWidth`'
     );
 
-    expect(formatColumns([{ title: 'title1', width: 200 }])).toMatchObject([
+    expect(
+      formatColumns([{ title: 'title1', key: 'key1', width: 200 }])
+    ).toMatchObject([
       { title: 'title1', minWidth: 200, width: 200, maxWidth: 200 },
     ]);
 
-    expect(formatColumns([{ title: 'title1', minWidth: 200 }])).toMatchObject([
+    expect(
+      formatColumns([{ title: 'title1', key: 'key1', minWidth: 200 }])
+    ).toMatchObject([
       {
         title: 'title1',
         minWidth: 200,
@@ -76,7 +119,9 @@ describe('@formatColumns', () => {
       },
     ]);
 
-    expect(formatColumns([{ title: 'title1', maxWidth: 200 }])).toMatchObject([
+    expect(
+      formatColumns([{ title: 'title1', key: 'key1', maxWidth: 200 }])
+    ).toMatchObject([
       {
         title: 'title1',
         minWidth: CELL_MINI_WIDTH,
@@ -86,7 +131,9 @@ describe('@formatColumns', () => {
     ]);
 
     expect(
-      formatColumns([{ title: 'title1', minWidth: 200, maxWidth: 200 }])
+      formatColumns([
+        { title: 'title1', key: 'key1', minWidth: 200, maxWidth: 200 },
+      ])
     ).toMatchObject([
       {
         title: 'title1',
@@ -100,7 +147,11 @@ describe('@formatColumns', () => {
       formatColumns([
         {
           title: 'title1',
-          children: [{ title: 'title11' }, { title: 'title12' }],
+          key: 'key1',
+          children: [
+            { title: 'title11', key: 'key11' },
+            { title: 'title12', key: 'key12' },
+          ],
         },
       ])
     ).toMatchObject([
@@ -131,7 +182,11 @@ describe('@formatColumns', () => {
       formatColumns([
         {
           title: 'title1',
-          children: [{ title: 'title11', minWidth: 100 }, { title: 'title12' }],
+          key: 'key1',
+          children: [
+            { title: 'title11', key: 'key11', minWidth: 100 },
+            { title: 'title12', key: 'key12' },
+          ],
         },
       ])
     ).toMatchObject([
@@ -149,19 +204,21 @@ describe('@formatColumns', () => {
       formatColumns([
         {
           title: 'title1',
+          key: 'key1',
           children: [
-            { title: 'title11', minWidth: 100 },
-            { title: 'title12', minWidth: 100 },
+            { title: 'title11', key: 'key11', minWidth: 100 },
+            { title: 'title12', key: 'key12', minWidth: 100 },
           ],
         },
       ])
     ).toMatchObject([
       {
         title: 'title1',
+        key: 'key1',
         minWidth: 200,
         children: [
-          { title: 'title11', minWidth: 100 },
-          { title: 'title12', minWidth: 100 },
+          { title: 'title11', key: 'key11', minWidth: 100 },
+          { title: 'title12', key: 'key12', minWidth: 100 },
         ],
       },
     ]);
@@ -170,10 +227,11 @@ describe('@formatColumns', () => {
       formatColumns([
         {
           title: 'title1',
+          key: 'key1',
           minWidth: 100,
           children: [
-            { title: 'title11', minWidth: 100 },
-            { title: 'title12', minWidth: 100 },
+            { title: 'title11', key: 'key11', minWidth: 100 },
+            { title: 'title12', key: 'key12', minWidth: 100 },
           ],
         },
       ])
@@ -192,10 +250,11 @@ describe('@formatColumns', () => {
       formatColumns([
         {
           title: 'title1',
+          key: 'key1',
           minWidth: 300,
           children: [
-            { title: 'title11', minWidth: 100 },
-            { title: 'title12', minWidth: 100 },
+            { title: 'title11', key: 'key11', minWidth: 100 },
+            { title: 'title12', key: 'key12', minWidth: 100 },
           ],
         },
       ])
@@ -215,7 +274,11 @@ describe('@formatColumns', () => {
       formatColumns([
         {
           title: 'title1',
-          children: [{ title: 'title11', maxWidth: 400 }, { title: 'title12' }],
+          key: 'key1',
+          children: [
+            { title: 'title11', key: 'key11', maxWidth: 400 },
+            { title: 'title12', key: 'key12' },
+          ],
         },
       ])
     ).toMatchObject([
@@ -233,9 +296,10 @@ describe('@formatColumns', () => {
       formatColumns([
         {
           title: 'title1',
+          key: 'key1',
           children: [
-            { title: 'title11', maxWidth: 400 },
-            { title: 'title12', maxWidth: 400 },
+            { title: 'title11', key: 'key11', maxWidth: 400 },
+            { title: 'title12', key: 'key12', maxWidth: 400 },
           ],
         },
       ])
@@ -254,10 +318,11 @@ describe('@formatColumns', () => {
       formatColumns([
         {
           title: 'title1',
+          key: 'key1',
           maxWidth: 400,
           children: [
-            { title: 'title11', maxWidth: 400 },
-            { title: 'title12', maxWidth: 400 },
+            { title: 'title11', key: 'key11', maxWidth: 400 },
+            { title: 'title12', key: 'key12', maxWidth: 400 },
           ],
         },
       ])
@@ -276,10 +341,11 @@ describe('@formatColumns', () => {
       formatColumns([
         {
           title: 'title1',
+          key: 'key1',
           maxWidth: 1000,
           children: [
-            { title: 'title11', maxWidth: 400 },
-            { title: 'title12', maxWidth: 400 },
+            { title: 'title11', key: 'key11', maxWidth: 400 },
+            { title: 'title12', key: 'key12', maxWidth: 400 },
           ],
         },
       ])
@@ -299,7 +365,11 @@ describe('@formatColumns', () => {
       formatColumns([
         {
           title: 'title1',
-          children: [{ title: 'title11', width: 100 }, { title: 'title12' }],
+          key: 'key1',
+          children: [
+            { title: 'title11', key: 'key11', width: 100 },
+            { title: 'title12', key: 'key12' },
+          ],
         },
       ])
     ).toMatchObject([
@@ -329,9 +399,10 @@ describe('@formatColumns', () => {
       formatColumns([
         {
           title: 'title1',
+          key: 'key1',
           children: [
-            { title: 'title11', width: 100 },
-            { title: 'title12', width: 100 },
+            { title: 'title11', key: 'key11', width: 100 },
+            { title: 'title12', key: 'key12', width: 100 },
           ],
         },
       ])
@@ -362,10 +433,11 @@ describe('@formatColumns', () => {
       formatColumns([
         {
           title: 'title1',
+          key: 'key1',
           width: 100,
           children: [
-            { title: 'title11', width: 100 },
-            { title: 'title12', width: 100 },
+            { title: 'title11', key: 'key11', width: 100 },
+            { title: 'title12', key: 'key12', width: 100 },
           ],
         },
       ])
@@ -396,10 +468,11 @@ describe('@formatColumns', () => {
       formatColumns([
         {
           title: 'title1',
+          key: 'key1',
           width: 300,
           children: [
-            { title: 'title11', width: 100 },
-            { title: 'title12', width: 100 },
+            { title: 'title11', key: 'key11', width: 100 },
+            { title: 'title12', key: 'key12', width: 100 },
           ],
         },
       ])
@@ -430,8 +503,12 @@ describe('@formatColumns', () => {
       formatColumns([
         {
           title: 'title1',
+          key: 'key1',
           width: 300,
-          children: [{ title: 'title11', width: 100 }, { title: 'title12' }],
+          children: [
+            { title: 'title11', key: 'key11', width: 100 },
+            { title: 'title12', key: 'key12' },
+          ],
         },
       ])
     ).toMatchObject([
@@ -461,24 +538,28 @@ describe('@formatColumns', () => {
   // text
   it('`text`', () => {
     expect(() =>
-      formatColumns([{ title: 'title1', align: 'top' }])
+      formatColumns([{ title: 'title1', key: 'key1', align: 'top' }])
     ).toThrowError('[Table] COLUMN 0: `align` = top is not supported');
 
     expect(() =>
-      formatColumns([{ title: 'title1', fixed: 'top' }])
+      formatColumns([{ title: 'title1', key: 'key1', fixed: 'top' }])
     ).toThrowError('[Table] COLUMN 0: `fixed` = top is not supported');
 
     expect(() =>
       formatColumns([
-        { title: 'title1', children: [{ title: 'title11', fixed: true }] },
+        {
+          title: 'title1',
+          key: 'key1',
+          children: [{ title: 'title11', key: 'key11', fixed: true }],
+        },
       ])
     ).toThrowError('[Table] COLUMN 0: `fixed` cannot be set for children');
 
     expect(() =>
-      formatColumns([{ title: 'title1', type: 'input' }])
+      formatColumns([{ title: 'title1', key: 'key1', type: 'input' }])
     ).toThrowError('[Table] COLUMN 0: `type` = input is not supported');
 
-    expect(formatColumns([{ title: 'title1' }])).toMatchObject([
+    expect(formatColumns([{ title: 'title1', key: 'key1' }])).toMatchObject([
       {
         title: 'title1',
         className: '',
@@ -496,17 +577,23 @@ describe('@formatColumns', () => {
   it('`resizable`', () => {
     expect(() =>
       formatColumns([
-        { title: 'title1', children: [{ title: 'title11', resizable: true }] },
+        {
+          title: 'title1',
+          key: 'key1',
+          children: [{ title: 'title11', key: 'key11', resizable: true }],
+        },
       ])
     ).toThrowError('[Table] COLUMN 0: `resizable` cannot set to children');
 
     expect(() =>
-      formatColumns([{ title: 'title1', width: 200, resizable: true }])
+      formatColumns([
+        { title: 'title1', key: 'key1', width: 200, resizable: true },
+      ])
     ).toThrowError(
       '[Table] COLUMN 0: `resizable` cannot work with `width` property. You can use `minWidth` instead.'
     );
 
-    expect(formatColumns([{ title: 'title1' }])).toMatchObject([
+    expect(formatColumns([{ title: 'title1', key: 'key1' }])).toMatchObject([
       { title: 'title1', resizable: false },
     ]);
   });
