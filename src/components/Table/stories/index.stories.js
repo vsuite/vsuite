@@ -6,6 +6,7 @@ import Demo from 'stories/demo';
 
 const stories = storiesOf('Data Display|Table', module);
 
+// default
 stories.add('default', () => ({
   data() {
     return {
@@ -126,13 +127,29 @@ stories.add('flex', () => ({
           dataIndex: 'firstName',
         },
         {
+          minWidth: 100,
+          maxWidth: 200,
           flex: 1,
-          title: 'City',
+          title(h) {
+            return (
+              <span>
+                City <code>flex=1</code>
+              </span>
+            );
+          },
           dataIndex: 'city',
         },
         {
+          minWidth: 150,
+          maxWidth: 300,
           flex: 2,
-          title: 'Company Name',
+          title(h) {
+            return (
+              <span>
+                Company Name <code>flex=2</code>
+              </span>
+            );
+          },
           dataIndex: 'companyName',
         },
       ],

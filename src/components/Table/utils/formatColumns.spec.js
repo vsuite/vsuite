@@ -597,4 +597,63 @@ describe('@formatColumns', () => {
       { title: 'title1', resizable: false },
     ]);
   });
+
+  // flex
+  it('`flex`', () => {
+    expect(() =>
+      formatColumns([{ title: 'title1', key: 'key1', width: 200, flex: 1 }])
+    ).toThrowError(
+      '[Table] COLUMN 0: `flex` cannot work with `width` property. You can use `minWidth` instead.'
+    );
+
+    expect(formatColumns([{ title: 'title1', key: 'key1' }])).toMatchObject([
+      { title: 'title1', flex: 0 },
+    ]);
+
+    expect(
+      formatColumns([
+        {
+          title: 'title1',
+          key: 'key1',
+          flex: 2,
+          children: [
+            { title: 'title11', key: 'key11', flex: 1 },
+            { title: 'title12', key: 'key12', flex: 2 },
+          ],
+        },
+      ])
+    ).toMatchObject([
+      {
+        title: 'title1',
+        flex: 3,
+        children: [
+          { title: 'title11', key: 'key11', flex: 1 },
+          { title: 'title12', key: 'key12', flex: 2 },
+        ],
+      },
+    ]);
+
+    expect(
+      formatColumns([
+        {
+          title: 'title1',
+          key: 'key1',
+          flex: 2,
+          children: [
+            { title: 'title11', key: 'key11' },
+            { title: 'title12', key: 'key12' },
+          ],
+        },
+      ])
+    ).toMatchObject([
+      {
+        title: 'title1',
+        flex: 0,
+        children: [
+          { title: 'title11', key: 'key11', flex: 0 },
+          { title: 'title12', key: 'key12', flex: 0 },
+        ],
+      },
+    ]);
+  });
 });

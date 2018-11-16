@@ -721,15 +721,11 @@ export default {
           resizable,
           flex,
           render,
-          renderHeader,
         } = column;
         let nextWidth = this.columnWidthMap[key];
 
-        if (this.tableW && flex && totalFlex) {
-          nextWidth = Math.max(
-            ((this.tableW - totalWidth) / totalFlex) * flex,
-            nextWidth
-          );
+        if (this.tableW > totalWidth && flex && totalFlex) {
+          nextWidth += ((this.tableW - totalWidth) / totalFlex) * flex;
         }
 
         // FIXME: headerHeight 通过 columns 和默认高度计算得出
@@ -782,7 +778,7 @@ export default {
 
           headerCells.push(
             <TableHeaderCell {...headerCellData}>
-              {renderHeader ? renderHeader(h) : title}
+              {_.isFunction(title) ? title(h) : title}
             </TableHeaderCell>
           );
         }

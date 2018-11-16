@@ -142,7 +142,7 @@ function text(col, index, children) {
   col.className = col.className || '';
   col.style = col.style || {};
   col.type = col.type || null;
-  col.align = col.align || CELL_ALIGN.LEFT;
+  col.align = col.align || CELL_ALIGN.left;
   col.fixed = col.fixed || false;
   col.ellipsis = col.ellipsis || false;
   col.tooltip = col.tooltip || false;
@@ -171,7 +171,20 @@ function resize(col, index, children) {
 }
 
 // flex
-function flex() {}
+function flex(col, index, children) {
+  invariant.not(
+    col.width && col.flex,
+    `[Table] COLUMN ${index}: \`flex\` cannot work with \`width\` property. You can use \`minWidth\` instead.`
+  );
+
+  if (children.length > 0) {
+    col.flex = children.reduce((p, v) => p + (v.flex || 0), 0);
+
+    return;
+  }
+
+  col.flex = col.flex || 0;
+}
 
 function formatColumns(columns = []) {
   keyMap = {};
