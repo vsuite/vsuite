@@ -87,6 +87,8 @@ export default {
       minScrollX: 0,
       minScrollY: 0,
 
+      isColumnResizing: false,
+
       wheelHandler: new WheelHandler(
         (deltaX, deltaY) => {
           this._handleWheel(deltaX, deltaY);
@@ -108,7 +110,7 @@ export default {
           // [this._addPrefix('treetable')]: isTree,
           [this._addPrefix('bordered')]: this.bordered,
           [this._addPrefix('cell-bordered')]: this.cellBordered,
-          // [this._addPrefix('column-resizing')]: isColumnResizing,
+          [this._addPrefix('column-resizing')]: this.isColumnResizing,
           [this._addPrefix('hover')]: this.hover,
           [this._addPrefix('loading')]: this.loading,
         },
@@ -415,11 +417,41 @@ export default {
 
     _handleResize() {},
 
-    _handleResizeStart() {},
+    _handleResizeStart(width, left, fixed) {
+      this.isColumnResizing = true;
 
-    _handleResizeMove() {},
+      const mouseAreaLeft = width + left;
+      const x = fixed ? mouseAreaLeft : mouseAreaLeft + (this.scrollX || 0);
+      const styles = { display: 'block' };
 
-    _handleResizeEnd() {},
+      translateDOMPositionXY(styles, x, 0);
+
+      if (this.$refs.mouseArea) {
+        addStyle(this.$refs.mouseArea, styles);
+      }
+    },
+
+    _handleResizeMove(width, left, fixed) {
+      const mouseAreaLeft = width + left;
+      const x = fixed ? mouseAreaLeft : mouseAreaLeft + (this.scrollX || 0);
+      const styles = {};
+
+      translateDOMPositionXY(styles, x, 0);
+
+      if (this.$refs.mouseArea) {
+        addStyle(this.$refs.mouseArea, styles);
+      }
+    },
+
+    _handleResizeEnd(columnWidth, cursorDelta, columnKey, index) {
+      this.isColumnResizing = false;
+
+      this.columnWidthMap[columnKey] = columnWidth;
+
+      if (this.$refs.mouseArea) {
+        addStyle(this.$refs.mouseArea, { display: 'none' });
+      }
+    },
 
     _handleTouchStart(event) {
       const { pageX, pageY } = event.touches ? event.touches[0] : {};
@@ -716,6 +748,7 @@ export default {
           let headerCellData = _.merge(cellData, {
             key,
             splitProps: {
+              columnKey: key,
               resizable,
               // dataKey: columnChildren[1].props.dataKey,
               // isHeaderCell: true,

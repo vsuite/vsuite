@@ -13,16 +13,26 @@ export default {
     columnLeft: VueTypes.number,
     columnFixed: VueTypes.bool.def(false),
     height: VueTypes.number,
-    initialEvent: VueTypes.any,
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
   },
 
   data() {
-    if (!this.columnWidthM) {
-      this.columnWidthM = this.columnWidth || 0;
-    }
+    return {
+      columnWidthM: this.columnWidth || 0,
+    };
+  },
 
-    return {};
+  watch: {
+    columnWidth() {
+      this.columnWidthM = this.columnWidth || 0;
+    },
+  },
+
+  beforeDestroy() {
+    if (this.mouseMoveTracker) {
+      this.mouseMoveTracker.releaseMouseMoves();
+      this.mouseMoveTracker = null;
+    }
   },
 
   render() {
@@ -45,6 +55,8 @@ export default {
       this.isKeyDown = true;
       this.cursorDelta = 0;
 
+      this.mouseMoveTracker.captureMouseMoves(event);
+
       this.$emit('column-resize-start', {
         clientX: event.clientX,
         clientY: event.clientY,
@@ -58,7 +70,7 @@ export default {
       this.cursorDelta += deltaX;
 
       this.columnWidthM = _.clamp(
-        this.columnWidthM + this.cursorDelta,
+        this.columnWidth + this.cursorDelta,
         20,
         20000
       );

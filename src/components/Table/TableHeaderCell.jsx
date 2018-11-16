@@ -16,6 +16,7 @@ export default {
     flex: VueTypes.number,
     width: VueTypes.number,
     height: VueTypes.number.def(36),
+    columnKey: VueTypes.string,
     resizable: VueTypes.bool.def(false),
     fixed: VueTypes.bool.def(false),
     sortType: VueTypes.oneOf(['asc', 'desc', '']).def(''),
@@ -30,10 +31,7 @@ export default {
   },
 
   data() {
-    return {
-      columnWidth: this.width,
-      initialEvent: null,
-    };
+    return { columnWidth: this.width };
   },
 
   computed: {
@@ -97,15 +95,12 @@ export default {
           columnLeft={this.left}
           columnFixed={this.fixed}
           height={this.height ? this.height - 1 : undefined}
-          initialEvent={this.initialEvent}
           {...data}
         />
       );
     },
 
-    _handleColumnResizeStart(event) {
-      this.initialEvent = event;
-
+    _handleColumnResizeStart() {
       this.$emit(
         'column-resize-start',
         this.columnWidth,
@@ -121,10 +116,14 @@ export default {
     _handleColumnResizeEnd(columnWidth, cursorDelta) {
       this.columnWidth = columnWidth;
 
-      // this.$emit('column-resize-end', columnWidth, cursorDelta)
-
-      // onColumnResizeEnd && onColumnResizeEnd(columnWidth, cursorDelta, dataKey, index);
-      // onResize && onResize(columnWidth, dataKey);
+      this.$emit(
+        'column-resize-end',
+        columnWidth,
+        cursorDelta,
+        this.columnKey,
+        this.index
+      );
+      this.$emit('resize', columnWidth, this.columnKey);
     },
 
     _addPrefix(cls) {
