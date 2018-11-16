@@ -715,6 +715,8 @@ export default {
           key,
           title,
           dataIndex,
+          minWidth,
+          maxWidth,
           align,
           resizable,
           flex,
@@ -749,6 +751,8 @@ export default {
             key,
             splitProps: {
               columnKey: key,
+              columnMinWidth: minWidth,
+              columnMaxWidth: maxWidth,
               resizable,
               // dataKey: columnChildren[1].props.dataKey,
               // isHeaderCell: true,

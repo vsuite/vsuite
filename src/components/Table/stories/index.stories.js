@@ -67,6 +67,7 @@ stories.add('resizable', () => ({
       columns: [
         {
           minWidth: 70,
+          maxWidth: 150,
           title: 'Id',
           dataIndex: 'id',
           align: 'center',

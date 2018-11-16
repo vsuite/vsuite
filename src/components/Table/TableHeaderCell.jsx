@@ -17,6 +17,8 @@ export default {
     width: VueTypes.number,
     height: VueTypes.number.def(36),
     columnKey: VueTypes.string,
+    columnMinWidth: VueTypes.number,
+    columnMaxWidth: VueTypes.number,
     resizable: VueTypes.bool.def(false),
     fixed: VueTypes.bool.def(false),
     sortType: VueTypes.oneOf(['asc', 'desc', '']).def(''),
@@ -92,6 +94,8 @@ export default {
       return (
         <TableResizer
           columnWidth={this.columnWidth}
+          columnMinWidth={this.columnMinWidth}
+          columnMaxWidth={this.columnMaxWidth}
           columnLeft={this.left}
           columnFixed={this.fixed}
           height={this.height ? this.height - 1 : undefined}

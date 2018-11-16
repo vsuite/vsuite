@@ -10,6 +10,8 @@ export default {
 
   props: {
     columnWidth: VueTypes.number,
+    columnMinWidth: VueTypes.number.def(60),
+    columnMaxWidth: VueTypes.number.def(Infinity),
     columnLeft: VueTypes.number,
     columnFixed: VueTypes.bool.def(false),
     height: VueTypes.number,
@@ -68,6 +70,19 @@ export default {
       if (!this.isKeyDown) return;
 
       this.cursorDelta += deltaX;
+
+      const newColumnWidth = _.clamp(
+        this.columnWidth + this.cursorDelta,
+        20,
+        20000
+      );
+
+      if (
+        newColumnWidth < this.columnMinWidth ||
+        newColumnWidth > this.columnMaxWidth
+      ) {
+        return;
+      }
 
       this.columnWidthM = _.clamp(
         this.columnWidth + this.cursorDelta,
