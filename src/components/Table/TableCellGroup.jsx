@@ -8,8 +8,8 @@ export default {
   name: 'TableCellGroup',
 
   props: {
-    fixed: VueTypes.bool.def(false),
-    left: VueTypes.bool.def(false),
+    fixed: VueTypes.oneOfType([VueTypes.string, VueTypes.bool]).def(false),
+    left: VueTypes.number.def(0),
     width: VueTypes.number,
     height: VueTypes.number,
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
@@ -20,6 +20,9 @@ export default {
       return [
         this.classPrefix,
         this._addPrefix(this.fixed ? 'fixed' : 'scroll'),
+        {
+          [this._addPrefix(`fixed-${this.fixed}`)]: !!this.fixed,
+        },
       ];
     },
   },

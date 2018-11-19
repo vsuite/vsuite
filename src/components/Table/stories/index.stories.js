@@ -185,6 +185,7 @@ stories.add('word-wrap', () => ({
           width: 200,
           title: 'Last Name',
           dataIndex: 'lastName',
+          fixed: 'right',
         },
         {
           width: 200,

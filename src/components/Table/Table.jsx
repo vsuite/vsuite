@@ -4,7 +4,7 @@ import onResize from 'element-resize-event';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
 import WheelHandler from 'utils/WheelHandler';
 import translateDOMPositionXY from 'utils/translateDOMPositionXY';
-import { cloneElement, getKey } from 'utils/node';
+import { cloneElement, getAllProps, getKey } from 'utils/node';
 import { getWidth, getHeight, addStyle } from 'shares/dom';
 
 import TableRow from './TableRow.jsx';
@@ -138,9 +138,8 @@ export default {
       return formatColumns(this.columns);
     },
 
-    // TODO: shouldFixedColumn
     shouldFixedColumn() {
-      return false;
+      return this.columnList.some(x => x.fixed);
     },
   },
 
@@ -162,11 +161,6 @@ export default {
   },
 
   render(h) {
-    // const { headerCells, bodyCells, allColumnsWidth } = this._generateCells();
-    // const rowWidth =
-    //   allColumnsWidth > this.width ? allColumnsWidth : this.width;
-
-    // console.dir(this.columnList);
     const { headerCells, bodyCells, totalWidth } = this._generateCells(h);
     const rowWidth = totalWidth > this.tableW ? totalWidth : this.tableW;
     const styles = {
@@ -340,6 +334,67 @@ export default {
     },
 
     _renderRow(h, cells, compData, shouldRenderExpanded) {
+      // some columns should be fixed
+      if (this.shouldFixedColumn) {
+        const leftFixedCells = [];
+        const middleCells = [];
+        const rightFixedCells = [];
+        let leftWidth = 0;
+        let rightWidth = 0;
+
+        cells.forEach(cell => {
+          const props = getAllProps(cell);
+
+          if (props.fixed === 'left') {
+            leftFixedCells.push(cell);
+
+            leftWidth += props.width;
+
+            return;
+          }
+
+          if (props.fixed === 'right') {
+            rightFixedCells.push(
+              cloneElement(cell, {
+                props: { left: rightWidth },
+              })
+            );
+
+            rightWidth += props.width;
+
+            return;
+          }
+
+          middleCells.push(cell);
+        });
+
+        return (
+          <TableRow {...compData}>
+            {leftFixedCells.length > 0 && (
+              <TableCellGroup
+                fixed="left"
+                width={leftWidth}
+                height={compData.props.height}
+              >
+                {leftFixedCells}
+              </TableCellGroup>
+            )}
+            {rightFixedCells.length > 0 && (
+              <TableCellGroup
+                fixed="right"
+                left={this.tableW - rightWidth}
+                width={rightWidth}
+                height={compData.props.height}
+              >
+                {rightFixedCells}
+              </TableCellGroup>
+            )}
+            <TableCellGroup>{middleCells}</TableCellGroup>
+            {/* TODO: renderExpand */}
+          </TableRow>
+        );
+      }
+
       return (
         <TableRow {...compData}>
           <TableCellGroup>{cells}</TableCellGroup>
@@ -517,7 +572,7 @@ export default {
     },
 
     _handleScrollY(delta) {
-      this._handleWheel(delta, 0);
+      this._handleWheel(0, delta);
     },
 
     _updatePosition() {
@@ -555,10 +610,17 @@ export default {
             `.${this._addPrefix('cell-group-scroll')}`
           )) ||
         [];
-      const fixedGroups =
+      // FIXME: support right fixed
+      const leftFixedGroups =
         (this.$refs.table &&
           this.$refs.table.querySelectorAll(
-            `.${this._addPrefix('cell-group-fixed')}`
+            `.${this._addPrefix('cell-group-fixed-left')}`
+          )) ||
+        [];
+      const rightFixedGroups =
+        (this.$refs.table &&
+          this.$refs.table.querySelectorAll(
+            `.${this._addPrefix('cell-group-fixed-right')}`
           )) ||
         [];
 
@@ -573,11 +635,20 @@ export default {
         addStyle(this.$refs.wheelWrapper, wheelStyle);
       }
 
-      const shadowClassName = this._addPrefix('cell-group-shadow');
-      const condition = this.scrollX < 0;
+      Array.from(leftFixedGroups).forEach(group => {
+        toggleClass(
+          group,
+          this._addPrefix('cell-group-shadow-right'),
+          this.scrollX < 0
+        );
+      });
 
-      Array.from(fixedGroups).forEach(group => {
-        toggleClass(group, shadowClassName, condition);
+      Array.from(rightFixedGroups).forEach(group => {
+        toggleClass(
+          group,
+          this._addPrefix('cell-group-shadow-left'),
+          this.scrollX >= Math.min(this.tableW - this.contentW, 0)
+        );
       });
     },
 
@@ -728,9 +799,10 @@ export default {
           dataIndex,
           minWidth,
           maxWidth,
+          flex,
           align,
           resizable,
-          flex,
+          fixed,
           render,
         } = column;
         let nextWidth = this.columnWidthMap[key];
@@ -750,6 +822,8 @@ export default {
             lastColumn: index === this.columnList.length - 1,
             // properties
             align,
+            resizable,
+            fixed,
           },
         };
 
@@ -760,7 +834,6 @@ export default {
               columnKey: key,
               columnMinWidth: minWidth,
               columnMaxWidth: maxWidth,
-              resizable,
               // dataKey: columnChildren[1].props.dataKey,
               // isHeaderCell: true,
               // sortable: column.props.sortable,

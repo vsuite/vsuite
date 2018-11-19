@@ -20,7 +20,7 @@ export default {
     columnMinWidth: VueTypes.number,
     columnMaxWidth: VueTypes.number,
     resizable: VueTypes.bool.def(false),
-    fixed: VueTypes.bool.def(false),
+    fixed: VueTypes.oneOfType([VueTypes.bool, VueTypes.string]).def(false),
     sortType: VueTypes.oneOf(['asc', 'desc', '']).def(''),
     sortable: VueTypes.bool.def(false),
     filterable: VueTypes.bool.def(false),
@@ -28,7 +28,6 @@ export default {
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
 
     // onSort
-    // onResizeStart, onResizeEnd, onResize
     // onFilter
   },
 
@@ -97,7 +96,7 @@ export default {
           columnMinWidth={this.columnMinWidth}
           columnMaxWidth={this.columnMaxWidth}
           columnLeft={this.left}
-          columnFixed={this.fixed}
+          columnFixed={!!this.fixed}
           height={this.height ? this.height - 1 : undefined}
           {...data}
         />
@@ -109,7 +108,7 @@ export default {
         'column-resize-start',
         this.columnWidth,
         this.left,
-        this.fixed
+        !!this.fixed
       );
     },
 

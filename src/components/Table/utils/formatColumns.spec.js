@@ -555,6 +555,18 @@ describe('@formatColumns', () => {
       ])
     ).toThrowError('[Table] COLUMN 0: `fixed` cannot be set for children');
 
+    expect(
+      formatColumns([
+        { title: 'title1', key: 'key1' },
+        { title: 'title2', key: 'key2', fixed: 'right' },
+        { title: 'title3', key: 'key3', fixed: 'left' },
+      ])
+    ).toMatchObject([
+      { title: 'title3', key: 'key3', fixed: 'left' },
+      { title: 'title1', key: 'key1' },
+      { title: 'title2', key: 'key2', fixed: 'right' },
+    ]);
+
     expect(() =>
       formatColumns([{ title: 'title1', key: 'key1', type: 'input' }])
     ).toThrowError('[Table] COLUMN 0: `type` = input is not supported');
@@ -565,7 +577,7 @@ describe('@formatColumns', () => {
         className: '',
         style: {},
         type: null,
-        align: CELL_ALIGN.LEFT,
+        align: CELL_ALIGN.left,
         fixed: false,
         ellipsis: false,
         tooltip: false,

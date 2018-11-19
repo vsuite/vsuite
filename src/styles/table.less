@@ -239,10 +239,10 @@
   &-column-resize-spanner {
     .column-resize-spanner;
 
-    border-left: @table-column-resize-spanner-gap-width solid @B000;
-    box-sizing: content-box;
-    border-right: @table-column-resize-spanner-gap-width solid @B000;
-    margin-left: -1 * @table-column-resize-spanner-gap-width;
+    //border-left: @table-column-resize-spanner-gap-width solid @B000;
+    //box-sizing: content-box;
+    //border-right: @table-column-resize-spanner-gap-width solid @B000;
+    //margin-left: -1 * @table-column-resize-spanner-gap-width;
 
     &::after,
     &::before {
@@ -291,8 +291,12 @@
       background: @table-body-background;
     }
 
-    &-shadow {
+    &-shadow-right {
       box-shadow: 3px 0 5px rgba(9, 9, 9, 0.08);
+    }
+
+    &-shadow-left {
+      box-shadow: -3px 0 5px rgba(9, 9, 9, 0.08);
     }
   }
 

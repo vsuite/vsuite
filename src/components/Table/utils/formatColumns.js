@@ -141,9 +141,9 @@ function text(col, index, children) {
 
   col.className = col.className || '';
   col.style = col.style || {};
-  col.type = col.type || null;
-  col.align = col.align || CELL_ALIGN.left;
-  col.fixed = col.fixed || false;
+  col.type = CELL_TYPE[col.type] || null;
+  col.align = CELL_ALIGN[col.align] || CELL_ALIGN.left;
+  col.fixed = CELL_FIXED[col.fixed] || false;
   col.ellipsis = col.ellipsis || false;
   col.tooltip = col.tooltip || false;
 }
@@ -187,9 +187,12 @@ function flex(col, index, children) {
 }
 
 function formatColumns(columns = []) {
-  keyMap = {};
+  const leftColumns = [];
+  const rightColumns = [];
+  const middleColumns = [];
 
-  return _.cloneDeep(columns).map((column, index) => {
+  keyMap = {};
+  columns = _.cloneDeep(columns).map((column, index) => {
     return travelColumn(column, col => {
       const children = (col && col.children) || [];
 
@@ -228,6 +231,24 @@ function formatColumns(columns = []) {
       //   children.reduce((p, v) => p + (v.flex || 0), 0) || col.flex || 0;
     });
   });
+
+  for (let i = 0, len = columns.length; i < len; i++) {
+    const column = columns[i];
+
+    if (column.fixed === 'left') {
+      leftColumns.push(column);
+      continue;
+    }
+
+    if (column.fixed === 'right') {
+      rightColumns.push(column);
+      continue;
+    }
+
+    middleColumns.push(column);
+  }
+
+  return [].concat(leftColumns, middleColumns, rightColumns);
 }
 
 export default formatColumns;
