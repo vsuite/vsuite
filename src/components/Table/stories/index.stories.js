@@ -128,7 +128,6 @@ stories.add('flex', () => ({
         },
         {
           minWidth: 100,
-          maxWidth: 200,
           flex: 1,
           title(h) {
             return (
@@ -141,7 +140,6 @@ stories.add('flex', () => ({
         },
         {
           minWidth: 150,
-          maxWidth: 300,
           flex: 2,
           title(h) {
             return (
@@ -177,9 +175,10 @@ stories.add('word-wrap', () => ({
           fixed: true,
         },
         {
-          width: 200,
+          minWidth: 200,
           title: 'First Name',
           dataIndex: 'firstName',
+          resizable: true,
           fixed: true,
         },
         {
@@ -214,7 +213,13 @@ stories.add('word-wrap', () => ({
   render() {
     return (
       <Demo title="Word Wrap">
-        <Table wordWrap height={420} columns={this.columns} data={users} />
+        <Table
+          wordWrap
+          rowKey="id"
+          height={420}
+          columns={this.columns}
+          data={users}
+        />
       </Demo>
     );
   },

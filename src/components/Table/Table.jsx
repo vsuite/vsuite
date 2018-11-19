@@ -5,7 +5,7 @@ import prefix, { defaultClassPrefix } from 'utils/prefix';
 import WheelHandler from 'utils/WheelHandler';
 import translateDOMPositionXY from 'utils/translateDOMPositionXY';
 import { cloneElement, getKey } from 'utils/node';
-import { getWidth, getHeight, addStyle, toggleClass } from 'shares/dom';
+import { getWidth, getHeight, addStyle } from 'shares/dom';
 
 import TableRow from './TableRow.jsx';
 import TableCell from './TableCell.jsx';
@@ -13,7 +13,7 @@ import TableCellGroup from './TableCellGroup.jsx';
 import TableHeaderCell from './TableHeaderCell.jsx';
 import TableScrollbar from './TableScrollbar.jsx';
 
-import { formatColumns } from './utils';
+import { formatColumns, toggleClass } from './utils';
 import {
   TABLE_DEFAULT_HEIGHT,
   TABLE_HEADER_DEFAULT_HEIGHT,
@@ -36,9 +36,7 @@ export default {
     }, '`height` must be a number or string `auto`').def(TABLE_DEFAULT_HEIGHT),
     minHeight: VueTypes.number,
     maxHeight: VueTypes.number,
-    headerHeight: VueTypes.number.def(TABLE_HEADER_DEFAULT_HEIGHT),
-    rowHeight: VueTypes.number.def(ROW_DEFAULT_HEIGHT),
-    scrollbar: VueTypes.bool,
+    scrollbar: VueTypes.oneOfType([VueTypes.bool, VueTypes.object]).def(true),
     hover: VueTypes.bool,
     loading: VueTypes.bool.def(false),
     loadAnimation: VueTypes.bool.def(false),
@@ -46,10 +44,13 @@ export default {
     cellBordered: VueTypes.bool.def(false),
     wordWrap: VueTypes.bool.def(false),
     showHeader: VueTypes.bool,
+    // FIXME: calculate header height
+    headerHeight: VueTypes.number.def(TABLE_HEADER_DEFAULT_HEIGHT),
+    rowHeight: VueTypes.number.def(ROW_DEFAULT_HEIGHT),
+    rowKey: VueTypes.oneOfType([VueTypes.func, VueTypes.string]),
     disabledScroll: VueTypes.bool.def(false),
     isTree: VueTypes.bool.def(false),
     data: VueTypes.arrayOf(VueTypes.object).def([]),
-    dataKey: VueTypes.string,
     columns: VueTypes.arrayOf(VueTypes.object).def([]),
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
 
@@ -144,8 +145,6 @@ export default {
   },
 
   mounted() {
-    // console.dir(this.columnList);
-
     this._calculateTableWidth();
     this._calculateTableContentWidth();
     this._calculateTableContentHeight();
@@ -215,13 +214,14 @@ export default {
       // data is not empty
       if (this.data.length > 0) {
         rows = _.cloneDeep(this.data).map((d, i) => {
+          const rowKey = this._getRowKey(d, i);
           let nextRowHeight =
-            (this.rowHeightList && this.rowHeightList[i]) || this.rowHeight;
+            (this.rowHeightMap && this.rowHeightMap[rowKey]) || this.rowHeight;
 
           // TODO: expandedRowHeight & custom rowHeight
 
           const props = {
-            key: `row_${i}`,
+            key: rowKey,
             index: i,
             top,
             layer: 0,
@@ -339,9 +339,9 @@ export default {
       );
     },
 
-    _renderRow(h, cells, rowData, shouldRenderExpanded) {
+    _renderRow(h, cells, compData, shouldRenderExpanded) {
       return (
-        <TableRow {...rowData}>
+        <TableRow {...compData}>
           <TableCellGroup>{cells}</TableCellGroup>
           {/* TODO: renderExpand */}
         </TableRow>
@@ -353,21 +353,28 @@ export default {
         return null;
       }
 
+      const showX = this.scrollbar === true || this.scrollbar.x === true;
+      const showY = this.scrollbar === true || this.scrollbar.y === true;
+
       return (
         <div>
-          <TableScrollbar
-            ref="scrollbarX"
-            length={this.tableW}
-            scrollLength={this.contentW}
-            onScroll={this._handleScrollX}
-          />
-          <TableScrollbar
-            ref="scrollbarY"
-            vertical
-            length={this.tableH - this.headerH}
-            scrollLength={this.contentH}
-            onScroll={this._handleScrollY}
-          />
+          {showX && (
+            <TableScrollbar
+              ref="scrollbarX"
+              length={this.tableW}
+              scrollLength={this.contentW}
+              onScroll={this._handleScrollX}
+            />
+          )}
+          {showY && (
+            <TableScrollbar
+              ref="scrollbarY"
+              vertical
+              length={this.tableH - this.headerH}
+              scrollLength={this.contentH}
+              onScroll={this._handleScrollY}
+            />
+          )}
         </div>
       );
     },
@@ -532,7 +539,7 @@ export default {
 
       if (this.$refs.tableHeader) {
         toggleClass(
-          this.$refs.tableHeader,
+          this.$refs.tableHeader.$el,
           this._addPrefix('cell-group-shadow'),
           this.scrollY < 0
         );
@@ -666,20 +673,24 @@ export default {
 
       if (!$table) return;
 
-      const $rows = $table.querySelectorAll(`.${this._addPrefix('row')}`) || [];
+      const $rows =
+        $table.querySelectorAll(
+          `.${this._addPrefix('row')}:not(.${this._addPrefix('row-header')})`
+        ) || [];
 
-      this.rowHeightList = [];
+      this.rowHeightMap = {};
 
-      $rows.forEach($row => {
+      $rows.forEach(($row, i) => {
         const $cells =
           $row.querySelectorAll(`.${this._addPrefix('cell-wrap')}`) || [];
         let maxHeight = 0;
+        const rowKey = this._getRowKey(this.data[i], i);
 
         $cells.forEach(
           $cell => (maxHeight = Math.max(maxHeight, getHeight($cell)))
         );
 
-        this.rowHeightList.push(maxHeight + CELL_PADDING_HEIGHT);
+        this.rowHeightMap[rowKey] = maxHeight + CELL_PADDING_HEIGHT;
       });
     },
 
@@ -788,10 +799,10 @@ export default {
             bodyCells[i] = [];
           }
 
-          const rowKey = this.dataKey ? _.get(d, this.dataKey) : `row_${i}`;
+          const rowKey = this._getRowKey(d, i);
           const data = splitDataByComponent(
             _.merge(cellData, {
-              key: `${rowKey}_${index}`,
+              key: `${rowKey}_${key}`,
               splitProps: {
                 height: this.rowHeight,
                 rowIndex: i,
@@ -822,6 +833,19 @@ export default {
         bodyCells,
         totalWidth: left,
       };
+    },
+
+    // get row key
+    _getRowKey(data, index) {
+      if (_.isString(this.rowKey)) {
+        return `${_.get(data, this.rowKey)}` || `${index}`;
+      }
+
+      if (_.isFunction(this.rowKey)) {
+        return this.rowKey(data, index) || `${index}`;
+      }
+
+      return `${index}`;
     },
 
     _addPrefix(cls) {
