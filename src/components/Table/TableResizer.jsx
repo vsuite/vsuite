@@ -43,7 +43,10 @@ export default {
     const data = {
       class: this.classPrefix,
       style: {
-        left: `${this.columnWidthM + this.columnLeft - 2}px`,
+        left:
+          this.columnFixed === 'right'
+            ? `${this.columnLeft - 2}px`
+            : `${this.columnWidthM + this.columnLeft - 2}px`,
         height: `${this.height}px`,
       },
       attrs: { role: 'button', tabindex: -1 },
@@ -71,7 +74,11 @@ export default {
     _handleMouseMove(deltaX) {
       if (!this.isKeyDown) return;
 
-      this.cursorDelta += deltaX;
+      if (this.columnFixed === 'right') {
+        this.cursorDelta -= deltaX;
+      } else {
+        this.cursorDelta += deltaX;
+      }
 
       const newColumnWidth = _.clamp(
         this.columnWidth + this.cursorDelta,
@@ -96,7 +103,7 @@ export default {
         'column-resize-move',
         this.columnWidthM,
         this.columnLeft,
-        !!this.columnFixed
+        this.columnFixed
       );
     },
 

@@ -108,7 +108,7 @@ export default {
         'column-resize-start',
         this.columnWidth,
         this.left,
-        !!this.fixed
+        this.fixed
       );
     },
 

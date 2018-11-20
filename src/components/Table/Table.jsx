@@ -447,8 +447,15 @@ export default {
       this.isColumnResizing = true;
 
       const mouseAreaLeft = width + left;
-      const x = fixed ? mouseAreaLeft : mouseAreaLeft + (this.scrollX || 0);
+      const x =
+        fixed === 'right'
+          ? this.tableW - this.totalFixedRightWidth + left
+          : fixed
+          ? mouseAreaLeft
+          : mouseAreaLeft + (this.scrollX || 0);
       const styles = { display: 'block' };
+
+      this.resizeColumnStartWidth = width;
 
       translateDOMPositionXY(styles, x, 0);
 
@@ -459,7 +466,15 @@ export default {
 
     _handleResizeMove(width, left, fixed) {
       const mouseAreaLeft = width + left;
-      const x = fixed ? mouseAreaLeft : mouseAreaLeft + (this.scrollX || 0);
+      const x =
+        fixed === 'right'
+          ? this.tableW -
+            this.totalFixedRightWidth +
+            this.resizeColumnStartWidth -
+            mouseAreaLeft
+          : fixed
+          ? mouseAreaLeft
+          : mouseAreaLeft + (this.scrollX || 0);
       const styles = {};
 
       translateDOMPositionXY(styles, x, 0);
@@ -471,6 +486,7 @@ export default {
 
     _handleResizeEnd(columnWidth, cursorDelta, columnKey, index) {
       this.isColumnResizing = false;
+      this.resizeColumnStartWidth = 0;
 
       this.columnWidthMap[columnKey] = columnWidth;
 
