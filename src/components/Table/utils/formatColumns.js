@@ -125,6 +125,21 @@ function text(col, index, children) {
   );
 
   invariant.not(
+    col.type && _.isUndefined(CELL_TYPE[col.type]),
+    `[Table] COLUMN ${index}: \`type\` = ${col.type} is not supported.`
+  );
+
+  col.className = col.className || '';
+  col.style = col.style || {};
+  col.type = CELL_TYPE[col.type] || null;
+  col.align = CELL_ALIGN[col.align] || CELL_ALIGN.left;
+  col.ellipsis = col.ellipsis || false;
+  col.tooltip = col.tooltip || false;
+}
+
+// fixed
+function fixed(col, index, children) {
+  invariant.not(
     col.fixed && _.isUndefined(CELL_FIXED[col.fixed]),
     `[Table] COLUMN ${index}: \`fixed\` = ${col.fixed} is not supported.`
   );
@@ -135,17 +150,11 @@ function text(col, index, children) {
   );
 
   invariant.not(
-    col.type && _.isUndefined(CELL_TYPE[col.type]),
-    `[Table] COLUMN ${index}: \`type\` = ${col.type} is not supported.`
+    col.fixed && !_.isUndefined(CELL_FIXED[col.fixed]) && !!col.flex,
+    `[Table] COLUMN ${index}: \`fixed\` cannot be used with \`flex\` property.`
   );
 
-  col.className = col.className || '';
-  col.style = col.style || {};
-  col.type = CELL_TYPE[col.type] || null;
-  col.align = CELL_ALIGN[col.align] || CELL_ALIGN.left;
   col.fixed = CELL_FIXED[col.fixed] || false;
-  col.ellipsis = col.ellipsis || false;
-  col.tooltip = col.tooltip || false;
 }
 
 // sort
@@ -207,6 +216,9 @@ function formatColumns(columns = []) {
 
       // text
       text(col, index, children);
+
+      // fixed
+      fixed(col, index, children);
 
       // sort
       sort(col, index, children);

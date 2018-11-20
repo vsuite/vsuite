@@ -893,9 +893,9 @@ export default {
 
         if (fixed === 'right') {
           rightLeft += nextWidth;
-        } else {
-          left += nextWidth;
         }
+
+        left += nextWidth;
       });
 
       return {

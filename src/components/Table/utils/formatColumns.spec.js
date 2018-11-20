@@ -541,20 +541,6 @@ describe('@formatColumns', () => {
       formatColumns([{ title: 'title1', key: 'key1', align: 'top' }])
     ).toThrowError('[Table] COLUMN 0: `align` = top is not supported');
 
-    expect(() =>
-      formatColumns([{ title: 'title1', key: 'key1', fixed: 'top' }])
-    ).toThrowError('[Table] COLUMN 0: `fixed` = top is not supported');
-
-    expect(() =>
-      formatColumns([
-        {
-          title: 'title1',
-          key: 'key1',
-          children: [{ title: 'title11', key: 'key11', fixed: true }],
-        },
-      ])
-    ).toThrowError('[Table] COLUMN 0: `fixed` cannot be set for children');
-
     expect(
       formatColumns([
         { title: 'title1', key: 'key1' },
@@ -582,6 +568,39 @@ describe('@formatColumns', () => {
         ellipsis: false,
         tooltip: false,
       },
+    ]);
+  });
+
+  // fixed
+  it('`fixed`', () => {
+    expect(() =>
+      formatColumns([{ title: 'title1', key: 'key1', fixed: 'top' }])
+    ).toThrowError('[Table] COLUMN 0: `fixed` = top is not supported');
+
+    expect(() =>
+      formatColumns([
+        {
+          title: 'title1',
+          key: 'key1',
+          children: [{ title: 'title11', key: 'key11', fixed: true }],
+        },
+      ])
+    ).toThrowError('[Table] COLUMN 0: `fixed` cannot be set for children');
+
+    expect(() =>
+      formatColumns([{ title: 'title1', key: 'key1', fixed: 'left', flex: 1 }])
+    ).toThrowError(
+      '[Table] COLUMN 0: `fixed` cannot be used with `flex` property.'
+    );
+
+    expect(
+      formatColumns([
+        { title: 'title1', key: 'key1', fixed: true },
+        { title: 'title2', key: 'key2' },
+      ])
+    ).toMatchObject([
+      { title: 'title1', key: 'key1', fixed: 'left' },
+      { title: 'title2', key: 'key2', fixed: false },
     ]);
   });
 
