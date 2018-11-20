@@ -4,7 +4,7 @@ import onResize from 'element-resize-event';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
 import WheelHandler from 'utils/WheelHandler';
 import translateDOMPositionXY from 'utils/translateDOMPositionXY';
-import { cloneElement, getAllProps, getKey } from 'utils/node';
+import { cloneElement, getKey } from 'utils/node';
 import { getWidth, getHeight, addStyle } from 'shares/dom';
 
 import TableRow from './TableRow.jsx';
@@ -269,7 +269,7 @@ export default {
     _renderRowData(h, cells, props, data, shouldRenderExpanded) {
       const hasChildren =
         this.isTree && data.children && Array.isArray(data.children);
-      const rowCells = cells.map(cell =>
+      const mapCell = cell =>
         cloneElement(cell, {
           key: `${getKey(cell)}_${props.layer}`,
           props: {
@@ -280,8 +280,12 @@ export default {
             wordWrap: this.wordWrap,
             hasChildren,
           },
-        })
-      );
+        });
+      const rowCells = [
+        cells[0].map(mapCell),
+        cells[1].map(mapCell),
+        cells[2].map(mapCell),
+      ];
       const row = this._renderRow(
         h,
         rowCells,
@@ -334,70 +338,30 @@ export default {
     },
 
     _renderRow(h, cells, compData, shouldRenderExpanded) {
-      // some columns should be fixed
-      if (this.shouldFixedColumn) {
-        const leftFixedCells = [];
-        const middleCells = [];
-        const rightFixedCells = [];
-        let leftWidth = 0;
-        let rightWidth = 0;
-
-        cells.forEach(cell => {
-          const props = getAllProps(cell);
-
-          if (props.fixed === 'left') {
-            leftFixedCells.push(cell);
-
-            leftWidth += props.width;
-
-            return;
-          }
-
-          if (props.fixed === 'right') {
-            rightFixedCells.push(
-              cloneElement(cell, {
-                props: { left: rightWidth },
-              })
-            );
-
-            rightWidth += props.width;
-
-            return;
-          }
-
-          middleCells.push(cell);
-        });
-
-        return (
-          <TableRow {...compData}>
-            {leftFixedCells.length > 0 && (
-              <TableCellGroup
-                fixed="left"
-                width={leftWidth}
-                height={compData.props.height}
-              >
-                {leftFixedCells}
-              </TableCellGroup>
-            )}
-            {rightFixedCells.length > 0 && (
-              <TableCellGroup
-                fixed="right"
-                left={this.tableW - rightWidth}
-                width={rightWidth}
-                height={compData.props.height}
-              >
-                {rightFixedCells}
-              </TableCellGroup>
-            )}
-            <TableCellGroup>{middleCells}</TableCellGroup>
-            {/* TODO: renderExpand */}
-          </TableRow>
-        );
-      }
+      const [leftFixedCells, middleCells, rightFixedCells] = cells;
 
       return (
         <TableRow {...compData}>
-          <TableCellGroup>{cells}</TableCellGroup>
+          {leftFixedCells.length > 0 && (
+            <TableCellGroup
+              fixed="left"
+              width={this.totalFixedLeftWidth}
+              height={compData.props.height}
+            >
+              {leftFixedCells}
+            </TableCellGroup>
+          )}
+          {rightFixedCells.length > 0 && (
+            <TableCellGroup
+              fixed="right"
+              left={this.tableW - this.totalFixedRightWidth}
+              width={this.totalFixedRightWidth}
+              height={compData.props.height}
+            >
+              {rightFixedCells}
+            </TableCellGroup>
+          )}
+          <TableCellGroup>{middleCells}</TableCellGroup>
           {/* TODO: renderExpand */}
         </TableRow>
       );
@@ -767,7 +731,8 @@ export default {
 
     _generateCells(h) {
       let left = 0; // Cell left margin
-      const headerCells = []; // Table header cell
+      let rightLeft = 0; // Cell for fixed right
+      const headerCells = [[], [], []]; // Table header cell
       const bodyCells = []; // Table body cell
 
       if (!this.columnList || this.columnList.length <= 0) {
@@ -778,7 +743,12 @@ export default {
         };
       }
 
-      const [totalFlex, totalWidth] = this.columnList.reduce(
+      const [
+        totalFlex,
+        totalWidth,
+        totalFixedLeftWidth,
+        totalFixedRightWidth,
+      ] = this.columnList.reduce(
         (p, v, i) => {
           if (!this.columnWidthMap || !this.columnWidthMap[v.key]) {
             this.columnWidthMap = this.columnWidthMap || {};
@@ -787,10 +757,18 @@ export default {
 
           const width = this.columnWidthMap[v.key];
 
-          return [p[0] + (v.flex || 0), p[1] + (width || 0)];
+          return [
+            p[0] + (v.flex || 0),
+            p[1] + (width || 0),
+            p[2] + (v.fixed === 'left' ? width : 0),
+            p[3] + (v.fixed === 'right' ? width : 0),
+          ];
         },
-        [0, 0]
+        [0, 0, 0, 0]
       );
+
+      this.totalFixedLeftWidth = totalFixedLeftWidth;
+      this.totalFixedRightWidth = totalFixedRightWidth;
 
       this.columnList.forEach((column, index) => {
         const {
@@ -815,7 +793,7 @@ export default {
         const cellData = {
           splitProps: {
             index,
-            left,
+            left: fixed === 'right' ? rightLeft : left,
             width: nextWidth,
             height: this.headerH,
             firstColumn: index === 0,
@@ -860,16 +838,24 @@ export default {
             TableHeaderCell
           );
 
-          headerCells.push(
+          const headerCell = (
             <TableHeaderCell {...headerCellData}>
               {_.isFunction(title) ? title(h) : title}
             </TableHeaderCell>
           );
+
+          if (fixed === 'left') {
+            headerCells[0].push(headerCell);
+          } else if (fixed === 'right') {
+            headerCells[2].push(headerCell);
+          } else {
+            headerCells[1].push(headerCell);
+          }
         }
 
         this.data.forEach((d, i) => {
           if (!bodyCells[i]) {
-            bodyCells[i] = [];
+            bodyCells[i] = [[], [], []];
           }
 
           const rowKey = this._getRowKey(d, i);
@@ -886,8 +872,7 @@ export default {
             }),
             TableCell
           );
-
-          bodyCells[i].push(
+          const bodyCell = (
             <TableCell {...data}>
               {render
                 ? dataIndex
@@ -896,9 +881,21 @@ export default {
                 : _.get(d, dataIndex)}
             </TableCell>
           );
+
+          if (fixed === 'left') {
+            bodyCells[i][0].push(bodyCell);
+          } else if (fixed === 'right') {
+            bodyCells[i][2].push(bodyCell);
+          } else {
+            bodyCells[i][1].push(bodyCell);
+          }
         });
 
-        left += nextWidth;
+        if (fixed === 'right') {
+          rightLeft += nextWidth;
+        } else {
+          left += nextWidth;
+        }
       });
 
       return {

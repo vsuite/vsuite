@@ -96,7 +96,7 @@ export default {
           columnMinWidth={this.columnMinWidth}
           columnMaxWidth={this.columnMaxWidth}
           columnLeft={this.left}
-          columnFixed={!!this.fixed}
+          columnFixed={this.fixed}
           height={this.height ? this.height - 1 : undefined}
           {...data}
         />

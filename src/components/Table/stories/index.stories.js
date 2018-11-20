@@ -182,9 +182,10 @@ stories.add('word-wrap', () => ({
           fixed: true,
         },
         {
-          width: 200,
+          minWidth: 200,
           title: 'Last Name',
           dataIndex: 'lastName',
+          resizable: true,
           fixed: 'right',
         },
         {

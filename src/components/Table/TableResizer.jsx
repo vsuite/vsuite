@@ -13,7 +13,9 @@ export default {
     columnMinWidth: VueTypes.number.def(60),
     columnMaxWidth: VueTypes.number.def(Infinity),
     columnLeft: VueTypes.number,
-    columnFixed: VueTypes.bool.def(false),
+    columnFixed: VueTypes.oneOfType([VueTypes.string, VueTypes.bool]).def(
+      false
+    ),
     height: VueTypes.number,
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
   },
@@ -94,7 +96,7 @@ export default {
         'column-resize-move',
         this.columnWidthM,
         this.columnLeft,
-        this.columnFixed
+        !!this.columnFixed
       );
     },
 
