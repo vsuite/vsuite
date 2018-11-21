@@ -35,6 +35,7 @@ export default {
     transfer: VueTypes.bool.def(function() {
       return this.$VSUITE.transfer || false;
     }),
+    popperOptions: VueTypes.object,
   },
 
   data() {

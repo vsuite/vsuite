@@ -30,6 +30,8 @@ function title(col, index) {
     col.title === null || col.title === undefined,
     `[Table] COLUMN ${index}: \`title\` is required.`
   );
+
+  col.headerStyle = col.headerStyle || {};
 }
 
 // deal with key, dataIndex property

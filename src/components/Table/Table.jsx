@@ -797,7 +797,10 @@ export default {
           align,
           resizable,
           fixed,
+          style,
+          headerStyle,
           render,
+          renderHeader,
         } = column;
         let nextWidth = this.columnWidthMap[key];
 
@@ -808,13 +811,14 @@ export default {
         // FIXME: headerHeight 通过 columns 和默认高度计算得出
         const cellData = {
           splitProps: {
+            // common
             index,
             left: fixed === 'right' ? rightLeft : left,
             width: nextWidth,
             height: this.headerH,
             firstColumn: index === 0,
             lastColumn: index === this.columnList.length - 1,
-            // properties
+            // props
             align,
             resizable,
             fixed,
@@ -822,12 +826,15 @@ export default {
         };
 
         if (this.showHeader && this.headerH) {
-          let headerCellData = _.merge(cellData, {
+          let headerCellData = _.merge(_.cloneDeep(cellData), {
             key,
             splitProps: {
+              // column
               columnKey: key,
               columnMinWidth: minWidth,
               columnMaxWidth: maxWidth,
+              // props
+              contentStyle: headerStyle,
               // dataKey: columnChildren[1].props.dataKey,
               // isHeaderCell: true,
               // sortable: column.props.sortable,
@@ -856,7 +863,7 @@ export default {
 
           const headerCell = (
             <TableHeaderCell {...headerCellData}>
-              {_.isFunction(title) ? title(h) : title}
+              {renderHeader ? renderHeader(h) : title}
             </TableHeaderCell>
           );
 
@@ -880,10 +887,13 @@ export default {
               key: `${rowKey}_${key}`,
               splitProps: {
                 height: this.rowHeight,
+                // row
                 rowIndex: i,
                 rowKey,
                 rowDataKey: key,
                 rowData: d,
+                // props
+                contentStyle: style,
               },
             }),
             TableCell

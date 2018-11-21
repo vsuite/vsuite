@@ -1,6 +1,10 @@
 import { storiesOf } from '@storybook/vue';
 import users from 'stories/data/users';
 
+import IconButton from 'components/IconButton';
+import Divider from 'components/Divider';
+import Popover from 'components/Popover';
+import Dropdown from 'components/Dropdown';
 import Table from 'components/Table';
 import Demo from 'stories/demo';
 
@@ -288,6 +292,131 @@ stories.add('children', () => ({
 }));
 
 // custom cell
+stories.add('custom cell', () => ({
+  data() {
+    return {
+      columns: [
+        {
+          width: 50,
+          title: 'Checkbox',
+          key: 'checkbox',
+          type: 'checkbox',
+        },
+        {
+          width: 80,
+          title: 'Avartar',
+          dataIndex: 'avartar',
+          align: 'center',
+          style: { padding: '0' },
+          render(h, avatarUrl) {
+            return (
+              <div
+                style={{
+                  width: '40px',
+                  height: '40px',
+                  background: '#f5f5f5',
+                  borderRadius: '20px',
+                  marginTop: '2px',
+                  overflow: 'hidden',
+                  display: 'inline-block',
+                }}
+              >
+                <img src={avatarUrl} width="44px" />
+              </div>
+            );
+          },
+        },
+        {
+          width: 160,
+          title: 'First Name',
+          key: 'firstName',
+          render(h, { firstName, lastName, email, companyName, sentence }) {
+            return (
+              <Popover
+                transfer
+                title="Description"
+                placement="top-start"
+                trigger="hover"
+              >
+                <a
+                  style={{
+                    display: 'inline-block',
+                    width: '128px',
+                    overflow: 'hidden',
+                    whiteSpace: 'nowrap',
+                    textOverflow: 'ellipsis',
+                    verticalAlign: 'bottom',
+                  }}
+                >
+                  {firstName}
+                </a>
+                <template slot="content">
+                  <p>
+                    <b>Name:</b> {`${firstName} ${lastName}`}{' '}
+                  </p>
+                  <p>
+                    <b>Email:</b> {email}{' '}
+                  </p>
+                  <p>
+                    <b>Company:</b> {companyName}{' '}
+                  </p>
+                  <p>
+                    <b>Sentence:</b> {sentence}{' '}
+                  </p>
+                </template>
+              </Popover>
+            );
+          },
+        },
+        {
+          width: 300,
+          title: 'Email',
+          dataIndex: 'email',
+          render(h, email) {
+            return <a href={`mailto:${email}`}>{email}</a>;
+          },
+        },
+        {
+          width: 200,
+          title: 'Action',
+          key: 'action',
+          style: { padding: '5px' },
+          render() {
+            return (
+              <div>
+                <IconButton appearance="subtle" icon="edit2" />
+                <Divider vertical />
+                <Popover
+                  transfer
+                  title="Description"
+                  placement="bottom-end"
+                  trigger="click"
+                >
+                  <IconButton appearance="subtle" icon="more" />
+                  <Dropdown.Menu slot="content">
+                    <Dropdown.Item eventKey={3}>Download As...</Dropdown.Item>
+                    <Dropdown.Item eventKey={4}>Export PDF</Dropdown.Item>
+                    <Dropdown.Item eventKey={5}>Export HTML</Dropdown.Item>
+                    <Dropdown.Item eventKey={6}>Settings</Dropdown.Item>
+                    <Dropdown.Item eventKey={7}>About</Dropdown.Item>
+                  </Dropdown.Menu>
+                </Popover>
+              </div>
+            );
+          },
+        },
+      ],
+    };
+  },
+
+  render() {
+    return (
+      <Demo title="Custom Cell">
+        <Table height={420} columns={this.columns} data={users} />
+      </Demo>
+    );
+  },
+}));
 
 // custom header cell
 

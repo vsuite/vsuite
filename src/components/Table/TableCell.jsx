@@ -77,13 +77,11 @@ export default {
         {this.wordWrap ? (
           <div class={this._addPrefix('content')} style={contentStyles}>
             <div class={this._addPrefix('wrap')}>
-              {this._renderExpandIcon(h)}
               {this.renderCell ? this.renderCell(h, children) : children}
             </div>
           </div>
         ) : (
           <div class={this._addPrefix('content')} style={contentStyles}>
-            {this._renderExpandIcon(h)}
             {this.renderCell ? this.renderCell(h, children) : children}
           </div>
         )}
@@ -92,11 +90,6 @@ export default {
   },
 
   methods: {
-    // TODO: expand icon
-    _renderExpandIcon(h) {
-      return null;
-    },
-
     _addPrefix(cls) {
       return prefix(this.classPrefix, cls);
     },
