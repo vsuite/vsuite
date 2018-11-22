@@ -132,27 +132,27 @@ stories.add('flex', () => ({
         },
         {
           minWidth: 100,
+          dataIndex: 'city',
           flex: 1,
-          title(h) {
+          renderHeader(h) {
             return (
               <span>
                 City <code>flex=1</code>
               </span>
             );
           },
-          dataIndex: 'city',
         },
         {
           minWidth: 150,
+          dataIndex: 'companyName',
           flex: 2,
-          title(h) {
+          renderHeader(h) {
             return (
               <span>
                 Company Name <code>flex=2</code>
               </span>
             );
           },
-          dataIndex: 'companyName',
         },
       ],
     };
@@ -298,8 +298,6 @@ stories.add('custom cell', () => ({
       columns: [
         {
           width: 50,
-          title: 'Checkbox',
-          key: 'checkbox',
           type: 'checkbox',
         },
         {
@@ -388,7 +386,7 @@ stories.add('custom cell', () => ({
                 <Divider vertical />
                 <Popover
                   transfer
-                  title="Description"
+                  title={null}
                   placement="bottom-end"
                   trigger="click"
                 >

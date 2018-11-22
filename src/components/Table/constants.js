@@ -9,7 +9,7 @@ export const ROW_DEFAULT_HEIGHT = 46;
 export const ROW_DEFAULT_EXPANDED_HEIGHT = 100;
 
 export const LAYER_WIDTH = 30;
-export const SCROLLBAR_MIN_WIDTH = 20;
+export const SCROLLBAR_MIN_WIDTH = 10;
 
 export const CELL_ALIGN = {
   left: 'left',

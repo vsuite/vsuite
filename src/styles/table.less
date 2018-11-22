@@ -60,6 +60,16 @@
     box-shadow: none;
   }
 
+  &-row-header &-cell-group-shadow-left {
+    z-index: @zindex-table-row-cell-group-shadow;
+    box-shadow: none;
+  }
+
+  &-row-header &-cell-group-shadow-right {
+    z-index: @zindex-table-row-cell-group-shadow;
+    box-shadow: none;
+  }
+
   // Added transition for hover
   &-row,
   &-cell-group,
@@ -289,6 +299,10 @@
       position: absolute;
       z-index: @zindex-table-cell-group-fixed;
       background: @table-body-background;
+    }
+
+    &-shadow {
+      box-shadow: 3px 0 5px rgba(9, 9, 9, 0.08);
     }
 
     &-shadow-right {

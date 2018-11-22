@@ -24,10 +24,26 @@ function travelColumn(column, func) {
   return column;
 }
 
+// deal with type property
+function type(col, index, children) {
+  invariant.not(
+    col.type && _.isUndefined(CELL_TYPE[col.type]),
+    `[Table] COLUMN ${index}: \`type\` = ${col.type} is not supported.`
+  );
+
+  col.type = CELL_TYPE[col.type] || null;
+
+  if (col.type) {
+    col.key = col.type;
+  }
+}
+
 // deal with title property
 function title(col, index) {
-  invariant.not(
-    col.title === null || col.title === undefined,
+  invariant(
+    !!col.type ||
+      !!col.renderHeader ||
+      (col.title !== null && col.title !== undefined),
     `[Table] COLUMN ${index}: \`title\` is required.`
   );
 
@@ -126,14 +142,8 @@ function text(col, index, children) {
     `[Table] COLUMN ${index}: \`align\` = ${col.align} is not supported.`
   );
 
-  invariant.not(
-    col.type && _.isUndefined(CELL_TYPE[col.type]),
-    `[Table] COLUMN ${index}: \`type\` = ${col.type} is not supported.`
-  );
-
   col.className = col.className || '';
   col.style = col.style || {};
-  col.type = CELL_TYPE[col.type] || null;
   col.align = CELL_ALIGN[col.align] || CELL_ALIGN.left;
   col.ellipsis = col.ellipsis || false;
   col.tooltip = col.tooltip || false;
@@ -206,6 +216,9 @@ function formatColumns(columns = []) {
   columns = _.cloneDeep(columns).map((column, index) => {
     return travelColumn(column, col => {
       const children = (col && col.children) || [];
+
+      // type
+      type(col, index, children);
 
       // title
       title(col, index, children);

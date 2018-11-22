@@ -6,6 +6,7 @@ import WheelHandler from 'utils/WheelHandler';
 import translateDOMPositionXY from 'utils/translateDOMPositionXY';
 import { cloneElement, getKey } from 'utils/node';
 import { getWidth, getHeight, addStyle } from 'shares/dom';
+import { splitDataByComponent } from 'utils/split';
 
 import TableRow from './TableRow.jsx';
 import TableCell from './TableCell.jsx';
@@ -19,8 +20,8 @@ import {
   TABLE_HEADER_DEFAULT_HEIGHT,
   ROW_DEFAULT_HEIGHT,
   CELL_PADDING_HEIGHT,
+  SCROLLBAR_MIN_WIDTH,
 } from './constants';
-import { splitDataByComponent } from 'utils/split';
 
 const CLASS_PREFIX = 'table';
 
@@ -627,7 +628,8 @@ export default {
         toggleClass(
           group,
           this._addPrefix('cell-group-shadow-left'),
-          this.scrollX >= Math.min(this.tableW - this.contentW, 0)
+          this.scrollX >=
+            Math.min(this.tableW - this.contentW + SCROLLBAR_MIN_WIDTH, 0)
         );
       });
     },
@@ -685,7 +687,7 @@ export default {
       }
 
       // 这里 -10 是为了让滚动条不挡住内容部分
-      this.minScrollX = -(contentW - this.tableW) - 10;
+      this.minScrollX = -(contentW - this.tableW);
       this.contentW = contentW;
     },
 
@@ -755,7 +757,7 @@ export default {
         return {
           headerCells,
           bodyCells,
-          allColumnsWidth: left,
+          totalWidth: left,
         };
       }
 
