@@ -1,10 +1,5 @@
 English | [中文版](README-CN.md)
 
-<p>
-    <a href="https://github.com/vsuite"><img alt="logo" width="36" height="36" src="http://oameisqha.bkt.clouddn.com/vsuite.png?roundPic/radius/!50p" alt="the-bcflow">
-    </a>
-</p>
-
 ![logo](brand/logo-lang.png)
 
 <p align="center">
