@@ -1,8 +1,8 @@
 import { storiesOf } from '@storybook/vue';
 
+import JsonPretty from 'vue-json-pretty';
 import Checkbox from 'components/Checkbox';
 import Demo from 'stories/demo';
-import JsonView from 'stories/json-view';
 
 const stories = storiesOf('Data Entry|CheckboxGroup', module);
 
@@ -14,8 +14,6 @@ stories.add('default', () => ({
   render() {
     return (
       <Demo title="Default">
-        <JsonView data={this.value} />
-
         <Checkbox.Group
           inline
           value={this.value}
@@ -26,6 +24,10 @@ stories.add('default', () => ({
           <Checkbox value="C">Item C</Checkbox>
           <Checkbox value="D">Item D</Checkbox>
         </Checkbox.Group>
+
+        <hr />
+
+        <JsonPretty data={this.value} />
       </Demo>
     );
   },

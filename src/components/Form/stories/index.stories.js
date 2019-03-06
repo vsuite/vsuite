@@ -10,6 +10,7 @@ import {
 import users from 'stories/data/user';
 import city from 'stories/data/city';
 
+import JsonPretty from 'vue-json-pretty';
 import Form from 'components/Form';
 import Radio from 'components/Radio';
 import RadioGroup from 'components/RadioGroup';
@@ -30,7 +31,6 @@ import Slider from 'components/Slider';
 import Button from 'components/Button';
 import Modal from 'components/Modal';
 import Demo from 'stories/demo';
-import JsonView from 'stories/json-view';
 import Icon from 'components/Icon';
 
 const stories = storiesOf('Data Entry|Form', module);
@@ -337,10 +337,6 @@ stories.add('validate form', () => ({
   render() {
     return (
       <Demo title="Validate Form">
-        <JsonView data={this.formValue} />
-
-        <hr />
-
         <Form
           value={this.formValue}
           rules={this.rules}
@@ -372,6 +368,10 @@ stories.add('validate form', () => ({
             </Button.Toolbar>
           </Form.Item>
         </Form>
+
+        <hr />
+
+        <JsonPretty data={this.formValue} />
       </Demo>
     );
   },
@@ -455,10 +455,6 @@ stories.add('form component', () => ({
   render() {
     return (
       <Demo title="Form Component">
-        <JsonView data={this.formValue} />
-
-        <hr />
-
         <Form
           value={this.formValue}
           rules={this.rules}
@@ -646,6 +642,10 @@ stories.add('form component', () => ({
             </Button.Toolbar>
           </Form.Item>
         </Form>
+
+        <hr />
+
+        <JsonPretty data={this.formValue} />
       </Demo>
     );
   },
@@ -677,10 +677,6 @@ stories.add('keypath', () => ({
   render() {
     return (
       <Demo title="Validate Form">
-        <JsonView data={this.formValue} />
-
-        <hr />
-
         <Form
           value={this.formValue}
           rules={this.rules}
@@ -744,6 +740,10 @@ stories.add('keypath', () => ({
             </Button.Toolbar>
           </Form.Item>
         </Form>
+
+        <hr />
+
+        <JsonPretty data={this.formValue} />
       </Demo>
     );
   },
@@ -772,10 +772,6 @@ stories.add('trigger', () => ({
   render() {
     return (
       <Demo title="Validate Form">
-        <JsonView data={this.formValue} />
-
-        <hr />
-
         <RadioGroup value={this.trigger} onChange={val => (this.trigger = val)}>
           <Radio value="change">Change</Radio>
           <Radio value="blur">Blur</Radio>
@@ -814,6 +810,10 @@ stories.add('trigger', () => ({
             </Button.Toolbar>
           </Form.Item>
         </Form>
+
+        <hr />
+
+        <JsonPretty data={this.formValue} />
       </Demo>
     );
   },

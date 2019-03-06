@@ -1,7 +1,7 @@
 <template>
   <div class="vs-demo">
-    <h2 class="vs-demo-title">{{title}}</h2>
-    <p class="vs-demo-desc">{{description}}</p>
+    <h2 class="vs-demo-title">{{ title }}</h2>
+    <p class="vs-demo-desc">{{ description }}</p>
     <div class="vs-demo-content">
       <slot></slot>
     </div>

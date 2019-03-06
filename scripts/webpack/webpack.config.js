@@ -10,17 +10,10 @@ function resolveRoot(relativePath) {
 
 module.exports = {
   resolve: {
+    modules: [resolve(), 'node_modules'],
     extensions: ['.js', '.jsx', '.vue', '.json'],
     alias: {
-      components: resolve('components'),
-      directives: resolve('directives'),
-      langs: resolve('langs'),
-      mixins: resolve('mixins'),
-      plugins: resolve('plugins'),
       stories: resolveRoot('.storybook/stories'),
-      shares: resolve('shares'),
-      styles: resolve('styles'),
-      utils: resolve('utils'),
       '@': resolve(),
     },
   },

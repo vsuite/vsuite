@@ -205,10 +205,10 @@ export default {
           {searching || (this.multiple && hasValue)
             ? null
             : hasValue
-              ? label
-              : this.$slots.placeholder ||
-                this.placeholder ||
-                this.$t('_.Picker.placeholder')}
+            ? label
+            : this.$slots.placeholder ||
+              this.placeholder ||
+              this.$t('_.Picker.placeholder')}
         </PickerToggle>
         <div {...wrapperData}>
           {tags}

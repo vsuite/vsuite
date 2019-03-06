@@ -1,5 +1,5 @@
 <template>
-  <div class="vs-content"><slot/></div>
+  <div class="vs-content"><slot /></div>
 </template>
 
 <script>

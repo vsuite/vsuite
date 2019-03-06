@@ -68,16 +68,9 @@ module.exports = {
 
   resolve: {
     extensions: ['.js', '.jsx', '.vue', '.json'],
+    modules: [resolve(), 'node_modules'],
     alias: {
-      components: resolve('components'),
-      directives: resolve('directives'),
-      langs: resolve('langs'),
-      mixins: resolve('mixins'),
-      plugins: resolve('plugins'),
       stories: resolveRoot('.storybook/stories'),
-      shares: resolve('shares'),
-      styles: resolve('styles'),
-      utils: resolve('utils'),
       '@': resolve(),
     },
   },

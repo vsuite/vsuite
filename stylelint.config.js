@@ -8,7 +8,7 @@ module.exports = {
     // Style-lint can't distinguish less mixin or css function. Disable this check item directly here.
     'function-whitespace-after': null,
     // Require a leading zero for fractional numbers less than 1.
-    'number-leading-zero': 'always',
+    // 'number-leading-zero': 'always',
 
     // Extended rules
     // - The most restrictive vendor-prefix limit is enabled, which is determined by the data of {@link https://caniuse.com}
@@ -73,8 +73,8 @@ module.exports = {
       'target',
     ],
     // String using single quotes
-    'string-quotes': 'single',
+    // 'string-quotes': 'single',
     'declaration-colon-newline-after': null,
-    'value-list-comma-newline-after': 'always-multi-line',
+    // 'value-list-comma-newline-after': 'always-multi-line',
   },
 };

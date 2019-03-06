@@ -124,8 +124,8 @@ export default {
                 : children.every(
                     child => child.status === CHECK_STATUS.UNCHECKED
                   )
-                  ? CHECK_STATUS.UNCHECKED
-                  : CHECK_STATUS.INDETERMINATE
+                ? CHECK_STATUS.UNCHECKED
+                : CHECK_STATUS.INDETERMINATE
               : CHECK_STATUS.UNCHECKED;
           } else {
             visible =

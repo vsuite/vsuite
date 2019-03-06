@@ -1,12 +1,11 @@
-import { addDecorator, configure } from '@storybook/vue';
-import { withOptions } from '@storybook/addon-options';
+import { configure, addParameters } from '@storybook/vue';
 
-addDecorator(
-  withOptions({
+addParameters({
+  options: {
     hierarchyRootSeparator: /\|/,
-    hierarchySeparator: /\./,
-  })
-);
+    hierarchySeparator: /\/|\./,
+  },
+});
 
 function loadStories() {
   require('./index.stories');

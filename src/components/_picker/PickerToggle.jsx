@@ -52,17 +52,16 @@ export default {
             {this.$slots.default}
           </span>
         )}
-        {this.hasValue &&
-          this.cleanable && (
-            <span
-              class={this._addPrefix('clean')}
-              role="button"
-              tabindex="-1"
-              onClick={this._handleClean}
-            >
-              ✕
-            </span>
-          )}
+        {this.hasValue && this.cleanable && (
+          <span
+            class={this._addPrefix('clean')}
+            role="button"
+            tabindex="-1"
+            onClick={this._handleClean}
+          >
+            ✕
+          </span>
+        )}
         {this.caret && <span class={this._addPrefix('caret')} />}
         <Ripple />
       </Component>
