@@ -6,13 +6,13 @@
 .@{ns}slider {
   position: relative;
 
-  .@{ns}tooltip-popper {
+  .@{ns}tooltip {
     display: none;
 
-    .@{ns}tooltip-arrow {
+    &.@{ns}tooltip-placement-top .@{ns}tooltip-arrow {
       margin: auto;
-      left: 50%;
-      transform: translate(-50%, 0);
+      left: 0;
+      right: 0;
     }
   }
 
@@ -199,14 +199,14 @@
   }
 }
 
-.@{ns}slider-handle:hover .@{ns}tooltip-popper,
-.@{ns}slider-showtip .@{ns}tooltip-popper {
-  display: inline-block;
+.@{ns}slider-handle:hover .@{ns}tooltip,
+.@{ns}slider-showtip .@{ns}tooltip {
+  display: block;
   opacity: 1;
   top: -30px;
 
   .@{ns}slider-vertical & {
-    top: -40px;
+    top: -33px;
     // Make sure tooltip align center.
     margin-left: 3px;
   }

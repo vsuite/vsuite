@@ -11,6 +11,12 @@
   .btn;
 }
 
+.@{ns}btn-default,
+.@{ns}btn-primary,
+.@{ns}btn-subtle {
+  .button-ripple;
+}
+
 // Circle Button
 .@{ns}btn-icon-circle {
   border-radius: 50% !important;
@@ -54,15 +60,12 @@
 
     &::after {
       border-width: @btn-loading-spin-ring-wide;
-      border-color: @btn-spin-light-color transparent transparent;
+      border-color: @btn-spin-light-invert-color transparent transparent;
       border-style: solid;
       animation: buttonSpin 0.6s infinite linear;
 
-      .@{ns}btn-default&,
-      .@{ns}btn-link&,
-      .@{ns}btn-subtle&,
-      .@{ns}btn-ghost& {
-        border-top-color: @btn-spin-light-invert-color;
+      .@{ns}btn-primary& {
+        border-top-color: @btn-spin-light-color;
       }
     }
   }
@@ -74,7 +77,6 @@
 // Default Button
 // Rewrite common button style
 .@{ns}btn-default {
-  .button-ripple;
   .btn-icon-with-text(@btn-icon-with-text-bg);
 
   color: @btn-default-color;
@@ -87,8 +89,7 @@
     .btn-transition();
   }
 
-  &:focus,
-  &.focus {
+  &:focus {
     color: @btn-default-color;
     background-color: @btn-default-focus-bg;
 
@@ -122,7 +123,6 @@
   }
 
   &.@{ns}btn-disabled,
-  &[disabled],
   .@{ns}dropdown-disabled & {
     &,
     &:hover,
@@ -141,7 +141,6 @@
 
 // Primary Button
 .@{ns}btn-primary {
-  .button-ripple;
   .button-primary-variant(@btn-primary-color; @btn-primary-bg);
 
   .btn-loading-reset(@btn-primary-color; @btn-primary-bg);
@@ -170,7 +169,7 @@
 
 // Ghost Button
 .@{ns}btn-ghost {
-  .btn-transition(color-and-border);
+  .btn-transition();
   .btn-ghost-variant(@btn-ghost-color, @btn-ghost-border-color);
 
   .generate-spectrum-ghost-btns();
@@ -211,18 +210,9 @@
 .@{ns}btn-block {
   display: block;
   width: 100%;
-}
 
-// Vertically space out multiple block buttons
-.@{ns}btn-block + .@{ns}btn-block {
-  margin-top: 5px;
-}
-
-// Specificity overrides
-input[type='submit'],
-input[type='reset'],
-input[type='button'] {
-  &.@{ns}btn-block {
-    width: 100%;
+  // Vertically space out multiple block buttons
+  & + & {
+    margin-top: 5px;
   }
 }

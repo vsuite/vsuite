@@ -10,20 +10,27 @@
   overflow: hidden;
 }
 
+.@{ns}modal-wrapper {
+  position: fixed;
+  overflow: auto;
+  z-index: @zindex-modal;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
 // Container that the modal scrolls within
 .@{ns}modal {
   display: none;
-  overflow: hidden;
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: @zindex-modal;
-
+  overflow: visible;
   // Prevent Chrome on Windows from adding a focus outline. For details, see
   // https://github.com/twbs/bootstrap/pull/10951.
   outline: 0;
+  margin: 30px auto 0 auto;
+  position: relative;
+  width: auto;
+  z-index: @zindex-modal;
 
   // Scale up the modal
   &-lg {
@@ -51,39 +58,6 @@
       margin-right: @modal-full-size-margin;
     }
   }
-
-  &-confirm {
-    .@{ns}modal-body {
-      margin-left: 40px;
-      margin-top: @drawer-body-margin / 2;
-      padding-bottom: @drawer-body-margin / 2;
-    }
-  }
-}
-
-.@{ns}modal-open .@{ns}modal {
-  overflow-x: hidden;
-  overflow-y: auto;
-}
-
-// Shell div to position the modal with bottom padding
-.@{ns}modal-dialog {
-  position: relative;
-  width: auto;
-  margin: 30px auto;
-  z-index: @zindex-modal;
-
-  // Animations
-  &.fade-enter-active {
-    opacity: 0;
-    // timing: ease-in-out
-    animation: modalMoveIn 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
-  }
-
-  &.fade-leave-active {
-    // timing: fast-out
-    animation: modalMoveOut 0.3s cubic-bezier(0.4, 0, 1, 1) forwards;
-  }
 }
 
 // Actual modal
@@ -104,24 +78,16 @@
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: @zindex-modal-background;
   background-color: @modal-backdrop-bg;
-  opacity: @modal-backdrop-opacity;
 
   // Fade for backdrop
-  &.fade-enter-active {
-    opacity: @modal-backdrop-opacity;
+  &.fade {
+    opacity: 0;
     transition: opacity 0.3s ease-in;
   }
 
-  &.fade-leave-active {
-    opacity: 0;
-    transition: opacity 0.3s ease-out;
-  }
-
-  &.fade-enter,
-  &.fade-leave-to {
-    opacity: 0;
+  &.in {
+    opacity: @modal-backdrop-opacity;
   }
 }
 

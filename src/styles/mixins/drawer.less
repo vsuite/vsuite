@@ -1,13 +1,9 @@
 .drawer-content-width(@width) {
-  .@{ns}drawer-dialog {
-    width: @width;
-  }
+  width: @width;
 }
 
 .drawer-content-height(@height) {
-  .@{ns}drawer-dialog {
-    height: @height;
-  }
+  height: @height;
 }
 
 .drawer-animation(@timing) {
@@ -17,18 +13,11 @@
 }
 
 .drawer-animation-setting(@move-in-animation-name,@move-out-animation-name) {
-  .@{ns}drawer-dialog {
-    // When fading in the drawer, animate it to slide down
-    &.fade-enter-active {
-      .drawer-animation(ease-in-out);
+  &.slide-out {
+    animation-name: @move-out-animation-name;
+  }
 
-      animation-name: @move-in-animation-name;
-    }
-
-    &.fade-leave-active {
-      .drawer-animation(cubic-bezier(0.4, 0, 1, 1)); //Fast out
-
-      animation-name: @move-out-animation-name;
-    }
+  &.slide-in {
+    animation-name: @move-in-animation-name;
   }
 }

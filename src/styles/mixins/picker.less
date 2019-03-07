@@ -61,6 +61,10 @@
     .@{ns}@{prefix}-menu-group-caret {
       transform: rotate(90deg);
     }
+
+    .@{ns}@{prefix}-menu-group-children {
+      display: none;
+    }
   }
 }
 
@@ -76,8 +80,6 @@
   transition: @picker-item-transition;
   text-decoration: none;
   width: 100%;
-  // Forcing a newline
-  .break-word;
 }
 
 .picker-item-hover() {
@@ -86,15 +88,12 @@
 }
 
 .picker-calendar-cell-content() {
-  display: block;
+  display: inline-block;
   font-size: @calendar-table-cell-content-font-size;
   line-height: @calendar-table-cell-content-line-height;
   padding: @calendar-table-cell-content-padding;
   cursor: pointer;
   border-radius: @border-radius-base;
-  transition-duration: 0.3s;
-  transition-timing-function: linear;
-  transition-property: background-color;
 
   &:hover {
     background-color: @calendar-table-cell-content-hover-bg;
@@ -159,14 +158,13 @@
     color: @picker-default-toggle-font-color;
     border: @picker-default-toggle-border-width solid
       @picker-default-toggle-border-color;
-    transition: border 0.3s linear;
   }
 
-  .@{ns}picker-default.@{ns}picker-disabled & {
+  .@{ns}picker-disabled & {
     cursor: @cursor-disabled;
   }
 
-  .@{ns}picker-default:not(.@{ns}picker-disabled) & {
+  .@{ns}picker-default:not(.@{ns}picker-disabled) {
     &:hover,
     &:focus {
       border-color: @picker-default-toggle-hover-border-color;

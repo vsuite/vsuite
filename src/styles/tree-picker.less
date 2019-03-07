@@ -10,7 +10,13 @@
 .@{tpns}-view {
   background-color: @picker-tree-bg;
   max-height: 360px;
+  height: 100%;
   overflow-y: auto;
+
+  /* stylelint-disable-next-line */ // This class name provide by Virtualized.
+  .ReactVirtualized__Grid.ReactVirtualized__List:focus {
+    outline: none;
+  }
 }
 
 .@{tpns}-view-node {
@@ -21,10 +27,6 @@
   &-active > .@{tpns}-view-node-label {
     color: @picker-tree-node-active-color;
     background-color: @picker-tree-node-active-bg;
-  }
-
-  &-focus > .@{tpns}-view-node-label {
-    background-color: @picker-tree-node-hover-bg;
   }
 
   > .@{tpns}-view-node-label {
@@ -49,13 +51,6 @@
     &:focus,
     &:hover {
       background-color: @picker-tree-node-hover-bg;
-    }
-  }
-
-  &-branch > .@{tpns}-view-node-label {
-    &,
-    &:hover {
-      background: transparent !important;
     }
   }
 
@@ -92,12 +87,12 @@
     height: 36px;
     font-size: @picker-tree-node-font-size;
     line-height: @picker-tree-node-line-height;
-    transform: rotate(-90deg);
+    transform: rotate(-90deg) translateX(-2px);
     transform-origin: 3.5px 16px;
     margin-left: -2px;
-    margin-top: 2px;
     font-family: @font-family-icon;
     font-style: normal;
+    user-select: none;
 
     &::before {
       content: @picker-tree-arrow-down;
@@ -111,8 +106,25 @@
     }
   }
 
+  > .@{tpns}-view-node-expanded {
+    transform: rotate(0deg);
+    margin-left: 0;
+    margin-top: 0;
+  }
+
   > .@{tpns}-view-custom-icon {
     .node-item-prepend-icon;
+  }
+}
+
+// node children
+.@{tpns}-view-node-children {
+  > .@{tpns}-view-children {
+    display: none;
+
+    .@{tpns}-view-open& {
+      display: block;
+    }
   }
 }
 

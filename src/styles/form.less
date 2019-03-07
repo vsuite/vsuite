@@ -5,27 +5,6 @@
 // Forms
 // --------------------------------------------------
 
-// Normalize non-controls
-//
-// Restyle and baseline non-control form elements.
-label {
-  display: inline-block;
-  margin-bottom: 5px;
-}
-
-// Normalize form controls
-//
-// While most of our form styles require extra classes, some basic normalization
-// is required to ensure optimum display with or without those classes to better
-// address browser inconsistencies.
-
-// Focus for file, radio, and checkbox
-input[type='file']:focus,
-input[type='radio']:focus,
-input[type='checkbox']:focus {
-  .tab-focus();
-}
-
 // Common form controls
 .@{ns}input {
   .default-input;
@@ -33,7 +12,7 @@ input[type='checkbox']:focus {
   // Reset height for `textarea`
   textarea& {
     resize: none;
-    // Set textarea valid value
+    // Set textarea valid size
     min-width: 300px;
     min-height: 76px;
     max-width: 100%;
@@ -76,7 +55,7 @@ input[type='checkbox']:focus {
   }
 
   label {
-    line-height: 1.1428571428571428; //  @checkbox-width-height/@font-size-base = 16px/14px
+    line-height: unit(@checkbox-width-height / @font-size-base);
     margin-bottom: 0;
     font-weight: normal;
     cursor: pointer;
@@ -96,16 +75,6 @@ input[type='checkbox']:focus {
   cursor: not-allowed;
 }
 
-.@{ns}radio input[type='radio'],
-.@{ns}radio-inline input[type='radio'],
-.@{ns}checkbox input[type='checkbox'],
-.@{ns}checkbox-inline input[type='checkbox'] {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: @zindex-input;
-}
-
 // Disabled text styles.
 .@{ns}radio-disabled > .@{ns}radio-checker > label,
 .@{ns}checkbox-disabled > .@{ns}checkbox-checker > label {
@@ -120,24 +89,8 @@ input[type='checkbox']:focus {
   margin-bottom: 0;
   vertical-align: middle;
   font-weight: normal;
-}
-
-.@{ns}radio-inline {
-  &.@{ns}radio-disabled {
-    cursor: @cursor-disabled;
-  }
-}
-
-.@{ns}checkbox-inline {
-  &.@{ns}checkbox-disabled {
-    cursor: @cursor-disabled;
-  }
-}
-
-.@{ns}radio-inline + .@{ns}radio-inline,
-.@{ns}checkbox-inline + .@{ns}checkbox-inline {
   margin-top: 0;
-  margin-left: 10px; // space out consecutive inline controls
+  margin-left: @radio-sense-width; // space out consecutive inline controls
 }
 
 // Help text
@@ -146,14 +99,12 @@ input[type='checkbox']:focus {
 // below a form control. Use for general help, formatting, or instructional text.
 
 .@{ns}help-block {
-  padding: 0 4px;
   display: block; // account for any element using help-block
   color: @help-block-color; // lighten the text some for contrast
   //Sometimes help info is more than one line，so height can't set a fixed value
   min-height: @line-height-computed;
   line-height: @line-height-base;
   font-size: @font-size-base;
-  cursor: pointer;
 
   &-tooltip {
     display: inline-block;
@@ -174,7 +125,14 @@ input[type='checkbox']:focus {
   > .@{ns}btn {
     margin-right: 30px;
     margin-bottom: 24px;
-    vertical-align: middle;
+    vertical-align: top;
+  }
+
+  .rs-control-label {
+    vertical-align: top;
+    margin-bottom: auto;
+    margin-top: @padding-base-vertical;
+    display: inline-block;
   }
 }
 
@@ -201,16 +159,7 @@ input[type='checkbox']:focus {
   width: 100%;
 
   > .@{ns}input-number,
-  > .@{ns}input,
-  > .@{ns}auto-complete,
-  > .@{ns}picker-input,
-  > .@{ns}picker-tag,
-  > .@{ns}picker-select,
-  > .@{ns}picker-check,
-  > .@{ns}picker-cascader,
-  > .@{ns}picker-date,
-  > .@{ns}picker-daterange,
-  > .@{ns}slider {
+  > .@{ns}input {
     width: 100%;
   }
 }
@@ -221,16 +170,7 @@ input[type='checkbox']:focus {
   position: relative;
 
   > .@{ns}input-number,
-  > .@{ns}input,
-  > .@{ns}auto-complete,
-  > .@{ns}picker-input,
-  > .@{ns}picker-tag,
-  > .@{ns}picker-select,
-  > .@{ns}picker-check,
-  > .@{ns}picker-cascader,
-  > .@{ns}picker-date,
-  > .@{ns}picker-daterange,
-  > .@{ns}slider {
+  > .@{ns}input {
     width: @form-control-width;
   }
 
@@ -271,9 +211,8 @@ input[type='checkbox']:focus {
 
     // Placement
     // == Bottom Left && Bottom Right && Top Left && Top Right
-    // FIXME: use x-placement
-    &-placement-bottom-start,
-    &-placement-bottom-end {
+    &-placement-bottom-left,
+    &-placement-bottom-right {
       bottom: -1px; // Error message width form-control has 1px gap
 
       .@{ns}error-message {
@@ -300,8 +239,8 @@ input[type='checkbox']:focus {
       }
     }
 
-    &-placement-top-start,
-    &-placement-top-end {
+    &-placement-top-left,
+    &-placement-top-right {
       top: -1px; // Error message width form-control has 1px gap
 
       .@{ns}error-message {
@@ -328,8 +267,8 @@ input[type='checkbox']:focus {
       }
     }
 
-    &-placement-bottom-start,
-    &-placement-top-start {
+    &-placement-bottom-left,
+    &-placement-top-left {
       left: 0;
 
       .@{ns}error-message {
@@ -344,8 +283,8 @@ input[type='checkbox']:focus {
       }
     }
 
-    &-placement-bottom-end,
-    &-placement-top-end {
+    &-placement-bottom-right,
+    &-placement-top-right {
       right: 0;
 
       .@{ns}error-message {
@@ -361,8 +300,8 @@ input[type='checkbox']:focus {
     }
 
     // == Left Top && Left Bottom Right && Top && Right Bottom
-    &-placement-left-start,
-    &-placement-left-end {
+    &-placement-left-top,
+    &-placement-left-bottom {
       left: -1px;
 
       .@{ns}error-message {
@@ -389,8 +328,8 @@ input[type='checkbox']:focus {
       }
     }
 
-    &-placement-right-start,
-    &-placement-right-end {
+    &-placement-right-top,
+    &-placement-right-bottom {
       right: -1px;
 
       .@{ns}error-message {
@@ -417,8 +356,8 @@ input[type='checkbox']:focus {
       }
     }
 
-    &-placement-left-start,
-    &-placement-right-start {
+    &-placement-left-top,
+    &-placement-right-top {
       top: 0;
 
       .@{ns}error-message {
@@ -433,8 +372,8 @@ input[type='checkbox']:focus {
       }
     }
 
-    &-placement-left-end,
-    &-placement-right-end {
+    &-placement-left-bottom,
+    &-placement-right-bottom {
       bottom: 0;
 
       .@{ns}error-message {
@@ -459,10 +398,6 @@ input[type='checkbox']:focus {
 
   .@{ns}help-block:not(.@{ns}help-block-tooltip) {
     padding-top: 4px;
-  }
-
-  .@{ns}help-block-tooltip .@{ns}help-block {
-    padding-top: 0;
   }
 
   .@{ns}form-control-wrapper {

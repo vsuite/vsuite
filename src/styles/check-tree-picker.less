@@ -11,7 +11,13 @@
 .@{ctpns}-view {
   background-color: @picker-tree-bg;
   max-height: 360px;
+  height: 100%;
   overflow-y: auto;
+
+  /* stylelint-disable-next-line */ // This class name provide by Virtualized.
+  .ReactVirtualized__Grid.ReactVirtualized__List:focus {
+    outline: none;
+  }
 }
 
 .@{ctpns}-view-node {
@@ -30,7 +36,7 @@
     cursor: pointer;
     position: relative;
 
-    // Only has 1 level
+    // Only has the first level
     .without-children & {
       padding-left: 34px; //text gap + checkbox space
 
@@ -61,8 +67,15 @@
     }
   }
 
-  &-focus > .@{ctpns}-view-checknode-label {
-    background-color: @picker-tree-node-hover-bg;
+  // Uncheckable state
+  &-all-uncheckable > .@{ctpns}-view-checknode-label {
+    padding-left: 22px; // 10px + 12px
+
+    &::before {
+      width: 14px;
+      margin-left: 0;
+      left: 0;
+    }
   }
 
   &-disabled {
@@ -127,17 +140,19 @@
   .@{ctpns}-view-inner::before {
     .checkbox-inner-wrap(@checkbox-default-border-color);
 
+    .@{ctpns}-view-node-disabled & {
+      border-color: @checkbox-disabled-color;
+      background-color: @checkbox-disabled-color;
+    }
+
     .@{ctpns}-view-node-indeterminate &,
     .@{ctpns}-view-node-checked & {
       border-color: @checkbox-checked-border-color;
       background-color: @checkbox-checked-border-color;
     }
 
-    .@{ctpns}-view-node-disabled:not(.@{ns}picker-check-menu-item-active) & {
-      border-color: @checkbox-disabled-color;
-      background-color: @checkbox-disabled-color;
-    }
-
+    .@{ctpns}-view-node-disabled.@{ctpns}-view-node-indeterminate &,
+    .@{ctpns}-view-node-disabled.@{ctpns}-view-node-checked &,
     .@{ctpns}-view-node-disabled.@{ns}picker-check-menu-item-active & {
       opacity: 0.3;
     }
@@ -145,8 +160,7 @@
 
   // check mark
   .@{ctpns}-view-inner::after {
-    .opacity(0);
-
+    opacity: 0;
     transform: rotate(45deg) scale(0);
 
     .@{ctpns}-view-node-checked & {
@@ -161,8 +175,7 @@
     }
 
     .@{ctpns}-view-node-indeterminate & {
-      .opacity(1);
-
+      opacity: 1;
       border: solid @B000;
       height: 9px;
       border-width: 0 0 2px;
@@ -213,6 +226,7 @@
     margin-top: 2px;
     font-family: @font-family-icon;
     font-style: normal;
+    user-select: none;
 
     &::before {
       content: @picker-tree-arrow-down;
@@ -226,6 +240,12 @@
     }
   }
 
+  > .@{ctpns}-view-node-expanded {
+    transform: rotate(0deg);
+    margin-left: 0;
+    margin-top: 0;
+  }
+
   > .@{ctpns}-view-custom-icon {
     .node-item-prepend-icon;
   }
@@ -234,6 +254,8 @@
 // node children
 .@{ctpns}-view-node-children {
   > .@{ctpns}-view-children {
+    display: none;
+
     .@{ctpns}-view-open& {
       display: block;
     }

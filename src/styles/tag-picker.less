@@ -3,9 +3,10 @@
 @import 'mixins/picker';
 
 .@{tag-picker} {
-  // Make sure vertical align with input
   &:not(.@{ns}picker-disabled) .@{ns}picker-toggle {
-    top: 0;
+    // Make sure align with input
+    left: 0;
+    cursor: text;
   }
 
   &.@{ns}picker-disabled {
@@ -17,7 +18,6 @@
   }
 
   .@{ns}tag {
-    margin-top: @tag-picker-content-padding-vertical;
     position: relative;
     // make sure tag in front of toggle
     z-index: @zindex-picker-toggle + 1;
@@ -26,13 +26,22 @@
     .ellipsis-basic;
   }
 
-  &.@{ns}picker-tag.@{ns}picker-has-value .@{ns}picker-search-input {
+  .@{ns}picker-search-input,
+  .@{ns}tag {
+    margin-top: @tag-picker-content-padding-vertical;
+  }
+
+  &.@{ns}picker-has-value .@{ns}picker-search-input {
     padding-left: @tag-picker-content-padding-horizontal;
   }
 
   .@{ns}tag,
   .@{ns}tag + .@{ns}tag {
     margin-left: @tag-picker-content-padding-horizontal;
+  }
+
+  .@{ns}picker-tag-wrapper {
+    padding-bottom: @tag-picker-content-padding-vertical;
   }
 
   .@{ns}picker-search {

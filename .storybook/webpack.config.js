@@ -12,7 +12,7 @@ module.exports = {
   module: {
     rules: [
       // {
-      //   test: [/\.stories\.jsx?$/, /stories\/*\.jsx?$/],
+      //   test: [/\.story\.jsx?$/, /story\/*\.jsx?$/],
       //   use: [
       //     {
       //       loader: require.resolve('@storybook/addon-storysource/loader'),

@@ -38,10 +38,33 @@
     color: @picker-none-font-color;
     cursor: default;
   }
+
+  &-countable &-toggle-value {
+    display: flex;
+  }
+
+  &-value-list {
+    flex: 0 1 auto;
+    .ellipsis-basic;
+    .ie-display(block);
+    .ie-max-width(100%);
+  }
+
+  &-value-count {
+    margin: 0 @picker-value-count-margin;
+    background: @picker-value-count-background-color;
+    color: @picker-value-count-color;
+    border-radius: @picker-value-count-border-radius;
+    padding: 0 @picker-value-count-padding;
+  }
+
+  &-value-separator {
+    margin: 0 4px 0 0;
+  }
 }
 
 .@{ns}picker-toggle {
-  .btn;
+  .btn(base);
 
   .@{ns}picker-default & {
     @padding-vertical: @padding-base-vertical -
@@ -52,8 +75,22 @@
     padding: @padding-vertical @padding-horizontal;
   }
 
+  .@{ns}picker-default:not(.@{ns}picker-disabled) & {
+    &:hover,
+    &.active {
+      border-color: @picker-default-toggle-hover-border-color;
+    }
+  }
+
   .@{ns}picker-subtle & {
     .btn-subtle;
+
+    transition: none;
+
+    &.active {
+      background-color: @btn-subtle-hover-bg;
+      color: @btn-subtle-default-hover-color;
+    }
   }
 }
 
@@ -111,6 +148,7 @@
   transition: 0.2s color linear;
   // FIXED: IE browser has 1px orange line.
   .ie-width(19px) !important;
+  .ie-text-align(center);
 
   &:hover {
     color: @picker-toggle-clean-hover-color;
@@ -155,6 +193,7 @@
   border-radius: @border-radius-base;
   background-color: @picker-bg;
   box-shadow: @picker-shadow;
+  overflow: hidden;
   // Remove transition
   transition: none;
 
@@ -207,18 +246,9 @@
       }
     }
   }
-}
 
-// Picker Animation
-.picker-fade-enter-active {
-  transition: opacity 0.15s ease-in;
-}
-
-.picker-fade-leave-active {
-  transition: opacity 0.1s ease-out;
-}
-
-.picker-fade-enter,
-.picker-fade-leave-to {
-  opacity: 0;
+  /* stylelint-disable-next-line */ // This class name provide by Virtualized.
+  .ReactVirtualized__Grid.ReactVirtualized__List:focus {
+    outline: none;
+  }
 }

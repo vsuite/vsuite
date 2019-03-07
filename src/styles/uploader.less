@@ -63,10 +63,8 @@
   }
 
   .@{uplns}-file-item {
-    padding: @padding-base-vertical @padding-base-horizontal;
+    padding: @padding-base-vertical 30px @padding-base-vertical 36px;
     position: relative;
-    padding-left: 36px;
-    padding-right: 30px;
     transition: 0.3s linear background-color;
 
     &:hover {
@@ -123,19 +121,17 @@
     &-title {
       .ellipsis;
 
-      flex-basis: 1px;
-      flex-grow: 1;
+      flex: 1 1 auto;
     }
 
     &-size {
-      flex-basis: 1px;
-      flex-shrink: 0;
+      flex: 0 0 auto;
       color: @uploader-light-font-color;
       padding: 0 @uploader-base-padding;
     }
 
     &-status {
-      flex: 0 1 auto;
+      flex: 0 0 auto;
       .ie-float(right);
       .ie-display(table);
 
@@ -201,7 +197,7 @@
   .clearfix;
 
   .@{uplns}-trigger-btn {
-    .btn;
+    .btn(base);
     .button-ripple;
     .btn-subtle;
 
@@ -351,7 +347,7 @@
 .@{uplns}-text,
 .@{uplns}-picture-text {
   .@{uplns}-trigger-btn {
-    .btn;
+    .btn(base);
 
     color: @btn-default-color;
     background: @btn-default-bg;

@@ -37,16 +37,56 @@
     }
   }
 
-  &-rel {
-    .clearfix;
-  }
-
   & &-menu {
     position: absolute;
     // dropdown-menu zindex value is greater than dropdown-toggle
     z-index: @zindex-dropdown + 1;
+    display: none; // none by default, but block on "open" of the menu
     float: left;
     box-shadow: @dropdown-shadow;
+  }
+
+  &-disabled &-toggle.@{ns}btn {
+    cursor: @cursor-disabled !important;
+
+    &.@{ns}btn-subtle {
+      &,
+      &:focus,
+      &:active {
+        color: @btn-subtle-disabled-color;
+        background: none;
+      }
+    }
+
+    &.@{ns}btn-primary {
+      &,
+      &:focus,
+      &:active {
+        opacity: 0.3;
+        background-color: @btn-primary-bg;
+      }
+    }
+
+    &.@{ns}btn-link {
+      &,
+      &:focus,
+      &:active {
+        opacity: 0.3;
+        text-decoration: none;
+      }
+    }
+
+    &.@{ns}btn-ghost {
+      &,
+      &:focus,
+      &:active {
+        opacity: 0.3;
+      }
+    }
+
+    .@{ns}ripple-pond {
+      display: none !important;
+    }
   }
 }
 
@@ -107,7 +147,7 @@
     > .@{ns}dropdown-menu-toggle {
       display: inline-block;
 
-      .@{ns}icon {
+      .@{ns}dropdown-menu-toggle-icon {
         position: absolute;
         width: @dropdown-item-content-submenu-icon-angle-width;
         line-height: @dropdown-item-content-submenu-icon-angle-line-height;
@@ -122,13 +162,13 @@
   }
 
   // Set submenu icon
-  &.@{ns}dropdown-item-pull-right {
+  &.@{ns}dropdown-menu-pull-right {
     > .@{ns}dropdown-item-content {
       padding-right: @dropdown-item-content-padding-horizontal+
-        @dropdown-item-content-submenu-icon-angle-spacing +
+        @dropdown-item-content-submenu-icon-angle-spacing+
         @dropdown-item-content-submenu-icon-angle-width;
 
-      > .@{ns}dropdown-menu-toggle .@{ns}icon {
+      > .@{ns}dropdown-menu-toggle .@{ns}dropdown-menu-toggle-icon {
         right: @dropdown-item-content-padding-horizontal;
 
         &::before {
@@ -138,13 +178,13 @@
     }
   }
 
-  &.@{ns}dropdown-item-pull-left {
+  &.@{ns}dropdown-menu-pull-left {
     > .@{ns}dropdown-item-content {
       padding-left: @dropdown-item-content-padding-horizontal+
         @dropdown-item-content-submenu-icon-angle-spacing +
         @dropdown-item-content-submenu-icon-angle-width;
 
-      > .@{ns}dropdown-menu-toggle .@{ns}icon {
+      > .@{ns}dropdown-menu-toggle .@{ns}dropdown-menu-toggle-icon {
         left: @dropdown-item-content-padding-horizontal;
 
         &::before {
@@ -152,6 +192,20 @@
         }
       }
     }
+  }
+
+  // Pull right
+  &.@{ns}dropdown-menu-pull-right
+    > .@{ns}dropdown-item-content
+    > .@{ns}dropdown-menu {
+    left: 100%;
+  }
+
+  // Pull Left
+  &.@{ns}dropdown-menu-pull-left
+    > .@{ns}dropdown-item-content
+    > .@{ns}dropdown-menu {
+    right: 100%;
   }
 
   // Open
@@ -218,6 +272,63 @@
   > .@{ns}dropdown-menu {
     display: block;
     animation-play-state: running;
+  }
+
+  // Show the menu
+  &.@{ns}dropdown-placement-top-left,
+  &.@{ns}dropdown-placement-top-right {
+    > .@{ns}dropdown-menu {
+      bottom: 100%;
+    }
+  }
+
+  &.@{ns}dropdown-placement-left-top,
+  &.@{ns}dropdown-placement-left-bottom {
+    > .@{ns}dropdown-menu {
+      right: 100%;
+    }
+  }
+
+  &.@{ns}dropdown-placement-right-top,
+  &.@{ns}dropdown-placement-right-bottom {
+    > .@{ns}dropdown-menu {
+      left: 100%;
+    }
+  }
+
+  &.@{ns}dropdown-placement-bottom-left,
+  &.@{ns}dropdown-placement-bottom-right {
+    > .@{ns}dropdown-menu {
+      top: 100%;
+    }
+  }
+
+  &.@{ns}dropdown-placement-top-left,
+  &.@{ns}dropdown-placement-bottom-left {
+    > .@{ns}dropdown-menu {
+      left: 0;
+    }
+  }
+
+  &.@{ns}dropdown-placement-top-right,
+  &.@{ns}dropdown-placement-bottom-right {
+    > .@{ns}dropdown-menu {
+      right: 0;
+    }
+  }
+
+  &.@{ns}dropdown-placement-left-top,
+  &.@{ns}dropdown-placement-right-top {
+    > .@{ns}dropdown-menu {
+      top: 0;
+    }
+  }
+
+  &.@{ns}dropdown-placement-right-bottom,
+  &.@{ns}dropdown-placement-left-bottom {
+    > .@{ns}dropdown-menu {
+      bottom: 0;
+    }
   }
 
   > .@{ns}dropdown-toggle.@{ns}btn {

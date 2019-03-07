@@ -9,16 +9,16 @@
 //
 //## Settings for some of the most global styles.
 
-/** Background color for `<body>`. */
+//** Background color for `<body>`.
 @body-bg: @B000;
-/** Global text color on `<body>`. */
+//** Global text color on `<body>`.
 @text-color: @B800;
-/** Global textual link color. */
+//** Global textual link color.
 @text-primary-color: @H500;
 
-/** Link hover decoration. */
+//** Link hover decoration.
 @link-hover-decoration: underline;
-/** border base color. */
+//** border base color.
 @border-base-color: @B300;
 
 //== Common
@@ -29,36 +29,36 @@
 @inline-gap: 8px;
 
 //== All icon content sets.
-/** Close button content */
+//** Close button content
 @default-close-btn-content: @icon-close;
-/** Check mark */
+//** Check mark
 @check-mark-content: @icon-check;
-/** X mark */
+//** X mark
 @x-mark-content: @icon-close;
-/** Table expand */
+//** Table expand
 @table-expand-content: @icon-caret-right;
-/** Table shrink */
+//** Table shrink
 @table-shrink-content: @icon-caret-down;
-/** DropLeft Caret Content */
+//** DropLeft Caret Content
 @drop-left-caret-content: @icon-arrow-left-line;
-/** DropRight Caret Content */
+//** DropRight Caret Content
 @drop-right-caret-content: @icon-arrow-right-line;
-/** Dropup Caret Content */
+//** Dropup Caret Content
 @dropup-caret-content: @icon-arrow-up-line;
-/** Dropdown Caret Content */
+//** Dropdown Caret Content
 @dropdown-caret-content: @icon-arrow-down-line;
-/** Uploder */
+//** Uploder
 @uploader-file-item-icon-content: @icon-attachment;
 @uploader-file-item-retry-icon-content: @icon-reload;
-/** Picker */
+//** Picker
 @picker-search-bar-icon-content: @icon-search;
-/** Calendar */
+//** Calendar
 @calendar-default-caret-content: @icon-calendar;
 @calendar-only-time-caret-content: @icon-clock-o;
-/** Progress */
+//** Progress
 @progress-status-success-icon-content: @check-mark-content;
 @progress-status-fail-icon-content: @x-mark-content;
-/** Panel */
+//** Panel
 @panel-heading-accordion-icon-content: @dropdown-caret-content;
 @panel-heading-accordion-in-icon-content: @dropup-caret-content;
 
@@ -66,7 +66,7 @@
 //
 //## Font, line-height, and color for body text, headings, and more.
 
-@font-family-base: 'Avenir', 'Trebuchet MS', Arial, Helvetica, 'PingFang SC',
+@font-family-base: Avenir-Roman, Apple-System, Arial, Helvetica, 'PingFang SC',
   'Hiragino Sans GB', 'Microsoft YaHei', STXihei, sans-serif;
 @font-family-icon: 'vsuite-icon-font';
 
@@ -81,11 +81,11 @@
 @font-size-h5: @font-size-base;
 @font-size-h6: @font-size-base; // The same to font-size-base
 
-/** Computed "line-height" (`font-size` * `line-height`) for use with `margin`, `padding`, etc. */
+//** Computed "line-height" (`font-size` * `line-height`) for use with `margin`, `padding`, etc.
 @line-height-computed: 20px;
-/** Computed "line-height" (`font-size` * `line-height`) for use with `margin`, `padding`, etc. */
+//** Computed "line-height" (`font-size` * `line-height`) for use with `margin`, `padding`, etc.
 @line-height-large-computed: 22px;
-/** Unit-less `line-height` for use in components like buttons. */
+//** Unit-less `line-height` for use in components like buttons.
 @line-height-large: unit(
   @line-height-large-computed / @font-size-base
 ); // ~1.375
@@ -96,20 +96,20 @@
   @line-height-computed / @font-size-small
 ); // ~1.6666666666666667
 
-/** By default, this inherits from the `<body>`. */
+//** By default, this inherits from the `<body>`.
 @headings-font-family: inherit;
 @headings-font-weight: 500;
 @headings-line-height: 1.1;
 @headings-color: inherit;
 
-/** Box shadows */
+//** Box shadows
 @default-box-shadow: 0 4px 4px rgba(0, 0, 0, 0.12), 0 0 10px rgba(0, 0, 0, 0.06);
 
 //== Iconography
 //
 //## Specify custom location and filename of the included Glyphicons icon font. Useful for those including Bootstrap via Bower.
 
-/** Load fonts from this directory. */
+//** Load fonts from this directory.
 // default use cdn.jsdelivr.net
 // If you want to use local resource , please change it to "./fonts"
 @icon-font-path: './fonts';
@@ -147,6 +147,7 @@
 @table-head-font-color: @B600;
 @table-body-background: @B000;
 @table-body-hover-background: @H050;
+@table-table-cell-fixed-shadow: 0 5px rgba(9, 9, 9, 0.08);
 @table-resize-mouse-color: @H500;
 @table-sort-icon-color: @H500;
 @table-sort-icon-unsort: '\f0dc';
@@ -423,7 +424,7 @@
 
 //-- Z-index master list
 //
-// Warning: Avoid customizing these values. They are used for a bird's eye view
+// Warning: Avoid customizing these values. They're used for a bird's eye view
 // of components dependent on the z-axis and are designed to all work together.
 //
 // Note: These variables are not generated into the Customizer.
@@ -439,16 +440,12 @@
 @zindex-dropdown-a: 10;
 @zindex-navbar: 1000;
 @zindex-navbar-fixed: 1030;
-@zindex-modal-background: 1040;
 @zindex-modal: 1050;
-@zindex-modal-background: @zindex-modal;
 @zindex-drawer: 1050;
-@zindex-drawer-background: 1040;
+@zindex-drawer-background: @zindex-drawer;
 @zindex-popover: 1060;
 @zindex-tooltip: 1070;
 @zindex-notification: 1080;
-//#==== LoadingBar
-@zindex-loading-bar: 2000;
 //#==== Uploader
 @zindex-uploader-picture-preview: 1;
 @zindex-uploader-picture-loading-wrapper: 2;
@@ -590,7 +587,7 @@
 //
 //##
 @sidenav-padding-vertical: 15px;
-@sidenav-childrn-padding-vertical: 11px;
+@sidenav-children-padding-vertical: 11px;
 @sidenav-padding-horizonal: 20px;
 @sidenav-collapse-in-width: 100%;
 @sidenav-default-width: 56px;
@@ -605,8 +602,12 @@
 @sidenav-icon-width: @sidenav-level1-item-font-size;
 @sidenav-dropdown-toggle-caret-width: 20px;
 @sidenav-level-retract: 9px;
-@sidenav-level1-retract: @sidenav-padding-horizonal + @sidenav-icon-width +
+@sidenav-level2-retract: @sidenav-padding-horizonal + @sidenav-icon-width +
   @sidenav-icon-spacing;
+@sidenav-level3-retract: @sidenav-level2-retract + @sidenav-level-retract; //60 px
+@sidenav-level4-retract: @sidenav-level2-retract + @sidenav-level-retract*2;
+@sidenav-level5-retract: @sidenav-level2-retract + @sidenav-level-retract*3;
+@sidenav-level6-retract: @sidenav-level2-retract + @sidenav-level-retract*4;
 @sidenav-collapse-transition-config: 0.2s ease-in;
 // ** Sidenav default
 @sidenav-deafult-bg: @B050;
@@ -720,14 +721,6 @@
 @tooltip-color: #fff;
 //** Tooltip background color
 @tooltip-bg: @B900;
-//** Tooltip white text color
-@tooltip-white-color: @text-color;
-//** Tooltip white background color
-@tooltip-white-bg: #fff;
-//** Tooltip background color for white arrow
-@tooltip-white-arrow-bg: rgba(39, 44, 54, 0.05);
-//** Tooltip whte box shadow
-@tooltip-white-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
 //** Tooltip opacity
 @tooltip-opacity: 1;
 //** Tooltip border radius
@@ -735,10 +728,6 @@
 
 //** Tooltip arrow width
 @tooltip-arrow-width: 6px;
-//** Tooltip arrow inner with
-@tooltip-arrow-inner-width: 5px;
-//** Tooltip arrow outer width
-@tooltip-arrow-outer-width: @tooltip-arrow-width + 1px;
 //** Tooltip arrow color
 @tooltip-arrow-color: @tooltip-bg;
 //** Tooltip translate distance
@@ -765,13 +754,9 @@
 @popover-translate-distance: 2px;
 
 //** Popover outer arrow width
-@popover-arrow-outer-width: @popover-arrow-width + 1;
-//** Popover outer arrow bg
-@popover-arrow-outer-bg: rgba(39, 44, 54, 0.05);
+@popover-arrow-outer-width: @popover-arrow-width;
 //** Distance of Arrow and frame.
 @popover-arrow-gap: 4px;
-@popover-arrow-gap-sm: 4px;
-@popover-arrow-gap-lg: 10px;
 
 //== Labels
 //
@@ -1028,6 +1013,7 @@
 @tag-default-background: @B050;
 @tag-default-color: @B800;
 @tag-gap: 10px;
+@tag-toggle-clean-hover-color: @error-color;
 
 //== Divider
 //
@@ -1045,6 +1031,7 @@
 @check-picker-prefix: ~'picker-check';
 @calendar-picker-prefix: ~'calendar';
 @cascader-picker-prefix: ~'picker-cascader';
+@cascader-multi-picker-prefix: ~'picker-multi-cascader';
 @tree-picker-prefix: ~'picker-tree';
 @check-tree-picker-prefix: ~'picker-checktree';
 @date-range-picker-prefix: ~'picker-daterange';
@@ -1120,7 +1107,7 @@
 //== Calendar Picker
 @calendar-header-width: 280px;
 @calendar-picker-padding: 12px;
-@calendar-picker-view-margin-top: 6px;
+@calendar-picker-view-padding-top: 4px;
 @calendar-header-title-margin: 4px;
 @calendar-header-title-error-color: @error-color;
 @calendar-table-cell-padding: 1px;
@@ -1167,6 +1154,14 @@
   )/2; // (36 -24)/2
 @tag-picker-content-padding-horizontal: 6px;
 @tag-picker: ~'@{ns}@{multi-input-picker-prefix}';
+
+// == Cascader
+@cascader-search-panel-max-height: 300px;
+@cascader-row-content-padding-horizontal: @picker-item-content-padding-horizontal;
+@cascader-search-panel-hover-color: @B800;
+@cascader-search-panel-hover-bg: @H050;
+@cascader-search-panel-highlight-word-color: @H500;
+
 //== Slider
 //
 //##
@@ -1193,6 +1188,7 @@
 //== Breadcrumbs
 //
 //##
+@breadcrumb-font-size: @font-size-small;
 @breadcrumb-padding-vertical: 8px;
 @breadcrumb-padding-horizontal: 15px;
 @breadcrumb-separator-margin: 4px;

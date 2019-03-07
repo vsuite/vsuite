@@ -60,6 +60,7 @@
       position: absolute;
       left: @sidenav-padding-horizonal;
       top: @sidenav-padding-vertical;
+      line-height: @sidenav-level1-item-line-height;
     }
   }
 
@@ -94,7 +95,7 @@
       display: none;
     }
 
-    .@{ns}dropdown-menu-active ~ .@{ns}dropdown-rel > .@{ns}dropdown-toggle,
+    .@{ns}dropdown-menu-active ~ .@{ns}dropdown-toggle,
     > .@{ns}dropdown-toggle {
       position: absolute;
       top: 0;
@@ -175,38 +176,46 @@
     display: block;
   }
 
-  // Level2
-  // -----------------
-  .@{ns}dropdown-item-submenu
-    > .@{ns}dropdown-item-content
-    > .@{ns}dropdown-menu-toggle {
-    padding-left: @sidenav-level1-retract;
-    padding-right: @sidenav-padding-horizonal +
-      @sidenav-dropdown-toggle-caret-width;
-    position: relative;
+  // @warn Here we can only use absolute positioning because of the limitations of using <Dropdown/> component.
 
-    > .@{ns}icon {
+  .@{ns}dropdown-item-submenu > .@{ns}dropdown-item-content {
+    > .@{ns}dropdown-menu-toggle {
+      padding-left: @sidenav-level2-retract;
+      padding-right: @sidenav-padding-horizonal +
+        @sidenav-dropdown-toggle-caret-width;
+      position: relative;
+
+      > .@{ns}dropdown-menu-toggle-icon {
+        position: absolute;
+        right: @sidenav-padding-horizonal;
+        top: @sidenav-children-padding-vertical;
+        width: auto;
+        height: @sidenav-dropdown-toggle-caret-width;
+      }
+    }
+
+    > .@{ns}dropdown-item-menu-icon {
+      padding-top: @sidenav-children-padding-vertical;
+      padding-bottom: @sidenav-children-padding-vertical;
+      line-height: @line-height-base;
+      width: @font-size-base;
       position: absolute;
-      right: @sidenav-padding-horizonal;
-      top: @sidenav-padding-vertical;
-      width: auto;
-      height: @sidenav-dropdown-toggle-caret-width;
+      z-index: 1;
     }
   }
 
+  // Level2
+  // -----------------
   .@{ns}dropdown-item > .@{ns}dropdown-item-content,
   .@{ns}dropdown-item-submenu
     > .@{ns}dropdown-item-content
     > .@{ns}dropdown-menu-toggle {
-    padding: @sidenav-childrn-padding-vertical @sidenav-padding-horizonal
-      @sidenav-childrn-padding-vertical @sidenav-level1-retract;
+    padding: @sidenav-children-padding-vertical @sidenav-padding-horizonal
+      @sidenav-children-padding-vertical @sidenav-level2-retract;
   }
 
-  .@{ns}dropdown-item
-    > .@{ns}dropdown-item-content
-    > .@{ns}dropdown-menu-toggle
-    > .@{ns}icon {
-    top: @sidenav-childrn-padding-vertical;
+  .@{ns}dropdown-item {
+    .dropdown-menu-icon-left-position(@sidenav-level2-retract);
   }
 
   // Level3
@@ -219,7 +228,14 @@
     > .@{ns}dropdown-item-content
     > .@{ns}dropdown-menu
     .@{ns}dropdown-menu-toggle {
-    padding-left: @sidenav-level1-retract + @sidenav-level-retract; //60 px
+    padding-left: @sidenav-level3-retract;
+  }
+
+  .@{ns}dropdown-item-submenu
+    > .@{ns}dropdown-item-content
+    > .@{ns}dropdown-menu
+    > .@{ns}dropdown-item {
+    .dropdown-menu-icon-left-position(@sidenav-level3-retract);
   }
 
   // Level4
@@ -234,7 +250,15 @@
     > .@{ns}dropdown-menu
     .@{ns}dropdown-menu
     .@{ns}dropdown-menu-toggle {
-    padding-left: @sidenav-level1-retract + @sidenav-level-retract*2;
+    padding-left: @sidenav-level4-retract;
+  }
+
+  .@{ns}dropdown-item-submenu
+    > .@{ns}dropdown-item-content
+    > .@{ns}dropdown-menu
+    .@{ns}dropdown-menu
+    > .@{ns}dropdown-item {
+    .dropdown-menu-icon-left-position(@sidenav-level4-retract);
   }
 
   // Level5
@@ -251,7 +275,16 @@
     .@{ns}dropdown-menu
     .@{ns}dropdown-menu
     .@{ns}dropdown-menu-toggle {
-    padding-left: @sidenav-level1-retract + @sidenav-level-retract*3;
+    padding-left: @sidenav-level5-retract;
+  }
+
+  .@{ns}dropdown-item-submenu
+    > .@{ns}dropdown-item-content
+    > .@{ns}dropdown-menu
+    .@{ns}dropdown-menu
+    .@{ns}dropdown-menu
+    > .@{ns}dropdown-item {
+    .dropdown-menu-icon-left-position(@sidenav-level5-retract);
   }
 
   // Level6
@@ -263,7 +296,7 @@
     .@{ns}dropdown-item-content
     .@{ns}dropdown-item:not(.@{ns}dropdown-item-submenu)
     > .@{ns}dropdown-item-content {
-    padding-left: @sidenav-level1-retract + @sidenav-level-retract*4;
+    padding-left: @sidenav-level6-retract;
   }
 }
 
@@ -324,7 +357,7 @@
   // Make sure icon text-align center
   &.@{ns}sidenav-collapse-out {
     .@{ns}dropdown .@{ns}dropdown-menu {
-      padding-left: @sidenav-default-width - @sidenav-level1-retract;
+      padding-left: @sidenav-default-width - @sidenav-level2-retract;
     }
 
     .@{ns}dropdown-item > .@{ns}dropdown-item-content {
@@ -370,11 +403,13 @@
       background-color: @sidenav-deafult-bg;
     }
   }
+}
 
+.@{ns}sidenav-default.@{ns}sidenav-collapse-in,
+.@{ns}sidenav-default.@{ns}sidenav-collapsing,
+.@{ns}sidenav-default.@{ns}sidenav-collapse-out {
   // Set active Level1 style
-  .@{ns}dropdown-menu.@{ns}dropdown-menu-active
-    ~ .@{ns}dropdown-rel
-    > .@{ns}dropdown-toggle {
+  .@{ns}dropdown-menu.@{ns}dropdown-menu-active ~ .@{ns}dropdown-toggle {
     color: @sidenav-deafult-font-color;
 
     &:hover {
@@ -392,10 +427,7 @@
   background-color: @sidenav-inverse-bg;
 
   // Active
-  .@{ns}dropdown
-    .@{ns}dropdown-menu-active
-    ~ .@{ns}dropdown-rel
-    > .@{ns}dropdown-toggle,
+  .@{ns}dropdown .@{ns}dropdown-menu-active ~ .@{ns}dropdown-toggle,
   .@{ns}nav-item .@{ns}nav-item-content,
   .@{ns}dropdown .@{ns}dropdown-toggle {
     &,
@@ -422,10 +454,7 @@
     }
   }
 
-  .@{ns}dropdown
-    .@{ns}dropdown-menu-active
-    ~ .@{ns}dropdown-rel
-    > .@{ns}dropdown-toggle,
+  .@{ns}dropdown .@{ns}dropdown-menu-active ~ .@{ns}dropdown-toggle,
   .@{ns}nav-item-active > .@{ns}nav-item-content {
     background-color: @sidenav-inverse-active-bg;
   }
@@ -449,10 +478,7 @@
   }
 
   // Active
-  .@{ns}dropdown
-    .@{ns}dropdown-menu-active
-    ~ .@{ns}dropdown-rel
-    > .@{ns}dropdown-toggle,
+  .@{ns}dropdown .@{ns}dropdown-menu-active ~ .@{ns}dropdown-toggle,
   .@{ns}nav-item-active > .@{ns}nav-item-content {
     &,
     &:hover,
@@ -484,9 +510,7 @@
   }
 
   // Set active Level1 style
-  .@{ns}dropdown-menu.@{ns}dropdown-menu-active
-    ~ .@{ns}dropdown-rel
-    > .@{ns}dropdown-toggle {
+  .@{ns}dropdown-menu.@{ns}dropdown-menu-active ~ .@{ns}dropdown-toggle {
     color: @sidenav-inverse-font-color;
     background-color: @sidenav-inverse-active-bg;
 
@@ -547,11 +571,13 @@
       background-color: @sidenav-subtle-bg;
     }
   }
+}
 
+.@{ns}sidenav-subtle.@{ns}sidenav-collapse-in,
+.@{ns}sidenav-subtle.@{ns}sidenav-collapsing,
+.@{ns}sidenav-subtle.@{ns}sidenav-collapse-out {
   // Set active Level1 style
-  .@{ns}dropdown-menu.@{ns}dropdown-menu-active
-    ~ .@{ns}dropdown-rel
-    > .@{ns}dropdown-toggle {
+  .@{ns}dropdown-menu.@{ns}dropdown-menu-active ~ .@{ns}dropdown-toggle {
     color: @sidenav-deafult-font-color;
 
     &:hover {

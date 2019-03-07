@@ -11,27 +11,23 @@
 }
 
 .set-dropdown-caret(@prefix) {
-  .@{prefix}-placement-left &::before,
-  .@{prefix}-placement-left-start &::before,
-  .@{prefix}-placement-left-end &::before {
+  .@{prefix}-placement-left-bottom &::before,
+  .@{prefix}-placement-left-top &::before {
     content: @drop-left-caret-content;
   }
 
-  .@{prefix}-placement-right &::before,
-  .@{prefix}-placement-right-start &::before,
-  .@{prefix}-placement-right-end &::before {
+  .@{prefix}-placement-right-bottom &::before,
+  .@{prefix}-placement-right-top &::before {
     content: @drop-right-caret-content;
   }
 
-  .@{prefix}-placement-top &::before,
-  .@{prefix}-placement-top-start &::before,
-  .@{prefix}-placement-top-end &::before {
+  .@{prefix}-placement-top-left &::before,
+  .@{prefix}-placement-top-right &::before {
     content: @dropup-caret-content;
   }
 
-  .@{prefix}-placement-bottom &::before,
-  .@{prefix}-placement-bottom-start &::before,
-  .@{prefix}-placement-bottom-end &::before {
+  .@{prefix}-placement-bottom-left &::before,
+  .@{prefix}-placement-bottom-right &::before {
     content: @dropdown-caret-content;
   }
 }

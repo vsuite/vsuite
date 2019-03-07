@@ -143,10 +143,8 @@
     // vertical content text align center
     &.@{ns}loader-vertical {
       .@{ns}loader {
-        height: (
-          @loader-default-diameter + @loader-content-spin-spacing-vertical +
-            @line-height-computed
-        );
+        height: @loader-default-diameter + @loader-content-spin-spacing-vertical +
+          @line-height-computed;
       }
 
       .@{ns}loader-content {

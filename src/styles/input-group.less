@@ -143,8 +143,8 @@
       padding: 11px 13px 8px 13px;
     }
 
-    .@{ns}input-group-btn ~ .@{ns}auto-complete input.@{ns}input,
-    .@{ns}input-group-addon ~ .@{ns}auto-complete input.@{ns}input,
+    .@{ns}input-group-btn ~ .@{ns}auto-complete > input.@{ns}input,
+    .@{ns}input-group-addon ~ .@{ns}auto-complete > input.@{ns}input,
     .@{ns}input-group-btn ~ input.@{ns}input,
     .@{ns}input-group-addon ~ input.@{ns}input {
       padding-left: 36px;
@@ -161,18 +161,6 @@
     .@{ns}auto-complete ~ .@{ns}input-group-btn {
       left: inherit;
       right: @input-border-width;
-    }
-  }
-
-  // adjust auto-complete style
-  .@{ns}auto-complete {
-    display: table-cell;
-    float: left;
-    width: 100%;
-
-    .@{ns}auto-complete-rel {
-      float: left;
-      width: 100%;
     }
   }
 }
@@ -285,7 +273,7 @@
 // -------------------------
 .@{ns}input-group-addon,
 .@{ns}input-group-btn,
-.@{ns}input-group .@{ns}input {
+.@{ns}input-group:not(.@{ns}input-group-inside) .@{ns}input {
   display: table-cell;
 
   &:not(:first-child):not(:last-child) {

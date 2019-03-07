@@ -8,7 +8,7 @@ addParameters({
 });
 
 function loadStories() {
-  require('./index.stories');
+  require('./index.story');
 }
 
 configure(loadStories, module);

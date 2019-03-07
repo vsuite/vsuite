@@ -1,5 +1,5 @@
-// Common button style
-.btn() {
+// Button base styles
+.btn(base) {
   display: inline-block;
   margin-bottom: 0; // For input.btn
   font-weight: @btn-font-weight;
@@ -14,18 +14,8 @@
 
   .btn-md;
 
-  &,
-  &:active,
-  &.active {
-    &:focus,
-    &.focus {
-      .tab-focus();
-    }
-  }
-
   &:hover,
-  &:focus,
-  &.focus {
+  &:focus {
     color: @btn-default-color;
     text-decoration: none;
   }
@@ -35,21 +25,18 @@
     outline: 0;
     background-image: none;
   }
+}
 
-  &.@{ns}btn-disabled,
-  &[disabled],
-  .@{ns}dropdown-disabled & {
-    cursor: @cursor-disabled;
-    .opacity(0.3);
+// Button full styles
+.btn() {
+  .btn(base);
 
-    &::after {
+  &.@{ns}btn-disabled {
+    cursor: @cursor-disabled !important;
+    opacity: 0.3;
+
+    .@{ns}ripple-pond {
       display: none !important;
-    }
-  }
-
-  a& {
-    &.@{ns}btn-disabled {
-      pointer-events: none; // Future-proof disabling of clicks on `<a>` elements
     }
   }
 }
@@ -64,25 +51,17 @@
     &:hover:active {
       color: @color;
       background-color: @background-color;
-
-      // Remove ripple.
-      &::after {
-        display: none;
-      }
     }
   }
 }
 
 // Subtle  button style
 .btn-subtle() {
-  .button-ripple;
   .btn-transition;
   .btn-subtle-variant(@btn-subtle-hover-bg);
   .btn-loading-reset(@btn-subtle-color);
 
-  &.@{ns}btn-disabled,
-  &[disabled],
-  .@{ns}dropdown-disabled & {
+  &.@{ns}btn-disabled {
     &,
     &:hover,
     &:focus,
@@ -166,9 +145,7 @@
     background-image: none;
   }
 
-  &.@{ns}btn-disabled,
-  &[disabled],
-  .@{ns}dropdown-disabled & {
+  &.@{ns}btn-disabled {
     &:hover,
     &:focus,
     &.focus {
@@ -189,8 +166,7 @@
 
   &,
   &:active,
-  &.@{ns}btn-active,
-  &[disabled] {
+  &.@{ns}btn-active {
     background-color: transparent;
   }
 
@@ -219,7 +195,7 @@
     }
   }
 
-  &[disabled] {
+  &.@{ns}btn-disabled {
     &:hover,
     &:focus {
       color: @color;
@@ -259,9 +235,7 @@
     }
   }
 
-  &.@{ns}btn-disabled,
-  &[disabled],
-  .@{ns}dropdown-disabled & {
+  &.@{ns}btn-disabled {
     &,
     &:hover,
     &:focus,
@@ -312,9 +286,7 @@
     }
   }
 
-  &.@{ns}btn-disabled,
-  &[disabled],
-  .@{ns}dropdown-disabled & {
+  &.@{ns}btn-disabled {
     &:hover,
     &:focus,
     &.focus {
@@ -377,7 +349,6 @@
 
     // Defalut button spectrum button need set opacity.
     &.@{ns}btn-default.@{ns}btn-disabled,
-    &.@{ns}btn-default[disabled],
     .@{ns}dropdown-disabled &.@{ns}btn-default {
       opacity: 0.3;
     }
@@ -415,16 +386,24 @@
   }
 }
 
-// Button sizes
+// Base button size
+.button-size(base;@padding-vertical; @padding-horizontal; @font-size; @line-height; @border-radius) {
+  padding: @padding-vertical @padding-horizontal;
+  font-size: @font-size;
+  line-height: @line-height;
+  border-radius: @border-radius;
+}
+
+// Full button size
 .button-size(@padding-vertical; @padding-horizontal; @font-size; @line-height; @border-radius) {
   @icon-side-length: @padding-vertical*2 + floor(@font-size* @line-height);
   @ghost-icon-side-length: @icon-side-length - @btn-ghost-border-width*2;
   @svg-icon-height: @font-size;
 
-  padding: @padding-vertical @padding-horizontal;
-  font-size: @font-size;
-  line-height: @line-height;
-  border-radius: @border-radius;
+  .button-size(
+    base; @padding-vertical; @padding-horizontal; @font-size; @line-height;
+      @border-radius
+  );
 
   &.@{ns}btn-ghost {
     // Ghost button has 1px border
@@ -490,6 +469,36 @@
   }
 }
 
+// Base sizes
+.btn-sm(base) {
+  .button-size(
+    base; @padding-small-vertical; @padding-small-horizontal; @font-size-base;
+      @line-height-base; @btn-border-radius-small
+  );
+}
+
+.btn-md(base) {
+  .button-size(
+    base; @padding-base-vertical; @padding-base-horizontal; @font-size-base;
+      @line-height-base; @btn-border-radius-base
+  );
+}
+
+.btn-xs(base) {
+  .button-size(
+    base; @padding-extra-small-vertical; @padding-extra-small-horizontal;
+      @font-size-small; @line-height-small; @btn-border-radius-small
+  );
+}
+
+.btn-lg(base) {
+  .button-size(
+    base; @padding-large-vertical; @padding-large-horizontal; @font-size-large;
+      @line-height-large; @btn-border-radius-large
+  );
+}
+
+// Full sizes
 .btn-sm() {
   .button-size(
     @padding-small-vertical; @padding-small-horizontal; @font-size-base;
@@ -534,7 +543,7 @@
       transform: scale(0);
       transition: 0s;
 
-      &.ripple-enter-active {
+      &-rippling {
         transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1),
           opacity 1s cubic-bezier(0.4, 0, 0.2, 1);
         transform: scale(1);
@@ -569,8 +578,4 @@
 
 .btn-transition(color) {
   transition: color 0.2s linear;
-}
-
-.btn-transition(color-and-border) {
-  transition: color 0.2s linear, border-color 0.3s linear;
 }

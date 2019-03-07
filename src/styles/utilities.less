@@ -50,27 +50,41 @@
 
 // Animations
 // -------------------------
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.15s linear;
-}
-
-.fade-enter,
-.fade-leave-to {
+.fade {
   opacity: 0;
+  transition: opacity 0.15s linear;
+
+  &.in {
+    opacity: 1;
+  }
 }
 
-.collapsing {
-  display: block;
-  position: relative;
-  overflow: hidden;
-  transition: height 0.35s ease, visibility 0.35s ease;
+.collapse {
+  display: none;
 
-  tr& {
+  &.in {
+    display: block;
+  }
+
+  tr&.in {
     display: table-row;
   }
 
-  tbody& {
+  tbody&.in {
     display: table-row-group;
   }
+}
+
+.collapsing {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+  transition: height 0.35s ease, visibility 0.35s ease;
+}
+
+.sr-only {
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
