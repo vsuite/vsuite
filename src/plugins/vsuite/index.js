@@ -1,23 +1,14 @@
 import { Fade, Collapse } from 'components/Animation';
 import Button from 'components/Button';
-import IconButton from 'components/IconButton';
-import ButtonGroup from 'components/ButtonGroup';
-import ButtonToolbar from 'components/ButtonToolbar';
 import Divider from 'components/Divider';
 import Icon from 'components/Icon';
-import IconStack from 'components/IconStack';
 import Loader from 'components/Loader';
 import Pagination from 'components/Pagination';
 import Panel from 'components/Panel';
-import PanelGroup from 'components/PanelGroup';
-import ProgressCircle from 'components/ProgressCircle';
-import ProgressLine from 'components/ProgressLine';
 import SafeAnchor from 'components/SafeAnchor';
 import Steps from 'components/Steps';
-import StepItem from 'components/StepItem';
 import Tag from 'components/Tag';
 import Timeline from 'components/Timeline';
-import TimelineItem from 'components/TimelineItem';
 
 import Modal from 'components/Modal';
 
@@ -27,25 +18,16 @@ import Notification from 'components/Notification';
 
 export const components = {
   Button,
-  IconButton,
-  ButtonGroup,
-  ButtonToolbar,
   Divider,
   Icon,
-  IconStack,
   Loader,
   Modal,
   Pagination,
   Panel,
-  PanelGroup,
-  ProgressCircle,
-  ProgressLine,
   SafeAnchor,
   Steps,
-  StepItem,
   Tag,
   Timeline,
-  TimelineItem,
   Fade,
   Collapse,
 };
