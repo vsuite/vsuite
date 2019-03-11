@@ -50,13 +50,11 @@ export default {
   },
 
   render() {
-    const spin = this.loading ? (
-      <span class={prefix(this.classPrefix, 'spin')} />
-    ) : null;
-    const ripple =
-      this.appearance !== 'link' && this.appearance !== 'ghost' ? (
-        <Ripple />
-      ) : null;
+    const spin = this.loading && (
+      <span className={prefix(this.classPrefix, 'spin')} />
+    );
+    const ripple = this.appearance !== 'link' &&
+      this.appearance !== 'ghost' && <Ripple />;
 
     if (this.href) {
       const anchorData = splitDataByComponent(

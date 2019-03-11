@@ -5,13 +5,16 @@ export default {
   name: 'SafeAnchor',
 
   props: {
-    href: VueTypes.string,
     disabled: VueTypes.bool.def(false),
+    href: VueTypes.string,
+
     role: VueTypes.string,
     tabindex: VueTypes.oneOfType([VueTypes.number, VueTypes.string]),
     componentClass: VueTypes.oneOfType([VueTypes.string, VueTypes.object]).def(
       'a'
     ),
+
+    // @click
   },
 
   render() {

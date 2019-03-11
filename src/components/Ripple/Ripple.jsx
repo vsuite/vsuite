@@ -1,5 +1,5 @@
 import VueTypes from 'vue-types';
-import { on, getOffset, addStyle } from 'shares/dom';
+import { on, getOffset, addStyle, animation } from 'dom-lib';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
 
 const CLASS_PREFIX = 'ripple';
@@ -42,7 +42,10 @@ export default {
 
     return (
       <span {...rippleWrapperData}>
-        <transition name="ripple" onAfterEnter={this._handleAfterEnter}>
+        <transition
+          enterActiveClass={this._addPrefix('rippling')}
+          onAfterEnter={this._handleAfterEnter}
+        >
           <span {...rippleData} />
         </transition>
       </span>
@@ -76,7 +79,7 @@ export default {
 
       addStyle(this.$refs.ripple, 'display', 'block');
 
-      requestAnimationFrame(() => (this.rippling = true));
+      animation.requestAnimationFramePolyfill(() => (this.rippling = true));
 
       this.$emit('mousedown', event);
     },
@@ -88,8 +91,8 @@ export default {
     _computedPosition(event) {
       const trigger = this.$refs.trigger;
       const offset = getOffset(trigger);
-      const offsetX = (event.x || event.pageX || 0) - offset.left;
-      const offsetY = (event.y || event.pageY || 0) - offset.top;
+      const offsetX = (event.pageX || 0) - offset.left;
+      const offsetY = (event.pageY || 0) - offset.top;
 
       const radiusX = Math.max(offset.width - offsetX, offsetX);
       const radiusY = Math.max(offset.height - offsetY, offsetY);

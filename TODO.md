@@ -1,3 +1,4 @@
+- 为 dom-lib 添加 d.ts 文件
 - 响应式尺寸问题
 - x, $slots.x, $scopedSlots.x, renderX 统一写法
 - 参数 render

@@ -1,11 +1,11 @@
 import { configure, addParameters } from '@storybook/vue';
-// import { themes } from '@storybook/theming';
+import { themes } from '@storybook/theming';
 
 addParameters({
   options: {
     hierarchyRootSeparator: /\|/,
     hierarchySeparator: /\/|\./,
-    // theme: themes.dark,
+    theme: themes.normal,
   },
 });
 
