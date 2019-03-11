@@ -31,7 +31,7 @@ describe('@DateType', () => {
       type.check([], result => {
         expect(result).toMatchObject({
           hasError: true,
-          errorMessage: 'it should be a date value'
+          errorMessage: 'it should be a date value',
         });
       });
 
@@ -75,14 +75,15 @@ describe('@DateType', () => {
       type.check(new Date(now).setDate(now.getDate() - 2), result => {
         expect(result).toMatchObject({
           hasError: true,
-          errorMessage: 'it should be later than yesterday and earlier than tomorrow'
+          errorMessage:
+            'it should be later than yesterday and earlier than tomorrow',
         });
       });
 
       type.check([], result => {
         expect(result).toMatchObject({
           hasError: true,
-          errorMessage: 'it should be a date value'
+          errorMessage: 'it should be a date value',
         });
       });
 
@@ -99,7 +100,10 @@ describe('@DateType', () => {
 
       expect(type.rules).toHaveLength(1);
 
-      type.min(new Date(now).setDate(now.getDate() - 1), 'it should be later than yesterday');
+      type.min(
+        new Date(now).setDate(now.getDate() - 1),
+        'it should be later than yesterday'
+      );
 
       expect(type.rules).toHaveLength(2);
 
@@ -122,14 +126,14 @@ describe('@DateType', () => {
       type.check(new Date(now).setDate(now.getDate() - 2), result => {
         expect(result).toMatchObject({
           hasError: true,
-          errorMessage: 'it should be later than yesterday'
+          errorMessage: 'it should be later than yesterday',
         });
       });
 
       type.check([], result => {
         expect(result).toMatchObject({
           hasError: true,
-          errorMessage: 'it should be a date value'
+          errorMessage: 'it should be a date value',
         });
       });
 
@@ -146,7 +150,10 @@ describe('@DateType', () => {
 
       expect(type.rules).toHaveLength(1);
 
-      type.max(new Date(now).setDate(now.getDate() + 1), 'it should be earlier than tomorrow');
+      type.max(
+        new Date(now).setDate(now.getDate() + 1),
+        'it should be earlier than tomorrow'
+      );
 
       expect(type.rules).toHaveLength(2);
 
@@ -169,14 +176,14 @@ describe('@DateType', () => {
       type.check(new Date(now).setDate(now.getDate() + 2), result => {
         expect(result).toMatchObject({
           hasError: true,
-          errorMessage: 'it should be earlier than tomorrow'
+          errorMessage: 'it should be earlier than tomorrow',
         });
       });
 
       type.check([], result => {
         expect(result).toMatchObject({
           hasError: true,
-          errorMessage: 'it should be a date value'
+          errorMessage: 'it should be a date value',
         });
       });
 

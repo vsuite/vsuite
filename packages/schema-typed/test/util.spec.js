@@ -4,8 +4,11 @@ describe('#asyncSerialArray', () => {
   it('should support synchronized verification', done => {
     expect.assertions(14);
 
+    // eslint-disable-next-line
     const fn1Gen = () => jest.fn(cb => cb({ hasError: false }));
-    const fn2Gen = () => jest.fn(cb => cb({ hasError: true, errorMessage: 'error message' }));
+    const fn2Gen = () =>
+      // eslint-disable-next-line
+      jest.fn(cb => cb({ hasError: true, errorMessage: 'error message' }));
 
     // no error
     const fn1 = fn1Gen();
@@ -34,7 +37,10 @@ describe('#asyncSerialArray', () => {
         expect(fn3).toHaveBeenCalled();
         expect(fn4).not.toHaveBeenCalled();
         expect(fn3).toHaveBeenCalledTimes(1);
-        expect(result).toMatchObject({ hasError: true, errorMessage: 'error message' });
+        expect(result).toMatchObject({
+          hasError: true,
+          errorMessage: 'error message',
+        });
       }
     );
 
@@ -50,7 +56,10 @@ describe('#asyncSerialArray', () => {
         expect(fn6).toHaveBeenCalled();
         expect(fn5).toHaveBeenCalledTimes(1);
         expect(fn6).toHaveBeenCalledTimes(1);
-        expect(result).toMatchObject({ hasError: true, errorMessage: 'error message' });
+        expect(result).toMatchObject({
+          hasError: true,
+          errorMessage: 'error message',
+        });
       }
     );
 
@@ -60,13 +69,23 @@ describe('#asyncSerialArray', () => {
   it('should support asynchronized verification', done => {
     expect.assertions(37);
 
+    // eslint-disable-next-line
     const fn1Gen = () => jest.fn(cb => cb({ hasError: false }));
-    const fn2Gen = () => jest.fn(cb => cb({ hasError: true, errorMessage: 'error message' }));
-    const fn3Gen = time => jest.fn(cb => setTimeout(() => cb({ hasError: false }), time));
+    const fn2Gen = () =>
+      // eslint-disable-next-line
+      jest.fn(cb => cb({ hasError: true, errorMessage: 'error message' }));
+    const fn3Gen = time =>
+      // eslint-disable-next-line
+      jest.fn(cb => setTimeout(() => cb({ hasError: false }), time));
     const fn4Gen = time =>
       jest.fn(cb =>
         setTimeout(
-          () => cb({ hasError: true, errorMessage: `error message setTimeout ${time}` }),
+          () =>
+            // eslint-disable-next-line
+            cb({
+              hasError: true,
+              errorMessage: `error message setTimeout ${time}`,
+            }),
           time
         )
       );
@@ -114,7 +133,10 @@ describe('#asyncSerialArray', () => {
         expect(fn7).toHaveBeenCalled();
         expect(fn8).not.toHaveBeenCalled();
         expect(fn7).toHaveBeenCalledTimes(1);
-        expect(result).toMatchObject({ hasError: true, errorMessage: 'error message' });
+        expect(result).toMatchObject({
+          hasError: true,
+          errorMessage: 'error message',
+        });
       }
     );
 
@@ -130,7 +152,10 @@ describe('#asyncSerialArray', () => {
         expect(fn10).toHaveBeenCalled();
         expect(fn9).toHaveBeenCalledTimes(1);
         expect(fn10).toHaveBeenCalledTimes(1);
-        expect(result).toMatchObject({ hasError: true, errorMessage: 'error message' });
+        expect(result).toMatchObject({
+          hasError: true,
+          errorMessage: 'error message',
+        });
       }
     );
 
@@ -147,7 +172,7 @@ describe('#asyncSerialArray', () => {
         expect(fn11).toHaveBeenCalledTimes(1);
         expect(result).toMatchObject({
           hasError: true,
-          errorMessage: 'error message setTimeout 500'
+          errorMessage: 'error message setTimeout 500',
         });
       }
     );
@@ -166,7 +191,7 @@ describe('#asyncSerialArray', () => {
         expect(fn14).toHaveBeenCalledTimes(1);
         expect(result).toMatchObject({
           hasError: true,
-          errorMessage: 'error message setTimeout 500'
+          errorMessage: 'error message setTimeout 500',
         });
       }
     );
@@ -184,7 +209,7 @@ describe('#asyncSerialArray', () => {
         expect(fn15).toHaveBeenCalledTimes(1);
         expect(result).toMatchObject({
           hasError: true,
-          errorMessage: 'error message setTimeout 500'
+          errorMessage: 'error message setTimeout 500',
         });
       }
     );
@@ -204,7 +229,7 @@ describe('#asyncSerialArray', () => {
         expect(fn18).toHaveBeenCalledTimes(1);
         expect(result).toMatchObject({
           hasError: true,
-          errorMessage: 'error message setTimeout 500'
+          errorMessage: 'error message setTimeout 500',
         });
       }
     );
@@ -217,13 +242,16 @@ describe('#asyncParallelArray', () => {
   it('should support synchronized verification', done => {
     expect.assertions(15);
 
+    // eslint-disable-next-line
     const fn1Gen = () => jest.fn(cb => cb({ hasError: false }));
-    const fn2Gen = () => jest.fn(cb => cb({ hasError: true, errorMessage: 'error message' }));
+    const fn2Gen = () =>
+      // eslint-disable-next-line
+      jest.fn(cb => cb({ hasError: true, errorMessage: 'error message' }));
 
     // no errors
     const fn1 = {
       a: fn1Gen(),
-      b: fn1Gen()
+      b: fn1Gen(),
     };
 
     asyncParallelArray(
@@ -234,14 +262,17 @@ describe('#asyncParallelArray', () => {
         expect(fn1.b).toHaveBeenCalled();
         expect(fn1.a).toHaveBeenCalledTimes(1);
         expect(fn1.b).toHaveBeenCalledTimes(1);
-        expect(result).toMatchObject({ a: { hasError: false }, b: { hasError: false } });
+        expect(result).toMatchObject({
+          a: { hasError: false },
+          b: { hasError: false },
+        });
       }
     );
 
     // 1st with error
     const fn2 = {
       a: fn2Gen(),
-      b: fn1Gen()
+      b: fn1Gen(),
     };
 
     asyncParallelArray(
@@ -254,7 +285,7 @@ describe('#asyncParallelArray', () => {
         expect(fn2.b).toHaveBeenCalledTimes(1);
         expect(result).toMatchObject({
           a: { hasError: true, errorMessage: 'error message' },
-          b: { hasError: false }
+          b: { hasError: false },
         });
       }
     );
@@ -262,7 +293,7 @@ describe('#asyncParallelArray', () => {
     // 2st with error
     const fn3 = {
       a: fn1Gen(),
-      b: fn2Gen()
+      b: fn2Gen(),
     };
 
     asyncParallelArray(
@@ -275,7 +306,7 @@ describe('#asyncParallelArray', () => {
         expect(fn3.b).toHaveBeenCalledTimes(1);
         expect(result).toMatchObject({
           a: { hasError: false },
-          b: { hasError: true, errorMessage: 'error message' }
+          b: { hasError: true, errorMessage: 'error message' },
         });
       }
     );
@@ -286,13 +317,23 @@ describe('#asyncParallelArray', () => {
   it('should support asynchronized verification', done => {
     expect.assertions(40);
 
+    // eslint-disable-next-line
     const fn1Gen = () => jest.fn(cb => cb({ hasError: false }));
-    const fn2Gen = () => jest.fn(cb => cb({ hasError: true, errorMessage: 'error message' }));
-    const fn3Gen = time => jest.fn(cb => setTimeout(() => cb({ hasError: false }), time));
+    const fn2Gen = () =>
+      // eslint-disable-next-line
+      jest.fn(cb => cb({ hasError: true, errorMessage: 'error message' }));
+    const fn3Gen = time =>
+      // eslint-disable-next-line
+      jest.fn(cb => setTimeout(() => cb({ hasError: false }), time));
     const fn4Gen = time =>
       jest.fn(cb =>
         setTimeout(
-          () => cb({ hasError: true, errorMessage: `error message setTimeout ${time}` }),
+          () =>
+            // eslint-disable-next-line
+            cb({
+              hasError: true,
+              errorMessage: `error message setTimeout ${time}`,
+            }),
           time
         )
       );
@@ -300,7 +341,7 @@ describe('#asyncParallelArray', () => {
     // 1st async without error
     const fn1 = {
       a: fn3Gen(500),
-      b: fn1Gen()
+      b: fn1Gen(),
     };
 
     asyncParallelArray(
@@ -311,14 +352,17 @@ describe('#asyncParallelArray', () => {
         expect(fn1.b).toHaveBeenCalled();
         expect(fn1.a).toHaveBeenCalledTimes(1);
         expect(fn1.b).toHaveBeenCalledTimes(1);
-        expect(result).toMatchObject({ a: { hasError: false }, b: { hasError: false } });
+        expect(result).toMatchObject({
+          a: { hasError: false },
+          b: { hasError: false },
+        });
       }
     );
 
     // 2st async without error
     const fn2 = {
       a: fn1Gen(),
-      b: fn3Gen(500)
+      b: fn3Gen(500),
     };
 
     asyncParallelArray(
@@ -329,14 +373,17 @@ describe('#asyncParallelArray', () => {
         expect(fn2.b).toHaveBeenCalled();
         expect(fn2.a).toHaveBeenCalledTimes(1);
         expect(fn2.b).toHaveBeenCalledTimes(1);
-        expect(result).toMatchObject({ a: { hasError: false }, b: { hasError: false } });
+        expect(result).toMatchObject({
+          a: { hasError: false },
+          b: { hasError: false },
+        });
       }
     );
 
     // 1st sync with error
     const fn3 = {
       a: fn2Gen(),
-      b: fn3Gen(500)
+      b: fn3Gen(500),
     };
 
     asyncParallelArray(
@@ -349,7 +396,7 @@ describe('#asyncParallelArray', () => {
         expect(fn3.b).toHaveBeenCalledTimes(1);
         expect(result).toMatchObject({
           a: { hasError: true, errorMessage: 'error message' },
-          b: { hasError: false }
+          b: { hasError: false },
         });
       }
     );
@@ -357,7 +404,7 @@ describe('#asyncParallelArray', () => {
     // 2st sync with error
     const fn4 = {
       a: fn3Gen(500),
-      b: fn2Gen()
+      b: fn2Gen(),
     };
 
     asyncParallelArray(
@@ -370,7 +417,7 @@ describe('#asyncParallelArray', () => {
         expect(fn4.b).toHaveBeenCalledTimes(1);
         expect(result).toMatchObject({
           a: { hasError: false },
-          b: { hasError: true, errorMessage: 'error message' }
+          b: { hasError: true, errorMessage: 'error message' },
         });
       }
     );
@@ -378,7 +425,7 @@ describe('#asyncParallelArray', () => {
     // 1st async with error
     const fn5 = {
       a: fn4Gen(500),
-      b: fn1Gen()
+      b: fn1Gen(),
     };
 
     asyncParallelArray(
@@ -391,7 +438,7 @@ describe('#asyncParallelArray', () => {
         expect(fn5.b).toHaveBeenCalledTimes(1);
         expect(result).toMatchObject({
           a: { hasError: true, errorMessage: 'error message setTimeout 500' },
-          b: { hasError: false }
+          b: { hasError: false },
         });
       }
     );
@@ -399,7 +446,7 @@ describe('#asyncParallelArray', () => {
     // 2st async with error
     const fn6 = {
       a: fn1Gen(),
-      b: fn4Gen(500)
+      b: fn4Gen(500),
     };
 
     asyncParallelArray(
@@ -412,7 +459,7 @@ describe('#asyncParallelArray', () => {
         expect(fn6.b).toHaveBeenCalledTimes(1);
         expect(result).toMatchObject({
           a: { hasError: false },
-          b: { hasError: true, errorMessage: 'error message setTimeout 500' }
+          b: { hasError: true, errorMessage: 'error message setTimeout 500' },
         });
       }
     );
@@ -420,7 +467,7 @@ describe('#asyncParallelArray', () => {
     // 1st async with error, 2st async without error
     const fn7 = {
       a: fn4Gen(500),
-      b: fn3Gen(250)
+      b: fn3Gen(250),
     };
 
     asyncParallelArray(
@@ -433,7 +480,7 @@ describe('#asyncParallelArray', () => {
         expect(fn7.b).toHaveBeenCalledTimes(1);
         expect(result).toMatchObject({
           a: { hasError: true, errorMessage: 'error message setTimeout 500' },
-          b: { hasError: false }
+          b: { hasError: false },
         });
       }
     );
@@ -441,7 +488,7 @@ describe('#asyncParallelArray', () => {
     // 1st async without error, 2st async with error
     const fn8 = {
       a: fn3Gen(250),
-      b: fn4Gen(500)
+      b: fn4Gen(500),
     };
 
     asyncParallelArray(
@@ -454,7 +501,7 @@ describe('#asyncParallelArray', () => {
         expect(fn8.b).toHaveBeenCalledTimes(1);
         expect(result).toMatchObject({
           a: { hasError: false },
-          b: { hasError: true, errorMessage: 'error message setTimeout 500' }
+          b: { hasError: true, errorMessage: 'error message setTimeout 500' },
         });
       }
     );

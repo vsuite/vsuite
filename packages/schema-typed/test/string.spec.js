@@ -5,7 +5,7 @@ describe('@StringType', () => {
     it('should be initialized correctly', done => {
       expect.assertions(9);
 
-      const type = new StringType('it should be a string value');
+      const type = StringType('it should be a string value');
 
       expect(type.name).toBe('string');
       expect(type.required).toBe(false);
@@ -31,7 +31,7 @@ describe('@StringType', () => {
       type.check([], result => {
         expect(result).toMatchObject({
           hasError: true,
-          errorMessage: 'it should be a string value'
+          errorMessage: 'it should be a string value',
         });
       });
 
@@ -43,7 +43,7 @@ describe('@StringType', () => {
     it('should be correct', done => {
       expect.assertions(8);
 
-      const type = new StringType('it should be a string value');
+      const type = StringType('it should be a string value');
 
       expect(type.rules).toHaveLength(1);
 
@@ -68,13 +68,16 @@ describe('@StringType', () => {
       });
 
       type.check('123', result => {
-        expect(result).toMatchObject({ hasError: true, errorMessage: 'it should contain letter' });
+        expect(result).toMatchObject({
+          hasError: true,
+          errorMessage: 'it should contain letter',
+        });
       });
 
       type.check([], result => {
         expect(result).toMatchObject({
           hasError: true,
-          errorMessage: 'it should be a string value'
+          errorMessage: 'it should be a string value',
         });
       });
 
@@ -86,7 +89,7 @@ describe('@StringType', () => {
     it('should be correct', done => {
       expect.assertions(8);
 
-      const type = new StringType('it should be a string value');
+      const type = StringType('it should be a string value');
 
       expect(type.rules).toHaveLength(1);
 
@@ -113,14 +116,14 @@ describe('@StringType', () => {
       type.check('letter', result => {
         expect(result).toMatchObject({
           hasError: true,
-          errorMessage: 'it should contain uppercase letter'
+          errorMessage: 'it should contain uppercase letter',
         });
       });
 
       type.check([], result => {
         expect(result).toMatchObject({
           hasError: true,
-          errorMessage: 'it should be a string value'
+          errorMessage: 'it should be a string value',
         });
       });
 
@@ -132,7 +135,7 @@ describe('@StringType', () => {
     it('should be correct', done => {
       expect.assertions(8);
 
-      const type = new StringType('it should be a string value');
+      const type = StringType('it should be a string value');
 
       expect(type.rules).toHaveLength(1);
 
@@ -159,14 +162,14 @@ describe('@StringType', () => {
       type.check('LETTER', result => {
         expect(result).toMatchObject({
           hasError: true,
-          errorMessage: 'it should contain lowercase letter'
+          errorMessage: 'it should contain lowercase letter',
         });
       });
 
       type.check([], result => {
         expect(result).toMatchObject({
           hasError: true,
-          errorMessage: 'it should be a string value'
+          errorMessage: 'it should be a string value',
         });
       });
 
@@ -178,7 +181,7 @@ describe('@StringType', () => {
     it('should be correct', done => {
       expect.assertions(8);
 
-      const type = new StringType('it should be a string value');
+      const type = StringType('it should be a string value');
 
       expect(type.rules).toHaveLength(1);
 
@@ -205,14 +208,14 @@ describe('@StringType', () => {
       type.check('letter1', result => {
         expect(result).toMatchObject({
           hasError: true,
-          errorMessage: 'it should only contain letter'
+          errorMessage: 'it should only contain letter',
         });
       });
 
       type.check([], result => {
         expect(result).toMatchObject({
           hasError: true,
-          errorMessage: 'it should be a string value'
+          errorMessage: 'it should be a string value',
         });
       });
 
@@ -224,7 +227,7 @@ describe('@StringType', () => {
     it('should be correct', done => {
       expect.assertions(8);
 
-      const type = new StringType('it should be a string value');
+      const type = StringType('it should be a string value');
 
       expect(type.rules).toHaveLength(1);
 
@@ -249,13 +252,16 @@ describe('@StringType', () => {
       });
 
       type.check('letter', result => {
-        expect(result).toMatchObject({ hasError: true, errorMessage: 'it should contain number' });
+        expect(result).toMatchObject({
+          hasError: true,
+          errorMessage: 'it should contain number',
+        });
       });
 
       type.check([], result => {
         expect(result).toMatchObject({
           hasError: true,
-          errorMessage: 'it should be a string value'
+          errorMessage: 'it should be a string value',
         });
       });
 
@@ -267,11 +273,14 @@ describe('@StringType', () => {
     it('should be correct', done => {
       expect.assertions(8);
 
-      const type = new StringType('it should be a string value');
+      const type = StringType('it should be a string value');
 
       expect(type.rules).toHaveLength(1);
 
-      type.isOneOf(['letter', 'Letter', 'LETTER'], 'it should contain one kind of letter');
+      type.isOneOf(
+        ['letter', 'Letter', 'LETTER'],
+        'it should contain one kind of letter'
+      );
 
       expect(type.rules).toHaveLength(2);
 
@@ -294,14 +303,14 @@ describe('@StringType', () => {
       type.check('letter1', result => {
         expect(result).toMatchObject({
           hasError: true,
-          errorMessage: 'it should contain one kind of letter'
+          errorMessage: 'it should contain one kind of letter',
         });
       });
 
       type.check([], result => {
         expect(result).toMatchObject({
           hasError: true,
-          errorMessage: 'it should be a string value'
+          errorMessage: 'it should be a string value',
         });
       });
 
@@ -313,7 +322,7 @@ describe('@StringType', () => {
     it('should be correct', done => {
       expect.assertions(8);
 
-      const type = new StringType('it should be a string value');
+      const type = StringType('it should be a string value');
 
       expect(type.rules).toHaveLength(1);
 
@@ -340,14 +349,14 @@ describe('@StringType', () => {
       type.check('blackcater', result => {
         expect(result).toMatchObject({
           hasError: true,
-          errorMessage: 'it should be an email address'
+          errorMessage: 'it should be an email address',
         });
       });
 
       type.check([], result => {
         expect(result).toMatchObject({
           hasError: true,
-          errorMessage: 'it should be a string value'
+          errorMessage: 'it should be a string value',
         });
       });
 
@@ -359,7 +368,7 @@ describe('@StringType', () => {
     it('should be correct', done => {
       expect.assertions(8);
 
-      const type = new StringType('it should be a string value');
+      const type = StringType('it should be a string value');
 
       expect(type.rules).toHaveLength(1);
 
@@ -384,13 +393,16 @@ describe('@StringType', () => {
       });
 
       type.check('blackcater', result => {
-        expect(result).toMatchObject({ hasError: true, errorMessage: 'it should be a url' });
+        expect(result).toMatchObject({
+          hasError: true,
+          errorMessage: 'it should be a url',
+        });
       });
 
       type.check([], result => {
         expect(result).toMatchObject({
           hasError: true,
-          errorMessage: 'it should be a string value'
+          errorMessage: 'it should be a string value',
         });
       });
 
@@ -402,7 +414,7 @@ describe('@StringType', () => {
     it('should be correct', done => {
       expect.assertions(9);
 
-      const type = new StringType('it should be a string value');
+      const type = StringType('it should be a string value');
 
       expect(type.rules).toHaveLength(1);
 
@@ -431,13 +443,16 @@ describe('@StringType', () => {
       });
 
       type.check('zzz', result => {
-        expect(result).toMatchObject({ hasError: true, errorMessage: 'it should be a hex' });
+        expect(result).toMatchObject({
+          hasError: true,
+          errorMessage: 'it should be a hex',
+        });
       });
 
       type.check([], result => {
         expect(result).toMatchObject({
           hasError: true,
-          errorMessage: 'it should be a string value'
+          errorMessage: 'it should be a string value',
         });
       });
 
@@ -449,7 +464,7 @@ describe('@StringType', () => {
     it('should be correct', done => {
       expect.assertions(8);
 
-      const type = new StringType('it should be a string value');
+      const type = StringType('it should be a string value');
 
       expect(type.rules).toHaveLength(1);
 
@@ -474,13 +489,16 @@ describe('@StringType', () => {
       });
 
       type.check('letter', result => {
-        expect(result).toMatchObject({ hasError: true, errorMessage: 'it should match pattern' });
+        expect(result).toMatchObject({
+          hasError: true,
+          errorMessage: 'it should match pattern',
+        });
       });
 
       type.check([], result => {
         expect(result).toMatchObject({
           hasError: true,
-          errorMessage: 'it should be a string value'
+          errorMessage: 'it should be a string value',
         });
       });
 
@@ -492,7 +510,7 @@ describe('@StringType', () => {
     it('should be correct', done => {
       expect.assertions(8);
 
-      const type = new StringType('it should be a string value');
+      const type = StringType('it should be a string value');
 
       expect(type.rules).toHaveLength(1);
 
@@ -519,14 +537,14 @@ describe('@StringType', () => {
       type.check('letter1', result => {
         expect(result).toMatchObject({
           hasError: true,
-          errorMessage: 'it should have less than six letters'
+          errorMessage: 'it should have less than six letters',
         });
       });
 
       type.check([], result => {
         expect(result).toMatchObject({
           hasError: true,
-          errorMessage: 'it should be a string value'
+          errorMessage: 'it should be a string value',
         });
       });
 
@@ -538,7 +556,7 @@ describe('@StringType', () => {
     it('should be correct', done => {
       expect.assertions(8);
 
-      const type = new StringType('it should be a string value');
+      const type = StringType('it should be a string value');
 
       expect(type.rules).toHaveLength(1);
 
@@ -565,14 +583,14 @@ describe('@StringType', () => {
       type.check('l', result => {
         expect(result).toMatchObject({
           hasError: true,
-          errorMessage: 'it should have more than six letters'
+          errorMessage: 'it should have more than six letters',
         });
       });
 
       type.check([], result => {
         expect(result).toMatchObject({
           hasError: true,
-          errorMessage: 'it should be a string value'
+          errorMessage: 'it should be a string value',
         });
       });
 
@@ -584,7 +602,7 @@ describe('@StringType', () => {
     it('should be correct', done => {
       expect.assertions(8);
 
-      const type = new StringType('it should be a string value');
+      const type = StringType('it should be a string value');
 
       expect(type.rules).toHaveLength(1);
 
@@ -611,14 +629,14 @@ describe('@StringType', () => {
       type.check('letter1', result => {
         expect(result).toMatchObject({
           hasError: true,
-          errorMessage: 'it should have less than six letters'
+          errorMessage: 'it should have less than six letters',
         });
       });
 
       type.check([], result => {
         expect(result).toMatchObject({
           hasError: true,
-          errorMessage: 'it should be a string value'
+          errorMessage: 'it should be a string value',
         });
       });
 

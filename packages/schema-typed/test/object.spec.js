@@ -32,7 +32,7 @@ describe('@ObjectType', () => {
       type.check(true, result => {
         expect(result).toMatchObject({
           hasError: true,
-          errorMessage: 'it should be an object value'
+          errorMessage: 'it should be an object value',
         });
       });
 
@@ -49,8 +49,12 @@ describe('@ObjectType', () => {
       expect(type.rules).toHaveLength(1);
 
       type.shape({
-        email: StringType('it should be string value').isEmail('it should be email address'),
-        color: StringType('it should be string value').isHex('it should be hex color value')
+        email: StringType('it should be string value').isEmail(
+          'it should be email address'
+        ),
+        color: StringType('it should be string value').isHex(
+          'it should be hex color value'
+        ),
       });
 
       expect(type.rules).toHaveLength(2);
@@ -70,7 +74,7 @@ describe('@ObjectType', () => {
       type.check(
         {
           email: 'blackcater2015@gmail.com',
-          color: '#24252c'
+          color: '#24252c',
         },
         undefined,
         result => {
@@ -90,7 +94,7 @@ describe('@ObjectType', () => {
         {
           email: 'blackcater2015@gmail.com',
           color: '#24252c',
-          blog: 'https://www.blackcater.win'
+          blog: 'https://www.blackcater.win',
         },
         undefined,
         result => {
@@ -101,13 +105,13 @@ describe('@ObjectType', () => {
       type.check(
         {
           email: 'blackcater2015@gmail',
-          color: '#24252c'
+          color: '#24252c',
         },
         undefined,
         result => {
           expect(result).toMatchObject({
             hasError: true,
-            errorMessage: 'it should be email address'
+            errorMessage: 'it should be email address',
           });
         }
       );
@@ -115,13 +119,13 @@ describe('@ObjectType', () => {
       type.check(
         {
           email: 'blackcater2015@gmail.com',
-          color: '#2425'
+          color: '#2425',
         },
         undefined,
         result => {
           expect(result).toMatchObject({
             hasError: true,
-            errorMessage: 'it should be hex color value'
+            errorMessage: 'it should be hex color value',
           });
         }
       );

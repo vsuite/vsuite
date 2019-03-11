@@ -36,20 +36,24 @@ describe('#Schema', () => {
     const model = SchemaModel({
       username: StringType().isRequired('用户名不能为空'),
       email: StringType().isEmail('请输入正确的邮箱'),
-      age: NumberType('年龄应该是一个数字').range(18, 30, '年应该在 18 到 30 岁')
+      age: NumberType('年龄应该是一个数字').range(
+        18,
+        30,
+        '年应该在 18 到 30 岁'
+      ),
     });
 
     model.check(
       {
         username: 'foobar',
         email: 'foo@bar.com',
-        age: 40
+        age: 40,
       },
       result => {
         expect(result).toMatchObject({
           username: { hasError: false },
           email: { hasError: false },
-          age: { hasError: true, errorMessage: '年应该在 18 到 30 岁' }
+          age: { hasError: true, errorMessage: '年应该在 18 到 30 岁' },
         });
       }
     );
@@ -65,8 +69,8 @@ describe('#Schema', () => {
       name: StringType().isRequired('用户名不能为空'),
       info: ObjectType().shape({
         email: StringType().isEmail('应该是一个 email'),
-        age: NumberType().min(18, '年龄应该大于18岁')
-      })
+        age: NumberType().min(18, '年龄应该大于18岁'),
+      }),
     });
 
     model1.check(
@@ -75,14 +79,14 @@ describe('#Schema', () => {
         name: 'schema-type',
         info: {
           email: 'schema-type@gmail.com',
-          age: 17
-        }
+          age: 17,
+        },
       },
       result => {
         expect(result).toMatchObject({
           id: { hasError: false },
           name: { hasError: false },
-          info: { hasError: true, errorMessage: '年龄应该大于18岁' }
+          info: { hasError: true, errorMessage: '年龄应该大于18岁' },
         });
       }
     );
@@ -91,7 +95,7 @@ describe('#Schema', () => {
       id: NumberType().isRequired('该字段不能为空'),
       name: StringType().isRequired('用户名不能为空'),
       'info.email': StringType().isEmail('应该是一个 email'),
-      'info.age': NumberType().min(18, '年龄应该大于18岁')
+      'info.age': NumberType().min(18, '年龄应该大于18岁'),
     });
 
     model2.check(
@@ -100,8 +104,8 @@ describe('#Schema', () => {
         name: 'schema-type',
         info: {
           email: 'schema-type@gmail.com',
-          age: 17
-        }
+          age: 17,
+        },
       },
       result => {
         expect(result).toMatchObject({
@@ -109,8 +113,8 @@ describe('#Schema', () => {
           name: { hasError: false },
           info: {
             email: { hasError: false },
-            age: { hasError: true, errorMessage: '年龄应该大于18岁' }
-          }
+            age: { hasError: true, errorMessage: '年龄应该大于18岁' },
+          },
         });
       }
     );
@@ -123,11 +127,13 @@ describe('#Schema', () => {
       const model = SchemaModel({
         username: StringType(),
         email: StringType(),
-        age: NumberType()
+        age: NumberType(),
       });
 
       expect(model.getKeys()).toHaveLength(3);
-      expect(model.getKeys()).toEqual(expect.arrayContaining(['username', 'email', 'age']));
+      expect(model.getKeys()).toEqual(
+        expect.arrayContaining(['username', 'email', 'age'])
+      );
     });
   });
 
@@ -137,19 +143,19 @@ describe('#Schema', () => {
 
       const model1 = SchemaModel({
         username: StringType().isRequired('用户名不能为空'),
-        email: StringType().isEmail('请输入正确的邮箱')
+        email: StringType().isEmail('请输入正确的邮箱'),
       });
 
       model1.check(
         {
           username: 'foobar',
           email: 'foo@bar.com',
-          age: 40
+          age: 40,
         },
         result => {
           expect(result).toMatchObject({
             username: { hasError: false },
-            email: { hasError: false }
+            email: { hasError: false },
           });
         }
       );
@@ -158,7 +164,7 @@ describe('#Schema', () => {
         username: StringType()
           .isRequired('用户名不能为空')
           .minLength(7, '最少7个字符'),
-        age: NumberType().range(18, 30, '年应该在 18 到 30 岁')
+        age: NumberType().range(18, 30, '年应该在 18 到 30 岁'),
       });
 
       const model3 = SchemaModel.combine(model1, model2);
@@ -167,13 +173,13 @@ describe('#Schema', () => {
         {
           username: 'fooba',
           email: 'foo@bar.com',
-          age: 40
+          age: 40,
         },
         result => {
           expect(result).toMatchObject({
             username: { hasError: true, errorMessage: '最少7个字符' },
             email: { hasError: false },
-            age: { hasError: true, errorMessage: '年应该在 18 到 30 岁' }
+            age: { hasError: true, errorMessage: '年应该在 18 到 30 岁' },
           });
         }
       );

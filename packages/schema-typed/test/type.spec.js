@@ -29,7 +29,7 @@ describe('@Type', () => {
       expect(type.rules).toHaveLength(1);
       expect(type.rules[0]).toMatchObject({
         onValid: fn1,
-        errorMessage: 'fn1 error message'
+        errorMessage: 'fn1 error message',
       });
 
       const fn2 = fnGen(false);
@@ -39,7 +39,7 @@ describe('@Type', () => {
       expect(type.rules).toHaveLength(2);
       expect(type.rules[1]).toMatchObject({
         onValid: fn2,
-        errorMessage: 'fn1 error message'
+        errorMessage: 'fn1 error message',
       });
 
       const fn3 = fnGen(false);
@@ -49,7 +49,7 @@ describe('@Type', () => {
       expect(type.rules).toHaveLength(3);
       expect(type.rules[2]).toMatchObject({
         onValid: fn3,
-        errorMessage: 'fn3 error message'
+        errorMessage: 'fn3 error message',
       });
     });
 
@@ -77,7 +77,10 @@ describe('@Type', () => {
       });
 
       type1.check([], result => {
-        expect(result).toMatchObject({ hasError: true, errorMessage: 'fn1 error message' });
+        expect(result).toMatchObject({
+          hasError: true,
+          errorMessage: 'fn1 error message',
+        });
       });
 
       const type2 = typeGen('type2');
@@ -95,7 +98,10 @@ describe('@Type', () => {
       type3.addRule(fn3, 'fn3 error message');
 
       type3.check([], result => {
-        expect(result).toMatchObject({ hasError: true, errorMessage: 'error message' });
+        expect(result).toMatchObject({
+          hasError: true,
+          errorMessage: 'error message',
+        });
       });
 
       const type4 = typeGen('type4');
@@ -113,7 +119,10 @@ describe('@Type', () => {
       type5.addRule(fn5, 'fn5 error message');
 
       type5.check([], result => {
-        expect(result).toMatchObject({ hasError: true, errorMessage: 'error message' });
+        expect(result).toMatchObject({
+          hasError: true,
+          errorMessage: 'error message',
+        });
       });
 
       setTimeout(() => done(), 250);
@@ -146,7 +155,10 @@ describe('@Type', () => {
       type2.addRule(fn22, 'fn22 error message');
 
       type2.check([], result => {
-        expect(result).toMatchObject({ hasError: true, errorMessage: 'fn21 error message' });
+        expect(result).toMatchObject({
+          hasError: true,
+          errorMessage: 'fn21 error message',
+        });
       });
 
       // 2 rules, 2ed rule with error
@@ -158,7 +170,10 @@ describe('@Type', () => {
       type3.addRule(fn32, 'fn32 error message');
 
       type3.check([], result => {
-        expect(result).toMatchObject({ hasError: true, errorMessage: 'fn32 error message' });
+        expect(result).toMatchObject({
+          hasError: true,
+          errorMessage: 'fn32 error message',
+        });
       });
 
       // isRequired
@@ -174,7 +189,10 @@ describe('@Type', () => {
       type4.check([], result => {
         expect(fn41).not.toHaveBeenCalled();
         expect(fn42).not.toHaveBeenCalled();
-        expect(result).toMatchObject({ hasError: true, errorMessage: 'type4 is required' });
+        expect(result).toMatchObject({
+          hasError: true,
+          errorMessage: 'type4 is required',
+        });
       });
 
       setTimeout(() => done(), 250);
@@ -204,11 +222,17 @@ describe('@Type', () => {
       });
 
       type.check('', result => {
-        expect(result).toMatchObject({ hasError: true, errorMessage: 'This field is required' });
+        expect(result).toMatchObject({
+          hasError: true,
+          errorMessage: 'This field is required',
+        });
       });
 
       type.check(undefined, result => {
-        expect(result).toMatchObject({ hasError: true, errorMessage: 'This field is required' });
+        expect(result).toMatchObject({
+          hasError: true,
+          errorMessage: 'This field is required',
+        });
       });
 
       setTimeout(() => done(), 250);

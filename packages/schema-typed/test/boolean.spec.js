@@ -35,7 +35,7 @@ describe('@BooleanType', () => {
       type.check([], result => {
         expect(result).toMatchObject({
           hasError: true,
-          errorMessage: 'it should be a boolean value'
+          errorMessage: 'it should be a boolean value',
         });
       });
 

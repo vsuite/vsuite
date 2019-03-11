@@ -32,7 +32,7 @@ describe('@ArrayType', () => {
       type.check(true, result => {
         expect(result).toMatchObject({
           hasError: true,
-          errorMessage: 'it should be an array value'
+          errorMessage: 'it should be an array value',
         });
       });
 
@@ -48,7 +48,11 @@ describe('@ArrayType', () => {
 
       expect(type.rules).toHaveLength(1);
 
-      type.rangeLength(1, 3, 'it should have more than 1 and less than 3 items');
+      type.rangeLength(
+        1,
+        3,
+        'it should have more than 1 and less than 3 items'
+      );
 
       expect(type.rules).toHaveLength(2);
 
@@ -71,14 +75,14 @@ describe('@ArrayType', () => {
       type.check([1, 2, 3, 4], result => {
         expect(result).toMatchObject({
           hasError: true,
-          errorMessage: 'it should have more than 1 and less than 3 items'
+          errorMessage: 'it should have more than 1 and less than 3 items',
         });
       });
 
       type.check(true, result => {
         expect(result).toMatchObject({
           hasError: true,
-          errorMessage: 'it should be an array value'
+          errorMessage: 'it should be an array value',
         });
       });
 
@@ -117,14 +121,14 @@ describe('@ArrayType', () => {
       type.check([], result => {
         expect(result).toMatchObject({
           hasError: true,
-          errorMessage: 'it should have more than 1 item'
+          errorMessage: 'it should have more than 1 item',
         });
       });
 
       type.check(true, result => {
         expect(result).toMatchObject({
           hasError: true,
-          errorMessage: 'it should be an array value'
+          errorMessage: 'it should be an array value',
         });
       });
 
@@ -163,14 +167,14 @@ describe('@ArrayType', () => {
       type.check([1, 2, 3, 4], result => {
         expect(result).toMatchObject({
           hasError: true,
-          errorMessage: 'it should have less than 3 items'
+          errorMessage: 'it should have less than 3 items',
         });
       });
 
       type.check(true, result => {
         expect(result).toMatchObject({
           hasError: true,
-          errorMessage: 'it should be an array value'
+          errorMessage: 'it should be an array value',
         });
       });
 
@@ -209,14 +213,14 @@ describe('@ArrayType', () => {
       type.check([1, 2, 2, 3], result => {
         expect(result).toMatchObject({
           hasError: true,
-          errorMessage: 'it should not have repeat item'
+          errorMessage: 'it should not have repeat item',
         });
       });
 
       type.check(true, result => {
         expect(result).toMatchObject({
           hasError: true,
-          errorMessage: 'it should be an array value'
+          errorMessage: 'it should be an array value',
         });
       });
 
@@ -265,21 +269,21 @@ describe('@ArrayType', () => {
       type.check(['1', 'b', 'c'], result => {
         expect(result).toMatchObject({
           hasError: true,
-          errorMessage: 'the item of array should be correct string value'
+          errorMessage: 'the item of array should be correct string value',
         });
       });
 
       type.check(['a', '2', 'c'], result => {
         expect(result).toMatchObject({
           hasError: true,
-          errorMessage: 'the item of array should be correct string value'
+          errorMessage: 'the item of array should be correct string value',
         });
       });
 
       type.check(['a', 'b', '3'], result => {
         expect(result).toMatchObject({
           hasError: true,
-          errorMessage: 'the item of array should be correct string value'
+          errorMessage: 'the item of array should be correct string value',
         });
       });
 

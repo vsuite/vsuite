@@ -90,13 +90,19 @@ class StringType extends Type {
   }
 
   minLength(minLength, errorMessage) {
-    super.addRule((v, _, next) => next([...v].length >= minLength), errorMessage);
+    super.addRule(
+      (v, _, next) => next([...v].length >= minLength),
+      errorMessage
+    );
 
     return this;
   }
 
   maxLength(maxLength, errorMessage) {
-    super.addRule((v, _, next) => next([...v].length <= maxLength), errorMessage);
+    super.addRule(
+      (v, _, next) => next([...v].length <= maxLength),
+      errorMessage
+    );
 
     return this;
   }
