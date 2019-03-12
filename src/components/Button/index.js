@@ -7,4 +7,11 @@ Button.Icon = IconButton;
 Button.Group = ButtonGroup;
 Button.Toolbar = ButtonToolbar;
 
+/* istanbul ignore next */
+Button.install = function(Vue) {
+  Vue.component(Button.name, Button);
+  Vue.component(ButtonGroup.name, ButtonGroup);
+  Vue.component(ButtonToolbar.name, ButtonToolbar);
+};
+
 export default Button;

@@ -1,7 +1,7 @@
 import _ from 'lodash';
-import enUS from 'langs/en_US';
+import enUS from 'langs/en-US';
 
-const DEFAULT_LOCALE = 'en_US';
+const DEFAULT_LOCALE = 'en-US';
 const listeners = [];
 let messages = { [DEFAULT_LOCALE]: enUS };
 let message = {};
