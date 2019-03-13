@@ -1,6 +1,6 @@
 ### IconButton
 
-`<IconButton>` is a component designed for icon buttons that sets the icon required for the `Icon` property definition. Only the icon button can be set to a round button.
+`IconButton` is a component designed for icon buttons that sets the icon required for the `Icon` property definition. Only the icon button can be set to a round button.
 
 <!--start-code-->
 
@@ -54,7 +54,7 @@
 </template>
 
 <script>
-import * as SvgIcons from 'stories/images';
+import * as SvgIcons from 'stories/svg';
 
 export default {
   data() {

@@ -1,6 +1,6 @@
 ### 图标按钮
 
-`<IconButton>` 是专为图标按钮设计的组件，设置`icon`属性定义所需要的图标。 只有图标按钮可以设置为一个圆形按钮。
+`IconButton` 是专为图标按钮设计的组件，设置`icon`属性定义所需要的图标。 只有图标按钮可以设置为一个圆形按钮。
 
 <!--start-code-->
 
@@ -54,7 +54,7 @@
 </template>
 
 <script>
-import * as SvgIcons from 'stories/images';
+import * as SvgIcons from 'stories/svg';
 
 export default {
   data() {

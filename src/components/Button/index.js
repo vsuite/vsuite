@@ -11,6 +11,7 @@ Button.install = function(Vue) {
   Vue.component(Button.name, Button);
   Vue.component(ButtonGroup.name, ButtonGroup);
   Vue.component(ButtonToolbar.name, ButtonToolbar);
+  Vue.component(IconButton.name, IconButton);
 };
 
 export default Button;

@@ -19,6 +19,7 @@ module.exports = {
   moduleDirectories: ['src', 'node_modules'],
   moduleFileExtensions: ['js', 'jsx', 'json', 'vue', 'md'],
   moduleNameMapper: {
+    '\\.svg$': '<rootDir>/test/mock/svgMock.js',
     '^stories/(.*)$': '<rootDir>/.storybook/stories/$1',
     '^@/(.*)$': '<rootDir>/src/$1',
   },
