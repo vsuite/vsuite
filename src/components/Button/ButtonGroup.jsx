@@ -14,7 +14,10 @@ export default {
     vertical: VueTypes.bool.def(false),
     justified: VueTypes.bool.def(false),
     block: VueTypes.bool.def(false),
+
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
+
+    // slot
   },
 
   computed: {
@@ -35,7 +38,7 @@ export default {
     const btnGroupData = {
       class: this.classes,
       attrs: {
-        role: 'button',
+        role: 'group',
         ...this.$attrs,
       },
       on: this.$listeners,

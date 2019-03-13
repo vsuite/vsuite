@@ -1,7 +1,7 @@
 // import { Fade, Collapse } from 'components/Animation';
 import Button from 'components/Button';
 // import Divider from 'components/Divider';
-// import Icon from 'components/Icon';
+import Icon from 'components/Icon';
 // import Loader from 'components/Loader';
 // import Pagination from 'components/Pagination';
 // import Panel from 'components/Panel';
@@ -19,7 +19,7 @@ import Button from 'components/Button';
 export const components = {
   Button,
   // Divider,
-  // Icon,
+  Icon,
   // Loader,
   // Modal,
   // Pagination,

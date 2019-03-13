@@ -4,8 +4,8 @@ The `color` property sets the button style, Options include: 'red', 'orange', 'y
 
 <!--start-code-->
 
-```js
-const instance = (
+```vue
+<template>
   <div>
     <ButtonToolbar>
       <Button color="red">Red</Button>
@@ -17,7 +17,7 @@ const instance = (
       <Button color="violet">Violet</Button>
     </ButtonToolbar>
 
-    <ButtonToolbar style={{ background: '#000', padding: 10 }}>
+    <ButtonToolbar style="background: #000; padding: 10px;">
       <Button color="red" appearance="ghost">
         Red
       </Button>
@@ -41,8 +41,7 @@ const instance = (
       </Button>
     </ButtonToolbar>
   </div>
-);
-ReactDOM.render(instance);
+</template>
 ```
 
 <!--end-code-->

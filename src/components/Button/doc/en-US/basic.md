@@ -2,9 +2,10 @@
 
 <!--start-code-->
 
-```js
-const instance = <Button>Default</Button>;
-ReactDOM.render(instance);
+```vue
+<template>
+  <Button>Default</Button>
+</template>
 ```
 
 <!--end-code-->

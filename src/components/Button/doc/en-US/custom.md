@@ -2,30 +2,35 @@
 
 <!--start-code-->
 
-```js
-const instance = (
+```vue
+<template>
   <ButtonToolbar>
     <Button color="blue">
-      <Icon icon="facebook-official" /> Facebook
+      <Icon icon="facebook-official" />
+      {' Facebook'}
     </Button>
     <Button color="red">
-      <Icon icon="google-plus-circle" /> Google Plus
+      <Icon icon="google-plus-circle" />
+      {' Google Plus'}
     </Button>
     <Button color="cyan">
-      <Icon icon="twitter" /> Twitter
+      <Icon icon="twitter" />
+      {' Twitter'}
     </Button>
     <Button color="blue">
-      <Icon icon="linkedin" /> LinkedIn
+      <Icon icon="linkedin" />
+      {' LinkedIn'}
     </Button>
     <Button color="green">
-      <Icon icon="wechat" /> WeChat
+      <Icon icon="wechat" />
+      {' WeChat'}
     </Button>
     <Button color="yellow">
-      <Icon icon="weibo" /> WeiBo
+      <Icon icon="weibo" />
+      {' WeiBo'}
     </Button>
   </ButtonToolbar>
-);
-ReactDOM.render(instance);
+</template>
 ```
 
 <!--end-code-->

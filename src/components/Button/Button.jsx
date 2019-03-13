@@ -26,10 +26,15 @@ export default {
     loading: VueTypes.bool.def(false),
     block: VueTypes.bool.def(false),
     href: VueTypes.string,
+
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
     componentClass: VueTypes.oneOfType([VueTypes.string, VueTypes.object]).def(
       'button'
     ),
+
+    // slot
+
+    // all events
   },
 
   computed: {

@@ -8,25 +8,20 @@ export default {
   name: 'Icon',
 
   props: {
-    icon: VueTypes.oneOfType([VueTypes.string, VueTypes.object]),
-    size: VueTypes.oneOf(['lg', '2x', '3x', '4x', '5x']),
-    status: VueTypes.oneOf([
-      'primary',
-      'success',
-      'info',
-      'warning',
-      'warn',
-      'danger',
-      'error',
+    icon: VueTypes.oneOfType([
+      VueTypes.string,
+      VueTypes.shape({ viewBox: VueTypes.string, id: VueTypes.string }),
     ]),
+    size: VueTypes.oneOf(['lg', '2x', '3x', '4x', '5x']),
     flip: VueTypes.oneOf(['horizontal', 'vertical']),
     stack: VueTypes.oneOf(['1x', '2x']),
-    rotate: VueTypes.oneOf([0, 90, 180, 270]),
+    rotate: VueTypes.number,
     spin: VueTypes.bool.def(false),
     pulse: VueTypes.bool.def(false),
     inverse: VueTypes.bool.def(false),
     fixedWidth: VueTypes.bool.def(false),
     svgStyle: VueTypes.object,
+
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
     componentClass: VueTypes.oneOfType([VueTypes.string, VueTypes.object]).def(
       'i'
@@ -43,12 +38,11 @@ export default {
         this.classPrefix,
         {
           [this._addPrefix(this.icon)]: !this.isSvgIcon,
-          [this._addPrefix(this.size)]: this.size,
-          [prefix('text', this.status)]: this.status,
           [this._addPrefix('spin')]: this.spin,
           [this._addPrefix('pulse')]: this.pulse,
-          [this._addPrefix('inverse')]: this.inverse,
           [this._addPrefix('fw')]: this.fixedWidth,
+          [this._addPrefix('inverse')]: this.inverse,
+          [this._addPrefix(`size-${this.size || ''}`)]: this.size,
           [this._addPrefix(`flip-${this.flip || ''}`)]: this.flip,
           [this._addPrefix(`stack-${this.stack || ''}`)]: this.stack,
           [this._addPrefix(`rotate-${this.rotate || ''}`)]: this.rotate,

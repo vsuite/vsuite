@@ -120,14 +120,27 @@ function getChildren(vnode) {
 }
 
 function cloneVNode(vnode, deep) {
+  const componentOptions = vnode.componentOptions;
+  const data = vnode.data;
+  let listeners = {};
+  let on = {};
+
+  if (componentOptions && componentOptions.listeners) {
+    listeners = { ...componentOptions.listeners };
+  }
+
+  if (data && data.on) {
+    on = { ...data.on };
+  }
+
   const cloned = new vnode.constructor(
     vnode.tag,
-    vnode.data,
+    data ? { ...data, on } : data,
     vnode.children,
     vnode.text,
     vnode.elm,
     vnode.context,
-    vnode.componentOptions,
+    componentOptions ? { ...componentOptions, listeners } : componentOptions,
     vnode.asyncFactory
   );
 
@@ -145,11 +158,8 @@ function cloneVNode(vnode, deep) {
       cloned.children = cloneVNodes(vnode.children, true);
     }
 
-    if (vnode.componentOptions && vnode.componentOptions.children) {
-      cloned.componentOptions.children = cloneVNodes(
-        vnode.componentOptions.children,
-        true
-      );
+    if (componentOptions && componentOptions.children) {
+      componentOptions.children = cloneVNodes(componentOptions.children, true);
     }
   }
 

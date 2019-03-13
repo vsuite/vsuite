@@ -11,10 +11,17 @@ export default {
   name: 'IconButton',
 
   props: {
-    icon: VueTypes.oneOfType([VueTypes.string, VueTypes.object]),
+    icon: VueTypes.oneOfType([
+      VueTypes.string,
+      VueTypes.shape({ viewBox: VueTypes.string, id: VueTypes.string }),
+    ]),
     circle: VueTypes.bool.def(false),
     placement: VueTypes.oneOf(['left', 'right']).def('left'),
+
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
+
+    // slot
+    // slot-icon
   },
 
   computed: {

@@ -1,6 +1,6 @@
-### IconButton
+### 图标按钮
 
-`<IconButton>` is a component designed for icon buttons that sets the icon required for the `Icon` property definition. Only the icon button can be set to a round button.
+`<IconButton>` 是专为图标按钮设计的组件，设置`icon`属性定义所需要的图标。 只有图标按钮可以设置为一个圆形按钮。
 
 <!--start-code-->
 

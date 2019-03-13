@@ -10,8 +10,8 @@
 
 <!--start-code-->
 
-```js
-const instance = (
+```vue
+<template>
   <ButtonToolbar>
     <Button appearance="default">Default</Button>
     <Button appearance="primary">Primary</Button>
@@ -19,8 +19,7 @@ const instance = (
     <Button appearance="subtle">Subtle</Button>
     <Button appearance="ghost">Ghost</Button>
   </ButtonToolbar>
-);
-ReactDOM.render(instance);
+</template>
 ```
 
 <!--end-code-->

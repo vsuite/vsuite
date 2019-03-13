@@ -1,9 +1,9 @@
 module.exports = {
-  presets: [['@babel/preset-env', { modules: false }]],
+  presets: [['@babel/preset-env', { modules: false }], '@vue/babel-preset-jsx'],
   plugins: [
-    '@babel/plugin-syntax-jsx',
-    'transform-vue-jsx',
-    'transform-object-rest-spread',
+    '@babel/plugin-proposal-export-default-from',
+    '@babel/plugin-proposal-export-namespace-from',
+    '@babel/plugin-proposal-object-rest-spread',
   ],
   env: {
     test: {

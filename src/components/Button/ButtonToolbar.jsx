@@ -8,6 +8,8 @@ export default {
 
   props: {
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
+
+    // slot
   },
 
   render() {
