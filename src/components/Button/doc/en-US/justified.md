@@ -4,25 +4,28 @@ The buttons are laid out horizontally in the button set and are equally wide.
 
 <!--start-code-->
 
-```js
-const CustomButtonGroup = ({ appearance }) => (
-  <ButtonGroup style={{ marginTop: 12 }} justified>
-    <Button appearance={appearance}>Top</Button>
-    <Button appearance={appearance}>Middle</Button>
-    <Button appearance={appearance}>Bottom</Button>
-  </ButtonGroup>
-);
-
-const instance = (
+```vue
+<template>
   <div>
-    <CustomButtonGroup />
-    <CustomButtonGroup appearance="primary" />
-    <CustomButtonGroup appearance="link" />
-    <CustomButtonGroup appearance="subtle" />
-    <CustomButtonGroup appearance="ghost" />
+    <ButtonToolbar v-for="appearance in appearances" :key="appearance">
+      <ButtonGroup style="marginTop: 12px" justified>
+        <Button :appearance="appearance">Top</Button>
+        <Button :appearance="appearance">Middle</Button>
+        <Button :appearance="appearance">Bottom</Button>
+      </ButtonGroup>
+    </ButtonToolbar>
   </div>
-);
-ReactDOM.render(instance);
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      appearances: ['primary', 'link', 'subtle', 'ghost'],
+    };
+  },
+};
+</script>
 ```
 
 <!--end-code-->

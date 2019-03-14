@@ -55,9 +55,7 @@ export default {
   },
 
   render() {
-    const spin = this.loading && (
-      <span className={prefix(this.classPrefix, 'spin')} />
-    );
+    const spin = this.loading && <span class={this._addPrefix('spin')} />;
     const ripple = this.appearance !== 'link' &&
       this.appearance !== 'ghost' && <Ripple />;
 

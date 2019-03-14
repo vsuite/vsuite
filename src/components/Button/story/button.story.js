@@ -11,15 +11,23 @@ const ButtonToolbar = Button.Toolbar;
 
 const stories = storiesOf('General|Button', module);
 
-stories.add('Basic', () => ({
-  render() {
-    return (
-      <Demo title="Default">
-        <Button>Default</Button>
-      </Demo>
-    );
-  },
-}));
+stories.add(
+  'Basic',
+  () => ({
+    render() {
+      return (
+        <Demo title="Default">
+          <Button>Default</Button>
+        </Demo>
+      );
+    },
+  }),
+  {
+    notes: `
+### Basic
+`,
+  }
+);
 
 stories.add(
   'appearance',
@@ -264,6 +272,137 @@ stories.add(
 ### IconButton
 
 \`<IconButton>\` is a component designed for icon buttons that sets the icon required for the \`Icon\` property definition. Only the icon button can be set to a round button.
+`,
+  }
+);
+
+stories.add(
+  'Block',
+  () => ({
+    render() {
+      return (
+        <Demo title="Block">
+          <ButtonToolbar>
+            <Button appearance="default" block>
+              Block
+            </Button>
+            <Button appearance="primary" block>
+              Block
+            </Button>
+          </ButtonToolbar>
+        </Demo>
+      );
+    },
+  }),
+  {
+    notes: `
+### Block
+
+This is generally applicable to flow layouts, or to full rows at the top and bottom of a container.
+
+setting \`block\` property。
+`,
+  }
+);
+
+stories.add(
+  'Disabled',
+  () => ({
+    render() {
+      return (
+        <Demo title="Disabled">
+          <ButtonToolbar>
+            <Button appearance="default" disabled>
+              Default
+            </Button>
+            <Button appearance="primary" disabled>
+              Primary
+            </Button>
+            <Button appearance="link" disabled>
+              Link
+            </Button>
+            <Button appearance="subtle" disabled>
+              Subtle
+            </Button>
+            <Button appearance="ghost" disabled>
+              Ghost
+            </Button>
+          </ButtonToolbar>
+        </Demo>
+      );
+    },
+  }),
+  {
+    notes: `
+### Disabled
+`,
+  }
+);
+
+stories.add(
+  'Active',
+  () => ({
+    render() {
+      return (
+        <Demo title="Active">
+          <ButtonToolbar>
+            <Button appearance="default" active>
+              Default
+            </Button>
+            <Button appearance="primary" active>
+              Primary
+            </Button>
+            <Button appearance="link" active>
+              Link
+            </Button>
+            <Button appearance="subtle" active>
+              Subtle
+            </Button>
+            <Button appearance="ghost" active>
+              Ghost
+            </Button>
+          </ButtonToolbar>
+        </Demo>
+      );
+    },
+  }),
+  {
+    notes: `
+### Active State
+`,
+  }
+);
+
+stories.add(
+  'Loading',
+  () => ({
+    render() {
+      return (
+        <Demo title="Loading">
+          <ButtonToolbar>
+            <Button appearance="default" loading>
+              Default
+            </Button>
+            <Button appearance="primary" loading>
+              Primary
+            </Button>
+            <Button appearance="link" loading>
+              Link
+            </Button>
+            <Button appearance="subtle" loading>
+              Subtle
+            </Button>
+            <Button appearance="ghost" loading>
+              Ghost
+            </Button>
+          </ButtonToolbar>
+        </Demo>
+      );
+    },
+  }),
+  {
+    notes: `
+### Loading State
 `,
   }
 );

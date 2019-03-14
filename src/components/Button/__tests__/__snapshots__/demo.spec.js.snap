@@ -1,8 +1,30 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Button demo renders active demo correctly 1`] = `
+<div role="toolbar" class="vs-btn-toolbar"><button type="button" class="vs-btn vs-btn-default vs-btn-active">
+    Default
+    <span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-primary vs-btn-active">
+    Primary
+    <span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-link vs-btn-active">
+    Link
+  </button> <button type="button" class="vs-btn vs-btn-subtle vs-btn-active">
+    Subtle
+    <span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-ghost vs-btn-active">
+    Ghost
+  </button></div>
+`;
+
 exports[`Button demo renders appearance demo correctly 1`] = `<div role="toolbar" class="vs-btn-toolbar"><button type="button" class="vs-btn vs-btn-default">Default<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-primary">Primary<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-link">Link</button> <button type="button" class="vs-btn vs-btn-subtle">Subtle<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-ghost">Ghost</button></div>`;
 
 exports[`Button demo renders basic demo correctly 1`] = `<button type="button" class="vs-btn vs-btn-default">Default<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button>`;
+
+exports[`Button demo renders block demo correctly 1`] = `
+<div role="toolbar" class="vs-btn-toolbar"><button type="button" class="vs-btn vs-btn-default vs-btn-block">
+    Block
+    <span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-primary vs-btn-block">
+    Block
+    <span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button></div>
+`;
 
 exports[`Button demo renders color demo correctly 1`] = `
 <div>
@@ -41,6 +63,37 @@ exports[`Button demo renders custom demo correctly 1`] = `
     <span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button></div>
 `;
 
+exports[`Button demo renders disabled demo correctly 1`] = `
+<div role="toolbar" class="vs-btn-toolbar"><button disabled="disabled" type="button" class="vs-btn vs-btn-default vs-btn-disabled">
+    Default
+    <span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button disabled="disabled" type="button" class="vs-btn vs-btn-primary vs-btn-disabled">
+    Primary
+    <span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button disabled="disabled" type="button" class="vs-btn vs-btn-link vs-btn-disabled">
+    Link
+  </button> <button disabled="disabled" type="button" class="vs-btn vs-btn-subtle vs-btn-disabled">
+    Subtle
+    <span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button disabled="disabled" type="button" class="vs-btn vs-btn-ghost vs-btn-disabled">
+    Ghost
+  </button></div>
+`;
+
+exports[`Button demo renders group-basic demo correctly 1`] = `
+<div>
+  <div role="toolbar" class="vs-btn-toolbar">
+    <div role="group" class="vs-btn-group"><button type="button" class="vs-btn vs-btn-primary">Left<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-primary">Center<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-primary">Right<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button></div>
+  </div>
+  <div role="toolbar" class="vs-btn-toolbar">
+    <div role="group" class="vs-btn-group"><button type="button" class="vs-btn vs-btn-link">Left</button> <button type="button" class="vs-btn vs-btn-link">Center</button> <button type="button" class="vs-btn vs-btn-link">Right</button></div>
+  </div>
+  <div role="toolbar" class="vs-btn-toolbar">
+    <div role="group" class="vs-btn-group"><button type="button" class="vs-btn vs-btn-subtle">Left<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-subtle">Center<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-subtle">Right<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button></div>
+  </div>
+  <div role="toolbar" class="vs-btn-toolbar">
+    <div role="group" class="vs-btn-group"><button type="button" class="vs-btn vs-btn-ghost">Left</button> <button type="button" class="vs-btn vs-btn-ghost">Center</button> <button type="button" class="vs-btn vs-btn-ghost">Right</button></div>
+  </div>
+</div>
+`;
+
 exports[`Button demo renders icon-button demo correctly 1`] = `
 <div>
   <div role="toolbar" class="vs-btn-toolbar"><button type="button" class="vs-btn vs-btn-default vs-btn-icon vs-btn-icon-placement-left"><i class="vs-icon vs-icon-star"></i><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-primary vs-btn-icon vs-btn-icon-placement-left" appearance="primary"><i class="vs-icon vs-icon-star"></i><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button>
@@ -59,6 +112,37 @@ exports[`Button demo renders icon-button demo correctly 1`] = `
 </div>
 `;
 
+exports[`Button demo renders justified demo correctly 1`] = `
+<div>
+  <div role="toolbar" class="vs-btn-toolbar">
+    <div role="group" class="vs-btn-group vs-btn-group-justified" style="margin-top: 12px;"><a class="vs-btn vs-btn-primary">Top<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a> <a class="vs-btn vs-btn-primary">Middle<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a> <a class="vs-btn vs-btn-primary">Bottom<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></div>
+  </div>
+  <div role="toolbar" class="vs-btn-toolbar">
+    <div role="group" class="vs-btn-group vs-btn-group-justified" style="margin-top: 12px;"><a class="vs-btn vs-btn-link">Top</a> <a class="vs-btn vs-btn-link">Middle</a> <a class="vs-btn vs-btn-link">Bottom</a></div>
+  </div>
+  <div role="toolbar" class="vs-btn-toolbar">
+    <div role="group" class="vs-btn-group vs-btn-group-justified" style="margin-top: 12px;"><a class="vs-btn vs-btn-subtle">Top<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a> <a class="vs-btn vs-btn-subtle">Middle<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a> <a class="vs-btn vs-btn-subtle">Bottom<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></div>
+  </div>
+  <div role="toolbar" class="vs-btn-toolbar">
+    <div role="group" class="vs-btn-group vs-btn-group-justified" style="margin-top: 12px;"><a class="vs-btn vs-btn-ghost">Top</a> <a class="vs-btn vs-btn-ghost">Middle</a> <a class="vs-btn vs-btn-ghost">Bottom</a></div>
+  </div>
+</div>
+`;
+
+exports[`Button demo renders loading demo correctly 1`] = `
+<div role="toolbar" class="vs-btn-toolbar"><button type="button" class="vs-btn vs-btn-default vs-btn-loading"><span class="vs-btn-spin"></span>
+    Default
+    <span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-primary vs-btn-loading"><span class="vs-btn-spin"></span>
+    Primary
+    <span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-link vs-btn-loading"><span class="vs-btn-spin"></span>
+    Link
+  </button> <button type="button" class="vs-btn vs-btn-subtle vs-btn-loading"><span class="vs-btn-spin"></span>
+    Subtle
+    <span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-ghost vs-btn-loading"><span class="vs-btn-spin"></span>
+    Ghost
+  </button></div>
+`;
+
 exports[`Button demo renders size demo correctly 1`] = `
 <div>
   <div role="toolbar" class="vs-btn-toolbar"><button type="button" class="vs-btn vs-btn-default vs-btn-lg">Large<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-default vs-btn-md">Medium<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-default vs-btn-sm">Small<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-default vs-btn-xs">Xsmall<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button></div>
@@ -68,6 +152,35 @@ exports[`Button demo renders size demo correctly 1`] = `
     <div role="group" class="vs-btn-group vs-btn-group-md"><button type="button" class="vs-btn vs-btn-default">Left<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-default">Center<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-default">Right<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button></div>
     <div role="group" class="vs-btn-group vs-btn-group-sm"><button type="button" class="vs-btn vs-btn-default">Left<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-default">Center<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-default">Right<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button></div>
     <div role="group" class="vs-btn-group vs-btn-group-xs"><button type="button" class="vs-btn vs-btn-default">Left<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-default">Center<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-default">Right<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button></div>
+  </div>
+</div>
+`;
+
+exports[`Button demo renders toolbar demo correctly 1`] = `
+<div>
+  <div role="toolbar" class="vs-btn-toolbar"><button type="button" class="vs-btn vs-btn-default">Prev<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button>
+    <div role="group" class="vs-btn-group"><button type="button" class="vs-btn vs-btn-default">1<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-default">2<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-default">3<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-default">4<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-default">5<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button></div> <button type="button" class="vs-btn vs-btn-default">Next<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button>
+  </div>
+  <div role="toolbar" class="vs-btn-toolbar"><button type="button" class="vs-btn vs-btn-default vs-btn-icon vs-btn-icon-placement-left"><i class="vs-icon vs-icon-file-text"></i><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-default vs-btn-icon vs-btn-icon-placement-left"><i class="vs-icon vs-icon-save"></i><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button>
+    <div role="group" class="vs-btn-group"><button type="button" class="vs-btn vs-btn-default vs-btn-icon vs-btn-icon-placement-left"><i class="vs-icon vs-icon-bold"></i><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-default vs-btn-icon vs-btn-icon-placement-left"><i class="vs-icon vs-icon-italic"></i><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-default vs-btn-icon vs-btn-icon-placement-left"><i class="vs-icon vs-icon-underline"></i><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-default vs-btn-icon vs-btn-icon-placement-left"><i class="vs-icon vs-icon-strikethrough"></i><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button></div>
+    <div role="group" class="vs-btn-group"><button type="button" class="vs-btn vs-btn-default vs-btn-icon vs-btn-icon-placement-left"><i class="vs-icon vs-icon-align-left"></i><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-default vs-btn-icon vs-btn-icon-placement-left"><i class="vs-icon vs-icon-align-center"></i><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-default vs-btn-icon vs-btn-icon-placement-left"><i class="vs-icon vs-icon-align-right"></i><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-default vs-btn-icon vs-btn-icon-placement-left"><i class="vs-icon vs-icon-align-justify"></i><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button></div> <button type="button" class="vs-btn vs-btn-default vs-btn-icon vs-btn-icon-placement-left"><i class="vs-icon vs-icon-link"></i><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button>
+  </div>
+</div>
+`;
+
+exports[`Button demo renders vertical demo correctly 1`] = `
+<div>
+  <div role="toolbar" class="vs-btn-toolbar">
+    <div role="group" class="vs-btn-group vs-btn-group-vertical"><button type="button" class="vs-btn vs-btn-primary">Top<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-primary">Middle<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-primary">Bottom<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button></div>
+  </div>
+  <div role="toolbar" class="vs-btn-toolbar">
+    <div role="group" class="vs-btn-group vs-btn-group-vertical"><button type="button" class="vs-btn vs-btn-link">Top</button> <button type="button" class="vs-btn vs-btn-link">Middle</button> <button type="button" class="vs-btn vs-btn-link">Bottom</button></div>
+  </div>
+  <div role="toolbar" class="vs-btn-toolbar">
+    <div role="group" class="vs-btn-group vs-btn-group-vertical"><button type="button" class="vs-btn vs-btn-subtle">Top<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-subtle">Middle<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-subtle">Bottom<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button></div>
+  </div>
+  <div role="toolbar" class="vs-btn-toolbar">
+    <div role="group" class="vs-btn-group vs-btn-group-vertical"><button type="button" class="vs-btn vs-btn-ghost">Top</button> <button type="button" class="vs-btn vs-btn-ghost">Middle</button> <button type="button" class="vs-btn vs-btn-ghost">Bottom</button></div>
   </div>
 </div>
 `;

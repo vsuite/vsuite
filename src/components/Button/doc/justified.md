@@ -1,4 +1,6 @@
-### Vertical ButtonGroup
+### 等宽
+
+按钮在按钮组中横向布局，并且等宽。
 
 <!--start-code-->
 
@@ -6,7 +8,7 @@
 <template>
   <div>
     <ButtonToolbar v-for="appearance in appearances" :key="appearance">
-      <ButtonGroup vertical>
+      <ButtonGroup style="marginTop: 12px" justified>
         <Button :appearance="appearance">Top</Button>
         <Button :appearance="appearance">Middle</Button>
         <Button :appearance="appearance">Bottom</Button>

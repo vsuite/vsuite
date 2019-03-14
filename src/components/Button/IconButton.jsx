@@ -14,7 +14,7 @@ export default {
     icon: VueTypes.oneOfType([
       VueTypes.string,
       VueTypes.shape({ viewBox: VueTypes.string, id: VueTypes.string }),
-    ]),
+    ]).loose,
     circle: VueTypes.bool.def(false),
     placement: VueTypes.oneOf(['left', 'right']).def('left'),
 

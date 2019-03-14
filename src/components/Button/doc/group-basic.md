@@ -1,4 +1,4 @@
-### Vertical ButtonGroup
+### 按钮组
 
 <!--start-code-->
 
@@ -6,10 +6,10 @@
 <template>
   <div>
     <ButtonToolbar v-for="appearance in appearances" :key="appearance">
-      <ButtonGroup vertical>
-        <Button :appearance="appearance">Top</Button>
-        <Button :appearance="appearance">Middle</Button>
-        <Button :appearance="appearance">Bottom</Button>
+      <ButtonGroup>
+        <Button :appearance="appearance">Left</Button>
+        <Button :appearance="appearance">Center</Button>
+        <Button :appearance="appearance">Right</Button>
       </ButtonGroup>
     </ButtonToolbar>
   </div>

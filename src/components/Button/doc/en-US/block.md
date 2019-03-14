@@ -6,8 +6,8 @@ setting `block` property。
 
 <!--start-code-->
 
-```js
-const instance = (
+```vue
+<template>
   <ButtonToolbar>
     <Button appearance="default" block>
       Block
@@ -16,8 +16,7 @@ const instance = (
       Block
     </Button>
   </ButtonToolbar>
-);
-ReactDOM.render(instance);
+</template>
 ```
 
 <!--end-code-->

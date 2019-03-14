@@ -11,7 +11,7 @@ export default {
     icon: VueTypes.oneOfType([
       VueTypes.string,
       VueTypes.shape({ viewBox: VueTypes.string, id: VueTypes.string }),
-    ]),
+    ]).loose,
     size: VueTypes.oneOf(['lg', '2x', '3x', '4x', '5x']),
     flip: VueTypes.oneOf(['horizontal', 'vertical']),
     stack: VueTypes.oneOf(['1x', '2x']),

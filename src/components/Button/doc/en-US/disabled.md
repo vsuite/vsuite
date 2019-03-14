@@ -2,8 +2,8 @@
 
 <!--start-code-->
 
-```js
-const instance = (
+```vue
+<template>
   <ButtonToolbar>
     <Button appearance="default" disabled>
       Default
@@ -21,8 +21,7 @@ const instance = (
       Ghost
     </Button>
   </ButtonToolbar>
-);
-ReactDOM.render(instance);
+</template>
 ```
 
 <!--end-code-->
