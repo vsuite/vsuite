@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ButtonGroup component renders correctly 1`] = `<button type="button" class="vs-btn vs-btn-default vs-btn-icon vs-btn-icon-placement-left"><i class="vs-icon vs-icon-star"></i><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button>`;
+
+exports[`ButtonGroup component renders correctly when using svg file 1`] = `
+<button type="button" class="vs-btn vs-btn-default vs-btn-icon vs-btn-icon-placement-left"><i class="vs-icon"><svg viewBox="0 0 1024 1024">
+      <use xlink:href="#demo-svg"></use>
+    </svg></i><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button>
+`;
