@@ -15,7 +15,7 @@ export default {
     size: VueTypes.oneOf(['lg', '2x', '3x', '4x', '5x']),
     flip: VueTypes.oneOf(['horizontal', 'vertical']),
     stack: VueTypes.oneOf(['1x', '2x']),
-    rotate: VueTypes.number,
+    rotate: VueTypes.oneOf([90, 180, 270, '90', '180', '270']),
     spin: VueTypes.bool.def(false),
     pulse: VueTypes.bool.def(false),
     inverse: VueTypes.bool.def(false),

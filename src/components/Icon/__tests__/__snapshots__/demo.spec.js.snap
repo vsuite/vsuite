@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Icon demo renders basic demo correctly 1`] = `<i class="vs-icon vs-icon-star"></i>`;
+
+exports[`Icon demo renders custom demo correctly 1`] = `
+<div><i class="vs-icon vs-icon-size-lg"><svg viewBox="0 0 1024 1024">
+      <use xlink:href="#demo-svg"></use>
+    </svg></i> <i class="vs-icon vs-icon-size-lg"><svg viewBox="0 0 1024 1024">
+      <use xlink:href="#demo-svg"></use>
+    </svg></i> <i class="vs-icon vs-icon-size-lg"><svg viewBox="0 0 1024 1024">
+      <use xlink:href="#demo-svg"></use>
+    </svg></i> <i class="vs-icon vs-icon-size-lg"><svg viewBox="0 0 1024 1024">
+      <use xlink:href="#demo-svg"></use>
+    </svg></i> <i class="vs-icon vs-icon-size-lg"><svg viewBox="0 0 1024 1024">
+      <use xlink:href="#demo-svg"></use>
+    </svg></i></div>
+`;
+
+exports[`Icon demo renders custom-svg demo correctly 1`] = `
+<button type="button" class="vs-btn vs-btn-ghost vs-btn-lg vs-btn-icon vs-btn-icon-placement-left vs-btn-icon-with-text" appearance="ghost" size="lg"><i class="vs-icon vs-icon-size-lg" style="fill: currentColor;"><svg viewBox="0 0 1024 1024">
+      <use xlink:href="#demo-svg"></use>
+    </svg></i>
+  Search
+</button>
+`;
+
+exports[`Icon demo renders rotate demo correctly 1`] = `<div><i class="vs-icon vs-icon-shield vs-icon-rotate-90" style="margin-right: 5px;"></i> <i class="vs-icon vs-icon-shield vs-icon-rotate-180" style="margin-right: 5px;"></i> <i class="vs-icon vs-icon-shield vs-icon-rotate-270" style="margin-right: 5px;"></i> <i class="vs-icon vs-icon-shield vs-icon-flip-horizontal" style="margin-right: 5px;"></i> <i class="vs-icon vs-icon-shield vs-icon-flip-vertical"></i></div>`;
+
+exports[`Icon demo renders size demo correctly 1`] = `<div><i class="vs-icon vs-icon-camera-retro vs-icon-size-lg" style="margin-right: 5px;"></i> <i class="vs-icon vs-icon-camera-retro vs-icon-size-2x" style="margin-right: 5px;"></i> <i class="vs-icon vs-icon-camera-retro vs-icon-size-3x" style="margin-right: 5px;"></i> <i class="vs-icon vs-icon-camera-retro vs-icon-size-4x" style="margin-right: 5px;"></i> <i class="vs-icon vs-icon-camera-retro vs-icon-size-5x"></i></div>`;
+
+exports[`Icon demo renders spin demo correctly 1`] = `<div><i class="vs-icon vs-icon-spinner vs-icon-spin" style="margin-right: 5px;"></i> <i class="vs-icon vs-icon-spinner vs-icon-pulse" style="margin-right: 5px;"></i> <i class="vs-icon vs-icon-cog vs-icon-spin"></i></div>`;
+
+exports[`Icon demo renders stack demo correctly 1`] = `<div><span class="vs-icon-stack vs-icon-stack-size-lg"><i class="vs-icon vs-icon-square vs-icon-stack-2x"></i> <i class="vs-icon vs-icon-terminal vs-icon-inverse vs-icon-stack-1x"></i></span> <span class="vs-icon-stack vs-icon-stack-size-lg"><i class="vs-icon vs-icon-camera vs-icon-stack-1x"></i> <i class="vs-icon vs-icon-ban vs-icon-stack-2x" style="color: red;"></i></span></div>`;

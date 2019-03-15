@@ -21,4 +21,18 @@ describe('Button component', () => {
 
     expect(wrapper.html()).toMatchSnapshot();
   });
+
+  it('should trigger a click event', () => {
+    const wrapper = mount({
+      render() {
+        return <Button>Default</Button>;
+      },
+    });
+
+    wrapper.vm.$emit('click', 1, 2);
+
+    expect(wrapper.emitted().click).toBeTruthy();
+    expect(wrapper.emitted().click[0]).toMatchObject([1, 2]);
+    expect(wrapper.html()).toMatchSnapshot();
+  });
 });
