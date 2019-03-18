@@ -29,10 +29,10 @@ export default {
     defaultVisible: VueTypes.bool.def(false),
 
     placement: VueTypes.oneOf(Popper.placements).def('auto'),
-    modifiers: VueTypes.object,
     positionFixed: VueTypes.bool.def(false),
     eventsEnabled: VueTypes.bool.def,
     removeOnDestroy: VueTypes.bool.def(false),
+    modifiers: VueTypes.object,
 
     trigger: VueTypes.custom(validTrigger).def('hover'),
     delay: VueTypes.number.def(100),
@@ -44,6 +44,10 @@ export default {
 
     // @create
     // @update
+    // @blur
+    // @focus
+    // @click
+    // @mouseout
   },
 
   data() {
