@@ -1,7 +1,7 @@
 import VueTypes from 'vue-types';
 import popperMixin from 'mixins/popper';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
-import { addStyle, getAttr } from 'shares/dom';
+// import { addStyle, getAttr } from 'shares/dom';
 
 const CLASS_PREFIX = 'tooltip';
 
@@ -25,6 +25,14 @@ export default {
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
   },
 
+  data() {
+    return {
+      popperOptions: {
+        modifiers: { offset: { offset: '0 10' } },
+      },
+    };
+  },
+
   computed: {
     popperClasses() {
       return [
@@ -37,31 +45,31 @@ export default {
     },
   },
 
-  // FIXME: check dynamic change the title property
-  watch: {
-    currentVisible(val) {
-      const popper = this.$refs.popper;
-      const placement = getAttr(popper, 'x-placement');
-
-      if (!val && popper) {
-        if (~placement.indexOf('top')) {
-          addStyle(popper, { top: '2px' });
-        }
-
-        if (~placement.indexOf('bottom')) {
-          addStyle(popper, { top: '-2px' });
-        }
-
-        if (~placement.indexOf('right')) {
-          addStyle(popper, { left: '-2px' });
-        }
-
-        if (~placement.indexOf('left')) {
-          addStyle(popper, { left: '2px' });
-        }
-      }
-    },
-  },
+  // // FIXME: check dynamic change the title property
+  // watch: {
+  //   currentVisible(val) {
+  //     const popper = this.$refs.popper;
+  //     const placement = getAttr(popper, 'x-placement');
+  //
+  //     if (!val && popper) {
+  //       if (~placement.indexOf('top')) {
+  //         addStyle(popper, { top: '2px' });
+  //       }
+  //
+  //       if (~placement.indexOf('bottom')) {
+  //         addStyle(popper, { top: '-2px' });
+  //       }
+  //
+  //       if (~placement.indexOf('right')) {
+  //         addStyle(popper, { left: '-2px' });
+  //       }
+  //
+  //       if (~placement.indexOf('left')) {
+  //         addStyle(popper, { left: '2px' });
+  //       }
+  //     }
+  //   },
+  // },
 
   render(h) {
     if (this.inline) return this._renderTooltip(h);
@@ -80,10 +88,7 @@ export default {
     const popperData = {
       class: this.popperClasses,
       style: {},
-      directives: [
-        { name: 'show', value: this.currentVisible },
-        { name: 'transfer-dom' },
-      ],
+      directives: [{ name: 'transfer-dom' }],
       attrs: {
         'data-transfer': `${this.transfer}`,
       },
@@ -99,13 +104,19 @@ export default {
     return (
       <div {...tooltipData}>
         <div {...referenceData}>{this.$slots.default}</div>
-        <transition enterClass="in" leaveClass="fade">
-          <div {...popperData}>
-            <div {...arrowData} />
-            <div class={this._addPrefix('inner')}>
-              {this.title || this.$slots.title}
+        <transition
+          enterClass="in"
+          leaveClass="fade"
+          onAfterLeave={() => this._destroyPopper()}
+        >
+          {this.currentVisible && (
+            <div {...popperData}>
+              <div {...arrowData} />
+              <div class={this._addPrefix('inner')}>
+                {this.title || this.$slots.title}
+              </div>
             </div>
-          </div>
+          )}
         </transition>
       </div>
     );

@@ -236,12 +236,16 @@ export default {
       };
 
       if (arrow) {
-        options = _.merge(options, {
-          modifiers: { arrow: { element: arrow } },
-        });
+        options = _.merge(
+          options,
+          { modifiers: this.modifiers },
+          { modifiers: { arrow: { element: arrow } } }
+        );
+      } else {
+        options = _.merge(options, { modifiers: this.modifiers });
       }
 
-      options = _.merge({ modifiers: this.modifiers }, options);
+      options = _.merge(options, this.popperOptions || {});
 
       this.popperJS = new Popper(reference, popper, options);
     },
