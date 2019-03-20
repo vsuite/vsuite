@@ -1,4 +1,4 @@
-@import 'common';
+@import '~styles/common';
 
 //
 // Tooltips
@@ -6,40 +6,56 @@
 
 // Base class
 .@{ns}tooltip {
-  position: absolute;
-  z-index: @zindex-tooltip;
-  display: block;
-  font-size: @font-size-small;
-  opacity: 0;
-  line-height: @line-height-small;
+  display: inline-block;
 
-  &.fade {
-    transition: opacity 0.1s linear, transform 0.1s ease-out;
+  &-rel {
+    position: relative;
+    display: inline-block;
+    width: inherit;
   }
 
-  &.in {
-    opacity: 1;
-    transition: opacity 0.15s linear, transform 0.15s ease-in;
-  }
-
-  // Wrapper for the tooltip content
-  .@{ns}tooltip-inner {
-    max-width: @tooltip-max-width;
-    padding: 2px 10px;
-    color: @tooltip-color;
-    text-align: center;
-    background-color: @tooltip-bg;
-    border-radius: @tooltip-border-radius;
-    overflow-wrap: break-word;
-  }
-
-  // Arrows
-  .@{ns}tooltip-arrow {
+  &-popper {
     position: absolute;
-    width: 0;
-    height: 0;
-    border-color: transparent;
-    border-style: solid;
+    z-index: @zindex-tooltip;
+    display: block;
+    font-size: @font-size-small;
+    opacity: 0;
+    line-height: @line-height-small;
+
+    &.@{ns}tooltip-popper-inline {
+      position: relative;
+      display: inline-block;
+      opacity: 1;
+    }
+
+    &.fade {
+      transition: opacity 0.1s linear, transform 0.1s ease-out;
+    }
+
+    &.in {
+      opacity: 1;
+      transition: opacity 0.15s linear, transform 0.15s ease-in;
+    }
+
+    // Wrapper for the tooltip content
+    .@{ns}tooltip-inner {
+      max-width: @tooltip-max-width;
+      padding: 2px 10px;
+      color: @tooltip-color;
+      text-align: center;
+      background-color: @tooltip-bg;
+      border-radius: @tooltip-border-radius;
+      overflow-wrap: break-word;
+    }
+
+    // Arrows
+    .@{ns}tooltip-arrow {
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-color: transparent;
+      border-style: solid;
+    }
   }
 }
 

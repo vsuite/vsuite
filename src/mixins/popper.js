@@ -29,7 +29,7 @@ export default {
     defaultVisible: VueTypes.bool.def(false),
 
     placement: VueTypes.oneOf(Popper.placements).def('auto'),
-    modifiers: VueTypes.object,
+    modifiers: VueTypes.object.def({}),
     positionFixed: VueTypes.bool.def(false),
     eventsEnabled: VueTypes.bool.def,
     removeOnDestroy: VueTypes.bool.def(false),
@@ -228,21 +228,20 @@ export default {
 
       let options = {
         placement: this.placement,
+        positionFixed: this.positionFixed,
+        eventsEnabled: this.eventsEnabled,
+        removeOnDestroy: this.removeOnDestroy,
         onCreate: this._handleCreate,
         // onUpdate: this._handleUpdate,
       };
 
       if (arrow) {
         options = _.merge(options, {
-          modifiers: {
-            arrow: {
-              element: arrow,
-            },
-          },
+          modifiers: { arrow: { element: arrow } },
         });
       }
 
-      options = _.merge(options, this.popperOptions || {});
+      options = _.merge({ modifiers: this.modifiers }, options);
 
       this.popperJS = new Popper(reference, popper, options);
     },
