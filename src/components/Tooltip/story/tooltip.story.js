@@ -1,4 +1,5 @@
 import { storiesOf } from '@storybook/vue';
+import { withKnobs, boolean } from '@storybook/addon-knobs';
 
 import Tooltip from 'components/Tooltip';
 import Button from 'components/Button';
@@ -6,11 +7,14 @@ import Demo from 'stories/demo';
 
 const stories = storiesOf('General|Tooltip', module);
 
+stories.addDecorator(withKnobs);
+
 stories.add('default', () => ({
   render() {
     return (
       <Demo title="Default">
-        <Tooltip inline>
+        <Tooltip style={{ margin: '10px' }} trigger="click">
+          <Button>Click Me</Button>
           <template slot="title">
             This is a <i>tooltip</i> .
           </template>
@@ -20,7 +24,87 @@ stories.add('default', () => ({
   },
 }));
 
+stories.add('inline', () => ({
+  render() {
+    const placements = [
+      'auto',
+      'auto-start',
+      'auto-end',
+      'bottom',
+      'bottom-start',
+      'bottom-end',
+      'left',
+      'left-start',
+      'left-end',
+      'top',
+      'top-start',
+      'top-end',
+      'right',
+      'right-start',
+      'right-end',
+    ];
+
+    return (
+      <Demo title="Inline">
+        {placements.map(placement => (
+          <Tooltip inline style={{ margin: '10px' }} placement={placement}>
+            <template slot="title">
+              This is a <i>tooltip</i> .
+            </template>
+          </Tooltip>
+        ))}
+      </Demo>
+    );
+  },
+}));
+
+stories.add('theme', () => ({
+  render() {
+    const placements = [
+      'auto',
+      'auto-start',
+      'auto-end',
+      'bottom',
+      'bottom-start',
+      'bottom-end',
+      'left',
+      'left-start',
+      'left-end',
+      'top',
+      'top-start',
+      'top-end',
+      'right',
+      'right-start',
+      'right-end',
+    ];
+
+    return (
+      <Demo title="Default">
+        {placements.map(placement => (
+          <Tooltip
+            inline
+            white
+            style={{ margin: '10px' }}
+            placement={placement}
+          >
+            <template slot="title">
+              This is a <i>tooltip</i> .
+            </template>
+          </Tooltip>
+        ))}
+      </Demo>
+    );
+  },
+}));
+
 stories.add('placement', () => ({
+  props: {
+    white: {
+      type: Boolean,
+      default: boolean('White', false),
+    },
+  },
+
   render(h) {
     return (
       <Demo title="Placement">
@@ -28,9 +112,9 @@ stories.add('placement', () => ({
           <tbody>
             <tr>
               <td />
-              <td>{this._renderTooltip(h, 'top-start')}</td>
-              <td>{this._renderTooltip(h, 'top')}</td>
-              <td>{this._renderTooltip(h, 'top-end')}</td>
+              <td>{this._renderTooltip(h, 'bottom-start')}</td>
+              <td>{this._renderTooltip(h, 'bottom')}</td>
+              <td>{this._renderTooltip(h, 'bottom-end')}</td>
               <td />
             </tr>
             <tr>
@@ -57,9 +141,9 @@ stories.add('placement', () => ({
             </tr>
             <tr>
               <td />
-              <td>{this._renderTooltip(h, 'bottom-start')}</td>
-              <td>{this._renderTooltip(h, 'bottom')}</td>
-              <td>{this._renderTooltip(h, 'bottom-end')}</td>
+              <td>{this._renderTooltip(h, 'top-start')}</td>
+              <td>{this._renderTooltip(h, 'top')}</td>
+              <td>{this._renderTooltip(h, 'top-end')}</td>
               <td />
             </tr>
           </tbody>
@@ -83,6 +167,7 @@ stories.add('placement', () => ({
           style={{ margin: '10px' }}
           trigger="click"
           placement={placement}
+          white={this.white}
           title="This is a ToolTip for simple text hints. It can replace the title property"
         >
           <Button>{placement}</Button>

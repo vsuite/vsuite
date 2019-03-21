@@ -1,7 +1,6 @@
 import VueTypes from 'vue-types';
 import popperMixin from 'mixins/popper';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
-// import { addStyle, getAttr } from 'shares/dom';
 
 const CLASS_PREFIX = 'tooltip';
 
@@ -18,7 +17,7 @@ export default {
   props: {
     title: VueTypes.string,
     inline: VueTypes.bool.def(false),
-    theme: VueTypes.oneOf(['dark', 'light']).def('dark'),
+    white: VueTypes.bool.def(false),
     maxWidth: VueTypes.number.def(250),
     innerStyle: VueTypes.object.def({}),
 
@@ -28,7 +27,7 @@ export default {
   data() {
     return {
       popperOptions: {
-        modifiers: { offset: { offset: '0 10' } },
+        modifiers: { offset: { offset: '0,2' } },
       },
     };
   },
@@ -38,38 +37,12 @@ export default {
       return [
         this._addPrefix('popper'),
         {
-          [this._addPrefix(`popper-${this.theme}`)]: this.theme,
+          [this._addPrefix('popper-white')]: this.white,
           [this._addPrefix('popper-inline')]: this.inline,
         },
       ];
     },
   },
-
-  // // FIXME: check dynamic change the title property
-  // watch: {
-  //   currentVisible(val) {
-  //     const popper = this.$refs.popper;
-  //     const placement = getAttr(popper, 'x-placement');
-  //
-  //     if (!val && popper) {
-  //       if (~placement.indexOf('top')) {
-  //         addStyle(popper, { top: '2px' });
-  //       }
-  //
-  //       if (~placement.indexOf('bottom')) {
-  //         addStyle(popper, { top: '-2px' });
-  //       }
-  //
-  //       if (~placement.indexOf('right')) {
-  //         addStyle(popper, { left: '-2px' });
-  //       }
-  //
-  //       if (~placement.indexOf('left')) {
-  //         addStyle(popper, { left: '2px' });
-  //       }
-  //     }
-  //   },
-  // },
 
   render(h) {
     if (this.inline) return this._renderTooltip(h);
@@ -88,7 +61,10 @@ export default {
     const popperData = {
       class: this.popperClasses,
       style: {},
-      directives: [{ name: 'transfer-dom' }],
+      directives: [
+        { name: 'show', value: this.currentVisible },
+        { name: 'transfer-dom' },
+      ],
       attrs: {
         'data-transfer': `${this.transfer}`,
       },
@@ -105,18 +81,16 @@ export default {
       <div {...tooltipData}>
         <div {...referenceData}>{this.$slots.default}</div>
         <transition
-          enterClass="in"
-          leaveClass="fade"
-          onAfterLeave={() => this._destroyPopper()}
+          appear
+          enterActiveClass="animated in"
+          leaveActiveClass="animated fade"
         >
-          {this.currentVisible && (
-            <div {...popperData}>
-              <div {...arrowData} />
-              <div class={this._addPrefix('inner')}>
-                {this.title || this.$slots.title}
-              </div>
+          <div {...popperData}>
+            <div {...arrowData} />
+            <div class={this._addPrefix('inner')}>
+              {this.title || this.$slots.title}
             </div>
-          )}
+          </div>
         </transition>
       </div>
     );

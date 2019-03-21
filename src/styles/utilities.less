@@ -2,6 +2,23 @@
 // Utility classes
 // --------------------------------------------------
 
+// Animations
+// -------------------------
+.animated {
+  animation-fill-mode: both;
+}
+
+.animated.infinite {
+  animation-iteration-count: infinite;
+}
+
+@media print, prefers-reduced-motion {
+  .animated {
+    animation: unset !important;
+    transition: none !important;
+  }
+}
+
 // Floats
 // -------------------------
 
@@ -50,14 +67,16 @@
 
 // Animations
 // -------------------------
-.fade {
-  opacity: 0;
-  transition: opacity 0.15s linear;
 
-  &.in {
-    opacity: 1;
-  }
-}
+// FIXME
+//.fade {
+//  opacity: 0;
+//  transition: opacity 0.15s linear;
+//
+//  &.in {
+//    opacity: 1;
+//  }
+//}
 
 .collapse {
   display: none;
