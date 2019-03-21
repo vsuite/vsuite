@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tooltip component should render correctly 1`] = `
+<div x-placement="auto" class="vs-tooltip-popper vs-tooltip-popper-inline">
+  <div class="vs-tooltip-arrow"></div>
+  <div class="vs-tooltip-inner" style="max-width: 250px;">demo text</div>
+</div>
+`;

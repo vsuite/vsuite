@@ -13,11 +13,12 @@ stories.add('default', () => ({
   render() {
     return (
       <Demo title="Default">
-        <Tooltip style={{ margin: '10px' }} trigger="click">
+        <Tooltip
+          style={{ margin: '10px' }}
+          trigger="click"
+          title="This is a ToolTip for simple text hints. It can replace the title property"
+        >
           <Button>Click Me</Button>
-          <template slot="title">
-            This is a <i>tooltip</i> .
-          </template>
         </Tooltip>
       </Demo>
     );
@@ -47,11 +48,12 @@ stories.add('inline', () => ({
     return (
       <Demo title="Inline">
         {placements.map(placement => (
-          <Tooltip inline style={{ margin: '10px' }} placement={placement}>
-            <template slot="title">
-              This is a <i>tooltip</i> .
-            </template>
-          </Tooltip>
+          <Tooltip
+            inline
+            style={{ margin: '10px' }}
+            placement={placement}
+            title="This is a ToolTip for simple text hints. It can replace the title property"
+          />
         ))}
       </Demo>
     );
@@ -86,11 +88,8 @@ stories.add('theme', () => ({
             white
             style={{ margin: '10px' }}
             placement={placement}
-          >
-            <template slot="title">
-              This is a <i>tooltip</i> .
-            </template>
-          </Tooltip>
+            title="This is a ToolTip for simple text hints. It can replace the title property"
+          />
         ))}
       </Demo>
     );
@@ -174,5 +173,64 @@ stories.add('placement', () => ({
         </Tooltip>
       );
     },
+  },
+}));
+
+stories.add('trigger', () => ({
+  render(h) {
+    return (
+      <Demo title="Trigger">
+        <Button.Toolbar>
+          {this._renderTooltip(h, 'click')}
+          {this._renderTooltip(h, 'right-click')}
+          {this._renderTooltip(h, 'hover')}
+          {this._renderTooltip(h, 'focus')}
+          {this._renderTooltip(h, 'active')}
+        </Button.Toolbar>
+      </Demo>
+    );
+  },
+
+  methods: {
+    _renderTooltip(h, trigger) {
+      return (
+        <Tooltip
+          trigger={trigger}
+          title="This is a ToolTip for simple text hints. It can replace the title property"
+        >
+          <Button>{trigger}</Button>
+        </Tooltip>
+      );
+    },
+  },
+}));
+
+stories.add('always', () => ({
+  render() {
+    return (
+      <Demo title="Always">
+        <Tooltip
+          visible
+          title="This is a ToolTip for simple text hints. It can replace the title property"
+        >
+          <Button>always</Button>
+        </Tooltip>
+      </Demo>
+    );
+  },
+}));
+
+stories.add('delay', () => ({
+  render() {
+    return (
+      <Demo title="Delay">
+        <Tooltip
+          delay={1000}
+          title="This is a ToolTip for simple text hints. It can replace the title property"
+        >
+          <Button>hover delay 1s</Button>
+        </Tooltip>
+      </Demo>
+    );
   },
 }));

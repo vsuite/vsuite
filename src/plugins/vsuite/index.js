@@ -1,7 +1,9 @@
-// import { Fade, Collapse } from 'components/Animation';
 import Button from 'components/Button';
-// import Divider from 'components/Divider';
 import Icon from 'components/Icon';
+import Tooltip from 'components/Tooltip';
+
+// import { Fade, Collapse } from 'components/Animation';
+// import Divider from 'components/Divider';
 // import Loader from 'components/Loader';
 // import Pagination from 'components/Pagination';
 // import Panel from 'components/Panel';
@@ -9,17 +11,17 @@ import Icon from 'components/Icon';
 // import Steps from 'components/Steps';
 // import Tag from 'components/Tag';
 // import Timeline from 'components/Timeline';
-//
 // import Modal from 'components/Modal';
-//
 // import Alert from 'components/Alert';
 // import LoadingBar from 'components/LoadingBar';
 // import Notification from 'components/Notification';
 
 export const components = {
   Button,
-  // Divider,
   Icon,
+  Tooltip,
+
+  // Divider,
   // Loader,
   // Modal,
   // Pagination,

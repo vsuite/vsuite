@@ -2,10 +2,7 @@ import glob from 'fast-glob';
 import mdate from 'mockdate';
 import moment from 'moment';
 import Vue from 'vue';
-import VSuite from '@/index';
 import { mount } from '@vue/test-utils';
-
-Vue.use(VSuite);
 
 export default (component, options = {}) => {
   const suffix = options.suffix || 'md';

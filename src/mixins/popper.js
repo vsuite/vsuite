@@ -42,8 +42,9 @@ export default {
       return this.$VSUITE.transfer || false;
     }),
 
-    // @create
-    // @update
+    // @show
+    // @hide
+    // @visible-change
   },
 
   data() {
@@ -251,7 +252,7 @@ export default {
     },
 
     _updatePopper() {
-      this.popperJS ? this.popperJS.update() : this._createPopper();
+      this.popperJS ? this.popperJS.scheduleUpdate() : this._createPopper();
     },
 
     _destroyPopper() {
