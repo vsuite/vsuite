@@ -11,7 +11,7 @@ module.exports = {
   ],
   collectCoverage: false,
   collectCoverageFrom: [
-    'src/components/**/*.{js,jsx,vue}',
+    'src/**/*.{js,jsx,vue}',
     '!src/components/**/*.{story,stories}.js',
     '!src/components/**/index.js',
     '!**/node_modules/**',

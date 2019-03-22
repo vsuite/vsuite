@@ -9,16 +9,54 @@ const stories = storiesOf('General|Tooltip', module);
 
 stories.addDecorator(withKnobs);
 
-stories.add('default', () => ({
+stories.add('basic', () => ({
   render() {
     return (
-      <Demo title="Default">
+      <Demo title="Basic">
         <Tooltip
           style={{ margin: '10px' }}
           trigger="click"
           title="This is a ToolTip for simple text hints. It can replace the title property"
         >
           <Button>Click Me</Button>
+        </Tooltip>
+      </Demo>
+    );
+  },
+}));
+
+stories.add('position', () => ({
+  render() {
+    return (
+      <Demo title="Position">
+        <Tooltip
+          style={{ margin: '10px' }}
+          trigger="click"
+          title="This is a ToolTip for simple text hints. It can replace the title property"
+        >
+          <Button>Normal</Button>
+        </Tooltip>
+
+        <br />
+
+        <Tooltip
+          style={{ margin: '10px' }}
+          trigger="click"
+          positionLeft={10}
+          title="This is a ToolTip for simple text hints. It can replace the title property"
+        >
+          <Button>positionLeft = 10</Button>
+        </Tooltip>
+
+        <br />
+
+        <Tooltip
+          style={{ margin: '10px' }}
+          trigger="click"
+          positionTop={10}
+          title="This is a ToolTip for simple text hints. It can replace the title property"
+        >
+          <Button>positionTop = 10</Button>
         </Tooltip>
       </Demo>
     );

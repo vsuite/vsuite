@@ -2,37 +2,23 @@ import { mount } from '@vue/test-utils';
 import Button from 'components/Button';
 
 describe('Button component', () => {
-  it('renders correctly', () => {
-    const wrapper = mount({
-      render() {
-        return <Button>Default</Button>;
+  it('should render correctly when using href', () => {
+    const $wrapper = mount(Button, {
+      propsData: {
+        appearance: 'link',
+        href: 'https://vsuite.blackcater.win',
       },
     });
 
-    expect(wrapper.html()).toMatchSnapshot();
-  });
-
-  it('renders correctly when no content', () => {
-    const wrapper = mount({
-      render() {
-        return <Button />;
-      },
-    });
-
-    expect(wrapper.html()).toMatchSnapshot();
+    expect($wrapper.html()).toMatchSnapshot();
   });
 
   it('should trigger a click event', () => {
-    const wrapper = mount({
-      render() {
-        return <Button>Default</Button>;
-      },
-    });
+    const onClick = jest.fn();
+    const $wrapper = mount(Button, { listeners: { click: onClick } });
 
-    wrapper.vm.$emit('click', 1, 2);
+    $wrapper.find('button').trigger('click');
 
-    expect(wrapper.emitted().click).toBeTruthy();
-    expect(wrapper.emitted().click[0]).toMatchObject([1, 2]);
-    expect(wrapper.html()).toMatchSnapshot();
+    expect(onClick).toHaveBeenCalled();
   });
 });

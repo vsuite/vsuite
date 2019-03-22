@@ -20,14 +20,25 @@ export default {
     white: VueTypes.bool.def(false),
     maxWidth: VueTypes.number.def(250),
     innerStyle: VueTypes.object.def({}),
+    positionLeft: VueTypes.number,
+    positionTop: VueTypes.number.def(2),
 
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
+
+    // slot
+    // slot-title
+
+    // @show
+    // @hide
+    // @visible-change
   },
 
   data() {
     return {
       popperOptions: {
-        modifiers: { offset: { offset: '0,2' } },
+        modifiers: {
+          offset: { offset: `${this.positionLeft},${this.positionTop}` },
+        },
       },
     };
   },

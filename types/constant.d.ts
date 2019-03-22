@@ -7,3 +7,4 @@ export type COLORS =
   | 'cyan'
   | 'blue'
   | 'violet';
+export type TRIGGER = 'click' | 'right-click' | 'hover' | 'focus' | 'active';

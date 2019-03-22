@@ -1,7 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Button component renders correctly 1`] = `<button type="button" class="vs-btn vs-btn-default">Default<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button>`;
-
-exports[`Button component renders correctly when no content 1`] = `<button type="button" class="vs-btn vs-btn-default"><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button>`;
-
-exports[`Button component should trigger a click event 1`] = `<button type="button" class="vs-btn vs-btn-default">Default<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button>`;
+exports[`Button component should render correctly when using href 1`] = `<a role="button" href="https://vsuite.blackcater.win" class="vs-btn vs-btn-link"></a>`;
