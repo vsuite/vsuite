@@ -113,43 +113,6 @@
   }
 }
 
-// Common x-placement for bottom*
-.@{ns}tooltip-popper[x-placement^='bottom'] {
-  margin-top: @tooltip-arrow-width;
-
-  &.in {
-    animation-name: tooltipBottomIn;
-  }
-
-  &.fade {
-    animation-name: tooltipBottomOut;
-  }
-
-  &.@{ns}tooltip-popper-white {
-    .@{ns}tooltip-arrow {
-      border-bottom-color: @tooltip-white-arrow-color;
-
-      &::after {
-        top: 1px;
-        left: -@tooltip-arrow-width;
-        border-width: 0 @tooltip-arrow-width @tooltip-arrow-width;
-        border-color: transparent transparent @tooltip-white-bg transparent;
-      }
-    }
-  }
-
-  .@{ns}tooltip-arrow {
-    top: -@tooltip-arrow-width;
-    // FIXED: The problem of the  1 pixel white border in Edge/IE11 browser .
-    .edge-position(top, -@tooltip-arrow-width+1px);
-    .ie11-position(top, -@tooltip-arrow-width+1px);
-
-    //margin-left: -@tooltip-arrow-width;
-    border-width: 0 @tooltip-arrow-width @tooltip-arrow-width;
-    border-bottom-color: @tooltip-arrow-color;
-  }
-}
-
 // Common x-placement for right*
 .@{ns}tooltip-popper[x-placement^='right'] {
   margin-left: @tooltip-arrow-width;
@@ -186,6 +149,43 @@
     border-width: @tooltip-arrow-width @tooltip-arrow-width @tooltip-arrow-width
       0;
     border-right-color: @tooltip-arrow-color;
+  }
+}
+
+// Common x-placement for bottom*
+.@{ns}tooltip-popper[x-placement^='bottom'] {
+  margin-top: @tooltip-arrow-width;
+
+  &.in {
+    animation-name: tooltipBottomIn;
+  }
+
+  &.fade {
+    animation-name: tooltipBottomOut;
+  }
+
+  &.@{ns}tooltip-popper-white {
+    .@{ns}tooltip-arrow {
+      border-bottom-color: @tooltip-white-arrow-color;
+
+      &::after {
+        top: 1px;
+        left: -@tooltip-arrow-width;
+        border-width: 0 @tooltip-arrow-width @tooltip-arrow-width;
+        border-color: transparent transparent @tooltip-white-bg transparent;
+      }
+    }
+  }
+
+  .@{ns}tooltip-arrow {
+    top: -@tooltip-arrow-width;
+    // FIXED: The problem of the  1 pixel white border in Edge/IE11 browser .
+    .edge-position(top, -@tooltip-arrow-width+1px);
+    .ie11-position(top, -@tooltip-arrow-width+1px);
+
+    //margin-left: -@tooltip-arrow-width;
+    border-width: 0 @tooltip-arrow-width @tooltip-arrow-width;
+    border-bottom-color: @tooltip-arrow-color;
   }
 }
 

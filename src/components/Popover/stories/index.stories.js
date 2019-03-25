@@ -129,20 +129,6 @@ stories.add('placement', () => ({
 }));
 
 stories.add('trigger', () => ({
-  methods: {
-    _renderPopover(h, trigger) {
-      return (
-        <Popover trigger={trigger} title="Title">
-          <Button>{trigger}</Button>
-          <template slot="content">
-            <p>This is a defalut Popover </p>
-            <p>Content</p>
-          </template>
-        </Popover>
-      );
-    },
-  },
-
   render(h) {
     return (
       <Demo title="Trigger">
@@ -155,6 +141,20 @@ stories.add('trigger', () => ({
         </Button.Toolbar>
       </Demo>
     );
+  },
+
+  methods: {
+    _renderPopover(h, trigger) {
+      return (
+        <Popover trigger={trigger} title="Title">
+          <Button>{trigger}</Button>
+          <template slot="content">
+            <p>This is a defalut Popover </p>
+            <p>Content</p>
+          </template>
+        </Popover>
+      );
+    },
   },
 }));
 

@@ -1,6 +1,7 @@
 import Button from 'components/Button';
 import Icon from 'components/Icon';
 import Tooltip from 'components/Tooltip';
+import Popover from 'components/Popover';
 
 // import { Fade, Collapse } from 'components/Animation';
 // import Divider from 'components/Divider';
@@ -20,6 +21,7 @@ export const components = {
   Button,
   Icon,
   Tooltip,
+  Popover,
 
   // Divider,
   // Loader,
@@ -33,6 +35,7 @@ export const components = {
   // Fade,
   // Collapse,
 };
+
 export default {
   install(Vue, options) {
     options = Object.assign({ transfer: false }, options || {});

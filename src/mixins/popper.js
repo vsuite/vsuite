@@ -31,7 +31,7 @@ export default {
     placement: VueTypes.oneOf(Popper.placements).def('auto'),
     modifiers: VueTypes.object.def({}),
     positionFixed: VueTypes.bool.def(false),
-    eventsEnabled: VueTypes.bool.def,
+    eventsEnabled: VueTypes.bool,
     removeOnDestroy: VueTypes.bool.def(false),
 
     trigger: VueTypes.custom(validTrigger).def('hover'),

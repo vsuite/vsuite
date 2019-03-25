@@ -1,7 +1,6 @@
 import VueTypes from 'vue-types';
 import popperMixin from 'mixins/popper';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
-import { addStyle, getAttr } from 'shares/dom';
 
 const CLASS_PREFIX = 'popover';
 
@@ -16,16 +15,39 @@ export default {
   mixins: [popperMixin],
 
   props: {
-    /* eslint-disable vue/require-prop-types */
+    // eslint-disable-next-line
     trigger: {
       ...popperMixin.props.trigger,
       default: 'click',
     },
     title: VueTypes.string,
     content: VueTypes.string,
-    full: VueTypes.bool.def(false),
     inline: VueTypes.bool.def(false),
+    full: VueTypes.bool.def(false),
+    maxWidth: VueTypes.number.def(0),
+    innerStyle: VueTypes.object.def({}),
+    positionLeft: VueTypes.number,
+    positionTop: VueTypes.number.def(2),
+
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
+
+    // slot
+    // slot-title
+    // slot-content
+
+    // @show
+    // @hide
+    // @visible-change
+  },
+
+  data() {
+    return {
+      popperOptions: {
+        modifiers: {
+          offset: { offset: `${this.positionLeft},${this.positionTop}` },
+        },
+      },
+    };
   },
 
   computed: {
@@ -37,32 +59,6 @@ export default {
           [this._addPrefix('popper-full')]: this.full,
         },
       ];
-    },
-  },
-
-  // FIXME: check dynamic change the title property
-  watch: {
-    currentVisible(val) {
-      const popper = this.$refs.popper;
-      const placement = getAttr(popper, 'x-placement');
-
-      if (!val && popper) {
-        if (~placement.indexOf('top')) {
-          addStyle(popper, { top: '2px' });
-        }
-
-        if (~placement.indexOf('bottom')) {
-          addStyle(popper, { top: '-2px' });
-        }
-
-        if (~placement.indexOf('right')) {
-          addStyle(popper, { left: '-2px' });
-        }
-
-        if (~placement.indexOf('left')) {
-          addStyle(popper, { left: '2px' });
-        }
-      }
     },
   },
 
@@ -93,8 +89,15 @@ export default {
       ref: 'popper',
     };
     const arrowData = {
-      class: 'arrow',
+      class: this._addPrefix('arrow'),
       ref: 'arrow',
+    };
+    const innerData = {
+      class: this._addPrefix('inner'),
+      style: {
+        ...this.innerStyle,
+        maxWidth: this.maxWidth === 0 ? 'none' : `${this.maxWidth}px`,
+      },
     };
 
     this._addTriggerListeners(referenceData, popoverData);
@@ -102,15 +105,21 @@ export default {
     return (
       <div {...popoverData}>
         <div {...referenceData}>{this.$slots.default}</div>
-        <transition name="popover-fade">
+        <transition
+          appear
+          enterActiveClass="animated in"
+          leaveActiveClass="animated fade"
+        >
           <div {...popperData}>
             <div {...arrowData} />
-            {this.$slots.title ||
-              (this.title ? (
-                <h3 class={this._addPrefix('title')}>{this.title}</h3>
-              ) : null)}
-            <div class={this._addPrefix('content')}>
-              {this.$slots.content || this.content}
+            <div {...innerData}>
+              {this.$slots.title ||
+                (this.title ? (
+                  <h3 class={this._addPrefix('title')}>{this.title}</h3>
+                ) : null)}
+              <div class={this._addPrefix('content')}>
+                {this.$slots.content || this.content}
+              </div>
             </div>
           </div>
         </transition>
@@ -126,16 +135,25 @@ export default {
           'x-placement': this.placement,
         },
       };
+      const innerData = {
+        class: this._addPrefix('inner'),
+        style: {
+          ...this.innerStyle,
+          maxWidth: this.maxWidth === 0 ? 'none' : `${this.maxWidth}px`,
+        },
+      };
 
       return (
         <div {...data}>
-          <div class="arrow" />
-          {this.$slots.title ||
-            (this.title ? (
-              <h3 class={this._addPrefix('title')}>{this.title}</h3>
-            ) : null)}
-          <div class={this._addPrefix('content')}>
-            {this.$slots.content || this.content}
+          <div class={this._addPrefix('arrow')} />
+          <div {...innerData}>
+            {this.$slots.title ||
+              (this.title ? (
+                <h3 class={this._addPrefix('title')}>{this.title}</h3>
+              ) : null)}
+            <div class={this._addPrefix('content')}>
+              {this.$slots.content || this.content}
+            </div>
           </div>
         </div>
       );

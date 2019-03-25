@@ -85,6 +85,13 @@ export default {
       class: this._addPrefix('arrow'),
       ref: 'arrow',
     };
+    const innerData = {
+      class: this._addPrefix('inner'),
+      style: {
+        ...this.innerStyle,
+        maxWidth: this.maxWidth === 0 ? 'none' : `${this.maxWidth}px`,
+      },
+    };
 
     this._addTriggerListeners(referenceData, tooltipData);
 
@@ -98,9 +105,7 @@ export default {
         >
           <div {...popperData}>
             <div {...arrowData} />
-            <div class={this._addPrefix('inner')}>
-              {this.title || this.$slots.title}
-            </div>
+            <div {...innerData}>{this.title || this.$slots.title}</div>
           </div>
         </transition>
       </div>
@@ -115,16 +120,18 @@ export default {
           'x-placement': this.placement,
         },
       };
+      const innerData = {
+        class: this._addPrefix('inner'),
+        style: {
+          ...this.innerStyle,
+          maxWidth: this.maxWidth === 0 ? 'none' : `${this.maxWidth}px`,
+        },
+      };
 
       return (
         <div {...data}>
           <div class={this._addPrefix('arrow')} />
-          <div
-            class={this._addPrefix('inner')}
-            style={{ ...this.innerStyle, maxWidth: `${this.maxWidth}px` }}
-          >
-            {this.title || this.$slots.title}
-          </div>
+          <div {...innerData}>{this.title || this.$slots.title}</div>
         </div>
       );
     },

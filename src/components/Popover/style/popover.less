@@ -1,78 +1,100 @@
-@import 'common';
+@import '~styles/common';
 
 //
 // Popovers
 // --------------------------------------------------
 .@{ns}popover {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: @zindex-popover;
-  display: none;
-  padding: 12px;
-  font-size: @font-size-base;
-  background-color: @popover-bg;
-  background-clip: padding-box;
-  border-radius: @popover-border-radius;
-  opacity: 0;
-  .drop-shadow(0 1px 8px rgba(0, 0, 0, 0.12));
+  display: inline-block;
 
-  &.fade {
-    transition: opacity 0.1s linear, transform 0.1s ease-out;
+  &-rel {
+    position: relative;
+    display: inline-block;
+    width: inherit;
   }
 
-  &.in {
-    opacity: 1;
-    transition: opacity 0.15s linear, transform 0.15s ease-in;
-  }
-
-  // .arrow is outer, .arrow:after is inner
-  > .arrow {
-    border-width: @popover-arrow-outer-width;
-
-    &,
-    &::after {
-      position: absolute;
-      display: block;
-      width: 0;
-      height: 0;
-      border-color: transparent;
-      border-style: solid;
-    }
-
-    &::after {
-      border-width: @popover-arrow-width;
-      content: '';
-    }
-  }
-
-  // Popover Title
-  &-title {
-    margin: 0; // reset heading margin
+  &-popper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: @zindex-popover;
+    display: block;
+    padding: 12px;
     font-size: @font-size-base;
-    line-height: @line-height-base;
-  }
+    background-color: @popover-bg;
+    background-clip: padding-box;
+    border-radius: @popover-border-radius;
+    .drop-shadow(0 1px 8px rgba(0, 0, 0, 0.12));
 
-  // Popover Content
-  &-content {
-    font-size: @font-size-small;
-    line-height: @line-height-small;
-  }
+    &.@{ns}popover-popper-inline {
+      position: relative;
+      display: inline-block;
+    }
 
-  &-title ~ &-content {
-    margin-top: 8px;
+    &.in {
+      animation-timing-function: ease-in;
+      animation-duration: 0.15s;
+    }
+
+    &.fade {
+      animation-timing-function: ease-out;
+      animation-duration: 0.1s;
+    }
+
+    // .arrow is outer, .arrow:after is inner
+    > .@{ns}popover-arrow {
+      border-width: @popover-arrow-outer-width;
+
+      &,
+      &::after {
+        position: absolute;
+        display: block;
+        width: 0;
+        height: 0;
+        border-color: transparent;
+        border-style: solid;
+      }
+
+      &::after {
+        border-width: @popover-arrow-width;
+        content: '';
+      }
+    }
+
+    // Popover Title
+    .@{ns}popover-title {
+      margin: 0; // reset heading margin
+      font-size: @font-size-base;
+      line-height: @line-height-base;
+    }
+
+    // Popover Content
+    .@{ns}popover-content {
+      font-size: @font-size-small;
+      line-height: @line-height-small;
+    }
+
+    .@{ns}popover-title ~ .@{ns}popover-content {
+      margin-top: 8px;
+    }
   }
 }
 
 // Common style for .placement-top*
-.@{ns}popover[class*='placement-top'] {
-  margin-top: -@popover-arrow-width;
-  .set-translate-transition(0, -@popover-translate-distance);
+.@{ns}popover-popper[x-placement^='top'] {
+  margin-bottom: @popover-arrow-width;
 
-  > .arrow {
-    margin-left: -@popover-arrow-outer-width;
+  &.in {
+    animation-name: tooltipTopIn;
+  }
+
+  &.fade {
+    animation-name: tooltipTopOut;
+  }
+
+  > .@{ns}popover-arrow {
     border-bottom-width: 0;
     bottom: -@popover-arrow-outer-width;
+    margin: 0 @popover-arrow-outer-width;
 
     &::after {
       bottom: 1px;
@@ -84,14 +106,21 @@
 }
 
 // Common style for .placement-right*
-.@{ns}popover[class*='placement-right'] {
+.@{ns}popover-popper[x-placement^='right'] {
   margin-left: @popover-arrow-width;
-  .set-translate-transition(@popover-translate-distance, 0);
 
-  > .arrow {
+  &.in {
+    animation-name: tooltipRightIn;
+  }
+
+  &.fade {
+    animation-name: tooltipRightOut;
+  }
+
+  > .@{ns}popover-arrow {
     left: -@popover-arrow-outer-width;
-    margin-top: -@popover-arrow-outer-width;
     border-left-width: 0;
+    margin: @popover-arrow-outer-width 0;
 
     &::after {
       left: 1px;
@@ -103,14 +132,21 @@
 }
 
 // Common style for .placement-bottom*
-.@{ns}popover[class*='placement-bottom'] {
+.@{ns}popover-popper[x-placement^='bottom'] {
   margin-top: @popover-arrow-width;
-  .set-translate-transition(0, @popover-translate-distance);
 
-  > .arrow {
-    margin-left: -@popover-arrow-outer-width;
+  &.in {
+    animation-name: tooltipBottomIn;
+  }
+
+  &.fade {
+    animation-name: tooltipBottomOut;
+  }
+
+  > .@{ns}popover-arrow {
     border-top-width: 0;
     top: -@popover-arrow-outer-width;
+    margin: 0 @popover-arrow-outer-width;
 
     &::after {
       top: 1px;
@@ -122,14 +158,21 @@
 }
 
 // Common style for .placement-left*
-.@{ns}popover[class*='placement-left'] {
-  margin-left: -@popover-arrow-width;
-  .set-translate-transition(-@popover-translate-distance, 0);
+.@{ns}popover-popper[x-placement^='left'] {
+  margin-right: @popover-arrow-width;
 
-  > .arrow {
+  &.in {
+    animation-name: tooltipLeftIn;
+  }
+
+  &.fade {
+    animation-name: tooltipLeftOut;
+  }
+
+  > .@{ns}popover-arrow {
     right: -@popover-arrow-outer-width;
-    margin-top: -@popover-arrow-outer-width;
     border-right-width: 0;
+    margin: @popover-arrow-outer-width 0;
 
     &::after {
       right: 1px;
@@ -140,36 +183,71 @@
   }
 }
 
-.@{ns}popover.placement-bottom,
-.@{ns}popover.placement-top {
-  > .arrow {
+// Inline tooltip, x-placement for auto*
+.@{ns}popover-popper-inline[x-placement^='auto'] {
+  .@{ns}popover-arrow {
+    display: none;
+  }
+}
+
+// Inline tooltip, x-placement for top and bottom
+.@{ns}popover-popper-inline[x-placement='top'],
+.@{ns}popover-popper-inline[x-placement='bottom'] {
+  .@{ns}popover-arrow {
     left: 50%;
+    right: auto;
+    margin-left: -@popover-arrow-width;
   }
 }
 
-.@{ns}popover.placement-bottom-right,
-.@{ns}popover.placement-top-right {
-  > .arrow {
-    right: @popover-arrow-gap;
+// Inline tooltip, x-placement for auto*
+.@{ns}popover-popper-inline[x-placement='top-start'],
+.@{ns}popover-popper-inline[x-placement='bottom-start'] {
+  .@{ns}popover-arrow {
+    left: @popover-arrow-width;
+    right: auto;
+    margin-left: 0;
   }
 }
 
-.@{ns}popover.placement-left,
-.@{ns}popover.placement-right {
-  > .arrow {
+.@{ns}popover-popper-inline[x-placement='top-end'],
+.@{ns}popover-popper-inline[x-placement='bottom-end'] {
+  .@{ns}popover-arrow {
+    left: auto;
+    right: @popover-arrow-width;
+    margin-left: 0;
+  }
+}
+
+.@{ns}popover-popper-inline[x-placement='left'],
+.@{ns}popover-popper-inline[x-placement='right'] {
+  .@{ns}popover-arrow {
     top: 50%;
+    bottom: auto;
+    margin-top: -@popover-arrow-width;
   }
 }
 
-.@{ns}popover.placement-left-bottom,
-.@{ns}popover.placement-right-bottom {
-  > .arrow {
-    bottom: @popover-arrow-gap;
+.@{ns}popover-popper-inline[x-placement='left-start'],
+.@{ns}popover-popper-inline[x-placement='right-start'] {
+  .@{ns}popover-arrow {
+    top: @popover-arrow-width / 2;
+    bottom: auto;
+    margin-top: 0;
   }
 }
 
-// Adjust full popover arrow postion
-.@{ns}popover-full {
+.@{ns}popover-popper-inline[x-placement='left-end'],
+.@{ns}popover-popper-inline[x-placement='right-end'] {
+  .@{ns}popover-arrow {
+    top: auto;
+    bottom: @popover-arrow-width / 2;
+    margin-top: 0;
+  }
+}
+
+// Adjust full popover arrow position
+.@{ns}popover-popper-full {
   // Reset content padding when [full]
   padding: 0;
 
@@ -177,14 +255,13 @@
   .@{ns}popover-content {
     margin-top: 0;
   }
-
-  .@{ns}popover.placement-top-left& > .arrow,
-  .@{ns}popover.placement-bottom-left& > .arrow {
-    margin-left: @popover-arrow-outer-width;
-  }
-
-  .@{ns}popover.placement-right-top& > .arrow,
-  .@{ns}popover.placement-left-top& > .arrow {
-    margin-top: @popover-arrow-outer-width;
-  }
+  //.@{ns}popover.placement-top-left& > .arrow,
+  //.@{ns}popover.placement-bottom-left& > .arrow {
+  //  margin-left: @popover-arrow-outer-width;
+  //}
+  //
+  //.@{ns}popover.placement-right-top& > .arrow,
+  //.@{ns}popover.placement-left-top& > .arrow {
+  //  margin-top: @popover-arrow-outer-width;
+  //}
 }
