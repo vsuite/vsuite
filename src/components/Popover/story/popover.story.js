@@ -247,7 +247,7 @@ stories.add('delay', () => ({
     return (
       <Demo title="Delay">
         <Popover delay={1000} title="This is a tooltip.">
-          <Button>hover delay 1s</Button>
+          <Button>click delay 1s</Button>
           <template slot="content">
             <p>This is a default Popover </p>
             <p>Content</p>

@@ -1,10 +1,9 @@
 export default [
   'basic',
   'inline',
-  'theme',
-  'trigger',
   'placement',
   'trigger',
+  'full',
   'always',
   'delay',
   'container',

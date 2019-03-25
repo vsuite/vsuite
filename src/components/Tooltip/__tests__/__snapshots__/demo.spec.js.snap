@@ -5,7 +5,7 @@ exports[`Tooltip demo renders always demo correctly 1`] = `
   <div class="vs-tooltip-rel"><button type="button" class="vs-btn vs-btn-default">always<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button></div>
   <div data-transfer="false" class="vs-tooltip-popper" appear="true" enteractiveclass="animated in" leaveactiveclass="animated fade">
     <div class="vs-tooltip-arrow"></div>
-    <div class="vs-tooltip-inner">This is a ToolTip for simple text hints. It can replace the title property</div>
+    <div class="vs-tooltip-inner" style="max-width: 250px;">This is a ToolTip for simple text hints. It can replace the title property</div>
   </div>
 </div>
 `;
@@ -15,7 +15,21 @@ exports[`Tooltip demo renders basic demo correctly 1`] = `
   <div class="vs-tooltip-rel"><button type="button" class="vs-btn vs-btn-default">Click Me<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button></div>
   <div data-transfer="false" class="vs-tooltip-popper" style="display: none;" appear="true" enteractiveclass="animated in" leaveactiveclass="animated fade">
     <div class="vs-tooltip-arrow"></div>
-    <div class="vs-tooltip-inner">This is a ToolTip for simple text hints. It can replace the title property</div>
+    <div class="vs-tooltip-inner" style="max-width: 250px;">This is a ToolTip for simple text hints. It can replace the title property</div>
+  </div>
+</div>
+`;
+
+exports[`Tooltip demo renders container demo correctly 1`] = `
+<div style="position: relative; height: 200px; overflow: scroll; background-color: rgb(241, 241, 241); box-shadow: #999 1px 1px 5px inset; padding: 50px;">
+  <div style="height: 500px;">
+    <div class="vs-tooltip">
+      <div class="vs-tooltip-rel"><button type="button" class="vs-btn vs-btn-default">Click Me<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button></div>
+      <div data-transfer="false" class="vs-tooltip-popper vs-tooltip-popper-white" appear="true" enteractiveclass="animated in" leaveactiveclass="animated fade">
+        <div class="vs-tooltip-arrow"></div>
+        <div class="vs-tooltip-inner" style="max-width: 250px;">This is a ToolTip for simple text hints. It can replace the title property</div>
+      </div>
+    </div>
   </div>
 </div>
 `;
@@ -25,7 +39,7 @@ exports[`Tooltip demo renders delay demo correctly 1`] = `
   <div class="vs-tooltip-rel"><button type="button" class="vs-btn vs-btn-default">hover delay 1s<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button></div>
   <div data-transfer="false" class="vs-tooltip-popper" style="display: none;" appear="true" enteractiveclass="animated in" leaveactiveclass="animated fade">
     <div class="vs-tooltip-arrow"></div>
-    <div class="vs-tooltip-inner">This is a ToolTip for simple text hints. It can replace the title property</div>
+    <div class="vs-tooltip-inner" style="max-width: 250px;">This is a ToolTip for simple text hints. It can replace the title property</div>
   </div>
 </div>
 `;
@@ -106,7 +120,7 @@ exports[`Tooltip demo renders placement demo correctly 1`] = `
             <div class="vs-tooltip-rel"><button type="button" class="vs-btn vs-btn-default">bottom-start<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button></div>
             <div data-transfer="false" class="vs-tooltip-popper" style="display: none;" appear="true" enteractiveclass="animated in" leaveactiveclass="animated fade">
               <div class="vs-tooltip-arrow"></div>
-              <div class="vs-tooltip-inner">This is a ToolTip for simple text hints. It can replace the title property</div>
+              <div class="vs-tooltip-inner" style="max-width: 250px;">This is a ToolTip for simple text hints. It can replace the title property</div>
             </div>
           </div>
         </td>
@@ -115,7 +129,7 @@ exports[`Tooltip demo renders placement demo correctly 1`] = `
             <div class="vs-tooltip-rel"><button type="button" class="vs-btn vs-btn-default">bottom<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button></div>
             <div data-transfer="false" class="vs-tooltip-popper" style="display: none;" appear="true" enteractiveclass="animated in" leaveactiveclass="animated fade">
               <div class="vs-tooltip-arrow"></div>
-              <div class="vs-tooltip-inner">This is a ToolTip for simple text hints. It can replace the title property</div>
+              <div class="vs-tooltip-inner" style="max-width: 250px;">This is a ToolTip for simple text hints. It can replace the title property</div>
             </div>
           </div>
         </td>
@@ -124,7 +138,7 @@ exports[`Tooltip demo renders placement demo correctly 1`] = `
             <div class="vs-tooltip-rel"><button type="button" class="vs-btn vs-btn-default">bottom-end<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button></div>
             <div data-transfer="false" class="vs-tooltip-popper" style="display: none;" appear="true" enteractiveclass="animated in" leaveactiveclass="animated fade">
               <div class="vs-tooltip-arrow"></div>
-              <div class="vs-tooltip-inner">This is a ToolTip for simple text hints. It can replace the title property</div>
+              <div class="vs-tooltip-inner" style="max-width: 250px;">This is a ToolTip for simple text hints. It can replace the title property</div>
             </div>
           </div>
         </td>
@@ -136,7 +150,7 @@ exports[`Tooltip demo renders placement demo correctly 1`] = `
             <div class="vs-tooltip-rel"><button type="button" class="vs-btn vs-btn-default">right-start<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button></div>
             <div data-transfer="false" class="vs-tooltip-popper" style="display: none;" appear="true" enteractiveclass="animated in" leaveactiveclass="animated fade">
               <div class="vs-tooltip-arrow"></div>
-              <div class="vs-tooltip-inner">This is a ToolTip for simple text hints. It can replace the title property</div>
+              <div class="vs-tooltip-inner" style="max-width: 250px;">This is a ToolTip for simple text hints. It can replace the title property</div>
             </div>
           </div>
         </td>
@@ -148,7 +162,7 @@ exports[`Tooltip demo renders placement demo correctly 1`] = `
             <div class="vs-tooltip-rel"><button type="button" class="vs-btn vs-btn-default">left-start<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button></div>
             <div data-transfer="false" class="vs-tooltip-popper" style="display: none;" appear="true" enteractiveclass="animated in" leaveactiveclass="animated fade">
               <div class="vs-tooltip-arrow"></div>
-              <div class="vs-tooltip-inner">This is a ToolTip for simple text hints. It can replace the title property</div>
+              <div class="vs-tooltip-inner" style="max-width: 250px;">This is a ToolTip for simple text hints. It can replace the title property</div>
             </div>
           </div>
         </td>
@@ -159,7 +173,7 @@ exports[`Tooltip demo renders placement demo correctly 1`] = `
             <div class="vs-tooltip-rel"><button type="button" class="vs-btn vs-btn-default">right<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button></div>
             <div data-transfer="false" class="vs-tooltip-popper" style="display: none;" appear="true" enteractiveclass="animated in" leaveactiveclass="animated fade">
               <div class="vs-tooltip-arrow"></div>
-              <div class="vs-tooltip-inner">This is a ToolTip for simple text hints. It can replace the title property</div>
+              <div class="vs-tooltip-inner" style="max-width: 250px;">This is a ToolTip for simple text hints. It can replace the title property</div>
             </div>
           </div>
         </td>
@@ -171,7 +185,7 @@ exports[`Tooltip demo renders placement demo correctly 1`] = `
             <div class="vs-tooltip-rel"><button type="button" class="vs-btn vs-btn-default">left<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button></div>
             <div data-transfer="false" class="vs-tooltip-popper" style="display: none;" appear="true" enteractiveclass="animated in" leaveactiveclass="animated fade">
               <div class="vs-tooltip-arrow"></div>
-              <div class="vs-tooltip-inner">This is a ToolTip for simple text hints. It can replace the title property</div>
+              <div class="vs-tooltip-inner" style="max-width: 250px;">This is a ToolTip for simple text hints. It can replace the title property</div>
             </div>
           </div>
         </td>
@@ -182,7 +196,7 @@ exports[`Tooltip demo renders placement demo correctly 1`] = `
             <div class="vs-tooltip-rel"><button type="button" class="vs-btn vs-btn-default">right-end<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button></div>
             <div data-transfer="false" class="vs-tooltip-popper" style="display: none;" appear="true" enteractiveclass="animated in" leaveactiveclass="animated fade">
               <div class="vs-tooltip-arrow"></div>
-              <div class="vs-tooltip-inner">This is a ToolTip for simple text hints. It can replace the title property</div>
+              <div class="vs-tooltip-inner" style="max-width: 250px;">This is a ToolTip for simple text hints. It can replace the title property</div>
             </div>
           </div>
         </td>
@@ -194,7 +208,7 @@ exports[`Tooltip demo renders placement demo correctly 1`] = `
             <div class="vs-tooltip-rel"><button type="button" class="vs-btn vs-btn-default">left-end<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button></div>
             <div data-transfer="false" class="vs-tooltip-popper" style="display: none;" appear="true" enteractiveclass="animated in" leaveactiveclass="animated fade">
               <div class="vs-tooltip-arrow"></div>
-              <div class="vs-tooltip-inner">This is a ToolTip for simple text hints. It can replace the title property</div>
+              <div class="vs-tooltip-inner" style="max-width: 250px;">This is a ToolTip for simple text hints. It can replace the title property</div>
             </div>
           </div>
         </td>
@@ -206,7 +220,7 @@ exports[`Tooltip demo renders placement demo correctly 1`] = `
             <div class="vs-tooltip-rel"><button type="button" class="vs-btn vs-btn-default">top-start<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button></div>
             <div data-transfer="false" class="vs-tooltip-popper" style="display: none;" appear="true" enteractiveclass="animated in" leaveactiveclass="animated fade">
               <div class="vs-tooltip-arrow"></div>
-              <div class="vs-tooltip-inner">This is a ToolTip for simple text hints. It can replace the title property</div>
+              <div class="vs-tooltip-inner" style="max-width: 250px;">This is a ToolTip for simple text hints. It can replace the title property</div>
             </div>
           </div>
         </td>
@@ -215,7 +229,7 @@ exports[`Tooltip demo renders placement demo correctly 1`] = `
             <div class="vs-tooltip-rel"><button type="button" class="vs-btn vs-btn-default">top<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button></div>
             <div data-transfer="false" class="vs-tooltip-popper" style="display: none;" appear="true" enteractiveclass="animated in" leaveactiveclass="animated fade">
               <div class="vs-tooltip-arrow"></div>
-              <div class="vs-tooltip-inner">This is a ToolTip for simple text hints. It can replace the title property</div>
+              <div class="vs-tooltip-inner" style="max-width: 250px;">This is a ToolTip for simple text hints. It can replace the title property</div>
             </div>
           </div>
         </td>
@@ -224,7 +238,7 @@ exports[`Tooltip demo renders placement demo correctly 1`] = `
             <div class="vs-tooltip-rel"><button type="button" class="vs-btn vs-btn-default">top-end<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button></div>
             <div data-transfer="false" class="vs-tooltip-popper" style="display: none;" appear="true" enteractiveclass="animated in" leaveactiveclass="animated fade">
               <div class="vs-tooltip-arrow"></div>
-              <div class="vs-tooltip-inner">This is a ToolTip for simple text hints. It can replace the title property</div>
+              <div class="vs-tooltip-inner" style="max-width: 250px;">This is a ToolTip for simple text hints. It can replace the title property</div>
             </div>
           </div>
         </td>
@@ -237,21 +251,21 @@ exports[`Tooltip demo renders placement demo correctly 1`] = `
     <div class="vs-tooltip-rel"><button type="button" class="vs-btn vs-btn-default">auto<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button></div>
     <div data-transfer="false" class="vs-tooltip-popper" style="display: none;" appear="true" enteractiveclass="animated in" leaveactiveclass="animated fade">
       <div class="vs-tooltip-arrow"></div>
-      <div class="vs-tooltip-inner">This is a ToolTip for simple text hints. It can replace the title property</div>
+      <div class="vs-tooltip-inner" style="max-width: 250px;">This is a ToolTip for simple text hints. It can replace the title property</div>
     </div>
   </div> <br>
   <div class="vs-tooltip">
     <div class="vs-tooltip-rel"><button type="button" class="vs-btn vs-btn-default">auto-start<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button></div>
     <div data-transfer="false" class="vs-tooltip-popper" style="display: none;" appear="true" enteractiveclass="animated in" leaveactiveclass="animated fade">
       <div class="vs-tooltip-arrow"></div>
-      <div class="vs-tooltip-inner">This is a ToolTip for simple text hints. It can replace the title property</div>
+      <div class="vs-tooltip-inner" style="max-width: 250px;">This is a ToolTip for simple text hints. It can replace the title property</div>
     </div>
   </div> <br>
   <div class="vs-tooltip">
     <div class="vs-tooltip-rel"><button type="button" class="vs-btn vs-btn-default">auto-end<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button></div>
     <div data-transfer="false" class="vs-tooltip-popper" style="display: none;" appear="true" enteractiveclass="animated in" leaveactiveclass="animated fade">
       <div class="vs-tooltip-arrow"></div>
-      <div class="vs-tooltip-inner">This is a ToolTip for simple text hints. It can replace the title property</div>
+      <div class="vs-tooltip-inner" style="max-width: 250px;">This is a ToolTip for simple text hints. It can replace the title property</div>
     </div>
   </div>
 </div>
@@ -328,35 +342,35 @@ exports[`Tooltip demo renders trigger demo correctly 1`] = `
     <div class="vs-tooltip-rel"><button type="button" class="vs-btn vs-btn-default">click<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button></div>
     <div data-transfer="false" class="vs-tooltip-popper" style="display: none;" appear="true" enteractiveclass="animated in" leaveactiveclass="animated fade">
       <div class="vs-tooltip-arrow"></div>
-      <div class="vs-tooltip-inner">This is a ToolTip for simple text hints. It can replace the title property</div>
+      <div class="vs-tooltip-inner" style="max-width: 250px;">This is a ToolTip for simple text hints. It can replace the title property</div>
     </div>
   </div>
   <div class="vs-tooltip">
     <div class="vs-tooltip-rel"><button type="button" class="vs-btn vs-btn-default">right-click<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button></div>
     <div data-transfer="false" class="vs-tooltip-popper" style="display: none;" appear="true" enteractiveclass="animated in" leaveactiveclass="animated fade">
       <div class="vs-tooltip-arrow"></div>
-      <div class="vs-tooltip-inner">This is a ToolTip for simple text hints. It can replace the title property</div>
+      <div class="vs-tooltip-inner" style="max-width: 250px;">This is a ToolTip for simple text hints. It can replace the title property</div>
     </div>
   </div>
   <div class="vs-tooltip">
     <div class="vs-tooltip-rel"><button type="button" class="vs-btn vs-btn-default">hover<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button></div>
     <div data-transfer="false" class="vs-tooltip-popper" style="display: none;" appear="true" enteractiveclass="animated in" leaveactiveclass="animated fade">
       <div class="vs-tooltip-arrow"></div>
-      <div class="vs-tooltip-inner">This is a ToolTip for simple text hints. It can replace the title property</div>
+      <div class="vs-tooltip-inner" style="max-width: 250px;">This is a ToolTip for simple text hints. It can replace the title property</div>
     </div>
   </div>
   <div class="vs-tooltip">
     <div class="vs-tooltip-rel"><button type="button" class="vs-btn vs-btn-default">focus<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button></div>
     <div data-transfer="false" class="vs-tooltip-popper" style="display: none;" appear="true" enteractiveclass="animated in" leaveactiveclass="animated fade">
       <div class="vs-tooltip-arrow"></div>
-      <div class="vs-tooltip-inner">This is a ToolTip for simple text hints. It can replace the title property</div>
+      <div class="vs-tooltip-inner" style="max-width: 250px;">This is a ToolTip for simple text hints. It can replace the title property</div>
     </div>
   </div>
   <div class="vs-tooltip">
     <div class="vs-tooltip-rel"><button type="button" class="vs-btn vs-btn-default">active<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button></div>
     <div data-transfer="false" class="vs-tooltip-popper" style="display: none;" appear="true" enteractiveclass="animated in" leaveactiveclass="animated fade">
       <div class="vs-tooltip-arrow"></div>
-      <div class="vs-tooltip-inner">This is a ToolTip for simple text hints. It can replace the title property</div>
+      <div class="vs-tooltip-inner" style="max-width: 250px;">This is a ToolTip for simple text hints. It can replace the title property</div>
     </div>
   </div>
 </div>
