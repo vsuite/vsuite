@@ -51,7 +51,7 @@ function createAlertInstance() {
   alertInstance = {
     component: notification,
     notice(data) {
-      notification.add(data || {});
+      return notification.add(data || {});
     },
     remove(key) {
       notification.remove(key);
@@ -64,58 +64,101 @@ function createAlertInstance() {
   return alertInstance;
 }
 
-function notice(content, duration = DEFAULT_DURATION, onClose, type) {
+function notice(options) {
+  const { content, duration = DEFAULT_DURATION, onClose, type, ...rest } =
+    options || {};
   let instance = createAlertInstance();
+  let key = null;
 
-  instance.notice({
+  key = instance.notice({
     content: [h => <Icon icon={STATUS_ICON_NAMES[type]} />, content],
     duration,
     type,
-    closable: true,
     onClose,
+    ...rest,
   });
+
+  return { remove: () => instance.remove(key) };
+}
+
+function getOptions(content, duration, onClose) {
+  let options = {};
+
+  if (_.isObject(onClose)) {
+    options = onClose;
+    onClose = undefined;
+  }
+
+  if (_.isObject(duration)) {
+    options = duration;
+    duration = undefined;
+    onClose = undefined;
+  }
+
+  if (_.isObject(content)) {
+    options = content;
+    content = undefined;
+    duration = undefined;
+    onClose = undefined;
+  }
+
+  if (_.isFunction(duration)) {
+    onClose = duration;
+    duration = undefined;
+  }
+
+  if (content !== undefined) options.content = content;
+  if (duration !== undefined) options.duration = duration;
+  if (onClose !== undefined) options.onClose = onClose;
+
+  return options;
 }
 
 export default {
-  success(content, duration, onClose) {
-    if (_.isFunction(duration)) {
-      onClose = duration;
-      duration = undefined;
-    }
+  open(...args) {
+    const options = getOptions(...args);
 
-    notice(content, duration, onClose, ALERT_TYPES.SUCCESS);
+    return notice(options);
   },
-  error(content, duration, onClose) {
-    if (_.isFunction(duration)) {
-      onClose = duration;
-      duration = undefined;
-    }
+  loading(...args) {
+    const options = getOptions(...args);
 
-    notice(content, duration, onClose, ALERT_TYPES.ERROR);
+    return notice(options);
   },
-  info(content, duration, onClose) {
-    if (_.isFunction(duration)) {
-      onClose = duration;
-      duration = undefined;
-    }
+  success(...args) {
+    const options = getOptions(...args);
 
-    notice(content, duration, onClose, ALERT_TYPES.INFO);
+    options.type = ALERT_TYPES.SUCCESS;
+
+    return notice(options);
   },
-  warning(content, duration, onClose) {
-    if (_.isFunction(duration)) {
-      onClose = duration;
-      duration = undefined;
-    }
+  info(...args) {
+    const options = getOptions(...args);
 
-    notice(content, duration, onClose, ALERT_TYPES.WARNING);
+    options.type = ALERT_TYPES.INFO;
+
+    return notice(options);
   },
-  warn(content, duration, onClose) {
-    if (_.isFunction(duration)) {
-      onClose = duration;
-      duration = undefined;
-    }
+  warning(...args) {
+    const options = getOptions(...args);
 
-    notice(content, duration, onClose, ALERT_TYPES.WARNING);
+    options.type = ALERT_TYPES.WARNING;
+
+    return notice(options);
+  },
+  warn(...args) {
+    const options = getOptions(...args);
+
+    options.type = ALERT_TYPES.WARNING;
+
+    return notice(options);
+  },
+  error(...args) {
+    const options = getOptions(...args);
+
+    options.type = ALERT_TYPES.ERROR;
+
+    return notice(options);
   },
   config(options) {
     if (options.top) {

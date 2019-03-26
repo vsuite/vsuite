@@ -1,37 +1,44 @@
 import { VPopper } from '../popper';
 import { RenderX } from '../utils';
 
-export declare class Tooltip extends VPopper {
+export declare class Popover extends VPopper {
   /**
-   * content of tooltip
+   * title of popover
    *
    * @default: ''
    **/
   title: RenderX;
 
   /**
-   * inline mode of tooltip
+   * content of popover
+   *
+   * @default: ''
+   **/
+  content: RenderX;
+
+  /**
+   * inline mode of popover
    *
    * @default: false
    **/
   inline: boolean;
 
   /**
-   * white theme of tooltip
+   * without padding
    *
    * @default: false
    **/
-  white: boolean;
+  full: boolean;
 
   /**
-   * inner width of tooltip
+   * inner width of popover
    *
    * @default: 250
    **/
   maxWidth: number;
 
   /**
-   * inner style of tooltip
+   * inner style of popover
    *
    * @default: {}
    **/

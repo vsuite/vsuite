@@ -2,6 +2,8 @@ import Button from 'components/Button';
 import Icon from 'components/Icon';
 import Tooltip from 'components/Tooltip';
 import Popover from 'components/Popover';
+import Alert from 'components/Alert';
+import Notification from 'components/Notification';
 
 // import { Fade, Collapse } from 'components/Animation';
 // import Divider from 'components/Divider';
@@ -50,9 +52,9 @@ export default {
 
     // vsuite injected instance methods
     // Vue.prototype.$Loading = LoadingBar;
-    // Vue.prototype.$Alert = Alert;
-    // Vue.prototype.$Notification = Notification;
-    // Vue.prototype.$Notice = Notification;
+    Vue.prototype.$Alert = Alert;
+    Vue.prototype.$Notification = Notification;
+    Vue.prototype.$Notice = Notification;
     // Vue.prototype.$Modal = Modal;
   },
 };

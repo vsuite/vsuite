@@ -81,7 +81,11 @@ export default {
 
       if (!this.notices.some(n => n.key === notice.key)) {
         this.notices.push(notice);
+
+        return notice.key;
       }
+
+      return null;
     },
 
     remove(key) {
