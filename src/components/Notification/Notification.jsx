@@ -1,5 +1,5 @@
 import VueTypes from 'vue-types';
-import prefix, { defaultClassPrefix } from 'utils/prefix';
+import prefix, { globalKey, defaultClassPrefix } from 'utils/prefix';
 import renderX from 'utils/render';
 
 import Notice from './Notice.jsx';
@@ -7,7 +7,7 @@ import Notice from './Notice.jsx';
 const CLASS_PREFIX = 'notification';
 const getUid = () => {
   id += 1;
-  return `vs-notification-${Date.now()}-${id}`;
+  return `${globalKey}notification-${Date.now()}-${id}`;
 };
 let id = 0;
 

@@ -12,7 +12,12 @@ export default {
     content: VueTypes.string, // slot
     closable: VueTypes.bool.def(false),
     type: VueTypes.oneOf(STATUS),
+
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
+
+    // slot-content
+
+    // @close
   },
 
   computed: {

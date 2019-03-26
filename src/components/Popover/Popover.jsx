@@ -1,6 +1,7 @@
 import VueTypes from 'vue-types';
 import popperMixin from 'mixins/popper';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
+import renderX, { RenderX } from 'utils/render';
 
 const CLASS_PREFIX = 'popover';
 
@@ -20,8 +21,8 @@ export default {
       ...popperMixin.props.trigger,
       default: 'click',
     },
-    title: VueTypes.string,
-    content: VueTypes.string,
+    title: RenderX,
+    content: RenderX,
     inline: VueTypes.bool.def(false),
     full: VueTypes.bool.def(false),
     maxWidth: VueTypes.number.def(0),
@@ -115,10 +116,12 @@ export default {
             <div {...innerData}>
               {this.$slots.title ||
                 (this.title ? (
-                  <h3 class={this._addPrefix('title')}>{this.title}</h3>
+                  <h3 class={this._addPrefix('title')}>
+                    {renderX(h, this.title)}
+                  </h3>
                 ) : null)}
               <div class={this._addPrefix('content')}>
-                {this.$slots.content || this.content}
+                {this.$slots.content || renderX(h, this.content)}
               </div>
             </div>
           </div>

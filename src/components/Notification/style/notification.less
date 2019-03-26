@@ -1,4 +1,4 @@
-@import 'common';
+@import '~styles/common';
 @import 'mixins/notification';
 
 //
@@ -156,17 +156,17 @@
 // Generate contextual modifier classes for colorizing the alert.
 
 .@{notification-ns}-success {
-  .notifocation-variant(@notify-success-icon-color);
+  .notification-variant(@notify-success-icon-color);
 }
 
 .@{notification-ns}-info {
-  .notifocation-variant(@notify-info-icon-color);
+  .notification-variant(@notify-info-icon-color);
 }
 
 .@{notification-ns}-warning {
-  .notifocation-variant(@notify-warning-icon-color);
+  .notification-variant(@notify-warning-icon-color);
 }
 
 .@{notification-ns}-error {
-  .notifocation-variant(@notify-error-icon-color);
+  .notification-variant(@notify-error-icon-color);
 }

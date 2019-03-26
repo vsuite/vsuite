@@ -1,6 +1,7 @@
 import VueTypes from 'vue-types';
 import popperMixin from 'mixins/popper';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
+import renderX, { RenderX } from 'utils/render';
 
 const CLASS_PREFIX = 'tooltip';
 
@@ -15,7 +16,7 @@ export default {
   mixins: [popperMixin],
 
   props: {
-    title: VueTypes.string,
+    title: RenderX,
     inline: VueTypes.bool.def(false),
     white: VueTypes.bool.def(false),
     maxWidth: VueTypes.number.def(250),
@@ -105,7 +106,9 @@ export default {
         >
           <div {...popperData}>
             <div {...arrowData} />
-            <div {...innerData}>{this.title || this.$slots.title}</div>
+            <div {...innerData}>
+              {renderX(h, this.title) || this.$slots.title}
+            </div>
           </div>
         </transition>
       </div>
