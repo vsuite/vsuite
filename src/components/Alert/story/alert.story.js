@@ -10,6 +10,7 @@ stories.add('default', () => ({
     return (
       <Demo title="Default">
         <Button.Toolbar>
+          <Button onClick={() => this._handleOpen('open')}> Default </Button>
           <Button onClick={() => this._handleOpen('info')}> Info </Button>
           <Button onClick={() => this._handleOpen('success')}> Success </Button>
           <Button onClick={() => this._handleOpen('warning')}> Warning </Button>
@@ -53,7 +54,7 @@ stories.add('duration', () => ({
       <Demo title="Closable">
         <Button.Toolbar>
           <Button onClick={() => this._handleOpen(10000)}>duration 10s</Button>
-          <Button onClick={() => this._handleOpen(0)}>no limit</Button>
+          <Button onClick={() => this._handleOpenNoLimit()}>no limit</Button>
         </Button.Toolbar>
       </Demo>
     );
@@ -61,9 +62,19 @@ stories.add('duration', () => ({
 
   methods: {
     _handleOpen(duration) {
-      this.$Alert.success('This is message information.', duration, {
-        closable: true,
-      });
+      this.$Alert.success(
+        `This is message will be closed after ${duration / 1000}s.`,
+        duration,
+        { closable: true }
+      );
+    },
+
+    _handleOpenNoLimit() {
+      this.$Alert.open(
+        'This is message will not be closed  automatically.',
+        0,
+        { closable: true }
+      );
     },
   },
 }));
