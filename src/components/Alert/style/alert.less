@@ -9,6 +9,8 @@
 // -------------------------
 
 .@{notification-ns} {
+  display: flex;
+  flex-direction: column;
   position: fixed;
   z-index: @zindex-notification;
   // Make sure the mouse can penetrate through the gap area.
@@ -29,6 +31,10 @@
   // Center content
   &&-alert {
     left: 50%;
+  }
+
+  &&-bottom {
+    flex-flow: column-reverse;
   }
 
   // Alert wrapper

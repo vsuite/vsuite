@@ -1,7 +1,8 @@
 import VueTypes from 'vue-types';
+import { getWidth, addStyle } from 'dom-lib';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
 import { SIZES } from 'utils/constant';
-import { getWidth, addStyle } from 'shares/dom';
+import renderX, { RenderX } from 'utils/render';
 import { isIE11, isEdge } from 'shares/browser';
 
 const CLASS_PREFIX = 'loader';
@@ -15,8 +16,9 @@ export default {
     center: VueTypes.bool.def(false),
     inverse: VueTypes.bool.def(false),
     vertical: VueTypes.bool.def(false),
-    speed: VueTypes.oneOf(['fast', 'normal', 'slow']).def('normal'),
-    content: VueTypes.string,
+    speed: VueTypes.oneOf(['slow', 'normal', 'fast']).def('normal'),
+    content: RenderX,
+
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
   },
 
@@ -46,13 +48,13 @@ export default {
       const width = getWidth(this.$refs.loader);
 
       addStyle(this.$refs.loader, {
-        display: isIE11 || isEdge ? 'block' : 'table',
+        display: isIE11() || isEdge() ? 'block' : 'table',
         width: `${width}px`,
       });
     }
   },
 
-  render() {
+  render(h) {
     const loaderData = {
       class: this.classes,
       attrs: this.$attrs,
@@ -66,7 +68,7 @@ export default {
           <span class={this._addPrefix('spin')} />
           {this.hasContent && (
             <span class={this._addPrefix('content')}>
-              {this.content || this.$slots.content}
+              {renderX(h, this.content) || this.$slots.content}
             </span>
           )}
         </div>

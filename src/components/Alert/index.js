@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import _ from 'lodash';
+import Loader from 'components/Loader';
 import Icon from 'components/Icon';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
 import { STATUS_ICON_NAMES } from 'utils/constant';
@@ -7,6 +8,10 @@ import { STATUS_ICON_NAMES } from 'utils/constant';
 import Notification from '../Notification/Notification.jsx';
 
 const CLASS_PREFIX = defaultClassPrefix('notification');
+const PLACEMENT_TYPES = {
+  TOP: 'top',
+  BOTTOM: 'bottom',
+};
 const ALERT_TYPES = {
   SUCCESS: 'success',
   ERROR: 'error',
@@ -14,9 +19,11 @@ const ALERT_TYPES = {
   WARNING: 'warning',
 };
 
-let alertInstance;
+let alertStore = {};
 let DEFAULT_DURATION = 2000;
 let DEFAULT_TOP = 5;
+let DEFAULT_BOTTOM = 5;
+let DEFAULT_PLACEMENT = PLACEMENT_TYPES.TOP;
 
 function addPrefix(cls) {
   return prefix(CLASS_PREFIX, cls);
@@ -28,14 +35,39 @@ function formatStyleVal(val) {
   return val;
 }
 
-function createAlertInstance() {
-  if (alertInstance) return alertInstance;
+function getPlacementStyle(config) {
+  let style = {};
+  let className = '';
+  const placement = _.camelCase(config.placement || DEFAULT_PLACEMENT);
+  const top = config.top || DEFAULT_TOP;
+  const bottom = config.bottom || DEFAULT_BOTTOM;
+
+  if (placement === PLACEMENT_TYPES.BOTTOM) {
+    style = {
+      bottom: formatStyleVal(bottom),
+    };
+    className = addPrefix('bottom');
+  } else {
+    style = {
+      top: formatStyleVal(top),
+    };
+    className = addPrefix('top');
+  }
+
+  return { style, className };
+}
+
+function createAlertInstance(config) {
+  const placement = _.camelCase(config.placement || DEFAULT_PLACEMENT);
+
+  if (alertStore[placement]) return alertStore[placement];
 
   const wrapper = new Vue({
     render: h => {
+      const { style, className } = getPlacementStyle(config);
       const notificationData = {
-        class: addPrefix('alert'),
-        style: { top: formatStyleVal(DEFAULT_TOP) },
+        class: [addPrefix('alert'), className],
+        style,
         props: { classPrefix: CLASS_PREFIX },
       };
 
@@ -48,7 +80,7 @@ function createAlertInstance() {
 
   const notification = wrapper.$children[0];
 
-  alertInstance = {
+  alertStore[placement] = {
     component: notification,
     notice(data) {
       return notification.add(data || {});
@@ -61,22 +93,14 @@ function createAlertInstance() {
     },
   };
 
-  return alertInstance;
+  return alertStore[placement];
 }
 
 function notice(options) {
-  const { content, duration = DEFAULT_DURATION, onClose, type, ...rest } =
-    options || {};
-  let instance = createAlertInstance();
+  let instance = createAlertInstance(options);
   let key = null;
 
-  key = instance.notice({
-    content: [h => <Icon icon={STATUS_ICON_NAMES[type]} />, content],
-    duration,
-    type,
-    onClose,
-    ...rest,
-  });
+  key = instance.notice(_.merge({ duration: DEFAULT_DURATION }, options || {}));
 
   return { remove: () => instance.remove(key) };
 }
@@ -84,18 +108,18 @@ function notice(options) {
 function getOptions(content, duration, onClose) {
   let options = {};
 
-  if (_.isObject(onClose)) {
+  if (_.isPlainObject(onClose)) {
     options = onClose;
     onClose = undefined;
   }
 
-  if (_.isObject(duration)) {
+  if (_.isPlainObject(duration)) {
     options = duration;
     duration = undefined;
     onClose = undefined;
   }
 
-  if (_.isObject(content)) {
+  if (_.isPlainObject(content)) {
     options = content;
     content = undefined;
     duration = undefined;
@@ -114,66 +138,132 @@ function getOptions(content, duration, onClose) {
   return options;
 }
 
+function decoratorContent(options, decorator) {
+  if (!options.content || !decorator) return options;
+  if (_.isArray(options.content)) options.content.unshift(decorator);
+  else options.content = [decorator, options.content];
+
+  return options;
+}
+
 export default {
   open(...args) {
-    const options = getOptions(...args);
-
-    return notice(options);
+    return notice(getOptions(...args));
   },
+
   loading(...args) {
-    const options = getOptions(...args);
-
-    return notice(options);
+    return notice(
+      decoratorContent(getOptions(...args), h => (
+        <Loader size="xs" style={{ position: 'absolute', left: '20px' }} />
+      ))
+    );
   },
+
   success(...args) {
     const options = getOptions(...args);
 
     options.type = ALERT_TYPES.SUCCESS;
 
-    return notice(options);
+    return notice(
+      decoratorContent(options, h => (
+        <Icon icon={STATUS_ICON_NAMES[options.type]} />
+      ))
+    );
   },
+
   info(...args) {
     const options = getOptions(...args);
 
     options.type = ALERT_TYPES.INFO;
 
-    return notice(options);
+    return notice(
+      decoratorContent(options, h => (
+        <Icon icon={STATUS_ICON_NAMES[options.type]} />
+      ))
+    );
   },
+
   warning(...args) {
     const options = getOptions(...args);
 
     options.type = ALERT_TYPES.WARNING;
 
-    return notice(options);
+    return notice(
+      decoratorContent(options, h => (
+        <Icon icon={STATUS_ICON_NAMES[options.type]} />
+      ))
+    );
   },
+
   warn(...args) {
     const options = getOptions(...args);
 
     options.type = ALERT_TYPES.WARNING;
 
-    return notice(options);
+    return notice(
+      decoratorContent(options, h => (
+        <Icon icon={STATUS_ICON_NAMES[options.type]} />
+      ))
+    );
   },
+
   error(...args) {
     const options = getOptions(...args);
 
     options.type = ALERT_TYPES.ERROR;
 
-    return notice(options);
+    return notice(
+      decoratorContent(options, h => (
+        <Icon icon={STATUS_ICON_NAMES[options.type]} />
+      ))
+    );
   },
+
+  remove(key, placement) {
+    if (placement) {
+      placement = _.camelCase(placement || '');
+    }
+
+    if (placement) {
+      alertStore[placement] && alertStore[placement].remove(key);
+
+      return;
+    }
+
+    Object.keys(alertStore).map(placement => {
+      alertStore[placement] && alertStore[placement].remove(key);
+    });
+  },
+
   config(options) {
-    if (options.top) {
+    if (options.top !== undefined) {
       DEFAULT_TOP = options.top;
     }
 
-    if (options.duration) {
+    if (options.bottom !== undefined) {
+      DEFAULT_BOTTOM = options.bottom;
+    }
+
+    if (options.placement !== undefined) {
+      DEFAULT_PLACEMENT = options.placement;
+    }
+
+    if (options.duration !== undefined) {
       DEFAULT_DURATION = options.duration;
     }
   },
-  destroy() {
-    if (!alertInstance) return;
 
-    alertInstance.destroy();
+  destroy(placement) {
+    if (placement && alertStore[placement]) {
+      alertStore[placement].destroy();
+      alertStore[placement] = null;
 
-    alertInstance = null;
+      return;
+    }
+
+    Object.keys(alertStore).map(placement => {
+      alertStore[placement] && alertStore[placement].destroy();
+      alertStore[placement] = null;
+    });
   },
 };

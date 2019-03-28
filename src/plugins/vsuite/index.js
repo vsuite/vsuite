@@ -5,6 +5,8 @@ import Popover from 'components/Popover';
 import Alert from 'components/Alert';
 import Notification from 'components/Notification';
 
+import Loader from 'components/Loader';
+
 // import { Fade, Collapse } from 'components/Animation';
 // import Divider from 'components/Divider';
 // import Loader from 'components/Loader';
@@ -25,8 +27,9 @@ export const components = {
   Tooltip,
   Popover,
 
+  Loader,
+
   // Divider,
-  // Loader,
   // Modal,
   // Pagination,
   // Panel,

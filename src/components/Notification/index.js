@@ -39,7 +39,7 @@ function formatStyleVal(val) {
 
 function getPlacementStyle(config) {
   let style = {};
-  let className;
+  let className = '';
   const placement = _.camelCase(config.placement || DEFAULT_PLACEMENT);
   const top = config.top || DEFAULT_TOP;
   const bottom = config.bottom || DEFAULT_BOTTOM;
@@ -161,31 +161,37 @@ export default {
   open(config) {
     notice(config);
   },
+
   success(config) {
     config.type = NOTIFICATION_TYPES.SUCCESS;
 
     notice(config);
   },
+
   error(config) {
     config.type = NOTIFICATION_TYPES.ERROR;
 
     notice(config);
   },
+
   info(config) {
     config.type = NOTIFICATION_TYPES.INFO;
 
     notice(config);
   },
+
   warning(config) {
     config.type = NOTIFICATION_TYPES.WARNING;
 
     notice(config);
   },
+
   warn(config) {
     config.type = NOTIFICATION_TYPES.WARNING;
 
     notice(config);
   },
+
   remove(key, placement) {
     if (placement) {
       placement = _.camelCase(placement || DEFAULT_PLACEMENT);
@@ -195,6 +201,7 @@ export default {
       notificationStore[placement].remove(key);
     }
   },
+
   config(options) {
     if (options.top !== undefined) {
       DEFAULT_TOP = options.top;
@@ -208,11 +215,18 @@ export default {
       DEFAULT_DURATION = options.duration;
     }
   },
+
   destroy(placement) {
-    if (!notificationStore[placement]) return;
+    if (placement && notificationStore[placement]) {
+      notificationStore[placement].destroy();
+      notificationStore[placement] = null;
 
-    notificationStore[placement].destroy();
+      return;
+    }
 
-    notificationStore[placement] = null;
+    Object.keys(notificationStore).map(placement => {
+      notificationStore[placement] && notificationStore[placement].destroy();
+      notificationStore[placement] = null;
+    });
   },
 };

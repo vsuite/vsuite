@@ -28,7 +28,6 @@ export default {
     return (
       <transition-group
         class={this.classPrefix}
-        style={{ top: '5px' }}
         tag="div"
         type="animation"
         enterActiveClass={this._addPrefix('fade-entering')}
