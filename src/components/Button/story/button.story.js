@@ -12,7 +12,7 @@ const stories = storiesOf('General|Button', module);
 stories.add('basic', () => ({
   render() {
     return (
-      <Demo title="Default">
+      <Demo title="Basic">
         <Button>Default</Button>
       </Demo>
     );
@@ -40,7 +40,7 @@ stories.add('appearance', () => ({
 stories.add('size', () => ({
   render() {
     return (
-      <Demo title="Default">
+      <Demo title="Size">
         <ButtonToolbar>
           <Button size="lg">Large</Button>
           <Button size="md">Medium</Button>

@@ -5,10 +5,10 @@ import Demo from 'stories/demo';
 
 const stories = storiesOf('General|Alert', module);
 
-stories.add('default', () => ({
+stories.add('basic', () => ({
   render() {
     return (
-      <Demo title="Default">
+      <Demo title="Basic">
         <Button.Toolbar>
           <Button onClick={() => this._handleOpen('open')}> Default </Button>
           <Button onClick={() => this._handleOpen('info')}> Info </Button>

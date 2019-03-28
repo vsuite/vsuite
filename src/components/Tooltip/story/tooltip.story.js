@@ -119,7 +119,7 @@ stories.add('theme', () => ({
     ];
 
     return (
-      <Demo title="Default">
+      <Demo title="Theme">
         {placements.map(placement => (
           <Tooltip
             inline
