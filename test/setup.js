@@ -1,7 +1,10 @@
-import VSuite from '@/index';
 import Vue from 'vue';
+import VSuite from '@/index';
+import { TransitionStub, TransitionGroupStub } from '@vue/test-utils';
 
 Vue.use(VSuite);
+Vue.component('transition', TransitionStub);
+Vue.component('transition-group', TransitionGroupStub);
 
 jest.mock('popper.js', () => {
   const PopperJS = jest.requireActual('popper.js');
