@@ -3,9 +3,18 @@ English | [中文版](README-CN.md)
 ![logo](brand/logo-lang.png)
 
 <p align="center">
-  <a href="https://github.com/vsuite/vsuite"><img src="https://img.shields.io/github/release/blackcater/vsuite.svg" alt="Github Release"/></a>
-  <a href="https://github.com/vsuite/vsuite"><img src="https://img.shields.io/npm/dm/vsuite.svg" alt="Npm Download Monthly"/></a>
-  <a href="https://github.com/vsuite/vsuite"><img src="https://img.shields.io/github/license/vsuite/vsuite.svg" alt="License"/></a>
+  <a href="https://github.com/vsuite/vsuite">
+    <img src="https://img.shields.io/github/release/blackcater/vsuite.svg" alt="Github Release"/>
+  </a>
+  <a href="https://github.com/vsuite/vsuite">
+    <img src="https://img.shields.io/npm/dm/vsuite.svg" alt="Npm Download Monthly"/>
+  </a>
+  <a href="https://github.com/vsuite/vsuite">
+    <img src="https://img.shields.io/github/license/vsuite/vsuite.svg" alt="License"/>
+  </a>
+  <a href="https://codecov.io/gh/vsuite/vsuite/">
+    <img src="https://img.shields.io/codecov/c/github/vsuite/vsuite/dev.svg?style=flat-square" alt="Codecov Coverage"/>
+  </a>
 </p>
 
 <p align="center">VSUITE (Vue Suite) is a set of vue component libraries for enterprise system products.</p>

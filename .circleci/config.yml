@@ -1,0 +1,43 @@
+version: 2.1
+
+jobs:
+  test:
+    working_directory: /tmp
+    docker:
+      - image: node:latest
+    environment:
+      CODECOV_TOKEN: 08a7903d-3934-42a1-86f9-504406067659
+      CC_TEST_REPORTER_ID: 476514141e6cc8b758dad27a5e89f8941b28c2a6856f94a3eaee99247120167a
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: yarn
+      - run:
+          name: Format code
+          command: yarn prettier
+      - run:
+          name: Lint code
+          command: yarn lint
+      - run:
+          name: Run test
+          command: yarn test-coverage
+      - run:
+          name: Upload report to Codecov
+          command: codecov
+      - run:
+          name: Setup Code Climate test-reporter
+          command: |
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+            chmod +x ./cc-test-reporter
+      - run:
+          name: Upload report to CodeClimate
+          command: |
+            ./cc-test-reporter format-coverage -t lcov -o coverage/codeclimate.json coverage/lcov.info
+            ./cc-test-reporter upload-coverage -i coverage/codeclimate.json
+
+workflows:
+  version: 2
+  dev-deploy:
+    jobs:
+      - test

@@ -1,0 +1,12 @@
+version: '2'
+exclude_patterns:
+  - '.circleci/'
+  - '.github/'
+  - '.storybook/'
+  - '.vscode/'
+  - 'docs/'
+  - 'public/'
+  - 'src/**/doc/'
+  - 'src/**/story/'
+  - 'src/**/stories/'
+  - 'src/**/__tests__/'
