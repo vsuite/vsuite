@@ -20,13 +20,10 @@ jobs:
           command: yarn lint
       - run:
           name: Run test
-          command: yarn test-coverage
+          command: yarn test-coverage | yarn coveralls
       - run:
           name: Upload report to Codecov
           command: yarn codecov
-      - run:
-          name: Upload report to Coveralls
-          command: yarn coveralls
       - run:
           name: Setup Code Climate test-reporter
           command: |

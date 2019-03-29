@@ -12,8 +12,8 @@ English | [中文版](README-CN.md)
   <a href="https://github.com/vsuite/vsuite">
     <img src="https://img.shields.io/github/license/vsuite/vsuite.svg" alt="License"/>
   </a>
-  <a href="https://codecov.io/gh/vsuite/vsuite/">
-    <img src="https://img.shields.io/codecov/c/github/vsuite/vsuite/dev.svg?style=flat-square" alt="Codecov Coverage"/>
+  <a href='https://coveralls.io/github/vsuite/vsuite?branch=dev'>
+    <img src='https://coveralls.io/repos/github/vsuite/vsuite/badge.svg?branch=dev' alt='Coverage Status' />
   </a>
 </p>
 
