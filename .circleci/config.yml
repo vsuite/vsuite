@@ -25,6 +25,9 @@ jobs:
           name: Upload report to Codecov
           command: yarn codecov
       - run:
+          name: Upload report to Coveralls
+          command: yarn coveralls
+      - run:
           name: Setup Code Climate test-reporter
           command: |
             curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
