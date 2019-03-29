@@ -2,10 +2,10 @@
 
 用于页面中操作交互后的全局提示信息，悬浮在页面顶部的中间。
 
-* `Alert.info` 信息提醒。
-* `Alert.success` 成功信息提醒。
-* `Alert.warning` 警告信息提醒。
-* `Alert.error` 错误信息提醒。
+- `Alert.info` 信息提醒。
+- `Alert.success` 成功信息提醒。
+- `Alert.warning` 警告信息提醒。
+- `Alert.error` 错误信息提醒。
 
 ## 获取组件
 
@@ -71,13 +71,13 @@ type Options = {
 };
 ```
 
-* top - 距离页面顶部的距离 (单位 px, 默认:5)
-* duration - Alert 框持续时间 (默认:2000，单位: 毫秒)
-* getContainer - Alert 框的父级容器
+- top - 距离页面顶部的距离 (单位 px, 默认:5)
+- duration - Alert 框持续时间 (默认:2000，单位: 毫秒)
+- getContainer - Alert 框的父级容器
 
 ## 相关组件
 
-* [`<Popover>`](./popover) 弹出框
-* [`<Tooltip>`](./tooltip) 文字提示
-* [`<Message>`](./message) 消息框
-* [`<Notification>`](./notification) 通知框
+- [`<Popover>`](./popover) 弹出框
+- [`<Tooltip>`](./tooltip) 文字提示
+- [`<Message>`](./message) 消息框
+- [`<Notification>`](./notification) 通知框

@@ -2,8 +2,8 @@
 
 用于辅助的文字提示，可代替 HTML 元素默认的 title 属性。
 
-* `<Tooltip>` 文字提示。
-* `<Whisper>` 监听触发器，包裹被监听对象的外面，触发事件后通知到 `<Tooltip>` 展示出来。
+- `<Tooltip>` 文字提示。
+- `<Whisper>` 监听触发器，包裹被监听对象的外面，触发事件后通知到 `<Tooltip>` 展示出来。
 
 ## 获取组件
 
@@ -39,14 +39,13 @@ import { Tooltip, Whisper } from 'rsuite';
 | onClick    | () => void                                                       | 点击的回调函数                  |     |
 | onFocus    | () => void                                                       | 获取焦点的回调函数              |     |
 | onMouseOut | () => void                                                       | 鼠标离开的回调函数              |     |
-| placement  | enum: [PlacementAll](#types) `('right')`                           | 显示位置                        |     |
+| placement  | enum: [PlacementAll](#types) `('right')`                         | 显示位置                        |     |
 | speaker \* | union: Tooltip, Popover                                          | 展示的元素                      |     |
 | trigger    | union: 'click', 'hover', 'focus', 'active' `(['hover','focus'])` | 触发事件,可以通过数组配置多事件 |     |
 
-
 ## 相关组件
 
-* [`<Popover>`](./popover) 弹出框
-* [`<Message>`](./message) 消息框
-* [`<Alert`>](./alert) 提醒框
-* [`<Notification>`](./notification) 通知框
+- [`<Popover>`](./popover) 弹出框
+- [`<Message>`](./message) 消息框
+- [`<Alert`>](./alert) 提醒框
+- [`<Notification>`](./notification) 通知框

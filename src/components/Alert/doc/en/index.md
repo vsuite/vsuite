@@ -2,10 +2,10 @@
 
 The global prompt information used after the interaction in the page is suspended in the middle of the top of the page.
 
-* `Alert.info` Information reminder。
-* `Alert.success` Success information reminder。
-* `Alert.warning` Warning message。
-* `Alert.error` Error message。
+- `Alert.info` Information reminder。
+- `Alert.success` Success information reminder。
+- `Alert.warning` Warning message。
+- `Alert.error` Error message。
 
 ## Usage
 
@@ -71,13 +71,13 @@ type Options = {
 };
 ```
 
-* top - Distance from the top of the page (unit:px, default:5)
-* duration - Alert duration (default:2000，unit: milliseconds)
-* getContainer - The parent container of Alert
+- top - Distance from the top of the page (unit:px, default:5)
+- duration - Alert duration (default:2000，unit: milliseconds)
+- getContainer - The parent container of Alert
 
 ## Related components
 
-* [`<Popover>`](./popover)
-* [`<Tooltip>`](./tooltip)
-* [`<Message>`](./message)
-* [`<Notification>`](./notification)
+- [`<Popover>`](./popover)
+- [`<Tooltip>`](./tooltip)
+- [`<Message>`](./message)
+- [`<Notification>`](./notification)

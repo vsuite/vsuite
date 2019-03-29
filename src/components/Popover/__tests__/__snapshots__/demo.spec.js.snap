@@ -24,7 +24,7 @@ exports[`Popover demo renders basic demo correctly 1`] = `
     <div class="vs-popover-inner" style="max-width: none;">
       <h3 class="vs-popover-title">This is a tooltip.</h3>
       <div class="vs-popover-content">
-        <p>This is a default Popover </p>
+        <p>This is a default Popover</p>
         <p>Content</p>
       </div>
     </div>
