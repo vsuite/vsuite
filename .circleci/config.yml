@@ -23,7 +23,7 @@ jobs:
           command: yarn test-coverage
       - run:
           name: Upload report to Codecov
-          command: codecov
+          command: yarn codecov
       - run:
           name: Setup Code Climate test-reporter
           command: |
