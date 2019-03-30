@@ -1,3 +1,6 @@
-type RenderType = string | Object | Function;
+import { VNode, CreateElement } from 'vue';
 
-export type RenderX = string | Object | Function | RenderType[];
+type RenderFunc = (h: CreateElement) => VNode | VNode[];
+type RenderType = string | VNode | RenderFunc;
+
+export type RenderX = string | VNode | RenderFunc | RenderType[];

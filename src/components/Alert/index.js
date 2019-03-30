@@ -57,6 +57,47 @@ function getPlacementStyle(config) {
   return { style, className };
 }
 
+function getOptions(content, duration, onClose) {
+  let options = {};
+
+  if (_.isPlainObject(onClose)) {
+    options = onClose;
+    onClose = undefined;
+  }
+
+  if (_.isPlainObject(duration)) {
+    options = duration;
+    duration = undefined;
+    onClose = undefined;
+  }
+
+  if (_.isPlainObject(content)) {
+    options = content;
+    content = undefined;
+    duration = undefined;
+    onClose = undefined;
+  }
+
+  if (_.isFunction(duration)) {
+    onClose = duration;
+    duration = undefined;
+  }
+
+  if (content !== undefined) options.content = content;
+  if (duration !== undefined) options.duration = duration;
+  if (onClose !== undefined) options.onClose = onClose;
+
+  return options;
+}
+
+function decoratorContent(options, decorator) {
+  if (!options.content || !decorator) return options;
+  if (_.isArray(options.content)) options.content.unshift(decorator);
+  else options.content = [decorator, options.content];
+
+  return options;
+}
+
 function createAlertInstance(config) {
   const placement = _.camelCase(config.placement || DEFAULT_PLACEMENT);
 
@@ -103,47 +144,6 @@ function notice(options) {
   key = instance.notice(_.merge({ duration: DEFAULT_DURATION }, options || {}));
 
   return { remove: () => instance.remove(key) };
-}
-
-function getOptions(content, duration, onClose) {
-  let options = {};
-
-  if (_.isPlainObject(onClose)) {
-    options = onClose;
-    onClose = undefined;
-  }
-
-  if (_.isPlainObject(duration)) {
-    options = duration;
-    duration = undefined;
-    onClose = undefined;
-  }
-
-  if (_.isPlainObject(content)) {
-    options = content;
-    content = undefined;
-    duration = undefined;
-    onClose = undefined;
-  }
-
-  if (_.isFunction(duration)) {
-    onClose = duration;
-    duration = undefined;
-  }
-
-  if (content !== undefined) options.content = content;
-  if (duration !== undefined) options.duration = duration;
-  if (onClose !== undefined) options.onClose = onClose;
-
-  return options;
-}
-
-function decoratorContent(options, decorator) {
-  if (!options.content || !decorator) return options;
-  if (_.isArray(options.content)) options.content.unshift(decorator);
-  else options.content = [decorator, options.content];
-
-  return options;
 }
 
 export default {
