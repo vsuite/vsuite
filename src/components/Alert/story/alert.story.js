@@ -10,7 +10,24 @@ stories.add('basic', () => ({
     return (
       <Demo title="Basic">
         <Button.Toolbar>
-          <Button onClick={() => this._handleOpen('open')}> Default </Button>
+          <Button onClick={this._handleOpen}> Default </Button>
+        </Button.Toolbar>
+      </Demo>
+    );
+  },
+
+  methods: {
+    _handleOpen() {
+      this.$Alert.open('This is an alert message.');
+    },
+  },
+}));
+
+stories.add('type', () => ({
+  render() {
+    return (
+      <Demo title="Type">
+        <Button.Toolbar>
           <Button onClick={() => this._handleOpen('info')}> Info </Button>
           <Button onClick={() => this._handleOpen('success')}> Success </Button>
           <Button onClick={() => this._handleOpen('warning')}> Warning </Button>

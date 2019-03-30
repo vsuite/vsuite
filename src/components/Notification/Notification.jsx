@@ -36,10 +36,12 @@ export default {
           'fade-leave-active'
         )}`}
         leaveToClass={this._addPrefix('fade-exited')}
+        onAfterLeave={this._handleAfterLeave}
       >
         {this.notices.map(notice => {
           const {
             key,
+            className,
             style,
             type,
             content,
@@ -49,11 +51,12 @@ export default {
           } = notice;
           const data = {
             key,
-            style,
+            class: className,
             props: {
               type,
               closable,
               duration,
+              wrapperStyle: style,
               classPrefix: this.classPrefix,
             },
             on: {
@@ -89,6 +92,12 @@ export default {
 
     remove(key) {
       this.notices = this.notices.filter(x => x.key !== key);
+    },
+
+    _handleAfterLeave() {
+      if (this.notices.length > 0) return;
+
+      this.$emit('empty');
     },
 
     _addPrefix(cls) {

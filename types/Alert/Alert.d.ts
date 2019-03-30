@@ -18,6 +18,8 @@ interface Options {
   placement?: Placement;
   top?: number;
   bottom?: number;
+  className?: string;
+  style?: string | object;
   onClose?: CloseCallback;
 }
 
@@ -87,6 +89,7 @@ export declare interface Alert {
   remove(key: string);
 
   // config alert
+  config(options: Configuration, remove: boolean);
   config(options: Configuration);
 
   // destroy alert

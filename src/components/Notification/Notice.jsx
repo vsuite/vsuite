@@ -12,6 +12,9 @@ export default {
     content: VueTypes.string, // slot
     closable: VueTypes.bool.def(false),
     type: VueTypes.oneOf(STATUS),
+    wrapperStyle: VueTypes.oneOfType([VueTypes.string, VueTypes.object]).def(
+      ''
+    ),
 
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
 
@@ -43,7 +46,7 @@ export default {
   render() {
     return (
       <div class={this._addPrefix('notice-wrapper')}>
-        <div class={this.classes}>
+        <div class={this.classes} style={this.wrapperStyle}>
           <div class={this._addPrefix('notice-content')}>
             {this.content || this.$slots.content}
           </div>

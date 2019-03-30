@@ -1,12 +1,14 @@
 import Vue from 'vue';
-import Icon from 'components/Icon';
 import _ from 'lodash';
+import Loader from 'components/Loader';
+import Icon from 'components/Icon';
 import renderX from 'utils/render';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
 import { STATUS_ICON_NAMES } from 'utils/constant';
 
 import Notification from './Notification.jsx';
 
+const CLASS_PREFIX = defaultClassPrefix('notification');
 const PLACEMENT_TYPES = {
   TOP_LEFT: 'topLeft',
   TOP_RIGHT: 'topRight',
@@ -19,13 +21,13 @@ const NOTIFICATION_TYPES = {
   INFO: 'info',
   WARNING: 'warning',
 };
-const CLASS_PREFIX = defaultClassPrefix('notification');
 
-let DEFAULT_PLACEMENT = 'topRight';
+let notificationStore = {};
+let DEFAULT_DURATION = 4500;
 let DEFAULT_TOP = 24;
 let DEFAULT_BOTTOM = 24;
-let DEFAULT_DURATION = 4500;
-let notificationStore = {};
+let DEFAULT_PLACEMENT = PLACEMENT_TYPES.TOP_RIGHT;
+let DEFAULT_REMOVE_ON_EMPTY = true;
 
 function addPrefix(cls) {
   return prefix(CLASS_PREFIX, cls);
@@ -78,6 +80,83 @@ function getPlacementStyle(config) {
   return { style, className };
 }
 
+// title description duration onClose option
+// title description duration onClose
+// title description duration option
+// title description onClose option
+// description duration onClose option
+// title description duration
+// title description onClose
+// title description option
+// description duration option
+// description onClose option
+// title description
+// description duration
+// description onClose
+// description option
+// description
+function getOptions(title, description, duration, onClose, option) {
+  let options = option || {};
+
+  if (_.isPlainObject(onClose)) {
+    options = onClose;
+    onClose = undefined;
+  }
+
+  if (_.isPlainObject(duration)) {
+    options = duration;
+    duration = undefined;
+    onClose = undefined;
+  }
+
+  if (_.isPlainObject(description)) {
+    options = description;
+    description = undefined;
+    duration = undefined;
+    onClose = undefined;
+  }
+
+  if (_.isPlainObject(title)) {
+    options = title;
+    title = undefined;
+    description = undefined;
+    duration = undefined;
+    onClose = undefined;
+  }
+
+  if (_.isFunction(duration)) {
+    onClose = duration;
+    duration = undefined;
+  }
+
+  if (_.isFunction(description)) {
+    onClose = description;
+    description = title;
+    title = null;
+  }
+
+  if (_.isNumber(description)) {
+    duration = description;
+    description = title;
+    title = null;
+  }
+
+  if (title !== undefined) options.title = title;
+  if (description !== undefined) options.description = description;
+  if (duration !== undefined) options.duration = duration;
+  if (onClose !== undefined) options.onClose = onClose;
+
+  return options;
+}
+
+function decoratorTitle(options, decorator) {
+  if (!options.title || !decorator) return options;
+  if (_.isArray(options.title)) options.title.unshift(decorator);
+  else options.title = [decorator, options.title];
+
+  return options;
+}
+
 function createNotificationInstance(config) {
   const placement = _.camelCase(config.placement || DEFAULT_PLACEMENT);
 
@@ -89,8 +168,13 @@ function createNotificationInstance(config) {
       const notificationData = {
         class: [addPrefix('notify'), className],
         style,
-        props: {
-          classPrefix: CLASS_PREFIX,
+        props: { classPrefix: CLASS_PREFIX },
+        on: {
+          empty: () =>
+            (DEFAULT_REMOVE_ON_EMPTY &&
+              notificationStore[placement] &&
+              notificationStore[placement].destroy()) ||
+            (notificationStore[placement] = null),
         },
       };
 
@@ -123,13 +207,7 @@ function notice(config) {
   config = config || {};
 
   let instance = createNotificationInstance(config);
-  let duration;
-
-  if (config.duration === undefined) {
-    duration = DEFAULT_DURATION;
-  } else {
-    duration = config.duration;
-  }
+  let key = null;
 
   const content = function(h) {
     let title = renderX(h, config.title);
@@ -137,72 +215,115 @@ function notice(config) {
 
     return (
       <div class={addPrefix('content')}>
-        <div class={addPrefix('title')}>
-          {config.type && <Icon icon={STATUS_ICON_NAMES[config.type]} />}
-          {title}
-        </div>
+        <div class={addPrefix('title')}>{title}</div>
         <div class={addPrefix('description')}>{description}</div>
       </div>
     );
   };
 
-  instance.notice({
-    content,
-    duration,
-    closable: true,
-    onClose: config.onClose,
-    key: config.key,
-    type: config.type,
-    ...config,
-  });
+  key = instance.notice(
+    _.merge({ duration: DEFAULT_DURATION }, { content, ...config })
+  );
+
+  return { remove: () => instance.remove(key) };
 }
 
 export default {
-  open(config) {
-    notice(config);
+  open(...args) {
+    return notice(getOptions(...args));
   },
 
-  success(config) {
-    config.type = NOTIFICATION_TYPES.SUCCESS;
-
-    notice(config);
+  loading(...args) {
+    return notice(
+      decoratorTitle(getOptions(...args), h => (
+        <Loader size="xs" style={{ position: 'absolute', left: '20px' }} />
+      ))
+    );
   },
 
-  error(config) {
-    config.type = NOTIFICATION_TYPES.ERROR;
+  success(...args) {
+    const options = getOptions(...args);
 
-    notice(config);
+    options.type = NOTIFICATION_TYPES.SUCCESS;
+
+    return notice(
+      decoratorTitle(options, h => (
+        <Icon icon={STATUS_ICON_NAMES[options.type]} />
+      ))
+    );
   },
 
-  info(config) {
-    config.type = NOTIFICATION_TYPES.INFO;
+  info(...args) {
+    const options = getOptions(...args);
 
-    notice(config);
+    options.type = NOTIFICATION_TYPES.INFO;
+
+    return notice(
+      decoratorTitle(options, h => (
+        <Icon icon={STATUS_ICON_NAMES[options.type]} />
+      ))
+    );
   },
 
-  warning(config) {
-    config.type = NOTIFICATION_TYPES.WARNING;
+  warning(...args) {
+    const options = getOptions(...args);
 
-    notice(config);
+    options.type = NOTIFICATION_TYPES.WARNING;
+
+    return notice(
+      decoratorTitle(options, h => (
+        <Icon icon={STATUS_ICON_NAMES[options.type]} />
+      ))
+    );
   },
 
-  warn(config) {
-    config.type = NOTIFICATION_TYPES.WARNING;
+  warn(...args) {
+    const options = getOptions(...args);
 
-    notice(config);
+    options.type = NOTIFICATION_TYPES.WARNING;
+
+    return notice(
+      decoratorTitle(options, h => (
+        <Icon icon={STATUS_ICON_NAMES[options.type]} />
+      ))
+    );
+  },
+
+  error(...args) {
+    const options = getOptions(...args);
+
+    options.type = NOTIFICATION_TYPES.ERROR;
+
+    return notice(
+      decoratorTitle(options, h => (
+        <Icon icon={STATUS_ICON_NAMES[options.type]} />
+      ))
+    );
   },
 
   remove(key, placement) {
     if (placement) {
-      placement = _.camelCase(placement || DEFAULT_PLACEMENT);
+      placement = _.camelCase(placement || '');
     }
 
     if (notificationStore[placement]) {
       notificationStore[placement].remove(key);
+
+      return;
     }
+
+    Object.keys(notificationStore).map(placement => {
+      notificationStore[placement] && notificationStore[placement].remove(key);
+    });
   },
 
-  config(options) {
+  config(options, remove = true) {
+    remove &&
+      Object.keys(notificationStore).map(placement => {
+        notificationStore[placement] && notificationStore[placement].destroy();
+        notificationStore[placement] = null;
+      });
+
     if (options.top !== undefined) {
       DEFAULT_TOP = options.top;
     }
@@ -211,8 +332,16 @@ export default {
       DEFAULT_BOTTOM = options.bottom;
     }
 
+    if (options.placement !== undefined) {
+      DEFAULT_PLACEMENT = options.placement;
+    }
+
     if (options.duration !== undefined) {
       DEFAULT_DURATION = options.duration;
+    }
+
+    if (options.removeOnEmpty !== undefined) {
+      DEFAULT_REMOVE_ON_EMPTY = options.removeOnEmpty;
     }
   },
 

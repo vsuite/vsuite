@@ -1,5 +1,6 @@
 export default [
   'basic',
+  'type',
   'closable',
   'duration',
   'loading',

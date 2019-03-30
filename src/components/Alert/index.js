@@ -24,6 +24,7 @@ let DEFAULT_DURATION = 2000;
 let DEFAULT_TOP = 5;
 let DEFAULT_BOTTOM = 5;
 let DEFAULT_PLACEMENT = PLACEMENT_TYPES.TOP;
+let DEFAULT_REMOVE_ON_EMPTY = true;
 
 function addPrefix(cls) {
   return prefix(CLASS_PREFIX, cls);
@@ -57,8 +58,8 @@ function getPlacementStyle(config) {
   return { style, className };
 }
 
-function getOptions(content, duration, onClose) {
-  let options = {};
+function getOptions(content, duration, onClose, option) {
+  let options = option || {};
 
   if (_.isPlainObject(onClose)) {
     options = onClose;
@@ -110,6 +111,13 @@ function createAlertInstance(config) {
         class: [addPrefix('alert'), className],
         style,
         props: { classPrefix: CLASS_PREFIX },
+        on: {
+          empty: () =>
+            (DEFAULT_REMOVE_ON_EMPTY &&
+              alertStore[placement] &&
+              alertStore[placement].destroy()) ||
+            (alertStore[placement] = null),
+        },
       };
 
       return <Notification {...notificationData} />;
@@ -138,6 +146,8 @@ function createAlertInstance(config) {
 }
 
 function notice(options) {
+  options = options || {};
+
   let instance = createAlertInstance(options);
   let key = null;
 
@@ -235,7 +245,13 @@ export default {
     });
   },
 
-  config(options) {
+  config(options = {}, remove = true) {
+    remove &&
+      Object.keys(alertStore).map(placement => {
+        alertStore[placement] && alertStore[placement].destroy();
+        alertStore[placement] = null;
+      });
+
     if (options.top !== undefined) {
       DEFAULT_TOP = options.top;
     }
@@ -250,6 +266,10 @@ export default {
 
     if (options.duration !== undefined) {
       DEFAULT_DURATION = options.duration;
+    }
+
+    if (options.removeOnEmpty !== undefined) {
+      DEFAULT_REMOVE_ON_EMPTY = options.removeOnEmpty;
     }
   },
 

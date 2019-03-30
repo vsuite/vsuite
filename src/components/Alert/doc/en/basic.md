@@ -1,23 +1,17 @@
-### Default
+### Basic
 
 <!--start-code-->
 
 ```vue
 <template>
-  <ButtonToolbar>
-    <Button @click="_handleOpen('open')"> Default </Button>
-    <Button @click="_handleOpen('info')"> Info </Button>
-    <Button @click="_handleOpen('success')"> Success </Button>
-    <Button @click="_handleOpen('warning')"> Warning </Button>
-    <Button @click="_handleOpen('error')"> Error </Button>
-  </ButtonToolbar>
+  <Button @click="_handleOpen"> Default </Button>
 </template>
 
 <script>
 export default {
   methods: {
-    _handleOpen(type) {
-      this.$Alert[type](`This is a ${type} message.`);
+    _handleOpen() {
+      this.$Alert.open('This is an alert message.');
     },
   },
 };
