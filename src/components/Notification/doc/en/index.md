@@ -2,12 +2,11 @@
 
 For global notifications, suspended in the corner of the page.
 
-* `Notification.open` default notification.
-* `Notification.info` information notice.
-* `Notification.success` successful information notification.
-* `Notification.warning` warning information
-* `Notification.error` error message notification.
-
+- `Notification.open` default notification.
+- `Notification.info` information notice.
+- `Notification.success` successful information notification.
+- `Notification.warning` warning information
+- `Notification.error` error message notification.
 
 ## Usage
 
@@ -59,7 +58,7 @@ Removes a message box.
 Notification.open({
   title: 'Title',
   description: 'Message',
-  key: 'myNotification'
+  key: 'myNotification',
 });
 
 Notification.remove('myNotification');
@@ -94,11 +93,9 @@ type Config{
 | title \*       | string                                   | The title of the message box                                                                                            |
 | top            | number `(24)`                            | The distance from the top of the message box                                                                            |
 
-
 ## Related components
 
-* [`<Popover>`](./popover)
-* [`<Tooltip>`](./tooltip)
-* [`<Message>`](./message)
-* [`<Alert`>](./alert)
-
+- [`<Popover>`](./popover)
+- [`<Tooltip>`](./tooltip)
+- [`<Message>`](./message)
+- [`<Alert`>](./alert)

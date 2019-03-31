@@ -112,7 +112,6 @@ stories.add('loading', () => ({
     return (
       <Demo title="Loading">
         <Button.Toolbar>
-          <Button onClick={() => this._handleOpen('success')}> Success </Button>
           <Button onClick={() => this._handleOpen('loading')}> Loading </Button>
         </Button.Toolbar>
       </Demo>
@@ -121,12 +120,9 @@ stories.add('loading', () => ({
 
   methods: {
     _handleOpen(type) {
-      this.$Notification[type](
-        'Notify',
-        h => <Paragraph style={{ width: '320px' }} size="small" />,
-        0,
-        { closable: true }
-      );
+      this.$Notification[type]('Notify', h => (
+        <Paragraph style={{ width: '320px' }} size="small" />
+      ));
     },
   },
 }));

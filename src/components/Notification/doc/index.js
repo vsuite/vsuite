@@ -1,1 +1,10 @@
-export default ['basic', 'status', 'placement', 'custom', 'duration'];
+export default [
+  'basic',
+  'status',
+  'closable',
+  'duration',
+  'loading',
+  'placement',
+  'position',
+  'custom',
+];

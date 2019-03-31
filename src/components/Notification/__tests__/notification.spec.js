@@ -1,10 +1,10 @@
 import { mount, createWrapper } from '@vue/test-utils';
 
-import Alert from 'components/Alert';
+import Notification from 'components/Notification';
 
-describe('Alert Component', () => {
-  // render one alert
-  it('should be removed after a few seconds.', done => {
+describe('Notification Component', () => {
+  // render one notification
+  it('should be removed after a few seconds', done => {
     jest.useFakeTimers();
 
     const $wrapper = mount({
@@ -14,7 +14,7 @@ describe('Alert Component', () => {
 
       methods: {
         _handleOpen() {
-          Alert.open('This is a message');
+          Notification.open('Title', 'Description');
         },
       },
     });
@@ -41,8 +41,8 @@ describe('Alert Component', () => {
     });
   });
 
-  // render multiple alert
-  it('should have many alerts', done => {
+  // render multiple notices
+  it('should have many notices', done => {
     jest.useFakeTimers();
 
     const $wrapper = mount({
@@ -52,7 +52,7 @@ describe('Alert Component', () => {
 
       methods: {
         _handleOpen() {
-          Alert.open('This is a message');
+          Notification.open('Title', 'Description');
         },
       },
     });
@@ -91,7 +91,7 @@ describe('Alert Component', () => {
 
       methods: {
         _handleOpen() {
-          this.instancer = Alert.open('This is a message', 0);
+          this.instancer = Notification.open('Title', 'Message', 0);
         },
 
         remove() {

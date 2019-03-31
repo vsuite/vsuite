@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Notification demo renders basic demo correctly 1`] = `<div role="toolbar" class="vs-btn-toolbar"><button type="button" class="vs-btn vs-btn-default">Open<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button></div>`;
+
+exports[`Notification demo renders closable demo correctly 1`] = `<div role="toolbar" class="vs-btn-toolbar"><button type="button" class="vs-btn vs-btn-default">Open<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-default"> Info <span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-default"> Success <span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-default"> Warning <span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-default"> Error <span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button></div>`;
+
+exports[`Notification demo renders custom demo correctly 1`] = `<div role="toolbar" class="vs-btn-toolbar"><button type="button" class="vs-btn vs-btn-default">Open<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button></div>`;
+
+exports[`Notification demo renders duration demo correctly 1`] = `<div role="toolbar" class="vs-btn-toolbar"><button type="button" class="vs-btn vs-btn-default">Duration for 10s<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-default">No Limit<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button></div>`;
+
+exports[`Notification demo renders loading demo correctly 1`] = `<div role="toolbar" class="vs-btn-toolbar"><button type="button" class="vs-btn vs-btn-default">Open<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button></div>`;
+
+exports[`Notification demo renders placement demo correctly 1`] = `<div role="toolbar" class="vs-btn-toolbar"><button type="button" class="vs-btn vs-btn-default"> Top Left <span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-default"> Top Right <span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-default"> Bottom Left <span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-default"> Bottom Right <span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button></div>`;
+
+exports[`Notification demo renders position demo correctly 1`] = `
+<div role="toolbar" class="vs-btn-toolbar"><button type="button" class="vs-btn vs-btn-default">
+    Top=5 Left=5
+    <span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-default">
+    Top=5 Right=5
+    <span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-default">
+    Bottom=5 Left=5
+    <span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-default">
+    Bottom=5 Right=5
+    <span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button></div>
+`;
+
+exports[`Notification demo renders status demo correctly 1`] = `<div role="toolbar" class="vs-btn-toolbar"><button type="button" class="vs-btn vs-btn-default"> Info <span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-default"> Success <span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-default"> Warning <span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-default"> Error <span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button></div>`;

@@ -1,10 +1,11 @@
-### 通知类型
+### 可关闭的
 
 <!--start-code-->
 
 ```vue
 <template>
   <ButtonToolbar>
+    <Button @click="_handleOpen('open')">Open</Button>
     <Button @click="_handleOpen('info')"> Info </Button>
     <Button @click="_handleOpen('success')"> Success </Button>
     <Button @click="_handleOpen('warning')"> Warning </Button>
@@ -18,9 +19,11 @@ import { Paragraph } from 'stories/content';
 export default {
   methods: {
     _handleOpen(status) {
-      this.$Notification[status](status, h => (
-        <Paragraph style={{ width: '320px' }} size="small" />
-      ));
+      this.$Notification[status](
+        status,
+        h => <Paragraph style={{ width: '320px' }} size="small" />,
+        { closable: true }
+      );
     },
   },
 };

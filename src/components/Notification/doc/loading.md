@@ -1,4 +1,4 @@
-### Default
+### 加载中
 
 <!--start-code-->
 
@@ -15,7 +15,7 @@ import { Paragraph } from 'stories/content';
 export default {
   methods: {
     _handleOpen() {
-      this.$Notification.open('Notify', h => (
+      this.$Notification.loading('Notify', h => (
         <Paragraph style={{ width: '320px' }} size="small" />
       ));
     },

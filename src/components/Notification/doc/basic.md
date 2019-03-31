@@ -2,20 +2,26 @@
 
 <!--start-code-->
 
-```js
-function open() {
-  Notification.open({
-    title: 'Notify',
-    description: <Paragraph width={320} rows={3} />
-  });
-}
-
-const instance = (
+```vue
+<template>
   <ButtonToolbar>
-    <Button onClick={open}> Open </Button>
+    <Button @click="_handleOpen">Open</Button>
   </ButtonToolbar>
-);
-ReactDOM.render(instance);
+</template>
+
+<script>
+import { Paragraph } from 'stories/content';
+
+export default {
+  methods: {
+    _handleOpen() {
+      this.$Notification.open('Notify', h => (
+        <Paragraph style={{ width: '320px' }} size="small" />
+      ));
+    },
+  },
+};
+</script>
 ```
 
 <!--end-code-->

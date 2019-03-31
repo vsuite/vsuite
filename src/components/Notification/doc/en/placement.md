@@ -1,25 +1,32 @@
-
 ### Placement
 
 <!--start-code-->
-```js
 
-function open(placement){
-  Notification.open({
-      title: placement,
-      placement,
-      description: <Paragraph style={{ width: 320 }} rows={3} />
-  });
-}
-
-const instance = (
+```vue
+<template>
   <ButtonToolbar>
-    <Button onClick={()=>open('topLeft')}> Top Left </Button>
-    <Button onClick={()=>open('topRight')}> Top Right </Button>
-    <Button onClick={()=>open('bottomLeft')}> Bottom Left </Button>
-    <Button onClick={()=>open('bottomRight')}> Bottom Right </Button>
+    <Button @click="_handleOpen('topLeft')"> Top Left </Button>
+    <Button @click="_handleOpen('topRight')"> Top Right </Button>
+    <Button @click="_handleOpen('bottomLeft')"> Bottom Left </Button>
+    <Button @click="_handleOpen('bottomRight')"> Bottom Right </Button>
   </ButtonToolbar>
-);
-ReactDOM.render(instance);
+</template>
+
+<script>
+import { Paragraph } from 'stories/content';
+
+export default {
+  methods: {
+    _handleOpen(placement) {
+      this.$Notification.open(
+        placement,
+        h => <Paragraph style={{ width: '320px' }} size="small" />,
+        { placement }
+      );
+    },
+  },
+};
+</script>
 ```
+
 <!--end-code-->

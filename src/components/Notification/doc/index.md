@@ -2,11 +2,11 @@
 
 用于全局通知，悬浮在页面角落。
 
-* `Notification.open` 默认通知。
-* `Notification.info` 信息通知。
-* `Notification.success` 成功信息通知。
-* `Notification.warning` 警告信息通知。
-* `Notification.error` 错误信息通知。
+- `Notification.open` 默认通知。
+- `Notification.info` 信息通知。
+- `Notification.success` 成功信息通知。
+- `Notification.warning` 警告信息通知。
+- `Notification.error` 错误信息通知。
 
 ## 获取组件
 
@@ -58,7 +58,7 @@ Notification.remove(key: string);
 Notification.open({
   title: 'Title',
   description: 'Message',
-  key: 'myNotification'
+  key: 'myNotification',
 });
 
 Notification.remove('myNotification');
@@ -96,7 +96,7 @@ type Config{
 
 ## 相关组件
 
-* [`<Popover>`](./popover) 弹出框
-* [`<Tooltip>`](./tooltip) 文字提示
-* [`<Message>`](./message) 消息框
-* [`<Alert`>](./alert) 提醒框
+- [`<Popover>`](./popover) 弹出框
+- [`<Tooltip>`](./tooltip) 文字提示
+- [`<Message>`](./message) 消息框
+- [`<Alert`>](./alert) 提醒框

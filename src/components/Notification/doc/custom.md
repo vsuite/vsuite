@@ -1,30 +1,37 @@
-
 ### 自定义
 
 <!--start-code-->
-```js
 
-function open(){
-  Notification.open({
-      title: 'Message',
-      duration: 10000,
-      description: (
-        <div>
-          <p>Simon wants to add you as a friend .</p>
-          <ButtonToolbar>
-            <Button>Accept</Button>
-            <Button>Cancel</Button>
-          </ButtonToolbar>
-        </div>
-      )
-  });
-}
-
-const instance = (
+```vue
+<template>
   <ButtonToolbar>
-    <Button onClick={open}> Open </Button>
+    <Button @click="_handleOpen">Open</Button>
   </ButtonToolbar>
-);
-ReactDOM.render(instance);
+</template>
+
+<script>
+import Button from 'components/Button';
+
+export default {
+  methods: {
+    _handleOpen() {
+      let instance = this.$Notification.open(
+        'Message',
+        h => (
+          <div>
+            <p>Simon wants to add you as a friend .</p>
+            <Button.Toolbar>
+              <Button onClick={() => instance.remove()}>Accept</Button>
+              <Button onClick={() => instance.remove()}>Cancel</Button>
+            </Button.Toolbar>
+          </div>
+        ),
+        0
+      );
+    },
+  },
+};
+</script>
 ```
+
 <!--end-code-->
