@@ -12,6 +12,11 @@ export default {
     content: VueTypes.string, // slot
     closable: VueTypes.bool.def(false),
     type: VueTypes.oneOf(STATUS),
+    wrapperClassName: VueTypes.oneOfType([
+      VueTypes.string,
+      VueTypes.object,
+      VueTypes.array,
+    ]).def(''),
     wrapperStyle: VueTypes.oneOfType([VueTypes.string, VueTypes.object]).def(
       ''
     ),
@@ -31,7 +36,7 @@ export default {
           [this._addPrefix('notice-closable')]: this.closable,
           [this._addPrefix(this.type)]: !!this.type,
         },
-      ];
+      ].concat(this.wrapperClassName);
     },
   },
 

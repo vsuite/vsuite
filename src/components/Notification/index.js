@@ -26,6 +26,8 @@ let notificationStore = {};
 let DEFAULT_DURATION = 4500;
 let DEFAULT_TOP = 24;
 let DEFAULT_BOTTOM = 24;
+let DEFAULT_LEFT = 24;
+let DEFAULT_RIGHT = 24;
 let DEFAULT_PLACEMENT = PLACEMENT_TYPES.TOP_RIGHT;
 let DEFAULT_REMOVE_ON_EMPTY = true;
 
@@ -44,57 +46,44 @@ function getPlacementStyle(config) {
   let className = '';
   const placement = _.camelCase(config.placement || DEFAULT_PLACEMENT);
   const top = config.top || DEFAULT_TOP;
+  const right = config.right || DEFAULT_RIGHT;
   const bottom = config.bottom || DEFAULT_BOTTOM;
+  const left = config.left || DEFAULT_LEFT;
 
   if (placement === PLACEMENT_TYPES.TOP_LEFT) {
     style = {
       top: formatStyleVal(top),
-      left: '24px',
+      left: formatStyleVal(left),
     };
     className = addPrefix('top-left');
   } else if (placement === PLACEMENT_TYPES.TOP_RIGHT) {
     style = {
       top: formatStyleVal(top),
-      right: '24px',
+      right: formatStyleVal(right),
     };
     className = addPrefix('top-right');
   } else if (placement === PLACEMENT_TYPES.BOTTOM_LEFT) {
     style = {
       bottom: formatStyleVal(bottom),
-      left: '24px',
+      left: formatStyleVal(left),
     };
     className = addPrefix('bottom-left');
   } else if (placement === PLACEMENT_TYPES.BOTTOM_RIGHT) {
     style = {
       bottom: formatStyleVal(bottom),
-      right: '24px',
+      right: formatStyleVal(right),
     };
     className = addPrefix('bottom-right');
   } else {
     style = {
       top: formatStyleVal(top),
-      left: '24px',
+      left: formatStyleVal(left),
     };
   }
 
   return { style, className };
 }
 
-// title description duration onClose option
-// title description duration onClose
-// title description duration option
-// title description onClose option
-// description duration onClose option
-// title description duration
-// title description onClose
-// title description option
-// description duration option
-// description onClose option
-// title description
-// description duration
-// description onClose
-// description option
-// description
 function getOptions(title, description, duration, onClose, option) {
   let options = option || {};
 
@@ -129,16 +118,9 @@ function getOptions(title, description, duration, onClose, option) {
     duration = undefined;
   }
 
-  if (_.isFunction(description)) {
-    onClose = description;
-    description = title;
-    title = null;
-  }
-
   if (_.isNumber(description)) {
     duration = description;
-    description = title;
-    title = null;
+    description = null;
   }
 
   if (title !== undefined) options.title = title;
@@ -190,7 +172,7 @@ function createNotificationInstance(config) {
   notificationStore[placement] = {
     component: notification,
     notice(data) {
-      notification.add(data || {});
+      return notification.add(data || {});
     },
     remove(key) {
       notification.remove(key);
@@ -215,8 +197,10 @@ function notice(config) {
 
     return (
       <div class={addPrefix('content')}>
-        <div class={addPrefix('title')}>{title}</div>
-        <div class={addPrefix('description')}>{description}</div>
+        {title && <div class={addPrefix('title')}>{title}</div>}
+        {description && (
+          <div class={addPrefix('description')}>{description}</div>
+        )}
       </div>
     );
   };
@@ -234,9 +218,24 @@ export default {
   },
 
   loading(...args) {
+    const options = getOptions(...args);
+    const loadingClassName = `${CLASS_PREFIX}-loading`;
+
+    if (_.isArray(options.className)) {
+      options.className.unshift(loadingClassName);
+    }
+
+    if (options.className) {
+      options.className = [options.className, loadingClassName];
+    }
+
+    if (!options.className) {
+      options.className = loadingClassName;
+    }
+
     return notice(
-      decoratorTitle(getOptions(...args), h => (
-        <Loader size="xs" style={{ position: 'absolute', left: '20px' }} />
+      decoratorTitle(options, h => (
+        <Loader size="sm" style={{ marginRight: '16px' }} />
       ))
     );
   },
@@ -328,8 +327,16 @@ export default {
       DEFAULT_TOP = options.top;
     }
 
+    if (options.right !== undefined) {
+      DEFAULT_RIGHT = options.right;
+    }
+
     if (options.bottom !== undefined) {
       DEFAULT_BOTTOM = options.bottom;
+    }
+
+    if (options.left !== undefined) {
+      DEFAULT_LEFT = options.left;
     }
 
     if (options.placement !== undefined) {

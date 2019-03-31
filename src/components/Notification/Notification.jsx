@@ -51,11 +51,11 @@ export default {
           } = notice;
           const data = {
             key,
-            class: className,
             props: {
               type,
               closable,
               duration,
+              wrapperClassName: className,
               wrapperStyle: style,
               classPrefix: this.classPrefix,
             },
