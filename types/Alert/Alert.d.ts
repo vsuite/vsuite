@@ -10,7 +10,7 @@ interface CloseCallback {
   (): void;
 }
 
-interface Options {
+interface Option {
   key?: string;
   content?: RenderX;
   duration?: number;
@@ -28,61 +28,132 @@ interface Configuration {
   bottom?: number;
   placement?: Placement;
   duration?: number;
+  removeOnEmpty?: boolean;
 }
 
 export declare interface Alert {
   // default alert
+  open(options: Option): Removable;
+  open(content: RenderX): Removable;
+  open(content: RenderX, duration: number): Removable;
+  open(content: RenderX, onClose: CloseCallback): Removable;
+  open(content: RenderX, options: Option): Removable;
   open(content: RenderX, duration: number, onClose: CloseCallback): Removable;
-  open(content: RenderX, duration: number, options: Options): Removable;
-  open(content: RenderX, options: Options): Removable;
-  open(options: Options): Removable;
+  open(content: RenderX, duration: number, options: Option): Removable;
+  open(content: RenderX, onClose: CloseCallback, options: Option): Removable;
+  open(
+    content: RenderX,
+    duration: number,
+    onClose: CloseCallback,
+    options: Option
+  ): Removable;
 
   // loading alert
+  loading(options: Option): Removable;
+  loading(content: RenderX): Removable;
+  loading(content: RenderX, duration: number): Removable;
+  loading(content: RenderX, onClose: CloseCallback): Removable;
+  loading(content: RenderX, options: Option): Removable;
   loading(
     content: RenderX,
     duration: number,
     onClose: CloseCallback
   ): Removable;
-  loading(content: RenderX, duration: number, options: Options): Removable;
-  loading(content: RenderX, options: Options): Removable;
-  loading(options: Options): Removable;
+  loading(content: RenderX, duration: number, options: Option): Removable;
+  loading(content: RenderX, onClose: CloseCallback, options: Option): Removable;
+  loading(
+    content: RenderX,
+    duration: number,
+    onClose: CloseCallback,
+    options: Option
+  ): Removable;
 
   // success alert
+  success(options: Option): Removable;
+  success(content: RenderX): Removable;
+  success(content: RenderX, duration: number): Removable;
+  success(content: RenderX, onClose: CloseCallback): Removable;
+  success(content: RenderX, options: Option): Removable;
   success(
     content: RenderX,
     duration: number,
     onClose: CloseCallback
   ): Removable;
-  success(content: RenderX, duration: number, options: Options): Removable;
-  success(content: RenderX, options: Options): Removable;
-  success(options: Options): Removable;
+  success(content: RenderX, duration: number, options: Option): Removable;
+  success(content: RenderX, onClose: CloseCallback, options: Option): Removable;
+  success(
+    content: RenderX,
+    duration: number,
+    onClose: CloseCallback,
+    options: Option
+  ): Removable;
 
   // info alert
+  info(options: Option): Removable;
+  info(content: RenderX): Removable;
+  info(content: RenderX, duration: number): Removable;
+  info(content: RenderX, onClose: CloseCallback): Removable;
+  info(content: RenderX, options: Option): Removable;
   info(content: RenderX, duration: number, onClose: CloseCallback): Removable;
-  info(content: RenderX, duration: number, options: Options): Removable;
-  info(content: RenderX, options: Options): Removable;
-  info(options: Options): Removable;
+  info(content: RenderX, duration: number, options: Option): Removable;
+  info(content: RenderX, onClose: CloseCallback, options: Option): Removable;
+  info(
+    content: RenderX,
+    duration: number,
+    onClose: CloseCallback,
+    options: Option
+  ): Removable;
 
   // warning alert
+  warning(options: Option): Removable;
+  warning(content: RenderX): Removable;
+  warning(content: RenderX, duration: number): Removable;
+  warning(content: RenderX, onClose: CloseCallback): Removable;
+  warning(content: RenderX, options: Option): Removable;
   warning(
     content: RenderX,
     duration: number,
     onClose: CloseCallback
   ): Removable;
-  warning(content: RenderX, duration: number, options: Options): Removable;
-  warning(content: RenderX, options: Options): Removable;
-  warning(options: Options): Removable;
+  warning(content: RenderX, duration: number, options: Option): Removable;
+  warning(content: RenderX, onClose: CloseCallback, options: Option): Removable;
+  warning(
+    content: RenderX,
+    duration: number,
+    onClose: CloseCallback,
+    options: Option
+  ): Removable;
 
+  warn(options: Option): Removable;
+  warn(content: RenderX): Removable;
+  warn(content: RenderX, duration: number): Removable;
+  warn(content: RenderX, onClose: CloseCallback): Removable;
+  warn(content: RenderX, options: Option): Removable;
   warn(content: RenderX, duration: number, onClose: CloseCallback): Removable;
-  warn(content: RenderX, duration: number, options: Options): Removable;
-  warn(content: RenderX, options: Options): Removable;
-  warn(options: Options): Removable;
+  warn(content: RenderX, duration: number, options: Option): Removable;
+  warn(content: RenderX, onClose: CloseCallback, options: Option): Removable;
+  warn(
+    content: RenderX,
+    duration: number,
+    onClose: CloseCallback,
+    options: Option
+  ): Removable;
 
   // error alert
+  error(options: Option): Removable;
+  error(content: RenderX): Removable;
+  error(content: RenderX, duration: number): Removable;
+  error(content: RenderX, onClose: CloseCallback): Removable;
+  error(content: RenderX, options: Option): Removable;
   error(content: RenderX, duration: number, onClose: CloseCallback): Removable;
-  error(content: RenderX, duration: number, options: Options): Removable;
-  error(content: RenderX, options: Options): Removable;
-  error(options: Options): Removable;
+  error(content: RenderX, duration: number, options: Option): Removable;
+  error(content: RenderX, onClose: CloseCallback, options: Option): Removable;
+  error(
+    content: RenderX,
+    duration: number,
+    onClose: CloseCallback,
+    options: Option
+  ): Removable;
 
   // remove alert
   remove(key: string, placement: Placement);
