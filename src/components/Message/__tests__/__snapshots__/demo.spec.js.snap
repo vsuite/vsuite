@@ -1,0 +1,179 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Message demo renders basic demo correctly 1`] = `
+<div class="vs-message vs-message-info vs-message-show">
+  <div class="vs-message-container">
+    <div class="vs-message-content">
+      <div class="vs-message-body">Informational</div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Message demo renders close demo correctly 1`] = `undefined`;
+
+exports[`Message demo renders description demo correctly 1`] = `
+<div>
+  <div class="vs-message vs-message-info vs-message-show vs-message-has-title">
+    <div class="vs-message-container">
+      <div class="vs-message-content">
+        <h5 class="vs-message-header">Informational</h5>
+        <div class="vs-message-body">Additional description and informations about copywriting.</div>
+      </div>
+    </div>
+  </div>
+  <div class="vs-message vs-message-success vs-message-show vs-message-has-title">
+    <div class="vs-message-container">
+      <div class="vs-message-content">
+        <h5 class="vs-message-header">Success</h5>
+        <div class="vs-message-body">Detailed description and advices about successful copywriting.</div>
+      </div>
+    </div>
+  </div>
+  <div class="vs-message vs-message-warning vs-message-show vs-message-has-title">
+    <div class="vs-message-container">
+      <div class="vs-message-content">
+        <h5 class="vs-message-header">Warning</h5>
+        <div class="vs-message-body">This is a warning notice about copywriting.</div>
+      </div>
+    </div>
+  </div>
+  <div class="vs-message vs-message-error vs-message-show vs-message-has-title">
+    <div class="vs-message-container">
+      <div class="vs-message-content">
+        <h5 class="vs-message-header">Error</h5>
+        <div class="vs-message-body">This is an error message about copywriting.</div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Message demo renders full demo correctly 1`] = `
+<div class="vs-content" style="background: rgb(0, 0, 0); padding: 20px; position: relative;">
+  <div class="vs-message vs-message-warning vs-message-show vs-message-has-icon vs-message-full">
+    <div class="vs-message-container">
+      <div class="vs-message-icon-wrapper"><i class="vs-icon vs-icon-remind"></i></div>
+      <div class="vs-message-content">
+        <div class="vs-message-body">Warning</div>
+      </div>
+    </div>
+  </div>
+  <div class="vs-content-paragraph">
+    <p class="vs-content-paragraph-p" style="width: 97%;"></p>
+    <p class="vs-content-paragraph-p" style="width: 100%;"></p>
+    <p class="vs-content-paragraph-p" style="width: 94%;"></p>
+    <p class="vs-content-paragraph-p" style="width: 90%;"></p>
+    <p class="vs-content-paragraph-p" style="width: 98%;"></p>
+    <p class="vs-content-paragraph-p" style="width: 95%;"></p>
+    <p class="vs-content-paragraph-p" style="width: 98%;"></p>
+    <p class="vs-content-paragraph-p" style="width: 40%;"></p>
+  </div>
+</div>
+`;
+
+exports[`Message demo renders icons demo correctly 1`] = `
+<div>
+  <div class="vs-message vs-message-info vs-message-show vs-message-has-icon">
+    <div class="vs-message-container">
+      <div class="vs-message-icon-wrapper"><i class="vs-icon vs-icon-info"></i></div>
+      <div class="vs-message-content">
+        <div class="vs-message-body">Informational</div>
+      </div>
+    </div>
+  </div>
+  <div class="vs-message vs-message-success vs-message-show vs-message-has-icon">
+    <div class="vs-message-container">
+      <div class="vs-message-icon-wrapper"><i class="vs-icon vs-icon-check-circle"></i></div>
+      <div class="vs-message-content">
+        <div class="vs-message-body">Success</div>
+      </div>
+    </div>
+  </div>
+  <div class="vs-message vs-message-warning vs-message-show vs-message-has-icon">
+    <div class="vs-message-container">
+      <div class="vs-message-icon-wrapper"><i class="vs-icon vs-icon-remind"></i></div>
+      <div class="vs-message-content">
+        <div class="vs-message-body">Warning</div>
+      </div>
+    </div>
+  </div>
+  <div class="vs-message vs-message-error vs-message-show vs-message-has-icon">
+    <div class="vs-message-container">
+      <div class="vs-message-icon-wrapper"><i class="vs-icon vs-icon-close-circle"></i></div>
+      <div class="vs-message-content">
+        <div class="vs-message-body">Error</div>
+      </div>
+    </div>
+  </div>
+  <div class="vs-message vs-message-info vs-message-show vs-message-has-title vs-message-has-icon">
+    <div class="vs-message-container">
+      <div class="vs-message-icon-wrapper"><i class="vs-icon vs-icon-info"></i></div>
+      <div class="vs-message-content">
+        <h5 class="vs-message-header">Informational</h5>
+        <div class="vs-message-body">Additional description and informations about copywriting.</div>
+      </div>
+    </div>
+  </div>
+  <div class="vs-message vs-message-success vs-message-show vs-message-has-title vs-message-has-icon">
+    <div class="vs-message-container">
+      <div class="vs-message-icon-wrapper"><i class="vs-icon vs-icon-check-circle"></i></div>
+      <div class="vs-message-content">
+        <h5 class="vs-message-header">Success</h5>
+        <div class="vs-message-body">Detailed description and advices about successful copywriting.</div>
+      </div>
+    </div>
+  </div>
+  <div class="vs-message vs-message-warning vs-message-show vs-message-has-title vs-message-has-icon">
+    <div class="vs-message-container">
+      <div class="vs-message-icon-wrapper"><i class="vs-icon vs-icon-remind"></i></div>
+      <div class="vs-message-content">
+        <h5 class="vs-message-header">Warning</h5>
+        <div class="vs-message-body">This is a warning notice about copywriting.</div>
+      </div>
+    </div>
+  </div>
+  <div class="vs-message vs-message-error vs-message-show vs-message-has-title vs-message-has-icon">
+    <div class="vs-message-container">
+      <div class="vs-message-icon-wrapper"><i class="vs-icon vs-icon-close-circle"></i></div>
+      <div class="vs-message-content">
+        <h5 class="vs-message-header">Error</h5>
+        <div class="vs-message-body">This is an error message about copywriting.</div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Message demo renders types demo correctly 1`] = `
+<div>
+  <div class="vs-message vs-message-info vs-message-show">
+    <div class="vs-message-container">
+      <div class="vs-message-content">
+        <div class="vs-message-body">Informational</div>
+      </div>
+    </div>
+  </div>
+  <div class="vs-message vs-message-success vs-message-show">
+    <div class="vs-message-container">
+      <div class="vs-message-content">
+        <div class="vs-message-body">Success</div>
+      </div>
+    </div>
+  </div>
+  <div class="vs-message vs-message-warning vs-message-show">
+    <div class="vs-message-container">
+      <div class="vs-message-content">
+        <div class="vs-message-body">Warning</div>
+      </div>
+    </div>
+  </div>
+  <div class="vs-message vs-message-error vs-message-show">
+    <div class="vs-message-container">
+      <div class="vs-message-content">
+        <div class="vs-message-body">Error</div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

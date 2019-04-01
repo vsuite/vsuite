@@ -2,10 +2,11 @@ import Button from 'components/Button';
 import Icon from 'components/Icon';
 import Tooltip from 'components/Tooltip';
 import Popover from 'components/Popover';
+import Message from 'components/Message';
+import Loader from 'components/Loader';
+
 import Alert from 'components/Alert';
 import Notification from 'components/Notification';
-
-import Loader from 'components/Loader';
 
 // import { Fade, Collapse } from 'components/Animation';
 // import Divider from 'components/Divider';
@@ -26,7 +27,7 @@ export const components = {
   Icon,
   Tooltip,
   Popover,
-
+  Message,
   Loader,
 
   // Divider,

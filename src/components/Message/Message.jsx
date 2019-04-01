@@ -1,6 +1,7 @@
 import VueTypes from 'vue-types';
 import Icon from 'components/Icon';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
+import renderX, { RenderX } from 'utils/render';
 import { STATUS, STATUS_ICON_NAMES } from 'utils/constant';
 import invariant from 'utils/invariant';
 
@@ -13,11 +14,17 @@ export default {
     type: VueTypes.oneOf(STATUS).def('info'),
     closable: VueTypes.bool.def(false),
     closeLabel: VueTypes.string.def('Close'),
-    title: VueTypes.string, // slot
-    description: VueTypes.string, // slot
+    title: RenderX,
+    description: RenderX,
     showIcon: VueTypes.bool.def(false),
     full: VueTypes.bool.def(false),
+
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
+
+    // slot-title
+    // slot-description
+
+    // @close
   },
 
   data() {
@@ -72,12 +79,13 @@ export default {
           <div class={this._addPrefix('content')}>
             {this.hasTitle && (
               <h5 class={this._addPrefix('header')}>
-                {this.title || this.$slots.title}
+                {(this.title && renderX(h, this.title)) || this.$slots.title}
               </h5>
             )}
             {this.hasDesc && (
               <div class={this._addPrefix('body')}>
-                {this.description || this.$slots.description}
+                {(this.description && renderX(h, this.description)) ||
+                  this.$slots.description}
               </div>
             )}
           </div>
