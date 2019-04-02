@@ -3,32 +3,20 @@
 <!--start-code-->
 
 ```vue
-<script>
-import Content, { Paragraph } from 'stories/content';
-import Message from 'components/Message';
+<template>
+  <vs-content class="content">
+    <Message full showIcon type="warning" description="Warning" />
+    <vs-content-paragraph />
+  </vs-content>
+</template>
 
-export default {
-  components: {
-    Content,
-    Paragraph,
-  },
-
-  render() {
-    return (
-      <Content
-        style={{
-          background: '#000',
-          padding: '20px',
-          position: 'relative',
-        }}
-      >
-        <Message full showIcon type="warning" description="Warning" />
-        <Paragraph />
-      </Content>
-    );
-  },
-};
-</script>
+<style scoped>
+.content {
+  background: #000;
+  padding: 20px;
+  position: relative;
+}
+</style>
 ```
 
 <!--end-code-->

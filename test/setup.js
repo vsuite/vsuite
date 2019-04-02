@@ -1,8 +1,11 @@
 import Vue from 'vue';
+import Content, { Paragraph } from 'stories/content';
 import VSuite from '@/index';
 import { TransitionStub, TransitionGroupStub } from '@vue/test-utils';
 
 Vue.use(VSuite);
+Vue.component(Content.name, Content);
+Vue.component(Paragraph.name, Paragraph);
 Vue.component('transition', TransitionStub);
 Vue.component('transition-group', TransitionGroupStub);
 

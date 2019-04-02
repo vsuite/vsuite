@@ -3,7 +3,8 @@
 <!--start-code-->
 
 ```vue
-<div>
+<template>
+  <div>
     <Message closable type="info" description="Informational" />
     <Message
       closable
@@ -11,7 +12,8 @@
       title="Informational"
       description="Detailed description and advices about successful copywriting."
     />
-</div>
+  </div>
+</template>
 ```
 
 <!--end-code-->

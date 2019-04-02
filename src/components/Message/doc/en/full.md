@@ -3,30 +3,24 @@
 <!--start-code-->
 
 ```vue
-<template>
-  <Content :style="styles">
-    <Message full showIcon type="warning" description="Warning" />
-    <Paragraph />
-  </Content>
-</template>
-
 <script>
-import Content, { Paragraph } from 'stories/content';
+import Content, { Paragraph } from 'stories/content/Content.vue';
+import Message from 'components/Message';
 
 export default {
-  components: {
-    Content,
-    Paragraph,
-  },
-
-  data() {
-    return {
-      styles: {
-        background: '#000',
-        padding: '20px',
-        position: 'relative',
-      },
-    };
+  render() {
+    return (
+      <Content
+        style={{
+          background: '#000',
+          padding: '20px',
+          position: 'relative',
+        }}
+      >
+        <Message full showIcon type="warning" description="Warning" />
+        <Paragraph />
+      </Content>
+    );
   },
 };
 </script>

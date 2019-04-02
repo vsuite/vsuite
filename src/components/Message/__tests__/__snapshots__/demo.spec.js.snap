@@ -10,7 +10,25 @@ exports[`Message demo renders basic demo correctly 1`] = `
 </div>
 `;
 
-exports[`Message demo renders close demo correctly 1`] = `undefined`;
+exports[`Message demo renders close demo correctly 1`] = `
+<div>
+  <div class="vs-message vs-message-info vs-message-show">
+    <div class="vs-message-container"><button type="button" class="vs-message-btn-close"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+      <div class="vs-message-content">
+        <div class="vs-message-body">Informational</div>
+      </div>
+    </div>
+  </div>
+  <div class="vs-message vs-message-info vs-message-show vs-message-has-title">
+    <div class="vs-message-container"><button type="button" class="vs-message-btn-close"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+      <div class="vs-message-content">
+        <h5 class="vs-message-header">Informational</h5>
+        <div class="vs-message-body">Detailed description and advices about successful copywriting.</div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
 
 exports[`Message demo renders description demo correctly 1`] = `
 <div>
@@ -50,7 +68,7 @@ exports[`Message demo renders description demo correctly 1`] = `
 `;
 
 exports[`Message demo renders full demo correctly 1`] = `
-<div class="vs-content" style="background: rgb(0, 0, 0); padding: 20px; position: relative;">
+<div class="vs-content content">
   <div class="vs-message vs-message-warning vs-message-show vs-message-has-icon vs-message-full">
     <div class="vs-message-container">
       <div class="vs-message-icon-wrapper"><i class="vs-icon vs-icon-remind"></i></div>

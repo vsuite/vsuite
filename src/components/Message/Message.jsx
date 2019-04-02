@@ -13,11 +13,11 @@ export default {
   props: {
     type: VueTypes.oneOf(STATUS).def('info'),
     closable: VueTypes.bool.def(false),
-    closeLabel: VueTypes.string.def('Close'),
     title: RenderX,
     description: RenderX,
     showIcon: VueTypes.bool.def(false),
     full: VueTypes.bool.def(false),
+    closeLabel: VueTypes.string.def('Close'),
 
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
 

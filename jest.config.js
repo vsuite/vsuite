@@ -3,7 +3,7 @@ module.exports = {
   testPathIgnorePatterns: ['/dist/', '/docs/', '/examples?/', '/node_modules/'],
   transform: {
     '^.+\\.jsx?$': 'babel-jest',
-    '.*\\.(vue|md)$': 'vue-jest',
+    '^.*\\.(vue|md)$': 'vue-jest',
   },
   snapshotSerializers: ['jest-serializer-vue'],
   transformIgnorePatterns: [
