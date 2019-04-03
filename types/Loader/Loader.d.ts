@@ -2,7 +2,7 @@ import { VComponent } from '../component';
 import { SIZES } from '../constant';
 import { RenderX } from '../utils';
 
-export declare class Message extends VComponent {
+export declare class Loader extends VComponent {
   /**
    * Size of loader
    *
