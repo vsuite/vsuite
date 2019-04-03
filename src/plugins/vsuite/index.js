@@ -4,13 +4,12 @@ import Tooltip from 'components/Tooltip';
 import Popover from 'components/Popover';
 import Message from 'components/Message';
 import Loader from 'components/Loader';
+import Divider from 'components/Divider';
 
 import Alert from 'components/Alert';
 import Notification from 'components/Notification';
 
 // import { Fade, Collapse } from 'components/Animation';
-// import Divider from 'components/Divider';
-// import Loader from 'components/Loader';
 // import Pagination from 'components/Pagination';
 // import Panel from 'components/Panel';
 // import SafeAnchor from 'components/SafeAnchor';
@@ -29,8 +28,8 @@ export const components = {
   Popover,
   Message,
   Loader,
+  Divider,
 
-  // Divider,
   // Modal,
   // Pagination,
   // Panel,

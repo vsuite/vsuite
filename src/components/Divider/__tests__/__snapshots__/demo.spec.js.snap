@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Divider demo renders basic demo correctly 1`] = `
+<div class="vs-content">
+  <div class="vs-content-paragraph">
+    <p class="vs-content-paragraph-p" style="width: 97%;"></p>
+    <p class="vs-content-paragraph-p" style="width: 100%;"></p>
+    <p class="vs-content-paragraph-p" style="width: 94%;"></p>
+    <p class="vs-content-paragraph-p" style="width: 90%;"></p>
+    <p class="vs-content-paragraph-p" style="width: 98%;"></p>
+    <p class="vs-content-paragraph-p" style="width: 95%;"></p>
+    <p class="vs-content-paragraph-p" style="width: 98%;"></p>
+    <p class="vs-content-paragraph-p" style="width: 40%;"></p>
+  </div>
+  <div class="vs-divider vs-divider-horizontal"></div>
+  <div class="vs-content-paragraph">
+    <p class="vs-content-paragraph-p" style="width: 97%;"></p>
+    <p class="vs-content-paragraph-p" style="width: 100%;"></p>
+    <p class="vs-content-paragraph-p" style="width: 94%;"></p>
+    <p class="vs-content-paragraph-p" style="width: 90%;"></p>
+    <p class="vs-content-paragraph-p" style="width: 98%;"></p>
+    <p class="vs-content-paragraph-p" style="width: 95%;"></p>
+    <p class="vs-content-paragraph-p" style="width: 98%;"></p>
+    <p class="vs-content-paragraph-p" style="width: 40%;"></p>
+  </div>
+</div>
+`;
+
+exports[`Divider demo renders vertical demo correctly 1`] = `
+<div><a>Edit</a>
+  <div class="vs-divider vs-divider-vertical"></div> <a>Update</a>
+  <div class="vs-divider vs-divider-vertical"></div> <a>Save</a>
+</div>
+`;
+
+exports[`Divider demo renders with-text demo correctly 1`] = `
+<div class="vs-content">
+  <div class="vs-content-paragraph">
+    <p class="vs-content-paragraph-p" style="width: 97%;"></p>
+    <p class="vs-content-paragraph-p" style="width: 100%;"></p>
+    <p class="vs-content-paragraph-p" style="width: 94%;"></p>
+    <p class="vs-content-paragraph-p" style="width: 90%;"></p>
+    <p class="vs-content-paragraph-p" style="width: 98%;"></p>
+    <p class="vs-content-paragraph-p" style="width: 95%;"></p>
+    <p class="vs-content-paragraph-p" style="width: 98%;"></p>
+    <p class="vs-content-paragraph-p" style="width: 40%;"></p>
+  </div>
+  <div class="vs-divider vs-divider-horizontal vs-divider-with-text"><span class="vs-divider-inner-text">Second Stage</span></div>
+  <div class="vs-content-paragraph">
+    <p class="vs-content-paragraph-p" style="width: 97%;"></p>
+    <p class="vs-content-paragraph-p" style="width: 100%;"></p>
+    <p class="vs-content-paragraph-p" style="width: 94%;"></p>
+    <p class="vs-content-paragraph-p" style="width: 90%;"></p>
+    <p class="vs-content-paragraph-p" style="width: 98%;"></p>
+    <p class="vs-content-paragraph-p" style="width: 95%;"></p>
+    <p class="vs-content-paragraph-p" style="width: 98%;"></p>
+    <p class="vs-content-paragraph-p" style="width: 40%;"></p>
+  </div>
+</div>
+`;

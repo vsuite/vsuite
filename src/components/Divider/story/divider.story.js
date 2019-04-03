@@ -6,10 +6,10 @@ import Content, { Paragraph } from 'stories/content';
 
 const stories = storiesOf('General|Divider', module);
 
-stories.add('default', () => ({
+stories.add('basic', () => ({
   render: h => {
     return (
-      <Demo title="Default">
+      <Demo title="Basic">
         <Content>
           <Paragraph />
           <Divider />
