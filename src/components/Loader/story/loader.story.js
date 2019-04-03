@@ -10,9 +10,7 @@ stories.add('basic', () => ({
   render: h => {
     return (
       <Demo title="Basic">
-        <Content>
-          <Loader />
-        </Content>
+        <Loader />
       </Demo>
     );
   },
@@ -22,12 +20,9 @@ stories.add('vertical', () => ({
   render: h => {
     return (
       <Demo title="Vertical">
-        <Content>
-          <Loader content="Loading..." />
-        </Content>
-        <Content>
-          <Loader vertical content="Loading..." />
-        </Content>
+        <Loader content="Loading..." />
+        <hr />
+        <Loader vertical content="Loading..." />
       </Demo>
     );
   },
@@ -37,18 +32,13 @@ stories.add('size', () => ({
   render: h => {
     return (
       <Demo title="Size">
-        <Content>
-          <Loader size="xs" content="XSmall" />
-        </Content>
-        <Content>
-          <Loader size="sm" content="Small" />
-        </Content>
-        <Content>
-          <Loader size="md" content="Small" />
-        </Content>
-        <Content>
-          <Loader size="lg" content="Small" />
-        </Content>
+        <Loader size="xs" content="XSmall" />
+        <hr />
+        <Loader size="sm" content="Small" />
+        <hr />
+        <Loader size="md" content="Small" />
+        <hr />
+        <Loader size="lg" content="Small" />
       </Demo>
     );
   },
@@ -58,15 +48,11 @@ stories.add('speed', () => ({
   render: h => {
     return (
       <Demo title="speed">
-        <Content>
-          <Loader speed="slow" content="Slow" />
-        </Content>
-        <Content>
-          <Loader speed="normal" content="Normal" />
-        </Content>
-        <Content>
-          <Loader speed="fast" content="Fast" />
-        </Content>
+        <Loader speed="slow" content="Slow" />
+        <hr />
+        <Loader speed="normal" content="Normal" />
+        <hr />
+        <Loader speed="fast" content="Fast" />
       </Demo>
     );
   },
@@ -91,7 +77,7 @@ stories.add('backdrop', () => ({
       <Demo title="Backdrop">
         <Content>
           <Paragraph />
-          <Loader center backdrop content="loading" />
+          <Loader backdrop vertical content="loading" />
         </Content>
       </Demo>
     );
@@ -108,7 +94,7 @@ stories.add('inverse', () => ({
             style={{ backgroundColor: 'rgba(0, 0, 0, 0.7)' }}
             center
             inverse
-            content="loading"
+            content="loading..."
           />
         </Content>
       </Demo>

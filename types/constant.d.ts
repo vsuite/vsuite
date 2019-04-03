@@ -8,3 +8,4 @@ export type COLORS =
   | 'blue'
   | 'violet';
 export type TRIGGER = 'click' | 'right-click' | 'hover' | 'focus' | 'active';
+export type STATUS = 'success' | 'warning' | 'error' | 'info';

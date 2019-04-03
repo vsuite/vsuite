@@ -1,0 +1,110 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loader demo renders backdrop demo correctly 1`] = `
+<div class="vs-content">
+  <div class="vs-content-paragraph">
+    <p class="vs-content-paragraph-p" style="width: 97%;"></p>
+    <p class="vs-content-paragraph-p" style="width: 100%;"></p>
+    <p class="vs-content-paragraph-p" style="width: 94%;"></p>
+    <p class="vs-content-paragraph-p" style="width: 90%;"></p>
+    <p class="vs-content-paragraph-p" style="width: 98%;"></p>
+    <p class="vs-content-paragraph-p" style="width: 95%;"></p>
+    <p class="vs-content-paragraph-p" style="width: 98%;"></p>
+    <p class="vs-content-paragraph-p" style="width: 40%;"></p>
+  </div>
+  <div class="vs-loader-wrapper vs-loader-speed-normal vs-loader-backdrop-wrapper vs-loader-vertical vs-loader-has-content">
+    <div class="vs-loader-backdrop"></div>
+    <div class="vs-loader" style="width: 0px;"><span class="vs-loader-spin"></span><span class="vs-loader-content">loading</span></div>
+  </div>
+</div>
+`;
+
+exports[`Loader demo renders basic demo correctly 1`] = `
+<div class="vs-loader-wrapper vs-loader-speed-normal">
+  <div class="vs-loader"><span class="vs-loader-spin"></span></div>
+</div>
+`;
+
+exports[`Loader demo renders center demo correctly 1`] = `
+<div class="vs-content">
+  <div class="vs-content-paragraph">
+    <p class="vs-content-paragraph-p" style="width: 97%;"></p>
+    <p class="vs-content-paragraph-p" style="width: 100%;"></p>
+    <p class="vs-content-paragraph-p" style="width: 94%;"></p>
+    <p class="vs-content-paragraph-p" style="width: 90%;"></p>
+    <p class="vs-content-paragraph-p" style="width: 98%;"></p>
+    <p class="vs-content-paragraph-p" style="width: 95%;"></p>
+    <p class="vs-content-paragraph-p" style="width: 98%;"></p>
+    <p class="vs-content-paragraph-p" style="width: 40%;"></p>
+  </div>
+  <div class="vs-loader-wrapper vs-loader-speed-normal vs-loader-center vs-loader-has-content">
+    <div class="vs-loader" style="width: 0px;"><span class="vs-loader-spin"></span><span class="vs-loader-content">loading</span></div>
+  </div>
+</div>
+`;
+
+exports[`Loader demo renders content demo correctly 1`] = `
+<div>
+  <div class="vs-loader-wrapper vs-loader-speed-normal vs-loader-has-content">
+    <div class="vs-loader"><span class="vs-loader-spin"></span><span class="vs-loader-content">Loading...</span></div>
+  </div>
+  <hr>
+  <div class="vs-loader-wrapper vs-loader-speed-normal vs-loader-vertical vs-loader-has-content">
+    <div class="vs-loader"><span class="vs-loader-spin"></span><span class="vs-loader-content">Loading...</span></div>
+  </div>
+</div>
+`;
+
+exports[`Loader demo renders inverse demo correctly 1`] = `
+<div class="vs-content">
+  <div class="vs-content-paragraph">
+    <p class="vs-content-paragraph-p" style="width: 97%;"></p>
+    <p class="vs-content-paragraph-p" style="width: 100%;"></p>
+    <p class="vs-content-paragraph-p" style="width: 94%;"></p>
+    <p class="vs-content-paragraph-p" style="width: 90%;"></p>
+    <p class="vs-content-paragraph-p" style="width: 98%;"></p>
+    <p class="vs-content-paragraph-p" style="width: 95%;"></p>
+    <p class="vs-content-paragraph-p" style="width: 98%;"></p>
+    <p class="vs-content-paragraph-p" style="width: 40%;"></p>
+  </div>
+  <div class="vs-loader-wrapper vs-loader-speed-normal vs-loader-center vs-loader-inverse vs-loader-has-content" style="background-color: rgba(0, 0, 0, 0.7);">
+    <div class="vs-loader" style="width: 0px;"><span class="vs-loader-spin"></span><span class="vs-loader-content">loading</span></div>
+  </div>
+</div>
+`;
+
+exports[`Loader demo renders size demo correctly 1`] = `
+<div>
+  <div class="vs-loader-wrapper vs-loader-speed-normal vs-loader-xs vs-loader-has-content">
+    <div class="vs-loader"><span class="vs-loader-spin"></span><span class="vs-loader-content">XSmall</span></div>
+  </div>
+  <hr>
+  <div class="vs-loader-wrapper vs-loader-speed-normal vs-loader-sm vs-loader-has-content">
+    <div class="vs-loader"><span class="vs-loader-spin"></span><span class="vs-loader-content">Small</span></div>
+  </div>
+  <hr>
+  <div class="vs-loader-wrapper vs-loader-speed-normal vs-loader-md vs-loader-has-content">
+    <div class="vs-loader"><span class="vs-loader-spin"></span><span class="vs-loader-content">Small</span></div>
+  </div>
+  <hr>
+  <div class="vs-loader-wrapper vs-loader-speed-normal vs-loader-lg vs-loader-has-content">
+    <div class="vs-loader"><span class="vs-loader-spin"></span><span class="vs-loader-content">Small</span></div>
+  </div>
+</div>
+`;
+
+exports[`Loader demo renders speed demo correctly 1`] = `
+<div>
+  <div class="vs-loader-wrapper vs-loader-speed-slow vs-loader-has-content">
+    <div class="vs-loader"><span class="vs-loader-spin"></span><span class="vs-loader-content">Slow</span></div>
+  </div>
+  <hr>
+  <div class="vs-loader-wrapper vs-loader-speed-normal vs-loader-has-content">
+    <div class="vs-loader"><span class="vs-loader-spin"></span><span class="vs-loader-content">Normal</span></div>
+  </div>
+  <hr>
+  <div class="vs-loader-wrapper vs-loader-speed-fast vs-loader-has-content">
+    <div class="vs-loader"><span class="vs-loader-spin"></span><span class="vs-loader-content">Fast</span></div>
+  </div>
+</div>
+`;
