@@ -6,10 +6,10 @@ import Demo from 'stories/demo';
 
 const stories = storiesOf('General|Progress', module);
 
-stories.add('<ProgressLine>', () => ({
-  render: h => {
+stories.add('line', () => ({
+  render() {
     return (
-      <Demo title="<ProgressLine>">
+      <Demo title="Line">
         <Content>
           <Progress.Line />
           <Progress.Line percent={30} strokeColor="yellow" />
@@ -23,24 +23,32 @@ stories.add('<ProgressLine>', () => ({
   },
 }));
 
-stories.add('<ProgressCircle>', () => ({
-  render: h => {
+stories.add('circle', () => ({
+  render() {
     return (
-      <Demo title="<ProgressCircle>">
+      <Demo title="Circle">
         <Content>
-          <div style={{ width: '120px', marginTop: 10 }}>
+          <div
+            style={{ display: 'inline-block', width: '120px', margin: '10px' }}
+          >
             <Progress.Circle />
           </div>
-          <div style={{ width: '120px', marginTop: 10 }}>
+          <div
+            style={{ display: 'inline-block', width: '120px', margin: '10px' }}
+          >
             <Progress.Circle percent={30} strokeColor="yellow" />
           </div>
-          <div style={{ width: '120px', marginTop: 10 }}>
+          <div
+            style={{ display: 'inline-block', width: '120px', margin: '10px' }}
+          >
             <Progress.Circle percent={100} status="success" />
           </div>
-          <div style={{ width: '120px', marginTop: 10 }}>
+          <div
+            style={{ display: 'inline-block', width: '120px', margin: '10px' }}
+          >
             <Progress.Circle percent={30} status="fail" />
           </div>
-          <div style={{ width: '120px' }}>
+          <div style={{ display: 'inline-block', width: '120px' }}>
             <Progress.Circle percent={30} status="active" showInfo={false} />
           </div>
         </Content>
@@ -56,7 +64,16 @@ stories.add('dynamic', () => ({
     };
   },
 
-  render(h) {
+  computed: {
+    status() {
+      return this.percent === 100 ? 'success' : null;
+    },
+    color() {
+      return this.percent === 100 ? '#52c41a' : '#3385ff';
+    },
+  },
+
+  render() {
     return (
       <Demo title="Dynamic">
         <Content>
@@ -80,14 +97,14 @@ stories.add('dynamic', () => ({
           <hr />
           <Progress.Line
             percent={this.percent}
-            strokeColor="#3385ff"
-            status="active"
+            strokeColor={this.color}
+            status={this.status}
           />
-          <div style={{ width: '120px', marginTop: 10 }}>
+          <div style={{ width: '120px', margin: '10px' }}>
             <Progress.Circle
               percent={this.percent}
-              strokeColor="#3385ff"
-              status="active"
+              strokeColor={this.color}
+              status={this.status}
             />
           </div>
         </Content>

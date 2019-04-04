@@ -91,9 +91,9 @@ export default {
   },
 
   render() {
-    const showIcon = status && status !== 'active';
+    const showIcon = this.status && this.status !== 'active';
     const info = showIcon ? (
-      <span class={this._addPrefix(`icon-${status || ''}`)} />
+      <span class={this._addPrefix(`icon-${this.status || ''}`)} />
     ) : (
       <span key={1}>{this.percent}%</span>
     );

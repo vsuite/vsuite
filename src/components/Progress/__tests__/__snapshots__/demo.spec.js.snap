@@ -1,0 +1,133 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Progress demo renders circle demo correctly 1`] = `
+<div>
+  <div class="circle">
+    <div class="vs-progress vs-progress-circle"><span class="vs-progress-circle-info"><span>0%</span></span><svg viewBox="0 0 100 100" class="vs-progress-svg">
+        <path d="M 50,50 m 0,-47
+     a 47,47 0 1 1 0,94
+     a 47,47 0 1 1 0,-94" stroke-width="6" fill-opacity="0" class="vs-progress-trail" style="stroke-dasharray: 295.3097094374406px 295.3097094374406px; stroke-dashoffset: -0px;"></path>
+        <path d="M 50,50 m 0,-47
+     a 47,47 0 1 1 0,94
+     a 47,47 0 1 1 0,-94" stroke="" stroke-linecap="round" stroke-width="0" fill-opacity="0" class="vs-progress-stroke" style="stroke-dasharray: 0px 295.3097094374406px; stroke-dashoffset: -0px;"></path>
+      </svg></div>
+  </div>
+  <div class="circle">
+    <div class="vs-progress vs-progress-circle"><span class="vs-progress-circle-info"><span>30%</span></span><svg viewBox="0 0 100 100" class="vs-progress-svg">
+        <path d="M 50,50 m 0,-47
+     a 47,47 0 1 1 0,94
+     a 47,47 0 1 1 0,-94" stroke-width="6" fill-opacity="0" class="vs-progress-trail" style="stroke-dasharray: 295.3097094374406px 295.3097094374406px; stroke-dashoffset: -0px;"></path>
+        <path d="M 50,50 m 0,-47
+     a 47,47 0 1 1 0,94
+     a 47,47 0 1 1 0,-94" stroke="#ffff00" stroke-linecap="round" stroke-width="6" fill-opacity="0" class="vs-progress-stroke" style="stroke: #ffff00; stroke-dasharray: 88.59291283123217px 295.3097094374406px; stroke-dashoffset: -0px;"></path>
+      </svg></div>
+  </div>
+  <div class="circle">
+    <div class="vs-progress vs-progress-circle vs-progress-circle-success"><span class="vs-progress-circle-info"><span class="vs-progress-icon-success"></span></span><svg viewBox="0 0 100 100" class="vs-progress-svg">
+        <path d="M 50,50 m 0,-47
+     a 47,47 0 1 1 0,94
+     a 47,47 0 1 1 0,-94" stroke-width="6" fill-opacity="0" class="vs-progress-trail" style="stroke-dasharray: 295.3097094374406px 295.3097094374406px; stroke-dashoffset: -0px;"></path>
+        <path d="M 50,50 m 0,-47
+     a 47,47 0 1 1 0,94
+     a 47,47 0 1 1 0,-94" stroke="" stroke-linecap="round" stroke-width="6" fill-opacity="0" class="vs-progress-stroke" style="stroke-dasharray: 295.3097094374406px 295.3097094374406px; stroke-dashoffset: -0px;"></path>
+      </svg></div>
+  </div>
+  <div class="circle">
+    <div class="vs-progress vs-progress-circle vs-progress-circle-fail"><span class="vs-progress-circle-info"><span class="vs-progress-icon-fail"></span></span><svg viewBox="0 0 100 100" class="vs-progress-svg">
+        <path d="M 50,50 m 0,-47
+     a 47,47 0 1 1 0,94
+     a 47,47 0 1 1 0,-94" stroke-width="6" fill-opacity="0" class="vs-progress-trail" style="stroke-dasharray: 295.3097094374406px 295.3097094374406px; stroke-dashoffset: -0px;"></path>
+        <path d="M 50,50 m 0,-47
+     a 47,47 0 1 1 0,94
+     a 47,47 0 1 1 0,-94" stroke="" stroke-linecap="round" stroke-width="6" fill-opacity="0" class="vs-progress-stroke" style="stroke-dasharray: 88.59291283123217px 295.3097094374406px; stroke-dashoffset: -0px;"></path>
+      </svg></div>
+  </div>
+  <div class="circle">
+    <div class="vs-progress vs-progress-circle vs-progress-circle-active"><svg viewBox="0 0 100 100" class="vs-progress-svg">
+        <path d="M 50,50 m 0,-47
+     a 47,47 0 1 1 0,94
+     a 47,47 0 1 1 0,-94" stroke-width="6" fill-opacity="0" class="vs-progress-trail" style="stroke-dasharray: 295.3097094374406px 295.3097094374406px; stroke-dashoffset: -0px;"></path>
+        <path d="M 50,50 m 0,-47
+     a 47,47 0 1 1 0,94
+     a 47,47 0 1 1 0,-94" stroke="" stroke-linecap="round" stroke-width="6" fill-opacity="0" class="vs-progress-stroke" style="stroke-dasharray: 88.59291283123217px 295.3097094374406px; stroke-dashoffset: -0px;"></path>
+      </svg></div>
+  </div>
+</div>
+`;
+
+exports[`Progress demo renders dynamic demo correctly 1`] = `
+<div>
+  <div role="group" class="vs-btn-group"><button type="button" class="vs-btn vs-btn-default">-<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-default">+<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button></div>
+  <hr>
+  <div class="vs-progress vs-progress-line">
+    <div class="vs-progress-line-outer">
+      <div class="vs-progress-line-inner">
+        <div class="vs-progress-line-bg" style="width: 30%; height: 10px; background-color: rgb(51, 133, 255);"></div>
+      </div>
+    </div>
+    <div class="vs-progress-info"><span class="vs-progress-info-status">30%</span></div>
+  </div>
+  <div style="width: 120px; margin: 10px;">
+    <div class="vs-progress vs-progress-circle"><span class="vs-progress-circle-info"><span>30%</span></span><svg viewBox="0 0 100 100" class="vs-progress-svg">
+        <path d="M 50,50 m 0,-47
+     a 47,47 0 1 1 0,94
+     a 47,47 0 1 1 0,-94" stroke-width="6" fill-opacity="0" class="vs-progress-trail" style="stroke-dasharray: 295.3097094374406px 295.3097094374406px; stroke-dashoffset: -0px;"></path>
+        <path d="M 50,50 m 0,-47
+     a 47,47 0 1 1 0,94
+     a 47,47 0 1 1 0,-94" stroke="#3385ff" stroke-linecap="round" stroke-width="6" fill-opacity="0" class="vs-progress-stroke" style="stroke: #3385ff; stroke-dasharray: 88.59291283123217px 295.3097094374406px; stroke-dashoffset: -0px;"></path>
+      </svg></div>
+  </div>
+</div>
+`;
+
+exports[`Progress demo renders line demo correctly 1`] = `
+<div>
+  <div class="vs-progress vs-progress-line">
+    <div class="vs-progress-line-outer">
+      <div class="vs-progress-line-inner">
+        <div class="vs-progress-line-bg" style="width: 0%; height: 10px;"></div>
+      </div>
+    </div>
+    <div class="vs-progress-info"><span class="vs-progress-info-status">0%</span></div>
+  </div>
+  <div class="vs-progress vs-progress-line">
+    <div class="vs-progress-line-outer">
+      <div class="vs-progress-line-inner">
+        <div class="vs-progress-line-bg" style="width: 30%; height: 10px; background-color: yellow;"></div>
+      </div>
+    </div>
+    <div class="vs-progress-info"><span class="vs-progress-info-status">30%</span></div>
+  </div>
+  <div class="vs-progress vs-progress-line vs-progress-line-active">
+    <div class="vs-progress-line-outer">
+      <div class="vs-progress-line-inner">
+        <div class="vs-progress-line-bg" style="width: 30%; height: 10px;"></div>
+      </div>
+    </div>
+    <div class="vs-progress-info"><span class="vs-progress-info-status">30%</span></div>
+  </div>
+  <div class="vs-progress vs-progress-line vs-progress-line-fail">
+    <div class="vs-progress-line-outer">
+      <div class="vs-progress-line-inner">
+        <div class="vs-progress-line-bg" style="width: 50%; height: 10px;"></div>
+      </div>
+    </div>
+    <div class="vs-progress-info"><span class="vs-progress-icon-fail"></span></div>
+  </div>
+  <div class="vs-progress vs-progress-line vs-progress-line-success">
+    <div class="vs-progress-line-outer">
+      <div class="vs-progress-line-inner">
+        <div class="vs-progress-line-bg" style="width: 100%; height: 10px;"></div>
+      </div>
+    </div>
+    <div class="vs-progress-info"><span class="vs-progress-icon-success"></span></div>
+  </div>
+  <div class="vs-progress vs-progress-line">
+    <div class="vs-progress-line-outer">
+      <div class="vs-progress-line-inner">
+        <div class="vs-progress-line-bg" style="width: 80%; height: 10px;"></div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
