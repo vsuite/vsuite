@@ -8,7 +8,7 @@ const loadingBarStore = {
   color: '#2196f3',
   failColor: '#f44336',
   height: 4,
-  progress: true,
+  progress: false,
   timer: null,
 };
 
@@ -145,6 +145,8 @@ export default {
   },
 
   config(options) {
+    options = options || {};
+
     if ('color' in options) {
       loadingBarStore.color = options.color;
     }

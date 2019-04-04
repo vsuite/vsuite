@@ -8,6 +8,7 @@ import Divider from 'components/Divider';
 
 import Alert from 'components/Alert';
 import Notification from 'components/Notification';
+import LoadingBar from 'components/LoadingBar';
 
 // import { Fade, Collapse } from 'components/Animation';
 // import Pagination from 'components/Pagination';
@@ -54,10 +55,15 @@ export default {
     };
 
     // vsuite injected instance methods
-    // Vue.prototype.$Loading = LoadingBar;
+    // loading-bar
+    Vue.prototype.$Loading = LoadingBar;
+    Vue.prototype.$LoadingBar = LoadingBar;
+    // alert
     Vue.prototype.$Alert = Alert;
+    // notification
     Vue.prototype.$Notification = Notification;
     Vue.prototype.$Notice = Notification;
+
     // Vue.prototype.$Modal = Modal;
   },
 };

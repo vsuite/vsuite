@@ -2,23 +2,6 @@
 // Utility classes
 // --------------------------------------------------
 
-// Animations
-// -------------------------
-.animated {
-  animation-fill-mode: both;
-}
-
-.animated.infinite {
-  animation-iteration-count: infinite;
-}
-
-@media print, prefers-reduced-motion {
-  .animated {
-    animation: unset !important;
-    transition: none !important;
-  }
-}
-
 // Floats
 // -------------------------
 
@@ -68,7 +51,47 @@
 // Animations
 // -------------------------
 
-// FIXME
+.animated {
+  animation-fill-mode: both;
+}
+
+.animated.infinite {
+  animation-iteration-count: infinite;
+}
+
+@media print, prefers-reduced-motion {
+  .animated {
+    animation: unset !important;
+    transition: none !important;
+  }
+}
+
+// transition fade
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.15s linear;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
+// transition
+.collapsing {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  transition: height 0.35s ease, visibility 0.35s ease;
+
+  tr& {
+    display: table-row;
+  }
+
+  tbody& {
+    display: table-row-group;
+  }
+}
+
 //.fade {
 //  opacity: 0;
 //  transition: opacity 0.15s linear;
@@ -77,29 +100,29 @@
 //    opacity: 1;
 //  }
 //}
-
-.collapse {
-  display: none;
-
-  &.in {
-    display: block;
-  }
-
-  tr&.in {
-    display: table-row;
-  }
-
-  tbody&.in {
-    display: table-row-group;
-  }
-}
-
-.collapsing {
-  position: relative;
-  height: 0;
-  overflow: hidden;
-  transition: height 0.35s ease, visibility 0.35s ease;
-}
+//
+//.collapse {
+//  display: none;
+//
+//  &.in {
+//    display: block;
+//  }
+//
+//  tr&.in {
+//    display: table-row;
+//  }
+//
+//  tbody&.in {
+//    display: table-row-group;
+//  }
+//}
+//
+//.collapsing {
+//  position: relative;
+//  height: 0;
+//  overflow: hidden;
+//  transition: height 0.35s ease, visibility 0.35s ease;
+//}
 
 .sr-only {
   position: absolute;

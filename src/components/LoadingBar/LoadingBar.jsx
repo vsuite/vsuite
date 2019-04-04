@@ -56,7 +56,7 @@ export default {
       class: this.classes,
       attrs: this.$attrs,
       on: this.$listeners,
-      directives: [{ name: 'show', value: this.show }],
+      directives: [{ name: 'if', value: this.show }],
     };
 
     return (
