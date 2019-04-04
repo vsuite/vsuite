@@ -36,7 +36,7 @@ export default {
         width: `${this.percent}%`,
         height: `${this.strokeWidth}px`,
         backgroundColor: this.strokeColor
-          ? tinycolor(this.strokeColor).toHexString()
+          ? tinycolor(this.strokeColor).toString()
           : '',
       };
     },

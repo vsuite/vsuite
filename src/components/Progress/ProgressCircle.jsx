@@ -80,6 +80,9 @@ export default {
       const len = Math.PI * 2 * radius;
 
       return {
+        stroke: this.strokeColor
+          ? tinycolor(this.strokeColor).toHexString()
+          : '',
         strokeDasharray: `${(this.percent / 100) *
           (len - this.gapDegree)}px ${len}px`,
         strokeDashoffset: `-${this.gapDegree / 2}px`,

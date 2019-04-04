@@ -1,11 +1,8 @@
 import { storiesOf } from '@storybook/vue';
 
-import ProgressLine from 'components/ProgressLine';
-import ProgressCircle from 'components/ProgressCircle';
+import Progress from 'components/Progress';
 import Button from 'components/Button';
-import ButtonGroup from 'components/ButtonGroup';
 import Demo from 'stories/demo';
-import Content from 'stories/content';
 
 const stories = storiesOf('General|Progress', module);
 
@@ -14,12 +11,12 @@ stories.add('<ProgressLine>', () => ({
     return (
       <Demo title="<ProgressLine>">
         <Content>
-          <ProgressLine />
-          <ProgressLine percent={30} strokeColor="yellow" />
-          <ProgressLine percent={30} status="active" />
-          <ProgressLine percent={50} status="fail" />
-          <ProgressLine percent={100} status="success" />
-          <ProgressLine percent={80} showInfo={false} />
+          <Progress.Line />
+          <Progress.Line percent={30} strokeColor="yellow" />
+          <Progress.Line percent={30} status="active" />
+          <Progress.Line percent={50} status="fail" />
+          <Progress.Line percent={100} status="success" />
+          <Progress.Line percent={80} showInfo={false} />
         </Content>
       </Demo>
     );
@@ -31,11 +28,21 @@ stories.add('<ProgressCircle>', () => ({
     return (
       <Demo title="<ProgressCircle>">
         <Content>
-          <ProgressCircle />
-          <ProgressCircle percent={30} strokeColor="yellow" />
-          <ProgressCircle percent={100} status="success" />
-          <ProgressCircle percent={30} status="fail" />
-          <ProgressCircle percent={30} status="active" showInfo={false} />
+          <div style={{ width: '120px', marginTop: 10 }}>
+            <Progress.Circle />
+          </div>
+          <div style={{ width: '120px', marginTop: 10 }}>
+            <Progress.Circle percent={30} strokeColor="yellow" />
+          </div>
+          <div style={{ width: '120px', marginTop: 10 }}>
+            <Progress.Circle percent={100} status="success" />
+          </div>
+          <div style={{ width: '120px', marginTop: 10 }}>
+            <Progress.Circle percent={30} status="fail" />
+          </div>
+          <div style={{ width: '120px' }}>
+            <Progress.Circle percent={30} status="active" showInfo={false} />
+          </div>
         </Content>
       </Demo>
     );
@@ -53,7 +60,7 @@ stories.add('dynamic', () => ({
     return (
       <Demo title="Dynamic">
         <Content>
-          <ButtonGroup>
+          <Button.Group>
             <Button
               onClick={() =>
                 (this.percent = this.percent - 10 <= 0 ? 0 : this.percent - 10)
@@ -69,15 +76,15 @@ stories.add('dynamic', () => ({
             >
               +
             </Button>
-          </ButtonGroup>
+          </Button.Group>
           <hr />
-          <ProgressLine
+          <Progress.Line
             percent={this.percent}
             strokeColor="#3385ff"
             status="active"
           />
-          <div style={{ width: 120, marginTop: 10 }}>
-            <ProgressCircle
+          <div style={{ width: '120px', marginTop: 10 }}>
+            <Progress.Circle
               percent={this.percent}
               strokeColor="#3385ff"
               status="active"

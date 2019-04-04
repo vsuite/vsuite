@@ -5,6 +5,7 @@ import Popover from 'components/Popover';
 import Message from 'components/Message';
 import Loader from 'components/Loader';
 import Divider from 'components/Divider';
+import Progress from 'components/Progress';
 
 import Alert from 'components/Alert';
 import Notification from 'components/Notification';
@@ -30,6 +31,7 @@ export const components = {
   Message,
   Loader,
   Divider,
+  Progress,
 
   // Modal,
   // Pagination,

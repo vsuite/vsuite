@@ -1,5 +1,14 @@
 import ProgressLine from './ProgressLine.jsx';
 import ProgressCircle from './ProgressCircle.jsx';
 
-export const Line = ProgressLine;
-export const Circle = ProgressCircle;
+const Progress = {};
+
+Progress.Line = ProgressLine;
+Progress.Circle = ProgressCircle;
+
+Progress.install = function(Vue) {
+  Vue.component(ProgressLine.name, ProgressLine);
+  Vue.component(ProgressCircle.name, ProgressCircle);
+};
+
+export default Progress;
