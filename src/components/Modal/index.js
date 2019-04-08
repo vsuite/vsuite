@@ -10,4 +10,8 @@ Modal.warning = ModalInstance.warning;
 Modal.warn = ModalInstance.warn;
 Modal.remove = ModalInstance.remove;
 
+Modal.install = function(Vue) {
+  Vue.component(Modal.name, Modal);
+};
+
 export default Modal;

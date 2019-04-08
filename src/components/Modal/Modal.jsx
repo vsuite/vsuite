@@ -129,8 +129,9 @@ export default {
 
         <div {...modalData}>
           <transition
-            type="animation"
-            name="fade"
+            appear
+            enterActiveClass="animated bounce-in"
+            leaveActiveClass="animated bounce-out"
             onBeforeEnter={this._handleBeforeEnter}
             onAfterLeave={this._handleAfterLeave}
           >
@@ -325,6 +326,7 @@ export default {
     },
 
     _handleDocumentKeyup(event) {
+      // ESC
       if (this.keyboard && event.keyCode === 27) {
         this._handleClose();
       }

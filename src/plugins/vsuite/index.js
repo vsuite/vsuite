@@ -10,6 +10,7 @@ import Progress from 'components/Progress';
 import Alert from 'components/Alert';
 import Notification from 'components/Notification';
 import LoadingBar from 'components/LoadingBar';
+import Modal from 'components/Modal';
 
 // import { Fade, Collapse } from 'components/Animation';
 // import Pagination from 'components/Pagination';
@@ -18,7 +19,6 @@ import LoadingBar from 'components/LoadingBar';
 // import Steps from 'components/Steps';
 // import Tag from 'components/Tag';
 // import Timeline from 'components/Timeline';
-// import Modal from 'components/Modal';
 // import Alert from 'components/Alert';
 // import LoadingBar from 'components/LoadingBar';
 // import Notification from 'components/Notification';
@@ -33,7 +33,8 @@ export const components = {
   Divider,
   Progress,
 
-  // Modal,
+  Modal,
+
   // Pagination,
   // Panel,
   // SafeAnchor,
@@ -65,7 +66,9 @@ export default {
     // notification
     Vue.prototype.$Notification = Notification;
     Vue.prototype.$Notice = Notification;
-
-    // Vue.prototype.$Modal = Modal;
+    // modal
+    Vue.prototype.$Modal = Modal;
+    // drawer
+    // Vue.prototype.$Drawer = Drawer;
   },
 };

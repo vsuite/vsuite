@@ -1,4 +1,4 @@
-@import 'common';
+@import '~styles/common';
 @import 'mixins/modal';
 
 //
@@ -58,6 +58,14 @@
       margin-right: @modal-full-size-margin;
     }
   }
+
+  &-confirm {
+    .@{ns}modal-body {
+      //margin-left: 40px;
+      //margin-top: @drawer-body-margin / 2;
+      //padding-bottom: @drawer-body-margin / 2;
+    }
+  }
 }
 
 // Actual modal
@@ -79,15 +87,22 @@
   bottom: 0;
   left: 0;
   background-color: @modal-backdrop-bg;
+  opacity: @modal-backdrop-opacity;
 
   // Fade for backdrop
-  &.fade {
-    opacity: 0;
+  &.fade-enter-active {
+    opacity: @modal-backdrop-opacity;
     transition: opacity 0.3s ease-in;
   }
 
-  &.in {
-    opacity: @modal-backdrop-opacity;
+  &.fade-leave-active {
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+  }
+
+  &.fade-enter,
+  &.fade-leave-to {
+    opacity: 0;
   }
 }
 
