@@ -52,6 +52,10 @@ export default {
     drawer: VueTypes.bool.def(false),
     modalClassNames: VueTypes.any,
     dialogClassNames: VueTypes.any,
+    dialogStyle: VueTypes.oneOfType([VueTypes.string, VueTypes.object]).def(''),
+    // other
+    role: VueTypes.string,
+    tabindex: VueTypes.number.def(-1),
     transfer: VueTypes.bool.def(function() {
       return this.$VSUITE.transfer || false;
     }),
@@ -98,25 +102,28 @@ export default {
 
   render(h) {
     const modalWrapperData = {
+      class: this._addPrefix('wrapper'),
       directives: [{ name: 'transfer-dom' }],
       attrs: {
         role: 'dialog',
         'data-transfer': `${this.transfer}`,
       },
+      ref: 'modal',
     };
     const modalData = {
       class: [this.classes, this.modalClassNames],
       style: this.modalStyles,
       attrs: {
-        role: 'dialog',
+        role: this.role || 'document',
+        tabindex: this.tabindex || '-1',
       },
+      directives: [{ name: 'show', value: this.visible }],
       on: { click: this._handleModalClick },
-      ref: 'modal',
+      ref: 'dialog',
     };
     const dialogData = {
       class: [this._addPrefix('dialog'), this.dialogClassNames],
-      directives: [{ name: 'show', value: this.visible }],
-      ref: 'dialog',
+      style: this.dialogStyle,
     };
     const bodyData = {
       class: this._addPrefix('body'),
@@ -127,14 +134,14 @@ export default {
       <div {...modalWrapperData}>
         {this.backdrop && this._renderBackdrop(h)}
 
-        <div {...modalData}>
-          <transition
-            appear
-            enterActiveClass="animated bounce-in"
-            leaveActiveClass="animated bounce-out"
-            onBeforeEnter={this._handleBeforeEnter}
-            onAfterLeave={this._handleAfterLeave}
-          >
+        <transition
+          appear
+          enterActiveClass="animated bounce-in"
+          leaveActiveClass="animated bounce-out"
+          onBeforeEnter={this._handleBeforeEnter}
+          onAfterLeave={this._handleAfterLeave}
+        >
+          <div {...modalData}>
             <div {...dialogData}>
               <div class={this._addPrefix('content')} role="document">
                 {this.header && this._renderHeader(h)}
@@ -142,8 +149,8 @@ export default {
                 {this.footer && this._renderFooter(h)}
               </div>
             </div>
-          </transition>
-        </div>
+          </div>
+        </transition>
       </div>
     );
   },

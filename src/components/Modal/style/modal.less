@@ -11,6 +11,7 @@
 }
 
 .@{ns}modal-wrapper {
+  display: none;
   position: fixed;
   overflow: auto;
   z-index: @zindex-modal;
@@ -22,7 +23,6 @@
 
 // Container that the modal scrolls within
 .@{ns}modal {
-  display: none;
   overflow: visible;
   // Prevent Chrome on Windows from adding a focus outline. For details, see
   // https://github.com/twbs/bootstrap/pull/10951.
@@ -61,7 +61,7 @@
 
   &-confirm {
     .@{ns}modal-body {
-      //margin-left: 40px;
+      margin-left: 40px;
       //margin-top: @drawer-body-margin / 2;
       //padding-bottom: @drawer-body-margin / 2;
     }
