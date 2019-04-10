@@ -1,16 +1,17 @@
 import VueTypes from 'vue-types';
-import Button from 'components/Button';
-import { transferDom } from 'directives';
 import {
   on,
   addStyle,
   hasClass,
   ownerDocument,
   isOverflowing,
-  getHeight,
   getScrollbarSize,
-} from 'shares/dom';
+} from 'dom-lib';
+import { getHeight } from 'shares/dom';
+import Button from 'components/Button';
+import { transferDom } from 'directives';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
+import renderX, { RenderX } from 'utils/render';
 import { SIZES } from 'utils/constant';
 
 const CLASS_PREFIX = 'modal';
@@ -30,7 +31,7 @@ export default {
       type: Boolean,
       default: undefined,
     },
-    title: VueTypes.string,
+    title: RenderX,
     backdrop: VueTypes.oneOfType([
       VueTypes.bool,
       VueTypes.oneOf(['static']),
@@ -46,10 +47,12 @@ export default {
     header: VueTypes.bool,
     footer: VueTypes.bool,
     okText: VueTypes.string,
+    showOk: VueTypes.bool,
     cancelText: VueTypes.string,
     showCancel: VueTypes.bool,
     // drawer
     drawer: VueTypes.bool.def(false),
+    // modify
     modalClassNames: VueTypes.any,
     dialogClassNames: VueTypes.any,
     dialogStyle: VueTypes.oneOfType([VueTypes.string, VueTypes.object]).def(''),
@@ -83,25 +86,8 @@ export default {
     },
   },
 
-  watch: {
-    visible(val) {
-      // reset loading status
-      this.vLoading = false;
-
-      if (val) {
-        this.$emit('show');
-        this._handleAddResizeListener();
-        this._handleAddDocumentKeyup();
-      } else {
-        this.$emit('hide');
-        this._handleRemoveResizeListener();
-        this._handleRemoveDocumentKeyup();
-      }
-    },
-  },
-
   render(h) {
-    const modalWrapperData = {
+    const modalData = {
       class: this._addPrefix('wrapper'),
       directives: [{ name: 'transfer-dom' }],
       attrs: {
@@ -110,7 +96,7 @@ export default {
       },
       ref: 'modal',
     };
-    const modalData = {
+    const modalDialogData = {
       class: [this.classes, this.modalClassNames],
       style: this.modalStyles,
       attrs: {
@@ -131,7 +117,7 @@ export default {
     };
 
     return (
-      <div {...modalWrapperData}>
+      <div {...modalData}>
         {this.backdrop && this._renderBackdrop(h)}
 
         <transition
@@ -139,9 +125,11 @@ export default {
           enterActiveClass="animated bounce-in"
           leaveActiveClass="animated bounce-out"
           onBeforeEnter={this._handleBeforeEnter}
+          onEnter={this._handleEntering}
           onAfterLeave={this._handleAfterLeave}
+          onLeave={this._handleLeaving}
         >
-          <div {...modalData}>
+          <div {...modalDialogData}>
             <div {...dialogData}>
               <div class={this._addPrefix('content')} role="document">
                 {this.header && this._renderHeader(h)}
@@ -176,7 +164,7 @@ export default {
       );
     },
 
-    _renderHeader() {
+    _renderHeader(h) {
       return (
         <div class={this._addPrefix('header')}>
           {this.closable && (
@@ -191,7 +179,7 @@ export default {
           )}
           {(this.title || this.$slots.title) && (
             <h4 class={this._addPrefix('title')}>
-              {this.title || this.$slots.title}
+              {(this.title && renderX(h, this.title)) || this.$slots.title}
             </h4>
           )}
           {this.$slots.header}
@@ -208,19 +196,22 @@ export default {
                 {this.cancelText || this.$t('_.Modal.cancelText')}
               </Button>
             ) : null,
-            <Button
-              onClick={this._handleOk}
-              loading={this.vLoading}
-              appearance="primary"
-            >
-              {this.okText || this.$t('_.Modal.okText')}
-            </Button>,
+            this.showOk ? (
+              <Button
+                onClick={this._handleOk}
+                loading={this.vLoading}
+                appearance="primary"
+              >
+                {this.okText || this.$t('_.Modal.okText')}
+              </Button>
+            ) : null,
           ]}
         </div>
       );
     },
 
-    _computedStyles() {
+    _computedStyles(zoom) {
+      const scale = zoom ? 0.8 : 1;
       const node = this.$refs.modal;
       const doc = ownerDocument(node);
       const body = doc.body;
@@ -251,9 +242,9 @@ export default {
 
         if (dialog) {
           // default margin
-          let headerHeight = 46;
-          let footerHeight = 46;
-          let contentHeight = 30;
+          let headerHeight = 20 + 20;
+          let footerHeight = 20 + 20;
+          let contentHeight = 20 + 20;
 
           const header = dialog.querySelector(`.${this._addPrefix('header')}`);
           const footer = dialog.querySelector(`.${this._addPrefix('footer')}`);
@@ -262,13 +253,13 @@ export default {
           );
 
           headerHeight = header
-            ? getHeight(header) + headerHeight
+            ? getHeight(header) / scale + headerHeight
             : headerHeight;
           footerHeight = footer
-            ? getHeight(footer) + headerHeight
-            : headerHeight;
+            ? getHeight(footer) / scale + footerHeight
+            : footerHeight;
           contentHeight = content
-            ? getHeight(content) + contentHeight
+            ? getHeight(content) / scale + contentHeight
             : contentHeight;
 
           if (this.drawer) {
@@ -300,8 +291,6 @@ export default {
         'resize',
         this._handleWindowResize
       );
-
-      this.$nextTick(() => this._computedStyles());
     },
 
     _handleRemoveResizeListener() {
@@ -343,8 +332,22 @@ export default {
       this.$refs.modal && addStyle(this.$refs.modal, 'display', 'block');
     },
 
+    _handleEntering() {
+      this._computedStyles(true);
+      this._handleAddResizeListener();
+      this._handleAddDocumentKeyup();
+      this.$emit('show');
+    },
+
     _handleAfterLeave() {
+      this.vLoading = false;
       this.$refs.modal && addStyle(this.$refs.modal, 'display', 'none');
+    },
+
+    _handleLeaving() {
+      this._handleRemoveResizeListener();
+      this._handleRemoveDocumentKeyup();
+      this.$emit('hide');
     },
 
     _handleModalClick(event) {

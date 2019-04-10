@@ -21,6 +21,8 @@ stories.add('default', () => ({
           <Button onClick={this._handleOpen}>Open</Button>
         </Button.Toolbar>
 
+        <div style={{ height: '2000px' }} />
+
         <Modal
           visible={this.visible}
           title="Modal Title"
@@ -170,7 +172,7 @@ stories.add('overflow', () => ({
         </Button.Toolbar>
 
         <Modal
-          overflow
+          // overflow={false}
           visible={this.visible}
           title="Modal Title"
           onChange={v => (this.visible = v)}
