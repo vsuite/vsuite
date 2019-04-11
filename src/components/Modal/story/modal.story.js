@@ -172,7 +172,7 @@ stories.add('overflow', () => ({
         </Button.Toolbar>
 
         <Modal
-          // overflow={false}
+          overflow={false}
           visible={this.visible}
           title="Modal Title"
           onChange={v => (this.visible = v)}

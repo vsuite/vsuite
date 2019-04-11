@@ -3,13 +3,14 @@ import {
   on,
   addStyle,
   hasClass,
+  getHeight,
+  getContainer,
   ownerDocument,
   isOverflowing,
   getScrollbarSize,
 } from 'dom-lib';
-import { getHeight } from 'shares/dom';
 import Button from 'components/Button';
-import { transferDom } from 'directives';
+import Portal from 'components/_portal';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
 import renderX, { RenderX } from 'utils/render';
 import { SIZES } from 'utils/constant';
@@ -23,8 +24,6 @@ export default {
     prop: 'visible',
     event: 'change',
   },
-
-  directives: { transferDom },
 
   props: {
     visible: {
@@ -59,9 +58,6 @@ export default {
     // other
     role: VueTypes.string,
     tabindex: VueTypes.number.def(-1),
-    transfer: VueTypes.bool.def(function() {
-      return this.$VSUITE.transfer || false;
-    }),
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
   },
 
@@ -89,11 +85,7 @@ export default {
   render(h) {
     const modalData = {
       class: this._addPrefix('wrapper'),
-      directives: [{ name: 'transfer-dom' }],
-      attrs: {
-        role: 'dialog',
-        'data-transfer': `${this.transfer}`,
-      },
+      attrs: { role: 'dialog' },
       ref: 'modal',
     };
     const modalDialogData = {
@@ -117,29 +109,31 @@ export default {
     };
 
     return (
-      <div {...modalData}>
-        {this.backdrop && this._renderBackdrop(h)}
+      <Portal container={this.container}>
+        <div {...modalData}>
+          {this.backdrop && this._renderBackdrop(h)}
 
-        <transition
-          appear
-          enterActiveClass="animated bounce-in"
-          leaveActiveClass="animated bounce-out"
-          onBeforeEnter={this._handleBeforeEnter}
-          onEnter={this._handleEntering}
-          onAfterLeave={this._handleAfterLeave}
-          onLeave={this._handleLeaving}
-        >
-          <div {...modalDialogData}>
-            <div {...dialogData}>
-              <div class={this._addPrefix('content')} role="document">
-                {this.header && this._renderHeader(h)}
-                <div {...bodyData}>{this.$slots.default}</div>
-                {this.footer && this._renderFooter(h)}
+          <transition
+            appear
+            enterActiveClass="animated bounce-in"
+            leaveActiveClass="animated bounce-out"
+            onBeforeEnter={this._handleBeforeEnter}
+            onEnter={this._handleEntering}
+            onAfterLeave={this._handleAfterLeave}
+            onLeave={this._handleLeaving}
+          >
+            <div {...modalDialogData}>
+              <div {...dialogData}>
+                <div className={this._addPrefix('content')} role="document">
+                  {this.header && this._renderHeader(h)}
+                  <div {...bodyData}>{this.$slots.default}</div>
+                  {this.footer && this._renderFooter(h)}
+                </div>
               </div>
             </div>
-          </div>
-        </transition>
-      </div>
+          </transition>
+        </div>
+      </Portal>
     );
   },
 
@@ -214,10 +208,10 @@ export default {
       const scale = zoom ? 0.8 : 1;
       const node = this.$refs.modal;
       const doc = ownerDocument(node);
-      const body = doc.body;
+      const container = getContainer(this.container, doc.body);
       const scrollHeight = node ? node.scrollHeight : 0;
 
-      const bodyIsOverflowing = isOverflowing(body);
+      const bodyIsOverflowing = isOverflowing(container);
       const modalIsOverflowing =
         scrollHeight > doc.documentElement.clientHeight;
       const scrollbarSize = getScrollbarSize();
@@ -308,7 +302,7 @@ export default {
     _handleAddDocumentKeyup() {
       this.documentKeydownListener = on(
         document,
-        'keyup',
+        'keydown',
         this._handleDocumentKeyup
       );
     },
