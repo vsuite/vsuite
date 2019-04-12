@@ -8,7 +8,7 @@ import { Paragraph } from 'stories/content';
 
 const stories = storiesOf('General|Modal', module);
 
-stories.add('default', () => ({
+stories.add('basic', () => ({
   data() {
     return {
       visible: false,
@@ -17,7 +17,7 @@ stories.add('default', () => ({
 
   render() {
     return (
-      <Demo title="Default">
+      <Demo title="Basic">
         <Button.Toolbar>
           <Button onClick={this._handleOpen}>Open</Button>
         </Button.Toolbar>
@@ -197,6 +197,18 @@ stories.add('overflow', () => ({
   },
 }));
 
+stories.add('visible', () => ({
+  render() {
+    return (
+      <Demo title="Visible">
+        <Modal visible={true} title="Modal Title">
+          <Paragraph size="small" />
+        </Modal>
+      </Demo>
+    );
+  },
+}));
+
 stories.add('dynamic', () => ({
   data() {
     return {
@@ -207,7 +219,7 @@ stories.add('dynamic', () => ({
 
   render() {
     return (
-      <Demo title="Overflow">
+      <Demo title="Dynamic">
         <Button.Toolbar>
           <Button onClick={this._handleOpen}>Open</Button>
         </Button.Toolbar>
@@ -235,6 +247,46 @@ stories.add('dynamic', () => ({
       this.loading = true;
 
       setTimeout(() => (this.loading = false), 2000);
+    },
+  },
+}));
+
+stories.add('loading', () => ({
+  data() {
+    return { visible: false, loading: false };
+  },
+
+  render() {
+    return (
+      <Demo title="Visible">
+        <Button.Toolbar>
+          <Button onClick={this._handleOpen}>Open</Button>
+        </Button.Toolbar>
+
+        <Modal
+          visible={this.visible}
+          loading={this.loading}
+          title="Modal Title"
+          onChange={v => (this.visible = v)}
+          onOk={this._handleOk}
+        >
+          <Paragraph size="small" />
+        </Modal>
+      </Demo>
+    );
+  },
+
+  methods: {
+    _handleOpen() {
+      this.visible = !this.visible;
+      this.loading = true;
+    },
+
+    _handleOk() {
+      setTimeout(() => {
+        this.loading = false;
+        this.visible = false;
+      }, 2000);
     },
   },
 }));

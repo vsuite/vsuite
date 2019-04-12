@@ -8,6 +8,7 @@ import {
   isOverflowing,
   getScrollbarSize,
 } from 'dom-lib';
+import _ from 'lodash';
 import Button from 'components/Button';
 import { transferDom } from 'directives';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
@@ -33,6 +34,7 @@ export default {
       type: Boolean,
       default: undefined,
     },
+    defaultVisible: VueTypes.bool.def(false),
     title: RenderX,
     backdrop: VueTypes.oneOfType([
       VueTypes.bool,
@@ -49,8 +51,10 @@ export default {
     header: VueTypes.bool,
     footer: VueTypes.bool,
     okText: VueTypes.string,
+    okProps: VueTypes.object,
     showOk: VueTypes.bool,
     cancelText: VueTypes.string,
+    cancelProps: VueTypes.object,
     showCancel: VueTypes.bool,
     container: VueTypes.any,
     // drawer
@@ -71,6 +75,9 @@ export default {
       vLoading: false,
       modalStyles: {},
       bodyStyles: {},
+      innerVisible: _.isUndefined(this.visible)
+        ? this.defaultVisible
+        : this.visible,
     };
   },
 
@@ -85,12 +92,30 @@ export default {
         },
       ];
     },
+
     containerClasses() {
       return [
         this.visible && this._addPrefix('open'),
         this.backdrop && this._addPrefix('has-backdrop'),
       ].filter(Boolean);
     },
+
+    currentVisible() {
+      return _.isUndefined(this.visible) ? this.innerVisible : this.visible;
+    },
+  },
+
+  watch: {
+    loading(val) {
+      if (!val) this.vLoading = false;
+    },
+  },
+
+  mounted() {
+    if (this.currentVisible) {
+      this.$refs.modal && addStyle(this.$refs.modal, 'display', 'block');
+      this._computedStyles(true);
+    }
   },
 
   render(h) {
@@ -102,10 +127,7 @@ export default {
           value: getContainer(this.container, document.body),
         },
       ],
-      attrs: {
-        'data-transfer': `${this.transfer}`,
-        role: 'dialog',
-      },
+      attrs: { 'data-transfer': `${this.transfer}`, role: 'dialog' },
       ref: 'modal',
     };
     const modalDialogData = {
@@ -115,7 +137,7 @@ export default {
         role: this.role || 'document',
         tabindex: this.tabindex || '-1',
       },
-      directives: [{ name: 'show', value: this.visible }],
+      directives: [{ name: 'show', value: this.currentVisible }],
       on: { click: this._handleModalClick },
       ref: 'dialog',
     };
@@ -156,17 +178,20 @@ export default {
   },
 
   methods: {
+    show() {
+      this.innerVisible = true;
+    },
+
+    hide() {
+      this.innerVisible = false;
+    },
+
     _renderBackdrop() {
       const data = {
         class: this._addPrefix('backdrop'),
-        attrs: {
-          role: 'button',
-          tabindex: '-1',
-        },
-        on: {
-          click: this._handleModalClick,
-        },
-        directives: [{ name: 'show', value: this.visible }],
+        attrs: { role: 'button', tabindex: '-1' },
+        on: { click: this._handleModalClick },
+        directives: [{ name: 'show', value: this.currentVisible }],
       };
 
       return (
@@ -204,15 +229,20 @@ export default {
         <div class={this._addPrefix('footer')}>
           {this.$slots.footer || [
             this.showCancel ? (
-              <Button onClick={this._handleCancel} appearance="subtle">
+              <Button
+                appearance="subtle"
+                {...this.cancelProps}
+                onClick={this._handleCancel}
+              >
                 {this.cancelText || this.$t('_.Modal.cancelText')}
               </Button>
             ) : null,
             this.showOk ? (
               <Button
+                appearance="primary"
+                {...this.okProps}
                 onClick={this._handleOk}
                 loading={this.vLoading}
-                appearance="primary"
               >
                 {this.okText || this.$t('_.Modal.okText')}
               </Button>
@@ -308,15 +338,14 @@ export default {
       this.$emit('show');
     },
 
+    _handleLeaving() {
+      this.$emit('hide');
+    },
+
     _handleAfterLeave() {
-      this.vLoading = false; // reset button loading
       this.transfer = false; // reset transfer
       this.$refs.modal && addStyle(this.$refs.modal, 'display', 'none');
       manager.remove(this);
-    },
-
-    _handleLeaving() {
-      this.$emit('hide');
     },
 
     _handleModalClick(event) {
@@ -328,17 +357,20 @@ export default {
     },
 
     _handleOk() {
-      this.$emit('ok');
-
       if (this.loading) {
         return (this.vLoading = this.loading);
       }
 
+      this.innerVisible = false;
+
+      this.$emit('ok');
       this.$emit('change', false);
     },
 
     _handleCancel() {
       if (this.vLoading) return;
+
+      this.innerVisible = false;
 
       this.$emit('cancel');
       this.$emit('change', false);
@@ -347,6 +379,9 @@ export default {
     _handleClose() {
       if (this.vLoading) return;
 
+      this.innerVisible = false;
+
+      this.$emit('close');
       this.$emit('change', false);
     },
 
