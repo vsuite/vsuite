@@ -4,13 +4,13 @@ import {
   addStyle,
   hasClass,
   getHeight,
-  getContainer,
+  getContainer, // FIXME: support string
   ownerDocument,
   isOverflowing,
   getScrollbarSize,
 } from 'dom-lib';
 import Button from 'components/Button';
-import Portal from 'components/_portal';
+import { transferDom } from 'directives';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
 import renderX, { RenderX } from 'utils/render';
 import { SIZES } from 'utils/constant';
@@ -24,6 +24,8 @@ export default {
     prop: 'visible',
     event: 'change',
   },
+
+  directives: { transferDom },
 
   props: {
     visible: {
@@ -49,6 +51,7 @@ export default {
     showOk: VueTypes.bool,
     cancelText: VueTypes.string,
     showCancel: VueTypes.bool,
+    container: VueTypes.any,
     // drawer
     drawer: VueTypes.bool.def(false),
     // modify
@@ -63,6 +66,7 @@ export default {
 
   data() {
     return {
+      transfer: false,
       vLoading: false,
       modalStyles: {},
       bodyStyles: {},
@@ -85,7 +89,16 @@ export default {
   render(h) {
     const modalData = {
       class: this._addPrefix('wrapper'),
-      attrs: { role: 'dialog' },
+      directives: [
+        {
+          name: 'transfer-dom',
+          value: getContainer(this.container, document.body),
+        },
+      ],
+      attrs: {
+        'data-transfer': `${this.transfer}`,
+        role: 'dialog',
+      },
       ref: 'modal',
     };
     const modalDialogData = {
@@ -109,31 +122,29 @@ export default {
     };
 
     return (
-      <Portal container={this.container}>
-        <div {...modalData}>
-          {this.backdrop && this._renderBackdrop(h)}
+      <div {...modalData}>
+        {this.backdrop && this._renderBackdrop(h)}
 
-          <transition
-            appear
-            enterActiveClass="animated bounce-in"
-            leaveActiveClass="animated bounce-out"
-            onBeforeEnter={this._handleBeforeEnter}
-            onEnter={this._handleEntering}
-            onAfterLeave={this._handleAfterLeave}
-            onLeave={this._handleLeaving}
-          >
-            <div {...modalDialogData}>
-              <div {...dialogData}>
-                <div className={this._addPrefix('content')} role="document">
-                  {this.header && this._renderHeader(h)}
-                  <div {...bodyData}>{this.$slots.default}</div>
-                  {this.footer && this._renderFooter(h)}
-                </div>
+        <transition
+          appear
+          enterActiveClass="animated bounce-in"
+          leaveActiveClass="animated bounce-out"
+          onBeforeEnter={this._handleBeforeEnter}
+          onEnter={this._handleEntering}
+          onAfterLeave={this._handleAfterLeave}
+          onLeave={this._handleLeaving}
+        >
+          <div {...modalDialogData}>
+            <div {...dialogData}>
+              <div class={this._addPrefix('content')} role="document">
+                {this.header && this._renderHeader(h)}
+                <div {...bodyData}>{this.$slots.default}</div>
+                {this.footer && this._renderFooter(h)}
               </div>
             </div>
-          </transition>
-        </div>
-      </Portal>
+          </div>
+        </transition>
+      </div>
     );
   },
 
@@ -323,6 +334,7 @@ export default {
     },
 
     _handleBeforeEnter() {
+      this.transfer = true;
       this.$refs.modal && addStyle(this.$refs.modal, 'display', 'block');
     },
 
@@ -335,6 +347,7 @@ export default {
 
     _handleAfterLeave() {
       this.vLoading = false;
+      this.transfer = false;
       this.$refs.modal && addStyle(this.$refs.modal, 'display', 'none');
     },
 
