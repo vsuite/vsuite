@@ -2,6 +2,7 @@ import { storiesOf } from '@storybook/vue';
 
 import Button from 'components/Button';
 import Modal from 'components/Modal';
+import Loader from 'components/Loader';
 import Demo from 'stories/demo';
 import { Paragraph } from 'stories/content';
 
@@ -20,8 +21,6 @@ stories.add('default', () => ({
         <Button.Toolbar>
           <Button onClick={this._handleOpen}>Open</Button>
         </Button.Toolbar>
-
-        <div style={{ height: '2000px' }} />
 
         <Modal
           visible={this.visible}
@@ -160,6 +159,48 @@ stories.add('full', () => ({
 stories.add('overflow', () => ({
   data() {
     return {
+      overflow: false,
+      visible: false,
+    };
+  },
+
+  render() {
+    return (
+      <Demo title="Overflow">
+        <Button.Toolbar>
+          <Button onClick={() => this._handleOpen(false)}>
+            Overflow = false
+          </Button>
+
+          <Button onClick={() => this._handleOpen(true)}>
+            Overflow = true
+          </Button>
+        </Button.Toolbar>
+
+        <Modal
+          overflow={this.overflow}
+          visible={this.visible}
+          title="Modal Title"
+          onChange={v => (this.visible = v)}
+        >
+          <Paragraph height={2400} />
+        </Modal>
+      </Demo>
+    );
+  },
+
+  methods: {
+    _handleOpen(overflow) {
+      this.overflow = overflow;
+      this.visible = !this.visible;
+    },
+  },
+}));
+
+stories.add('dynamic', () => ({
+  data() {
+    return {
+      loading: true,
       visible: false,
     };
   },
@@ -172,12 +213,17 @@ stories.add('overflow', () => ({
         </Button.Toolbar>
 
         <Modal
-          overflow={false}
           visible={this.visible}
           title="Modal Title"
           onChange={v => (this.visible = v)}
         >
-          <Paragraph height={2400} />
+          {this.loading ? (
+            <div style={{ textAlign: 'center' }}>
+              <Loader size="md" />
+            </div>
+          ) : (
+            <Paragraph size="small" />
+          )}
         </Modal>
       </Demo>
     );
@@ -186,77 +232,9 @@ stories.add('overflow', () => ({
   methods: {
     _handleOpen() {
       this.visible = !this.visible;
-    },
-  },
-}));
+      this.loading = true;
 
-stories.add('status', () => ({
-  render() {
-    return (
-      <Demo title="Status">
-        <Button.Toolbar>
-          <Button onClick={() => this._handleOpen('info')}>Info</Button>
-          <Button onClick={() => this._handleOpen('warn')}>Warn</Button>
-          <Button onClick={() => this._handleOpen('error')}>Error</Button>
-          <Button onClick={() => this._handleOpen('success')}>Sccess</Button>
-        </Button.Toolbar>
-      </Demo>
-    );
-  },
-
-  methods: {
-    _handleOpen(funcName) {
-      this.$Modal[funcName]({
-        title: 'Title',
-        content: h => [<p>Content of dialog</p>, <p>Content of dialog</p>],
-      });
-    },
-  },
-}));
-
-stories.add('confirm', () => ({
-  render() {
-    return (
-      <Demo title="Confirm">
-        <Button.Toolbar>
-          <Button onClick={this._handleBasic}>Basic</Button>
-          <Button onClick={this._handleText}>Custom Text</Button>
-          <Button onClick={this._handleAsync}>Async Close</Button>
-        </Button.Toolbar>
-      </Demo>
-    );
-  },
-
-  methods: {
-    _handleBasic() {
-      this.$Modal.confirm({
-        title: 'Title',
-        content: h => [<p>Content of dialog</p>, <p>Content of dialog</p>],
-        onOk: () => {
-          this.$Alert.info('Clicked ok');
-        },
-        onCancel: () => {
-          this.$Alert.info('Clicked cancel');
-        },
-      });
-    },
-    _handleText() {
-      this.$Modal.confirm({
-        title: 'Title',
-        content: h => [<p>Content of dialog</p>, <p>Content of dialog</p>],
-        okText: 'ok',
-        cancelText: 'cancel',
-      });
-    },
-    _handleAsync() {
-      this.$Modal.confirm({
-        title: 'Title',
-        content: h => <p>The dialog box will be closed after 2 seconds</p>,
-        loading: true,
-        onOk: () => {
-          setTimeout(() => this.$Modal.remove(), 2000);
-        },
-      });
+      setTimeout(() => (this.loading = false), 2000);
     },
   },
 }));

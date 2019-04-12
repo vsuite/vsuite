@@ -1,6 +1,5 @@
 import VueTypes from 'vue-types';
 import {
-  on,
   addStyle,
   hasClass,
   getHeight,
@@ -14,6 +13,8 @@ import { transferDom } from 'directives';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
 import renderX, { RenderX } from 'utils/render';
 import { SIZES } from 'utils/constant';
+
+import manager from './manager';
 
 const CLASS_PREFIX = 'modal';
 
@@ -41,7 +42,7 @@ export default {
     overflow: VueTypes.bool,
     keyboard: VueTypes.bool,
     full: VueTypes.bool.def(false),
-    drag: VueTypes.bool.def(false), // TODO: support drag property
+    // drag: VueTypes.bool.def(false), // TODO: support drag
     loading: VueTypes.bool.def(false),
     size: VueTypes.oneOf(SIZES).def('sm'),
     confirm: VueTypes.bool.def(false),
@@ -83,6 +84,12 @@ export default {
           [this._addPrefix('confirm')]: this.confirm,
         },
       ];
+    },
+    containerClasses() {
+      return [
+        this.visible && this._addPrefix('open'),
+        this.backdrop && this._addPrefix('has-backdrop'),
+      ].filter(Boolean);
     },
   },
 
@@ -290,70 +297,25 @@ export default {
       this.bodyStyles = styles.bodyStyles;
     },
 
-    _handleAddResizeListener() {
-      this.windowResizeListener = on(
-        window,
-        'resize',
-        this._handleWindowResize
-      );
-    },
-
-    _handleRemoveResizeListener() {
-      if (!this.windowResizeListener) return;
-
-      this.windowResizeListener.off();
-
-      this.windowResizeListener = null;
-    },
-
-    _handleWindowResize() {
-      this._computedStyles();
-    },
-
-    _handleAddDocumentKeyup() {
-      this.documentKeydownListener = on(
-        document,
-        'keydown',
-        this._handleDocumentKeyup
-      );
-    },
-
-    _handleRemoveDocumentKeyup() {
-      if (this.documentKeydownListener) {
-        this.documentKeydownListener.off();
-
-        this.documentKeydownListener = null;
-      }
-    },
-
-    _handleDocumentKeyup(event) {
-      // ESC
-      if (this.keyboard && event.keyCode === 27) {
-        this._handleClose();
-      }
-    },
-
     _handleBeforeEnter() {
-      this.transfer = true;
+      this.transfer = true; // transfer modal
       this.$refs.modal && addStyle(this.$refs.modal, 'display', 'block');
+      manager.add(this);
     },
 
     _handleEntering() {
       this._computedStyles(true);
-      this._handleAddResizeListener();
-      this._handleAddDocumentKeyup();
       this.$emit('show');
     },
 
     _handleAfterLeave() {
-      this.vLoading = false;
-      this.transfer = false;
+      this.vLoading = false; // reset button loading
+      this.transfer = false; // reset transfer
       this.$refs.modal && addStyle(this.$refs.modal, 'display', 'none');
+      manager.remove(this);
     },
 
     _handleLeaving() {
-      this._handleRemoveResizeListener();
-      this._handleRemoveDocumentKeyup();
       this.$emit('hide');
     },
 
