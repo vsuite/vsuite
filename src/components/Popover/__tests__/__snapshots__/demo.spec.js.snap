@@ -3,7 +3,7 @@
 exports[`Popover demo renders always demo correctly 1`] = `
 <div class="vs-popover">
   <div class="vs-popover-rel"><button type="button" class="vs-btn vs-btn-default">always<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> </div>
-  <div data-transfer="false" class="vs-popover-popper" appear="true" enteractiveclass="animated in" leaveactiveclass="animated fade">
+  <div data-transfer="false" class="vs-popover-popper v-transfer-dom" appear="true" enteractiveclass="animated in" leaveactiveclass="animated fade">
     <div class="vs-popover-arrow"></div>
     <div class="vs-popover-inner" style="max-width: none;">
       <h3 class="vs-popover-title">This is a tooltip.</h3>
@@ -19,7 +19,7 @@ exports[`Popover demo renders always demo correctly 1`] = `
 exports[`Popover demo renders basic demo correctly 1`] = `
 <div class="vs-popover">
   <div class="vs-popover-rel"><button type="button" class="vs-btn vs-btn-default">click<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> </div>
-  <div data-transfer="false" class="vs-popover-popper" style="display: none;" appear="true" enteractiveclass="animated in" leaveactiveclass="animated fade">
+  <div data-transfer="false" class="vs-popover-popper v-transfer-dom" style="display: none;" appear="true" enteractiveclass="animated in" leaveactiveclass="animated fade">
     <div class="vs-popover-arrow"></div>
     <div class="vs-popover-inner" style="max-width: none;">
       <h3 class="vs-popover-title">This is a tooltip.</h3>
@@ -37,7 +37,7 @@ exports[`Popover demo renders container demo correctly 1`] = `
   <div style="height: 500px;">
     <div class="vs-popover">
       <div class="vs-popover-rel"><button type="button" class="vs-btn vs-btn-default">click<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> </div>
-      <div data-transfer="false" class="vs-popover-popper" appear="true" enteractiveclass="animated in" leaveactiveclass="animated fade">
+      <div data-transfer="false" class="vs-popover-popper v-transfer-dom" appear="true" enteractiveclass="animated in" leaveactiveclass="animated fade">
         <div class="vs-popover-arrow"></div>
         <div class="vs-popover-inner" style="max-width: none;">
           <h3 class="vs-popover-title">This is a tooltip.</h3>
@@ -55,7 +55,7 @@ exports[`Popover demo renders container demo correctly 1`] = `
 exports[`Popover demo renders delay demo correctly 1`] = `
 <div class="vs-popover">
   <div class="vs-popover-rel"><button type="button" class="vs-btn vs-btn-default">click delay 1s<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> </div>
-  <div data-transfer="false" class="vs-popover-popper" style="display: none;" appear="true" enteractiveclass="animated in" leaveactiveclass="animated fade">
+  <div data-transfer="false" class="vs-popover-popper v-transfer-dom" style="display: none;" appear="true" enteractiveclass="animated in" leaveactiveclass="animated fade">
     <div class="vs-popover-arrow"></div>
     <div class="vs-popover-inner" style="max-width: none;">
       <h3 class="vs-popover-title">This is a tooltip.</h3>
@@ -71,7 +71,7 @@ exports[`Popover demo renders delay demo correctly 1`] = `
 exports[`Popover demo renders full demo correctly 1`] = `
 <div class="vs-popover">
   <div class="vs-popover-rel"><button type="button" class="vs-btn vs-btn-default">click<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> </div>
-  <div data-transfer="false" class="vs-popover-popper vs-popover-popper-full" style="display: none;" appear="true" enteractiveclass="animated in" leaveactiveclass="animated fade">
+  <div data-transfer="false" class="vs-popover-popper vs-popover-popper-full v-transfer-dom" style="display: none;" appear="true" enteractiveclass="animated in" leaveactiveclass="animated fade">
     <div class="vs-popover-arrow"></div>
     <div class="vs-popover-inner" style="max-width: none;">
       <h3 class="vs-popover-title">This is a tooltip.</h3>
@@ -248,7 +248,7 @@ exports[`Popover demo renders placement demo correctly 1`] = `
         <td>
           <div class="vs-popover" style="margin: 10px;">
             <div class="vs-popover-rel"><button type="button" class="vs-btn vs-btn-default">bottom-start<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> </div>
-            <div data-transfer="false" class="vs-popover-popper" style="display: none;" appear="true" enteractiveclass="animated in" leaveactiveclass="animated fade">
+            <div data-transfer="false" class="vs-popover-popper v-transfer-dom" style="display: none;" appear="true" enteractiveclass="animated in" leaveactiveclass="animated fade">
               <div class="vs-popover-arrow"></div>
               <div class="vs-popover-inner" style="max-width: none;">
                 <h3 class="vs-popover-title">This is a tooltip.</h3>
@@ -263,7 +263,7 @@ exports[`Popover demo renders placement demo correctly 1`] = `
         <td>
           <div class="vs-popover" style="margin: 10px;">
             <div class="vs-popover-rel"><button type="button" class="vs-btn vs-btn-default">bottom<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> </div>
-            <div data-transfer="false" class="vs-popover-popper" style="display: none;" appear="true" enteractiveclass="animated in" leaveactiveclass="animated fade">
+            <div data-transfer="false" class="vs-popover-popper v-transfer-dom" style="display: none;" appear="true" enteractiveclass="animated in" leaveactiveclass="animated fade">
               <div class="vs-popover-arrow"></div>
               <div class="vs-popover-inner" style="max-width: none;">
                 <h3 class="vs-popover-title">This is a tooltip.</h3>
@@ -278,7 +278,7 @@ exports[`Popover demo renders placement demo correctly 1`] = `
         <td>
           <div class="vs-popover" style="margin: 10px;">
             <div class="vs-popover-rel"><button type="button" class="vs-btn vs-btn-default">bottom-end<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> </div>
-            <div data-transfer="false" class="vs-popover-popper" style="display: none;" appear="true" enteractiveclass="animated in" leaveactiveclass="animated fade">
+            <div data-transfer="false" class="vs-popover-popper v-transfer-dom" style="display: none;" appear="true" enteractiveclass="animated in" leaveactiveclass="animated fade">
               <div class="vs-popover-arrow"></div>
               <div class="vs-popover-inner" style="max-width: none;">
                 <h3 class="vs-popover-title">This is a tooltip.</h3>
@@ -296,7 +296,7 @@ exports[`Popover demo renders placement demo correctly 1`] = `
         <td>
           <div class="vs-popover" style="margin: 10px;">
             <div class="vs-popover-rel"><button type="button" class="vs-btn vs-btn-default">right-start<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> </div>
-            <div data-transfer="false" class="vs-popover-popper" style="display: none;" appear="true" enteractiveclass="animated in" leaveactiveclass="animated fade">
+            <div data-transfer="false" class="vs-popover-popper v-transfer-dom" style="display: none;" appear="true" enteractiveclass="animated in" leaveactiveclass="animated fade">
               <div class="vs-popover-arrow"></div>
               <div class="vs-popover-inner" style="max-width: none;">
                 <h3 class="vs-popover-title">This is a tooltip.</h3>
@@ -314,7 +314,7 @@ exports[`Popover demo renders placement demo correctly 1`] = `
         <td>
           <div class="vs-popover" style="margin: 10px;">
             <div class="vs-popover-rel"><button type="button" class="vs-btn vs-btn-default">left-start<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> </div>
-            <div data-transfer="false" class="vs-popover-popper" style="display: none;" appear="true" enteractiveclass="animated in" leaveactiveclass="animated fade">
+            <div data-transfer="false" class="vs-popover-popper v-transfer-dom" style="display: none;" appear="true" enteractiveclass="animated in" leaveactiveclass="animated fade">
               <div class="vs-popover-arrow"></div>
               <div class="vs-popover-inner" style="max-width: none;">
                 <h3 class="vs-popover-title">This is a tooltip.</h3>
@@ -331,7 +331,7 @@ exports[`Popover demo renders placement demo correctly 1`] = `
         <td>
           <div class="vs-popover" style="margin: 10px;">
             <div class="vs-popover-rel"><button type="button" class="vs-btn vs-btn-default">right<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> </div>
-            <div data-transfer="false" class="vs-popover-popper" style="display: none;" appear="true" enteractiveclass="animated in" leaveactiveclass="animated fade">
+            <div data-transfer="false" class="vs-popover-popper v-transfer-dom" style="display: none;" appear="true" enteractiveclass="animated in" leaveactiveclass="animated fade">
               <div class="vs-popover-arrow"></div>
               <div class="vs-popover-inner" style="max-width: none;">
                 <h3 class="vs-popover-title">This is a tooltip.</h3>
@@ -349,7 +349,7 @@ exports[`Popover demo renders placement demo correctly 1`] = `
         <td>
           <div class="vs-popover" style="margin: 10px;">
             <div class="vs-popover-rel"><button type="button" class="vs-btn vs-btn-default">left<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> </div>
-            <div data-transfer="false" class="vs-popover-popper" style="display: none;" appear="true" enteractiveclass="animated in" leaveactiveclass="animated fade">
+            <div data-transfer="false" class="vs-popover-popper v-transfer-dom" style="display: none;" appear="true" enteractiveclass="animated in" leaveactiveclass="animated fade">
               <div class="vs-popover-arrow"></div>
               <div class="vs-popover-inner" style="max-width: none;">
                 <h3 class="vs-popover-title">This is a tooltip.</h3>
@@ -366,7 +366,7 @@ exports[`Popover demo renders placement demo correctly 1`] = `
         <td>
           <div class="vs-popover" style="margin: 10px;">
             <div class="vs-popover-rel"><button type="button" class="vs-btn vs-btn-default">right-end<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> </div>
-            <div data-transfer="false" class="vs-popover-popper" style="display: none;" appear="true" enteractiveclass="animated in" leaveactiveclass="animated fade">
+            <div data-transfer="false" class="vs-popover-popper v-transfer-dom" style="display: none;" appear="true" enteractiveclass="animated in" leaveactiveclass="animated fade">
               <div class="vs-popover-arrow"></div>
               <div class="vs-popover-inner" style="max-width: none;">
                 <h3 class="vs-popover-title">This is a tooltip.</h3>
@@ -384,7 +384,7 @@ exports[`Popover demo renders placement demo correctly 1`] = `
         <td>
           <div class="vs-popover" style="margin: 10px;">
             <div class="vs-popover-rel"><button type="button" class="vs-btn vs-btn-default">left-end<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> </div>
-            <div data-transfer="false" class="vs-popover-popper" style="display: none;" appear="true" enteractiveclass="animated in" leaveactiveclass="animated fade">
+            <div data-transfer="false" class="vs-popover-popper v-transfer-dom" style="display: none;" appear="true" enteractiveclass="animated in" leaveactiveclass="animated fade">
               <div class="vs-popover-arrow"></div>
               <div class="vs-popover-inner" style="max-width: none;">
                 <h3 class="vs-popover-title">This is a tooltip.</h3>
@@ -402,7 +402,7 @@ exports[`Popover demo renders placement demo correctly 1`] = `
         <td>
           <div class="vs-popover" style="margin: 10px;">
             <div class="vs-popover-rel"><button type="button" class="vs-btn vs-btn-default">top-start<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> </div>
-            <div data-transfer="false" class="vs-popover-popper" style="display: none;" appear="true" enteractiveclass="animated in" leaveactiveclass="animated fade">
+            <div data-transfer="false" class="vs-popover-popper v-transfer-dom" style="display: none;" appear="true" enteractiveclass="animated in" leaveactiveclass="animated fade">
               <div class="vs-popover-arrow"></div>
               <div class="vs-popover-inner" style="max-width: none;">
                 <h3 class="vs-popover-title">This is a tooltip.</h3>
@@ -417,7 +417,7 @@ exports[`Popover demo renders placement demo correctly 1`] = `
         <td>
           <div class="vs-popover" style="margin: 10px;">
             <div class="vs-popover-rel"><button type="button" class="vs-btn vs-btn-default">top<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> </div>
-            <div data-transfer="false" class="vs-popover-popper" style="display: none;" appear="true" enteractiveclass="animated in" leaveactiveclass="animated fade">
+            <div data-transfer="false" class="vs-popover-popper v-transfer-dom" style="display: none;" appear="true" enteractiveclass="animated in" leaveactiveclass="animated fade">
               <div class="vs-popover-arrow"></div>
               <div class="vs-popover-inner" style="max-width: none;">
                 <h3 class="vs-popover-title">This is a tooltip.</h3>
@@ -432,7 +432,7 @@ exports[`Popover demo renders placement demo correctly 1`] = `
         <td>
           <div class="vs-popover" style="margin: 10px;">
             <div class="vs-popover-rel"><button type="button" class="vs-btn vs-btn-default">top-end<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> </div>
-            <div data-transfer="false" class="vs-popover-popper" style="display: none;" appear="true" enteractiveclass="animated in" leaveactiveclass="animated fade">
+            <div data-transfer="false" class="vs-popover-popper v-transfer-dom" style="display: none;" appear="true" enteractiveclass="animated in" leaveactiveclass="animated fade">
               <div class="vs-popover-arrow"></div>
               <div class="vs-popover-inner" style="max-width: none;">
                 <h3 class="vs-popover-title">This is a tooltip.</h3>
@@ -451,7 +451,7 @@ exports[`Popover demo renders placement demo correctly 1`] = `
   <hr>
   <div class="vs-popover" style="margin: 10px;">
     <div class="vs-popover-rel"><button type="button" class="vs-btn vs-btn-default">auto<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> </div>
-    <div data-transfer="false" class="vs-popover-popper" style="display: none;" appear="true" enteractiveclass="animated in" leaveactiveclass="animated fade">
+    <div data-transfer="false" class="vs-popover-popper v-transfer-dom" style="display: none;" appear="true" enteractiveclass="animated in" leaveactiveclass="animated fade">
       <div class="vs-popover-arrow"></div>
       <div class="vs-popover-inner" style="max-width: none;">
         <h3 class="vs-popover-title">This is a tooltip.</h3>
@@ -465,7 +465,7 @@ exports[`Popover demo renders placement demo correctly 1`] = `
   <hr>
   <div class="vs-popover" style="margin: 10px;">
     <div class="vs-popover-rel"><button type="button" class="vs-btn vs-btn-default">auto-start<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> </div>
-    <div data-transfer="false" class="vs-popover-popper" style="display: none;" appear="true" enteractiveclass="animated in" leaveactiveclass="animated fade">
+    <div data-transfer="false" class="vs-popover-popper v-transfer-dom" style="display: none;" appear="true" enteractiveclass="animated in" leaveactiveclass="animated fade">
       <div class="vs-popover-arrow"></div>
       <div class="vs-popover-inner" style="max-width: none;">
         <h3 class="vs-popover-title">This is a tooltip.</h3>
@@ -479,7 +479,7 @@ exports[`Popover demo renders placement demo correctly 1`] = `
   <hr>
   <div class="vs-popover" style="margin: 10px;">
     <div class="vs-popover-rel"><button type="button" class="vs-btn vs-btn-default">auto-end<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> </div>
-    <div data-transfer="false" class="vs-popover-popper" style="display: none;" appear="true" enteractiveclass="animated in" leaveactiveclass="animated fade">
+    <div data-transfer="false" class="vs-popover-popper v-transfer-dom" style="display: none;" appear="true" enteractiveclass="animated in" leaveactiveclass="animated fade">
       <div class="vs-popover-arrow"></div>
       <div class="vs-popover-inner" style="max-width: none;">
         <h3 class="vs-popover-title">This is a tooltip.</h3>
@@ -497,7 +497,7 @@ exports[`Popover demo renders trigger demo correctly 1`] = `
 <div role="toolbar" class="vs-btn-toolbar">
   <div class="vs-popover">
     <div class="vs-popover-rel"><button type="button" class="vs-btn vs-btn-default">click<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> </div>
-    <div data-transfer="false" class="vs-popover-popper" style="display: none;" appear="true" enteractiveclass="animated in" leaveactiveclass="animated fade">
+    <div data-transfer="false" class="vs-popover-popper v-transfer-dom" style="display: none;" appear="true" enteractiveclass="animated in" leaveactiveclass="animated fade">
       <div class="vs-popover-arrow"></div>
       <div class="vs-popover-inner" style="max-width: none;">
         <h3 class="vs-popover-title">Title</h3>
@@ -510,7 +510,7 @@ exports[`Popover demo renders trigger demo correctly 1`] = `
   </div>
   <div class="vs-popover">
     <div class="vs-popover-rel"><button type="button" class="vs-btn vs-btn-default">right-click<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> </div>
-    <div data-transfer="false" class="vs-popover-popper" style="display: none;" appear="true" enteractiveclass="animated in" leaveactiveclass="animated fade">
+    <div data-transfer="false" class="vs-popover-popper v-transfer-dom" style="display: none;" appear="true" enteractiveclass="animated in" leaveactiveclass="animated fade">
       <div class="vs-popover-arrow"></div>
       <div class="vs-popover-inner" style="max-width: none;">
         <h3 class="vs-popover-title">Title</h3>
@@ -523,7 +523,7 @@ exports[`Popover demo renders trigger demo correctly 1`] = `
   </div>
   <div class="vs-popover">
     <div class="vs-popover-rel"><button type="button" class="vs-btn vs-btn-default">hover<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> </div>
-    <div data-transfer="false" class="vs-popover-popper" style="display: none;" appear="true" enteractiveclass="animated in" leaveactiveclass="animated fade">
+    <div data-transfer="false" class="vs-popover-popper v-transfer-dom" style="display: none;" appear="true" enteractiveclass="animated in" leaveactiveclass="animated fade">
       <div class="vs-popover-arrow"></div>
       <div class="vs-popover-inner" style="max-width: none;">
         <h3 class="vs-popover-title">Title</h3>
@@ -536,7 +536,7 @@ exports[`Popover demo renders trigger demo correctly 1`] = `
   </div>
   <div class="vs-popover">
     <div class="vs-popover-rel"><button type="button" class="vs-btn vs-btn-default">focus<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> </div>
-    <div data-transfer="false" class="vs-popover-popper" style="display: none;" appear="true" enteractiveclass="animated in" leaveactiveclass="animated fade">
+    <div data-transfer="false" class="vs-popover-popper v-transfer-dom" style="display: none;" appear="true" enteractiveclass="animated in" leaveactiveclass="animated fade">
       <div class="vs-popover-arrow"></div>
       <div class="vs-popover-inner" style="max-width: none;">
         <h3 class="vs-popover-title">Title</h3>
@@ -549,7 +549,7 @@ exports[`Popover demo renders trigger demo correctly 1`] = `
   </div>
   <div class="vs-popover">
     <div class="vs-popover-rel"><button type="button" class="vs-btn vs-btn-default">active<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> </div>
-    <div data-transfer="false" class="vs-popover-popper" style="display: none;" appear="true" enteractiveclass="animated in" leaveactiveclass="animated fade">
+    <div data-transfer="false" class="vs-popover-popper v-transfer-dom" style="display: none;" appear="true" enteractiveclass="animated in" leaveactiveclass="animated fade">
       <div class="vs-popover-arrow"></div>
       <div class="vs-popover-inner" style="max-width: none;">
         <h3 class="vs-popover-title">Title</h3>

@@ -258,7 +258,7 @@ stories.add('loading', () => ({
 
   render() {
     return (
-      <Demo title="Visible">
+      <Demo title="Loading">
         <Button.Toolbar>
           <Button onClick={this._handleOpen}>Open</Button>
         </Button.Toolbar>
