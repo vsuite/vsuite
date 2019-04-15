@@ -14,6 +14,9 @@ function render(h, data) {
     return result.map(c => render(h, c));
   }
 
+  // boolean
+  if (_.isBoolean(result)) return null;
+
   // string, number and so on
   if (!_.isObject(result)) return result;
 

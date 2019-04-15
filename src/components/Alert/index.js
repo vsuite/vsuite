@@ -170,62 +170,57 @@ export default {
   },
 
   success(...args) {
+    const type = ALERT_TYPES.SUCCESS;
     const options = getOptions(...args);
 
-    options.type = ALERT_TYPES.SUCCESS;
+    options.type = type;
 
     return notice(
-      decoratorContent(options, h => (
-        <Icon icon={STATUS_ICON_NAMES[options.type]} />
-      ))
-    );
-  },
-
-  info(...args) {
-    const options = getOptions(...args);
-
-    options.type = ALERT_TYPES.INFO;
-
-    return notice(
-      decoratorContent(options, h => (
-        <Icon icon={STATUS_ICON_NAMES[options.type]} />
-      ))
+      decoratorContent(options, h => <Icon icon={STATUS_ICON_NAMES[type]} />)
     );
   },
 
   warning(...args) {
+    const type = ALERT_TYPES.WARNING;
     const options = getOptions(...args);
 
-    options.type = ALERT_TYPES.WARNING;
+    options.type = type;
 
     return notice(
-      decoratorContent(options, h => (
-        <Icon icon={STATUS_ICON_NAMES[options.type]} />
-      ))
+      decoratorContent(options, h => <Icon icon={STATUS_ICON_NAMES[type]} />)
     );
   },
 
   warn(...args) {
+    const type = ALERT_TYPES.WARNING;
     const options = getOptions(...args);
 
-    options.type = ALERT_TYPES.WARNING;
+    options.type = type;
 
     return notice(
-      decoratorContent(options, h => (
-        <Icon icon={STATUS_ICON_NAMES[options.type]} />
-      ))
+      decoratorContent(options, h => <Icon icon={STATUS_ICON_NAMES[type]} />)
     );
   },
 
   error(...args) {
+    const type = ALERT_TYPES.ERROR;
     const options = getOptions(...args);
 
-    options.type = ALERT_TYPES.ERROR;
+    options.type = type;
 
     return notice(
-      decoratorContent(options, h => (
-        <Icon icon={STATUS_ICON_NAMES[options.type]} />
-      ))
+      decoratorContent(options, h => <Icon icon={STATUS_ICON_NAMES[type]} />)
+    );
+  },
+
+  info(...args) {
+    const type = ALERT_TYPES.INFO;
+    const options = getOptions(...args);
+
+    options.type = type;
+
+    return notice(
+      decoratorContent(options, h => <Icon icon={STATUS_ICON_NAMES[type]} />)
     );
   },
 

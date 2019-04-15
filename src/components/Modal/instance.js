@@ -1,39 +1,80 @@
 import Vue from 'vue';
+import { getContainer } from 'dom-lib';
 import Icon from 'components/Icon';
 import renderX from 'utils/render';
+import prefix, { defaultClassPrefix, globalKey } from 'utils/prefix';
 
 import Modal from './Modal.jsx';
+import _ from 'lodash';
 
-const STATUS_TYPES = {
+const CLASS_PREFIX = defaultClassPrefix('modal');
+const MODAL_TYPES = {
   SUCCESS: 'success',
   WARNING: 'warning',
-  WARN: 'warning',
   ERROR: 'error',
   INFO: 'info',
   CONFIRM: 'confirm',
 };
-const ICON_NAMES = {
-  info: 'info',
+const STATUS_ICON_NAMES = {
   success: 'check-circle',
-  error: 'close-circle',
   warning: 'remind',
-  confirm: 'question-circle',
-};
-const ICON_STATUS = {
+  error: 'close-circle',
   info: 'info',
-  success: 'success',
-  error: 'error',
-  warning: 'warning',
-  warn: 'warning',
-  confirm: 'warning',
+  confirm: 'question-circle2',
 };
 const modalStore = {
-  instance: null,
+  instances: [],
+};
+let id = 0;
+
+const getUid = () => {
+  id += 1;
+  return `${globalKey}notification-${Date.now()}-${id}`;
 };
 
-function createModalInstance(config) {
-  if (modalStore.instance) return modalStore.instance;
+function addPrefix(cls) {
+  return prefix(CLASS_PREFIX, cls);
+}
 
+function getOptions(title, content, option) {
+  let options = option || {};
+
+  if (_.isPlainObject(content)) {
+    options = content;
+    content = undefined;
+  }
+
+  if (_.isPlainObject(title)) {
+    options = title;
+    content = undefined;
+    title = undefined;
+  }
+
+  if (title !== undefined) options.title = title;
+  if (content !== undefined) options.content = content;
+
+  return options;
+}
+
+function decoratorTitle(options, decorator) {
+  if (!options.title || !decorator) return options;
+  if (_.isArray(options.title)) options.title.unshift(decorator);
+  else options.title = [decorator, options.title];
+
+  return options;
+}
+
+function createModalInstance(config) {
+  let instance = null;
+
+  if (config.key) {
+    instance = modalStore.instances.filter(x => x.key === config.key)[0];
+
+    if (instance) return instance;
+  }
+
+  const key = config.key || getUid();
+  const $container = getContainer(config.container, document.body);
   const wrapper = new Vue({
     data() {
       return { visible: false };
@@ -49,38 +90,46 @@ function createModalInstance(config) {
       const {
         title,
         content,
-        confirm,
-        header,
-        footer,
+        backdrop,
         closable,
         overflow,
         keyboard,
         full,
-        drag,
         loading,
         size,
+        header,
+        footer,
         okText,
+        okProps,
+        showOk,
         cancelText,
+        cancelProps,
         showCancel,
+        container,
+        modalClassNames,
         onOk,
         onCancel,
       } = config;
       const modalData = {
         props: {
           visible: this.visible,
-          confirm,
-          header,
-          footer,
+          backdrop,
           closable,
           overflow,
           keyboard,
           full,
-          drag,
           loading,
           size,
+          header: header !== false,
+          footer: footer !== false,
           okText,
+          okProps,
+          showOk,
           cancelText,
+          cancelProps,
           showCancel,
+          container,
+          modalClassNames,
         },
         on: {
           change: val => (this.visible = val),
@@ -97,15 +146,10 @@ function createModalInstance(config) {
 
       return (
         <Modal {...modalData}>
-          <template slot="title">
-            <Icon
-              style={{ fontSize: '24px', marginRight: '15px' }}
-              icon={ICON_NAMES[config.type]}
-              status={ICON_STATUS[config.type]}
-            />
-            {renderX(h, title)}
-          </template>
-          <template slot="default">{renderX(h, content)}</template>
+          {title && <template slot="title">{renderX(h, title)}</template>}
+          {content && <template slot="default">{renderX(h, content)}</template>}
+          {!!header && <teamplte slot="header">{renderX(h, header)}</teamplte>}
+          {!!footer && <template slot="footer">{renderX(h, footer)}</template>}
         </Modal>
       );
     },
@@ -115,84 +159,145 @@ function createModalInstance(config) {
         // animation duration
         setTimeout(() => this.destroy(), 300);
       },
+
       destroy() {
         this.$destroy();
-        document.body.removeChild(this.$el);
+        $container.removeChild(this.$el);
 
-        modalStore.instance = null;
+        let index = modalStore.instances.indexOf(instance);
+
+        if (index === -1) return;
+
+        modalStore.instances.splice(index, 1);
       },
     },
   });
   const component = wrapper.$mount();
 
-  document.body.appendChild(component.$el);
+  $container.appendChild(component.$el);
 
-  const modal = wrapper.$children[0];
-
-  modalStore.instance = {
-    component: modal,
-    show() {
-      modal.$parent.visible = true;
+  // const modal = wrapper.$children[0];
+  instance = {
+    key,
+    component: wrapper,
+    show: () => {
+      wrapper.visible = true;
     },
-    remove() {
-      modal.$parent.visible = false;
+    remove: () => {
+      wrapper.visible = false;
     },
   };
 
-  return modalStore.instance;
+  modalStore.instances.push(instance);
+
+  return instance;
 }
 
 function modal(config) {
   config = config || {};
 
   if (config.type) {
-    config.confirm = true;
-    config.showCancel = config.type === STATUS_TYPES.CONFIRM;
+    config.showCancel = config.type === MODAL_TYPES.CONFIRM;
     config.size = config.size || 'xs';
+    config.modalClassNames = addPrefix(config.type);
+    config.closable = false;
+
+    delete config.type;
+    delete config.render;
+  }
+
+  if (config.render) {
+    config.title = null;
+    config.content = config.render;
+
+    delete config.render;
   }
 
   let instance = createModalInstance(config);
 
   instance.show();
+
+  return { remove: () => instance.remove() };
 }
 
 export default {
-  open(config) {
-    modal(config);
+  open(...args) {
+    return modal(getOptions(...args));
   },
-  confirm(config) {
-    config.type = STATUS_TYPES.CONFIRM;
 
-    modal(config);
+  confirm(...args) {
+    const type = MODAL_TYPES.CONFIRM;
+    const options = getOptions(...args);
+
+    options.type = type;
+
+    return modal(
+      decoratorTitle(options, h => <Icon icon={STATUS_ICON_NAMES[type]} />)
+    );
   },
-  success(config) {
-    config.type = STATUS_TYPES.SUCCESS;
 
-    modal(config);
+  success(...args) {
+    const type = MODAL_TYPES.SUCCESS;
+    const options = getOptions(...args);
+
+    options.type = type;
+
+    return modal(
+      decoratorTitle(options, h => <Icon icon={STATUS_ICON_NAMES[type]} />)
+    );
   },
-  error(config) {
-    config.type = STATUS_TYPES.ERROR;
 
-    modal(config);
+  warning(...args) {
+    const type = MODAL_TYPES.WARNING;
+    const options = getOptions(...args);
+
+    options.type = type;
+
+    return modal(
+      decoratorTitle(options, h => <Icon icon={STATUS_ICON_NAMES[type]} />)
+    );
   },
-  info(config) {
-    config.type = STATUS_TYPES.INFO;
 
-    modal(config);
+  warn(...args) {
+    const type = MODAL_TYPES.WARNING;
+    const options = getOptions(...args);
+
+    options.type = type;
+
+    return modal(
+      decoratorTitle(options, h => <Icon icon={STATUS_ICON_NAMES[type]} />)
+    );
   },
-  warning(config) {
-    config.type = STATUS_TYPES.WARNING;
 
-    modal(config);
+  error(...args) {
+    const type = MODAL_TYPES.ERROR;
+    const options = getOptions(...args);
+
+    options.type = type;
+
+    return modal(
+      decoratorTitle(options, h => <Icon icon={STATUS_ICON_NAMES[type]} />)
+    );
   },
-  warn(config) {
-    config.type = STATUS_TYPES.WARN;
 
-    modal(config);
+  info(...args) {
+    const type = MODAL_TYPES.INFO;
+    const options = getOptions(...args);
+
+    options.type = type;
+
+    return modal(
+      decoratorTitle(options, h => <Icon icon={STATUS_ICON_NAMES[type]} />)
+    );
   },
-  remove() {
-    if (!modalStore.instance) return;
 
-    modalStore.instance.remove();
+  remove(key) {
+    const instance = (key
+      ? modalStore.instances.filter(x => x.key === key)
+      : [modalStore.instances[modalStore.instances.length - 1]])[0];
+
+    if (!instance) return;
+
+    instance.remove();
   },
 };

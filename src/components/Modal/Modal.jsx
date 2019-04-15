@@ -35,6 +35,7 @@ export default {
       default: undefined,
     },
     defaultVisible: VueTypes.bool.def(false),
+    size: VueTypes.oneOf(SIZES).def('sm'),
     title: RenderX,
     backdrop: VueTypes.oneOfType([
       VueTypes.bool,
@@ -46,10 +47,10 @@ export default {
     full: VueTypes.bool.def(false),
     // drag: VueTypes.bool.def(false), // TODO: support drag
     loading: VueTypes.bool.def(false),
-    size: VueTypes.oneOf(SIZES).def('sm'),
-    confirm: VueTypes.bool.def(false),
+
     header: VueTypes.bool,
     footer: VueTypes.bool,
+
     okText: VueTypes.string,
     okProps: VueTypes.object,
     showOk: VueTypes.bool,
@@ -57,16 +58,31 @@ export default {
     cancelProps: VueTypes.object,
     showCancel: VueTypes.bool,
     container: VueTypes.any,
+
     // drawer
     drawer: VueTypes.bool.def(false),
+
     // modify
     modalClassNames: VueTypes.any,
     dialogClassNames: VueTypes.any,
     dialogStyle: VueTypes.oneOfType([VueTypes.string, VueTypes.object]).def(''),
+
     // other
     role: VueTypes.string,
     tabindex: VueTypes.number.def(-1),
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
+
+    // slot
+    // slot-title
+    // slot-header
+    // slot-footer
+
+    // @show
+    // @hide
+    // @ok
+    // @cancel
+    // @close
+    // @change
   },
 
   data() {
@@ -88,7 +104,6 @@ export default {
         {
           [this._addPrefix(this.size)]: this.size,
           [this._addPrefix('full')]: this.full,
-          [this._addPrefix('confirm')]: this.confirm,
         },
       ];
     },
@@ -343,6 +358,7 @@ export default {
     },
 
     _handleAfterLeave() {
+      this.vLoading = false; // reset loading
       this.transfer = false; // reset transfer
       this.$refs.modal && addStyle(this.$refs.modal, 'display', 'none');
       manager.remove(this);
@@ -357,13 +373,14 @@ export default {
     },
 
     _handleOk() {
+      this.$emit('ok');
+
       if (this.loading) {
         return (this.vLoading = this.loading);
       }
 
       this.innerVisible = false;
 
-      this.$emit('ok');
       this.$emit('change', false);
     },
 

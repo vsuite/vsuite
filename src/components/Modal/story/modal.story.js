@@ -253,7 +253,7 @@ stories.add('dynamic', () => ({
 
 stories.add('loading', () => ({
   data() {
-    return { visible: false, loading: false };
+    return { visible: false };
   },
 
   render() {
@@ -265,7 +265,7 @@ stories.add('loading', () => ({
 
         <Modal
           visible={this.visible}
-          loading={this.loading}
+          loading
           title="Modal Title"
           onChange={v => (this.visible = v)}
           onOk={this._handleOk}
@@ -279,14 +279,10 @@ stories.add('loading', () => ({
   methods: {
     _handleOpen() {
       this.visible = !this.visible;
-      this.loading = true;
     },
 
     _handleOk() {
-      setTimeout(() => {
-        this.loading = false;
-        this.visible = false;
-      }, 2000);
+      setTimeout(() => (this.visible = false), 2000);
     },
   },
 }));

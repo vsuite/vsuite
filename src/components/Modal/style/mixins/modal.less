@@ -1,3 +1,28 @@
+@import '~styles/common';
+
 .content-width(@width) {
   width: @width;
+}
+
+.modal-variant(@color) {
+  .modal-margin-variant();
+
+  .@{ns}modal {
+    &-title {
+      .@{ns}icon {
+        margin-right: 16px;
+        font-size: 24px;
+        color: @color;
+        vertical-align: sub;
+      }
+    }
+  }
+}
+
+.modal-margin-variant() {
+  .@{ns}modal {
+    &-body {
+      margin-left: 40px;
+    }
+  }
 }

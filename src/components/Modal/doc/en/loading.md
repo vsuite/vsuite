@@ -11,7 +11,7 @@
 
     <Modal
       v-model="visible"
-      :loading="loading"
+      :loading="true"
       title="Modal Title"
       @ok="_handleOk"
     >
@@ -23,20 +23,16 @@
 <script>
 export default {
   data() {
-    return { visible: false, loading: true };
+    return { visible: false };
   },
 
   methods: {
     _handleOpen() {
       this.visible = true;
-      this.loading = true;
     },
 
     _handleOk() {
-      setTimeout(() => {
-        this.loading = false;
-        this.visible = false;
-      }, 2000);
+      setTimeout(() => (this.visible = false), 2000);
     },
   },
 };

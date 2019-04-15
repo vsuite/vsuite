@@ -17,9 +17,9 @@ const PLACEMENT_TYPES = {
 };
 const NOTIFICATION_TYPES = {
   SUCCESS: 'success',
+  WARNING: 'warning',
   ERROR: 'error',
   INFO: 'info',
-  WARNING: 'warning',
 };
 
 let notificationStore = {};
@@ -120,7 +120,7 @@ function getOptions(title, description, duration, onClose, option) {
 
   if (_.isNumber(description)) {
     duration = description;
-    description = null;
+    description = undefined;
   }
 
   if (title !== undefined) options.title = title;
@@ -241,62 +241,55 @@ export default {
   },
 
   success(...args) {
+    const type = NOTIFICATION_TYPES.SUCCESS;
     const options = getOptions(...args);
 
-    options.type = NOTIFICATION_TYPES.SUCCESS;
+    options.type = type;
 
     return notice(
-      decoratorTitle(options, h => (
-        <Icon icon={STATUS_ICON_NAMES[options.type]} />
-      ))
-    );
-  },
-
-  info(...args) {
-    const options = getOptions(...args);
-
-    options.type = NOTIFICATION_TYPES.INFO;
-
-    return notice(
-      decoratorTitle(options, h => (
-        <Icon icon={STATUS_ICON_NAMES[options.type]} />
-      ))
+      decoratorTitle(options, h => <Icon icon={STATUS_ICON_NAMES[type]} />)
     );
   },
 
   warning(...args) {
+    const type = NOTIFICATION_TYPES.WARNING;
     const options = getOptions(...args);
 
-    options.type = NOTIFICATION_TYPES.WARNING;
+    options.type = type;
 
-    return notice(
-      decoratorTitle(options, h => (
-        <Icon icon={STATUS_ICON_NAMES[options.type]} />
-      ))
-    );
+    return notice(decoratorTitle(options, h => <Icon icon={type} />));
   },
 
   warn(...args) {
+    const type = NOTIFICATION_TYPES.WARNING;
     const options = getOptions(...args);
 
-    options.type = NOTIFICATION_TYPES.WARNING;
+    options.type = type;
 
     return notice(
-      decoratorTitle(options, h => (
-        <Icon icon={STATUS_ICON_NAMES[options.type]} />
-      ))
+      decoratorTitle(options, h => <Icon icon={STATUS_ICON_NAMES[type]} />)
     );
   },
 
   error(...args) {
+    const type = NOTIFICATION_TYPES.ERROR;
     const options = getOptions(...args);
 
-    options.type = NOTIFICATION_TYPES.ERROR;
+    options.type = type;
 
     return notice(
-      decoratorTitle(options, h => (
-        <Icon icon={STATUS_ICON_NAMES[options.type]} />
-      ))
+      decoratorTitle(options, h => <Icon icon={STATUS_ICON_NAMES[type]} />)
+    );
+  },
+
+  info(...args) {
+    const type = NOTIFICATION_TYPES.INFO;
+    const options = getOptions(...args);
+
+    options.type = type;
+
+    return notice(
+      decoratorTitle(options, h => <Icon icon={STATUS_ICON_NAMES[type]} />)
     );
   },
 

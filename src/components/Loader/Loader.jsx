@@ -20,6 +20,8 @@ export default {
     content: RenderX,
 
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
+
+    // slot-content
   },
 
   computed: {
