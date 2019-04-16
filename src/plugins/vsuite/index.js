@@ -11,6 +11,7 @@ import Alert from 'components/Alert';
 import Notification from 'components/Notification';
 import LoadingBar from 'components/LoadingBar';
 import Modal from 'components/Modal';
+import Drawer from 'components/Drawer';
 
 // import { Fade, Collapse } from 'components/Animation';
 // import Pagination from 'components/Pagination';
@@ -34,6 +35,7 @@ export const components = {
   Progress,
 
   Modal,
+  Drawer,
 
   // Pagination,
   // Panel,

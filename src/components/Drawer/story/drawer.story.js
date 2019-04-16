@@ -14,7 +14,7 @@ stories.add('default', () => ({
     };
   },
 
-  render(h) {
+  render() {
     return (
       <Demo title="Default">
         <Button.Toolbar>

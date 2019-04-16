@@ -2,7 +2,8 @@ import VueTypes from 'vue-types';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
 import { splitDataByComponent } from 'utils/split';
 
-import Modal from '../Modal/Modal.jsx';
+import Modal from 'components/Modal';
+import { Slide } from 'components/Animation';
 
 const CLASS_PREFIX = 'drawer';
 
@@ -22,6 +23,8 @@ export default {
           drawer: true,
           modalClassNames: this._addPrefix(this.placement),
           classPrefix: this.classPrefix,
+          animation: Slide,
+          animationData: { props: { placement: this.placement } },
         },
         on: this.$listeners,
       },

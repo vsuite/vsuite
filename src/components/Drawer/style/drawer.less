@@ -2,14 +2,18 @@
 @import 'mixins/drawer';
 
 .@{ns}drawer-wrapper {
+  display: none;
   position: fixed;
+  overflow: auto;
   z-index: @zindex-drawer;
   top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
 }
 
 // Container that the drawer scrolls within
 .@{ns}drawer {
-  display: none;
   overflow: hidden;
   position: fixed;
   z-index: @zindex-drawer;
@@ -132,15 +136,22 @@
   left: 0;
   z-index: @zindex-drawer-background;
   background-color: @drawer-backdrop-bg;
+  opacity: @drawer-backdrop-opacity;
 
   // Fade for backdrop
-  &.fade {
-    opacity: 0;
+  &.fade-enter-active {
+    opacity: @drawer-backdrop-opacity;
     transition: opacity 0.3s ease-in;
   }
 
-  &.in {
-    opacity: @drawer-backdrop-opacity;
+  &.fade-leave-active {
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+  }
+
+  &.fade-enter,
+  &.fade-leave-to {
+    opacity: 0;
   }
 }
 

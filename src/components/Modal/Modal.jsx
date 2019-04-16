@@ -9,11 +9,13 @@ import {
   getScrollbarSize,
 } from 'dom-lib';
 import _ from 'lodash';
-import Button from 'components/Button';
 import { transferDom } from 'directives';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
 import renderX, { RenderX } from 'utils/render';
 import { SIZES } from 'utils/constant';
+
+import Button from 'components/Button';
+import { Bounce, Fade } from 'components/Animation';
 
 import manager from './manager';
 
@@ -66,6 +68,8 @@ export default {
     modalClassNames: VueTypes.any,
     dialogClassNames: VueTypes.any,
     dialogStyle: VueTypes.oneOfType([VueTypes.string, VueTypes.object]).def(''),
+    animation: VueTypes.any.def(Bounce),
+    animationData: VueTypes.object,
 
     // other
     role: VueTypes.string,
@@ -164,19 +168,18 @@ export default {
       class: this._addPrefix('body'),
       style: this.bodyStyles,
     };
+    const Animation = this.animation;
 
     return (
       <div {...modalData}>
         {this.backdrop && this._renderBackdrop(h)}
 
-        <transition
-          appear
-          enterActiveClass="animated bounce-in"
-          leaveActiveClass="animated bounce-out"
+        <Animation
+          {...this.animationData}
           onBeforeEnter={this._handleBeforeEnter}
           onEnter={this._handleEntering}
-          onAfterLeave={this._handleAfterLeave}
           onLeave={this._handleLeaving}
+          onAfterLeave={this._handleAfterLeave}
         >
           <div {...modalDialogData}>
             <div {...dialogData}>
@@ -187,7 +190,7 @@ export default {
               </div>
             </div>
           </div>
-        </transition>
+        </Animation>
       </div>
     );
   },
@@ -210,9 +213,9 @@ export default {
       };
 
       return (
-        <transition name="fade">
+        <Fade>
           <div {...data} />
-        </transition>
+        </Fade>
       );
     },
 
@@ -349,7 +352,7 @@ export default {
     },
 
     _handleEntering() {
-      this._computedStyles(true);
+      this._computedStyles(!this.drawer);
       this.$emit('show');
     },
 

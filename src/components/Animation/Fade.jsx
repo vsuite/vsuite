@@ -8,7 +8,7 @@ export default {
     };
 
     return (
-      <transition name="fade" {...data}>
+      <transition appear name="fade" {...data}>
         {this.$slots.default}
       </transition>
     );

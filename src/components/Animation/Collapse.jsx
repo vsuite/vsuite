@@ -12,6 +12,7 @@ export default {
   render() {
     return (
       <transition
+        appear
         {...this.$attrs}
         onBeforeEnter={this._handleEnter}
         onEnter={this._handleEntering}

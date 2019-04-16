@@ -1,6 +1,7 @@
 import VueTypes from 'vue-types';
 import tinycolor from 'tinycolor2';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
+import { Fade } from 'components/Animation';
 
 const CLASS_PREFIX = 'loading-bar';
 export const STATUS = {
@@ -60,7 +61,7 @@ export default {
     };
 
     return (
-      <transition name="fade">
+      <Fade>
         <div {...loadingBarData}>
           <div class={this._addPrefix('outer')}>
             <div class={this._addPrefix('inner')}>
@@ -68,7 +69,7 @@ export default {
             </div>
           </div>
         </div>
-      </transition>
+      </Fade>
     );
   },
 
