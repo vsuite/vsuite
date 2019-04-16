@@ -11,8 +11,8 @@ export default {
       <transition
         appear
         type="animation"
-        enterActiveClass="animated bounce-in"
-        leaveActiveClass="animated bounce-out"
+        enterActiveClass="bounce-in"
+        leaveActiveClass="bounce-out"
         {...data}
       >
         {this.$slots.default}

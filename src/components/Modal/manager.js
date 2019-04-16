@@ -1,4 +1,11 @@
-import { on, off, getContainer, addClass, removeClass } from 'dom-lib';
+import {
+  animation,
+  on,
+  off,
+  getContainer,
+  addClass,
+  removeClass,
+} from 'dom-lib';
 
 class ModalManager {
   constructor() {
@@ -82,7 +89,9 @@ class ModalManager {
   };
 
   _handleWindowResize = () => {
-    this.stack.forEach(x => x.vm._computedStyles());
+    animation.requestAnimationFramePolyfill(() =>
+      this.stack.forEach(x => x.vm._computedStyles())
+    );
   };
 
   _handleDocumentKeydown = event => {

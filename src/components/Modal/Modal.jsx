@@ -1,5 +1,6 @@
 import VueTypes from 'vue-types';
 import {
+  animation,
   addStyle,
   hasClass,
   getHeight,
@@ -156,7 +157,7 @@ export default {
         role: this.role || 'document',
         tabindex: this.tabindex || '-1',
       },
-      directives: [{ name: 'show', value: this.currentVisible }],
+      // directives: [{ name: 'show', value: this.currentVisible }],
       on: { click: this._handleModalClick },
       ref: 'dialog',
     };
@@ -181,15 +182,17 @@ export default {
           onLeave={this._handleLeaving}
           onAfterLeave={this._handleAfterLeave}
         >
-          <div {...modalDialogData}>
-            <div {...dialogData}>
-              <div class={this._addPrefix('content')} role="document">
-                {this.header && this._renderHeader(h)}
-                <div {...bodyData}>{this.$slots.default}</div>
-                {this.footer && this._renderFooter(h)}
+          {this.currentVisible ? (
+            <div {...modalDialogData}>
+              <div {...dialogData}>
+                <div class={this._addPrefix('content')} role="document">
+                  {this.header && this._renderHeader(h)}
+                  <div {...bodyData}>{this.$slots.default}</div>
+                  {this.footer && this._renderFooter(h)}
+                </div>
               </div>
             </div>
-          </div>
+          ) : null}
         </Animation>
       </div>
     );
@@ -209,14 +212,10 @@ export default {
         class: this._addPrefix('backdrop'),
         attrs: { role: 'button', tabindex: '-1' },
         on: { click: this._handleModalClick },
-        directives: [{ name: 'show', value: this.currentVisible }],
+        // directives: [{ name: 'show', value: this.currentVisible }],
       };
 
-      return (
-        <Fade>
-          <div {...data} />
-        </Fade>
-      );
+      return <Fade>{this.currentVisible ? <div {...data} /> : null}</Fade>;
     },
 
     _renderHeader(h) {
@@ -324,7 +323,7 @@ export default {
 
           if (this.drawer) {
             bodyStyles.height = `${contentHeight -
-              (headerHeight + footerHeight)}px`;
+              (headerHeight + footerHeight + 40)}px`;
           } else {
             /**
              * Header height + Footer height + Dialog margin
@@ -352,7 +351,10 @@ export default {
     },
 
     _handleEntering() {
-      this._computedStyles(!this.drawer);
+      animation.requestAnimationFramePolyfill(() => {
+        this._computedStyles(!this.drawer);
+      });
+
       this.$emit('show');
     },
 

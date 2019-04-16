@@ -1,6 +1,12 @@
 @import '~styles/common';
 @import 'mixins/drawer';
 
+// Kill the scroll on the body
+.@{ns}drawer-open,
+.@{ns}drawer-has-backdrop {
+  overflow: hidden;
+}
+
 .@{ns}drawer-wrapper {
   display: none;
   position: fixed;
@@ -14,22 +20,18 @@
 
 // Container that the drawer scrolls within
 .@{ns}drawer {
-  overflow: hidden;
+  overflow: visible;
   position: fixed;
   z-index: @zindex-drawer;
   // Prevent Chrome on Windows from adding a focus outline. For details, see
   // https://github.com/twbs/bootstrap/pull/10951.
   outline: 0;
 
-  // Kill the scroll on the body
-  &-open&-has-backdrop {
-    overflow: hidden;
-  }
-
   // Drawer sizes
   &-left,
   &-right {
     top: 0;
+    bottom: 0;
     height: 100%;
 
     &.@{ns}drawer-lg {
@@ -51,6 +53,8 @@
 
   &-top,
   &-bottom {
+    left: 0;
+    right: 0;
     width: 100%;
 
     &.@{ns}drawer-lg {
@@ -108,11 +112,6 @@
   }
 }
 
-// Make sure drawer can be show in Safari.
-.@{ns}drawer-open .@{ns}drawer {
-  overflow: visible;
-}
-
 .@{ns}drawer-dialog {
   position: relative;
   width: 100%;
@@ -120,7 +119,8 @@
 }
 
 .@{ns}drawer-content {
-  position: absolute;
+  position: relative;
+  padding: @drawer-content-spacing;
   background-color: @drawer-content-bg;
   outline: 0;
   width: 100%;
@@ -158,7 +158,7 @@
 // Drawer body
 .@{ns}drawer-body {
   position: relative;
-  margin: @drawer-body-margin @drawer-content-spacing;
+  margin: @drawer-content-spacing 0;
   // Javascript handle height
   overflow: auto;
 }
@@ -179,7 +179,6 @@
 
   padding-right: @line-height-computed;
   position: relative;
-  margin: @drawer-content-spacing @drawer-content-spacing 0;
 
   .@{ns}drawer-title {
     width: 100%;
@@ -232,7 +231,6 @@
 
   text-align: right; // right align buttons
   border-top: none;
-  margin: 0 @drawer-content-spacing @drawer-content-spacing;
 
   // Properly space out buttons
   .@{ns}btn + .@{ns}btn {

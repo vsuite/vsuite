@@ -16,8 +16,8 @@ export default {
     return (
       <transition
         appear
-        enterActiveClass={`animated slide-in ${this.placement}`}
-        leaveActiveClass={`animated slide-out ${this.placement}`}
+        enterActiveClass={`slide-in ${this.placement}`}
+        leaveActiveClass={`slide-out ${this.placement}`}
         {...data}
       >
         {this.$slots.default}
