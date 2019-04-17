@@ -4,25 +4,8 @@ exports[`Modal demo renders backdrop demo correctly 1`] = `
 <div>
   <div role="toolbar" class="vs-btn-toolbar"><button type="button" class="vs-btn vs-btn-default">true<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-default">false<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-default">static<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button></div>
   <div data-transfer="false" role="dialog" class="vs-modal-wrapper v-transfer-dom">
-    <div role="button" tabindex="-1" class="vs-modal-backdrop" style="display: none;" name="fade"></div>
-    <div role="document" tabindex="-1" class="vs-modal vs-modal-sm" style="display: none;" appear="true" enteractiveclass="animated bounce-in" leaveactiveclass="animated bounce-out">
-      <div class="vs-modal-dialog">
-        <div role="document" class="vs-modal-content">
-          <div class="vs-modal-header"><button type="button" aria-label="Close" class="vs-modal-header-close"><span aria-hidden="true">×</span></button>
-            <h4 class="vs-modal-title">Modal Title</h4>
-          </div>
-          <div class="vs-modal-body">
-            <div class="vs-content-paragraph">
-              <p class="vs-content-paragraph-p" style="width: 97%;"></p>
-              <p class="vs-content-paragraph-p" style="width: 100%;"></p>
-              <p class="vs-content-paragraph-p" style="width: 94%;"></p>
-              <p class="vs-content-paragraph-p" style="width: 90%;"></p>
-            </div>
-          </div>
-          <div class="vs-modal-footer"><button type="button" class="vs-btn vs-btn-subtle">Cancel<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button><button type="button" class="vs-btn vs-btn-primary">Ok<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button></div>
-        </div>
-      </div>
-    </div>
+    <!---->
+    <!---->
   </div>
 </div>
 `;
@@ -31,25 +14,8 @@ exports[`Modal demo renders basic demo correctly 1`] = `
 <div>
   <div role="toolbar" class="vs-btn-toolbar"><button type="button" class="vs-btn vs-btn-default">Open<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button></div>
   <div data-transfer="false" role="dialog" class="vs-modal-wrapper v-transfer-dom">
-    <div role="button" tabindex="-1" class="vs-modal-backdrop" style="display: none;" name="fade"></div>
-    <div role="document" tabindex="-1" class="vs-modal vs-modal-sm" style="display: none;" appear="true" enteractiveclass="animated bounce-in" leaveactiveclass="animated bounce-out">
-      <div class="vs-modal-dialog">
-        <div role="document" class="vs-modal-content">
-          <div class="vs-modal-header"><button type="button" aria-label="Close" class="vs-modal-header-close"><span aria-hidden="true">×</span></button>
-            <h4 class="vs-modal-title">Modal Title</h4>
-          </div>
-          <div class="vs-modal-body">
-            <div class="vs-content-paragraph">
-              <p class="vs-content-paragraph-p" style="width: 97%;"></p>
-              <p class="vs-content-paragraph-p" style="width: 100%;"></p>
-              <p class="vs-content-paragraph-p" style="width: 94%;"></p>
-              <p class="vs-content-paragraph-p" style="width: 90%;"></p>
-            </div>
-          </div>
-          <div class="vs-modal-footer"><button type="button" class="vs-btn vs-btn-subtle">Cancel<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button><button type="button" class="vs-btn vs-btn-primary">Ok<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button></div>
-        </div>
-      </div>
-    </div>
+    <!---->
+    <!---->
   </div>
 </div>
 `;
@@ -58,24 +24,8 @@ exports[`Modal demo renders dynamic demo correctly 1`] = `
 <div>
   <div role="toolbar" class="vs-btn-toolbar"><button type="button" class="vs-btn vs-btn-default">Open<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button></div>
   <div data-transfer="false" role="dialog" class="vs-modal-wrapper v-transfer-dom">
-    <div role="button" tabindex="-1" class="vs-modal-backdrop" style="display: none;" name="fade"></div>
-    <div role="document" tabindex="-1" class="vs-modal vs-modal-sm" style="display: none;" appear="true" enteractiveclass="animated bounce-in" leaveactiveclass="animated bounce-out">
-      <div class="vs-modal-dialog">
-        <div role="document" class="vs-modal-content">
-          <div class="vs-modal-header"><button type="button" aria-label="Close" class="vs-modal-header-close"><span aria-hidden="true">×</span></button>
-            <h4 class="vs-modal-title">Modal Title</h4>
-          </div>
-          <div class="vs-modal-body">
-            <div style="text-align: center;">
-              <div class="vs-loader-wrapper vs-loader-speed-normal vs-loader-md">
-                <div class="vs-loader"><span class="vs-loader-spin"></span></div>
-              </div>
-            </div>
-          </div>
-          <div class="vs-modal-footer"><button type="button" class="vs-btn vs-btn-subtle">Cancel<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button><button type="button" class="vs-btn vs-btn-primary">Ok<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button></div>
-        </div>
-      </div>
-    </div>
+    <!---->
+    <!---->
   </div>
 </div>
 `;
@@ -84,25 +34,8 @@ exports[`Modal demo renders full demo correctly 1`] = `
 <div>
   <div role="toolbar" class="vs-btn-toolbar"><button type="button" class="vs-btn vs-btn-default">Open<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button></div>
   <div data-transfer="false" role="dialog" class="vs-modal-wrapper v-transfer-dom">
-    <div role="button" tabindex="-1" class="vs-modal-backdrop" style="display: none;" name="fade"></div>
-    <div role="document" tabindex="-1" class="vs-modal vs-modal-sm vs-modal-full" style="display: none;" appear="true" enteractiveclass="animated bounce-in" leaveactiveclass="animated bounce-out">
-      <div class="vs-modal-dialog">
-        <div role="document" class="vs-modal-content">
-          <div class="vs-modal-header"><button type="button" aria-label="Close" class="vs-modal-header-close"><span aria-hidden="true">×</span></button>
-            <h4 class="vs-modal-title">Modal Title</h4>
-          </div>
-          <div class="vs-modal-body">
-            <div class="vs-content-paragraph">
-              <p class="vs-content-paragraph-p" style="width: 97%;"></p>
-              <p class="vs-content-paragraph-p" style="width: 100%;"></p>
-              <p class="vs-content-paragraph-p" style="width: 94%;"></p>
-              <p class="vs-content-paragraph-p" style="width: 90%;"></p>
-            </div>
-          </div>
-          <div class="vs-modal-footer"><button type="button" class="vs-btn vs-btn-subtle">Cancel<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button><button type="button" class="vs-btn vs-btn-primary">Ok<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button></div>
-        </div>
-      </div>
-    </div>
+    <!---->
+    <!---->
   </div>
 </div>
 `;
@@ -111,25 +44,8 @@ exports[`Modal demo renders loading demo correctly 1`] = `
 <div>
   <div role="toolbar" class="vs-btn-toolbar"><button type="button" class="vs-btn vs-btn-default">Open<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button></div>
   <div data-transfer="false" role="dialog" class="vs-modal-wrapper v-transfer-dom">
-    <div role="button" tabindex="-1" class="vs-modal-backdrop" style="display: none;" name="fade"></div>
-    <div role="document" tabindex="-1" class="vs-modal vs-modal-sm" style="display: none;" appear="true" enteractiveclass="animated bounce-in" leaveactiveclass="animated bounce-out">
-      <div class="vs-modal-dialog">
-        <div role="document" class="vs-modal-content">
-          <div class="vs-modal-header"><button type="button" aria-label="Close" class="vs-modal-header-close"><span aria-hidden="true">×</span></button>
-            <h4 class="vs-modal-title">Modal Title</h4>
-          </div>
-          <div class="vs-modal-body">
-            <div class="vs-content-paragraph">
-              <p class="vs-content-paragraph-p" style="width: 97%;"></p>
-              <p class="vs-content-paragraph-p" style="width: 100%;"></p>
-              <p class="vs-content-paragraph-p" style="width: 94%;"></p>
-              <p class="vs-content-paragraph-p" style="width: 90%;"></p>
-            </div>
-          </div>
-          <div class="vs-modal-footer"><button type="button" class="vs-btn vs-btn-subtle">Cancel<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button><button type="button" class="vs-btn vs-btn-primary">Ok<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button></div>
-        </div>
-      </div>
-    </div>
+    <!---->
+    <!---->
   </div>
 </div>
 `;
@@ -138,25 +54,8 @@ exports[`Modal demo renders overflow demo correctly 1`] = `
 <div>
   <div role="toolbar" class="vs-btn-toolbar"><button type="button" class="vs-btn vs-btn-default">Overflow = false<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-default">Overflow = true<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button></div>
   <div data-transfer="false" role="dialog" class="vs-modal-wrapper v-transfer-dom">
-    <div role="button" tabindex="-1" class="vs-modal-backdrop" style="display: none;" name="fade"></div>
-    <div role="document" tabindex="-1" class="vs-modal vs-modal-sm" style="display: none;" appear="true" enteractiveclass="animated bounce-in" leaveactiveclass="animated bounce-out">
-      <div class="vs-modal-dialog">
-        <div role="document" class="vs-modal-content">
-          <div class="vs-modal-header"><button type="button" aria-label="Close" class="vs-modal-header-close"><span aria-hidden="true">×</span></button>
-            <h4 class="vs-modal-title">Modal Title</h4>
-          </div>
-          <div class="vs-modal-body">
-            <div class="vs-content-paragraph">
-              <p class="vs-content-paragraph-p" style="width: 97%;"></p>
-              <p class="vs-content-paragraph-p" style="width: 100%;"></p>
-              <p class="vs-content-paragraph-p" style="width: 94%;"></p>
-              <p class="vs-content-paragraph-p" style="width: 90%;"></p>
-            </div>
-          </div>
-          <div class="vs-modal-footer"><button type="button" class="vs-btn vs-btn-subtle">Cancel<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button><button type="button" class="vs-btn vs-btn-primary">Ok<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button></div>
-        </div>
-      </div>
-    </div>
+    <!---->
+    <!---->
   </div>
 </div>
 `;
@@ -165,25 +64,8 @@ exports[`Modal demo renders size demo correctly 1`] = `
 <div>
   <div role="toolbar" class="vs-btn-toolbar"><button type="button" class="vs-btn vs-btn-default vs-btn-xs">Xsmall<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-default vs-btn-sm">Small<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-default vs-btn-md">Medium<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-default vs-btn-lg">Large<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button></div>
   <div data-transfer="false" role="dialog" class="vs-modal-wrapper v-transfer-dom">
-    <div role="button" tabindex="-1" class="vs-modal-backdrop" style="display: none;" name="fade"></div>
-    <div role="document" tabindex="-1" class="vs-modal vs-modal-sm" style="display: none;" appear="true" enteractiveclass="animated bounce-in" leaveactiveclass="animated bounce-out">
-      <div class="vs-modal-dialog">
-        <div role="document" class="vs-modal-content">
-          <div class="vs-modal-header"><button type="button" aria-label="Close" class="vs-modal-header-close"><span aria-hidden="true">×</span></button>
-            <h4 class="vs-modal-title">Modal Title</h4>
-          </div>
-          <div class="vs-modal-body">
-            <div class="vs-content-paragraph">
-              <p class="vs-content-paragraph-p" style="width: 97%;"></p>
-              <p class="vs-content-paragraph-p" style="width: 100%;"></p>
-              <p class="vs-content-paragraph-p" style="width: 94%;"></p>
-              <p class="vs-content-paragraph-p" style="width: 90%;"></p>
-            </div>
-          </div>
-          <div class="vs-modal-footer"><button type="button" class="vs-btn vs-btn-subtle">Cancel<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button><button type="button" class="vs-btn vs-btn-primary">Ok<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button></div>
-        </div>
-      </div>
-    </div>
+    <!---->
+    <!---->
   </div>
 </div>
 `;
@@ -191,8 +73,8 @@ exports[`Modal demo renders size demo correctly 1`] = `
 exports[`Modal demo renders visible demo correctly 1`] = `
 <div>
   <div data-transfer="false" role="dialog" class="vs-modal-wrapper v-transfer-dom" style="">
-    <div role="button" tabindex="-1" class="vs-modal-backdrop" name="fade"></div>
-    <div role="document" tabindex="-1" class="vs-modal vs-modal-sm" appear="true" enteractiveclass="animated bounce-in" leaveactiveclass="animated bounce-out" style="padding-right: 0px; padding-left: 0px;">
+    <div role="button" tabindex="-1" class="vs-modal-backdrop" appear="true" name="fade"></div>
+    <div role="document" tabindex="-1" class="vs-modal vs-modal-sm" appear="true" type="animation" enteractiveclass="bounce-in" leaveactiveclass="bounce-out" style="padding-right: 0px; padding-left: 0px;">
       <div class="vs-modal-dialog">
         <div role="document" class="vs-modal-content">
           <div class="vs-modal-header"><button type="button" aria-label="Close" class="vs-modal-header-close"><span aria-hidden="true">×</span></button>

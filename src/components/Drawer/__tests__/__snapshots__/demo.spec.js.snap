@@ -1,0 +1,98 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Drawer demo renders backdrop demo correctly 1`] = `
+<div>
+  <div role="toolbar" class="vs-btn-toolbar"><button type="button" class="vs-btn vs-btn-default">true<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-default">false<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-default">static<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button></div>
+  <div data-transfer="false" role="dialog" class="vs-drawer-wrapper v-transfer-dom" backdrop="true" title="Drawer Title">
+    <!---->
+    <!---->
+  </div>
+</div>
+`;
+
+exports[`Drawer demo renders basic demo correctly 1`] = `
+<div>
+  <div role="toolbar" class="vs-btn-toolbar"><button type="button" class="vs-btn vs-btn-default">Open<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button></div>
+  <div data-transfer="false" role="dialog" class="vs-drawer-wrapper v-transfer-dom" title="Drawer Title">
+    <!---->
+    <!---->
+  </div>
+</div>
+`;
+
+exports[`Drawer demo renders full demo correctly 1`] = `
+<div>
+  <div role="toolbar" class="vs-btn-toolbar"><button type="button" class="vs-btn vs-btn-default vs-btn-icon vs-btn-icon-placement-left vs-btn-icon-with-text"><i class="vs-icon vs-icon-angle-left"></i>
+      Left
+      <span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-default vs-btn-icon vs-btn-icon-placement-left vs-btn-icon-with-text"><i class="vs-icon vs-icon-angle-right"></i>
+      Right
+      <span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-default vs-btn-icon vs-btn-icon-placement-left vs-btn-icon-with-text"><i class="vs-icon vs-icon-angle-up"></i>
+      Top
+      <span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-default vs-btn-icon vs-btn-icon-placement-left vs-btn-icon-with-text"><i class="vs-icon vs-icon-angle-down"></i>
+      Bottom
+      <span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button></div>
+  <div data-transfer="false" role="dialog" class="vs-drawer-wrapper v-transfer-dom" full="" title="Drawer Title">
+    <!---->
+    <!---->
+  </div>
+</div>
+`;
+
+exports[`Drawer demo renders placement demo correctly 1`] = `
+<div>
+  <div role="toolbar" class="vs-btn-toolbar"><button type="button" class="vs-btn vs-btn-default vs-btn-icon vs-btn-icon-placement-left vs-btn-icon-with-text"><i class="vs-icon vs-icon-angle-left"></i>
+      Left
+      <span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-default vs-btn-icon vs-btn-icon-placement-left vs-btn-icon-with-text"><i class="vs-icon vs-icon-angle-right"></i>
+      Right
+      <span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-default vs-btn-icon vs-btn-icon-placement-left vs-btn-icon-with-text"><i class="vs-icon vs-icon-angle-up"></i>
+      Top
+      <span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-default vs-btn-icon vs-btn-icon-placement-left vs-btn-icon-with-text"><i class="vs-icon vs-icon-angle-down"></i>
+      Bottom
+      <span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button></div>
+  <div data-transfer="false" role="dialog" class="vs-drawer-wrapper v-transfer-dom" title="Drawer Title">
+    <!---->
+    <!---->
+  </div>
+</div>
+`;
+
+exports[`Drawer demo renders size demo correctly 1`] = `
+<div>
+  <div role="toolbar" class="vs-btn-toolbar"><button type="button" class="vs-btn vs-btn-default vs-btn-icon vs-btn-icon-placement-left vs-btn-icon-with-text"><i class="vs-icon vs-icon-angle-left"></i>
+      Large Left
+      <span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-default vs-btn-icon vs-btn-icon-placement-left vs-btn-icon-with-text"><i class="vs-icon vs-icon-angle-right"></i>
+      Large Right
+      <span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-default vs-btn-icon vs-btn-icon-placement-left vs-btn-icon-with-text"><i class="vs-icon vs-icon-angle-up"></i>
+      Large Top
+      <span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-default vs-btn-icon vs-btn-icon-placement-left vs-btn-icon-with-text"><i class="vs-icon vs-icon-angle-down"></i>
+      Large Bottom
+      <span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button></div>
+  <div role="toolbar" class="vs-btn-toolbar"><button type="button" class="vs-btn vs-btn-default vs-btn-icon vs-btn-icon-placement-left vs-btn-icon-with-text"><i class="vs-icon vs-icon-angle-left"></i>
+      Medium Left
+      <span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-default vs-btn-icon vs-btn-icon-placement-left vs-btn-icon-with-text"><i class="vs-icon vs-icon-angle-right"></i>
+      Medium Right
+      <span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-default vs-btn-icon vs-btn-icon-placement-left vs-btn-icon-with-text"><i class="vs-icon vs-icon-angle-up"></i>
+      Medium Top
+      <span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-default vs-btn-icon vs-btn-icon-placement-left vs-btn-icon-with-text"><i class="vs-icon vs-icon-angle-down"></i>
+      Medium Bottom
+      <span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button></div>
+  <div role="toolbar" class="vs-btn-toolbar"><button type="button" class="vs-btn vs-btn-default vs-btn-icon vs-btn-icon-placement-left vs-btn-icon-with-text"><i class="vs-icon vs-icon-angle-left"></i>
+      Small Left
+      <span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-default vs-btn-icon vs-btn-icon-placement-left vs-btn-icon-with-text"><i class="vs-icon vs-icon-angle-right"></i>
+      Small Right
+      <span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-default vs-btn-icon vs-btn-icon-placement-left vs-btn-icon-with-text"><i class="vs-icon vs-icon-angle-up"></i>
+      Small Top
+      <span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-default vs-btn-icon vs-btn-icon-placement-left vs-btn-icon-with-text"><i class="vs-icon vs-icon-angle-down"></i>
+      Small Bottom
+      <span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button></div>
+  <div role="toolbar" class="vs-btn-toolbar"><button type="button" class="vs-btn vs-btn-default vs-btn-icon vs-btn-icon-placement-left vs-btn-icon-with-text"><i class="vs-icon vs-icon-angle-left"></i>
+      XSmall Left
+      <span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-default vs-btn-icon vs-btn-icon-placement-left vs-btn-icon-with-text"><i class="vs-icon vs-icon-angle-right"></i>
+      XSmall Right
+      <span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-default vs-btn-icon vs-btn-icon-placement-left vs-btn-icon-with-text"><i class="vs-icon vs-icon-angle-up"></i>
+      XSmall Top
+      <span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-default vs-btn-icon vs-btn-icon-placement-left vs-btn-icon-with-text"><i class="vs-icon vs-icon-angle-down"></i>
+      XSmall Bottom
+      <span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button></div>
+</div>
+`;

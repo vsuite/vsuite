@@ -7,7 +7,7 @@ import { Paragraph } from 'stories/content';
 
 const stories = storiesOf('General|Drawer', module);
 
-stories.add('default', () => ({
+stories.add('basic', () => ({
   data() {
     return {
       visible: false,
@@ -16,7 +16,7 @@ stories.add('default', () => ({
 
   render() {
     return (
-      <Demo title="Default">
+      <Demo title="Basic">
         <Button.Toolbar>
           <Button onClick={this._handleOpen}>Open</Button>
         </Button.Toolbar>
