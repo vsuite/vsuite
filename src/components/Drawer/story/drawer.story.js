@@ -141,6 +141,7 @@ stories.add('size', () => ({
   },
 
   render() {
+    // FIXME: use radio-group instead
     return (
       <Demo title="Size">
         <Button.Toolbar>

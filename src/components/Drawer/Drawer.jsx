@@ -21,7 +21,7 @@ export default {
         splitProps: {
           ...this.$attrs,
           drawer: true,
-          modalClassNames: this._addPrefix(this.placement),
+          overflow: true,
           classPrefix: this.classPrefix,
           animation: Slide,
           animationData: { props: { placement: this.placement } },
@@ -30,6 +30,13 @@ export default {
       },
       Modal
     );
+
+    if (data.props.modalClassNames) {
+      data.props.modalClassNames = [
+        data.props.modalClassNames,
+        this._addPrefix(this.placement),
+      ];
+    }
 
     return (
       <Modal {...data}>

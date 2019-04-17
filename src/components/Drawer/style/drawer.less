@@ -246,3 +246,27 @@
     margin-left: 0;
   }
 }
+
+// Alternate styles
+// -------------------------
+// Generate contextual modifier classes for colorizing the alert.
+
+.@{ns}drawer-confirm {
+  .drawer-variant(@modal-confirm-icon-color);
+}
+
+.@{ns}drawer-success {
+  .drawer-variant(@modal-success-icon-color);
+}
+
+.@{ns}drawer-info {
+  .drawer-variant(@modal-info-icon-color);
+}
+
+.@{ns}drawer-warning {
+  .drawer-variant(@modal-warning-icon-color);
+}
+
+.@{ns}drawer-error {
+  .drawer-variant(@modal-error-icon-color);
+}

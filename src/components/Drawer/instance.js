@@ -6,10 +6,10 @@ import renderX from 'utils/render';
 import { splitDataByComponent } from 'utils/split';
 import prefix, { defaultClassPrefix, globalKey } from 'utils/prefix';
 
-import Modal from './Modal.jsx';
+import Drawer from './Drawer.jsx';
 
-const CLASS_PREFIX = defaultClassPrefix('modal');
-const MODAL_TYPES = {
+const CLASS_PREFIX = defaultClassPrefix('drawer');
+const DRAWER_TYPES = {
   SUCCESS: 'success',
   WARNING: 'warning',
   ERROR: 'error',
@@ -23,7 +23,7 @@ const STATUS_ICON_NAMES = {
   info: 'info',
   confirm: 'question-circle2',
 };
-const modalStore = {
+const drawerStore = {
   instances: [],
 };
 let id = 0;
@@ -66,11 +66,11 @@ function decoratorTitle(options, decorator) {
   return options;
 }
 
-function createModalInstance(config) {
+function createDrawerInstance(config) {
   let instance = null;
 
   if (config.key) {
-    instance = modalStore.instances.filter(x => x.key === config.key)[0];
+    instance = drawerStore.instances.filter(x => x.key === config.key)[0];
 
     if (instance) return instance;
   }
@@ -90,11 +90,11 @@ function createModalInstance(config) {
 
     render(h) {
       const {
+        placement,
         title,
         content,
         backdrop,
         closable,
-        overflow,
         keyboard,
         full,
         loading,
@@ -112,13 +112,13 @@ function createModalInstance(config) {
         onOk,
         onCancel,
       } = config;
-      const modalData = splitDataByComponent(
+      const drawerData = splitDataByComponent(
         {
           splitProps: {
             visible: this.visible,
+            placement,
             backdrop,
             closable,
-            overflow,
             keyboard,
             full,
             loading,
@@ -138,24 +138,24 @@ function createModalInstance(config) {
             change: val => (this.visible = val),
           },
         },
-        Modal
+        Drawer
       );
 
       if (onOk) {
-        modalData.on.ok = onOk;
+        drawerData.on.ok = onOk;
       }
 
       if (onCancel) {
-        modalData.on.cancel = onCancel;
+        drawerData.on.cancel = onCancel;
       }
 
       return (
-        <Modal {...modalData}>
+        <Drawer {...drawerData}>
           {title && <template slot="title">{renderX(h, title)}</template>}
           {content && <template slot="default">{renderX(h, content)}</template>}
           {!!header && <teamplte slot="header">{renderX(h, header)}</teamplte>}
           {!!footer && <template slot="footer">{renderX(h, footer)}</template>}
-        </Modal>
+        </Drawer>
       );
     },
 
@@ -169,11 +169,11 @@ function createModalInstance(config) {
         this.$destroy();
         $container.removeChild(this.$el);
 
-        let index = modalStore.instances.indexOf(instance);
+        let index = drawerStore.instances.indexOf(instance);
 
         if (index === -1) return;
 
-        modalStore.instances.splice(index, 1);
+        drawerStore.instances.splice(index, 1);
       },
     },
   });
@@ -181,7 +181,6 @@ function createModalInstance(config) {
 
   $container.appendChild(component.$el);
 
-  // const modal = wrapper.$children[0];
   instance = {
     key,
     component: wrapper,
@@ -193,16 +192,16 @@ function createModalInstance(config) {
     },
   };
 
-  modalStore.instances.push(instance);
+  drawerStore.instances.push(instance);
 
   return instance;
 }
 
-function modal(config) {
+function drawer(config) {
   config = config || {};
 
   if (config.type) {
-    config.showCancel = config.type === MODAL_TYPES.CONFIRM;
+    config.showCancel = config.type === DRAWER_TYPES.CONFIRM;
     config.size = config.size || 'xs';
     config.modalClassNames = addPrefix(config.type);
     config.closable = false;
@@ -218,7 +217,7 @@ function modal(config) {
     delete config.render;
   }
 
-  const instance = createModalInstance(config);
+  const instance = createDrawerInstance(config);
 
   instance.show();
 
@@ -227,68 +226,68 @@ function modal(config) {
 
 export default {
   open(...args) {
-    return modal(getOptions(...args));
+    return drawer(getOptions(...args));
   },
 
   confirm(...args) {
-    const type = MODAL_TYPES.CONFIRM;
+    const type = DRAWER_TYPES.CONFIRM;
     const options = getOptions(...args);
 
     options.type = type;
 
-    return modal(
+    return drawer(
       decoratorTitle(options, h => <Icon icon={STATUS_ICON_NAMES[type]} />)
     );
   },
 
   success(...args) {
-    const type = MODAL_TYPES.SUCCESS;
+    const type = DRAWER_TYPES.SUCCESS;
     const options = getOptions(...args);
 
     options.type = type;
 
-    return modal(
+    return drawer(
       decoratorTitle(options, h => <Icon icon={STATUS_ICON_NAMES[type]} />)
     );
   },
 
   warning(...args) {
-    const type = MODAL_TYPES.WARNING;
+    const type = DRAWER_TYPES.WARNING;
     const options = getOptions(...args);
 
     options.type = type;
 
-    return modal(
+    return drawer(
       decoratorTitle(options, h => <Icon icon={STATUS_ICON_NAMES[type]} />)
     );
   },
 
   error(...args) {
-    const type = MODAL_TYPES.ERROR;
+    const type = DRAWER_TYPES.ERROR;
     const options = getOptions(...args);
 
     options.type = type;
 
-    return modal(
+    return drawer(
       decoratorTitle(options, h => <Icon icon={STATUS_ICON_NAMES[type]} />)
     );
   },
 
   info(...args) {
-    const type = MODAL_TYPES.INFO;
+    const type = DRAWER_TYPES.INFO;
     const options = getOptions(...args);
 
     options.type = type;
 
-    return modal(
+    return drawer(
       decoratorTitle(options, h => <Icon icon={STATUS_ICON_NAMES[type]} />)
     );
   },
 
   remove(key) {
     const instance = (key
-      ? modalStore.instances.filter(x => x.key === key)
-      : [modalStore.instances[modalStore.instances.length - 1]])[0];
+      ? drawerStore.instances.filter(x => x.key === key)
+      : [drawerStore.instances[drawerStore.instances.length - 1]])[0];
 
     if (!instance) return;
 

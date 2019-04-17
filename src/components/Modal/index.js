@@ -7,7 +7,7 @@ Modal.success = ModalInstance.success;
 Modal.error = ModalInstance.error;
 Modal.info = ModalInstance.info;
 Modal.warning = ModalInstance.warning;
-Modal.warn = ModalInstance.warn;
+Modal.warn = ModalInstance.warning;
 Modal.remove = ModalInstance.remove;
 
 Modal.install = function(Vue) {

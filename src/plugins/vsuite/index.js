@@ -71,6 +71,6 @@ export default {
     // modal
     Vue.prototype.$Modal = Modal;
     // drawer
-    // Vue.prototype.$Drawer = Drawer;
+    Vue.prototype.$Drawer = Drawer;
   },
 };
