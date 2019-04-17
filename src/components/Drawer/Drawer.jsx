@@ -24,7 +24,9 @@ export default {
           overflow: true,
           classPrefix: this.classPrefix,
           animation: Slide,
-          animationData: { props: { placement: this.placement } },
+          animationData: {
+            props: { placement: this.placement },
+          },
         },
         on: this.$listeners,
       },
@@ -36,6 +38,8 @@ export default {
         data.props.modalClassNames,
         this._addPrefix(this.placement),
       ];
+    } else {
+      data.props.modalClassNames = this._addPrefix(this.placement);
     }
 
     return (
