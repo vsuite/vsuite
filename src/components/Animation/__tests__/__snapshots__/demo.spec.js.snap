@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Animation demo renders bounce demo correctly 1`] = `
+<div><button type="button" class="vs-btn vs-btn-default">toggle<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button>
+  <hr>
+  <div style="background: rgb(0, 0, 0); width: 100px; height: 160px; overflow: hidden;" appear="true" type="animation" enteractiveclass="bounce-in" leaveactiveclass="bounce-out">
+    <p>Panel</p>
+    <p>Content Content Content</p>
+  </div>
+</div>
+`;
+
+exports[`Animation demo renders collapse demo correctly 1`] = `
+<div><button type="button" class="vs-btn vs-btn-default">toggle<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button>
+  <hr>
+  <div style="background: rgb(0, 0, 0); width: 100px; height: 160px; overflow: hidden;" appear="true">
+    <p>Panel</p>
+    <p>Content Content Content</p>
+  </div>
+</div>
+`;
+
+exports[`Animation demo renders fade demo correctly 1`] = `
+<div><button type="button" class="vs-btn vs-btn-default">toggle<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button>
+  <hr>
+  <div style="background: rgb(0, 0, 0); width: 100px; height: 160px; overflow: hidden;" appear="true" name="fade">
+    <p>Panel</p>
+    <p>Content Content Content</p>
+  </div>
+</div>
+`;
+
+exports[`Animation demo renders slide demo correctly 1`] = `
+<div>
+  <div role="toolbar" class="vs-btn-toolbar"><button type="button" class="vs-btn vs-btn-default">Slide Left<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-default">Slide Right<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-default">Slide Top<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-default">Slide Bottom<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button></div>
+  <hr>
+  <div style="background: rgb(0, 0, 0); width: 100px; height: 160px; overflow: hidden;" appear="true" enteractiveclass="slide-in left" leaveactiveclass="slide-out left">
+    <p>Panel</p>
+    <p>Content Content Content</p>
+  </div>
+</div>
+`;

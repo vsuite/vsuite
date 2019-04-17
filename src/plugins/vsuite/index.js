@@ -13,6 +13,8 @@ import LoadingBar from 'components/LoadingBar';
 import Modal from 'components/Modal';
 import Drawer from 'components/Drawer';
 
+import Animation from 'components/Animation';
+
 // import { Fade, Collapse } from 'components/Animation';
 // import Pagination from 'components/Pagination';
 // import Panel from 'components/Panel';
@@ -36,6 +38,8 @@ export const components = {
 
   Modal,
   Drawer,
+
+  Animation,
 
   // Pagination,
   // Panel,
