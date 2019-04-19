@@ -1,12 +1,9 @@
 import { storiesOf } from '@storybook/vue';
 
-import Dropdown from 'components/Dropdown';
-import ButtonToolbar from 'components/ButtonToolbar';
-import ButtonGroup from 'components/ButtonGroup';
-import IconButton from 'components/IconButton';
-import Popover from 'components/Popover';
-import Button from 'components/Button';
-import Icon from 'components/Icon';
+import Dropdown from '@/components/Dropdown';
+import Popover from '@/components/Popover';
+import Button from '@/components/Button';
+import Icon from '@/components/Icon';
 import Demo from 'stories/demo';
 
 const stories = storiesOf('Navigation|Dropdown', module);
@@ -63,7 +60,7 @@ stories.add('active', () => ({
   render() {
     return (
       <Demo default="Active">
-        <ButtonToolbar>
+        <Button.Toolbar>
           <Dropdown title="Default" activeKey="a">
             <Dropdown.Item eventKey="a">Active Item</Dropdown.Item>
             <Dropdown.Item eventKey="b">Item B</Dropdown.Item>
@@ -81,7 +78,7 @@ stories.add('active', () => ({
               <Dropdown.Item eventKey="e-2">Active Item</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
-        </ButtonToolbar>
+        </Button.Toolbar>
       </Demo>
     );
   },
@@ -91,7 +88,7 @@ stories.add('disabled', () => ({
   render() {
     return (
       <Demo title="Disabled">
-        <ButtonToolbar>
+        <Button.Toolbar>
           <Dropdown title="Disabled" disabled>
             <Dropdown.Item>Item A</Dropdown.Item>
             <Dropdown.Item>Item B</Dropdown.Item>
@@ -103,7 +100,7 @@ stories.add('disabled', () => ({
             <Dropdown.Item disabled>Disabled Item B</Dropdown.Item>
             <Dropdown.Item>Item C</Dropdown.Item>
           </Dropdown>
-        </ButtonToolbar>
+        </Button.Toolbar>
       </Demo>
     );
   },
@@ -253,7 +250,7 @@ stories.add('multi-level', () => ({
   render() {
     return (
       <Demo title="Multi-Level">
-        <ButtonToolbar
+        <Button.Toolbar
           style={{
             display: 'flex',
             flexDirection: 'row',
@@ -284,7 +281,7 @@ stories.add('multi-level', () => ({
             <Dropdown.Item>Item 5</Dropdown.Item>
             <Dropdown.Item>Item 6</Dropdown.Item>
           </Dropdown>
-        </ButtonToolbar>
+        </Button.Toolbar>
       </Demo>
     );
   },
@@ -294,7 +291,7 @@ stories.add('custom', () => ({
   render() {
     return (
       <Demo title="Custom">
-        <ButtonToolbar>
+        <Button.Toolbar>
           <Dropdown title="More...">
             <Dropdown.Item>
               <Icon icon="edit2" /> Edit
@@ -319,7 +316,7 @@ stories.add('custom', () => ({
             </Dropdown.Item>
           </Dropdown>
           <Dropdown>
-            <IconButton appearance="primary" icon="plus" circle slot="title" />
+            <Button.Icon appearance="primary" icon="plus" circle slot="title" />
             <Dropdown.Item>
               <Icon icon="user" /> New User
             </Dropdown.Item>
@@ -327,7 +324,7 @@ stories.add('custom', () => ({
               <Icon icon="group" /> New Group
             </Dropdown.Item>
           </Dropdown>
-        </ButtonToolbar>
+        </Button.Toolbar>
       </Demo>
     );
   },
@@ -337,7 +334,7 @@ stories.add('composition', () => ({
   render() {
     return (
       <Demo title="Composition">
-        <ButtonToolbar>
+        <Button.Toolbar>
           <Dropdown
             title="Save"
             appearance="default"
@@ -347,20 +344,19 @@ stories.add('composition', () => ({
             <Dropdown.Item>Save & New</Dropdown.Item>
           </Dropdown>
 
-          <ButtonGroup>
+          <Button.Group>
             <Button>Save</Button>
             <Dropdown placement="bottom-end">
-              <IconButton icon="angle-double-down" slot="title" />
+              <Button.Icon icon="angle-double-down" slot="title" />
               <Dropdown.Item icon="save">Save as...</Dropdown.Item>
               <Dropdown.Item icon="save">Save & New</Dropdown.Item>
             </Dropdown>
-          </ButtonGroup>
+          </Button.Group>
 
           <Dropdown>
-            <IconButton icon="plus" placement="left" slot="title">
-              {' '}
+            <Button.Icon icon="plus" placement="left" slot="title">
               New
-            </IconButton>
+            </Button.Icon>
             <Dropdown.Item icon="user">New User</Dropdown.Item>
             <Dropdown.Item icon="group">New Group</Dropdown.Item>
             <Dropdown.Menu icon="group" title="More">
@@ -368,7 +364,7 @@ stories.add('composition', () => ({
               <Dropdown.Item icon="group">New Group</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
-        </ButtonToolbar>
+        </Button.Toolbar>
       </Demo>
     );
   },
@@ -425,23 +421,3 @@ stories.add('& popper', () => ({
     },
   },
 }));
-
-// stories.add('& router-link', () => ({
-//   render() {
-//     return (
-//       <Demo title="& Router Link">
-//         <Dropdown title="Menu">
-//           <Dropdown.Item componentClass="router-link" to="/guide/introduction">
-//             Guide
-//           </Dropdown.Item>
-//           <Dropdown.Item componentClass="router-link" to="/components/overview">
-//             Components
-//           </Dropdown.Item>
-//           <Dropdown.Item componentClass="router-link" to="/tools/palette">
-//             Tools
-//           </Dropdown.Item>
-//         </Dropdown>
-//       </Demo>
-//     );
-//   },
-// }));

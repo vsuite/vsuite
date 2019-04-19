@@ -13,6 +13,8 @@ import LoadingBar from 'components/LoadingBar';
 import Modal from 'components/Modal';
 import Drawer from 'components/Drawer';
 
+import Dropdown from 'components/Dropdown';
+
 import Animation from 'components/Animation';
 
 // import { Fade, Collapse } from 'components/Animation';
@@ -38,6 +40,8 @@ export const components = {
 
   Modal,
   Drawer,
+
+  Dropdown,
 
   Animation,
 
