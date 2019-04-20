@@ -1,5 +1,6 @@
 import VueTypes from 'vue-types';
 import _ from 'lodash';
+import { IconX } from 'utils/svg';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
 import { splitDataByComponent } from 'utils/split';
 
@@ -13,12 +14,16 @@ export default {
   name: 'DropdownToggle',
 
   props: {
-    icon: VueTypes.string,
+    icon: IconX,
     noCaret: VueTypes.bool.def(false),
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
     componentClass: VueTypes.oneOfType([VueTypes.string, VueTypes.object]).def(
       Button
     ),
+
+    // slot
+    // slot-icon
+    // slot-title
   },
 
   render() {
@@ -65,7 +70,7 @@ export default {
       <Component {...btnData}>
         {this.$slots.icon || (this.icon && <Icon icon={this.icon} />)}
         {this.$slots.default}
-        {this.noCaret ? null : <span class={this._addPrefix('caret')} />}
+        {!this.noCaret && <span class={this._addPrefix('caret')} />}
       </Component>
     );
   },

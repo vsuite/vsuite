@@ -1,10 +1,13 @@
 import VueTypes from 'vue-types';
 import _ from 'lodash';
 import popperMixin from 'mixins/popper';
+import renderX, { RenderX } from 'utils/render';
+import { IconX } from 'utils/svg';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
 import { splitDataByComponent } from 'utils/split';
 import shallowEqual from 'utils/shallowEqual';
 
+import { Fade } from 'components/Animation';
 import DropdownToggle from './DropdownToggle.jsx';
 import DropdownMenu from './DropdownMenu.jsx';
 
@@ -38,14 +41,13 @@ export default {
     },
     eventKey: VueTypes.any,
     activeKey: VueTypes.any,
-    title: VueTypes.string, // slot
-    icon: VueTypes.string, // slot
+    title: RenderX,
+    icon: IconX,
     disabled: VueTypes.bool.def(false),
     noCaret: VueTypes.bool.def(false),
-    tabindex: VueTypes.number,
+
     menuStyle: VueTypes.object,
     toggleClassName: VueTypes.string,
-    classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
     toggleComponentClass: VueTypes.oneOfType([
       VueTypes.string,
       VueTypes.object,
@@ -53,7 +55,20 @@ export default {
     componentClass: VueTypes.oneOfType([VueTypes.string, VueTypes.object]).def(
       'div'
     ),
-    // close, open, toggle, select
+
+    tabindex: VueTypes.number,
+    classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
+
+    // slot
+    // slot-icon
+    // slot-title
+
+    // @toggle
+    // @select
+
+    // @show
+    // @hide
+    // @visible-change
   },
 
   computed: {
@@ -137,9 +152,7 @@ export default {
 
       return (
         <Component {...dropdownData}>
-          <transition name="picker-fade">
-            {this._renderMenu(h, popperData)}
-          </transition>
+          <Fade>{this._renderMenu(h, popperData)}</Fade>
           <div {...referenceData}>{this._renderToggle(h)}</div>
         </Component>
       );
@@ -154,7 +167,7 @@ export default {
   },
 
   methods: {
-    _renderToggle() {
+    _renderToggle(h) {
       const data = splitDataByComponent(
         {
           class: this.toggleClassName,
@@ -173,7 +186,7 @@ export default {
 
       return (
         <DropdownToggle {...data}>
-          {this.title}
+          {renderX(h, this.title)}
           {this.$slots.title && (
             <template slot="title">{this.$slots.title}</template>
           )}

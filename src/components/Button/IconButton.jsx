@@ -1,4 +1,5 @@
 import VueTypes from 'vue-types';
+import { IconX } from 'utils/svg';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
 import invariant from 'utils/invariant';
 
@@ -11,10 +12,7 @@ export default {
   name: 'IconButton',
 
   props: {
-    icon: VueTypes.oneOfType([
-      VueTypes.string,
-      VueTypes.shape({ viewBox: VueTypes.string, id: VueTypes.string }),
-    ]).loose,
+    icon: IconX,
     circle: VueTypes.bool.def(false),
     placement: VueTypes.oneOf(['left', 'right']).def('left'),
 
