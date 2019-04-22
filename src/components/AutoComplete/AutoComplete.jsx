@@ -113,7 +113,6 @@ export default {
       class: this.classes,
       directives: [{ name: 'click-outside', value: this._handleClickOutside }],
       on: {},
-      ref: 'container',
     };
     const referenceData = {
       class: this._addPrefix('rel'),

@@ -1,11 +1,11 @@
 import VueTypes from 'vue-types';
-import _ from 'lodash';
 import popperMixin from 'mixins/popper';
 import renderX, { RenderX } from 'utils/render';
 import { IconX } from 'utils/svg';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
 import { splitDataByComponent } from 'utils/split';
 import shallowEqual from 'utils/shallowEqual';
+import mergeData from 'utils/merge';
 
 import { Fade } from 'components/Animation';
 import DropdownToggle from './DropdownToggle.jsx';
@@ -39,13 +39,13 @@ export default {
         return 'click';
       },
     },
-    eventKey: VueTypes.any,
     activeKey: VueTypes.any,
     title: RenderX,
     icon: IconX,
     disabled: VueTypes.bool.def(false),
     noCaret: VueTypes.bool.def(false),
 
+    eventKey: VueTypes.any,
     menuStyle: VueTypes.object,
     toggleClassName: VueTypes.string,
     toggleComponentClass: VueTypes.oneOfType([
@@ -81,13 +81,15 @@ export default {
     },
 
     collapsible() {
+      const bool = this.$vSidenav && this.$vSidenav.expanded;
+
       // when sidenav is collapsed, we will use popper.js, but when it is expanded we need destroy popper.js instance
-      if (this.$vSidenav && this.$vSidenav.expanded) {
+      if (bool) {
         // fix memory leak
         this._destroyPopper();
       }
 
-      return this.$vSidenav && this.$vSidenav.expanded;
+      return bool;
     },
 
     sidenav() {
@@ -115,73 +117,62 @@ export default {
       {
         class: this.classes,
         splitProps: { role: 'menu' },
-        ref: 'container',
       },
       Component
     );
-    let popperData = { ref: 'popper' };
+    let referenceData = {};
+    let popperData = {};
 
-    if (!this.sidenav || !this.collapsible) {
-      const referenceData = {
-        class: this._addPrefix('rel'),
-        ref: 'reference',
-      };
-
-      dropdownData = _.merge(dropdownData, {
+    if (!this.collapsible) {
+      dropdownData = mergeData(dropdownData, {
         directives: [
           { name: 'click-outside', value: this._handleClickOutside },
         ],
       });
 
-      popperData = _.merge(popperData, {
+      referenceData = mergeData(referenceData, { ref: 'reference' });
+
+      popperData = mergeData(popperData, {
         directives: [
-          {
-            name: 'show',
-            value: this.currentVisible,
-          },
+          { name: 'show', value: this.currentVisible },
           { name: 'transfer-dom' },
         ],
-        attrs: {
-          'data-transfer': `${this.transfer}`,
-        },
+        attrs: { 'data-transfer': `${this.transfer}` },
+        ref: 'popper',
       });
 
       if (!this.disabled) {
         this._addTriggerListeners(referenceData, dropdownData);
       }
-
-      return (
-        <Component {...dropdownData}>
-          <Fade>{this._renderMenu(h, popperData)}</Fade>
-          <div {...referenceData}>{this._renderToggle(h)}</div>
-        </Component>
-      );
     }
 
     return (
       <Component {...dropdownData}>
         {this._renderMenu(h, popperData)}
-        {this._renderToggle(h)}
+        {this._renderToggle(h, referenceData)}
       </Component>
     );
   },
 
   methods: {
-    _renderToggle(h) {
-      const data = splitDataByComponent(
-        {
-          class: this.toggleClassName,
-          splitProps: {
-            ...this.$attrs,
-            icon: this.icon,
-            noCaret: this.noCaret,
-            disabled: this.disabled,
-            tabindex: this.tabindex,
-            componentClass: this.toggleComponentClass,
+    _renderToggle(h, referenceData) {
+      const data = mergeData(
+        referenceData,
+        splitDataByComponent(
+          {
+            class: this.toggleClassName,
+            splitProps: {
+              ...this.$attrs,
+              icon: this.icon,
+              noCaret: this.noCaret,
+              disabled: this.disabled,
+              tabindex: this.tabindex,
+              componentClass: this.toggleComponentClass,
+            },
+            on: { click: event => this._handleToggle(this.eventKey, event) },
           },
-          on: { click: event => this._handleToggle(this.eventKey, event) },
-        },
-        DropdownToggle
+          DropdownToggle
+        )
       );
 
       return (
@@ -198,7 +189,7 @@ export default {
     },
 
     _renderMenu(h, popperData) {
-      const data = _.merge(popperData, {
+      const data = mergeData(popperData, {
         style: this.menuStyle,
         props: {
           activeKey: this.activeKey,
@@ -212,8 +203,9 @@ export default {
           select: this._handleSelect,
         },
       });
+      const menu = <DropdownMenu {...data}>{this.$slots.default}</DropdownMenu>;
 
-      return <DropdownMenu {...data}>{this.$slots.default}</DropdownMenu>;
+      return !this.collapsible ? <Fade>{menu}</Fade> : menu;
     },
 
     _handleToggle(eventKey, event) {

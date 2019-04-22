@@ -16,6 +16,7 @@ export default {
   props: {
     icon: IconX,
     noCaret: VueTypes.bool.def(false),
+
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
     componentClass: VueTypes.oneOfType([VueTypes.string, VueTypes.object]).def(
       Button
@@ -58,10 +59,7 @@ export default {
     }
 
     btnData = splitDataByComponent(
-      {
-        ...btnData,
-        splitProps: this.$attrs,
-      },
+      { ...btnData, splitProps: this.$attrs },
       Component,
       true
     );

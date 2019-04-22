@@ -28,6 +28,18 @@ function parseStyleText(cssText = '', camel = true) {
   return res;
 }
 
+function parseStyle(style, camel = true) {
+  let res = style || {};
+
+  if (typeof res === 'string') {
+    res = parseStyleText(res, camel);
+  } else if (camel && res) {
+    Object.keys(res).forEach(k => (res[camelize(k)] = style[k]));
+  }
+
+  return res;
+}
+
 function getName(vnode) {
   return (
     (vnode.componentOptions &&
@@ -59,17 +71,7 @@ function getStyles(vnode, camel = true) {
 
   let style = data.style || data.staticStyle;
 
-  if (typeof styl === 'string') {
-    style = parseStyleText(style, camel);
-  } else if (camel && style) {
-    const res = {};
-
-    Object.keys(style).forEach(k => (res[camelize(k)] = style[k]));
-
-    return res;
-  }
-
-  return style;
+  return parseStyle(style, camel);
 }
 
 function getProps(vnode) {
@@ -311,4 +313,5 @@ export {
   filterEmpty,
   vueToString,
   parseStyleText,
+  parseStyle,
 };
