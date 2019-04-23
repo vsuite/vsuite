@@ -10,7 +10,7 @@ import { cloneElement } from 'utils/node';
 const CLASS_PREFIX = 'dropdown-item';
 
 export default {
-  name: 'DropdownMenuItem',
+  name: 'DropdownItem',
 
   props: {
     icon: IconX,

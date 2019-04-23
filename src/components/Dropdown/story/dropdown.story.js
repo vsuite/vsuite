@@ -8,11 +8,11 @@ import Demo from 'stories/demo';
 
 const stories = storiesOf('Navigation|Dropdown', module);
 
-stories.add('default', () => ({
+stories.add('basic', () => ({
   render() {
     return (
-      <Demo default="Default">
-        <Dropdown title="Default">
+      <Demo default="Basic">
+        <Dropdown title="Basic">
           <Dropdown.Item>New File</Dropdown.Item>
           <Dropdown.Item>New File with Current Profile</Dropdown.Item>
           <Dropdown.Item>Download As...</Dropdown.Item>
@@ -26,7 +26,7 @@ stories.add('default', () => ({
   },
 }));
 
-stories.add('trigger', () => ({
+stories.add('trigger.cn.md', () => ({
   render(h) {
     return (
       <Demo default="Trigger">
@@ -335,11 +335,7 @@ stories.add('composition', () => ({
     return (
       <Demo title="Composition">
         <Button.Toolbar>
-          <Dropdown
-            title="Save"
-            appearance="default"
-            toggleComponentClass={Button}
-          >
+          <Dropdown title="Save" appearance="default">
             <Dropdown.Item>Save as...</Dropdown.Item>
             <Dropdown.Item>Save & New</Dropdown.Item>
           </Dropdown>
@@ -387,10 +383,6 @@ stories.add('menu', () => ({
           <Dropdown.Item>Export HTML</Dropdown.Item>
           <Dropdown.Item>Settings</Dropdown.Item>
           <Dropdown.Item>About</Dropdown.Item>
-          <Dropdown.Menu icon="group" title="More">
-            <Dropdown.Item icon="user">New User</Dropdown.Item>
-            <Dropdown.Item icon="group">New Group</Dropdown.Item>
-          </Dropdown.Menu>
         </Dropdown.Menu>
       </Demo>
     );

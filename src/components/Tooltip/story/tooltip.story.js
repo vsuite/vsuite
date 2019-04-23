@@ -214,7 +214,7 @@ stories.add('placement', () => ({
   },
 }));
 
-stories.add('trigger', () => ({
+stories.add('trigger.cn.md', () => ({
   render(h) {
     return (
       <Demo title="Trigger">

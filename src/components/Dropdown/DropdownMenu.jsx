@@ -76,13 +76,13 @@ export default {
           const name = getName(vnode);
           let active = false;
 
-          if (name === 'DropdownMenu' || name === 'DropdownMenuItem') {
+          if (name === 'DropdownMenu' || name === 'DropdownItem') {
             active = this._isActive(vnode, this.activeKey);
 
             if (active) hasActiveItem = true;
           }
 
-          if (name === 'DropdownMenuItem') {
+          if (name === 'DropdownItem') {
             return mergeElement(
               cloneElement(vnode, {
                 key: index,
@@ -144,10 +144,10 @@ export default {
       const props = getProps(vnode);
       const children = getChildren(vnode) || [];
 
-      if (name !== 'DropdownMenuItem' && name !== 'DropdownMenu') return false;
+      if (name !== 'DropdownItem' && name !== 'DropdownMenu') return false;
 
       // DropdownItem
-      if (name === 'DropdownMenuItem') {
+      if (name === 'DropdownItem') {
         return (
           props.active ||
           (!_.isUndefined(activeKey) && shallowEqual(props.eventKey, activeKey))

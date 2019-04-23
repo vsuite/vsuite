@@ -1,0 +1,15 @@
+export default [
+  'basic',
+  'trigger.cn.md',
+  'active',
+  'disabled',
+  'no-caret',
+  'icons',
+  'divider',
+  'placement',
+  'submenu',
+  'custom',
+  'buttons',
+  'menu-items',
+  'with-popover',
+];

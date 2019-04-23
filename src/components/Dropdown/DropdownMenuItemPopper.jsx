@@ -7,7 +7,7 @@ import prefix, { defaultClassPrefix } from 'utils/prefix';
 import { splitDataByComponent } from 'utils/split';
 
 import { Fade, Collapse } from 'components/Animation';
-import DropdownItem from './DropdownMenuItem.jsx';
+import DropdownItem from './DropdownItem.jsx';
 
 const CLASS_PREFIX = 'dropdown-menu';
 

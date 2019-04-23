@@ -1,0 +1,448 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dropdown demo renders active demo correctly 1`] = `
+<div role="toolbar" class="vs-btn-toolbar">
+  <div role="menu" class="vs-dropdown vs-dropdown-placement-bottom-start">
+    <ul data-transfer="false" role="menu" class="vs-dropdown-menu vs-dropdown-menu-active v-transfer-dom" style="display: none;" appear="true" name="fade">
+      <li role="presentation" class="vs-dropdown-item vs-dropdown-item-active"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Active Item</a></li>
+      <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Item B</a></li>
+      <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Item C</a></li>
+      <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Item D</a></li>
+    </ul><a tabindex="0" class="vs-btn vs-btn-subtle vs-dropdown-toggle">Default<span class="vs-dropdown-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a>
+  </div>
+  <div role="menu" class="vs-dropdown vs-dropdown-placement-bottom-start">
+    <ul data-transfer="false" role="menu" class="vs-dropdown-menu vs-dropdown-menu-active v-transfer-dom" style="display: none;" appear="true" name="fade">
+      <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Item A</a></li>
+      <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Item B</a></li>
+      <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Item C</a></li>
+      <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Item D</a></li>
+      <li role="presentation" class="vs-dropdown-item vs-dropdown-item-submenu vs-dropdown-item-active vs-dropdown-menu-pull-right" eventkey="e" componentclass="div" submenu="true" active="true">
+        <div tabindex="-1" class="vs-dropdown-item-content">
+          <div role="menu" tabindex="-1" class="vs-dropdown-menu-toggle"><span>Active Menu</span><i class="vs-icon vs-icon-angle-right vs-dropdown-menu-toggle-icon"></i><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></div>
+          <ul data-transfer="false" class="vs-dropdown-menu v-transfer-dom" style="display: none;" appear="true" name="fade">
+            <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Item E-1</a></li>
+            <li role="presentation" class="vs-dropdown-item vs-dropdown-item-active"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Active Item</a></li>
+          </ul>
+        </div>
+      </li>
+    </ul><a tabindex="0" class="vs-btn vs-btn-subtle vs-dropdown-toggle">Default<span class="vs-dropdown-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a>
+  </div>
+</div>
+`;
+
+exports[`Dropdown demo renders basic demo correctly 1`] = `
+<div role="menu" class="vs-dropdown vs-dropdown-placement-bottom-start">
+  <ul data-transfer="false" role="menu" class="vs-dropdown-menu v-transfer-dom" style="display: none;" appear="true" name="fade">
+    <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">New File</a></li>
+    <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">New File with Current Profile</a></li>
+    <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Download As...</a></li>
+    <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Export PDF</a></li>
+    <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Export HTML</a></li>
+    <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Settings</a></li>
+    <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">About</a></li>
+  </ul><a tabindex="0" class="vs-btn vs-btn-subtle vs-dropdown-toggle">Basic<span class="vs-dropdown-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a>
+</div>
+`;
+
+exports[`Dropdown demo renders buttons demo correctly 1`] = `
+<div role="toolbar" class="vs-btn-toolbar">
+  <div role="menu" class="vs-dropdown vs-dropdown-placement-bottom-start" appearance="default">
+    <ul data-transfer="false" role="menu" class="vs-dropdown-menu v-transfer-dom" style="display: none;" appear="true" name="fade">
+      <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Save as...</a></li>
+      <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Save &amp; New</a></li>
+    </ul><a tabindex="0" class="vs-btn vs-btn-default vs-dropdown-toggle" appearance="default">Save<span class="vs-dropdown-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a>
+  </div>
+  <div role="group" class="vs-btn-group"><button type="button" class="vs-btn vs-btn-default">Save<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button>
+    <div role="menu" class="vs-dropdown vs-dropdown-placement-bottom-end">
+      <ul data-transfer="false" role="menu" class="vs-dropdown-menu v-transfer-dom" style="display: none;" appear="true" name="fade">
+        <li role="presentation" class="vs-dropdown-item vs-dropdown-item-with-icon"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content"><i class="vs-icon vs-icon-save vs-dropdown-item-menu-icon"></i>Save as...</a></li>
+        <li role="presentation" class="vs-dropdown-item vs-dropdown-item-with-icon"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content"><i class="vs-icon vs-icon-save vs-dropdown-item-menu-icon"></i>Save &amp; New</a></li>
+      </ul><span tabindex="0" class="vs-dropdown-toggle vs-dropdown-toggle-custom-title"><button type="button" class="vs-btn vs-btn-default vs-btn-icon vs-btn-icon-placement-left"><i class="vs-icon vs-icon-angle-double-down"></i><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></span>
+    </div>
+  </div>
+  <div role="menu" class="vs-dropdown vs-dropdown-placement-bottom-start">
+    <ul data-transfer="false" role="menu" class="vs-dropdown-menu v-transfer-dom" style="display: none;" appear="true" name="fade">
+      <li role="presentation" class="vs-dropdown-item vs-dropdown-item-with-icon"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content"><i class="vs-icon vs-icon-user vs-dropdown-item-menu-icon"></i>New User</a></li>
+      <li role="presentation" class="vs-dropdown-item vs-dropdown-item-with-icon"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content"><i class="vs-icon vs-icon-group vs-dropdown-item-menu-icon"></i>New Group</a></li>
+      <li role="presentation" class="vs-dropdown-item vs-dropdown-item-submenu vs-dropdown-item-with-icon vs-dropdown-menu-pull-right" icon="group" componentclass="div" submenu="true">
+        <div tabindex="-1" class="vs-dropdown-item-content"><i class="vs-icon vs-icon-group vs-dropdown-item-menu-icon"></i>
+          <div role="menu" tabindex="-1" class="vs-dropdown-menu-toggle"><span>More</span><i class="vs-icon vs-icon-angle-right vs-dropdown-menu-toggle-icon"></i><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></div>
+          <ul data-transfer="false" class="vs-dropdown-menu v-transfer-dom" style="display: none;" appear="true" name="fade">
+            <li role="presentation" class="vs-dropdown-item vs-dropdown-item-with-icon"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content"><i class="vs-icon vs-icon-user vs-dropdown-item-menu-icon"></i>New User</a></li>
+            <li role="presentation" class="vs-dropdown-item vs-dropdown-item-with-icon"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content"><i class="vs-icon vs-icon-group vs-dropdown-item-menu-icon"></i>New Group</a></li>
+          </ul>
+        </div>
+      </li>
+    </ul><span tabindex="0" class="vs-dropdown-toggle vs-dropdown-toggle-custom-title"><button type="button" class="vs-btn vs-btn-default vs-btn-icon vs-btn-icon-placement-left vs-btn-icon-with-text"><i class="vs-icon vs-icon-plus"></i>
+      New
+    <span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></span>
+  </div>
+</div>
+`;
+
+exports[`Dropdown demo renders custom demo correctly 1`] = `
+<div role="toolbar" class="vs-btn-toolbar">
+  <div role="menu" class="vs-dropdown vs-dropdown-placement-bottom-start">
+    <ul data-transfer="false" role="menu" class="vs-dropdown-menu v-transfer-dom" style="display: none;" appear="true" name="fade">
+      <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content"><i class="vs-icon vs-icon-edit2"></i> Edit </a></li>
+      <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content"><i class="vs-icon vs-icon-eye"></i> View </a></li>
+      <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content"><i class="vs-icon vs-icon-trash"></i> Delete </a></li>
+    </ul><a tabindex="0" class="vs-btn vs-btn-subtle vs-dropdown-toggle">More...<span class="vs-dropdown-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a>
+  </div>
+  <div role="menu" class="vs-dropdown vs-dropdown-placement-bottom-start">
+    <ul data-transfer="false" role="menu" class="vs-dropdown-menu v-transfer-dom" style="display: none;" appear="true" name="fade">
+      <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content"><i class="vs-icon vs-icon-user"></i> New User </a></li>
+      <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content"><i class="vs-icon vs-icon-group"></i> New Group </a></li>
+    </ul><span tabindex="0" class="vs-dropdown-toggle vs-dropdown-toggle-custom-title"><button type="button" class="vs-btn vs-btn-primary">
+      New
+    <span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></span>
+  </div>
+  <div role="menu" class="vs-dropdown vs-dropdown-placement-bottom-start">
+    <ul data-transfer="false" role="menu" class="vs-dropdown-menu v-transfer-dom" style="display: none;" appear="true" name="fade">
+      <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content"><i class="vs-icon vs-icon-user"></i> New User </a></li>
+      <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content"><i class="vs-icon vs-icon-group"></i> New Group </a></li>
+    </ul><span tabindex="0" class="vs-dropdown-toggle vs-dropdown-toggle-custom-title"><button type="button" class="vs-btn vs-btn-primary vs-btn-icon vs-btn-icon-placement-left vs-btn-icon-circle" appearance="primary"><i class="vs-icon vs-icon-plus"></i><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></span>
+  </div>
+</div>
+`;
+
+exports[`Dropdown demo renders disabled demo correctly 1`] = `
+<div role="toolbar" class="vs-btn-toolbar">
+  <div role="menu" class="vs-dropdown vs-dropdown-placement-bottom-start vs-dropdown-disabled">
+    <ul data-transfer="false" role="menu" class="vs-dropdown-menu v-transfer-dom" style="display: none;" appear="true" name="fade">
+      <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Item A</a></li>
+      <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Item B</a></li>
+      <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Item C</a></li>
+    </ul><a tabindex="0" disabled="disabled" class="vs-btn vs-btn-subtle vs-btn-disabled vs-dropdown-toggle">Disabled<span class="vs-dropdown-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a>
+  </div>
+  <div role="menu" class="vs-dropdown vs-dropdown-placement-bottom-start">
+    <ul data-transfer="false" role="menu" class="vs-dropdown-menu v-transfer-dom" style="display: none;" appear="true" name="fade">
+      <li role="presentation" class="vs-dropdown-item vs-dropdown-item-disabled"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Disabled Item A</a></li>
+      <li role="presentation" class="vs-dropdown-item vs-dropdown-item-disabled"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Disabled Item B</a></li>
+      <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Item C</a></li>
+    </ul><a tabindex="0" class="vs-btn vs-btn-subtle vs-dropdown-toggle">Disabled Item<span class="vs-dropdown-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a>
+  </div>
+</div>
+`;
+
+exports[`Dropdown demo renders divider demo correctly 1`] = `
+<div role="menu" class="vs-dropdown vs-dropdown-placement-bottom-start">
+  <ul data-transfer="false" role="menu" class="vs-dropdown-menu v-transfer-dom" style="display: none;" appear="true" name="fade">
+    <li class="vs-dropdown-item-panel" style="padding: 10px; width: 160px;">
+      <p>Signed in as</p> <strong>foobar</strong>
+    </li>
+    <li role="separator" class="vs-dropdown-item-divider"></li>
+    <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Your profile</a></li>
+    <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Your stars</a></li>
+    <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Your Gists</a></li>
+    <li role="separator" class="vs-dropdown-item-divider"></li>
+    <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Help</a></li>
+    <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Settings</a></li>
+    <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Sign out</a></li>
+  </ul><a tabindex="0" class="vs-btn vs-btn-subtle vs-dropdown-toggle">GitHub<span class="vs-dropdown-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a>
+</div>
+`;
+
+exports[`Dropdown demo renders icons demo correctly 1`] = `
+<div role="menu" class="vs-dropdown vs-dropdown-placement-bottom-start">
+  <ul data-transfer="false" role="menu" class="vs-dropdown-menu v-transfer-dom" style="display: none;" appear="true" name="fade">
+    <li role="presentation" class="vs-dropdown-item vs-dropdown-item-with-icon"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content"><i class="vs-icon vs-icon-file vs-dropdown-item-menu-icon"></i>New File</a></li>
+    <li role="presentation" class="vs-dropdown-item vs-dropdown-item-with-icon"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content"><i class="vs-icon vs-icon-file-o vs-dropdown-item-menu-icon"></i>
+        New File with Current Profile
+      </a></li>
+    <li role="presentation" class="vs-dropdown-item vs-dropdown-item-with-icon"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content"><i class="vs-icon vs-icon-cloud-download vs-dropdown-item-menu-icon"></i>Download As...</a></li>
+    <li role="presentation" class="vs-dropdown-item vs-dropdown-item-with-icon"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content"><i class="vs-icon vs-icon-file-pdf-o vs-dropdown-item-menu-icon"></i>Export PDF</a></li>
+    <li role="presentation" class="vs-dropdown-item vs-dropdown-item-with-icon"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content"><i class="vs-icon vs-icon-html5 vs-dropdown-item-menu-icon"></i>Export HTML</a></li>
+    <li role="presentation" class="vs-dropdown-item vs-dropdown-item-with-icon"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content"><i class="vs-icon vs-icon-cog vs-dropdown-item-menu-icon"></i>Settings</a></li>
+    <li role="presentation" class="vs-dropdown-item vs-dropdown-item-with-icon"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content"><i class="vs-icon vs-icon-info vs-dropdown-item-menu-icon"></i>About</a></li>
+  </ul><a tabindex="0" class="vs-btn vs-btn-subtle vs-dropdown-toggle"><i class="vs-icon vs-icon-file"></i>File<span class="vs-dropdown-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a>
+</div>
+`;
+
+exports[`Dropdown demo renders menu-items demo correctly 1`] = `
+<ul role="menu" class="vs-dropdown-menu" style="width: 200px; border: 1px solid #ddd;">
+  <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">New File</a></li>
+  <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">New File with Current Profile</a></li>
+  <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Download As...</a></li>
+  <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Export PDF</a></li>
+  <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Export HTML</a></li>
+  <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Settings</a></li>
+  <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">About</a></li>
+</ul>
+`;
+
+exports[`Dropdown demo renders no-caret demo correctly 1`] = `
+<div role="menu" class="vs-dropdown vs-dropdown-placement-bottom-start vs-dropdown-no-caret">
+  <ul data-transfer="false" role="menu" class="vs-dropdown-menu v-transfer-dom" style="display: none;" appear="true" name="fade">
+    <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">New File</a></li>
+    <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">New File with Current Profile</a></li>
+    <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Download As...</a></li>
+    <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Export PDF</a></li>
+    <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Export HTML</a></li>
+    <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Settings</a></li>
+    <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">About</a></li>
+  </ul><a tabindex="0" class="vs-btn vs-btn-subtle vs-dropdown-toggle">Default<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a>
+</div>
+`;
+
+exports[`Dropdown demo renders placement demo correctly 1`] = `
+<table style="margin: 100px 0px;">
+  <tbody>
+    <tr>
+      <td></td>
+      <td>
+        <div role="menu" class="vs-dropdown vs-dropdown-placement-bottom-start">
+          <ul data-transfer="false" role="menu" class="vs-dropdown-menu v-transfer-dom" style="display: none;" appear="true" name="fade">
+            <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">New File</a></li>
+            <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">New File with Current Profile</a></li>
+            <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Download As...</a></li>
+            <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Export PDF</a></li>
+            <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Export HTML</a></li>
+            <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Settings</a></li>
+            <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">About</a></li>
+          </ul><a tabindex="0" class="vs-btn vs-btn-subtle vs-dropdown-toggle">bottom-start<span class="vs-dropdown-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a>
+        </div>
+      </td>
+      <td>
+        <div role="menu" class="vs-dropdown vs-dropdown-placement-bottom-end">
+          <ul data-transfer="false" role="menu" class="vs-dropdown-menu v-transfer-dom" style="display: none;" appear="true" name="fade">
+            <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">New File</a></li>
+            <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">New File with Current Profile</a></li>
+            <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Download As...</a></li>
+            <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Export PDF</a></li>
+            <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Export HTML</a></li>
+            <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Settings</a></li>
+            <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">About</a></li>
+          </ul><a tabindex="0" class="vs-btn vs-btn-subtle vs-dropdown-toggle">bottom-end<span class="vs-dropdown-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a>
+        </div>
+      </td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <div role="menu" class="vs-dropdown vs-dropdown-placement-right-start">
+          <ul data-transfer="false" role="menu" class="vs-dropdown-menu v-transfer-dom" style="display: none;" appear="true" name="fade">
+            <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">New File</a></li>
+            <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">New File with Current Profile</a></li>
+            <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Download As...</a></li>
+            <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Export PDF</a></li>
+            <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Export HTML</a></li>
+            <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Settings</a></li>
+            <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">About</a></li>
+          </ul><a tabindex="0" class="vs-btn vs-btn-subtle vs-dropdown-toggle">right-start<span class="vs-dropdown-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a>
+        </div>
+      </td>
+      <td></td>
+      <td></td>
+      <td>
+        <div role="menu" class="vs-dropdown vs-dropdown-placement-left-start">
+          <ul data-transfer="false" role="menu" class="vs-dropdown-menu v-transfer-dom" style="display: none;" appear="true" name="fade">
+            <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">New File</a></li>
+            <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">New File with Current Profile</a></li>
+            <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Download As...</a></li>
+            <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Export PDF</a></li>
+            <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Export HTML</a></li>
+            <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Settings</a></li>
+            <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">About</a></li>
+          </ul><a tabindex="0" class="vs-btn vs-btn-subtle vs-dropdown-toggle">left-start<span class="vs-dropdown-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div role="menu" class="vs-dropdown vs-dropdown-placement-right-end">
+          <ul data-transfer="false" role="menu" class="vs-dropdown-menu v-transfer-dom" style="display: none;" appear="true" name="fade">
+            <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">New File</a></li>
+            <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">New File with Current Profile</a></li>
+            <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Download As...</a></li>
+            <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Export PDF</a></li>
+            <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Export HTML</a></li>
+            <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Settings</a></li>
+            <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">About</a></li>
+          </ul><a tabindex="0" class="vs-btn vs-btn-subtle vs-dropdown-toggle">right-end<span class="vs-dropdown-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a>
+        </div>
+      </td>
+      <td></td>
+      <td></td>
+      <td>
+        <div role="menu" class="vs-dropdown vs-dropdown-placement-left-end">
+          <ul data-transfer="false" role="menu" class="vs-dropdown-menu v-transfer-dom" style="display: none;" appear="true" name="fade">
+            <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">New File</a></li>
+            <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">New File with Current Profile</a></li>
+            <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Download As...</a></li>
+            <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Export PDF</a></li>
+            <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Export HTML</a></li>
+            <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Settings</a></li>
+            <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">About</a></li>
+          </ul><a tabindex="0" class="vs-btn vs-btn-subtle vs-dropdown-toggle">left-end<span class="vs-dropdown-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>
+        <div role="menu" class="vs-dropdown vs-dropdown-placement-top-start">
+          <ul data-transfer="false" role="menu" class="vs-dropdown-menu v-transfer-dom" style="display: none;" appear="true" name="fade">
+            <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">New File</a></li>
+            <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">New File with Current Profile</a></li>
+            <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Download As...</a></li>
+            <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Export PDF</a></li>
+            <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Export HTML</a></li>
+            <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Settings</a></li>
+            <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">About</a></li>
+          </ul><a tabindex="0" class="vs-btn vs-btn-subtle vs-dropdown-toggle">top-start<span class="vs-dropdown-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a>
+        </div>
+      </td>
+      <td>
+        <div role="menu" class="vs-dropdown vs-dropdown-placement-top-end">
+          <ul data-transfer="false" role="menu" class="vs-dropdown-menu v-transfer-dom" style="display: none;" appear="true" name="fade">
+            <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">New File</a></li>
+            <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">New File with Current Profile</a></li>
+            <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Download As...</a></li>
+            <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Export PDF</a></li>
+            <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Export HTML</a></li>
+            <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Settings</a></li>
+            <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">About</a></li>
+          </ul><a tabindex="0" class="vs-btn vs-btn-subtle vs-dropdown-toggle">top-end<span class="vs-dropdown-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a>
+        </div>
+      </td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`Dropdown demo renders submenu demo correctly 1`] = `
+<div role="toolbar" class="vs-btn-toolbar" style="display: flex; flex-direction: row; justify-content: center;">
+  <div role="menu" class="vs-dropdown vs-dropdown-placement-bottom-start">
+    <ul data-transfer="false" role="menu" class="vs-dropdown-menu v-transfer-dom" style="display: none;" appear="true" name="fade">
+      <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Item 1</a></li>
+      <li role="presentation" class="vs-dropdown-item vs-dropdown-item-submenu vs-dropdown-menu-pull-right" componentclass="div" submenu="true">
+        <div tabindex="-1" class="vs-dropdown-item-content">
+          <div role="menu" tabindex="-1" class="vs-dropdown-menu-toggle"><span>Right Item 2</span><i class="vs-icon vs-icon-angle-right vs-dropdown-menu-toggle-icon"></i><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></div>
+          <ul data-transfer="false" class="vs-dropdown-menu v-transfer-dom" style="display: none;" appear="true" name="fade">
+            <li role="presentation" class="vs-dropdown-item vs-dropdown-item-submenu vs-dropdown-menu-pull-right" componentclass="div" submenu="true">
+              <div tabindex="-1" class="vs-dropdown-item-content">
+                <div role="menu" tabindex="-1" class="vs-dropdown-menu-toggle"><span>Item 2-1</span><i class="vs-icon vs-icon-angle-right vs-dropdown-menu-toggle-icon"></i><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></div>
+                <ul data-transfer="false" class="vs-dropdown-menu v-transfer-dom" style="display: none;" appear="true" name="fade">
+                  <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Item 2-1-1</a></li>
+                  <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Item 2-1-2</a></li>
+                  <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Item 2-1-3</a></li>
+                </ul>
+              </div>
+            </li>
+            <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Item 2-2</a></li>
+            <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Item 2-3</a></li>
+          </ul>
+        </div>
+      </li>
+      <li role="presentation" class="vs-dropdown-item vs-dropdown-item-submenu vs-dropdown-menu-pull-right" pullleft="true" componentclass="div" submenu="true">
+        <div pullleft="true" tabindex="-1" class="vs-dropdown-item-content">
+          <div role="menu" tabindex="-1" class="vs-dropdown-menu-toggle"><span>Left Item 3</span><i class="vs-icon vs-icon-angle-left vs-dropdown-menu-toggle-icon"></i><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></div>
+          <ul data-transfer="false" class="vs-dropdown-menu v-transfer-dom" style="display: none;" appear="true" name="fade">
+            <li role="presentation" class="vs-dropdown-item vs-dropdown-item-submenu vs-dropdown-menu-pull-right" pullleft="true" componentclass="div" submenu="true">
+              <div pullleft="true" tabindex="-1" class="vs-dropdown-item-content">
+                <div role="menu" tabindex="-1" class="vs-dropdown-menu-toggle"><span>Item 3-1</span><i class="vs-icon vs-icon-angle-left vs-dropdown-menu-toggle-icon"></i><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></div>
+                <ul data-transfer="false" class="vs-dropdown-menu v-transfer-dom" style="display: none;" appear="true" name="fade">
+                  <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Item 3-1-1</a></li>
+                  <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Item 3-1-2</a></li>
+                  <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Item 3-1-3</a></li>
+                </ul>
+              </div>
+            </li>
+            <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Item 3-2</a></li>
+            <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Item 3-3</a></li>
+          </ul>
+        </div>
+      </li>
+      <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Item 4</a></li>
+      <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Item 5</a></li>
+      <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Item 6</a></li>
+    </ul><a tabindex="0" class="vs-btn vs-btn-subtle vs-dropdown-toggle">Dropdown<span class="vs-dropdown-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a>
+  </div>
+</div>
+`;
+
+exports[`Dropdown demo renders trigger demo correctly 1`] = `
+<div role="toolbar" class="vs-btn-toolbar">
+  <div role="menu" class="vs-dropdown vs-dropdown-placement-bottom-start">
+    <ul data-transfer="false" role="menu" class="vs-dropdown-menu v-transfer-dom" style="display: none;" appear="true" name="fade">
+      <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">New File</a></li>
+      <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">New File with Current Profile</a></li>
+      <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Download As...</a></li>
+      <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Export PDF</a></li>
+      <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Export HTML</a></li>
+      <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Settings</a></li>
+      <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">About</a></li>
+    </ul><a tabindex="0" class="vs-btn vs-btn-subtle vs-dropdown-toggle">hover<span class="vs-dropdown-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a>
+  </div>
+  <div role="menu" class="vs-dropdown vs-dropdown-placement-bottom-start">
+    <ul data-transfer="false" role="menu" class="vs-dropdown-menu v-transfer-dom" style="display: none;" appear="true" name="fade">
+      <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">New File</a></li>
+      <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">New File with Current Profile</a></li>
+      <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Download As...</a></li>
+      <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Export PDF</a></li>
+      <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Export HTML</a></li>
+      <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Settings</a></li>
+      <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">About</a></li>
+    </ul><a tabindex="0" class="vs-btn vs-btn-subtle vs-dropdown-toggle">click<span class="vs-dropdown-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a>
+  </div>
+  <div role="menu" class="vs-dropdown vs-dropdown-placement-bottom-start">
+    <ul data-transfer="false" role="menu" class="vs-dropdown-menu v-transfer-dom" style="display: none;" appear="true" name="fade">
+      <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">New File</a></li>
+      <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">New File with Current Profile</a></li>
+      <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Download As...</a></li>
+      <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Export PDF</a></li>
+      <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Export HTML</a></li>
+      <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Settings</a></li>
+      <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">About</a></li>
+    </ul><a tabindex="0" class="vs-btn vs-btn-subtle vs-dropdown-toggle">right-click<span class="vs-dropdown-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a>
+  </div>
+  <div role="menu" class="vs-dropdown vs-dropdown-placement-bottom-start">
+    <ul data-transfer="false" role="menu" class="vs-dropdown-menu v-transfer-dom" style="display: none;" appear="true" name="fade">
+      <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">New File</a></li>
+      <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">New File with Current Profile</a></li>
+      <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Download As...</a></li>
+      <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Export PDF</a></li>
+      <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Export HTML</a></li>
+      <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Settings</a></li>
+      <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">About</a></li>
+    </ul><a tabindex="0" class="vs-btn vs-btn-subtle vs-dropdown-toggle">active<span class="vs-dropdown-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a>
+  </div>
+  <div role="menu" class="vs-dropdown vs-dropdown-placement-bottom-start">
+    <ul data-transfer="false" role="menu" class="vs-dropdown-menu v-transfer-dom" style="display: none;" appear="true" name="fade">
+      <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">New File</a></li>
+      <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">New File with Current Profile</a></li>
+      <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Download As...</a></li>
+      <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Export PDF</a></li>
+      <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Export HTML</a></li>
+      <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Settings</a></li>
+      <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">About</a></li>
+    </ul><a tabindex="0" class="vs-btn vs-btn-subtle vs-dropdown-toggle">focus<span class="vs-dropdown-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a>
+  </div>
+</div>
+`;
+
+exports[`Dropdown demo renders with-popover demo correctly 1`] = `
+<div class="vs-popover">
+  <div class="vs-popover-rel"><button type="button" class="vs-btn vs-btn-default">File<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> </div>
+  <div data-transfer="false" class="vs-popover-popper vs-popover-popper-full v-transfer-dom" style="display: none;" appear="true" enteractiveclass="animated in" leaveactiveclass="animated fade">
+    <div class="vs-popover-arrow"></div>
+    <div class="vs-popover-inner" style="max-width: none;">
+      <div class="vs-popover-content">
+        <ul role="menu" class="vs-dropdown-menu">
+          <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">New File</a></li>
+          <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">
+              New File with Current Profile
+            </a></li>
+          <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Download As...</a></li>
+          <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Export PDF</a></li>
+          <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Export HTML</a></li>
+          <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Settings</a></li>
+          <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">About</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+`;

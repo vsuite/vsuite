@@ -1,6 +1,6 @@
 import Dropdown from './Dropdown.jsx';
 import DropdownMenu from './DropdownMenu.jsx';
-import DropdownItem from './DropdownMenuItem.jsx';
+import DropdownItem from './DropdownItem.jsx';
 
 Dropdown.Menu = DropdownMenu;
 Dropdown.Item = DropdownItem;

@@ -761,7 +761,7 @@ stories.add('keypath', () => ({
   },
 }));
 
-stories.add('trigger', () => ({
+stories.add('trigger.cn.md', () => ({
   data() {
     return {
       formValue: { email: '' },

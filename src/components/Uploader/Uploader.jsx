@@ -118,7 +118,7 @@ export default {
     _renderTrigger() {
       const data = splitDataByComponent(
         {
-          key: 'trigger',
+          key: 'trigger.cn.md',
           splitProps: {
             ...this.$attrs,
             name: this.name,
@@ -130,7 +130,7 @@ export default {
             componentClass: this.toggleComponentClass,
           },
           on: { change: this._handleTriggerChange },
-          ref: 'trigger',
+          ref: 'trigger.cn.md',
         },
         UploaderTrigger
       );

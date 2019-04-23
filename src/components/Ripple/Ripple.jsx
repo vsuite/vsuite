@@ -31,7 +31,7 @@ export default {
   render() {
     const rippleWrapperData = {
       class: this._addPrefix('pond'),
-      ref: 'trigger',
+      ref: 'trigger.cn.md',
     };
     const rippleData = {
       class: this.classPrefix,
