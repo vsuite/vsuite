@@ -11,9 +11,11 @@ import {
   cloneElement,
 } from 'utils/node';
 import shallowEqual from 'utils/shallowEqual';
+import { IconX } from 'utils/svg';
+import { RenderX } from 'utils/render';
+import { mergeData, mergeElement } from 'utils/merge';
 
 import { Collapse } from 'components/Animation';
-
 import DropdownMenuItemPopper from './DropdownMenuItemPopper.jsx';
 
 const CLASS_PREFIX = 'dropdown-menu';
@@ -23,33 +25,36 @@ export default {
 
   props: {
     activeKey: VueTypes.any,
-    title: VueTypes.string,
-    icon: VueTypes.string,
+    eventKey: VueTypes.any,
+    title: RenderX,
+    icon: IconX,
     pullLeft: VueTypes.bool.def(false),
+
     sidenav: VueTypes.bool.def(false),
     expanded: VueTypes.bool,
     collapsible: VueTypes.bool.def(false),
-    openKeys: VueTypes.arrayOf(VueTypes.any),
+    openKeys: VueTypes.arrayOf(VueTypes.any).def([]),
+
+    // open
+
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
+
+    // slot
+    // slot-title
+
+    // @toggle
+    // @select
   },
 
   render(h) {
     const children = this.$slots.default || [];
     const { items, active } = this._getItemsAndStatus(h, children);
     let data = {
-      class: [
-        this.classPrefix,
-        {
-          [this._addPrefix('active')]: active,
-        },
-      ],
-      attrs: {
-        ...this.$attrs,
-        role: 'menu',
-      },
+      class: [this.classPrefix, { [this._addPrefix('active')]: active }],
+      attrs: { ...this.$attrs, role: 'menu' },
     };
 
-    if (this.sidenav) {
+    if (this.collapsible) {
       data = _.merge(data, {
         directives: [{ name: 'show', value: this.expanded }],
       });
@@ -60,7 +65,7 @@ export default {
 
   methods: {
     _renderCollapse(h, children) {
-      return <Collapse appear>{children}</Collapse>;
+      return this.collapsible ? <Collapse>{children}</Collapse> : children;
     },
 
     _getItemsAndStatus(h, children) {
@@ -78,16 +83,13 @@ export default {
           }
 
           if (name === 'DropdownMenuItem') {
-            return cloneElement(vnode, {
-              key: index,
-              props: {
-                sidenav: this.sidenav,
-                active,
-              },
-              on: {
-                select: this._handleSelect,
-              },
-            });
+            return mergeElement(
+              cloneElement(vnode, {
+                key: index,
+                props: { sidenav: this.sidenav, active },
+              }),
+              { on: { select: this._handleSelect } }
+            );
           }
 
           if (name === 'DropdownMenu') {
@@ -100,25 +102,28 @@ export default {
             const expanded = this.openKeys.some(key =>
               shallowEqual(key, props.eventKey)
             );
-            const data = splitDataByComponent(
-              {
-                splitProps: {
-                  ...props,
-                  title: props.title,
-                  placement: props.pullLeft ? 'left-start' : 'right-start',
-                  componentClass: 'div',
-                  submenu: true,
-                  sidenav: this.sidenav,
-                  collapsible: this.collapsible,
-                  expanded,
-                  active,
+            const data = mergeData(
+              splitDataByComponent(
+                {
+                  class: this._addPrefix(
+                    `pull-${props.pullLeft ? 'left' : 'right'}`
+                  ),
+                  splitProps: {
+                    ...props,
+                    title: props.title,
+                    placement: props.pullLeft ? 'left-start' : 'right-start',
+                    componentClass: 'div',
+                    submenu: true,
+                    sidenav: this.sidenav,
+                    collapsible: this.collapsible,
+                    expanded,
+                    active,
+                  },
+                  on: events,
                 },
-                on: {
-                  ...events,
-                  toggle: this._handleToggle,
-                },
-              },
-              DropdownMenuItemPopper
+                DropdownMenuItemPopper
+              ),
+              { on: { toggle: this._handleToggle } }
             );
 
             return (
@@ -135,29 +140,22 @@ export default {
     },
 
     _isActive(vnode, activeKey) {
+      const name = getName(vnode);
       const props = getProps(vnode);
-      const children = getChildren(vnode);
+      const children = getChildren(vnode) || [];
 
-      if (
-        props.active ||
-        (!_.isUndefined(activeKey) && shallowEqual(props.eventKey, activeKey))
-      ) {
-        return true;
+      if (name !== 'DropdownMenuItem' && name !== 'DropdownMenu') return false;
+
+      // DropdownItem
+      if (name === 'DropdownMenuItem') {
+        return (
+          props.active ||
+          (!_.isUndefined(activeKey) && shallowEqual(props.eventKey, activeKey))
+        );
       }
 
-      if (!children) return false;
-      if (
-        children
-          .filter(vnode => {
-            const name = getName(vnode);
-
-            return name === 'DropdownMenuItem' || name === 'DropdownMenu';
-          })
-          .some(vnode => this._isActive(vnode, activeKey))
-      )
-        return true;
-
-      return props.active;
+      // DropdownMenu
+      return children.some(vnode => this._isActive(vnode, activeKey));
     },
 
     _handleToggle(eventKey, event) {

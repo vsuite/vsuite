@@ -6,8 +6,8 @@ import popperMixin from 'mixins/popper';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
 import { splitDataByComponent } from 'utils/split';
 
+import { Fade, Collapse } from 'components/Animation';
 import DropdownItem from './DropdownMenuItem.jsx';
-import Collapse from 'components/Animation/Collapse';
 
 const CLASS_PREFIX = 'dropdown-menu';
 
@@ -20,13 +20,14 @@ export default {
     title: VueTypes.string,
     pullLeft: VueTypes.bool.def(false),
     expanded: VueTypes.bool.def(false),
+
     collapsible: VueTypes.bool.def(false),
     sidenav: VueTypes.bool.def(false),
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
   },
 
   render(h) {
-    let dipData = splitDataByComponent(
+    let referenceData = splitDataByComponent(
       {
         splitProps: {
           ...this.$attrs,
@@ -34,55 +35,48 @@ export default {
           expanded: this.expanded,
           sidenav: this.sidenav,
         },
-        ref: 'reference',
       },
       DropdownItem
     );
-    let referenceData = {
+    let toggleData = {
       class: this._addPrefix('toggle'),
-      attrs: {
-        role: 'menu',
-        tabindex: -1,
-      },
-      ref: 'wrapper',
+      attrs: { role: 'menu', tabindex: -1 },
     };
-    let popperData = {
-      class: [this.classPrefix],
-      ref: 'popper',
-    };
+    let popperData = { class: this.classPrefix };
 
-    if (!this.sidenav || !this.collapsible) {
-      dipData = _.merge(dipData, {
+    if (!this.collapsible) {
+      referenceData = _.merge(referenceData, {
+        props: { open: this.currentVisible },
         directives: [
           { name: 'click-outside', value: this._handleClickOutside },
         ],
+        ref: 'reference',
       });
 
       popperData = _.merge(popperData, {
         directives: [
-          {
-            name: 'show',
-            value: this.currentVisible,
-          },
+          { name: 'show', value: this.currentVisible },
           { name: 'transfer-dom' },
         ],
-        attrs: {
-          'data-transfer': `${this.transfer}`,
-        },
+        attrs: { 'data-transfer': `${this.transfer}` },
+        ref: 'popper',
       });
 
-      this._addTriggerListeners(referenceData, dipData);
+      this._addTriggerListeners(toggleData, referenceData);
 
       return (
-        <DropdownItem {...dipData}>
-          <div {...referenceData}>
+        <DropdownItem {...referenceData}>
+          <div {...toggleData}>
             <span>{this.title || this.$slots.title}</span>
-            <Icon icon={this.pullLeft ? 'angle-left' : 'angle-right'} />
+            <Icon
+              class={this._addPrefix('toggle-icon')}
+              icon={this.pullLeft ? 'angle-left' : 'angle-right'}
+            />
             <Ripple />
           </div>
-          <transition name="picker-fade">
+          <Fade>
             <ul {...popperData}>{this.$slots.default}</ul>
-          </transition>
+          </Fade>
         </DropdownItem>
       );
     }
@@ -92,14 +86,13 @@ export default {
     });
 
     referenceData = _.merge(referenceData, {
-      on: {
-        click: this._handleToggle,
-      },
+      props: { open: this.expanded },
+      on: { click: this._handleToggle },
     });
 
     return (
-      <DropdownItem {...dipData}>
-        <div {...referenceData}>
+      <DropdownItem {...referenceData}>
+        <div {...toggleData}>
           <span>{this.title || this.$slots.title}</span>
           <Icon icon={this.pullLeft ? 'angle-left' : 'angle-right'} />
           <Ripple />

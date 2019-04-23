@@ -387,6 +387,10 @@ stories.add('menu', () => ({
           <Dropdown.Item>Export HTML</Dropdown.Item>
           <Dropdown.Item>Settings</Dropdown.Item>
           <Dropdown.Item>About</Dropdown.Item>
+          <Dropdown.Menu icon="group" title="More">
+            <Dropdown.Item icon="user">New User</Dropdown.Item>
+            <Dropdown.Item icon="group">New Group</Dropdown.Item>
+          </Dropdown.Menu>
         </Dropdown.Menu>
       </Demo>
     );

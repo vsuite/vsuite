@@ -1,11 +1,12 @@
 import VueTypes from 'vue-types';
+import Popper from 'popper.js';
 import popperMixin from 'mixins/popper';
 import renderX, { RenderX } from 'utils/render';
 import { IconX } from 'utils/svg';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
 import { splitDataByComponent } from 'utils/split';
 import shallowEqual from 'utils/shallowEqual';
-import mergeData from 'utils/merge';
+import { mergeData } from 'utils/merge';
 
 import { Fade } from 'components/Animation';
 import DropdownToggle from './DropdownToggle.jsx';
@@ -25,10 +26,9 @@ export default {
 
   props: {
     /* eslint-disable vue/require-prop-types */
-    placement: {
-      ...popperMixin.props.placement,
-      default: 'bottom-start',
-    },
+    placement: VueTypes.oneOf(
+      Popper.placements.filter(x => !/^auto/.test(x))
+    ).def('bottom-start'),
     trigger: {
       ...popperMixin.props.trigger,
       default() {

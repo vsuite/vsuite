@@ -194,30 +194,12 @@
     }
   }
 
-  // Pull right
-  &.@{ns}dropdown-menu-pull-right
-    > .@{ns}dropdown-item-content
-    > .@{ns}dropdown-menu {
-    left: 100%;
-  }
-
-  // Pull Left
-  &.@{ns}dropdown-menu-pull-left
-    > .@{ns}dropdown-item-content
-    > .@{ns}dropdown-menu {
-    right: 100%;
-  }
-
   // Open
   &.@{ns}dropdown-item-open
     > .@{ns}dropdown-item-content
     > .@{ns}dropdown-menu {
     //use display table to fix-content
     display: table;
-    animation-name: slideUpIn;
-    .ie-animation-name(none);
-
-    animation-play-state: running;
   }
 }
 
@@ -269,11 +251,6 @@
 
 // Open state for the dropdown
 .@{ns}dropdown-open {
-  > .@{ns}dropdown-menu {
-    display: block;
-    animation-play-state: running;
-  }
-
   > .@{ns}dropdown-toggle.@{ns}btn {
     &,
     &:active,
