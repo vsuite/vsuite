@@ -1,0 +1,121 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navbar demo renders appearance demo correctly 1`] = `
+<div>
+  <div role="navigation" class="vs-navbar vs-navbar-default">
+    <div class="vs-navbar-header"><a href="#" class="navbar-brand">
+        VSUITE
+      </a></div>
+    <div class="vs-navbar-body">
+      <div class="vs-nav vs-nav-default vs-navbar-nav vs-nav-horizontal">
+        <ul>
+          <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><i class="vs-icon vs-icon-home"></i><span class="vs-nav-item-text">
+        Home
+      </span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+          <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">News</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+          <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">Products</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+          <li role="menu" class="vs-dropdown vs-dropdown-placement-bottom-start">
+            <ul data-transfer="false" role="menu" class="vs-dropdown-menu v-transfer-dom" style="display: none;" appear="true" name="fade">
+              <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Company</a></li>
+              <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Team</a></li>
+              <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Contact</a></li>
+            </ul><a tabindex="0" class="vs-btn vs-btn-subtle vs-dropdown-toggle">About<span class="vs-dropdown-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a>
+          </li>
+        </ul>
+      </div>
+      <div class="vs-nav vs-nav-default vs-navbar-nav vs-navbar-right vs-nav-horizontal">
+        <ul>
+          <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><i class="vs-icon vs-icon-cog"></i><span class="vs-nav-item-text">Settings</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div role="navigation" class="vs-navbar vs-navbar-inverse">
+    <div class="vs-navbar-header"><a href="#" class="navbar-brand">
+        VSUITE
+      </a></div>
+    <div class="vs-navbar-body">
+      <div class="vs-nav vs-nav-default vs-navbar-nav vs-nav-horizontal">
+        <ul>
+          <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><i class="vs-icon vs-icon-home"></i><span class="vs-nav-item-text">
+        Home
+      </span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+          <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">News</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+          <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">Products</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+          <li role="menu" class="vs-dropdown vs-dropdown-placement-bottom-start">
+            <ul data-transfer="false" role="menu" class="vs-dropdown-menu v-transfer-dom" style="display: none;" appear="true" name="fade">
+              <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Company</a></li>
+              <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Team</a></li>
+              <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Contact</a></li>
+            </ul><a tabindex="0" class="vs-btn vs-btn-subtle vs-dropdown-toggle">About<span class="vs-dropdown-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a>
+          </li>
+        </ul>
+      </div>
+      <div class="vs-nav vs-nav-default vs-navbar-nav vs-navbar-right vs-nav-horizontal">
+        <ul>
+          <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><i class="vs-icon vs-icon-cog"></i><span class="vs-nav-item-text">Settings</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div role="navigation" class="vs-navbar vs-navbar-subtle">
+    <div class="vs-navbar-header"><a href="#" class="navbar-brand">
+        VSUITE
+      </a></div>
+    <div class="vs-navbar-body">
+      <div class="vs-nav vs-nav-default vs-navbar-nav vs-nav-horizontal">
+        <ul>
+          <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><i class="vs-icon vs-icon-home"></i><span class="vs-nav-item-text">
+        Home
+      </span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+          <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">News</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+          <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">Products</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+          <li role="menu" class="vs-dropdown vs-dropdown-placement-bottom-start">
+            <ul data-transfer="false" role="menu" class="vs-dropdown-menu v-transfer-dom" style="display: none;" appear="true" name="fade">
+              <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Company</a></li>
+              <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Team</a></li>
+              <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Contact</a></li>
+            </ul><a tabindex="0" class="vs-btn vs-btn-subtle vs-dropdown-toggle">About<span class="vs-dropdown-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a>
+          </li>
+        </ul>
+      </div>
+      <div class="vs-nav vs-nav-default vs-navbar-nav vs-navbar-right vs-nav-horizontal">
+        <ul>
+          <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><i class="vs-icon vs-icon-cog"></i><span class="vs-nav-item-text">Settings</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Navbar demo renders basic demo correctly 1`] = `
+<div role="navigation" class="vs-navbar vs-navbar-default">
+  <div class="vs-navbar-header"><a href="#" class="navbar-brand">
+      VSUITE
+    </a></div>
+  <div class="vs-navbar-body">
+    <div class="vs-nav vs-nav-default vs-navbar-nav vs-nav-horizontal">
+      <ul>
+        <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><i class="vs-icon vs-icon-home"></i><span class="vs-nav-item-text">Home</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+        <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">News</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+        <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">Products</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+        <li role="menu" class="vs-dropdown vs-dropdown-placement-bottom-start">
+          <ul data-transfer="false" role="menu" class="vs-dropdown-menu v-transfer-dom" style="display: none;" appear="true" name="fade">
+            <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Company</a></li>
+            <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Team</a></li>
+            <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Contact</a></li>
+          </ul><a tabindex="0" class="vs-btn vs-btn-subtle vs-dropdown-toggle">About<span class="vs-dropdown-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a>
+        </li>
+      </ul>
+    </div>
+    <div class="vs-nav vs-nav-default vs-navbar-nav vs-navbar-right vs-nav-horizontal">
+      <ul>
+        <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><i class="vs-icon vs-icon-cog"></i><span class="vs-nav-item-text">Settings</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+`;

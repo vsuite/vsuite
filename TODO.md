@@ -1,3 +1,4 @@
+- style, class 类似属性统一
 - 为 dom-lib 添加 d.ts 文件
 - Notification removeOnEmpty
 - 响应式尺寸问题

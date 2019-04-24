@@ -1,6 +1,13 @@
 import Vue from 'vue';
 import _ from 'lodash';
 
+_.mixin({
+  pascalCase: _.flow(
+    _.camelCase,
+    _.upperFirst
+  ),
+});
+
 const BUILDIN_ELEMENT_NAMES = [
   'a',
   'abbr',
@@ -166,7 +173,9 @@ export function splitPropsByComponent(data, element) {
     const vue = Vue || window.Vue;
 
     if (vue && vue.options && vue.options.components) {
-      Component = vue.options.components[Component];
+      Component =
+        vue.options.components[Component] ||
+        vue.options.components[_.pascalCase(Component)];
 
       if (Component) {
         Component = Component.options;

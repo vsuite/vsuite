@@ -100,7 +100,6 @@
     "vue-jest": "^3.0.4",
     "vue-json-pretty": "^1.6.0",
     "vue-loader": "^15.7.0",
-    "vue-router": "^3.0.6",
     "vue-server-renderer": "^2.6.10",
     "vue-style-loader": "^4.1.2",
     "vue-template-compiler": "^2.6.10",
