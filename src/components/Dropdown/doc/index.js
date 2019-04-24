@@ -1,6 +1,6 @@
 export default [
   'basic',
-  'trigger.cn.md',
+  'trigger',
   'active',
   'disabled',
   'no-caret',
@@ -12,4 +12,5 @@ export default [
   'buttons',
   'menu-items',
   'with-popover',
+  // 'with-router',
 ];

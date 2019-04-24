@@ -1,17 +1,16 @@
 import { storiesOf } from '@storybook/vue';
 
 import Dropdown from 'components/Dropdown';
-import Row from 'components/Row';
-import Col from 'components/Col';
 import Nav from 'components/Nav';
+import Grid from 'components/Grid';
 import Demo from 'stories/demo';
 
 const stories = storiesOf('Navigation|Nav', module);
 
-stories.add('default', () => ({
+stories.add('basic', () => ({
   render() {
     return (
-      <Demo title="Default">
+      <Demo title="Basic">
         <Nav>
           <Nav.Item icon="home">Home</Nav.Item>
           <Nav.Item>News</Nav.Item>
@@ -54,14 +53,9 @@ stories.add('appearance', () => ({
   methods: {
     _renderCustomNav(h, props) {
       const data = {
-        style: { marginBottom: '30px' },
-        props: {
-          ...props,
-          activeKey: this.active,
-        },
-        on: {
-          select: this._handleSelect,
-        },
+        style: { marginBottom: '50px' },
+        props: { ...props, activeKey: this.active },
+        on: { select: this._handleSelect },
       };
 
       return (
@@ -93,32 +87,32 @@ stories.add('vertical', () => ({
   render(h) {
     return (
       <Demo title="Vertical">
-        <Row>
-          <Col xs={12} sm={6} md={4}>
+        <Grid.Row>
+          <Grid.Col xs={12} sm={6} md={4}>
             {this._renderCustomNav(h, {})}
-          </Col>
+          </Grid.Col>
 
-          <Col xs={12} sm={6} md={6}>
+          <Grid.Col xs={12} sm={6} md={6}>
             {this._renderCustomNav(h, { appearance: 'tabs' })}
-          </Col>
-          <Col xs={12} sm={6} md={4}>
+          </Grid.Col>
+          <Grid.Col xs={12} sm={6} md={4}>
             {this._renderCustomNav(h, {
               appearance: 'tabs',
               reversed: true,
             })}
-          </Col>
-          <Col xs={12} sm={6} md={6}>
+          </Grid.Col>
+          <Grid.Col xs={12} sm={6} md={6}>
             {this._renderCustomNav(h, {
               appearance: 'subtle',
             })}
-          </Col>
-          <Col xs={12} sm={6} md={4}>
+          </Grid.Col>
+          <Grid.Col xs={12} sm={6} md={4}>
             {this._renderCustomNav(h, {
               appearance: 'subtle',
               reversed: true,
             })}
-          </Col>
-        </Row>
+          </Grid.Col>
+        </Grid.Row>
       </Demo>
     );
   },

@@ -14,6 +14,9 @@ import Modal from 'components/Modal';
 import Drawer from 'components/Drawer';
 
 import Dropdown from 'components/Dropdown';
+import Nav from 'components/Nav';
+
+import Grid from 'components/Grid';
 
 import Animation from 'components/Animation';
 
@@ -42,6 +45,9 @@ export const components = {
   Drawer,
 
   Dropdown,
+  Nav,
+
+  Grid,
 
   Animation,
 

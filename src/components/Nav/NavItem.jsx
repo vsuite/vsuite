@@ -3,7 +3,9 @@ import _ from 'lodash';
 import popperMixin from 'mixins/popper';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
 import { splitDataByComponent } from 'utils/split';
+import { IconX } from 'utils/svg';
 
+import { Fade } from 'components/Animation';
 import SafeAnchor from 'components/SafeAnchor';
 import Tooltip from 'components/Tooltip';
 import Ripple from 'components/Ripple';
@@ -17,23 +19,25 @@ export default {
   mixins: [popperMixin],
 
   props: {
-    /* eslint-disable vue/require-prop-types */
-    placement: {
-      ...popperMixin.props.placement,
-      default: 'right',
-    },
     active: VueTypes.bool.def(false),
     disabled: VueTypes.bool.def(false),
     divider: VueTypes.bool.def(false),
     panel: VueTypes.bool.def(false),
     tooltip: VueTypes.bool.def(false),
-    icon: VueTypes.string,
+    icon: IconX,
     eventKey: VueTypes.any,
+
     tabindex: VueTypes.number,
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
     componentClass: VueTypes.oneOfType([VueTypes.string, VueTypes.object]).def(
       SafeAnchor
     ),
+
+    // slot
+    // slot-icon
+
+    // @click
+    // @select
   },
 
   computed: {
@@ -48,7 +52,7 @@ export default {
     },
   },
 
-  render(h) {
+  render() {
     if (this.divider) {
       return <li class={this._addPrefix('divider')} role="separator" />;
     }
@@ -84,12 +88,8 @@ export default {
           { name: 'show', value: this.currentVisible },
           { name: 'transfer-dom' },
         ],
-        props: {
-          inline: true,
-        },
-        attrs: {
-          'data-transfer': 'true',
-        },
+        props: { placement: 'right', inline: true },
+        attrs: { 'data-transfer': 'true' },
         ref: 'popper',
       };
 
@@ -109,11 +109,11 @@ export default {
             <span class={this._addPrefix('text')}>{this.$slots.default}</span>
             <Ripple />
           </Component>
-          <transition name="tooltip-fade">
+          <Fade>
             <Tooltip {...tooltipData}>
               <template slot="title">{this.$slots.default}</template>
             </Tooltip>
-          </transition>
+          </Fade>
         </li>
       );
     }
@@ -133,6 +133,7 @@ export default {
     _handleClick(event) {
       if (this.disabled) return;
 
+      this.$emit('click', event);
       this.$emit('select', this.eventKey, event);
     },
 

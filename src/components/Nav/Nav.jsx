@@ -3,6 +3,7 @@ import _ from 'lodash';
 import prefix, { defaultClassPrefix, globalKey } from 'utils/prefix';
 import { cloneElement, getName, getProps } from 'utils/node';
 import shallowEqual from 'utils/shallowEqual';
+import { mergeElement } from 'utils/merge';
 
 const CLASS_PREFIX = 'nav';
 
@@ -25,9 +26,15 @@ export default {
     reversed: VueTypes.bool.def(false),
     justified: VueTypes.bool.def(false),
     vertical: VueTypes.bool.def(false),
-    pullRight: VueTypes.bool.def(false),
     activeKey: VueTypes.any,
+
+    pullRight: VueTypes.bool.def(false),
+
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
+
+    // slot
+
+    // @select
   },
 
   computed: {
@@ -72,29 +79,29 @@ export default {
       const props = getProps(vnode);
 
       if (name === 'NavItem') {
-        return cloneElement(vnode, {
-          props: {
-            tooltip: this.$vSidenav && !this.$vSidenav.expanded,
-            active: _.isUndefined(this.currentActiveKey)
-              ? props.active
-              : shallowEqual(this.currentActiveKey, props.eventKey),
-          },
-          on: {
-            select: this._handleSelect,
-          },
-        });
+        return mergeElement(
+          cloneElement(vnode, {
+            props: {
+              tooltip: this.$vSidenav && !this.$vSidenav.expanded,
+              active: _.isUndefined(this.currentActiveKey)
+                ? props.active
+                : shallowEqual(this.currentActiveKey, props.eventKey),
+            },
+          }),
+          { on: { select: this._handleSelect } }
+        );
       }
 
       if (name === 'Dropdown') {
-        return cloneElement(vnode, {
-          props: {
-            activeKey: this.currentActiveKey,
-            componentClass: 'li',
-          },
-          on: {
-            select: this._handleSelect,
-          },
-        });
+        return mergeElement(
+          cloneElement(vnode, {
+            props: {
+              activeKey: this.currentActiveKey,
+              componentClass: 'li',
+            },
+          }),
+          { on: { select: this._handleSelect } }
+        );
       }
 
       return null;

@@ -2,7 +2,7 @@ export default [
   'basic',
   'inline',
   'placement',
-  'trigger.cn.md',
+  'trigger',
   'full',
   'always',
   'delay',

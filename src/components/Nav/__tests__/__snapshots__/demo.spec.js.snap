@@ -1,0 +1,240 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Nav demo renders appearance demo correctly 1`] = `
+<div>
+  <div class="vs-nav vs-nav-default vs-nav-horizontal" style="margin-bottom: 50px;">
+    <ul>
+      <li role="presentation" class="vs-nav-item vs-nav-item-active"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><i class="vs-icon vs-icon-home"></i><span class="vs-nav-item-text">
+      Home
+    </span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+      <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">News</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+      <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">Solutions</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+      <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">Products</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+      <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">About</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    </ul>
+  </div>
+  <div class="vs-nav vs-nav-tabs vs-nav-horizontal" style="margin-bottom: 50px;">
+    <ul>
+      <li role="presentation" class="vs-nav-item vs-nav-item-active"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><i class="vs-icon vs-icon-home"></i><span class="vs-nav-item-text">
+      Home
+    </span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+      <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">News</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+      <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">Solutions</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+      <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">Products</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+      <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">About</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    </ul>
+    <div class="vs-nav-waterline"></div>
+  </div>
+  <div class="vs-nav vs-nav-tabs vs-nav-horizontal vs-nav-reversed" style="margin-bottom: 50px;">
+    <ul>
+      <li role="presentation" class="vs-nav-item vs-nav-item-active"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><i class="vs-icon vs-icon-home"></i><span class="vs-nav-item-text">
+      Home
+    </span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+      <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">News</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+      <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">Solutions</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+      <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">Products</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+      <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">About</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    </ul>
+    <div class="vs-nav-waterline"></div>
+  </div>
+  <div class="vs-nav vs-nav-subtle vs-nav-horizontal" style="margin-bottom: 50px;">
+    <ul>
+      <li role="presentation" class="vs-nav-item vs-nav-item-active"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><i class="vs-icon vs-icon-home"></i><span class="vs-nav-item-text">
+      Home
+    </span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+      <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">News</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+      <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">Solutions</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+      <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">Products</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+      <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">About</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    </ul>
+    <div class="vs-nav-waterline"></div>
+  </div>
+  <div class="vs-nav vs-nav-subtle vs-nav-horizontal vs-nav-reversed" style="margin-bottom: 50px;">
+    <ul>
+      <li role="presentation" class="vs-nav-item vs-nav-item-active"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><i class="vs-icon vs-icon-home"></i><span class="vs-nav-item-text">
+      Home
+    </span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+      <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">News</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+      <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">Solutions</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+      <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">Products</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+      <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">About</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    </ul>
+    <div class="vs-nav-waterline"></div>
+  </div>
+</div>
+`;
+
+exports[`Nav demo renders basic demo correctly 1`] = `
+<div class="vs-nav vs-nav-default vs-nav-horizontal">
+  <ul>
+    <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><i class="vs-icon vs-icon-home"></i><span class="vs-nav-item-text">Home</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">News</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">Solutions</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">Products</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">About</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+  </ul>
+</div>
+`;
+
+exports[`Nav demo renders dropdown demo correctly 1`] = `undefined`;
+
+exports[`Nav demo renders icon demo correctly 1`] = `
+<div class="vs-nav vs-nav-default vs-nav-horizontal">
+  <ul>
+    <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><i class="vs-icon vs-icon-facebook-square"></i><span class="vs-nav-item-text">facebook</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><i class="vs-icon vs-icon-github-alt"></i><span class="vs-nav-item-text">github</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><i class="vs-icon vs-icon-circle"></i><span class="vs-nav-item-text">amazon</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><i class="vs-icon vs-icon-chrome"></i><span class="vs-nav-item-text">chrome</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    <li role="menu" class="vs-dropdown vs-dropdown-placement-bottom-start">
+      <ul data-transfer="false" role="menu" class="vs-dropdown-menu v-transfer-dom" style="display: none;" appear="true" name="fade">
+        <li role="presentation" class="vs-dropdown-item vs-dropdown-item-with-icon"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content"><i class="vs-icon vs-icon-dropbox vs-dropdown-item-menu-icon"></i>dropbox</a></li>
+        <li role="presentation" class="vs-dropdown-item vs-dropdown-item-with-icon"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content"><i class="vs-icon vs-icon-firefox vs-dropdown-item-menu-icon"></i>firefox</a></li>
+        <li role="presentation" class="vs-dropdown-item vs-dropdown-item-with-icon"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content"><i class="vs-icon vs-icon-gitlab vs-dropdown-item-menu-icon"></i>gitlab</a></li>
+        <li role="presentation" class="vs-dropdown-item vs-dropdown-item-with-icon"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content"><i class="vs-icon vs-icon-linux vs-dropdown-item-menu-icon"></i>linux</a></li>
+      </ul><a tabindex="0" class="vs-btn vs-btn-subtle vs-dropdown-toggle"><i class="vs-icon vs-icon-ellipsis-h"></i>more...<span class="vs-dropdown-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a>
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`Nav demo renders justified demo correctly 1`] = `
+<div>
+  <div class="vs-nav vs-nav-default vs-nav-horizontal vs-nav-justified">
+    <ul>
+      <li role="presentation" class="vs-nav-item vs-nav-item-active"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><i class="vs-icon vs-icon-home"></i><span class="vs-nav-item-text">
+      Home
+    </span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+      <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">News</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+      <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">Solutions</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+      <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">Products</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+      <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">About</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    </ul>
+  </div> <br>
+  <div class="vs-nav vs-nav-tabs vs-nav-horizontal vs-nav-justified">
+    <ul>
+      <li role="presentation" class="vs-nav-item vs-nav-item-active"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><i class="vs-icon vs-icon-home"></i><span class="vs-nav-item-text">
+      Home
+    </span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+      <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">News</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+      <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">Solutions</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+      <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">Products</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+      <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">About</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    </ul>
+    <div class="vs-nav-waterline"></div>
+  </div> <br>
+  <div class="vs-nav vs-nav-subtle vs-nav-horizontal vs-nav-justified">
+    <ul>
+      <li role="presentation" class="vs-nav-item vs-nav-item-active"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><i class="vs-icon vs-icon-home"></i><span class="vs-nav-item-text">
+      Home
+    </span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+      <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">News</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+      <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">Solutions</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+      <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">Products</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+      <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">About</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    </ul>
+    <div class="vs-nav-waterline"></div>
+  </div>
+</div>
+`;
+
+exports[`Nav demo renders status demo correctly 1`] = `
+<div>
+  <div class="vs-nav vs-nav-default vs-nav-horizontal">
+    <ul>
+      <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">Default Item</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+      <li role="presentation" class="vs-nav-item vs-nav-item-active"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">Active Item</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+      <li role="presentation" class="vs-nav-item vs-nav-item-disabled"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">Disabled Item</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    </ul>
+  </div> <br>
+  <div class="vs-nav vs-nav-tabs vs-nav-horizontal">
+    <ul>
+      <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">Default Item</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+      <li role="presentation" class="vs-nav-item vs-nav-item-active"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">Active Item</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+      <li role="presentation" class="vs-nav-item vs-nav-item-disabled"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">Disabled Item</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    </ul>
+    <div class="vs-nav-waterline"></div>
+  </div> <br>
+  <div class="vs-nav vs-nav-subtle vs-nav-horizontal">
+    <ul>
+      <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">Default Item</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+      <li role="presentation" class="vs-nav-item vs-nav-item-active"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">Active Item</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+      <li role="presentation" class="vs-nav-item vs-nav-item-disabled"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">Disabled Item</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    </ul>
+    <div class="vs-nav-waterline"></div>
+  </div>
+</div>
+`;
+
+exports[`Nav demo renders vertical demo correctly 1`] = `
+<div class="vs-row">
+  <div class="vs-col-xs-12 vs-col-sm-6 vs-col-md-4">
+    <div class="vs-nav vs-nav-default vs-nav-vertical" style="width: 100px; margin-bottom: 50px;">
+      <ul>
+        <li role="presentation" class="vs-nav-item vs-nav-item-active"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><i class="vs-icon vs-icon-home"></i><span class="vs-nav-item-text">
+        Home
+      </span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+        <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">News</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+        <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">Solutions</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+        <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">Products</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+        <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">About</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="vs-col-xs-12 vs-col-sm-6 vs-col-md-4">
+    <div class="vs-nav vs-nav-tabs vs-nav-vertical" style="width: 100px; margin-bottom: 50px;">
+      <ul>
+        <li role="presentation" class="vs-nav-item vs-nav-item-active"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><i class="vs-icon vs-icon-home"></i><span class="vs-nav-item-text">
+        Home
+      </span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+        <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">News</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+        <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">Solutions</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+        <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">Products</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+        <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">About</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+      </ul>
+      <div class="vs-nav-waterline"></div>
+    </div>
+  </div>
+  <div class="vs-col-xs-12 vs-col-sm-6 vs-col-md-4">
+    <div class="vs-nav vs-nav-tabs vs-nav-vertical vs-nav-reversed" style="width: 100px; margin-bottom: 50px;">
+      <ul>
+        <li role="presentation" class="vs-nav-item vs-nav-item-active"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><i class="vs-icon vs-icon-home"></i><span class="vs-nav-item-text">
+        Home
+      </span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+        <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">News</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+        <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">Solutions</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+        <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">Products</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+        <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">About</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+      </ul>
+      <div class="vs-nav-waterline"></div>
+    </div>
+  </div>
+  <div class="vs-col-xs-12 vs-col-sm-6 vs-col-md-4">
+    <div class="vs-nav vs-nav-subtle vs-nav-vertical" style="width: 100px; margin-bottom: 50px;">
+      <ul>
+        <li role="presentation" class="vs-nav-item vs-nav-item-active"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><i class="vs-icon vs-icon-home"></i><span class="vs-nav-item-text">
+        Home
+      </span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+        <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">News</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+        <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">Solutions</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+        <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">Products</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+        <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">About</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+      </ul>
+      <div class="vs-nav-waterline"></div>
+    </div>
+  </div>
+  <div class="vs-col-xs-12 vs-col-sm-6 vs-col-md-4">
+    <div class="vs-nav vs-nav-subtle vs-nav-vertical vs-nav-reversed" style="width: 100px; margin-bottom: 50px;">
+      <ul>
+        <li role="presentation" class="vs-nav-item vs-nav-item-active"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><i class="vs-icon vs-icon-home"></i><span class="vs-nav-item-text">
+        Home
+      </span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+        <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">News</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+        <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">Solutions</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+        <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">Products</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+        <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">About</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+      </ul>
+      <div class="vs-nav-waterline"></div>
+    </div>
+  </div>
+</div>
+`;

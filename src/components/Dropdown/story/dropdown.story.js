@@ -26,7 +26,7 @@ stories.add('basic', () => ({
   },
 }));
 
-stories.add('trigger.cn.md', () => ({
+stories.add('trigger', () => ({
   render(h) {
     return (
       <Demo default="Trigger">
