@@ -10,8 +10,8 @@ exports[`Navbar demo renders appearance demo correctly 1`] = `
       <div class="vs-nav vs-nav-default vs-navbar-nav vs-nav-horizontal">
         <ul>
           <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><i class="vs-icon vs-icon-home"></i><span class="vs-nav-item-text">
-        Home
-      </span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+          Home
+        </span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
           <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">News</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
           <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">Products</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
           <li role="menu" class="vs-dropdown vs-dropdown-placement-bottom-start">
@@ -32,15 +32,12 @@ exports[`Navbar demo renders appearance demo correctly 1`] = `
   </div>
   <hr>
   <div role="navigation" class="vs-navbar vs-navbar-inverse">
-    <div class="vs-navbar-header"><a href="#" class="navbar-brand">
-        VSUITE
-      </a></div>
     <div class="vs-navbar-body">
       <div class="vs-nav vs-nav-default vs-navbar-nav vs-nav-horizontal">
         <ul>
           <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><i class="vs-icon vs-icon-home"></i><span class="vs-nav-item-text">
-        Home
-      </span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+          Home
+        </span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
           <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">News</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
           <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">Products</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
           <li role="menu" class="vs-dropdown vs-dropdown-placement-bottom-start">
@@ -61,15 +58,12 @@ exports[`Navbar demo renders appearance demo correctly 1`] = `
   </div>
   <hr>
   <div role="navigation" class="vs-navbar vs-navbar-subtle">
-    <div class="vs-navbar-header"><a href="#" class="navbar-brand">
-        VSUITE
-      </a></div>
     <div class="vs-navbar-body">
       <div class="vs-nav vs-nav-default vs-navbar-nav vs-nav-horizontal">
         <ul>
           <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><i class="vs-icon vs-icon-home"></i><span class="vs-nav-item-text">
-        Home
-      </span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+          Home
+        </span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
           <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">News</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
           <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">Products</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
           <li role="menu" class="vs-dropdown vs-dropdown-placement-bottom-start">

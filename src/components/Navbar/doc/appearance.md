@@ -12,66 +12,74 @@
 <template>
   <div>
     <Navbar>
-      <a href="#" class="navbar-brand" slot="header">
-        VSUITE
-      </a>
-      <Nav @select="_handleSelect" :activeKey="activeKey">
-        <NavItem eventKey="1" icon="home">
-          Home
-        </NavItem>
-        <NavItem eventKey="2">News</NavItem>
-        <NavItem eventKey="3">Products</NavItem>
-        <Dropdown title="About">
-          <DropdownItem eventKey="4">Company</DropdownItem>
-          <DropdownItem eventKey="5">Team</DropdownItem>
-          <DropdownItem eventKey="6">Contact</DropdownItem>
-        </Dropdown>
-      </Nav>
-      <Nav pullRight>
-        <NavItem icon="cog">Settings</NavItem>
-      </Nav>
+      <NavbarHeader>
+        <a href="#" class="navbar-brand">
+          VSUITE
+        </a>
+      </NavbarHeader>
+      <NavbarBody>
+        <Nav @select="_handleSelect" :activeKey="activeKey">
+          <NavItem eventKey="1" icon="home">
+            Home
+          </NavItem>
+          <NavItem eventKey="2">News</NavItem>
+          <NavItem eventKey="3">Products</NavItem>
+          <Dropdown title="About">
+            <DropdownItem eventKey="4">Company</DropdownItem>
+            <DropdownItem eventKey="5">Team</DropdownItem>
+            <DropdownItem eventKey="6">Contact</DropdownItem>
+          </Dropdown>
+        </Nav>
+        <Nav pullRight>
+          <NavItem icon="cog">Settings</NavItem>
+        </Nav>
+      </NavbarBody>
     </Navbar>
     <hr />
     <Navbar appearance="inverse">
       <a href="#" class="navbar-brand" slot="header">
         VSUITE
       </a>
-      <Nav @select="_handleSelect" :activeKey="activeKey">
-        <NavItem eventKey="1" icon="home">
-          Home
-        </NavItem>
-        <NavItem eventKey="2">News</NavItem>
-        <NavItem eventKey="3">Products</NavItem>
-        <Dropdown title="About">
-          <DropdownItem eventKey="4">Company</DropdownItem>
-          <DropdownItem eventKey="5">Team</DropdownItem>
-          <DropdownItem eventKey="6">Contact</DropdownItem>
-        </Dropdown>
-      </Nav>
-      <Nav pullRight>
-        <NavItem icon="cog">Settings</NavItem>
-      </Nav>
+      <NavbarBody>
+        <Nav @select="_handleSelect" :activeKey="activeKey">
+          <NavItem eventKey="1" icon="home">
+            Home
+          </NavItem>
+          <NavItem eventKey="2">News</NavItem>
+          <NavItem eventKey="3">Products</NavItem>
+          <Dropdown title="About">
+            <DropdownItem eventKey="4">Company</DropdownItem>
+            <DropdownItem eventKey="5">Team</DropdownItem>
+            <DropdownItem eventKey="6">Contact</DropdownItem>
+          </Dropdown>
+        </Nav>
+        <Nav pullRight>
+          <NavItem icon="cog">Settings</NavItem>
+        </Nav>
+      </NavbarBody>
     </Navbar>
     <hr />
     <Navbar appearance="subtle">
       <a href="#" class="navbar-brand" slot="header">
         VSUITE
       </a>
-      <Nav @select="_handleSelect" :activeKey="activeKey">
-        <NavItem eventKey="1" icon="home">
-          Home
-        </NavItem>
-        <NavItem eventKey="2">News</NavItem>
-        <NavItem eventKey="3">Products</NavItem>
-        <Dropdown title="About">
-          <DropdownItem eventKey="4">Company</DropdownItem>
-          <DropdownItem eventKey="5">Team</DropdownItem>
-          <DropdownItem eventKey="6">Contact</DropdownItem>
-        </Dropdown>
-      </Nav>
-      <Nav pullRight>
-        <NavItem icon="cog">Settings</NavItem>
-      </Nav>
+      <NavbarBody>
+        <Nav @select="_handleSelect" :activeKey="activeKey">
+          <NavItem eventKey="1" icon="home">
+            Home
+          </NavItem>
+          <NavItem eventKey="2">News</NavItem>
+          <NavItem eventKey="3">Products</NavItem>
+          <Dropdown title="About">
+            <DropdownItem eventKey="4">Company</DropdownItem>
+            <DropdownItem eventKey="5">Team</DropdownItem>
+            <DropdownItem eventKey="6">Contact</DropdownItem>
+          </Dropdown>
+        </Nav>
+        <Nav pullRight>
+          <NavItem icon="cog">Settings</NavItem>
+        </Nav>
+      </NavbarBody>
     </Navbar>
   </div>
 </template>
