@@ -7,4 +7,11 @@ Sidenav.Header = SidenavHeader;
 Sidenav.Body = SidenavBody;
 Sidenav.Toggle = SidenavToggle;
 
+Sidenav.install = function(Vue) {
+  Vue.component(Sidenav.name, Sidenav);
+  Vue.component(SidenavHeader.name, SidenavHeader);
+  Vue.component(SidenavBody.name, SidenavBody);
+  Vue.component(SidenavToggle.name, SidenavToggle);
+};
+
 export default Sidenav;

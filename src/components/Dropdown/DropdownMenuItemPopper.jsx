@@ -85,7 +85,7 @@ export default {
       directives: [{ name: 'show', value: this.expanded }],
     });
 
-    referenceData = _.merge(referenceData, {
+    toggleData = _.merge(toggleData, {
       props: { open: this.expanded },
       on: { click: this._handleToggle },
     });
@@ -94,7 +94,10 @@ export default {
       <DropdownItem {...referenceData}>
         <div {...toggleData}>
           <span>{this.title || this.$slots.title}</span>
-          <Icon icon={this.pullLeft ? 'angle-left' : 'angle-right'} />
+          <Icon
+            class={this._addPrefix('toggle-icon')}
+            icon={this.pullLeft ? 'angle-left' : 'angle-right'}
+          />
           <Ripple />
         </div>
         {this._renderCollapse(

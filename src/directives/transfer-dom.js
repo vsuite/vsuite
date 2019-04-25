@@ -90,7 +90,11 @@ const directive = {
     const target = ref$1.target;
 
     if (hasMovedOut === true) {
-      target && target.removeChild(el);
+      try {
+        target && target.removeChild(el);
+      } catch (e) {
+        /**/
+      }
       parentNode && parentNode.appendChild(el);
     }
 

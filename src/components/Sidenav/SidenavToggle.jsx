@@ -1,8 +1,9 @@
 import VueTypes from 'vue-types';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
 
-import IconButton from 'components/IconButton';
+import Button from 'components/Button';
 
+const IconButton = Button.Icon;
 const CLASS_PREFIX = 'sidenav-toggle';
 
 export default {
@@ -10,17 +11,15 @@ export default {
 
   props: {
     expanded: VueTypes.bool,
+
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
+
+    // @toggle
   },
 
   computed: {
     classes() {
-      return [
-        this.classPrefix,
-        {
-          collapsed: !this.expanded,
-        },
-      ];
+      return [this.classPrefix, { collapsed: !this.expanded }];
     },
   },
 

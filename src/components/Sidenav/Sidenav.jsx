@@ -22,10 +22,16 @@ export default {
     openKeys: VueTypes.arrayOf(VueTypes.any),
     defaultOpenKeys: VueTypes.arrayOf(VueTypes.any),
     activeKey: VueTypes.any,
+
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
     componentClass: VueTypes.oneOfType([VueTypes.string, VueTypes.object]).def(
       'div'
     ),
+
+    // slot
+
+    // @select
+    // @open-change
   },
 
   data() {
@@ -52,10 +58,7 @@ export default {
       {
         class: this.classes,
         directives: [{ name: 'show', value: this.expanded }],
-        splitProps: {
-          ...this.$attrs,
-          role: 'navigation',
-        },
+        splitProps: { ...this.$attrs, role: 'navigation' },
         ref: 'sidenav',
       },
       Component

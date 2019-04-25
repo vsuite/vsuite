@@ -81,15 +81,7 @@ export default {
     },
 
     collapsible() {
-      const bool = this.$vSidenav && this.$vSidenav.expanded;
-
-      // when sidenav is collapsed, we will use popper.js, but when it is expanded we need destroy popper.js instance
-      if (bool) {
-        // fix memory leak
-        this._destroyPopper();
-      }
-
-      return bool;
+      return this.$vSidenav && this.$vSidenav.expanded;
     },
 
     sidenav() {

@@ -16,6 +16,7 @@ import Drawer from 'components/Drawer';
 import Dropdown from 'components/Dropdown';
 import Nav from 'components/Nav';
 import Navbar from 'components/Navbar';
+import Sidenav from 'components/Sidenav';
 
 import Grid from 'components/Grid';
 
@@ -48,6 +49,7 @@ export const components = {
   Dropdown,
   Nav,
   Navbar,
+  Sidenav,
 
   Grid,
 

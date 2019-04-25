@@ -100,7 +100,9 @@ export default {
         ref: 'reference',
       });
 
-      this._addTriggerListeners(btnData, liData);
+      if (!this.disabled) {
+        this._addTriggerListeners(btnData, liData);
+      }
 
       return (
         <li {...liData}>

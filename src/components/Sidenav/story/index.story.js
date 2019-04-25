@@ -1,17 +1,17 @@
 import { storiesOf } from '@storybook/vue';
 
-import Toggle from 'components/Toggle';
 import Dropdown from 'components/Dropdown';
 import Sidenav from 'components/Sidenav';
+import Button from 'components/Button';
 import Nav from 'components/Nav';
 import Demo from 'stories/demo';
 
 const stories = storiesOf('Navigation|Sidenav', module);
 
-stories.add('default', () => ({
+stories.add('basic', () => ({
   render() {
     return (
-      <Demo title="Default">
+      <Demo title="Basic">
         <div style={{ width: '250px' }}>
           <Sidenav defaultOpenKeys={['3', '4']}>
             <Sidenav.Body>
@@ -64,7 +64,7 @@ stories.add('appearance', () => ({
       const styles = {
         width: '250px',
         display: 'inline-table',
-        marginRight: '10px',
+        margin: '0 10px 50px 0',
       };
 
       return (
@@ -116,7 +116,14 @@ stories.add('expanded', () => ({
   render(h) {
     return (
       <Demo title="Expanded">
-        <Toggle onChange={this._handleToggle} checked={this.expanded} />
+        <Button.Group>
+          <Button appearance="primary" onClick={this._handleOpen}>
+            展开
+          </Button>
+          <Button appearance="primary" onClick={this._handleClose}>
+            收起
+          </Button>
+        </Button.Group>
         <hr />
         {this._renderSidenav(h)}
         {this._renderSidenav(h, 'inverse')}
@@ -129,7 +136,11 @@ stories.add('expanded', () => ({
     _renderSidenav(h, appearance) {
       return (
         <div
-          style={{ display: 'inline-block', width: '250px', margin: '10px' }}
+          style={{
+            display: 'inline-block',
+            width: '250px',
+            margin: '0 10px 50px 0',
+          }}
         >
           <Sidenav
             appearance={appearance}
@@ -181,8 +192,12 @@ stories.add('expanded', () => ({
       );
     },
 
-    _handleToggle() {
-      this.expanded = !this.expanded;
+    _handleOpen() {
+      this.expanded = true;
+    },
+
+    _handleClose() {
+      this.expanded = false;
     },
 
     _handleSelect(eventKey) {
