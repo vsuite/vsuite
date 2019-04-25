@@ -9,7 +9,7 @@ exports[`Sidenav demo renders appearance demo correctly 1`] = `
           <ul>
             <li role="presentation" class="vs-nav-item vs-nav-item-active"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><i class="vs-icon vs-icon-dashboard"></i><span class="vs-nav-item-text">Dashboard</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
             <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><i class="vs-icon vs-icon-group"></i><span class="vs-nav-item-text">User Group</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
-            <li role="menu" class="vs-dropdown vs-dropdown-placement-bottom-start vs-dropdown-expand">
+            <li role="menu" class="vs-dropdown vs-dropdown-placement-right-start vs-dropdown-expand">
               <ul role="menu" class="vs-dropdown-menu" appear="true">
                 <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Geo</a></li>
                 <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Devices</a></li>
@@ -17,7 +17,7 @@ exports[`Sidenav demo renders appearance demo correctly 1`] = `
                 <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Visit Depth</a></li>
               </ul><a tabindex="0" class="vs-btn vs-btn-subtle vs-dropdown-toggle"><i class="vs-icon vs-icon-magic"></i>Advanced<span class="vs-dropdown-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a>
             </li>
-            <li role="menu" class="vs-dropdown vs-dropdown-placement-bottom-start vs-dropdown-expand">
+            <li role="menu" class="vs-dropdown vs-dropdown-placement-right-start vs-dropdown-expand">
               <ul role="menu" class="vs-dropdown-menu" appear="true">
                 <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Applications</a></li>
                 <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Channels</a></li>
@@ -47,7 +47,7 @@ exports[`Sidenav demo renders appearance demo correctly 1`] = `
           <ul>
             <li role="presentation" class="vs-nav-item vs-nav-item-active"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><i class="vs-icon vs-icon-dashboard"></i><span class="vs-nav-item-text">Dashboard</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
             <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><i class="vs-icon vs-icon-group"></i><span class="vs-nav-item-text">User Group</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
-            <li role="menu" class="vs-dropdown vs-dropdown-placement-bottom-start vs-dropdown-expand">
+            <li role="menu" class="vs-dropdown vs-dropdown-placement-right-start vs-dropdown-expand">
               <ul role="menu" class="vs-dropdown-menu" appear="true">
                 <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Geo</a></li>
                 <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Devices</a></li>
@@ -55,7 +55,7 @@ exports[`Sidenav demo renders appearance demo correctly 1`] = `
                 <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Visit Depth</a></li>
               </ul><a tabindex="0" class="vs-btn vs-btn-subtle vs-dropdown-toggle"><i class="vs-icon vs-icon-magic"></i>Advanced<span class="vs-dropdown-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a>
             </li>
-            <li role="menu" class="vs-dropdown vs-dropdown-placement-bottom-start vs-dropdown-expand">
+            <li role="menu" class="vs-dropdown vs-dropdown-placement-right-start vs-dropdown-expand">
               <ul role="menu" class="vs-dropdown-menu" appear="true">
                 <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Applications</a></li>
                 <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Channels</a></li>
@@ -85,7 +85,7 @@ exports[`Sidenav demo renders appearance demo correctly 1`] = `
           <ul>
             <li role="presentation" class="vs-nav-item vs-nav-item-active"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><i class="vs-icon vs-icon-dashboard"></i><span class="vs-nav-item-text">Dashboard</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
             <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><i class="vs-icon vs-icon-group"></i><span class="vs-nav-item-text">User Group</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
-            <li role="menu" class="vs-dropdown vs-dropdown-placement-bottom-start vs-dropdown-expand">
+            <li role="menu" class="vs-dropdown vs-dropdown-placement-right-start vs-dropdown-expand">
               <ul role="menu" class="vs-dropdown-menu" appear="true">
                 <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Geo</a></li>
                 <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Devices</a></li>
@@ -93,7 +93,7 @@ exports[`Sidenav demo renders appearance demo correctly 1`] = `
                 <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Visit Depth</a></li>
               </ul><a tabindex="0" class="vs-btn vs-btn-subtle vs-dropdown-toggle"><i class="vs-icon vs-icon-magic"></i>Advanced<span class="vs-dropdown-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a>
             </li>
-            <li role="menu" class="vs-dropdown vs-dropdown-placement-bottom-start vs-dropdown-expand">
+            <li role="menu" class="vs-dropdown vs-dropdown-placement-right-start vs-dropdown-expand">
               <ul role="menu" class="vs-dropdown-menu" appear="true">
                 <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Applications</a></li>
                 <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Channels</a></li>
@@ -127,7 +127,7 @@ exports[`Sidenav demo renders basic demo correctly 1`] = `
         <ul>
           <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><i class="vs-icon vs-icon-dashboard"></i><span class="vs-nav-item-text">Dashboard</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
           <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><i class="vs-icon vs-icon-group"></i><span class="vs-nav-item-text">User Group</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
-          <li role="menu" class="vs-dropdown vs-dropdown-placement-bottom-start vs-dropdown-expand">
+          <li role="menu" class="vs-dropdown vs-dropdown-placement-right-start vs-dropdown-expand">
             <ul role="menu" class="vs-dropdown-menu" appear="true">
               <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Geo</a></li>
               <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Devices</a></li>
@@ -135,7 +135,7 @@ exports[`Sidenav demo renders basic demo correctly 1`] = `
               <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Visit Depth</a></li>
             </ul><a tabindex="0" class="vs-btn vs-btn-subtle vs-dropdown-toggle"><i class="vs-icon vs-icon-magic"></i>Advanced<span class="vs-dropdown-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a>
           </li>
-          <li role="menu" class="vs-dropdown vs-dropdown-placement-bottom-start vs-dropdown-expand">
+          <li role="menu" class="vs-dropdown vs-dropdown-placement-right-start vs-dropdown-expand">
             <ul role="menu" class="vs-dropdown-menu" appear="true">
               <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Applications</a></li>
               <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Channels</a></li>
@@ -171,7 +171,7 @@ exports[`Sidenav demo renders divider-panel demo correctly 1`] = `
     <div class="vs-sidenav-body">
       <div class="vs-nav vs-nav-default vs-sidenav-nav vs-nav-vertical">
         <ul>
-          <li role="menu" class="vs-dropdown vs-dropdown-placement-bottom-start vs-dropdown-expand">
+          <li role="menu" class="vs-dropdown vs-dropdown-placement-right-start vs-dropdown-expand">
             <ul role="menu" class="vs-dropdown-menu" appear="true">
               <li role="separator" class="vs-dropdown-item-divider"></li>
               <li class="vs-dropdown-item-panel" style="padding: 15px 20px; color: rgb(170, 170, 170);">
@@ -222,7 +222,7 @@ exports[`Sidenav demo renders toggle demo correctly 1`] = `
           <ul>
             <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><i class="vs-icon vs-icon-dashboard"></i><span class="vs-nav-item-text">Dashboard</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
             <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><i class="vs-icon vs-icon-group"></i><span class="vs-nav-item-text">User Group</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
-            <li role="menu" class="vs-dropdown vs-dropdown-placement-bottom-start vs-dropdown-expand">
+            <li role="menu" class="vs-dropdown vs-dropdown-placement-right-start vs-dropdown-expand">
               <ul role="menu" class="vs-dropdown-menu" appear="true">
                 <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Geo</a></li>
                 <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Devices</a></li>
@@ -230,7 +230,7 @@ exports[`Sidenav demo renders toggle demo correctly 1`] = `
                 <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Visit Depth</a></li>
               </ul><a tabindex="0" class="vs-btn vs-btn-subtle vs-dropdown-toggle"><i class="vs-icon vs-icon-magic"></i>Advanced<span class="vs-dropdown-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a>
             </li>
-            <li role="menu" class="vs-dropdown vs-dropdown-placement-bottom-start vs-dropdown-expand">
+            <li role="menu" class="vs-dropdown vs-dropdown-placement-right-start vs-dropdown-expand">
               <ul role="menu" class="vs-dropdown-menu" appear="true">
                 <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Applications</a></li>
                 <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Channels</a></li>
@@ -260,7 +260,7 @@ exports[`Sidenav demo renders toggle demo correctly 1`] = `
           <ul>
             <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><i class="vs-icon vs-icon-dashboard"></i><span class="vs-nav-item-text">Dashboard</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
             <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><i class="vs-icon vs-icon-group"></i><span class="vs-nav-item-text">User Group</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
-            <li role="menu" class="vs-dropdown vs-dropdown-placement-bottom-start vs-dropdown-expand">
+            <li role="menu" class="vs-dropdown vs-dropdown-placement-right-start vs-dropdown-expand">
               <ul role="menu" class="vs-dropdown-menu" appear="true">
                 <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Geo</a></li>
                 <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Devices</a></li>
@@ -268,7 +268,7 @@ exports[`Sidenav demo renders toggle demo correctly 1`] = `
                 <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Visit Depth</a></li>
               </ul><a tabindex="0" class="vs-btn vs-btn-subtle vs-dropdown-toggle"><i class="vs-icon vs-icon-magic"></i>Advanced<span class="vs-dropdown-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a>
             </li>
-            <li role="menu" class="vs-dropdown vs-dropdown-placement-bottom-start vs-dropdown-expand">
+            <li role="menu" class="vs-dropdown vs-dropdown-placement-right-start vs-dropdown-expand">
               <ul role="menu" class="vs-dropdown-menu" appear="true">
                 <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Applications</a></li>
                 <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Channels</a></li>
@@ -298,7 +298,7 @@ exports[`Sidenav demo renders toggle demo correctly 1`] = `
           <ul>
             <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><i class="vs-icon vs-icon-dashboard"></i><span class="vs-nav-item-text">Dashboard</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
             <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><i class="vs-icon vs-icon-group"></i><span class="vs-nav-item-text">User Group</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
-            <li role="menu" class="vs-dropdown vs-dropdown-placement-bottom-start vs-dropdown-expand">
+            <li role="menu" class="vs-dropdown vs-dropdown-placement-right-start vs-dropdown-expand">
               <ul role="menu" class="vs-dropdown-menu" appear="true">
                 <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Geo</a></li>
                 <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Devices</a></li>
@@ -306,7 +306,7 @@ exports[`Sidenav demo renders toggle demo correctly 1`] = `
                 <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Visit Depth</a></li>
               </ul><a tabindex="0" class="vs-btn vs-btn-subtle vs-dropdown-toggle"><i class="vs-icon vs-icon-magic"></i>Advanced<span class="vs-dropdown-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a>
             </li>
-            <li role="menu" class="vs-dropdown vs-dropdown-placement-bottom-start vs-dropdown-expand">
+            <li role="menu" class="vs-dropdown vs-dropdown-placement-right-start vs-dropdown-expand">
               <ul role="menu" class="vs-dropdown-menu" appear="true">
                 <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Applications</a></li>
                 <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Channels</a></li>

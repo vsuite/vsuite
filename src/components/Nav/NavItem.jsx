@@ -5,7 +5,6 @@ import prefix, { defaultClassPrefix } from 'utils/prefix';
 import { splitDataByComponent } from 'utils/split';
 import { IconX } from 'utils/svg';
 
-import { Fade } from 'components/Animation';
 import SafeAnchor from 'components/SafeAnchor';
 import Tooltip from 'components/Tooltip';
 import Ripple from 'components/Ripple';
@@ -23,9 +22,10 @@ export default {
     disabled: VueTypes.bool.def(false),
     divider: VueTypes.bool.def(false),
     panel: VueTypes.bool.def(false),
-    tooltip: VueTypes.bool.def(false),
     icon: IconX,
     eventKey: VueTypes.any,
+
+    tooltip: VueTypes.bool.def(false),
 
     tabindex: VueTypes.number,
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
@@ -111,11 +111,15 @@ export default {
             <span class={this._addPrefix('text')}>{this.$slots.default}</span>
             <Ripple />
           </Component>
-          <Fade>
+          <transition
+            appear
+            enterActiveClass="animated in"
+            leaveActiveClass="animated fade"
+          >
             <Tooltip {...tooltipData}>
               <template slot="title">{this.$slots.default}</template>
             </Tooltip>
-          </Fade>
+          </transition>
         </li>
       );
     }

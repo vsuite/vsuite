@@ -83,6 +83,8 @@ export default {
           cloneElement(vnode, {
             props: {
               tooltip: this.$vSidenav && !this.$vSidenav.expanded,
+              placement:
+                this.$vSidenav && !this.$vSidenav.expanded ? 'right' : 'auto',
               active: _.isUndefined(this.currentActiveKey)
                 ? props.active
                 : shallowEqual(this.currentActiveKey, props.eventKey),

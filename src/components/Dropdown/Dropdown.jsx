@@ -26,9 +26,16 @@ export default {
 
   props: {
     /* eslint-disable vue/require-prop-types */
-    placement: VueTypes.oneOf(
-      Popper.placements.filter(x => !/^auto/.test(x))
-    ).def('bottom-start'),
+    placement: {
+      ...VueTypes.oneOf(Popper.placements.filter(x => !/^auto/.test(x))),
+      default() {
+        const sidenav = !!this.$vSidenav;
+
+        if (sidenav) return 'right-start';
+
+        return 'bottom-start';
+      },
+    },
     trigger: {
       ...popperMixin.props.trigger,
       default() {
