@@ -1,15 +1,15 @@
 import { storiesOf } from '@storybook/vue';
 
-import Steps, { STATUS } from 'components/Steps';
+import Steps from 'components/Steps';
 import Button from 'components/Button';
 import Demo from 'stories/demo';
 
 const stories = storiesOf('Navigation|Steps', module);
 
-stories.add('default', () => ({
+stories.add('basic', () => ({
   render: h => {
     return (
-      <Demo title="Default">
+      <Demo title="Basic">
         <Steps current={1}>
           <Steps.Item />
           <Steps.Item />
@@ -83,7 +83,7 @@ stories.add('error', () => ({
   render: h => {
     return (
       <Demo title="Error">
-        <Steps current={1} currentStatus={STATUS.ERROR}>
+        <Steps current={1} currentStatus="error">
           <Steps.Item title="Finished" />
           <Steps.Item title="In progress" />
           <Steps.Item title="Waiting" />
@@ -128,7 +128,7 @@ stories.add('dynamic', () => ({
   data() {
     return {
       step: 0,
-      status: STATUS.PROCESS,
+      status: 'process',
     };
   },
 
@@ -146,7 +146,7 @@ stories.add('dynamic', () => ({
           <Button onClick={this.decline} disabled={this.step === 0}>
             Previous
           </Button>
-          <Button onClick={this.increase} disabled={this.step === 3}>
+          <Button onClick={this.increase} disabled={this.step === 4}>
             Next
           </Button>
         </Button.Group>
@@ -159,19 +159,12 @@ stories.add('dynamic', () => ({
       if (this.step <= 0) return;
 
       this.step -= 1;
-      this.status = STATUS.PROCESS;
     },
 
     increase() {
-      if (this.step >= 3) return;
+      if (this.step >= 4) return;
 
       this.step += 1;
-
-      if (this.step === 3) {
-        this.status = STATUS.FINISH;
-      } else {
-        this.status = STATUS.PROCESS;
-      }
     },
   },
 }));

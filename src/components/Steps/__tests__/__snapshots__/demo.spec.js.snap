@@ -1,0 +1,305 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Steps demo renders basic demo correctly 1`] = `
+<div class="vs-steps vs-steps-horizontal">
+  <div class="vs-steps-item vs-steps-item-status-finish" style="flex-basis: 16.666666666666668%;">
+    <div class="vs-steps-item-tail"></div>
+    <div class="vs-steps-item-icon-wrapper"><span class="vs-steps-item-icon vs-steps-item-icon-finish">1</span></div>
+  </div>
+  <div class="vs-steps-item vs-steps-item-status-wait" style="flex-basis: 16.666666666666668%;">
+    <div class="vs-steps-item-tail"></div>
+    <div class="vs-steps-item-icon-wrapper"><span class="vs-steps-item-icon vs-steps-item-icon-wait">3</span></div>
+  </div>
+  <div class="vs-steps-item vs-steps-item-status-wait" style="flex-basis: 16.666666666666668%;">
+    <div class="vs-steps-item-tail"></div>
+    <div class="vs-steps-item-icon-wrapper"><span class="vs-steps-item-icon vs-steps-item-icon-wait">5</span></div>
+  </div>
+  <div class="vs-steps-item vs-steps-item-status-wait" style="max-width: 14.285714285714286%;">
+    <div class="vs-steps-item-tail"></div>
+    <div class="vs-steps-item-icon-wrapper"><span class="vs-steps-item-icon vs-steps-item-icon-wait">7</span></div>
+  </div>
+</div>
+`;
+
+exports[`Steps demo renders description demo correctly 1`] = `
+<div class="vs-steps vs-steps-horizontal">
+  <div class="vs-steps-item vs-steps-item-status-finish" style="flex-basis: 16.666666666666668%;">
+    <div class="vs-steps-item-tail"></div>
+    <div class="vs-steps-item-icon-wrapper"><span class="vs-steps-item-icon vs-steps-item-icon-finish">1</span></div>
+    <div class="vs-steps-item-content">
+      <div class="vs-steps-item-title">Finished</div>
+      <div class="vs-steps-item-description">Description</div>
+    </div>
+  </div>
+  <div class="vs-steps-item vs-steps-item-status-wait" style="flex-basis: 16.666666666666668%;">
+    <div class="vs-steps-item-tail"></div>
+    <div class="vs-steps-item-icon-wrapper"><span class="vs-steps-item-icon vs-steps-item-icon-wait">3</span></div>
+    <div class="vs-steps-item-content">
+      <div class="vs-steps-item-title">In Progress</div>
+      <div class="vs-steps-item-description">Description</div>
+    </div>
+  </div>
+  <div class="vs-steps-item vs-steps-item-status-wait" style="flex-basis: 16.666666666666668%;">
+    <div class="vs-steps-item-tail"></div>
+    <div class="vs-steps-item-icon-wrapper"><span class="vs-steps-item-icon vs-steps-item-icon-wait">5</span></div>
+    <div class="vs-steps-item-content">
+      <div class="vs-steps-item-title">Waiting</div>
+      <div class="vs-steps-item-description">Description</div>
+    </div>
+  </div>
+  <div class="vs-steps-item vs-steps-item-status-wait" style="max-width: 14.285714285714286%;">
+    <div class="vs-steps-item-tail"></div>
+    <div class="vs-steps-item-icon-wrapper"><span class="vs-steps-item-icon vs-steps-item-icon-wait">7</span></div>
+    <div class="vs-steps-item-content">
+      <div class="vs-steps-item-title">Waiting</div>
+      <div class="vs-steps-item-description">Description</div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Steps demo renders dynamic demo correctly 1`] = `
+<div>
+  <div class="vs-steps vs-steps-horizontal">
+    <div class="vs-steps-item vs-steps-item-status-process" style="flex-basis: 16.666666666666668%;">
+      <div class="vs-steps-item-tail"></div>
+      <div class="vs-steps-item-icon-wrapper"><span class="vs-steps-item-icon vs-steps-item-icon-process">1</span></div>
+      <div class="vs-steps-item-content">
+        <div class="vs-steps-item-title">Finished</div>
+        <div class="vs-steps-item-description">Description</div>
+      </div>
+    </div>
+    <div class="vs-steps-item vs-steps-item-status-wait" style="flex-basis: 16.666666666666668%;">
+      <div class="vs-steps-item-tail"></div>
+      <div class="vs-steps-item-icon-wrapper"><span class="vs-steps-item-icon vs-steps-item-icon-wait">3</span></div>
+      <div class="vs-steps-item-content">
+        <div class="vs-steps-item-title">In Progress</div>
+        <div class="vs-steps-item-description">Description</div>
+      </div>
+    </div>
+    <div class="vs-steps-item vs-steps-item-status-wait" style="flex-basis: 16.666666666666668%;">
+      <div class="vs-steps-item-tail"></div>
+      <div class="vs-steps-item-icon-wrapper"><span class="vs-steps-item-icon vs-steps-item-icon-wait">5</span></div>
+      <div class="vs-steps-item-content">
+        <div class="vs-steps-item-title">Waiting</div>
+        <div class="vs-steps-item-description">Description</div>
+      </div>
+    </div>
+    <div class="vs-steps-item vs-steps-item-status-wait" style="max-width: 14.285714285714286%;">
+      <div class="vs-steps-item-tail"></div>
+      <div class="vs-steps-item-icon-wrapper"><span class="vs-steps-item-icon vs-steps-item-icon-wait">7</span></div>
+      <div class="vs-steps-item-content">
+        <div class="vs-steps-item-title">Waiting</div>
+        <div class="vs-steps-item-description">Description</div>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div role="group" class="vs-btn-group"><button disabled="disabled" type="button" class="vs-btn vs-btn-default vs-btn-disabled">
+      Previous
+      <span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button> <button type="button" class="vs-btn vs-btn-default">
+      Next
+      <span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button></div>
+</div>
+`;
+
+exports[`Steps demo renders icon demo correctly 1`] = `
+<div class="vs-steps vs-steps-horizontal">
+  <div class="vs-steps-item vs-steps-item-status-finish vs-steps-item-custom" style="flex-basis: 16.666666666666668%;">
+    <div class="vs-steps-item-tail"></div>
+    <div class="vs-steps-item-icon-wrapper vs-steps-item-custom-icon"><span class="vs-steps-item-icon"><i class="vs-icon vs-icon-pencil-square vs-icon-size-lg"></i></span></div>
+    <div class="vs-steps-item-content">
+      <div class="vs-steps-item-title">Finished</div>
+    </div>
+  </div>
+  <div class="vs-steps-item vs-steps-item-status-wait vs-steps-item-custom" style="flex-basis: 16.666666666666668%;">
+    <div class="vs-steps-item-tail"></div>
+    <div class="vs-steps-item-icon-wrapper vs-steps-item-custom-icon"><span class="vs-steps-item-icon"><i class="vs-icon vs-icon-book vs-icon-size-lg"></i></span></div>
+    <div class="vs-steps-item-content">
+      <div class="vs-steps-item-title">In Progress</div>
+    </div>
+  </div>
+  <div class="vs-steps-item vs-steps-item-status-wait vs-steps-item-custom" style="flex-basis: 16.666666666666668%;">
+    <div class="vs-steps-item-tail"></div>
+    <div class="vs-steps-item-icon-wrapper vs-steps-item-custom-icon"><span class="vs-steps-item-icon"><i class="vs-icon vs-icon-wechat vs-icon-size-lg"></i></span></div>
+    <div class="vs-steps-item-content">
+      <div class="vs-steps-item-title">Waiting</div>
+    </div>
+  </div>
+  <div class="vs-steps-item vs-steps-item-status-wait vs-steps-item-custom" style="max-width: 14.285714285714286%;">
+    <div class="vs-steps-item-tail"></div>
+    <div class="vs-steps-item-icon-wrapper vs-steps-item-custom-icon"><span class="vs-steps-item-icon"><i class="vs-icon vs-icon-steam-square vs-icon-size-lg"></i></span></div>
+    <div class="vs-steps-item-content">
+      <div class="vs-steps-item-title">Waiting</div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Steps demo renders size demo correctly 1`] = `
+<div class="vs-steps vs-steps-small vs-steps-horizontal">
+  <div class="vs-steps-item vs-steps-item-status-finish" style="flex-basis: 16.666666666666668%;">
+    <div class="vs-steps-item-tail"></div>
+    <div class="vs-steps-item-icon-wrapper"><span class="vs-steps-item-icon vs-steps-item-icon-finish">1</span></div>
+    <div class="vs-steps-item-content">
+      <div class="vs-steps-item-title">Finished</div>
+    </div>
+  </div>
+  <div class="vs-steps-item vs-steps-item-status-wait" style="flex-basis: 16.666666666666668%;">
+    <div class="vs-steps-item-tail"></div>
+    <div class="vs-steps-item-icon-wrapper"><span class="vs-steps-item-icon vs-steps-item-icon-wait">3</span></div>
+    <div class="vs-steps-item-content">
+      <div class="vs-steps-item-title">In progress</div>
+    </div>
+  </div>
+  <div class="vs-steps-item vs-steps-item-status-wait" style="flex-basis: 16.666666666666668%;">
+    <div class="vs-steps-item-tail"></div>
+    <div class="vs-steps-item-icon-wrapper"><span class="vs-steps-item-icon vs-steps-item-icon-wait">5</span></div>
+    <div class="vs-steps-item-content">
+      <div class="vs-steps-item-title">Waiting</div>
+    </div>
+  </div>
+  <div class="vs-steps-item vs-steps-item-status-wait" style="max-width: 14.285714285714286%;">
+    <div class="vs-steps-item-tail"></div>
+    <div class="vs-steps-item-icon-wrapper"><span class="vs-steps-item-icon vs-steps-item-icon-wait">7</span></div>
+    <div class="vs-steps-item-content">
+      <div class="vs-steps-item-title">Waiting</div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Steps demo renders status demo correctly 1`] = `
+<div class="vs-steps vs-steps-horizontal">
+  <div class="vs-steps-item vs-steps-item-status-finish vs-steps-next-error" style="flex-basis: 16.666666666666668%;">
+    <div class="vs-steps-item-tail"></div>
+    <div class="vs-steps-item-icon-wrapper"><span class="vs-steps-item-icon vs-steps-item-icon-finish">1</span></div>
+    <div class="vs-steps-item-content">
+      <div class="vs-steps-item-title">Finished</div>
+    </div>
+  </div>
+  <div class="vs-steps-item vs-steps-item-status-wait" style="flex-basis: 16.666666666666668%;">
+    <div class="vs-steps-item-tail"></div>
+    <div class="vs-steps-item-icon-wrapper"><span class="vs-steps-item-icon vs-steps-item-icon-wait">3</span></div>
+    <div class="vs-steps-item-content">
+      <div class="vs-steps-item-title">In progress</div>
+    </div>
+  </div>
+  <div class="vs-steps-item vs-steps-item-status-wait" style="flex-basis: 16.666666666666668%;">
+    <div class="vs-steps-item-tail"></div>
+    <div class="vs-steps-item-icon-wrapper"><span class="vs-steps-item-icon vs-steps-item-icon-wait">5</span></div>
+    <div class="vs-steps-item-content">
+      <div class="vs-steps-item-title">Waiting</div>
+    </div>
+  </div>
+  <div class="vs-steps-item vs-steps-item-status-wait" style="max-width: 14.285714285714286%;">
+    <div class="vs-steps-item-tail"></div>
+    <div class="vs-steps-item-icon-wrapper"><span class="vs-steps-item-icon vs-steps-item-icon-wait">7</span></div>
+    <div class="vs-steps-item-content">
+      <div class="vs-steps-item-title">Waiting</div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Steps demo renders title demo correctly 1`] = `
+<div class="vs-steps vs-steps-horizontal">
+  <div class="vs-steps-item vs-steps-item-status-finish" style="flex-basis: 16.666666666666668%;">
+    <div class="vs-steps-item-tail"></div>
+    <div class="vs-steps-item-icon-wrapper"><span class="vs-steps-item-icon vs-steps-item-icon-finish">1</span></div>
+    <div class="vs-steps-item-content">
+      <div class="vs-steps-item-title">Finished</div>
+    </div>
+  </div>
+  <div class="vs-steps-item vs-steps-item-status-wait" style="flex-basis: 16.666666666666668%;">
+    <div class="vs-steps-item-tail"></div>
+    <div class="vs-steps-item-icon-wrapper"><span class="vs-steps-item-icon vs-steps-item-icon-wait">3</span></div>
+    <div class="vs-steps-item-content">
+      <div class="vs-steps-item-title">In progress</div>
+    </div>
+  </div>
+  <div class="vs-steps-item vs-steps-item-status-wait" style="flex-basis: 16.666666666666668%;">
+    <div class="vs-steps-item-tail"></div>
+    <div class="vs-steps-item-icon-wrapper"><span class="vs-steps-item-icon vs-steps-item-icon-wait">5</span></div>
+    <div class="vs-steps-item-content">
+      <div class="vs-steps-item-title">Waiting</div>
+    </div>
+  </div>
+  <div class="vs-steps-item vs-steps-item-status-wait" style="max-width: 14.285714285714286%;">
+    <div class="vs-steps-item-tail"></div>
+    <div class="vs-steps-item-icon-wrapper"><span class="vs-steps-item-icon vs-steps-item-icon-wait">7</span></div>
+    <div class="vs-steps-item-content">
+      <div class="vs-steps-item-title">Waiting</div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Steps demo renders vertical demo correctly 1`] = `
+<div>
+  <div class="vs-steps vs-steps-vertical" style="width: 200px; display: inline-block; vertical-align: top;">
+    <div class="vs-steps-item vs-steps-item-status-finish">
+      <div class="vs-steps-item-tail"></div>
+      <div class="vs-steps-item-icon-wrapper"><span class="vs-steps-item-icon vs-steps-item-icon-finish">1</span></div>
+      <div class="vs-steps-item-content">
+        <div class="vs-steps-item-title">Finished</div>
+      </div>
+    </div>
+    <div class="vs-steps-item vs-steps-item-status-wait">
+      <div class="vs-steps-item-tail"></div>
+      <div class="vs-steps-item-icon-wrapper"><span class="vs-steps-item-icon vs-steps-item-icon-wait">3</span></div>
+      <div class="vs-steps-item-content">
+        <div class="vs-steps-item-title">In progress</div>
+      </div>
+    </div>
+    <div class="vs-steps-item vs-steps-item-status-wait">
+      <div class="vs-steps-item-tail"></div>
+      <div class="vs-steps-item-icon-wrapper"><span class="vs-steps-item-icon vs-steps-item-icon-wait">5</span></div>
+      <div class="vs-steps-item-content">
+        <div class="vs-steps-item-title">Waiting</div>
+      </div>
+    </div>
+    <div class="vs-steps-item vs-steps-item-status-wait">
+      <div class="vs-steps-item-tail"></div>
+      <div class="vs-steps-item-icon-wrapper"><span class="vs-steps-item-icon vs-steps-item-icon-wait">7</span></div>
+      <div class="vs-steps-item-content">
+        <div class="vs-steps-item-title">Waiting</div>
+      </div>
+    </div>
+  </div>
+  <div class="vs-steps vs-steps-vertical" style="width: 200px; display: inline-block; vertical-align: top;">
+    <div class="vs-steps-item vs-steps-item-status-finish">
+      <div class="vs-steps-item-tail"></div>
+      <div class="vs-steps-item-icon-wrapper"><span class="vs-steps-item-icon vs-steps-item-icon-finish">1</span></div>
+      <div class="vs-steps-item-content">
+        <div class="vs-steps-item-title">Finished</div>
+        <div class="vs-steps-item-description">Description</div>
+      </div>
+    </div>
+    <div class="vs-steps-item vs-steps-item-status-wait">
+      <div class="vs-steps-item-tail"></div>
+      <div class="vs-steps-item-icon-wrapper"><span class="vs-steps-item-icon vs-steps-item-icon-wait">3</span></div>
+      <div class="vs-steps-item-content">
+        <div class="vs-steps-item-title">In Progress</div>
+        <div class="vs-steps-item-description">Description</div>
+      </div>
+    </div>
+    <div class="vs-steps-item vs-steps-item-status-wait">
+      <div class="vs-steps-item-tail"></div>
+      <div class="vs-steps-item-icon-wrapper"><span class="vs-steps-item-icon vs-steps-item-icon-wait">5</span></div>
+      <div class="vs-steps-item-content">
+        <div class="vs-steps-item-title">Waiting</div>
+        <div class="vs-steps-item-description">Description</div>
+      </div>
+    </div>
+    <div class="vs-steps-item vs-steps-item-status-wait">
+      <div class="vs-steps-item-tail"></div>
+      <div class="vs-steps-item-icon-wrapper"><span class="vs-steps-item-icon vs-steps-item-icon-wait">7</span></div>
+      <div class="vs-steps-item-content">
+        <div class="vs-steps-item-title">Waiting</div>
+        <div class="vs-steps-item-description">Description</div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

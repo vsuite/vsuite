@@ -1,6 +1,9 @@
 import VueTypes from 'vue-types';
+import _ from 'lodash';
 import Icon from 'components/Icon';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
+import renderX, { RenderX } from 'utils/render';
+import { IconX } from 'utils/svg';
 import invariant from 'utils/invariant';
 
 import STATUS from './status';
@@ -11,9 +14,9 @@ export default {
   name: 'StepItem',
 
   props: {
-    title: VueTypes.string,
-    description: VueTypes.string,
-    icon: VueTypes.string,
+    title: RenderX,
+    description: RenderX,
+    icon: IconX,
     status: VueTypes.oneOf([
       STATUS.WAIT,
       STATUS.PROCESS,
@@ -22,7 +25,12 @@ export default {
     ]),
     itemWidth: VueTypes.oneOfType([VueTypes.string, VueTypes.number]),
     stepNumber: VueTypes.number,
+
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
+
+    // slot-title
+    // slot-description
+    // slot-icon
   },
 
   computed: {
@@ -56,19 +64,19 @@ export default {
     classes() {
       return [
         this.classPrefix,
-        {
-          [this._addPrefix('custom')]: this.hasIcon,
-          [this._addPrefix(`status-${this.status}`)]: this.status,
-        },
+        this._addPrefix(`status-${this.status}`),
+        { [this._addPrefix('custom')]: this.hasIcon },
       ];
     },
   },
 
-  render() {
+  render(h) {
     const stepItemData = {
       class: this.classes,
       style: {
-        width: this.itemWidth,
+        width: _.isNumber(this.itemWidth)
+          ? `${this.itemWidth}px`
+          : this.itemWidth,
       },
       attrs: this.$attrs,
       on: this.$listeners,
@@ -78,12 +86,13 @@ export default {
         <div class={this._addPrefix('content')}>
           {this.hasTitle && (
             <div class={this._addPrefix('title')}>
-              {this.title || this.$slots.title}
+              {(this.title && renderX(h, this.title)) || this.$slots.title}
             </div>
           )}
           {this.hasDescription && (
             <div class={this._addPrefix('description')}>
-              {this.description || this.$slots.description}
+              {(this.description && renderX(h, this.description)) ||
+                this.$slots.description}
             </div>
           )}
         </div>
