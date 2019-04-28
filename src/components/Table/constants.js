@@ -24,6 +24,6 @@ export const CELL_FIXED = {
 export const CELL_TYPE = {
   radio: 'radio',
   checkbox: 'checkbox',
-  index: 'index',
+  index: 'index.less',
   expand: 'expand',
 };

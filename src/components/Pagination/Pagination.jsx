@@ -25,11 +25,18 @@ export default {
     prev: VueTypes.bool.def(false),
     next: VueTypes.bool.def(false),
     disabled: VueTypes.oneOfType([VueTypes.bool, VueTypes.func]).def(false),
+
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
     buttonComponentClass: VueTypes.oneOfType([
       VueTypes.string,
       VueTypes.object,
     ]).def(SafeAnchor),
+
+    // slot-ellipsis
+    // slot-first
+    // slot-last
+    // slot-prev
+    // slot-next
   },
 
   computed: {

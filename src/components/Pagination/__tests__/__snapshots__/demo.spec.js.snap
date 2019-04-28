@@ -1,0 +1,127 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pagination demo renders advanced demo correctly 1`] = `
+<div>
+  <div><span> first： <span role="button" tabindex="-1" class="vs-btn-toggle vs-btn-toggle-checked"><span class="vs-btn-toggle-inner"></span></span></span> <span> first： <span role="button" tabindex="-1" class="vs-btn-toggle vs-btn-toggle-checked"><span class="vs-btn-toggle-inner"></span></span></span> <span> first： <span role="button" tabindex="-1" class="vs-btn-toggle vs-btn-toggle-checked"><span class="vs-btn-toggle-inner"></span></span></span> <span> first： <span role="button" tabindex="-1" class="vs-btn-toggle vs-btn-toggle-checked"><span class="vs-btn-toggle-inner"></span></span></span> <br> <br> <span> first： <span role="button" tabindex="-1" class="vs-btn-toggle vs-btn-toggle-checked"><span class="vs-btn-toggle-inner"></span></span></span> <span> first： <span role="button" tabindex="-1" class="vs-btn-toggle vs-btn-toggle-checked"><span class="vs-btn-toggle-inner"></span></span></span></div>
+  <div class="vs-divider vs-divider-horizontal"></div>
+  <ul class="vs-pagination">
+    <li class="vs-pagination-btn"><a role="" href=""><span aria-label="First" title="First"><i class="vs-icon vs-icon-page-top"></i></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    <li class="vs-pagination-btn"><a role="" href=""><span aria-label="Previous" title="Previous"><i class="vs-icon vs-icon-page-previous"></i></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    <li class="vs-pagination-btn vs-pagination-btn-active"><a role="" href="">1<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    <li class="vs-pagination-btn"><a role="" href="">2<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    <li class="vs-pagination-btn"><a role="" href="">3<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    <li class="vs-pagination-btn"><a role="" href="">4<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    <li class="vs-pagination-btn"><a role="" href="">5<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    <li class="vs-pagination-btn"><a role="" href=""><span aria-label="More"><i class="vs-icon vs-icon-more"></i></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    <li class="vs-pagination-btn"><a role="" href="">30<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    <li class="vs-pagination-btn"><a role="" href=""><span aria-label="Next" title="Next"><i class="vs-icon vs-icon-page-next"></i></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    <li class="vs-pagination-btn"><a role="" href=""><span aria-label="Last" title="Last"><i class="vs-icon vs-icon-page-end"></i></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+  </ul>
+</div>
+`;
+
+exports[`Pagination demo renders basic demo correctly 1`] = `
+<ul class="vs-pagination">
+  <li class="vs-pagination-btn vs-pagination-btn-active"><a role="" href="">1<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+  <li class="vs-pagination-btn"><a role="" href="">2<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+  <li class="vs-pagination-btn"><a role="" href="">3<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+  <li class="vs-pagination-btn"><a role="" href="">4<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+  <li class="vs-pagination-btn"><a role="" href="">5<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+  <li class="vs-pagination-btn"><a role="" href="">6<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+  <li class="vs-pagination-btn"><a role="" href="">7<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+  <li class="vs-pagination-btn"><a role="" href="">8<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+  <li class="vs-pagination-btn"><a role="" href="">9<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+  <li class="vs-pagination-btn"><a role="" href="">10<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+</ul>
+`;
+
+exports[`Pagination demo renders disabled demo correctly 1`] = `
+<ul class="vs-pagination">
+  <li class="vs-pagination-btn vs-pagination-btn-disabled"><a role="" tabindex="-1" href=""><span aria-label="First" title="First"><i class="vs-icon vs-icon-page-top"></i></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+  <li class="vs-pagination-btn vs-pagination-btn-disabled"><a role="" tabindex="-1" href=""><span aria-label="Previous" title="Previous"><i class="vs-icon vs-icon-page-previous"></i></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+  <li class="vs-pagination-btn vs-pagination-btn-active vs-pagination-btn-disabled"><a role="" tabindex="-1" href="">1<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+  <li class="vs-pagination-btn vs-pagination-btn-disabled"><a role="" tabindex="-1" href="">2<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+  <li class="vs-pagination-btn vs-pagination-btn-disabled"><a role="" tabindex="-1" href="">3<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+  <li class="vs-pagination-btn vs-pagination-btn-disabled"><a role="" tabindex="-1" href="">4<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+  <li class="vs-pagination-btn vs-pagination-btn-disabled"><a role="" tabindex="-1" href="">5<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+  <li class="vs-pagination-btn vs-pagination-btn-disabled"><a role="" tabindex="-1" href="">6<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+  <li class="vs-pagination-btn vs-pagination-btn-disabled"><a role="" tabindex="-1" href="">7<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+  <li class="vs-pagination-btn vs-pagination-btn-disabled"><a role="" tabindex="-1" href="">8<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+  <li class="vs-pagination-btn vs-pagination-btn-disabled"><a role="" tabindex="-1" href="">9<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+  <li class="vs-pagination-btn vs-pagination-btn-disabled"><a role="" tabindex="-1" href="">10<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+  <li class="vs-pagination-btn vs-pagination-btn-disabled"><a role="" tabindex="-1" href=""><span aria-label="Next" title="Next"><i class="vs-icon vs-icon-page-next"></i></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+  <li class="vs-pagination-btn vs-pagination-btn-disabled"><a role="" tabindex="-1" href=""><span aria-label="Last" title="Last"><i class="vs-icon vs-icon-page-end"></i></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+</ul>
+`;
+
+exports[`Pagination demo renders size demo correctly 1`] = `
+<div>
+  <ul class="vs-pagination vs-pagination-lg">
+    <li class="vs-pagination-btn"><a role="" href=""><span aria-label="First" title="First"><i class="vs-icon vs-icon-page-top"></i></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    <li class="vs-pagination-btn"><a role="" href=""><span aria-label="Previous" title="Previous"><i class="vs-icon vs-icon-page-previous"></i></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    <li class="vs-pagination-btn"><a role="" href="">1<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    <li class="vs-pagination-btn"><a role="" href="">2<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    <li class="vs-pagination-btn"><a role="" href="">3<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    <li class="vs-pagination-btn"><a role="" href="">4<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    <li class="vs-pagination-btn vs-pagination-btn-active"><a role="" href="">5<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    <li class="vs-pagination-btn"><a role="" href="">6<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    <li class="vs-pagination-btn"><a role="" href="">7<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    <li class="vs-pagination-btn"><a role="" href="">8<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    <li class="vs-pagination-btn"><a role="" href="">9<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    <li class="vs-pagination-btn"><a role="" href="">10<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    <li class="vs-pagination-btn"><a role="" href=""><span aria-label="Next" title="Next"><i class="vs-icon vs-icon-page-next"></i></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    <li class="vs-pagination-btn"><a role="" href=""><span aria-label="Last" title="Last"><i class="vs-icon vs-icon-page-end"></i></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+  </ul>
+  <div class="vs-divider vs-divider-horizontal"></div>
+  <ul class="vs-pagination vs-pagination-md">
+    <li class="vs-pagination-btn"><a role="" href=""><span aria-label="First" title="First"><i class="vs-icon vs-icon-page-top"></i></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    <li class="vs-pagination-btn"><a role="" href=""><span aria-label="Previous" title="Previous"><i class="vs-icon vs-icon-page-previous"></i></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    <li class="vs-pagination-btn"><a role="" href="">1<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    <li class="vs-pagination-btn"><a role="" href="">2<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    <li class="vs-pagination-btn"><a role="" href="">3<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    <li class="vs-pagination-btn"><a role="" href="">4<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    <li class="vs-pagination-btn vs-pagination-btn-active"><a role="" href="">5<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    <li class="vs-pagination-btn"><a role="" href="">6<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    <li class="vs-pagination-btn"><a role="" href="">7<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    <li class="vs-pagination-btn"><a role="" href="">8<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    <li class="vs-pagination-btn"><a role="" href="">9<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    <li class="vs-pagination-btn"><a role="" href="">10<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    <li class="vs-pagination-btn"><a role="" href=""><span aria-label="Next" title="Next"><i class="vs-icon vs-icon-page-next"></i></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    <li class="vs-pagination-btn"><a role="" href=""><span aria-label="Last" title="Last"><i class="vs-icon vs-icon-page-end"></i></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+  </ul>
+  <div class="vs-divider vs-divider-horizontal"></div>
+  <ul class="vs-pagination vs-pagination-sm">
+    <li class="vs-pagination-btn"><a role="" href=""><span aria-label="First" title="First"><i class="vs-icon vs-icon-page-top"></i></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    <li class="vs-pagination-btn"><a role="" href=""><span aria-label="Previous" title="Previous"><i class="vs-icon vs-icon-page-previous"></i></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    <li class="vs-pagination-btn"><a role="" href="">1<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    <li class="vs-pagination-btn"><a role="" href="">2<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    <li class="vs-pagination-btn"><a role="" href="">3<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    <li class="vs-pagination-btn"><a role="" href="">4<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    <li class="vs-pagination-btn vs-pagination-btn-active"><a role="" href="">5<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    <li class="vs-pagination-btn"><a role="" href="">6<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    <li class="vs-pagination-btn"><a role="" href="">7<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    <li class="vs-pagination-btn"><a role="" href="">8<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    <li class="vs-pagination-btn"><a role="" href="">9<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    <li class="vs-pagination-btn"><a role="" href="">10<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    <li class="vs-pagination-btn"><a role="" href=""><span aria-label="Next" title="Next"><i class="vs-icon vs-icon-page-next"></i></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    <li class="vs-pagination-btn"><a role="" href=""><span aria-label="Last" title="Last"><i class="vs-icon vs-icon-page-end"></i></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+  </ul>
+  <div class="vs-divider vs-divider-horizontal"></div>
+  <ul class="vs-pagination vs-pagination-xs">
+    <li class="vs-pagination-btn"><a role="" href=""><span aria-label="First" title="First"><i class="vs-icon vs-icon-page-top"></i></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    <li class="vs-pagination-btn"><a role="" href=""><span aria-label="Previous" title="Previous"><i class="vs-icon vs-icon-page-previous"></i></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    <li class="vs-pagination-btn"><a role="" href="">1<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    <li class="vs-pagination-btn"><a role="" href="">2<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    <li class="vs-pagination-btn"><a role="" href="">3<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    <li class="vs-pagination-btn"><a role="" href="">4<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    <li class="vs-pagination-btn vs-pagination-btn-active"><a role="" href="">5<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    <li class="vs-pagination-btn"><a role="" href="">6<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    <li class="vs-pagination-btn"><a role="" href="">7<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    <li class="vs-pagination-btn"><a role="" href="">8<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    <li class="vs-pagination-btn"><a role="" href="">9<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    <li class="vs-pagination-btn"><a role="" href="">10<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    <li class="vs-pagination-btn"><a role="" href=""><span aria-label="Next" title="Next"><i class="vs-icon vs-icon-page-next"></i></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+    <li class="vs-pagination-btn"><a role="" href=""><span aria-label="Last" title="Last"><i class="vs-icon vs-icon-page-end"></i></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
+  </ul>
+</div>
+`;

@@ -33,13 +33,8 @@ export default {
   render() {
     const Component = this.componentClass;
     const data = {
-      props: {
-        ...this.$attrs,
-        disabled: this.disabled,
-      },
-      on: {
-        click: this._handleClick,
-      },
+      props: { ...this.$attrs, disabled: this.disabled },
+      on: { click: this._handleClick },
     };
 
     return (

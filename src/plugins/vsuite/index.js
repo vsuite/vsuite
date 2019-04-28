@@ -1,3 +1,4 @@
+// General
 import Button from 'components/Button';
 import Icon from 'components/Icon';
 import Tooltip from 'components/Tooltip';
@@ -7,21 +8,29 @@ import Loader from 'components/Loader';
 import Divider from 'components/Divider';
 import Progress from 'components/Progress';
 
-import Alert from 'components/Alert';
-import Notification from 'components/Notification';
-import LoadingBar from 'components/LoadingBar';
-import Modal from 'components/Modal';
-import Drawer from 'components/Drawer';
-
+// Navigation
 import Dropdown from 'components/Dropdown';
 import Nav from 'components/Nav';
 import Navbar from 'components/Navbar';
 import Sidenav from 'components/Sidenav';
 import Steps from 'components/Steps';
 import Breadcrumb from 'components/Breadcrumb';
+import Pagination from 'components/Pagination';
 
+// Data Entry
+import Toggle from 'components/Toggle';
+
+// Layout
 import Grid from 'components/Grid';
 
+// Modal
+import Alert from 'components/Alert';
+import Notification from 'components/Notification';
+import LoadingBar from 'components/LoadingBar';
+import Modal from 'components/Modal';
+import Drawer from 'components/Drawer';
+
+// Utils
 import Animation from 'components/Animation';
 
 // import { Fade, Collapse } from 'components/Animation';
@@ -54,6 +63,9 @@ export const components = {
   Sidenav,
   Steps,
   Breadcrumb,
+  Pagination,
+
+  Toggle,
 
   Grid,
 
