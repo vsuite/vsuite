@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Breadcrumb demo renders basic demo correctly 1`] = `
+<ol role="navigation" aria-label="breadcrumbs" class="vs-breadcrumb">
+  <li class="vs-breadcrumb-item"><a role="" href="">Home</a></li>
+  <li class="vs-breadcrumb-separator"><i class="vs-icon vs-icon-angle-right"></i></li>
+  <li class="vs-breadcrumb-separator"><i class="vs-icon vs-icon-angle-right"></i></li>
+  <li class="vs-breadcrumb-item"><a role="" href="">Components</a></li>
+  <li class="vs-breadcrumb-separator"><i class="vs-icon vs-icon-angle-right"></i></li>
+  <li class="vs-breadcrumb-separator"><i class="vs-icon vs-icon-angle-right"></i></li>
+  <li class="vs-breadcrumb-item vs-breadcrumb-item-active"><span>Breadcrumb</span></li>
+</ol>
+`;
+
+exports[`Breadcrumb demo renders separator demo correctly 1`] = `
+<ol role="navigation" aria-label="breadcrumbs" class="vs-breadcrumb">
+  <li class="vs-breadcrumb-item"><a role="" href="">Home</a></li>
+  <li class="vs-breadcrumb-separator"><i class="vs-icon vs-icon-chevron-right"></i></li>
+  <li class="vs-breadcrumb-separator"><i class="vs-icon vs-icon-chevron-right"></i></li>
+  <li class="vs-breadcrumb-item"><a role="" href="">Components</a></li>
+  <li class="vs-breadcrumb-separator"><i class="vs-icon vs-icon-chevron-right"></i></li>
+  <li class="vs-breadcrumb-separator"><i class="vs-icon vs-icon-chevron-right"></i></li>
+  <li class="vs-breadcrumb-item vs-breadcrumb-item-active"><span>Breadcrumb</span></li>
+</ol>
+`;

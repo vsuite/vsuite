@@ -1,6 +1,7 @@
 import VueTypes from 'vue-types';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
 import { splitDataByComponent } from 'utils/split';
+import { IconX } from 'utils/svg';
 
 import Icon from 'components/Icon';
 
@@ -10,14 +11,20 @@ export default {
   name: 'Breadcrumb',
 
   props: {
-    separator: VueTypes.string.def('angle-right'),
+    // eslint-disable-next-line
+    separator: {
+      ...IconX,
+      default: 'angle-right',
+    },
+
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
     componentClass: VueTypes.oneOfType([VueTypes.string, VueTypes.object]).def(
       'ol'
     ),
-  },
 
-  computed: {},
+    // slot
+    // slot-separator
+  },
 
   render() {
     const children = this.$slots.default || [];

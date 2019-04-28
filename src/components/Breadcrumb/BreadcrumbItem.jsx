@@ -11,20 +11,18 @@ export default {
 
   props: {
     active: VueTypes.bool.def(false),
+
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
     componentClass: VueTypes.oneOfType([VueTypes.string, VueTypes.object]).def(
       SafeAnchor
     ),
+
+    // slot
   },
 
   computed: {
     classes() {
-      return [
-        this.classPrefix,
-        {
-          [this._addPrefix('active')]: this.active,
-        },
-      ];
+      return [this.classPrefix, { [this._addPrefix('active')]: this.active }];
     },
   },
 
@@ -42,10 +40,7 @@ export default {
       const Component = this.componentClass;
 
       const data = splitDataByComponent(
-        {
-          splitProps: this.$attrs,
-          on: this.$listeners,
-        },
+        { splitProps: this.$attrs, on: this.$listeners },
         Component
       );
 

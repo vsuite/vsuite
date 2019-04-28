@@ -18,6 +18,7 @@ import Nav from 'components/Nav';
 import Navbar from 'components/Navbar';
 import Sidenav from 'components/Sidenav';
 import Steps from 'components/Steps';
+import Breadcrumb from 'components/Breadcrumb';
 
 import Grid from 'components/Grid';
 
@@ -52,6 +53,7 @@ export const components = {
   Navbar,
   Sidenav,
   Steps,
+  Breadcrumb,
 
   Grid,
 

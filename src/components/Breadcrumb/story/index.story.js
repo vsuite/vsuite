@@ -5,10 +5,10 @@ import Demo from 'stories/demo';
 
 const stories = storiesOf('Navigation|Breadcrumb', module);
 
-stories.add('default', () => ({
+stories.add('basic', () => ({
   render() {
     return (
-      <Demo title="Default">
+      <Demo title="Basic">
         <Breadcrumb>
           <Breadcrumb.Item>Home</Breadcrumb.Item>
           <Breadcrumb.Item>Components</Breadcrumb.Item>
