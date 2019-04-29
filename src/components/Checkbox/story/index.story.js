@@ -5,11 +5,12 @@ import Demo from 'stories/demo';
 
 const stories = storiesOf('Data Entry|Checkbox', module);
 
-stories.add('default', () => ({
+stories.add('basic', () => ({
   render() {
     return (
-      <Demo title="Default">
+      <Demo title="Basic">
         <Checkbox>Default</Checkbox>
+        <Checkbox defaultChecked>DefaultChecked</Checkbox>
         <Checkbox checked>Checked</Checkbox>
         <Checkbox indeterminate>Indeterminate</Checkbox>
       </Demo>

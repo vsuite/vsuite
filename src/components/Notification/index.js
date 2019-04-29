@@ -145,7 +145,7 @@ function createNotificationInstance(config) {
   if (notificationStore[placement]) return notificationStore[placement];
 
   const wrapper = new Vue({
-    render: h => {
+    render() {
       const { style, className } = getPlacementStyle(config);
       const notificationData = {
         class: [addPrefix('notify'), className],

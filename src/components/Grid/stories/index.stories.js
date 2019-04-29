@@ -8,7 +8,7 @@ import Demo from 'stories/demo';
 const stories = storiesOf('Layout|Grid', module);
 
 stories.add('default', () => ({
-  render: h => {
+  render() {
     return (
       <Demo title="Default">
         <Grid fluid>
@@ -122,7 +122,7 @@ stories.add('default', () => ({
 }));
 
 stories.add('response', () => ({
-  render: h => {
+  render() {
     return (
       <Demo title="Response">
         <Grid fluid>
@@ -174,7 +174,7 @@ stories.add('response', () => ({
 }));
 
 stories.add('gutter', () => ({
-  render: h => {
+  render() {
     return (
       <Demo title="Gutter">
         <Grid fluid>
@@ -223,7 +223,7 @@ stories.add('gutter', () => ({
 }));
 
 stories.add('offset', () => ({
-  render: h => {
+  render() {
     return (
       <Demo title="Offset">
         <Grid fluid>
@@ -273,7 +273,7 @@ stories.add('offset', () => ({
 }));
 
 stories.add('push', () => ({
-  render: h => {
+  render() {
     return (
       <Demo title="Push">
         <Grid fluid>
@@ -321,7 +321,7 @@ stories.add('push', () => ({
 }));
 
 stories.add('hidden', () => ({
-  render: h => {
+  render() {
     return (
       <Demo title="Hidden">
         <Grid fluid>
@@ -343,7 +343,7 @@ stories.add('hidden', () => ({
 }));
 
 stories.add('nesting', () => ({
-  render: h => {
+  render() {
     return (
       <Demo title="Nesting">
         <Grid fluid>

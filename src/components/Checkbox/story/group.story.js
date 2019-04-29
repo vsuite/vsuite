@@ -1,21 +1,19 @@
 import { storiesOf } from '@storybook/vue';
+import JsonPretty from 'vue-json-pretty';
 
 import Checkbox from 'components/Checkbox';
 import Demo from 'stories/demo';
-import JsonView from 'stories/json-view';
 
-const stories = storiesOf('Data Entry|CheckboxGroup', module);
+const stories = storiesOf('Data Entry|Checkbox.Group', module);
 
-stories.add('default', () => ({
+stories.add('basic', () => ({
   data() {
     return { value: [] };
   },
 
   render() {
     return (
-      <Demo title="Default">
-        <JsonView data={this.value} />
-
+      <Demo title="Basic">
         <Checkbox.Group
           inline
           value={this.value}
@@ -26,6 +24,10 @@ stories.add('default', () => ({
           <Checkbox value="C">Item C</Checkbox>
           <Checkbox value="D">Item D</Checkbox>
         </Checkbox.Group>
+
+        <hr />
+
+        <JsonPretty data={this.value} />
       </Demo>
     );
   },
@@ -46,11 +48,70 @@ stories.add('initial', () => ({
   },
 }));
 
+stories.add('indeterminate', () => ({
+  data() {
+    return {
+      options: ['A', 'B', 'C', 'D'],
+      value: [],
+      indeterminate: false,
+      checkAll: false,
+    };
+  },
+
+  render() {
+    return (
+      <Demo title="Indeterminate">
+        <Checkbox
+          indeterminate={this.indeterminate}
+          checked={this.checkAll}
+          onChange={this._handleCheckAll}
+        >
+          Check All
+        </Checkbox>
+
+        <hr />
+
+        <Checkbox.Group inline value={this.value} onChange={this._handleChange}>
+          <Checkbox value="A">Item A</Checkbox>
+          <Checkbox value="B">Item B</Checkbox>
+          <Checkbox value="C">Item C</Checkbox>
+          <Checkbox value="D">Item D</Checkbox>
+        </Checkbox.Group>
+
+        <hr />
+
+        <JsonPretty data={this.value} />
+      </Demo>
+    );
+  },
+
+  methods: {
+    _handleChange(v) {
+      const optionsLen = this.options.length;
+      const valueLen = v ? v.length : 0;
+
+      this.value = v;
+      this.indeterminate = optionsLen > valueLen && valueLen > 0;
+      this.checkAll = optionsLen === valueLen;
+    },
+
+    _handleCheckAll(checked) {
+      this.value = checked ? [...this.options] : [];
+      this.indeterminate = false;
+      this.checkAll = checked;
+    },
+  },
+}));
+
 stories.add('group', () => ({
+  data() {
+    return { value: [] };
+  },
+
   render() {
     return (
       <Demo title="Group">
-        <Checkbox.Group>
+        <Checkbox.Group value={this.value} onChange={v => (this.value = v)}>
           <p>Group1</p>
           <Checkbox value="A">Item A</Checkbox>
           <Checkbox value="B">Item B</Checkbox>
@@ -60,6 +121,10 @@ stories.add('group', () => ({
             Item D
           </Checkbox>
         </Checkbox.Group>
+
+        <hr />
+
+        <JsonPretty data={this.value} />
       </Demo>
     );
   },

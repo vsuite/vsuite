@@ -7,7 +7,7 @@ import Demo from 'stories/demo';
 const stories = storiesOf('Data Display|Tag', module);
 
 stories.add('default', () => ({
-  render: h => {
+  render() {
     return (
       <Demo title="Default">
         <Tag>Text</Tag>
@@ -25,7 +25,7 @@ stories.add('default', () => ({
 }));
 
 stories.add('color', () => ({
-  render: h => {
+  render() {
     return (
       <Demo title="Color">
         <Tag color="red">Red</Tag>

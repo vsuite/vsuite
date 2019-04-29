@@ -1,0 +1,197 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Checkbox demo renders basic demo correctly 1`] = `
+<div>
+  <div class="vs-checkbox">
+    <div class="vs-checkbox-checker"><label title=""><span tabindex="0" class="vs-checkbox-wrapper"><input type="checkbox"><span class="vs-checkbox-inner"></span></span>Default</label></div>
+  </div>
+  <div class="vs-checkbox vs-checkbox-checked">
+    <div class="vs-checkbox-checker"><label title=""><span tabindex="0" class="vs-checkbox-wrapper"><input type="checkbox"><span class="vs-checkbox-inner"></span></span>DefaultChecked</label></div>
+  </div>
+  <div class="vs-checkbox vs-checkbox-checked">
+    <div class="vs-checkbox-checker"><label title=""><span tabindex="0" class="vs-checkbox-wrapper"><input type="checkbox"><span class="vs-checkbox-inner"></span></span>Checked</label></div>
+  </div>
+  <div class="vs-checkbox vs-checkbox-indeterminate">
+    <div class="vs-checkbox-checker"><label title=""><span tabindex="0" class="vs-checkbox-wrapper"><input type="checkbox"><span class="vs-checkbox-inner"></span></span>Indeterminate</label></div>
+  </div>
+</div>
+`;
+
+exports[`Checkbox demo renders checkbox-group demo correctly 1`] = `
+<div>
+  <div role="group" class="vs-checkbox-group vs-checkbox-group-inline">
+    <div class="vs-checkbox vs-checkbox-inline">
+      <div class="vs-checkbox-checker"><label title=""><span tabindex="0" class="vs-checkbox-wrapper"><input type="checkbox"><span class="vs-checkbox-inner"></span></span>Item A</label></div>
+    </div>
+    <div class="vs-checkbox vs-checkbox-inline">
+      <div class="vs-checkbox-checker"><label title=""><span tabindex="0" class="vs-checkbox-wrapper"><input type="checkbox"><span class="vs-checkbox-inner"></span></span>Item B</label></div>
+    </div>
+    <div class="vs-checkbox vs-checkbox-inline">
+      <div class="vs-checkbox-checker"><label title=""><span tabindex="0" class="vs-checkbox-wrapper"><input type="checkbox"><span class="vs-checkbox-inner"></span></span>Item C</label></div>
+    </div>
+    <div class="vs-checkbox vs-checkbox-inline">
+      <div class="vs-checkbox-checker"><label title=""><span tabindex="0" class="vs-checkbox-wrapper"><input type="checkbox"><span class="vs-checkbox-inner"></span></span>Item D</label></div>
+    </div>
+  </div>
+  <hr>
+  <div class="vjs-tree is-root">
+    <!---->
+    <div> <span class="vjs-tree__brackets">
+    [
+  </span> <span style="display: none;"><span class="vjs-tree__brackets">
+      [...]
+    </span>
+      <!----></span></div>
+    <div><span class="vjs-tree__brackets">
+    ]
+  </span></div>
+  </div>
+</div>
+`;
+
+exports[`Checkbox demo renders checkbox-group-controlled demo correctly 1`] = `
+<div role="group" class="vs-checkbox-group vs-checkbox-group-inline">
+  <div class="vs-checkbox vs-checkbox-inline vs-checkbox-checked">
+    <div class="vs-checkbox-checker"><label title=""><span tabindex="0" class="vs-checkbox-wrapper"><input type="checkbox"><span class="vs-checkbox-inner"></span></span>Item A</label></div>
+  </div>
+  <div class="vs-checkbox vs-checkbox-inline">
+    <div class="vs-checkbox-checker"><label title=""><span tabindex="0" class="vs-checkbox-wrapper"><input type="checkbox"><span class="vs-checkbox-inner"></span></span>Item B</label></div>
+  </div>
+  <div class="vs-checkbox vs-checkbox-inline vs-checkbox-checked">
+    <div class="vs-checkbox-checker"><label title=""><span tabindex="0" class="vs-checkbox-wrapper"><input type="checkbox"><span class="vs-checkbox-inner"></span></span>Item C</label></div>
+  </div>
+  <div class="vs-checkbox vs-checkbox-inline vs-checkbox-disabled">
+    <div class="vs-checkbox-checker"><label title=""><span tabindex="-1" class="vs-checkbox-wrapper"><input type="checkbox" disabled="disabled"><span class="vs-checkbox-inner"></span></span>
+        Item D
+      </label></div>
+  </div>
+</div>
+`;
+
+exports[`Checkbox demo renders checkbox-group-grouped demo correctly 1`] = `
+<div>
+  <div role="group" class="vs-checkbox-group">
+    <p>Group1</p>
+    <div class="vs-checkbox">
+      <div class="vs-checkbox-checker"><label title=""><span tabindex="0" class="vs-checkbox-wrapper"><input type="checkbox"><span class="vs-checkbox-inner"></span></span>Item A</label></div>
+    </div>
+    <div class="vs-checkbox">
+      <div class="vs-checkbox-checker"><label title=""><span tabindex="0" class="vs-checkbox-wrapper"><input type="checkbox"><span class="vs-checkbox-inner"></span></span>Item B</label></div>
+    </div>
+    <p>Group2</p>
+    <div class="vs-checkbox">
+      <div class="vs-checkbox-checker"><label title=""><span tabindex="0" class="vs-checkbox-wrapper"><input type="checkbox"><span class="vs-checkbox-inner"></span></span>Item C</label></div>
+    </div>
+    <div class="vs-checkbox vs-checkbox-disabled">
+      <div class="vs-checkbox-checker"><label title=""><span tabindex="-1" class="vs-checkbox-wrapper"><input type="checkbox" disabled="disabled"><span class="vs-checkbox-inner"></span></span>
+          Item D
+        </label></div>
+    </div>
+  </div>
+  <hr>
+  <div class="vjs-tree is-root">
+    <!---->
+    <div> <span class="vjs-tree__brackets">
+    [
+  </span> <span style="display: none;"><span class="vjs-tree__brackets">
+      [...]
+    </span>
+      <!----></span></div>
+    <div><span class="vjs-tree__brackets">
+    ]
+  </span></div>
+  </div>
+</div>
+`;
+
+exports[`Checkbox demo renders checkbox-group-indeterminate demo correctly 1`] = `
+<div>
+  <div class="vs-checkbox">
+    <div class="vs-checkbox-checker"><label title=""><span tabindex="0" class="vs-checkbox-wrapper"><input type="checkbox"><span class="vs-checkbox-inner"></span></span>
+        Check All
+      </label></div>
+  </div>
+  <hr>
+  <div role="group" class="vs-checkbox-group vs-checkbox-group-inline">
+    <div class="vs-checkbox vs-checkbox-inline">
+      <div class="vs-checkbox-checker"><label title=""><span tabindex="0" class="vs-checkbox-wrapper"><input type="checkbox"><span class="vs-checkbox-inner"></span></span>Item A</label></div>
+    </div>
+    <div class="vs-checkbox vs-checkbox-inline">
+      <div class="vs-checkbox-checker"><label title=""><span tabindex="0" class="vs-checkbox-wrapper"><input type="checkbox"><span class="vs-checkbox-inner"></span></span>Item B</label></div>
+    </div>
+    <div class="vs-checkbox vs-checkbox-inline">
+      <div class="vs-checkbox-checker"><label title=""><span tabindex="0" class="vs-checkbox-wrapper"><input type="checkbox"><span class="vs-checkbox-inner"></span></span>Item C</label></div>
+    </div>
+    <div class="vs-checkbox vs-checkbox-inline">
+      <div class="vs-checkbox-checker"><label title=""><span tabindex="0" class="vs-checkbox-wrapper"><input type="checkbox"><span class="vs-checkbox-inner"></span></span>Item D</label></div>
+    </div>
+  </div>
+  <hr>
+  <div class="vjs-tree is-root">
+    <!---->
+    <div> <span class="vjs-tree__brackets">
+    [
+  </span> <span style="display: none;"><span class="vjs-tree__brackets">
+      [...]
+    </span>
+      <!----></span></div>
+    <div><span class="vjs-tree__brackets">
+    ]
+  </span></div>
+  </div>
+</div>
+`;
+
+exports[`Checkbox demo renders checkbox-group-initial demo correctly 1`] = `
+<div role="group" class="vs-checkbox-group vs-checkbox-group-inline">
+  <div class="vs-checkbox vs-checkbox-inline vs-checkbox-checked">
+    <div class="vs-checkbox-checker"><label title=""><span tabindex="0" class="vs-checkbox-wrapper"><input type="checkbox"><span class="vs-checkbox-inner"></span></span>Item A</label></div>
+  </div>
+  <div class="vs-checkbox vs-checkbox-inline">
+    <div class="vs-checkbox-checker"><label title=""><span tabindex="0" class="vs-checkbox-wrapper"><input type="checkbox"><span class="vs-checkbox-inner"></span></span>Item B</label></div>
+  </div>
+  <div class="vs-checkbox vs-checkbox-inline">
+    <div class="vs-checkbox-checker"><label title=""><span tabindex="0" class="vs-checkbox-wrapper"><input type="checkbox"><span class="vs-checkbox-inner"></span></span>Item C</label></div>
+  </div>
+  <div class="vs-checkbox vs-checkbox-inline">
+    <div class="vs-checkbox-checker"><label title=""><span tabindex="0" class="vs-checkbox-wrapper"><input type="checkbox"><span class="vs-checkbox-inner"></span></span>Item D</label></div>
+  </div>
+</div>
+`;
+
+exports[`Checkbox demo renders checkbox-group-inline demo correctly 1`] = `
+<div role="group" class="vs-checkbox-group vs-checkbox-group-inline">
+  <div class="vs-checkbox vs-checkbox-inline">
+    <div class="vs-checkbox-checker"><label title=""><span tabindex="0" class="vs-checkbox-wrapper"><input type="checkbox"><span class="vs-checkbox-inner"></span></span>Item A</label></div>
+  </div>
+  <div class="vs-checkbox vs-checkbox-inline">
+    <div class="vs-checkbox-checker"><label title=""><span tabindex="0" class="vs-checkbox-wrapper"><input type="checkbox"><span class="vs-checkbox-inner"></span></span>Item B</label></div>
+  </div>
+  <div class="vs-checkbox vs-checkbox-inline">
+    <div class="vs-checkbox-checker"><label title=""><span tabindex="0" class="vs-checkbox-wrapper"><input type="checkbox"><span class="vs-checkbox-inner"></span></span>Item C</label></div>
+  </div>
+  <div class="vs-checkbox vs-checkbox-inline vs-checkbox-disabled">
+    <div class="vs-checkbox-checker"><label title=""><span tabindex="-1" class="vs-checkbox-wrapper"><input type="checkbox" disabled="disabled"><span class="vs-checkbox-inner"></span></span>
+        Item D
+      </label></div>
+  </div>
+</div>
+`;
+
+exports[`Checkbox demo renders disabled demo correctly 1`] = `
+<div>
+  <div class="vs-checkbox vs-checkbox-disabled">
+    <div class="vs-checkbox-checker"><label title=""><span tabindex="-1" class="vs-checkbox-wrapper"><input type="checkbox" disabled="disabled"><span class="vs-checkbox-inner"></span></span>Default</label></div>
+  </div>
+  <div class="vs-checkbox vs-checkbox-disabled vs-checkbox-checked">
+    <div class="vs-checkbox-checker"><label title=""><span tabindex="-1" class="vs-checkbox-wrapper"><input type="checkbox" disabled="disabled"><span class="vs-checkbox-inner"></span></span>
+        Checked
+      </label></div>
+  </div>
+  <div class="vs-checkbox vs-checkbox-indeterminate vs-checkbox-disabled">
+    <div class="vs-checkbox-checker"><label title=""><span tabindex="-1" class="vs-checkbox-wrapper"><input type="checkbox" disabled="disabled"><span class="vs-checkbox-inner"></span></span>
+        Indeterminate
+      </label></div>
+  </div>
+</div>
+`;

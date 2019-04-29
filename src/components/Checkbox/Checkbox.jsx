@@ -26,8 +26,14 @@ export default {
     inline: VueTypes.bool.def(false),
     disabled: VueTypes.bool.def(false),
     indeterminate: VueTypes.bool.def(false),
+
+    title: VueTypes.string,
     tabindex: VueTypes.number,
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
+
+    // @change
+
+    // slot
   },
 
   data() {
@@ -59,14 +65,10 @@ export default {
   render() {
     const checkboxData = {
       class: this.classes,
-      on: {
-        ..._.omit(this.$listeners, ['change']),
-      },
+      on: { ..._.omit(this.$listeners, ['change']) },
     };
     const iptData = {
-      domProps: {
-        checked: this.currentChecked,
-      },
+      domProps: { checked: this.currentChecked },
       attrs: {
         ...this.$attrs,
         type: 'checkbox',
@@ -81,7 +83,7 @@ export default {
     return (
       <div {...checkboxData}>
         <div class={this._addPrefix('checker')}>
-          <label>
+          <label title={this.title}>
             <span
               class={this._addPrefix('wrapper')}
               tabIndex={this.disabled ? -1 : this.tabindex}

@@ -8,7 +8,7 @@ import Demo from 'stories/demo';
 const stories = storiesOf('Navigation|Pagination', module);
 
 stories.add('basic', () => ({
-  render: h => {
+  render() {
     return (
       <Demo title="Basic">
         <Pagination pages={10} activePage={1} />
@@ -82,7 +82,7 @@ stories.add('size', () => ({
 }));
 
 stories.add('disabled', () => ({
-  render: h => {
+  render() {
     return (
       <Demo title="Disabled">
         <Pagination disabled pages={10} activePage={1} prev last next first />

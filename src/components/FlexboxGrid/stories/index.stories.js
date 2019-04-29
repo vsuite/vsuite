@@ -7,7 +7,7 @@ import Demo from 'stories/demo';
 const stories = storiesOf('Layout|FlexboxGrid', module);
 
 stories.add('default', () => ({
-  render: h => {
+  render() {
     return (
       <Demo title="Default">
         <div class="show-grid">
@@ -36,7 +36,7 @@ stories.add('default', () => ({
 }));
 
 stories.add('layout', () => ({
-  render: h => {
+  render() {
     return (
       <Demo title="Layout">
         <div class="show-grid">
@@ -142,7 +142,7 @@ stories.add('layout', () => ({
 }));
 
 stories.add('align', () => ({
-  render: h => {
+  render() {
     return (
       <Demo title="Align">
         <div class="show-grid">
@@ -236,7 +236,7 @@ stories.add('align', () => ({
 }));
 
 stories.add('sort', () => ({
-  render: h => {
+  render() {
     return (
       <Demo title="Sort">
         <div class="show-grid">

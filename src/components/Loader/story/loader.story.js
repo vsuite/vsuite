@@ -7,7 +7,7 @@ import Content, { Paragraph } from 'stories/content';
 const stories = storiesOf('General|Loader', module);
 
 stories.add('basic', () => ({
-  render: h => {
+  render() {
     return (
       <Demo title="Basic">
         <Loader />
@@ -17,7 +17,7 @@ stories.add('basic', () => ({
 }));
 
 stories.add('vertical', () => ({
-  render: h => {
+  render() {
     return (
       <Demo title="Vertical">
         <Loader content="Loading..." />
@@ -29,7 +29,7 @@ stories.add('vertical', () => ({
 }));
 
 stories.add('size', () => ({
-  render: h => {
+  render() {
     return (
       <Demo title="Size">
         <Loader size="xs" content="XSmall" />
@@ -45,7 +45,7 @@ stories.add('size', () => ({
 }));
 
 stories.add('speed', () => ({
-  render: h => {
+  render() {
     return (
       <Demo title="speed">
         <Loader speed="slow" content="Slow" />
@@ -59,7 +59,7 @@ stories.add('speed', () => ({
 }));
 
 stories.add('center', () => ({
-  render: h => {
+  render() {
     return (
       <Demo title="Center">
         <Content>
@@ -72,7 +72,7 @@ stories.add('center', () => ({
 }));
 
 stories.add('backdrop', () => ({
-  render: h => {
+  render() {
     return (
       <Demo title="Backdrop">
         <Content>
@@ -85,7 +85,7 @@ stories.add('backdrop', () => ({
 }));
 
 stories.add('inverse', () => ({
-  render: h => {
+  render() {
     return (
       <Demo title="Inverse">
         <Content>

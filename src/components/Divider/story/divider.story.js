@@ -7,7 +7,7 @@ import Content, { Paragraph } from 'stories/content';
 const stories = storiesOf('General|Divider', module);
 
 stories.add('basic', () => ({
-  render: h => {
+  render() {
     return (
       <Demo title="Basic">
         <Content>
@@ -21,7 +21,7 @@ stories.add('basic', () => ({
 }));
 
 stories.add('with-text', () => ({
-  render: h => {
+  render() {
     return (
       <Demo title="With Text">
         <Content>
@@ -35,7 +35,7 @@ stories.add('with-text', () => ({
 }));
 
 stories.add('vertical', () => ({
-  render: h => {
+  render() {
     return (
       <Demo title="Vertical">
         <Content>

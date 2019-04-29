@@ -7,7 +7,7 @@ import Content, { Paragraph } from 'stories/content';
 const stories = storiesOf('Data Display|Panel', module);
 
 stories.add('default', () => ({
-  render: h => {
+  render() {
     return (
       <Demo title="Default">
         <Content>
@@ -22,7 +22,7 @@ stories.add('default', () => ({
 }));
 
 stories.add('border', () => ({
-  render: h => {
+  render() {
     return (
       <Demo title="Border">
         <Content>
@@ -37,7 +37,7 @@ stories.add('border', () => ({
 }));
 
 stories.add('no-title', () => ({
-  render: h => {
+  render() {
     return (
       <Demo title="No title">
         <Content>
@@ -51,7 +51,7 @@ stories.add('no-title', () => ({
 }));
 
 stories.add('collapsible', () => ({
-  render: h => {
+  render() {
     return (
       <Demo title="Collapsible">
         <Content>
@@ -65,7 +65,7 @@ stories.add('collapsible', () => ({
 }));
 
 stories.add('fill-body', () => ({
-  render: h => {
+  render() {
     return (
       <Demo title="Fill body">
         <Content>

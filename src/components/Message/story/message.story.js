@@ -7,7 +7,7 @@ import Content, { Paragraph } from 'stories/content';
 const stories = storiesOf('General|Message', module);
 
 stories.add('basic', () => ({
-  render: h => {
+  render() {
     return (
       <Demo title="Basic">
         <Message description="Informational" />
@@ -17,7 +17,7 @@ stories.add('basic', () => ({
 }));
 
 stories.add('status', () => ({
-  render: h => {
+  render() {
     return (
       <Demo title="Status">
         <Message type="info" description="Informational" />
@@ -30,7 +30,7 @@ stories.add('status', () => ({
 }));
 
 stories.add('description', () => ({
-  render: h => {
+  render() {
     return (
       <Demo title="Description">
         <Message
@@ -62,7 +62,7 @@ stories.add('description', () => ({
 }));
 
 stories.add('show-icon', () => ({
-  render: h => {
+  render() {
     return (
       <Demo title="Show Icon">
         <Message showIcon type="info" description="Informational" />
@@ -103,7 +103,7 @@ stories.add('show-icon', () => ({
 }));
 
 stories.add('closable', () => ({
-  render: h => {
+  render() {
     return (
       <Demo title="Closable">
         <Message closable type="info" description="Informational" />
@@ -119,7 +119,7 @@ stories.add('closable', () => ({
 }));
 
 stories.add('full', () => ({
-  render: h => {
+  render() {
     return (
       <Demo title="Full">
         <Content

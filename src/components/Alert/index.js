@@ -105,7 +105,7 @@ function createAlertInstance(config) {
   if (alertStore[placement]) return alertStore[placement];
 
   const wrapper = new Vue({
-    render: h => {
+    render() {
       const { style, className } = getPlacementStyle(config);
       const notificationData = {
         class: [addPrefix('alert'), className],

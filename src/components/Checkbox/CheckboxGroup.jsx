@@ -5,6 +5,7 @@ import prefix, { defaultClassPrefix } from 'utils/prefix';
 import { findComponentUpward } from 'utils/find';
 import shallowEqual from 'utils/shallowEqual';
 import invariant from 'utils/invariant';
+import { mergeElement } from 'utils/merge';
 
 const CLASS_PREFIX = 'checkbox-group';
 
@@ -21,7 +22,12 @@ export default {
     defaultValue: VueTypes.arrayOf(VueTypes.any),
     inline: VueTypes.bool.def(false),
     disabled: VueTypes.bool.def(false),
+
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
+
+    // @change
+
+    // slot
   },
 
   data() {
@@ -34,6 +40,10 @@ export default {
   computed: {
     currentVal() {
       return (_.isUndefined(this.value) ? this.innerVal : this.value) || [];
+    },
+
+    classes() {
+      return [this.classPrefix, { [this._addPrefix('inline')]: this.inline }];
     },
   },
 
@@ -52,25 +62,29 @@ export default {
         'If you use <CheckboxGroup>, <Checkbox> component should contain `value` property'
       );
 
-      return cloneElement(vnode, {
-        props: {
-          inline: this.inline,
-          disabled: this.disabled || childProps.disabled,
-          checked: this.currentVal.some(i => shallowEqual(i, childProps.value)),
-        },
-        on: { change: this._handleChange },
-      });
+      return mergeElement(
+        cloneElement(vnode, {
+          props: {
+            inline: this.inline,
+            disabled: this.disabled || childProps.disabled,
+            checked: this.currentVal.some(i =>
+              shallowEqual(i, childProps.value)
+            ),
+          },
+        }),
+        { on: { change: this._handleChange } }
+      );
     });
 
     return (
-      <div class={this.classPrefix} role="group">
+      <div class={this.classes} role="group">
         {children}
       </div>
     );
   },
 
   methods: {
-    _setVal(val) {
+    _setVal(val, event) {
       this.innerVal = val;
 
       this.$emit('change', val, event);

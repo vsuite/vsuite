@@ -10,7 +10,7 @@ import Demo from 'stories/demo';
 const stories = storiesOf('Layout|Container', module);
 
 stories.add('default', () => ({
-  render: h => {
+  render() {
     return (
       <Demo title="Default">
         <div class="show-container">

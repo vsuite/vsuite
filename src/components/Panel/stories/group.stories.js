@@ -7,7 +7,7 @@ import Content, { Paragraph } from 'stories/content';
 const stories = storiesOf('Data Display|PanelGroup', module);
 
 stories.add('default', () => ({
-  render: h => {
+  render() {
     return (
       <Demo title="Group">
         <Content>
@@ -29,7 +29,7 @@ stories.add('default', () => ({
 }));
 
 stories.add('collapse', () => ({
-  render: h => {
+  render() {
     return (
       <Demo title="Collapse">
         <Content>
@@ -51,7 +51,7 @@ stories.add('collapse', () => ({
 }));
 
 stories.add('accordion', () => ({
-  render: h => {
+  render() {
     return (
       <Demo title="Accordion">
         <Content>

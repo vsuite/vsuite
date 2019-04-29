@@ -7,7 +7,7 @@ import Demo from 'stories/demo';
 const stories = storiesOf('Data Display|Timeline', module);
 
 stories.add('default', () => ({
-  render: h => {
+  render() {
     return (
       <Demo title="Default">
         <Timeline>
@@ -23,7 +23,7 @@ stories.add('default', () => ({
 }));
 
 stories.add('color', () => ({
-  render: h => {
+  render() {
     return (
       <Demo title="Color">
         <Timeline>
@@ -41,7 +41,7 @@ stories.add('color', () => ({
 }));
 
 stories.add('custom', () => ({
-  render: h => {
+  render() {
     return (
       <Demo title="Custom">
         <Timeline>

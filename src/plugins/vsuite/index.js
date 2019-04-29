@@ -18,6 +18,7 @@ import Breadcrumb from 'components/Breadcrumb';
 import Pagination from 'components/Pagination';
 
 // Data Entry
+import Checkbox from 'components/Checkbox';
 import Toggle from 'components/Toggle';
 
 // Layout
@@ -65,6 +66,7 @@ export const components = {
   Breadcrumb,
   Pagination,
 
+  Checkbox,
   Toggle,
 
   Grid,

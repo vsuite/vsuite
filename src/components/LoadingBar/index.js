@@ -23,7 +23,7 @@ function createLoadingBarInstance() {
   if (loadingBarStore.instance) return loadingBarStore.instance;
 
   const wrapper = new Vue({
-    render: h => {
+    render() {
       const loadingBarData = splitPropsByComponent(props || {}, LoadingBar);
 
       return <LoadingBar {...loadingBarData} />;

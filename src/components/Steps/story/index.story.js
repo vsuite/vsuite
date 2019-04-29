@@ -7,7 +7,7 @@ import Demo from 'stories/demo';
 const stories = storiesOf('Navigation|Steps', module);
 
 stories.add('basic', () => ({
-  render: h => {
+  render() {
     return (
       <Demo title="Basic">
         <Steps current={1}>
@@ -22,7 +22,7 @@ stories.add('basic', () => ({
 }));
 
 stories.add('title', () => ({
-  render: h => {
+  render() {
     return (
       <Demo title="Title">
         <Steps current={1}>
@@ -37,7 +37,7 @@ stories.add('title', () => ({
 }));
 
 stories.add('description', () => ({
-  render: h => {
+  render() {
     return (
       <Demo title="Description">
         <Steps current={1}>
@@ -52,7 +52,7 @@ stories.add('description', () => ({
 }));
 
 stories.add('vertical', () => ({
-  render: h => {
+  render() {
     const styles = {
       width: '200px',
       display: 'inline-table',
@@ -80,7 +80,7 @@ stories.add('vertical', () => ({
 }));
 
 stories.add('error', () => ({
-  render: h => {
+  render() {
     return (
       <Demo title="Error">
         <Steps current={1} currentStatus="error">
@@ -95,7 +95,7 @@ stories.add('error', () => ({
 }));
 
 stories.add('small', () => ({
-  render: h => {
+  render() {
     return (
       <Demo title="Small">
         <Steps current={1} small>
@@ -110,7 +110,7 @@ stories.add('small', () => ({
 }));
 
 stories.add('icon', () => ({
-  render: h => {
+  render() {
     return (
       <Demo title="Icon">
         <Steps current={1}>
