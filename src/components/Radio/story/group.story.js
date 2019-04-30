@@ -1,15 +1,20 @@
 import { storiesOf } from '@storybook/vue';
+import JsonPretty from 'vue-json-pretty';
 
 import Radio from 'components/Radio';
 import Demo from 'stories/demo';
 
-const stories = storiesOf('Data Entry|RadioGroup', module);
+const stories = storiesOf('Data Entry|Radio.Group', module);
 
-stories.add('default', () => ({
+stories.add('basic', () => ({
+  data() {
+    return { value: 'A' };
+  },
+
   render() {
     return (
-      <Demo title="Default">
-        <Radio.Group>
+      <Demo title="Basic">
+        <Radio.Group value={this.value} onChange={this._handleChange}>
           <p>Group1</p>
           <Radio value="A">Item A</Radio>
           <Radio value="B">Item B</Radio>
@@ -19,8 +24,18 @@ stories.add('default', () => ({
             Item D
           </Radio>
         </Radio.Group>
+
+        <hr />
+
+        <JsonPretty data={{ value: this.value }} />
       </Demo>
     );
+  },
+
+  methods: {
+    _handleChange(value) {
+      this.value = value;
+    },
   },
 }));
 
@@ -42,10 +57,14 @@ stories.add('initial', () => ({
 }));
 
 stories.add('inline', () => ({
+  data() {
+    return { value: 'A' };
+  },
+
   render() {
     return (
       <Demo title="Inline">
-        <Radio.Group inline>
+        <Radio.Group inline value={this.value} onChange={this._handleChange}>
           <Radio value="A">Item A</Radio>
           <Radio value="B">Item B</Radio>
           <Radio value="C">Item C</Radio>
@@ -53,8 +72,54 @@ stories.add('inline', () => ({
             Item D
           </Radio>
         </Radio.Group>
+
+        <hr />
+
+        <JsonPretty data={{ value: this.value }} />
       </Demo>
     );
+  },
+
+  methods: {
+    _handleChange(value) {
+      this.value = value;
+    },
+  },
+}));
+
+stories.add('picker', () => ({
+  data() {
+    return { value: 'A' };
+  },
+
+  render() {
+    return (
+      <Demo title="Picker">
+        <Radio.Group
+          inline
+          appearance="picker"
+          value={this.value}
+          onChange={this._handleChange}
+        >
+          <Radio value="A">Item A</Radio>
+          <Radio value="B">Item B</Radio>
+          <Radio value="C">Item C</Radio>
+          <Radio value="D" disabled>
+            Item D
+          </Radio>
+        </Radio.Group>
+
+        <hr />
+
+        <JsonPretty data={{ value: this.value }} />
+      </Demo>
+    );
+  },
+
+  methods: {
+    _handleChange(value) {
+      this.value = value;
+    },
   },
 }));
 

@@ -23,17 +23,17 @@ export default {
       default: undefined,
     },
     value: VueTypes.any,
-    inline: VueTypes.bool.def(false),
     disabled: VueTypes.bool.def(false),
     indeterminate: VueTypes.bool.def(false),
 
     title: VueTypes.string,
+    inline: VueTypes.bool.def(false),
     tabindex: VueTypes.number,
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
 
-    // @change
-
     // slot
+
+    // @change
   },
 
   data() {

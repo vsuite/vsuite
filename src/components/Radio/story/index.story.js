@@ -5,10 +5,10 @@ import Demo from 'stories/demo';
 
 const stories = storiesOf('Data Entry|Radio', module);
 
-stories.add('default', () => ({
+stories.add('basic', () => ({
   render() {
     return (
-      <Demo title="Default">
+      <Demo title="Basic">
         <Radio> Radio</Radio>
         <Radio checked> Checked Radio</Radio>
       </Demo>

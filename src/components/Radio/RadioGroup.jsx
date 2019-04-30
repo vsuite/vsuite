@@ -5,6 +5,7 @@ import prefix, { defaultClassPrefix } from 'utils/prefix';
 import { findComponentUpward } from 'utils/find';
 import shallowEqual from 'utils/shallowEqual';
 import invariant from 'utils/invariant';
+import { mergeElement } from 'utils/merge';
 
 const CLASS_PREFIX = 'radio-group';
 
@@ -17,11 +18,17 @@ export default {
   },
 
   props: {
+    appearance: VueTypes.oneOf(['default', 'picker']).def('default'),
     value: VueTypes.any,
     defaultValue: VueTypes.any,
     inline: VueTypes.bool.def(false),
     disabled: VueTypes.bool.def(false),
+
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
+
+    // slot
+
+    // @change
   },
 
   data() {
@@ -33,6 +40,14 @@ export default {
   computed: {
     currentVal() {
       return _.isUndefined(this.value) ? this.innerVal : this.value;
+    },
+
+    classes() {
+      return [
+        this.classPrefix,
+        this._addPrefix(this.appearance),
+        { [this._addPrefix('inline')]: this.inline },
+      ];
     },
   },
 
@@ -51,18 +66,20 @@ export default {
         'If you use <RadioGroup>, <Radio> component should contain `value` property'
       );
 
-      return cloneElement(vnode, {
-        props: {
-          inline: this.inline,
-          disabled: this.disabled || childProps.disabled,
-          checked: shallowEqual(this.currentVal, childProps.value),
-        },
-        on: { change: this._handleChange },
-      });
+      return mergeElement(
+        cloneElement(vnode, {
+          props: {
+            inline: this.inline,
+            disabled: this.disabled || childProps.disabled,
+            checked: shallowEqual(this.currentVal, childProps.value),
+          },
+        }),
+        { on: { change: this._handleChange } }
+      );
     });
 
     return (
-      <div class={this.classPrefix} role="button">
+      <div class={this.classes} role="button">
         {children}
       </div>
     );

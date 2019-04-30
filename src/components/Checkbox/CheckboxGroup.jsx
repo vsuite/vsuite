@@ -25,9 +25,9 @@ export default {
 
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
 
-    // @change
-
     // slot
+
+    // @change
   },
 
   data() {

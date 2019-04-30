@@ -23,10 +23,16 @@ export default {
       default: undefined,
     },
     value: VueTypes.any,
-    inline: VueTypes.bool.def(false),
     disabled: VueTypes.bool.def(false),
+
+    title: VueTypes.string,
+    inline: VueTypes.bool.def(false),
     tabindex: VueTypes.number,
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
+
+    // slot
+
+    // @change
   },
 
   data() {
@@ -62,9 +68,7 @@ export default {
       },
     };
     const iptData = {
-      domProps: {
-        checked: this.currentChecked,
-      },
+      domProps: { checked: this.currentChecked },
       attrs: {
         ...this.$attrs,
         type: 'radio',
@@ -79,7 +83,7 @@ export default {
     return (
       <div {...radioData}>
         <div class={this._addPrefix('checker')} role="button">
-          <label>
+          <label title={this.title}>
             <span
               class={this._addPrefix('wrapper')}
               tabindex={this.disabled ? -1 : this.tabindex}
