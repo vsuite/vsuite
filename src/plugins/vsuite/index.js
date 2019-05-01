@@ -20,6 +20,9 @@ import Pagination from 'components/Pagination';
 // Data Entry
 import Checkbox from 'components/Checkbox';
 import Radio from 'components/Radio';
+import Input from 'components/Input';
+import InputGroup from 'components/InputGroup';
+import InputNumber from 'components/InputNumber';
 import Toggle from 'components/Toggle';
 
 // Layout
@@ -69,6 +72,9 @@ export const components = {
 
   Checkbox,
   Radio,
+  Input,
+  InputGroup,
+  InputNumber,
   Toggle,
 
   Grid,
