@@ -23,10 +23,17 @@ export default {
     size: VueTypes.oneOf(SIZES),
     disabled: VueTypes.bool.def(false),
     placeholder: VueTypes.string,
+
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
     componentClass: VueTypes.oneOfType([VueTypes.string, VueTypes.object]).def(
       'input'
     ),
+
+    // @change
+    // @focus
+    // @blur
+    // @pressEnter
+    // @keydown
   },
 
   data() {

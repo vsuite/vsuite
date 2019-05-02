@@ -12,7 +12,10 @@ export default {
     size: VueTypes.oneOf(SIZES),
     inside: VueTypes.bool.def(false),
     disabled: VueTypes.bool.def(false),
+
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
+
+    // slot
   },
 
   data() {

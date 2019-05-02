@@ -8,6 +8,7 @@ export default {
 
   props: {
     disabled: VueTypes.bool.def(false),
+
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
   },
 

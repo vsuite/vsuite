@@ -53,7 +53,13 @@ export default {
       'subtle',
       'ghost',
     ]).def('subtle'),
+
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
+
+    // @change
+    // @focus
+    // @blur
+    // @wheel
   },
 
   data() {
@@ -100,6 +106,7 @@ export default {
       {
         splitProps: {
           type: 'text',
+          autocomplete: 'off',
           ...this.$attrs,
           step: this.step,
           value: _.isNil(this.currentVal) ? '' : this.currentVal,
