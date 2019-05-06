@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input demo renders basic demo correctly 1`] = `<input type="text" placeholder="Default Input" class="vs-input" style="width: 300px;">`;
+
+exports[`Input demo renders controlled demo correctly 1`] = `<div><input type="text" placeholder="" class="vs-input" style="width: 300px; margin-bottom: 10px;"> <input type="text" placeholder="Default Input" class="vs-input" style="width: 300px; margin-bottom: 10px;"></div>`;
+
+exports[`Input demo renders disabled demo correctly 1`] = `
+<div><input type="text" disabled="disabled" placeholder="" class="vs-input" style="width: 300px; margin-bottom: 10px;">
+  <div class="vs-input-group vs-input-group-disabled" style="width: 300px; margin-bottom: 10px;"><input type="text" disabled="disabled" placeholder="" class="vs-input"> <span disabled="disabled" class="vs-input-group-addon"><i class="vs-icon vs-icon-search"></i></span></div>
+</div>
+`;
+
+exports[`Input demo renders initial demo correctly 1`] = `<input type="text" placeholder="Default Input" class="vs-input" style="width: 300px;">`;
+
+exports[`Input demo renders input-group demo correctly 1`] = `
+<div>
+  <div class="vs-input-group" style="width: 300px; margin-bottom: 10px;"><span class="vs-input-group-addon"> @</span> <input type="text" placeholder="" class="vs-input"></div>
+  <div class="vs-input-group" style="width: 300px; margin-bottom: 10px;"><input type="text" placeholder="" class="vs-input"> <span class="vs-input-group-addon">.com</span></div>
+  <div class="vs-input-group" style="width: 300px; margin-bottom: 10px;"><span class="vs-input-group-addon">$</span>
+    <div class="vs-input-group vs-input-number"><input type="text" placeholder="" autocomplete="off" step="1" class="vs-input"><span class="vs-input-number-btn-group-vertical"><button type="button" class="vs-btn vs-btn-subtle vs-input-number-touchspin-up"><i class="vs-icon vs-icon-arrow-up-line"></i><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button><button type="button" class="vs-btn vs-btn-subtle vs-input-number-touchspin-down"><i class="vs-icon vs-icon-arrow-down-line"></i><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button>
+    </span></div> <span class="vs-input-group-addon">.00</span>
+</div>
+<div class="vs-input-group" style="width: 300px; margin-bottom: 10px;"><input type="text" placeholder="" class="vs-input"> <span class="vs-input-group-addon">to</span> <input type="text" placeholder="" class="vs-input"></div>
+<div class="vs-input-group" style="width: 300px; margin-bottom: 10px;"><input type="text" placeholder="" class="vs-input"> <span class="vs-input-group-addon"><i class="vs-icon vs-icon-search"></i></span></div>
+<div class="vs-input-group" style="width: 300px; margin-bottom: 10px;"><span class="vs-input-group-addon"><i class="vs-icon vs-icon-avatar"></i></span> <input type="text" placeholder="" class="vs-input"></div>
+</div>
+`;
+
+exports[`Input demo renders input-group-button demo correctly 1`] = `
+<div>
+  <div class="vs-input-group" style="width: 300px; margin-bottom: 10px;"><input type="text" placeholder="" class="vs-input"> <a class="vs-btn vs-btn-default vs-input-group-btn"><i class="vs-icon vs-icon-search"></i><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></div>
+  <div class="vs-input-group vs-input-group-inside" style="width: 300px; margin-bottom: 10px;"><input type="text" placeholder="" class="vs-input"> <a class="vs-btn vs-btn-default vs-input-group-btn"><i class="vs-icon vs-icon-search"></i><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></div>
+</div>
+`;
+
+exports[`Input demo renders input-group-inside demo correctly 1`] = `
+<div>
+  <div class="vs-input-group vs-input-group-inside" style="width: 300px; margin-bottom: 10px;"><input type="text" placeholder="" class="vs-input"> <a class="vs-btn vs-btn-default vs-input-group-btn"><i class="vs-icon vs-icon-search"></i><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></div>
+  <div class="vs-input-group vs-input-group-inside" style="width: 300px; margin-bottom: 10px;"><input type="text" placeholder="" class="vs-input"> <span class="vs-input-group-addon"><i class="vs-icon vs-icon-search"></i></span></div>
+  <div class="vs-input-group vs-input-group-inside" style="width: 300px; margin-bottom: 10px;"><span class="vs-input-group-addon">$</span> <input type="text" placeholder="" class="vs-input"> <span class="vs-input-group-addon">.00</span></div>
+  <div class="vs-input-group vs-input-group-inside" style="width: 300px; margin-bottom: 10px;"><span class="vs-input-group-addon"><i class="vs-icon vs-icon-avatar"></i></span> <input type="text" placeholder="" class="vs-input"></div>
+</div>
+`;
+
+exports[`Input demo renders size demo correctly 1`] = `
+<div class="vs-row">
+  <div class="vs-col-xs-24 vs-col-sm-12 vs-col-md-8"><input type="text" placeholder="Large" class="vs-input vs-input-lg" style="margin-bottom: 10px;"> <input type="text" placeholder="Medium" class="vs-input vs-input-md" style="margin-bottom: 10px;"> <input type="text" placeholder="Small" class="vs-input vs-input-sm" style="margin-bottom: 10px;"> <input type="text" placeholder="XSmall" class="vs-input vs-input-xs" style="margin-bottom: 10px;"></div>
+  <div class="vs-col-xs-24 vs-col-sm-12 vs-col-md-8">
+    <div class="vs-input-group vs-input-group-lg" style="margin-bottom: 10px;"><input type="text" placeholder="Large" class="vs-input"> <span class="vs-input-group-addon"><i class="vs-icon vs-icon-search"></i></span></div>
+    <div class="vs-input-group vs-input-group-md" style="margin-bottom: 10px;"><input type="text" placeholder="Medium" class="vs-input"> <span class="vs-input-group-addon"><i class="vs-icon vs-icon-search"></i></span></div>
+    <div class="vs-input-group vs-input-group-sm" style="margin-bottom: 10px;"><input type="text" placeholder="Small" class="vs-input"> <span class="vs-input-group-addon"><i class="vs-icon vs-icon-search"></i></span></div>
+    <div class="vs-input-group vs-input-group-xs" style="margin-bottom: 10px;"><input type="text" placeholder="XSmall" class="vs-input"> <span class="vs-input-group-addon"><i class="vs-icon vs-icon-search"></i></span></div>
+  </div>
+  <div class="vs-col-xs-24 vs-col-sm-12 vs-col-md-8">
+    <div class="vs-input-group vs-input-group-lg vs-input-group-inside" style="margin-bottom: 10px;"><input type="text" placeholder="Large" class="vs-input"> <a class="vs-btn vs-btn-default vs-input-group-btn"><i class="vs-icon vs-icon-search"></i><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></div>
+    <div class="vs-input-group vs-input-group-md vs-input-group-inside" style="margin-bottom: 10px;"><input type="text" placeholder="Medium" class="vs-input"> <a class="vs-btn vs-btn-default vs-input-group-btn"><i class="vs-icon vs-icon-search"></i><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></div>
+    <div class="vs-input-group vs-input-group-sm vs-input-group-inside" style="margin-bottom: 10px;"><input type="text" placeholder="Small" class="vs-input"> <a class="vs-btn vs-btn-default vs-input-group-btn"><i class="vs-icon vs-icon-search"></i><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></div>
+    <div class="vs-input-group vs-input-group-xs vs-input-group-inside" style="margin-bottom: 10px;"><input type="text" placeholder="XSmall" class="vs-input"> <a class="vs-btn vs-btn-default vs-input-group-btn"><i class="vs-icon vs-icon-search"></i><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></div>
+  </div>
+</div>
+`;
+
+exports[`Input demo renders textarea demo correctly 1`] = `
+<div><textarea type="text" placeholder="Textarea" rows="3" class="vs-input" style="width: 300px;"></textarea>
+  <hr> <textarea type="text" placeholder="resize: 'vertical'" rows="3" class="vs-input" style="width: 300px; resize: vertical;"></textarea></div>
+`;
+
+exports[`Input demo renders tooltip demo correctly 1`] = `
+<div class="vs-tooltip">
+  <div class="vs-tooltip-rel"><input type="text" placeholder="Default Input" class="vs-input" style="width: 300px;"></div>
+  <div data-transfer="false" class="vs-tooltip-popper v-transfer-dom" style="display: none;" appear="true" enteractiveclass="animated in" leaveactiveclass="animated fade">
+    <div class="vs-tooltip-arrow"></div>
+    <div class="vs-tooltip-inner" style="max-width: 250px;">Required</div>
+  </div>
+</div>
+`;

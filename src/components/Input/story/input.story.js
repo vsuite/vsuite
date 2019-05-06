@@ -4,16 +4,17 @@ import Input from 'components/Input';
 import InputGroup from 'components/InputGroup';
 import Icon from 'components/Icon';
 import Grid from 'components/Grid';
+import Tooltip from 'components/Tooltip';
 import Demo from 'stories/demo';
 
 const stories = storiesOf('Data Entry|Input', module);
 const Row = Grid.Row;
 const Col = Grid.Col;
 
-stories.add('default', () => ({
+stories.add('basic', () => ({
   render() {
     return (
-      <Demo title="Default">
+      <Demo title="Basic">
         <Input style={{ width: '300px' }} placeholder="Default Input" />
       </Demo>
     );
@@ -58,7 +59,7 @@ stories.add('size', () => ({
             <Input
               style={{ marginBottom: '10px' }}
               size="xs"
-              placeholder="Xsmall"
+              placeholder="XSmall"
             />
           </Col>
           <Col xs={24} sm={12} md={8}>
@@ -81,7 +82,7 @@ stories.add('size', () => ({
               </InputGroup.Addon>
             </InputGroup>
             <InputGroup style={{ marginBottom: '10px' }} size="xs">
-              <Input placeholder="Xsmall" />
+              <Input placeholder="XSmall" />
               <InputGroup.Addon>
                 <Icon icon="search" />
               </InputGroup.Addon>
@@ -107,7 +108,7 @@ stories.add('size', () => ({
               </InputGroup.Button>
             </InputGroup>
             <InputGroup inside style={{ marginBottom: '10px' }} size="xs">
-              <Input placeholder="Xsmall" />
+              <Input placeholder="XSmall" />
               <InputGroup.Button>
                 <Icon icon="search" />
               </InputGroup.Button>
@@ -135,8 +136,8 @@ stories.add('textarea', () => ({
         <Input
           componentClass="textarea"
           rows={3}
-          style={{ width: '300px', resize: 'auto' }}
-          placeholder="resize: 'auto'"
+          style={{ width: '300px', resize: 'vertical' }}
+          placeholder="resize: 'vertical'"
         />
       </Demo>
     );
@@ -160,9 +161,9 @@ stories.add('disabled', () => ({
   },
 }));
 
-stories.add('control', () => ({
+stories.add('controlled', () => ({
   data() {
-    return { value: 'I am controlled' };
+    return { value: 'You can change me' };
   },
 
   render() {
@@ -170,13 +171,32 @@ stories.add('control', () => ({
       <Demo title="Control">
         <Input
           style={{ width: '300px', marginBottom: '10px' }}
-          placeholder="I am not controlled"
+          value="You cannot change me!"
         />
         <Input
           style={{ width: '300px' }}
           value={this.value}
           placeholder="Default Input"
+          onChange={this._handleChange}
         />
+      </Demo>
+    );
+  },
+
+  methods: {
+    _handleChange(value) {
+      this.value = value;
+    },
+  },
+}));
+
+stories.add('tooltip', () => ({
+  render() {
+    return (
+      <Demo title="Tooltip">
+        <Tooltip placement="right" trigger="focus" title="Required">
+          <Input style="width: 300px" placeholder="Default Input" />
+        </Tooltip>
       </Demo>
     );
   },
