@@ -23,6 +23,7 @@ import Radio from 'components/Radio';
 import Input from 'components/Input';
 import InputGroup from 'components/InputGroup';
 import InputNumber from 'components/InputNumber';
+import AutoComplete from 'components/AutoComplete';
 import Toggle from 'components/Toggle';
 
 // Layout
@@ -75,6 +76,7 @@ export const components = {
   Input,
   InputGroup,
   InputNumber,
+  AutoComplete,
   Toggle,
 
   Grid,

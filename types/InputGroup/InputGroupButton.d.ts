@@ -1,3 +1,3 @@
-import { VComponent } from '../component';
+import { Button } from '../Button/Button';
 
-export declare class InputGroupButton extends VComponent {}
+export declare class InputGroupButton extends Button {}

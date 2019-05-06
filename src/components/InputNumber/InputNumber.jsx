@@ -2,6 +2,7 @@ import VueTypes from 'vue-types';
 import _ from 'lodash';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
 import { splitDataByComponent } from 'utils/split';
+import renderX, { RenderX } from 'utils/render';
 import { SIZES } from 'utils/constant';
 
 import InputGroup from 'components/InputGroup';
@@ -42,8 +43,8 @@ export default {
     step: VueTypes.number.def(1),
     value: VueTypes.oneOfType([VueTypes.string, VueTypes.number]),
     defaultValue: VueTypes.oneOfType([VueTypes.string, VueTypes.number]),
-    prefix: VueTypes.string, // prefix
-    postfix: VueTypes.string, // postfix
+    prefix: RenderX,
+    postfix: RenderX,
     disabled: VueTypes.bool.def(false),
     size: VueTypes.oneOf(SIZES),
     buttonAppearance: VueTypes.oneOf([
@@ -55,6 +56,9 @@ export default {
     ]).def('subtle'),
 
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
+
+    // slot-prefix
+    // slot-postfix
 
     // @change
     // @focus
@@ -90,7 +94,7 @@ export default {
     },
   },
 
-  render() {
+  render(h) {
     const iptGroupData = splitDataByComponent(
       {
         class: this.classPrefix,
@@ -126,7 +130,9 @@ export default {
     return (
       <InputGroup {...iptGroupData}>
         {this.$slots.prefix ||
-          (this.prefix && <InputGroup.Addon>{this.prefix}</InputGroup.Addon>)}
+          (this.prefix && (
+            <InputGroup.Addon>{renderX(h, this.prefix)}</InputGroup.Addon>
+          ))}
 
         <Input {...iptData} />
 
@@ -149,7 +155,9 @@ export default {
           </Button>
         </span>
         {this.$slots.postfix ||
-          (this.postfix && <InputGroup.Addon>{this.postfix}</InputGroup.Addon>)}
+          (this.postfix && (
+            <InputGroup.Addon>{renderX(h, this.postfix)}</InputGroup.Addon>
+          ))}
       </InputGroup>
     );
   },
