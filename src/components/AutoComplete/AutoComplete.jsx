@@ -6,6 +6,7 @@ import prefix, { defaultClassPrefix, globalKey } from 'utils/prefix';
 import { splitDataByComponent } from 'utils/split';
 import { findComponentUpward } from 'utils/find';
 
+import { Fade } from 'components/Animation';
 import { PickerMenuWrapper } from 'components/_picker';
 
 import AutoCompleteItem from './AutoCompleteItem.jsx';
@@ -26,7 +27,7 @@ export default {
     data: VueTypes.arrayOf(
       VueTypes.oneOfType([
         VueTypes.string,
-        VueTypes.shape({ label: VueTypes.any, value: VueTypes.any }),
+        VueTypes.shape({ label: VueTypes.any, value: VueTypes.any }).loose,
       ])
     ).def([]),
     value: VueTypes.string.def(() => undefined),
@@ -42,12 +43,17 @@ export default {
     },
     disabled: VueTypes.bool.def(false),
     selectOnEnter: VueTypes.bool,
-    menuClassName: VueTypes.string,
     renderItem: Function,
+
+    menuClassName: VueTypes.string,
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
 
-    // select
-    // menuFocus
+    // @change
+    // @select
+    // @blur
+    // @focus
+    // @keydown
+    // @menuFocus
   },
 
   data() {
@@ -129,9 +135,7 @@ export default {
         },
         { name: 'transfer-dom' },
       ],
-      attrs: {
-        'data-transfer': `${this.transfer}`,
-      },
+      attrs: { 'data-transfer': `${this.transfer}` },
       ref: 'popper',
     };
     const iptData = splitDataByComponent(
@@ -160,9 +164,7 @@ export default {
         <div {...referenceData}>
           <input {...iptData} />
         </div>
-        <transition name="picker-fade">
-          {this._renderDropdownMenu(h, popperData)}
-        </transition>
+        <Fade>{this._renderDropdownMenu(h, popperData)}</Fade>
       </div>
     );
   },

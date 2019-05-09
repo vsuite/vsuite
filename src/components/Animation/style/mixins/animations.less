@@ -1,5 +1,5 @@
-.animation-common(@timing) {
-  animation-duration: 0.3s;
+.animation-common(@timing, @duration: 0.3s) {
+  animation-duration: @duration;
   animation-timing-function: @timing;
   animation-fill-mode: forwards;
 }
