@@ -1,35 +1,44 @@
-function onMenuKeydown(event, events) {
-  const { down, up, right, left, enter, del, esc } = events;
-  const keyCode = event.keyCode;
+function onMenuKeyDown(event, events) {
+  const { up, right, down, left, enter, del, esc } = events;
 
-  if (keyCode === 40) {
+  switch (event.keyCode) {
     // down
-    down && down(event);
-    event.preventDefault();
-  } else if (keyCode === 38) {
-    // up
-    up && up(event);
-    event.preventDefault();
-  } else if (keyCode === 39) {
+    case 40:
+      down && down(event);
+      event.preventDefault();
+      break;
     // right
-    right && right(event);
-    event.preventDefault();
-  } else if (keyCode === 37) {
+    case 39:
+      right && right(event);
+      event.preventDefault();
+      break;
+    // up
+    case 38:
+      up && up(event);
+      event.preventDefault();
+      break;
     // left
-    left && left(event);
-    event.preventDefault();
-  } else if (keyCode === 13) {
+    case 37:
+      left && left(event);
+      event.preventDefault();
+      break;
     // enter
-    enter && enter(event);
-    event.preventDefault();
-  } else if (keyCode === 8) {
+    case 13:
+      enter && enter(event);
+      event.preventDefault();
+      break;
     // delete
-    del && del(event);
-  } else if (keyCode === 27 || keyCode === 9) {
+    case 8:
+      del && del(event);
+      break;
     // esc | tab
-    esc && esc(event);
-    event.preventDefault();
+    case 27:
+    case 9:
+      esc && esc(event);
+      event.preventDefault();
+      break;
+    default:
   }
 }
 
-export default onMenuKeydown;
+export default onMenuKeyDown;

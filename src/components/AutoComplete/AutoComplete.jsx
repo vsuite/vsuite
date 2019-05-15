@@ -2,10 +2,11 @@ import VueTypes from 'vue-types';
 import _ from 'lodash';
 import popperMixin from 'mixins/popper';
 import onMenuKeydown from 'utils/onMenuKeydown';
-import prefix, { defaultClassPrefix, globalKey } from 'utils/prefix';
+import prefix, { defaultClassPrefix } from 'utils/prefix';
 import { splitDataByComponent } from 'utils/split';
 import { findComponentUpward } from 'utils/find';
 
+import Input from 'components/Input';
 import { Fade } from 'components/Animation';
 import { PickerMenuWrapper } from 'components/_picker';
 
@@ -30,7 +31,7 @@ export default {
         VueTypes.shape({ label: VueTypes.any, value: VueTypes.any }).loose,
       ])
     ).def([]),
-    value: VueTypes.string.def(() => undefined),
+    value: VueTypes.string.def(() => {}),
     defaultValue: VueTypes.string,
     /* eslint-disable vue/require-prop-types */
     placement: {
@@ -43,10 +44,13 @@ export default {
     },
     disabled: VueTypes.bool.def(false),
     selectOnEnter: VueTypes.bool,
+    showOnEmpty: VueTypes.bool.def(false),
     renderItem: Function,
 
     menuClassName: VueTypes.string,
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
+
+    // slot-scope-item
 
     // @change
     // @select
@@ -69,9 +73,7 @@ export default {
     classes() {
       return [
         this.classPrefix,
-        {
-          [this._addPrefix('disabled')]: this.disabled,
-        },
+        { [this._addPrefix('disabled')]: this.disabled },
       ];
     },
 
@@ -104,7 +106,7 @@ export default {
         const value = this.currentVal || '';
 
         if (!_.trim(value)) {
-          return false;
+          return this.showOnEmpty;
         }
 
         const keyword = value.toLocaleLowerCase();
@@ -118,16 +120,13 @@ export default {
     const acData = {
       class: this.classes,
       directives: [{ name: 'click-outside', value: this._handleClickOutside }],
-      on: {},
     };
     const referenceData = {
       class: this._addPrefix('rel'),
-      on: {},
       ref: 'reference',
     };
     const popperData = {
       class: this.popperClasses,
-      style: {},
       directives: [
         {
           name: 'show',
@@ -140,19 +139,18 @@ export default {
     };
     const iptData = splitDataByComponent(
       {
-        class: `${globalKey}input`,
         splitProps: {
           ...this.$attrs,
           disabled: this.disabled,
           value: this.currentVal,
         },
         on: {
-          input: this._handleInputChange,
+          change: this._handleInputChange,
           blur: this._handleBlur,
           keydown: this._handleInputKeydown,
         },
       },
-      'input'
+      Input
     );
 
     if (!this.disabled) {
@@ -162,7 +160,7 @@ export default {
     return (
       <div {...acData}>
         <div {...referenceData}>
-          <input {...iptData} />
+          <Input {...iptData} />
         </div>
         <Fade>{this._renderDropdownMenu(h, popperData)}</Fade>
       </div>
@@ -201,14 +199,6 @@ export default {
       }
     },
 
-    _resetVal(event) {
-      this.$nextTick(() => {
-        if (event.target.value === this.currentVal) return;
-
-        event.target.value = this.currentVal;
-      });
-    },
-
     _handleItemClick(item, event) {
       const value = item.value;
 
@@ -218,15 +208,13 @@ export default {
       this.$emit('select', item, event);
     },
 
-    _handleInputChange(event) {
-      const value = event.target.value;
-
+    _handleInputChange(value, event) {
       this._openPopper();
       this._setVal(value, event);
-      this._resetVal(event);
     },
 
     _handleBlur(event) {
+      this._closePopper();
       this.$emit('blur', event);
 
       if (findComponentUpward(this, 'FormItem', false)) {

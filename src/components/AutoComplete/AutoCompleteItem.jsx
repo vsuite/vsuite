@@ -10,37 +10,29 @@ export default {
     focus: VueTypes.bool.def(false),
     itemData: VueTypes.shape({ label: VueTypes.any, value: VueTypes.any }),
     renderItem: Function,
+
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
+
+    // slot
+
+    // @select
+    // @keydown
   },
 
   computed: {
     classes() {
-      return [
-        this.classPrefix,
-        {
-          [this._addPrefix('focus')]: this.focus,
-        },
-      ];
+      return [this.classPrefix, { [this._addPrefix('focus')]: this.focus }];
     },
   },
 
   render(h) {
     const liProps = {
-      attrs: {
-        ...this.$attrs,
-        role: 'menuitem',
-      },
+      attrs: { ...this.$attrs, role: 'menuitem' },
     };
     const aProps = {
       class: this.classes,
-      attrs: {
-        tabindex: -1,
-        role: 'button',
-      },
-      on: {
-        ...this.$listeners,
-        click: this._handleClick,
-      },
+      attrs: { tabindex: -1, role: 'button' },
+      on: { ...this.$listeners, click: this._handleClick },
     };
 
     return (

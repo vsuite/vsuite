@@ -20,6 +20,7 @@ stories.add('default', () => ({
             'HYPER Ad Serving',
             'HYPER Data Discovery',
           ]}
+          showOnEmpty
         />
       </Demo>
     );

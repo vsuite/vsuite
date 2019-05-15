@@ -58,7 +58,7 @@ export default {
     toggleComponentClass: VueTypes.oneOfType([
       VueTypes.string,
       VueTypes.object,
-    ]).def(() => undefined),
+    ]).def(() => {}),
     componentClass: VueTypes.oneOfType([VueTypes.string, VueTypes.object]).def(
       'div'
     ),
