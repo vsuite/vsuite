@@ -73,7 +73,7 @@ exports[`Modal demo renders size demo correctly 1`] = `
 exports[`Modal demo renders visible demo correctly 1`] = `
 <div>
   <div data-transfer="false" role="dialog" class="vs-modal-wrapper v-transfer-dom" style="">
-    <div role="button" tabindex="-1" class="vs-modal-backdrop" appear="true" name="fade"></div>
+    <div role="button" tabindex="-1" class="vs-modal-backdrop"></div>
     <div role="document" tabindex="-1" class="vs-modal vs-modal-sm" appear="true" type="animation" enteractiveclass="bounce-in" leaveactiveclass="bounce-out" style="padding-right: 0px; padding-left: 0px;">
       <div class="vs-modal-dialog">
         <div role="document" class="vs-modal-content">

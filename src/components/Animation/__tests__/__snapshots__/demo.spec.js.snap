@@ -23,7 +23,7 @@ exports[`Animation demo renders collapse demo correctly 1`] = `
 exports[`Animation demo renders fade demo correctly 1`] = `
 <div><button type="button" class="vs-btn vs-btn-default">toggle<span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button>
   <hr>
-  <div style="background: rgb(0, 0, 0); width: 100px; height: 160px; overflow: hidden;" appear="true" name="fade">
+  <div style="background: rgb(0, 0, 0); width: 100px; height: 160px; overflow: hidden;">
     <p>Panel</p>
     <p>Content Content Content</p>
   </div>

@@ -15,7 +15,7 @@ exports[`Navbar demo renders appearance demo correctly 1`] = `
           <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">News</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
           <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">Products</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
           <li role="menu" class="vs-dropdown vs-dropdown-placement-bottom-start">
-            <ul data-transfer="false" role="menu" class="vs-dropdown-menu v-transfer-dom" style="display: none;" appear="true" name="fade">
+            <ul data-transfer="false" role="menu" class="vs-dropdown-menu v-transfer-dom" style="display: none;">
               <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Company</a></li>
               <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Team</a></li>
               <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Contact</a></li>
@@ -41,7 +41,7 @@ exports[`Navbar demo renders appearance demo correctly 1`] = `
           <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">News</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
           <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">Products</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
           <li role="menu" class="vs-dropdown vs-dropdown-placement-bottom-start">
-            <ul data-transfer="false" role="menu" class="vs-dropdown-menu v-transfer-dom" style="display: none;" appear="true" name="fade">
+            <ul data-transfer="false" role="menu" class="vs-dropdown-menu v-transfer-dom" style="display: none;">
               <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Company</a></li>
               <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Team</a></li>
               <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Contact</a></li>
@@ -67,7 +67,7 @@ exports[`Navbar demo renders appearance demo correctly 1`] = `
           <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">News</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
           <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">Products</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
           <li role="menu" class="vs-dropdown vs-dropdown-placement-bottom-start">
-            <ul data-transfer="false" role="menu" class="vs-dropdown-menu v-transfer-dom" style="display: none;" appear="true" name="fade">
+            <ul data-transfer="false" role="menu" class="vs-dropdown-menu v-transfer-dom" style="display: none;">
               <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Company</a></li>
               <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Team</a></li>
               <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Contact</a></li>
@@ -97,7 +97,7 @@ exports[`Navbar demo renders basic demo correctly 1`] = `
         <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">News</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
         <li role="presentation" class="vs-nav-item"><a role="button" tabindex="0" href="" class="vs-nav-item-content"><span class="vs-nav-item-text">Products</span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a></li>
         <li role="menu" class="vs-dropdown vs-dropdown-placement-bottom-start">
-          <ul data-transfer="false" role="menu" class="vs-dropdown-menu v-transfer-dom" style="display: none;" appear="true" name="fade">
+          <ul data-transfer="false" role="menu" class="vs-dropdown-menu v-transfer-dom" style="display: none;">
             <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Company</a></li>
             <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Team</a></li>
             <li role="presentation" class="vs-dropdown-item"><a role="" tabindex="-1" href="" class="vs-dropdown-item-content">Contact</a></li>

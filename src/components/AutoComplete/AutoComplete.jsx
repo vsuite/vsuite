@@ -121,10 +121,6 @@ export default {
       class: this.classes,
       directives: [{ name: 'click-outside', value: this._handleClickOutside }],
     };
-    const referenceData = {
-      class: this._addPrefix('rel'),
-      ref: 'reference',
-    };
     const popperData = {
       class: this.popperClasses,
       directives: [
@@ -149,19 +145,18 @@ export default {
           blur: this._handleBlur,
           keydown: this._handleInputKeydown,
         },
+        ref: 'reference',
       },
       Input
     );
 
     if (!this.disabled) {
-      this._addTriggerListeners(referenceData, acData);
+      this._addTriggerListeners(iptData, acData);
     }
 
     return (
       <div {...acData}>
-        <div {...referenceData}>
-          <Input {...iptData} />
-        </div>
+        <Input {...iptData} />
         <Fade>{this._renderDropdownMenu(h, popperData)}</Fade>
       </div>
     );

@@ -1,0 +1,80 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AutoComplete demo renders basic demo correctly 1`] = `
+<div class="vs-auto-complete"><input type="text" placeholder="" class="vs-input">
+  <div data-transfer="false" class="vs-picker-menu vs-auto-complete-menu v-transfer-dom" style="display: none;">
+    <ul role="menu">
+      <li role="menuitem"><a tabindex="-1" role="button" class="vs-auto-complete-item">HYPER Advertiser</a></li>
+      <li role="menuitem"><a tabindex="-1" role="button" class="vs-auto-complete-item">HYPER Web Analytics</a></li>
+      <li role="menuitem"><a tabindex="-1" role="button" class="vs-auto-complete-item">HYPER Video Analytics</a></li>
+      <li role="menuitem"><a tabindex="-1" role="button" class="vs-auto-complete-item">HYPER DMP</a></li>
+      <li role="menuitem"><a tabindex="-1" role="button" class="vs-auto-complete-item">HYPER Ad Serving</a></li>
+      <li role="menuitem"><a tabindex="-1" role="button" class="vs-auto-complete-item">HYPER Data Discovery</a></li>
+    </ul>
+  </div>
+</div>
+`;
+
+exports[`AutoComplete demo renders controlled demo correctly 1`] = `
+<div class="vs-auto-complete"><input type="text" placeholder="" class="vs-input">
+  <div data-transfer="false" class="vs-picker-menu vs-auto-complete-menu v-transfer-dom">
+    <ul role="menu">
+      <li role="menuitem"><a tabindex="-1" role="button" class="vs-auto-complete-item">HYPER Advertiser</a></li>
+      <li role="menuitem"><a tabindex="-1" role="button" class="vs-auto-complete-item">HYPER Web Analytics</a></li>
+      <li role="menuitem"><a tabindex="-1" role="button" class="vs-auto-complete-item">HYPER Video Analytics</a></li>
+      <li role="menuitem"><a tabindex="-1" role="button" class="vs-auto-complete-item">HYPER DMP</a></li>
+      <li role="menuitem"><a tabindex="-1" role="button" class="vs-auto-complete-item">HYPER Ad Serving</a></li>
+      <li role="menuitem"><a tabindex="-1" role="button" class="vs-auto-complete-item">HYPER Data Discovery</a></li>
+    </ul>
+  </div>
+</div>
+`;
+
+exports[`AutoComplete demo renders disabled demo correctly 1`] = `
+<div class="vs-auto-complete vs-auto-complete-disabled"><input type="text" disabled="disabled" placeholder="" class="vs-input">
+  <div data-transfer="false" class="vs-picker-menu vs-auto-complete-menu v-transfer-dom" style="display: none;">
+    <ul role="menu"></ul>
+  </div>
+</div>
+`;
+
+exports[`AutoComplete demo renders email demo correctly 1`] = `
+<div class="vs-auto-complete" placeholder="Email"><input type="text" placeholder="Email" class="vs-input">
+  <div data-transfer="false" class="vs-picker-menu vs-auto-complete-menu v-transfer-dom" style="display: none;">
+    <ul role="menu"></ul>
+  </div>
+</div>
+`;
+
+exports[`AutoComplete demo renders input-group demo correctly 1`] = `
+<div>
+  <div class="vs-input-group" style="width: 300px; margin-bottom: 10px;">
+    <div class="vs-auto-complete"><input type="text" placeholder="" class="vs-input">
+      <!---->
+    </div> <a class="vs-btn vs-btn-default vs-input-group-btn"><i class="vs-icon vs-icon-search"></i><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a>
+  </div>
+  <div class="vs-input-group vs-input-group-inside" style="width: 300px; margin-bottom: 10px;">
+    <div class="vs-auto-complete"><input type="text" placeholder="" class="vs-input">
+      <!---->
+    </div> <a class="vs-btn vs-btn-default vs-input-group-btn"><i class="vs-icon vs-icon-search"></i><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></a>
+  </div>
+  <div class="vs-input-group vs-input-group-inside" style="width: 300px; margin-bottom: 10px;">
+    <div class="vs-auto-complete"><input type="text" placeholder="" class="vs-input">
+      <!---->
+    </div> <span class="vs-input-group-addon"><i class="vs-icon vs-icon-search"></i></span>
+  </div>
+  <div class="vs-input-group vs-input-group-inside" style="width: 300px; margin-bottom: 10px;"><span class="vs-input-group-addon"><i class="vs-icon vs-icon-search"></i></span>
+    <div class="vs-auto-complete"><input type="text" placeholder="" class="vs-input">
+      <!---->
+    </div>
+  </div>
+</div>
+`;
+
+exports[`AutoComplete demo renders render-item demo correctly 1`] = `
+<div class="vs-auto-complete"><input type="text" placeholder="" class="vs-input">
+  <div data-transfer="false" class="vs-picker-menu vs-auto-complete-menu v-transfer-dom" style="display: none;">
+    <ul role="menu"></ul>
+  </div>
+</div>
+`;
