@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Toggle demo renders basic demo correctly 1`] = `<div><span role="button" tabindex="-1" class="vs-btn-toggle" style="margin-bottom: 8px;"><span class="vs-btn-toggle-inner"></span></span> <span role="button" tabindex="-1" class="vs-btn-toggle vs-btn-toggle-checked" style="margin-bottom: 8px;"><span class="vs-btn-toggle-inner"></span></span></div>`;
+
+exports[`Toggle demo renders controlled demo correctly 1`] = `<span role="button" tabindex="-1" class="vs-btn-toggle vs-btn-toggle-checked"><span class="vs-btn-toggle-inner"></span></span>`;
+
+exports[`Toggle demo renders disabled demo correctly 1`] = `<span role="button" tabindex="-1" class="vs-btn-toggle vs-btn-toggle-disabled"><span class="vs-btn-toggle-inner"></span></span>`;
+
+exports[`Toggle demo renders inner demo correctly 1`] = `<div><span role="button" tabindex="-1" class="vs-btn-toggle vs-btn-toggle-lg" style="margin-right: 8px;"><span class="vs-btn-toggle-inner">关闭</span></span> <span role="button" tabindex="-1" class="vs-btn-toggle" style="margin-right: 8px;"><span class="vs-btn-toggle-inner"><i class="vs-icon vs-icon-close"></i></span></span></div>`;
+
+exports[`Toggle demo renders size demo correctly 1`] = `<div><span role="button" tabindex="-1" class="vs-btn-toggle vs-btn-toggle-lg" style="margin-bottom: 8px;"><span class="vs-btn-toggle-inner"></span></span> <span role="button" tabindex="-1" class="vs-btn-toggle vs-btn-toggle-md" style="margin-bottom: 8px;"><span class="vs-btn-toggle-inner"></span></span> <span role="button" tabindex="-1" class="vs-btn-toggle vs-btn-toggle-sm" style="margin-bottom: 8px;"><span class="vs-btn-toggle-inner"></span></span></div>`;

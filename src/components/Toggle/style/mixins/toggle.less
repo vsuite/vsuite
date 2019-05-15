@@ -1,11 +1,11 @@
 @import '~styles/common';
 
-.toggle-size-variant(@toogle-height,@min-width,@toggle-handle-gap,@toggle-inner-margin,@toggle-inner-font-size) {
-  @handle-diameter: @toogle-height - @toggle-handle-gap*2;
+.toggle-size-variant(@toggle-height,@min-width,@toggle-handle-gap,@toggle-inner-margin,@toggle-inner-font-size) {
+  @handle-diameter: @toggle-height - @toggle-handle-gap*2;
 
-  height: @toogle-height;
+  height: @toggle-height;
   min-width: @min-width;
-  border-radius: @toogle-height / 2;
+  border-radius: @toggle-height / 2;
 
   &::after {
     width: @handle-diameter;
@@ -20,10 +20,10 @@
   }
 
   .@{ns}btn-toggle-inner {
-    margin-left: @toogle-height;
+    margin-left: @toggle-height;
     margin-right: @toggle-inner-margin;
-    height: @toogle-height;
-    line-height: unit(@toogle-height / @toggle-inner-font-size);
+    height: @toggle-height;
+    line-height: unit(@toggle-height / @toggle-inner-font-size);
     font-size: @toggle-inner-font-size;
   }
 
@@ -39,7 +39,7 @@
     }
 
     .@{ns}btn-toggle-inner {
-      margin-right: @toogle-height;
+      margin-right: @toggle-height;
       margin-left: @toggle-inner-margin;
     }
   }

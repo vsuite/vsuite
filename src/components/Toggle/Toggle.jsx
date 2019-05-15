@@ -3,6 +3,7 @@ import _ from 'lodash';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
 import { findComponentUpward } from 'utils/find';
 import { SIZES } from 'utils/constant';
+import renderX, { RenderX } from 'utils/render';
 
 const CLASS_PREFIX = 'btn-toggle';
 
@@ -25,8 +26,8 @@ export default {
     },
     disabled: VueTypes.bool.def(false),
     size: VueTypes.oneOf(SIZES),
-    open: VueTypes.string,
-    close: VueTypes.string,
+    open: RenderX,
+    close: RenderX,
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
   },
 
@@ -55,24 +56,19 @@ export default {
     },
   },
 
-  render() {
+  render(h) {
     const toggleData = {
       class: this.classes,
-      attrs: {
-        role: 'button',
-        tabindex: -1,
-      },
-      on: {
-        click: this._handleClick,
-      },
+      attrs: { role: 'button', tabindex: -1 },
+      on: { click: this._handleClick },
     };
 
     return (
       <span {...toggleData}>
         <span class={this._addPrefix('inner')}>
           {this.currentChecked
-            ? this.$slots.open || this.open
-            : this.$slots.close || this.close}
+            ? this.$slots.open || renderX(h, this.open)
+            : this.$slots.close || renderX(h, this.close)}
         </span>
       </span>
     );
