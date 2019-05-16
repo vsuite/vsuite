@@ -3,8 +3,6 @@ import _ from 'lodash';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
 import { splitDataByComponent } from 'utils/split';
 
-import AutosizeInput from 'components/AutosizeInput';
-
 const CLASS_PREFIX = 'picker-search';
 
 export default {
@@ -24,14 +22,12 @@ export default {
   },
 
   render() {
+    const Component = this.componentClass;
     const iptData = splitDataByComponent(
       {
         key: 'input',
         class: this._addPrefix('input'),
-        splitProps: {
-          ...this.$attrs,
-          value: this.value,
-        },
+        splitProps: { ...this.$attrs, value: this.value },
         on: {
           ..._.omit(this.$listeners, ['inputChange']),
           change: this._handleChange,
@@ -39,12 +35,12 @@ export default {
         },
         ref: 'input',
       },
-      AutosizeInput
+      Component
     );
 
     return (
       <div class={this.classPrefix}>
-        <AutosizeInput {...iptData}>{this.$slots.default}</AutosizeInput>
+        <Component {...iptData}>{this.$slots.default}</Component>
       </div>
     );
   },

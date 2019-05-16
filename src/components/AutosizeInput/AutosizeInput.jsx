@@ -2,6 +2,7 @@
 import VueTypes from 'vue-types';
 import _ from 'lodash';
 import { splitDataByComponent } from 'utils/split';
+import { isIE } from 'shares/browser';
 
 const sizerStyle = {
   position: 'absolute',
@@ -21,15 +22,10 @@ const copyStyles = (styles, node) => {
   node.style.textTransform = styles.textTransform;
 };
 
-const isIE =
-  typeof window !== 'undefined' && window.navigator
-    ? /MSIE |Trident\/|Edge\//.test(window.navigator.userAgent)
-    : false;
-
 const generateId = () => {
   // we only need an auto-generated ID for stylesheet injection, which is only
   // used for IE. so if the browser is not IE, this should return undefined.
-  return isIE
+  return isIE()
     ? '_' +
         Math.random()
           .toString(36)

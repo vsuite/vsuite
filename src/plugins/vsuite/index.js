@@ -25,6 +25,10 @@ import InputGroup from 'components/InputGroup';
 import InputNumber from 'components/InputNumber';
 import AutoComplete from 'components/AutoComplete';
 import Toggle from 'components/Toggle';
+import InputPicker from 'components/InputPicker';
+
+// Data Display
+import Tag from 'components/Tag';
 
 // Layout
 import Grid from 'components/Grid';
@@ -78,6 +82,9 @@ export const components = {
   InputNumber,
   AutoComplete,
   Toggle,
+  InputPicker,
+
+  Tag,
 
   Grid,
 

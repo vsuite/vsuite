@@ -12,13 +12,14 @@ import getDataGroupBy from 'utils/getDataGroupBy';
 import shallowEqual from 'utils/shallowEqual';
 import invariant from 'utils/invariant';
 
+import Tag from 'components/Tag';
+// import AutosizeInput from 'components/AutosizeInput';
 import {
   PickerMenuWrapper,
   PickerDropdownMenu,
   PickerToggle,
   getToggleWrapperClassName,
 } from 'components/_picker';
-import Tag from 'components/Tag';
 
 import InputPickerSearch from './InputPickerSearch.jsx';
 
@@ -59,18 +60,21 @@ export default {
     searchable: VueTypes.bool,
     cleanable: VueTypes.bool,
     creatable: VueTypes.bool.def(false),
-    multiple: VueTypes.bool.def(false),
+    multi: VueTypes.bool.def(false),
     menuClassName: VueTypes.string,
     menuStyle: VueTypes.object,
+    menuAutoWidth: VueTypes.bool,
+    sort: Function,
     renderMenu: Function,
     renderMenuItem: Function,
     renderMenuGroup: Function,
     renderValue: Function,
-    classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
+    renderExtraFooter: Function,
     toggleComponentClass: VueTypes.oneOfType([
       VueTypes.string,
       VueTypes.object,
     ]),
+    classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
   },
 
   data() {
@@ -82,8 +86,8 @@ export default {
     );
 
     return {
-      innerVal: this.multiple ? initVal || [] : initVal,
-      focusItemValue: this.multiple ? (initVal || [])[0] : initVal,
+      innerVal: this.multi ? initVal || [] : initVal,
+      focusItemValue: this.multi ? (initVal || [])[0] : initVal,
       searchKeyword: '',
       newData: [],
       maxWidth: 100,
@@ -154,7 +158,7 @@ export default {
   render(h) {
     const { exists, label } = this._renderSingleValue(h);
     const tags = this._renderMultiValue(h);
-    const hasValue = this.multiple ? !!_.get(tags, 'length') : exists;
+    const hasValue = this.multi ? !!_.get(tags, 'length') : exists;
     const searching = !!this.searchKeyword && this.currentVisible;
     const displaySearchInput = this.searchable && !this.disabled;
     const referenceData = {
@@ -164,7 +168,7 @@ export default {
         this,
         hasValue,
         {
-          [this._addPrefix('tag')]: this.multiple,
+          [this._addPrefix('tag')]: this.multi,
           [this._addPrefix('focused')]: this.currentVisible,
         }
       ),
@@ -202,7 +206,7 @@ export default {
     return (
       <div {...referenceData}>
         <PickerToggle {...toggleData}>
-          {searching || (this.multiple && hasValue)
+          {searching || (this.multi && hasValue)
             ? null
             : hasValue
             ? label
@@ -224,7 +228,7 @@ export default {
   methods: {
     _renderDropdownMenu(h, popperData) {
       const menuClassPrefix = this._addPrefix(
-        this.multiple ? 'check-menu' : 'select-menu'
+        this.multi ? 'check-menu' : 'select-menu'
       );
 
       popperData = _.merge(popperData, {
@@ -238,14 +242,12 @@ export default {
           splitProps: {
             data: this.dataList,
             group: !_.isUndefined(this.groupBy),
-            checkable: this.multiple,
+            checkable: this.multi,
             maxHeight: this.maxHeight,
             valueKey: this.valueKey,
             labelKey: this.labelKey,
             disabledItemValues: this.disabledItemValues,
-            activeItemValues: this.multiple
-              ? this.currentVal
-              : [this.currentVal],
+            activeItemValues: this.multi ? this.currentVal : [this.currentVal],
             focusItemValue: this.focusItemValue,
             renderMenuGroup: this.renderMenuGroup,
             renderMenuItem: this._renderMenuItem,
@@ -303,7 +305,7 @@ export default {
     },
 
     _renderMultiValue(h) {
-      if (!this.multiple) return null;
+      if (!this.multi) return null;
 
       const tags = this.currentVal || [];
 
@@ -393,10 +395,10 @@ export default {
       const { value, data } = item;
       let newVal = _.cloneDeep(this.currentVal);
 
-      if (this.multiple && checked) {
+      if (this.multi && checked) {
         // add new item
         newVal.push(value);
-      } else if (this.multiple && !checked) {
+      } else if (this.multi && !checked) {
         // remove old item
         newVal.splice(_.findIndex(newVal, v => shallowEqual(v, value)), 1);
       } else {
@@ -412,7 +414,7 @@ export default {
 
       this.focusItemValue = value;
 
-      if (this.multiple) {
+      if (this.multi) {
         this.searchKeyword = '';
       } else {
         // close popper
@@ -448,7 +450,7 @@ export default {
       this.focusItemValue = null;
       this.searchKeyword = '';
 
-      this._setVal(this.multiple ? [] : null, event);
+      this._setVal(this.multi ? [] : null, event);
     },
 
     _handleClick() {
@@ -462,7 +464,7 @@ export default {
         down: this._handleFocusNext,
         up: this._handleFocusPrev,
         enter: this._handleFocusCurrent,
-        del: this.multiple && !this.searchKeyword ? this._handleFocusDel : null,
+        del: this.multi && !this.searchKeyword ? this._handleFocusDel : null,
         esc: this._closePopper,
       });
     },
@@ -515,7 +517,7 @@ export default {
       this._handleSelect(
         item,
         event,
-        this.multiple
+        this.multi
           ? !this.currentVal.some(x => shallowEqual(x, item.value))
           : false
       );

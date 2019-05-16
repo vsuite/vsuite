@@ -62,9 +62,7 @@ export default {
     const data = splitDataByComponent(
       {
         class: this.classes,
-        domProps: {
-          value: this.currentVal,
-        },
+        domProps: { value: this.currentVal },
         splitProps: {
           id: this.id,
           type: this.type,
@@ -80,6 +78,7 @@ export default {
           change: this._handleChange,
           keydown: this._handleKeydown,
         },
+        ref: 'input',
       },
       Component
     );
@@ -88,6 +87,14 @@ export default {
   },
 
   methods: {
+    focus() {
+      this.$refs.input.focus();
+    },
+
+    blur() {
+      this.$refs.input.blur();
+    },
+
     _setVal(val, event) {
       this.innerVal = val;
 

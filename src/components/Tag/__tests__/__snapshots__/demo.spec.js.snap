@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tag demo renders basic demo correctly 1`] = `
+<div class="vs-tag-group">
+  <div class="vs-tag vs-tag-default"><span class="vs-tag-text">Text</span></div>
+  <div class="vs-tag vs-tag-default vs-tag-closeable"><span class="vs-tag-text">Closable</span><i role="button" tabindex="-1" class="vs-tag-icon-close"></i></div>
+  <div class="vs-tag vs-tag-default"><span class="vs-tag-text"><a target="_blank" href="http://www.hypers.com">
+      Link
+    </a></span></div>
+</div>
+`;
+
+exports[`Tag demo renders color demo correctly 1`] = `
+<div class="vs-tag-group">
+  <div class="vs-tag vs-tag-red"><span class="vs-tag-text">Red</span></div>
+  <div class="vs-tag vs-tag-orange"><span class="vs-tag-text">Orange</span></div>
+  <div class="vs-tag vs-tag-yellow"><span class="vs-tag-text">Yellow</span></div>
+  <div class="vs-tag vs-tag-green"><span class="vs-tag-text">Green</span></div>
+  <div class="vs-tag vs-tag-cyan"><span class="vs-tag-text">Cyan</span></div>
+  <div class="vs-tag vs-tag-blue"><span class="vs-tag-text">Blue</span></div>
+  <div class="vs-tag vs-tag-violet"><span class="vs-tag-text">Violet</span></div>
+</div>
+`;
+
+exports[`Tag demo renders dynamic demo correctly 1`] = `
+<div class="vs-tag-group">
+  <div class="vs-tag vs-tag-default vs-tag-closeable"><span class="vs-tag-text">
+    javascript
+  </span><i role="button" tabindex="-1" class="vs-tag-icon-close"></i></div>
+  <div class="vs-tag vs-tag-default vs-tag-closeable"><span class="vs-tag-text">
+    css
+  </span><i role="button" tabindex="-1" class="vs-tag-icon-close"></i></div>
+  <div class="vs-tag vs-tag-default vs-tag-closeable"><span class="vs-tag-text">
+    vue
+  </span><i role="button" tabindex="-1" class="vs-tag-icon-close"></i></div> <button type="button" class="vs-btn vs-btn-ghost vs-btn-xs vs-btn-icon vs-btn-icon-placement-left" appearance="ghost" size="xs" style="display: inline-block; margin-left: 10px;"><i class="vs-icon vs-icon-plus"></i></button>
+</div>
+`;

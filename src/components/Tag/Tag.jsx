@@ -11,10 +11,15 @@ export default {
   props: {
     color: VueTypes.oneOf(COLORS),
     closable: VueTypes.bool.def(false),
+
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
     componentClass: VueTypes.oneOfType([VueTypes.string, VueTypes.object]).def(
       'div'
     ),
+
+    // slot
+
+    // @close
   },
 
   computed: {
@@ -23,6 +28,7 @@ export default {
         this.classPrefix,
         {
           [this._addPrefix(this.color)]: this.color,
+          [this._addPrefix('default')]: !this.color,
           [this._addPrefix('closeable')]: this.closable,
         },
       ];
