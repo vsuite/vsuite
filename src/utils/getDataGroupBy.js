@@ -1,7 +1,8 @@
 import _ from 'lodash';
 
-function getDataGroupBy(data = [], key) {
+function getDataGroupBy(data = [], key, sort) {
   const tempData = {};
+  const isSort = typeof sort === 'function';
 
   data.forEach(item => {
     if (!tempData[item[key]]) {
@@ -10,10 +11,16 @@ function getDataGroupBy(data = [], key) {
     tempData[item[key]].push(item);
   });
 
-  return _.toPairs(tempData).map(item => ({
+  let nextData = _.toPairs(tempData).map(item => ({
     label: item[0],
-    children: item[1],
+    children: isSort ? item[1].sort(sort(false)) : item[1],
   }));
+
+  if (isSort) {
+    nextData = nextData.sort(sort(true));
+  }
+
+  return nextData;
 }
 
 export default getDataGroupBy;

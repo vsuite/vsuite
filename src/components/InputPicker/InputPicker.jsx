@@ -5,18 +5,21 @@ import prefix, { defaultClassPrefix } from 'utils/prefix';
 import { getWidth } from 'shares/dom';
 import onMenuKeydown from 'utils/onMenuKeydown';
 import { vueToString } from 'utils/node';
-import { mapNode, findNode, flattenNodes } from 'utils/tree';
+import { mapNode, findNode, flattenNodes, filterNodes } from 'utils/tree';
 import { splitDataByComponent } from 'utils/split';
 import { findComponentUpward } from 'utils/find';
 import getDataGroupBy from 'utils/getDataGroupBy';
 import shallowEqual from 'utils/shallowEqual';
 import invariant from 'utils/invariant';
 
+import { Fade } from 'components/Animation';
 import Tag from 'components/Tag';
 // import AutosizeInput from 'components/AutosizeInput';
 import {
   PickerMenuWrapper,
   PickerDropdownMenu,
+  PickerDropdownMenuCheckItem,
+  PickerDropdownMenuItem,
   PickerToggle,
   getToggleWrapperClassName,
 } from 'components/_picker';
@@ -69,7 +72,6 @@ export default {
     renderMenuItem: Function,
     renderMenuGroup: Function,
     renderValue: Function,
-    renderExtraFooter: Function,
     toggleComponentClass: VueTypes.oneOfType([
       VueTypes.string,
       VueTypes.object,
@@ -108,23 +110,29 @@ export default {
     },
 
     dataList() {
-      let list = [...this.rawData];
+      const list = [...this.rawData];
+      let filteredList = filterNodes(list, item =>
+        this._shouldDisplay(_.get(item, this.labelKey), this.searchKeyword)
+      );
 
       if (
         this.creatable &&
         this.searchKeyword &&
-        !findNode(list, item =>
-          this._shouldDisplay(_.get(item, this.labelKey), this.searchKeyword)
+        !findNode(
+          filteredList,
+          item => _.get(item, this.labelKey) === this.searchKeyword
         )
       ) {
-        list.push(this._createOption(this.searchKeyword));
+        filteredList.push(this._createOption(this.searchKeyword));
       }
 
       if (this.groupBy) {
-        list = getDataGroupBy(list, this.groupBy);
+        filteredList = getDataGroupBy(filteredList, this.groupBy, this.sort);
+      } else if (this.sort) {
+        filteredList = filteredList.sort(this.sort(false));
       }
 
-      return mapNode(list, (data, index, layer, children) => {
+      return mapNode(filteredList, (data, index, layer, children) => {
         const value = _.get(data, this.valueKey);
         const label = _.get(data, this.labelKey);
 
@@ -177,15 +185,14 @@ export default {
       on: { click: this._handleClick, keydown: this._handleKeydown },
       ref: 'reference',
     };
-    const wrapperData = {
-      class: this._addPrefix('tag-wrapper'),
-    };
+    const wrapperData = { class: this._addPrefix('tag-wrapper') };
     const toggleData = splitDataByComponent(
       {
         splitProps: {
           ...this.$attrs,
           hasValue,
           cleanable: this.cleanable && !this.disabled,
+          active: this.currentVisible,
           componentClass: this.toggleComponentClass,
         },
         on: { clean: this._handleClean },
@@ -218,9 +225,7 @@ export default {
           {tags}
           {displaySearchInput && this._renderInputSearch(h)}
         </div>
-        <transition name="picker-fade">
-          {this._renderDropdownMenu(h, popperData)}
-        </transition>
+        <Fade>{this._renderDropdownMenu(h, popperData)}</Fade>
       </div>
     );
   },
@@ -234,6 +239,7 @@ export default {
       popperData = _.merge(popperData, {
         class: [this.menuClassName, menuClassPrefix],
         style: this.menuStyle,
+        props: { autoWidth: this.menuAutoWidth },
         on: { keydown: this._handleKeydown },
       });
 
@@ -252,6 +258,9 @@ export default {
             renderMenuGroup: this.renderMenuGroup,
             renderMenuItem: this._renderMenuItem,
             dropdownMenuItemClassPrefix: `${menuClassPrefix}-item`,
+            dropdownMenuItemComponentClass: this.multi
+              ? PickerDropdownMenuCheckItem
+              : PickerDropdownMenuItem,
             classPrefix: menuClassPrefix,
           },
           on: { select: this._handleSelect },
@@ -259,14 +268,13 @@ export default {
         },
         PickerDropdownMenu
       );
-      const menu = this.flatDataList.filter(x => x.visible).length ? (
+      const menu = this.dataList.length ? (
         <PickerDropdownMenu {...menuData} />
       ) : (
         <div class={this._addPrefix('none')}>
           {this.$t('_.InputPicker.noResultsText')}
         </div>
       );
-
       return (
         <PickerMenuWrapper {...popperData}>
           {this.$slots.header}
@@ -310,18 +318,19 @@ export default {
       const tags = this.currentVal || [];
 
       return tags
-        .map((tag, index) => {
+        .map(tag => {
           const { item, label, exists } = this._getLabelByValue(h, tag);
 
           if (!exists) return null;
 
           return (
             <Tag
-              key={index}
+              key={tag}
               closable={!this.disabled}
-              onClose={event =>
-                this._handleRemoveItem({ value: tag, data: item }, event)
-              }
+              onClose={this._handleRemoveItem.bind(this, {
+                value: tag,
+                data: item,
+              })}
             >
               {label}
             </Tag>

@@ -14,17 +14,26 @@ export default {
     hasValue: VueTypes.bool.def(false),
     cleanable: VueTypes.bool.def(false),
     caret: VueTypes.bool,
+    active: VueTypes.bool.def(false),
+
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
     componentClass: VueTypes.oneOfType([VueTypes.string, VueTypes.object]).def(
       'a'
     ),
+
+    // slot
+
+    // @clean
   },
 
   computed: {
     classes() {
-      return this.componentClass === 'a'
-        ? this.classPrefix
-        : this._addPrefix('custom');
+      return [
+        this.componentClass === 'a'
+          ? this.classPrefix
+          : this._addPrefix('custom'),
+        { active: this.active },
+      ];
     },
   },
 
@@ -33,11 +42,7 @@ export default {
     const data = splitDataByComponent(
       {
         class: this.classes,
-        splitProps: {
-          ...this.$attrs,
-          role: 'button',
-          tabindex: -1,
-        },
+        splitProps: { ...this.$attrs, role: 'button', tabindex: -1 },
         on: _.omit(this.$listeners, ['clean']),
       },
       Component
@@ -45,13 +50,9 @@ export default {
 
     return (
       <Component {...data}>
-        {this.hasValue ? (
-          <span class={this._addPrefix('value')}>{this.$slots.default}</span>
-        ) : (
-          <span class={this._addPrefix('placeholder')}>
-            {this.$slots.default}
-          </span>
-        )}
+        <span class={this._addPrefix(this.hasValue ? 'value' : 'placeholder')}>
+          {this.$slots.default}
+        </span>
         {this.hasValue && this.cleanable && (
           <span
             class={this._addPrefix('clean')}

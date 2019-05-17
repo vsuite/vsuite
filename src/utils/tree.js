@@ -67,7 +67,7 @@ function mapNode(
 
 function findNode(
   nodes,
-  checker = emptyFunction.thatReturnsTrue,
+  checker = emptyFunction.thatReturnsFalse,
   childrenKey = 'children'
 ) {
   const find = (nodes = []) => {
