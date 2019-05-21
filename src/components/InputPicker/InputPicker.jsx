@@ -196,6 +196,7 @@ export default {
           componentClass: this.toggleComponentClass,
         },
         on: { clean: this._handleClean },
+        ref: 'toggle',
       },
       PickerToggle
     );
@@ -239,7 +240,10 @@ export default {
       popperData = _.merge(popperData, {
         class: [this.menuClassName, menuClassPrefix],
         style: this.menuStyle,
-        props: { autoWidth: this.menuAutoWidth },
+        props: {
+          autoWidth: this.menuAutoWidth,
+          getToggleInstance: this._getToggleInstance,
+        },
         on: { keydown: this._handleKeydown },
       });
 
@@ -341,6 +345,10 @@ export default {
 
     _renderSingleValue(h) {
       return this._getLabelByValue(h, this.currentVal);
+    },
+
+    _getToggleInstance() {
+      return this.$refs && this.$refs.toggle;
     },
 
     _getLabelByValue(h, value) {
