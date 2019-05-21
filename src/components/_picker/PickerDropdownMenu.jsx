@@ -1,13 +1,10 @@
 import VueTypes from 'vue-types';
 import _ from 'lodash';
-import { getHeight, getPosition, scrollTop } from 'shares/dom';
+import { getHeight, getPosition, scrollTop } from 'dom-lib';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
 import shallowEqual from 'utils/shallowEqual';
-import invariant from 'utils/invariant';
 
 import PickerDropdownMenuGroup from './PickerDropdownMenuGroup.jsx';
-import PickerDropdownMenuItem from './PickerDropdownMenuItem.jsx';
-import PickerDropdownMenuCheckItem from './PickerDropdownMenuCheckItem.jsx';
 
 const CLASS_PREFIX = 'picker';
 
@@ -16,18 +13,25 @@ export default {
 
   props: {
     data: VueTypes.arrayOf(VueTypes.any).def([]),
+    group: VueTypes.bool.def(false),
     disabledItemValues: VueTypes.arrayOf(VueTypes.any).def([]),
     activeItemValues: VueTypes.arrayOf(VueTypes.any).def([]),
     focusItemValue: VueTypes.any,
-    group: VueTypes.bool.def(false),
     maxHeight: VueTypes.number.def(320),
     valueKey: VueTypes.string.def('value'),
     labelKey: VueTypes.string.def('label'),
-    checkable: VueTypes.bool.def(false),
     renderMenuGroup: Function,
     renderMenuItem: Function,
+    dropdownMenuItemComponentClass: VueTypes.oneOfType([
+      VueTypes.string,
+      VueTypes.object,
+    ]).isRequired,
     dropdownMenuItemClassPrefix: VueTypes.string,
+
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
+
+    // slot-scope-menu-item
+    // slot-scope-menu-group
   },
 
   render(h) {
@@ -44,16 +48,24 @@ export default {
     );
   },
 
+  mounted() {
+    this._updateScrollPosition();
+  },
+
+  watch: {
+    focusItemValue: {
+      handler() {
+        this._updateScrollPosition();
+      },
+      deep: true,
+    },
+  },
+
   methods: {
     _renderItems(h) {
       const createMenuItems = items => {
         return items.map((item, index) => {
           const { key, label, value, visible, data, children } = item;
-
-          invariant.not(
-            _.isUndefined(label),
-            `labelKey "${this.labelKey}" is not defined in "data" : ${index}`
-          );
 
           // PickerDropdownMenuGroup
           if (this.group && children) {
@@ -67,7 +79,9 @@ export default {
             return (
               <PickerDropdownMenuGroup {...groupData}>
                 <template slot="title">
-                  {this.renderMenuGroup
+                  {this.$scopedSlots.menuGroup
+                    ? this.$scopedSlots.menuGroup(label, data)
+                    : this.renderMenuGroup
                     ? this.renderMenuGroup(h, label, data)
                     : label}
                 </template>
@@ -75,11 +89,6 @@ export default {
               </PickerDropdownMenuGroup>
             );
           }
-
-          invariant.not(
-            _.isUndefined(value) && !children,
-            `valueKey "${this.valueKey}" is not defined in "data" : ${index} `
-          );
 
           const disabled =
             !_.isUndefined(this.disabledItemValues) &&
@@ -100,25 +109,19 @@ export default {
               focus,
               classPrefix: this.dropdownMenuItemClassPrefix,
             },
-            on: { select: (...args) => this._handleSelect(item, ...args) },
+            on: { select: this._handleSelect.bind(item) },
           };
-
-          if (this.checkable) {
-            return (
-              <PickerDropdownMenuCheckItem {...itemData}>
-                {this.renderMenuItem
-                  ? this.renderMenuItem(h, label, data)
-                  : label}
-              </PickerDropdownMenuCheckItem>
-            );
-          }
+          const PickerDropdownMenuItemComponent = this
+            .dropdownMenuItemComponentClass;
 
           return (
-            <PickerDropdownMenuItem {...itemData}>
-              {this.renderMenuItem
+            <PickerDropdownMenuItemComponent {...itemData}>
+              {this.$scopedSlots.menuItem
+                ? this.$scopedSlots.menuItem(label, data)
+                : this.renderMenuItem
                 ? this.renderMenuItem(h, label, data)
                 : label}
-            </PickerDropdownMenuItem>
+            </PickerDropdownMenuItemComponent>
           );
         });
       };
@@ -126,8 +129,8 @@ export default {
       return createMenuItems(this.data);
     },
 
-    _handleSelect(item, event, checked) {
-      this.$emit('select', item, event, checked);
+    _handleSelect(item, value, event, checked) {
+      this.$emit('select', value, item, event, checked);
     },
 
     _handleToggle(event) {
@@ -146,11 +149,19 @@ export default {
 
       if (!menuBodyContainer) return;
 
-      const activeItem = menuBodyContainer.querySelector(
+      let activeItem = menuBodyContainer.querySelector(
         `.${this._addPrefix('item-focus')}`
       );
 
-      if (!activeItem) return;
+      if (!activeItem) {
+        activeItem = menuBodyContainer.querySelector(
+          `.${this._addPrefix('item-active')}`
+        );
+      }
+
+      if (!activeItem) {
+        return;
+      }
 
       const position = getPosition(activeItem, menuBodyContainer);
       const sTop = scrollTop(menuBodyContainer);

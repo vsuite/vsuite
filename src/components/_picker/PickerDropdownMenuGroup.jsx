@@ -11,8 +11,13 @@ export default {
 
   props: {
     title: VueTypes.string,
-    caret: VueTypes.bool,
+
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
+
+    // slot
+
+    // @click
+    // @toggle
   },
 
   data() {
@@ -23,9 +28,7 @@ export default {
     classes() {
       return [
         this.classPrefix,
-        {
-          [this._addPrefix('closed')]: !this.expanded,
-        },
+        { [this._addPrefix('closed')]: !this.expanded },
       ];
     },
   },
@@ -34,7 +37,7 @@ export default {
     const data = {
       class: this.classes,
       attrs: this.$attrs,
-      on: _.omit(this.$listeners, 'toggle'),
+      on: _.omit(this.$listeners, ['toggle', 'click']),
     };
     const listData = {
       class: this._addPrefix('children'),
@@ -50,7 +53,7 @@ export default {
           onClick={this._handleClickGroup}
         >
           <span>{this.$slots.title || this.title}</span>
-          {this.caret && <span class={this._addPrefix('caret')} />}
+          <span className={this._addPrefix('caret')} />
         </div>
         <Collapse>
           <ul {...listData}>{this.$slots.default}</ul>
@@ -63,6 +66,7 @@ export default {
     _handleClickGroup(event) {
       this.expanded = !this.expanded;
 
+      // this.$emit('click', event);
       this.$emit('toggle', event);
     },
 

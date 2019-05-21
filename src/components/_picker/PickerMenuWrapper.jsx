@@ -1,7 +1,7 @@
 import VueTypes from 'vue-types';
-import prefix, { defaultClassPrefix } from 'utils/prefix';
 import { addStyle, getWidth } from 'dom-lib';
 import onResize, { unbind } from 'element-resize-event';
+import prefix, { defaultClassPrefix } from 'utils/prefix';
 
 const CLASS_PREFIX = 'picker-menu';
 

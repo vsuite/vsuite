@@ -13,7 +13,13 @@ export default {
     disabled: VueTypes.bool.def(false),
     focus: VueTypes.bool.def(false),
     // getItemData: Function,
+
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
+
+    // slot
+
+    // @select
+    // @keydown
   },
 
   computed: {
@@ -30,22 +36,11 @@ export default {
   },
 
   render() {
-    const data = {
-      attrs: {
-        ...this.$attrs,
-        role: 'menuitem',
-      },
-    };
+    const data = { attrs: { ...this.$attrs, role: 'menuitem' } };
     const aData = {
       class: this.classes,
-      attrs: {
-        role: 'presentation',
-        tabindex: -1,
-      },
-      on: {
-        keydown: this._handleKeydown,
-        click: this._handleClick,
-      },
+      attrs: { role: 'presentation', tabindex: -1 },
+      on: { keydown: this._handleKeydown, click: this._handleClick },
     };
 
     return (
@@ -61,7 +56,7 @@ export default {
 
       if (this.disabled) return;
 
-      this.$emit('select', event);
+      this.$emit('select', this.value, event);
     },
 
     _handleKeydown(event) {

@@ -136,6 +136,16 @@ export default {
         const value = _.get(data, this.valueKey);
         const label = _.get(data, this.labelKey);
 
+        invariant.not(
+          _.isUndefined(label),
+          `labelKey "${this.labelKey}" is not defined in "data" : ${index}`
+        );
+
+        invariant.not(
+          _.isUndefined(value) && !children,
+          `valueKey "${this.valueKey}" is not defined in "data" : ${index} `
+        );
+
         return {
           key: `${layer}-${
             _.isNumber(value) || _.isString(value) ? value : index
@@ -500,9 +510,9 @@ export default {
       if (index === -1) this.focusItemValue = list[0] && list[0].value;
       if (index + 1 < length) this.focusItemValue = list[index + 1].value;
 
-      this.$nextTick(
-        () => this.$refs.menu && this.$refs.menu._updateScrollPosition()
-      );
+      // this.$nextTick(
+      //   () => this.$refs.menu && this.$refs.menu._updateScrollPosition()
+      // );
     },
 
     _handleFocusPrev() {
@@ -519,9 +529,9 @@ export default {
       if (index === -1) this.focusItemValue = list[0] && list[0].value;
       if (index - 1 >= 0) this.focusItemValue = list[index - 1].value;
 
-      this.$nextTick(
-        () => this.$refs.menu && this.$refs.menu._updateScrollPosition()
-      );
+      // this.$nextTick(
+      //   () => this.$refs.menu && this.$refs.menu._updateScrollPosition()
+      // );
     },
 
     _handleFocusCurrent(event) {
