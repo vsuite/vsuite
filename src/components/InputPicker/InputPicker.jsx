@@ -165,6 +165,16 @@ export default {
     },
   },
 
+  watch: {
+    currentVisible(val) {
+      if (val) {
+        this.$nextTick(
+          () => this.$refs.menu && this.$refs.menu._updateScrollPosition()
+        );
+      }
+    },
+  },
+
   mounted() {
     const reference = this.$refs.reference;
 
@@ -445,12 +455,12 @@ export default {
       }
 
       this.focusItemValue = value;
+      this.searchKeyword = '';
 
-      if (this.multi) {
-        this.searchKeyword = '';
-      } else {
+      if (!this.multi) {
         // close popper
         this._closePopper();
+        this.$refs.search && this.$refs.search.blur();
       }
 
       this._setVal(newVal, event);
