@@ -18,8 +18,8 @@ export default {
     activeItemValues: VueTypes.arrayOf(VueTypes.any).def([]),
     focusItemValue: VueTypes.any,
     maxHeight: VueTypes.number.def(320),
-    valueKey: VueTypes.string.def('value'),
-    labelKey: VueTypes.string.def('label'),
+    // valueKey: VueTypes.string.def('value'),
+    // labelKey: VueTypes.string.def('label'),
     renderMenuGroup: Function,
     renderMenuItem: Function,
     dropdownMenuItemComponentClass: VueTypes.oneOfType([
@@ -55,7 +55,7 @@ export default {
   watch: {
     focusItemValue: {
       handler() {
-        this._updateScrollPosition();
+        this.$nextTick(() => this._updateScrollPosition());
       },
       deep: true,
     },
@@ -79,8 +79,8 @@ export default {
             return (
               <PickerDropdownMenuGroup {...groupData}>
                 <template slot="title">
-                  {this.$scopedSlots.menuGroup
-                    ? this.$scopedSlots.menuGroup(label, data)
+                  {this.$scopedSlots['menu-group']
+                    ? this.$scopedSlots['menu-group'](label, data)
                     : this.renderMenuGroup
                     ? this.renderMenuGroup(h, label, data)
                     : label}
@@ -109,15 +109,15 @@ export default {
               focus,
               classPrefix: this.dropdownMenuItemClassPrefix,
             },
-            on: { select: this._handleSelect.bind(item) },
+            on: { select: this._handleSelect.bind(this, item) },
           };
           const PickerDropdownMenuItemComponent = this
             .dropdownMenuItemComponentClass;
 
           return (
             <PickerDropdownMenuItemComponent {...itemData}>
-              {this.$scopedSlots.menuItem
-                ? this.$scopedSlots.menuItem(label, data)
+              {this.$scopedSlots['menu-item']
+                ? this.$scopedSlots['menu-item'](label, data)
                 : this.renderMenuItem
                 ? this.renderMenuItem(h, label, data)
                 : label}
@@ -134,7 +134,7 @@ export default {
     },
 
     _handleToggle(event) {
-      this.$emit('toggle', event);
+      this.$emit('group-title-click', event);
     },
 
     _addPrefix(cls) {

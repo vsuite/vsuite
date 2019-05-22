@@ -262,10 +262,9 @@ export default {
           splitProps: {
             data: this.dataList,
             group: !_.isUndefined(this.groupBy),
-            checkable: this.multi,
             maxHeight: this.maxHeight,
-            valueKey: this.valueKey,
-            labelKey: this.labelKey,
+            // valueKey: this.valueKey,
+            // labelKey: this.labelKey,
             disabledItemValues: this.disabledItemValues,
             activeItemValues: this.multi ? this.currentVal : [this.currentVal],
             focusItemValue: this.focusItemValue,
@@ -292,7 +291,11 @@ export default {
       return (
         <PickerMenuWrapper {...popperData}>
           {this.$slots.header}
-          {this.renderMenu ? this.renderMenu(h, menu) : menu}
+          {this.$scopedSlots.menu
+            ? this.$scopedSlots.menu(name)
+            : this.renderMenu
+            ? this.renderMenu(h, menu)
+            : menu}
           {this.$slots.footer}
         </PickerMenuWrapper>
       );
@@ -305,7 +308,9 @@ export default {
         label
       );
 
-      return this.renderMenuItem
+      return this.$scopedSlots['menu-item']
+        ? this.$scopedSlots['menu-item'](newLabel, data)
+        : this.renderMenuItem
         ? this.renderMenuItem(h, newLabel, data)
         : newLabel;
     },
@@ -418,8 +423,8 @@ export default {
       }
     },
 
-    _handleSelect(item, event, checked) {
-      const { value, data } = item;
+    _handleSelect(value, item, event, checked) {
+      const { data } = item;
       let newVal = _.cloneDeep(this.currentVal);
 
       if (this.multi && checked) {
@@ -491,7 +496,7 @@ export default {
         down: this._handleFocusNext,
         up: this._handleFocusPrev,
         enter: this._handleFocusCurrent,
-        del: this.multi && !this.searchKeyword ? this._handleFocusDel : null,
+        del: this._handleFocusDel,
         esc: this._closePopper,
       });
     },
@@ -509,10 +514,6 @@ export default {
       if (!length) return;
       if (index === -1) this.focusItemValue = list[0] && list[0].value;
       if (index + 1 < length) this.focusItemValue = list[index + 1].value;
-
-      // this.$nextTick(
-      //   () => this.$refs.menu && this.$refs.menu._updateScrollPosition()
-      // );
     },
 
     _handleFocusPrev() {
@@ -528,10 +529,6 @@ export default {
       if (!length) return;
       if (index === -1) this.focusItemValue = list[0] && list[0].value;
       if (index - 1 >= 0) this.focusItemValue = list[index - 1].value;
-
-      // this.$nextTick(
-      //   () => this.$refs.menu && this.$refs.menu._updateScrollPosition()
-      // );
     },
 
     _handleFocusCurrent(event) {
@@ -542,6 +539,7 @@ export default {
       if (!item) return;
 
       this._handleSelect(
+        item.value,
         item,
         event,
         this.multi
@@ -551,13 +549,21 @@ export default {
     },
 
     _handleFocusDel(event) {
+      if (!this.multi) {
+        if (!this.searchKeyword) {
+          this._handleClean(event);
+        }
+
+        return;
+      }
+
       const len = this.currentVal.length;
       const value = this.currentVal[len - 1];
       const data = findNode(this.rawDataWithCache, item =>
         shallowEqual(_.get(item, this.valueKey), value)
       );
 
-      if (value) this._handleSelect({ value, data }, event, false);
+      if (value) this._handleSelect(value, { value, data }, event, false);
     },
 
     _addPrefix(cls) {

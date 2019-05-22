@@ -13,6 +13,7 @@ function getDataGroupBy(data = [], key, sort) {
 
   let nextData = _.toPairs(tempData).map(item => ({
     label: item[0],
+    groupTitle: item[0],
     children: isSort ? item[1].sort(sort(false)) : item[1],
   }));
 
