@@ -175,7 +175,7 @@ export default {
                 renderItem={this.renderItem}
                 onSelect={this._handleItemClick}
               >
-                {this.$scopedSlots.item && this.$scopedSlots.item(item)}
+                {this.$scopedSlots.item && this.$scopedSlots.item({ item })}
               </AutoCompleteItem>
             ))}
           </ul>

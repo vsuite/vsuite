@@ -2,33 +2,37 @@
 
 <!--start-code-->
 
-```js
-/**
- * import data from
- * https://github.com/rsuite/rsuite.github.io/blob/master/src/resources/data/users.js
- */
-
-const instance = (
+```vue
+<template>
   <div>
     <InputPicker
-      data={data}
-      defaultValue={'Julius'}
+      :data="data"
+      defaultValue="Julius"
       disabled
-      style={{ width: 224 }}
-
+      style="width: 224px;"
     />
-    <hr />
-    <p>Disabled option</p>
-    <InputPicker
-      data={data}
-      defaultValue={'Julius'}
-      disabledItemValues={['Eugenia', 'Travon', 'Vincenza']}
-      style={{ width: 224 }}
 
+    <hr />
+
+    <p>Disabled Options</p>
+    <InputPicker
+      :data="data"
+      defaultValue="Julius"
+      :disabledItemValues="['Eugenia', 'Travon', 'Vincenza']"
+      style="width: 224px;"
     />
   </div>
-);
-ReactDOM.render(instance);
+</template>
+
+<script>
+import data from 'stories/data/user';
+
+export default {
+  data() {
+    return { data };
+  },
+};
+</script>
 ```
 
 <!--end-code-->

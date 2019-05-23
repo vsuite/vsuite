@@ -80,7 +80,7 @@ export default {
               <PickerDropdownMenuGroup {...groupData}>
                 <template slot="title">
                   {this.$scopedSlots['menu-group']
-                    ? this.$scopedSlots['menu-group'](label, data)
+                    ? this.$scopedSlots['menu-group']({ label, data })
                     : this.renderMenuGroup
                     ? this.renderMenuGroup(h, label, data)
                     : label}
@@ -117,7 +117,7 @@ export default {
           return (
             <PickerDropdownMenuItemComponent {...itemData}>
               {this.$scopedSlots['menu-item']
-                ? this.$scopedSlots['menu-item'](label, data)
+                ? this.$scopedSlots['menu-item']({ label, data })
                 : this.renderMenuItem
                 ? this.renderMenuItem(h, label, data)
                 : label}

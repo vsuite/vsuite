@@ -9,10 +9,10 @@ import Demo from 'stories/demo';
 
 const stories = storiesOf('Data Entry|InputPicker', module);
 
-stories.add('default', () => ({
+stories.add('baisc', () => ({
   render() {
     return (
-      <Demo title="Default">
+      <Demo title="Basic">
         <InputPicker data={data} style={{ width: '224px' }} />
       </Demo>
     );
@@ -158,12 +158,14 @@ stories.add('disabled', () => ({
 
 stories.add('request', () => ({
   data() {
-    this._getUsers('vue');
-
     return {
       items: [],
       loading: true,
     };
+  },
+
+  mounted() {
+    this._getUsers('vue');
   },
 
   render() {
@@ -174,7 +176,7 @@ stories.add('request', () => ({
           data={this.items}
           labelKey="login"
           valueKey="id"
-          onSearch={_.debounce(this._handleSearch.bind(this), 300)}
+          onSearch={this._handleSearch}
           renderMenu={(h, menu) => {
             if (this.loading) {
               return (
@@ -200,7 +202,7 @@ stories.add('request', () => ({
       this._getUsers(val || 'vue');
     },
 
-    _getUsers(word) {
+    _getUsers: _.debounce(function(word) {
       axios
         .get('https://api.github.com/search/users', { params: { q: word } })
         .then(({ data }) => {
@@ -213,7 +215,7 @@ stories.add('request', () => ({
 
           this.loading = false;
         });
-    },
+    }, 300),
   },
 }));
 

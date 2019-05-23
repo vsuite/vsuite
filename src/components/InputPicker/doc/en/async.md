@@ -2,71 +2,66 @@
 
 <!--start-code-->
 
-```js
-/**
- * import data from
- * https://github.com/rsuite/rsuite.github.io/blob/master/src/resources/data/users.js
- */
+```vue
+<template>
+  <InputPicker
+    style="width: 224px;"
+    :data="items"
+    labelKey="login"
+    valueKey="id"
+    @search="_handleSearch"
+  >
+    <template slot="menu" slot-scope="{ menu }">
+      <p style="padding: 4px; color: #999; text-align: center;" v-if="loading">
+        <Icon icon="spinner" spin /> Loading...
+      </p>
+      <template v-else>
+        {{ menu }}
+      </template>
+    </template>
+  </InputPicker>
+</template>
 
-class AsynExample extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      loading: false,
-      items: []
+<script>
+import axios from 'axios';
+import _ from 'lodash';
+
+export default {
+  data() {
+    return {
+      items: [],
+      loading: true,
     };
-    this.handleSearch = this.handleSearch.bind(this);
-    this.getUsers('react');
-  }
+  },
 
-  getUsers(word) {
-    fetch(`https://api.github.com/search/users?q=${word}`)
-      .then(response => response.json())
-      .then(data => {
-        console.log(data);
-        this.setState({
-          loading: false,
-          items: data.items
+  mounted() {
+    this._getUsers('vue');
+  },
+
+  methods: {
+    _handleSearch(val) {
+      this.loading = true;
+
+      this._getUsers(val || 'vue');
+    },
+
+    _getUsers: _.debounce(function(word) {
+      axios
+        .get('https://api.github.com/search/users', { params: { q: word } })
+        .then(({ data }) => {
+          this.items = data.items || [];
+          this.loading = false;
+        })
+        .catch(e => {
+          /* eslint-disable no-console */
+          console.log('Oops, error', e);
+
+          this.loading = false;
         });
-      })
-      .catch(e => console.log('Oops, error', e));
-  }
-
-  handleSearch(word) {
-    if (!word) {
-      return;
-    }
-    this.setState({
-      loading: true
-    });
-    this.getUsers(word);
-  }
-  render() {
-    const { items, loading } = this.state;
-    return (
-      <InputPicker
-        data={items}
-        style={{ width: 224 }}
-
-        labelKey="login"
-        valueKey="id"
-        onSearch={this.handleSearch}
-        renderMenu={menu => {
-          if (loading) {
-            return (
-              <p style={{ padding: 4, color: '#999', textAlign: 'center' }}>
-                <Icon icon="spinner" spin /> Loading...
-              </p>
-            );
-          }
-          return menu;
-        }}
-      />
-    );
-  }
-}
-
-ReactDOM.render(<AsynExample />);
+    }, 300),
+  },
+};
+</script>
 ```
 
 <!--end-code-->

@@ -2,20 +2,24 @@
 
 <!--start-code-->
 
-```js
-/**
- * import data from
- * https://github.com/rsuite/rsuite.github.io/blob/master/src/resources/data/users.js
- */
-
-const instance = (
+```vue
+<template>
   <div>
-    <InputPicker creatable data={data} style={{ width: 224 }} />
+    <InputPicker creatable :data="data" style="width: 224px;" />
     <hr />
-    <InputPicker creatable data={data} style={{ width: 224 }} groupBy="role" />
+    <InputPicker creatable :data="data" style="width: 224px;" groupBy="role" />
   </div>
-);
-ReactDOM.render(instance);
+</template>
+
+<script>
+import data from 'stories/data/user';
+
+export default {
+  data() {
+    return { data };
+  },
+};
+</script>
 ```
 
 <!--end-code-->

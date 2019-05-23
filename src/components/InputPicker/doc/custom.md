@@ -2,47 +2,43 @@
 
 <!--start-code-->
 
-```js
-/**
- * import data from
- * https://github.com/rsuite/rsuite.github.io/blob/master/src/resources/data/users.js
- */
-
-const instance = (
+```vue
+<template>
   <InputPicker
-    data={data}
+    style="width: 224px;"
+    :data="data"
     groupBy="role"
     placeholder="Select User"
-    style={{ width: 224 }}
+  >
+    <template slot="menu-item" slot-scope="{ label }">
+      <div><i class="vs-icon vs-icon-user" /> {label}</div>
+    </template>
 
-    renderMenuItem={(label, item) => {
-      return (
-        <div>
-          <i className="rs-icon rs-icon-user" /> {label}
-        </div>
-      );
-    }}
-    renderMenuGroup={(label, item) => {
-      return (
-        <div>
-          <i className="rs-icon rs-icon-group" /> {label} - (
-          {item.children.length})
-        </div>
-      );
-    }}
-    renderValue={(value, item, selectedElement) => {
-      return (
-        <div>
-          <span style={{ color: '#575757' }}>
-            <i className="rs-icon rs-icon-user" /> User :
-          </span>{' '}
-          {value}
-        </div>
-      );
-    }}
-  />
-);
-ReactDOM.render(instance);
+    <template slot="menu-group" slot-scope="{ label, item }">
+      <div>
+        <i class="vs-icon vs-icon-group" /> {label} - ( {item.children.length})
+      </div>
+    </template>
+
+    <template slot="value" slot-scope="{ label }">
+      <div>
+        <span style="color: #575757">
+          <i class="vs-icon vs-icon-user" /> User : </span
+        >{' '} {label}
+      </div>
+    </template>
+  </InputPicker>
+</template>
+
+<script>
+import data from 'stories/data/user';
+
+export default {
+  data() {
+    return { data };
+  },
+};
+</script>
 ```
 
 <!--end-code-->

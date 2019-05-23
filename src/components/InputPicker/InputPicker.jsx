@@ -77,6 +77,23 @@ export default {
       VueTypes.object,
     ]),
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
+
+    // slot-header
+    // slot-footer
+    // slot-placeholder
+
+    // slot-scope-value
+    // slot-scope-menu
+    // slot-scope-menu-item
+    // slot-scope-menu-group
+
+    // @change
+    // @search
+    // @focus
+    // @blur
+    // @show
+    // @hide
+    // @visible-change
   },
 
   data() {
@@ -302,7 +319,7 @@ export default {
         <PickerMenuWrapper {...popperData}>
           {this.$slots.header}
           {this.$scopedSlots.menu
-            ? this.$scopedSlots.menu(name)
+            ? this.$scopedSlots.menu({ menu })
             : this.renderMenu
             ? this.renderMenu(h, menu)
             : menu}
@@ -319,7 +336,7 @@ export default {
       );
 
       return this.$scopedSlots['menu-item']
-        ? this.$scopedSlots['menu-item'](newLabel, data)
+        ? this.$scopedSlots['menu-item']({ label: newLabel, data })
         : this.renderMenuItem
         ? this.renderMenuItem(h, newLabel, data)
         : newLabel;
@@ -332,7 +349,11 @@ export default {
             value: this.currentVisible ? this.searchKeyword : '',
             inputStyle: { maxWidth: `${this.maxWidth - 63}px` },
           },
-          on: { change: this._handleSearch, blur: this._handleBlur },
+          on: {
+            change: this._handleSearch,
+            focus: this._handleFocus,
+            blur: this._handleBlur,
+          },
           ref: 'search',
         },
         InputPickerSearch
@@ -382,7 +403,9 @@ export default {
       );
       let label = _.get(item, this.labelKey);
 
-      if (this.renderValue) {
+      if (this.$scopedSlots['value']) {
+        label = this.$scopedSlots['value']({ label, item });
+      } else if (this.renderValue) {
         label = this.renderValue(h, label, item);
       }
 
@@ -476,6 +499,10 @@ export default {
       this.searchKeyword = val;
 
       this.$emit('search', val, event);
+    },
+
+    _handleFocus(event) {
+      this.$emit('focus', event);
     },
 
     _handleBlur(event) {
