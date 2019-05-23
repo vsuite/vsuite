@@ -2,49 +2,54 @@
 
 <!--start-code-->
 
-```js
-/**
- * import data from
- * https://github.com/rsuite/rsuite.github.io/blob/master/src/resources/data/users.js
- */
-
-const instance = (
+```vue
+<template>
   <div>
-    <TagPicker data={data} groupBy="role" style={{ width: 300 }} />
+    <TagPicker style="width: 300px" :data="data" groupBy="role" />
     <hr />
-    <h5>排序:</h5>
-    <TagPicker
-      data={data}
-      groupBy="role"
-      sort={isGroup => {
-        if (isGroup) {
-          return (a, b) => {
-            return compare(a.groupTitle, b.groupTitle);
-          };
-        }
-
-        return (a, b) => {
-          return compare(a.value, b.value);
-        };
-      }}
-      style={{ width: 300 }}
-    />
+    <h5>排序：</h5>
+    <TagPicker style="width: 300px" :data="data" groupBy="role" :sort="sort" />
   </div>
-);
+</template>
 
-function compare(a, b) {
-  let nameA = a.toUpperCase();
-  let nameB = b.toUpperCase();
+<script>
+import data from 'stories/data/user';
 
-  if (nameA < nameB) {
-    return -1;
-  }
-  if (nameA > nameB) {
-    return 1;
-  }
-  return 0;
-}
-ReactDOM.render(instance);
+export default {
+  data() {
+    return { data };
+  },
+
+  methods: {
+    sort(isGroup) {
+      if (isGroup) {
+        return (a, b) => {
+          return this.compare(a.groupTitle, b.groupTitle);
+        };
+      }
+
+      return (a, b) => {
+        return this.compare(a.value, b.value);
+      };
+    },
+
+    compare(a, b) {
+      let nameA = a.toUpperCase();
+      let nameB = b.toUpperCase();
+
+      if (nameA < nameB) {
+        return -1;
+      }
+
+      if (nameA > nameB) {
+        return 1;
+      }
+
+      return 0;
+    },
+  },
+};
+</script>
 ```
 
 <!--end-code-->

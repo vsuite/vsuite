@@ -6,4 +6,5 @@ export default [
   'custom',
   'disabled',
   'async',
+  'controlled',
 ];

@@ -1,14 +1,10 @@
-### Creatable
+### 受控
 
 <!--start-code-->
 
 ```vue
 <template>
-  <div>
-    <TagPicker creatable :data="data" style="width: 300px" />
-    <hr />
-    <TagPicker creatable :data="data" groupBy="role" style="width: 300px" />
-  </div>
+  <TagPicker visible :value="['Julius']" :data="data" style="width: 300px;" />
 </template>
 
 <script>

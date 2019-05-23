@@ -2,31 +2,24 @@
 
 <!--start-code-->
 
-```js
-/**
- * import data from
- * https://github.com/rsuite/rsuite.github.io/blob/master/src/resources/data/users.js
- */
-
-const instance = (
+```vue
+<template>
   <div>
-    <TagPicker
-      creatable
-      data={data}
-      style={{ width: 300 }}
-      menuStyle={{ width: 300 }}
-    />
+    <TagPicker creatable :data="data" style="width: 300px" />
     <hr />
-    <TagPicker
-      creatable
-      data={data}
-      style={{ width: 300 }}
-      menuStyle={{ width: 300 }}
-      groupBy="role"
-    />
+    <TagPicker creatable :data="data" groupBy="role" style="width: 300px" />
   </div>
-);
-ReactDOM.render(instance);
+</template>
+
+<script>
+import data from 'stories/data/user';
+
+export default {
+  data() {
+    return { data };
+  },
+};
+</script>
 ```
 
 <!--end-code-->

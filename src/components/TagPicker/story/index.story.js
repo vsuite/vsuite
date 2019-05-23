@@ -168,14 +168,16 @@ stories.add('disabled', () => ({
 
 stories.add('request', () => ({
   data() {
-    this._getUsers('vue');
-
     return {
       value: [],
       items: [],
       cacheItems: [],
       loading: true,
     };
+  },
+
+  mounted() {
+    this._getUsers('vue');
   },
 
   render() {

@@ -2,84 +2,78 @@
 
 <!--start-code-->
 
-```js
-class AsynExample extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      loading: false,
-      items: [],
-      cacheData: [],
+```vue
+<template>
+  <TagPicker
+    style="width: 300px"
+    :value="value"
+    :data="items"
+    :cacheData="cacheItems"
+    labelKey="login"
+    valueKey="id"
+    @change="_handleChange"
+    @search="_handleSearch"
+  >
+    <template slot="menu" slot-scope="{ menu }">
+      <p v-if="loading" style="padding: 4px; color: #999; text-align: center;">
+        <Icon icon="spinner" spin /> Loading...
+      </p>
+      <template v-else>{{ menu }}</template>
+    </template>
+  </TagPicker>
+</template>
+
+<script>
+import _ from 'lodash';
+import axios from 'axios';
+
+export default {
+  data() {
+    return {
       value: [],
-    };
-    this.handleSearch = this.handleSearch.bind(this);
-    this.handleSelect = this.handleSelect.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-    this.getUsers('react');
-  }
-
-  handleSelect(value, item, event) {
-    const { cacheData } = this.state;
-    _remove(cacheData, v => v === value);
-    cacheData.push(item);
-    this.setState({
-      cacheData,
-    });
-  }
-
-  getUsers(word) {
-    fetch(`https://api.github.com/search/users?q=${word}`)
-      .then(response => response.json())
-      .then(data => {
-        this.setState({
-          loading: false,
-          items: data.items,
-        });
-      })
-      .catch(e => console.log('Oops, error', e));
-  }
-
-  handleSearch(word) {
-    if (!word) {
-      return;
-    }
-    this.setState({
+      items: [],
+      cacheItems: [],
       loading: true,
-    });
-    this.getUsers(word);
-  }
-  handleChange(value) {
-    this.setState({ value });
-  }
-  render() {
-    const { items, loading } = this.state;
-    return (
-      <TagPicker
-        data={items}
-        cacheData={this.state.cacheData}
-        value={this.state.value}
-        style={{ width: 300 }}
-        labelKey="login"
-        valueKey="id"
-        onChange={this.handleChange}
-        onSearch={this.handleSearch}
-        onSelect={this.handleSelect}
-        renderMenu={menu => {
-          if (loading) {
-            return (
-              <p style={{ padding: 4, color: '#999', textAlign: 'center' }}>
-                <Icon icon="spinner" spin /> Loading...
-              </p>
-            );
-          }
-          return menu;
-        }}
-      />
-    );
-  }
-}
+    };
+  },
 
-ReactDOM.render(<AsynExample />);
+  mounted() {
+    this._getUsers('vue');
+  },
+
+  methods: {
+    _handleChange(val) {
+      this.value = val;
+    },
+
+    _handleSearch(val) {
+      this.loading = true;
+
+      this._getUsers(val || 'vue');
+    },
+
+    _getUsers: _.debounce(function(word) {
+      axios
+        .get('https://api.github.com/search/users', { params: { q: word } })
+        .then(({ data }) => {
+          this.cacheItems.push(
+            ...this.items.filter(x =>
+              this.value.some(y => shallowEqual(x.id, y))
+            )
+          );
+          this.items = data.items || [];
+          this.loading = false;
+        })
+        .catch(e => {
+          /* eslint-disable no-console */
+          console.log('Oops, error', e);
+
+          this.loading = false;
+        });
+    }),
+  },
+};
+</script>
 ```
 
 <!--end-code-->

@@ -3,7 +3,11 @@
 exports[`InputPicker demo renders async demo correctly 1`] = `
 <div tabindex="-1" role="menu" class="vs-picker-input vs-picker-placement-bottom-start vs-picker-toggle-wrapper" style="width: 224px;"><a role="button" tabindex="-1" class="vs-picker-toggle"><span class="vs-picker-toggle-placeholder">Select</span><span class="vs-picker-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span><object style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; pointer-events: none; z-index: -1; opacity: 0;" class="resize-sensor" tabindex="-1" type="text/html" data="about:blank"></object></a>
   <div class="vs-picker-tag-wrapper">
-    <div class="vs-picker-search" inputstyle="[object Object]"><input inputstyle="[object Object]" class="vs-picker-search-input"></div>
+    <div class="vs-picker-search" inputstyle="[object Object]">
+      <div style="display: inline-block;" class="vs-picker-search-input"><input placeholder="" class="" style="box-sizing: content-box; width: 2px; max-width: -63px;">
+        <div style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-family: -webkit-small-control; letter-spacing: normal; text-transform: none;"></div>
+      </div>
+    </div>
   </div>
   <div data-transfer="false" class="vs-picker-menu vs-picker-select-menu v-transfer-dom" style="display: none;">
     <p style="padding: 4px; color: rgb(153, 153, 153); text-align: center;"><i class="vs-icon vs-icon-spinner vs-icon-spin"></i> Loading...
@@ -15,7 +19,11 @@ exports[`InputPicker demo renders async demo correctly 1`] = `
 exports[`InputPicker demo renders basic demo correctly 1`] = `
 <div tabindex="-1" role="menu" class="vs-picker-input vs-picker-placement-bottom-start vs-picker-toggle-wrapper" style="width: 224px;"><a role="button" tabindex="-1" class="vs-picker-toggle"><span class="vs-picker-toggle-placeholder">Select</span><span class="vs-picker-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span><object style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; pointer-events: none; z-index: -1; opacity: 0;" class="resize-sensor" tabindex="-1" type="text/html" data="about:blank"></object></a>
   <div class="vs-picker-tag-wrapper">
-    <div class="vs-picker-search" inputstyle="[object Object]"><input inputstyle="[object Object]" class="vs-picker-search-input"></div>
+    <div class="vs-picker-search" inputstyle="[object Object]">
+      <div style="display: inline-block;" class="vs-picker-search-input"><input placeholder="" class="" style="box-sizing: content-box; width: 2px; max-width: -63px;">
+        <div style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-family: -webkit-small-control; letter-spacing: normal; text-transform: none;"></div>
+      </div>
+    </div>
   </div>
   <div data-transfer="false" class="vs-picker-menu vs-picker-select-menu v-transfer-dom" style="display: none;">
     <div class="vs-picker-select-menu-items" style="max-height: 320px;">
@@ -43,7 +51,11 @@ exports[`InputPicker demo renders basic demo correctly 1`] = `
 exports[`InputPicker demo renders block demo correctly 1`] = `
 <div tabindex="-1" role="menu" class="vs-picker-input vs-picker-placement-bottom-start vs-picker-toggle-wrapper vs-picker-block"><a role="button" tabindex="-1" class="vs-picker-toggle"><span class="vs-picker-toggle-placeholder">Select</span><span class="vs-picker-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span><object style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; pointer-events: none; z-index: -1; opacity: 0;" class="resize-sensor" tabindex="-1" type="text/html" data="about:blank"></object></a>
   <div class="vs-picker-tag-wrapper">
-    <div class="vs-picker-search" inputstyle="[object Object]"><input inputstyle="[object Object]" class="vs-picker-search-input"></div>
+    <div class="vs-picker-search" inputstyle="[object Object]">
+      <div style="display: inline-block;" class="vs-picker-search-input"><input placeholder="" class="" style="box-sizing: content-box; width: 2px; max-width: -63px;">
+        <div style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-family: -webkit-small-control; letter-spacing: normal; text-transform: none;"></div>
+      </div>
+    </div>
   </div>
   <div data-transfer="false" class="vs-picker-menu vs-picker-select-menu v-transfer-dom" style="display: none;">
     <div class="vs-picker-select-menu-items" style="max-height: 320px;">
@@ -71,7 +83,11 @@ exports[`InputPicker demo renders block demo correctly 1`] = `
 exports[`InputPicker demo renders controlled demo correctly 1`] = `
 <div tabindex="-1" role="menu" class="vs-picker-input vs-picker-placement-bottom-start vs-picker-toggle-wrapper vs-picker-has-value vs-picker-cleanable vs-picker-focused" style="width: 224px;"><a role="button" tabindex="-1" class="vs-picker-toggle active"><span class="vs-picker-toggle-value">Julius</span><span role="button" tabindex="-1" class="vs-picker-toggle-clean">✕</span><span class="vs-picker-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span><object style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; pointer-events: none; z-index: -1; opacity: 0;" class="resize-sensor" tabindex="-1" type="text/html" data="about:blank"></object></a>
   <div class="vs-picker-tag-wrapper">
-    <div class="vs-picker-search" inputstyle="[object Object]"><input inputstyle="[object Object]" class="vs-picker-search-input"></div>
+    <div class="vs-picker-search" inputstyle="[object Object]">
+      <div style="display: inline-block;" class="vs-picker-search-input"><input placeholder="" class="" style="box-sizing: content-box; width: 2px; max-width: -63px;">
+        <div style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-family: -webkit-small-control; letter-spacing: normal; text-transform: none;"></div>
+      </div>
+    </div>
   </div>
   <div data-transfer="false" class="vs-picker-menu vs-picker-select-menu v-transfer-dom" style="">
     <div class="vs-picker-select-menu-items" style="max-height: 320px;">
@@ -100,7 +116,11 @@ exports[`InputPicker demo renders creatable demo correctly 1`] = `
 <div>
   <div tabindex="-1" role="menu" class="vs-picker-input vs-picker-placement-bottom-start vs-picker-toggle-wrapper" style="width: 224px;"><a role="button" tabindex="-1" class="vs-picker-toggle"><span class="vs-picker-toggle-placeholder">Select</span><span class="vs-picker-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span><object style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; pointer-events: none; z-index: -1; opacity: 0;" class="resize-sensor" tabindex="-1" type="text/html" data="about:blank"></object></a>
     <div class="vs-picker-tag-wrapper">
-      <div class="vs-picker-search" inputstyle="[object Object]"><input inputstyle="[object Object]" class="vs-picker-search-input"></div>
+      <div class="vs-picker-search" inputstyle="[object Object]">
+        <div style="display: inline-block;" class="vs-picker-search-input"><input placeholder="" class="" style="box-sizing: content-box; width: 2px; max-width: -63px;">
+          <div style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-family: -webkit-small-control; letter-spacing: normal; text-transform: none;"></div>
+        </div>
+      </div>
     </div>
     <div data-transfer="false" class="vs-picker-menu vs-picker-select-menu v-transfer-dom" style="display: none;">
       <div class="vs-picker-select-menu-items" style="max-height: 320px;">
@@ -126,7 +146,11 @@ exports[`InputPicker demo renders creatable demo correctly 1`] = `
   <hr>
   <div tabindex="-1" role="menu" class="vs-picker-input vs-picker-placement-bottom-start vs-picker-toggle-wrapper" style="width: 224px;"><a role="button" tabindex="-1" class="vs-picker-toggle"><span class="vs-picker-toggle-placeholder">Select</span><span class="vs-picker-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span><object style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; pointer-events: none; z-index: -1; opacity: 0;" class="resize-sensor" tabindex="-1" type="text/html" data="about:blank"></object></a>
     <div class="vs-picker-tag-wrapper">
-      <div class="vs-picker-search" inputstyle="[object Object]"><input inputstyle="[object Object]" class="vs-picker-search-input"></div>
+      <div class="vs-picker-search" inputstyle="[object Object]">
+        <div style="display: inline-block;" class="vs-picker-search-input"><input placeholder="" class="" style="box-sizing: content-box; width: 2px; max-width: -63px;">
+          <div style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-family: -webkit-small-control; letter-spacing: normal; text-transform: none;"></div>
+        </div>
+      </div>
     </div>
     <div data-transfer="false" class="vs-picker-menu vs-picker-select-menu v-transfer-dom" style="display: none;">
       <div class="vs-picker-select-menu-items" style="max-height: 320px;">
@@ -170,7 +194,11 @@ exports[`InputPicker demo renders creatable demo correctly 1`] = `
 exports[`InputPicker demo renders custom demo correctly 1`] = `
 <div tabindex="-1" role="menu" class="vs-picker-input vs-picker-placement-bottom-start vs-picker-toggle-wrapper" style="width: 224px;"><a role="button" tabindex="-1" class="vs-picker-toggle"><span class="vs-picker-toggle-placeholder">Select User</span><span class="vs-picker-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span><object style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; pointer-events: none; z-index: -1; opacity: 0;" class="resize-sensor" tabindex="-1" type="text/html" data="about:blank"></object></a>
   <div class="vs-picker-tag-wrapper">
-    <div class="vs-picker-search" inputstyle="[object Object]"><input inputstyle="[object Object]" class="vs-picker-search-input"></div>
+    <div class="vs-picker-search" inputstyle="[object Object]">
+      <div style="display: inline-block;" class="vs-picker-search-input"><input placeholder="" class="" style="box-sizing: content-box; width: 2px; max-width: -63px;">
+        <div style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-family: -webkit-small-control; letter-spacing: normal; text-transform: none;"></div>
+      </div>
+    </div>
   </div>
   <div data-transfer="false" class="vs-picker-menu vs-picker-select-menu v-transfer-dom" style="display: none;">
     <div class="vs-picker-select-menu-items" style="max-height: 320px;">
@@ -267,7 +295,11 @@ exports[`InputPicker demo renders disabled demo correctly 1`] = `
   <p>禁用选项</p>
   <div tabindex="-1" role="menu" class="vs-picker-input vs-picker-placement-bottom-start vs-picker-toggle-wrapper vs-picker-has-value vs-picker-cleanable" style="width: 224px;"><a role="button" tabindex="-1" class="vs-picker-toggle"><span class="vs-picker-toggle-value">Julius</span><span role="button" tabindex="-1" class="vs-picker-toggle-clean">✕</span><span class="vs-picker-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span><object style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; pointer-events: none; z-index: -1; opacity: 0;" class="resize-sensor" tabindex="-1" type="text/html" data="about:blank"></object></a>
     <div class="vs-picker-tag-wrapper">
-      <div class="vs-picker-search" inputstyle="[object Object]"><input inputstyle="[object Object]" class="vs-picker-search-input"></div>
+      <div class="vs-picker-search" inputstyle="[object Object]">
+        <div style="display: inline-block;" class="vs-picker-search-input"><input placeholder="" class="" style="box-sizing: content-box; width: 2px; max-width: -63px;">
+          <div style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-family: -webkit-small-control; letter-spacing: normal; text-transform: none;"></div>
+        </div>
+      </div>
     </div>
     <div data-transfer="false" class="vs-picker-menu vs-picker-select-menu v-transfer-dom" style="display: none;">
       <div class="vs-picker-select-menu-items" style="max-height: 320px;">
@@ -297,7 +329,11 @@ exports[`InputPicker demo renders group demo correctly 1`] = `
 <div>
   <div tabindex="-1" role="menu" class="vs-picker-input vs-picker-placement-bottom-start vs-picker-toggle-wrapper" style="width: 224px;"><a role="button" tabindex="-1" class="vs-picker-toggle"><span class="vs-picker-toggle-placeholder">Select</span><span class="vs-picker-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span><object style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; pointer-events: none; z-index: -1; opacity: 0;" class="resize-sensor" tabindex="-1" type="text/html" data="about:blank"></object></a>
     <div class="vs-picker-tag-wrapper">
-      <div class="vs-picker-search" inputstyle="[object Object]"><input inputstyle="[object Object]" class="vs-picker-search-input"></div>
+      <div class="vs-picker-search" inputstyle="[object Object]">
+        <div style="display: inline-block;" class="vs-picker-search-input"><input placeholder="" class="" style="box-sizing: content-box; width: 2px; max-width: -63px;">
+          <div style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-family: -webkit-small-control; letter-spacing: normal; text-transform: none;"></div>
+        </div>
+      </div>
     </div>
     <div data-transfer="false" class="vs-picker-menu vs-picker-select-menu v-transfer-dom" style="display: none;">
       <div class="vs-picker-select-menu-items" style="max-height: 320px;">
@@ -339,7 +375,11 @@ exports[`InputPicker demo renders group demo correctly 1`] = `
   <h5>排序：</h5>
   <div tabindex="-1" role="menu" class="vs-picker-input vs-picker-placement-bottom-start vs-picker-toggle-wrapper" style="width: 224px;"><a role="button" tabindex="-1" class="vs-picker-toggle"><span class="vs-picker-toggle-placeholder">Select</span><span class="vs-picker-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span><object style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; pointer-events: none; z-index: -1; opacity: 0;" class="resize-sensor" tabindex="-1" type="text/html" data="about:blank"></object></a>
     <div class="vs-picker-tag-wrapper">
-      <div class="vs-picker-search" inputstyle="[object Object]"><input inputstyle="[object Object]" class="vs-picker-search-input"></div>
+      <div class="vs-picker-search" inputstyle="[object Object]">
+        <div style="display: inline-block;" class="vs-picker-search-input"><input placeholder="" class="" style="box-sizing: content-box; width: 2px; max-width: -63px;">
+          <div style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-family: -webkit-small-control; letter-spacing: normal; text-transform: none;"></div>
+        </div>
+      </div>
     </div>
     <div data-transfer="false" class="vs-picker-menu vs-picker-select-menu v-transfer-dom" style="display: none;">
       <div class="vs-picker-select-menu-items" style="max-height: 320px;">

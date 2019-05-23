@@ -2,14 +2,20 @@
 
 <!--start-code-->
 
-```js
-/**
- * import data from
- * https://github.com/rsuite/rsuite.github.io/blob/master/src/resources/data/users.js
- */
+```vue
+<template>
+  <TagPicker style="width: 300px" :data="data" />
+</template>
 
-const instance = <TagPicker data={data} style={{ width: 300 }} />;
-ReactDOM.render(instance);
+<script>
+import data from 'stories/data/user';
+
+export default {
+  data() {
+    return { data };
+  },
+};
+</script>
 ```
 
 <!--end-code-->
