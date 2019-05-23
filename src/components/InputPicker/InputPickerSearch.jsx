@@ -3,6 +3,8 @@ import _ from 'lodash';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
 import { splitDataByComponent } from 'utils/split';
 
+import AutosizeInput from 'components/AutosizeInput';
+
 const CLASS_PREFIX = 'picker-search';
 
 export default {
@@ -16,13 +18,12 @@ export default {
   props: {
     value: String,
     classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
-    componentClass: VueTypes.oneOfType([VueTypes.string, VueTypes.object]).def(
-      'input'
-    ),
+    // componentClass: VueTypes.oneOfType([VueTypes.string, VueTypes.object]).def(
+    //   'input'
+    // ),
   },
 
   render() {
-    const Component = this.componentClass;
     const iptData = splitDataByComponent(
       {
         key: 'input',
@@ -35,12 +36,12 @@ export default {
         },
         ref: 'input',
       },
-      Component
+      AutosizeInput
     );
 
     return (
       <div class={this.classPrefix}>
-        <Component {...iptData}>{this.$slots.default}</Component>
+        <AutosizeInput {...iptData}>{this.$slots.default}</AutosizeInput>
       </div>
     );
   },

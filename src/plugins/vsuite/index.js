@@ -26,6 +26,8 @@ import InputNumber from 'components/InputNumber';
 import AutoComplete from 'components/AutoComplete';
 import Toggle from 'components/Toggle';
 import InputPicker from 'components/InputPicker';
+import TagPicker from 'components/TagPicker';
+import SelectPicker from 'components/SelectPicker';
 
 // Data Display
 import Tag from 'components/Tag';
@@ -83,6 +85,8 @@ export const components = {
   AutoComplete,
   Toggle,
   InputPicker,
+  TagPicker,
+  SelectPicker,
 
   Tag,
 

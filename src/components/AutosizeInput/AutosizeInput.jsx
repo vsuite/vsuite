@@ -25,12 +25,12 @@ const copyStyles = (styles, node) => {
 const generateId = () => {
   // we only need an auto-generated ID for stylesheet injection, which is only
   // used for IE. so if the browser is not IE, this should return undefined.
-  return isIE()
-    ? '_' +
-        Math.random()
-          .toString(36)
-          .substr(2, 12)
-    : undefined;
+  return (
+    '_' +
+    Math.random()
+      .toString(36)
+      .substr(2, 12)
+  );
 };
 
 export default {
@@ -132,7 +132,7 @@ export default {
         },
       };
 
-      return isIE && this.injectStyles ? <style {...data} /> : null;
+      return isIE() && this.injectStyles ? <style {...data} /> : null;
     },
 
     getInput() {
@@ -140,15 +140,15 @@ export default {
     },
 
     focus() {
-      this.$refs.input.focus();
+      this.$refs.input && this.$refs.input.focus();
     },
 
     blur() {
-      this.$refs.input.blur();
+      this.$refs.input && this.$refs.input.blur();
     },
 
     select() {
-      this.$refs.input.select();
+      this.$refs.input && this.$refs.input.select();
     },
 
     _copyInputStyles() {

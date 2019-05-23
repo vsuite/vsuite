@@ -14,7 +14,6 @@ import invariant from 'utils/invariant';
 
 import { Fade } from 'components/Animation';
 import Tag from 'components/Tag';
-// import AutosizeInput from 'components/AutosizeInput';
 import {
   PickerMenuWrapper,
   PickerDropdownMenu,
@@ -58,7 +57,7 @@ export default {
     maxHeight: VueTypes.number.def(320),
     valueKey: VueTypes.string.def('value'),
     labelKey: VueTypes.string.def('label'),
-    groupBy: VueTypes.any,
+    groupBy: VueTypes.string,
     placeholder: VueTypes.string,
     searchable: VueTypes.bool,
     cleanable: VueTypes.bool,
@@ -347,6 +346,7 @@ export default {
         {
           splitProps: {
             value: this.currentVisible ? this.searchKeyword : '',
+            // 52 = 55 (right padding)  - 2 (border) - 6 (left padding)
             inputStyle: { maxWidth: `${this.maxWidth - 63}px` },
           },
           on: {
@@ -484,15 +484,19 @@ export default {
         // close popper
         this._closePopper();
         this.$refs.search && this.$refs.search.blur();
+      } else {
+        this.$refs.search && this.$refs.search.focus();
       }
 
       this._setVal(newVal, event);
     },
 
     _handleRemoveItem(item, event) {
+      event.stopPropagation();
+
       if (this.disabled) return;
 
-      this._handleSelect(item, event, false);
+      this._handleSelect(item.value, item, event, false);
     },
 
     _handleSearch(val, event) {
@@ -518,6 +522,8 @@ export default {
 
       this.focusItemValue = null;
       this.searchKeyword = '';
+
+      this.$refs.search && this.$refs.search.focus();
 
       this._setVal(this.multi ? [] : null, event);
     },
