@@ -1,6 +1,6 @@
 import { VPopper } from '../popper';
 
-export declare class InputPicker extends VPopper {
+export declare class SelectPicker extends VPopper {
   /**
    * Current value of the component. Creates a controlled component
    *
