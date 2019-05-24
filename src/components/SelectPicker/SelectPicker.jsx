@@ -3,7 +3,7 @@ import _ from 'lodash';
 import popperMixin from 'mixins/popper';
 import onMenuKeydown from 'utils/onMenuKeydown';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
-import { mapNode, findNode, flattenNodes } from 'utils/tree';
+import { mapNode, findNode, flattenNodes, filterNodes } from 'utils/tree';
 import { splitDataByComponent } from 'utils/split';
 import { vueToString } from 'utils/node';
 import getDataGroupBy from 'utils/getDataGroupBy';
@@ -11,11 +11,13 @@ import { findComponentUpward } from 'utils/find';
 import shallowEqual from 'utils/shallowEqual';
 import invariant from 'utils/invariant';
 
+import { Fade } from 'components/Animation';
 import {
-  PickerMenuWrapper,
-  PickerDropdownMenu,
   PickerToggle,
   PickerSearchBar,
+  PickerMenuWrapper,
+  PickerDropdownMenu,
+  PickerDropdownMenuItem,
   getToggleWrapperClassName,
 } from 'components/_picker';
 
@@ -59,16 +61,30 @@ export default {
     creatable: VueTypes.bool.def(false),
     menuClassName: VueTypes.string,
     menuStyle: VueTypes.object,
+    menuAutoWidth: VueTypes.bool,
+    sort: Function,
     renderMenu: Function,
     renderMenuItem: Function,
     renderMenuGroup: Function,
     renderValue: Function,
-    classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
     toggleComponentClass: VueTypes.oneOfType([
       VueTypes.string,
       VueTypes.object,
     ]),
-    // change, select, search
+    classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
+
+    // slot-header
+    // slot-footer
+    // slot-placeholder
+
+    // slot-scope-value
+    // slot-scope-menu
+    // slot-scope-menu-item
+    // slot-scope-menu-group
+
+    // @show
+    // @hide
+    // @visible-change
   },
 
   data() {
@@ -102,24 +118,40 @@ export default {
 
     dataList() {
       let list = [...this.rawData];
+      let filteredList = filterNodes(list, item =>
+        this._shouldDisplay(_.get(item, this.labelKey), this.searchKeyword)
+      );
 
       if (
         this.creatable &&
         this.searchKeyword &&
-        !findNode(list, item =>
-          this._shouldDisplay(_.get(item, this.labelKey), this.searchKeyword)
+        !findNode(
+          filteredList,
+          item => _.get(item, this.labelKey) === this.searchKeyword
         )
       ) {
-        list.push(this._createOption(this.searchKeyword));
+        filteredList.push(this._createOption(this.searchKeyword));
       }
 
       if (this.groupBy) {
-        list = getDataGroupBy(list, this.groupBy);
+        filteredList = getDataGroupBy(filteredList, this.groupBy, this.sort);
+      } else if (this.sort) {
+        filteredList = filteredList.sort(this.sort(false));
       }
 
-      return mapNode(list, (data, index, layer, children) => {
+      return mapNode(filteredList, (data, index, layer, children) => {
         const value = _.get(data, this.valueKey);
         const label = _.get(data, this.labelKey);
+
+        invariant.not(
+          _.isUndefined(label),
+          `labelKey "${this.labelKey}" is not defined in "data" : ${index}`
+        );
+
+        invariant.not(
+          _.isUndefined(value) && !children,
+          `valueKey "${this.valueKey}" is not defined in "data" : ${index} `
+        );
 
         return {
           key: `${layer}-${
@@ -140,6 +172,16 @@ export default {
     },
   },
 
+  watch: {
+    currentVisible(val) {
+      if (val) {
+        this.$nextTick(
+          () => this.$refs.menu && this.$refs.menu._updateScrollPosition()
+        );
+      }
+    },
+  },
+
   render(h) {
     const { exists, label } = this._getLabelByValue(h, this.currentVal);
     const referenceData = {
@@ -150,6 +192,7 @@ export default {
       ref: 'reference',
     };
     const toggleData = splitDataByComponent({
+      class: this.currentVisible ? 'active' : '',
       splitProps: {
         ...this.$attrs,
         hasValue: exists,
@@ -157,6 +200,7 @@ export default {
         componentClass: this.toggleComponentClass,
       },
       on: { clean: this._handleClean },
+      ref: 'toggle',
     });
     const popperData = {
       directives: [
@@ -178,9 +222,7 @@ export default {
               this.placeholder ||
               this.$t('_.Picker.placeholder')}
         </PickerToggle>
-        <transition name="picker-fade">
-          {this._renderDropdownMenu(h, popperData)}
-        </transition>
+        <Fade>{this._renderDropdownMenu(h, popperData)}</Fade>
       </div>
     );
   },
@@ -190,6 +232,10 @@ export default {
       popperData = _.merge(popperData, {
         class: [this._addPrefix('select-menu'), this.menuClassName],
         style: this.menuStyle,
+        props: {
+          autoWidth: this.menuAutoWidth,
+          getToggleInstance: this._getToggleInstance,
+        },
         on: { keydown: this._handleKeydown },
       });
 
@@ -199,14 +245,15 @@ export default {
             data: this.dataList,
             group: !_.isUndefined(this.groupBy),
             maxHeight: this.maxHeight,
-            valueKey: this.valueKey,
-            labelKey: this.labelKey,
+            // valueKey: this.valueKey,
+            // labelKey: this.labelKey,
             disabledItemValues: this.disabledItemValues,
             activeItemValues: [this.currentVal],
             focusItemValue: this.focusItemValue,
             renderMenuGroup: this.renderMenuGroup,
             renderMenuItem: this._renderMenuItem,
             dropdownMenuItemClassPrefix: this._addPrefix('select-menu-item'),
+            dropdownMenuItemComponentClass: PickerDropdownMenuItem,
             classPrefix: this._addPrefix('select-menu'),
           },
           on: { select: this._handleSelect },
@@ -214,7 +261,13 @@ export default {
         },
         PickerDropdownMenu
       );
-      const menu = <PickerDropdownMenu {...menuData} />;
+      const menu = this.dataList.length ? (
+        <PickerDropdownMenu {...menuData} />
+      ) : (
+        <div class={this._addPrefix('none')}>
+          {this.$t('_.InputPicker.noResultsText')}
+        </div>
+      );
 
       return (
         <PickerMenuWrapper {...popperData}>
@@ -227,7 +280,11 @@ export default {
               ref="search"
             />
           )}
-          {this.renderMenu ? this.renderMenu(h, menu) : menu}
+          {this.$scopedSlots.menu
+            ? this.$scopedSlots.menu({ menu })
+            : this.renderMenu
+            ? this.renderMenu(h, menu)
+            : menu}
           {this.$slots.footer}
         </PickerMenuWrapper>
       );
@@ -240,9 +297,15 @@ export default {
         label
       );
 
-      return this.renderMenuItem
+      return this.$scopedSlots['menu-item']
+        ? this.$scopedSlots['menu-item']({ label: newLabel, data })
+        : this.renderMenuItem
         ? this.renderMenuItem(h, newLabel, data)
         : newLabel;
+    },
+
+    _getToggleInstance() {
+      return this.$refs && this.$refs.toggle;
     },
 
     _getLabelByValue(h, value) {
@@ -251,7 +314,9 @@ export default {
       );
       let label = _.get(item, this.labelKey);
 
-      if (this.renderValue) {
+      if (this.$scopedSlots.value) {
+        label = this.$scopedSlots.value({ label, item });
+      } else if (this.renderValue) {
         label = this.renderValue(h, label, item);
       }
 
@@ -302,9 +367,10 @@ export default {
       }
     },
 
-    _handleSelect(item, event) {
-      const { value, data } = item;
+    _handleSelect(value, item, event) {
+      const { data } = item;
 
+      // if new create item
       if (data && data.create) {
         delete data.create;
 
@@ -312,6 +378,7 @@ export default {
       }
 
       this.focusItemValue = value;
+      this.searchKeyword = '';
 
       // close popper
       this._closePopper();
@@ -341,6 +408,7 @@ export default {
         down: this._handleFocusNext,
         up: this._handleFocusPrev,
         enter: this._handleFocusCurrent,
+        del: this._handleFocusDel,
         esc: this._closePopper,
       });
     },
@@ -358,10 +426,6 @@ export default {
       if (!length) return;
       if (index === -1) this.focusItemValue = list[0] && list[0].value;
       if (index + 1 < length) this.focusItemValue = list[index + 1].value;
-
-      this.$nextTick(
-        () => this.$refs.menu && this.$refs.menu._updateScrollPosition()
-      );
     },
 
     _handleFocusPrev() {
@@ -377,10 +441,6 @@ export default {
       if (!length) return;
       if (index === -1) this.focusItemValue = list[0] && list[0].value;
       if (index - 1 >= 0) this.focusItemValue = list[index - 1].value;
-
-      this.$nextTick(
-        () => this.$refs.menu && this.$refs.menu._updateScrollPosition()
-      );
     },
 
     _handleFocusCurrent(event) {
@@ -390,7 +450,13 @@ export default {
 
       if (!item) return;
 
-      this._handleSelect(item, event, false);
+      this._handleSelect(item.value, item, event, false);
+    },
+
+    _handleFocusDel(event) {
+      if (!this.searchKeyword) {
+        this._handleClean(event);
+      }
     },
 
     _addPrefix(cls) {

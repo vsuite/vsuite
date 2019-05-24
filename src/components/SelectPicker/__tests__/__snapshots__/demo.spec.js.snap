@@ -1,0 +1,693 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SelectPicker demo renders appearance demo correctly 1`] = `
+<div>
+  <div tabindex="-1" role="menu" class="vs-picker-select vs-picker-default vs-picker-placement-bottom-start vs-picker-toggle-wrapper" style="width: 224px;"><a role="button" tabindex="-1" class="vs-picker-toggle"><span class="vs-picker-toggle-placeholder">Default</span><span class="vs-picker-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span><object style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; pointer-events: none; z-index: -1; opacity: 0;" class="resize-sensor" tabindex="-1" type="text/html" data="about:blank"></object></a>
+    <div data-transfer="false" class="vs-picker-menu vs-picker-select-menu v-transfer-dom" style="display: none;">
+      <div class="vs-picker-search-bar"><input placeholder="Search" class="vs-picker-search-bar-input"></div>
+      <div class="vs-picker-select-menu-items" style="max-height: 320px;">
+        <ul>
+          <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Eugenia</a></li>
+          <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Kariane</a></li>
+          <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Louisa</a></li>
+          <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Marty</a></li>
+          <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Kenya</a></li>
+          <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Hal</a></li>
+          <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Julius</a></li>
+          <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Travon</a></li>
+          <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Vincenza</a></li>
+          <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Dominic</a></li>
+          <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Pearlie</a></li>
+          <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Tyrel</a></li>
+          <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Jaylen</a></li>
+          <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Rogelio</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div tabindex="-1" role="menu" class="vs-picker-select vs-picker-subtle vs-picker-placement-bottom-start vs-picker-toggle-wrapper" style="width: 224px;"><a role="button" tabindex="-1" class="vs-picker-toggle"><span class="vs-picker-toggle-placeholder">Subtle</span><span class="vs-picker-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span><object style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; pointer-events: none; z-index: -1; opacity: 0;" class="resize-sensor" tabindex="-1" type="text/html" data="about:blank"></object></a>
+    <div data-transfer="false" class="vs-picker-menu vs-picker-select-menu v-transfer-dom" style="display: none;">
+      <div class="vs-picker-search-bar"><input placeholder="Search" class="vs-picker-search-bar-input"></div>
+      <div class="vs-picker-select-menu-items" style="max-height: 320px;">
+        <ul>
+          <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Eugenia</a></li>
+          <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Kariane</a></li>
+          <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Louisa</a></li>
+          <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Marty</a></li>
+          <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Kenya</a></li>
+          <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Hal</a></li>
+          <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Julius</a></li>
+          <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Travon</a></li>
+          <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Vincenza</a></li>
+          <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Dominic</a></li>
+          <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Pearlie</a></li>
+          <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Tyrel</a></li>
+          <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Jaylen</a></li>
+          <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Rogelio</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`SelectPicker demo renders async demo correctly 1`] = `
+<div tabindex="-1" role="menu" class="vs-picker-select vs-picker-default vs-picker-placement-bottom-start vs-picker-toggle-wrapper" style="width: 224px;"><a role="button" tabindex="-1" class="vs-picker-toggle"><span class="vs-picker-toggle-placeholder">Select</span><span class="vs-picker-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span><object style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; pointer-events: none; z-index: -1; opacity: 0;" class="resize-sensor" tabindex="-1" type="text/html" data="about:blank"></object></a>
+  <div data-transfer="false" class="vs-picker-menu vs-picker-select-menu v-transfer-dom" style="display: none;">
+    <div class="vs-picker-search-bar"><input placeholder="Search" class="vs-picker-search-bar-input"></div>
+    <p style="padding: 4px; color: rgb(153, 153, 153); text-align: center;"><i class="vs-icon vs-icon-spinner vs-icon-spin"></i> Loading...
+    </p>
+  </div>
+</div>
+`;
+
+exports[`SelectPicker demo renders basic demo correctly 1`] = `
+<div tabindex="-1" role="menu" class="vs-picker-select vs-picker-default vs-picker-placement-bottom-start vs-picker-toggle-wrapper" style="width: 224px;"><a role="button" tabindex="-1" class="vs-picker-toggle"><span class="vs-picker-toggle-placeholder">Select</span><span class="vs-picker-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span><object style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; pointer-events: none; z-index: -1; opacity: 0;" class="resize-sensor" tabindex="-1" type="text/html" data="about:blank"></object></a>
+  <div data-transfer="false" class="vs-picker-menu vs-picker-select-menu v-transfer-dom" style="display: none;">
+    <div class="vs-picker-search-bar"><input placeholder="Search" class="vs-picker-search-bar-input"></div>
+    <div class="vs-picker-select-menu-items" style="max-height: 320px;">
+      <ul>
+        <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Eugenia</a></li>
+        <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Kariane</a></li>
+        <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Louisa</a></li>
+        <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Marty</a></li>
+        <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Kenya</a></li>
+        <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Hal</a></li>
+        <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Julius</a></li>
+        <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Travon</a></li>
+        <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Vincenza</a></li>
+        <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Dominic</a></li>
+        <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Pearlie</a></li>
+        <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Tyrel</a></li>
+        <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Jaylen</a></li>
+        <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Rogelio</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`SelectPicker demo renders block demo correctly 1`] = `
+<div tabindex="-1" role="menu" class="vs-picker-select vs-picker-default vs-picker-placement-bottom-start vs-picker-toggle-wrapper vs-picker-block"><a role="button" tabindex="-1" class="vs-picker-toggle"><span class="vs-picker-toggle-placeholder">Select</span><span class="vs-picker-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span><object style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; pointer-events: none; z-index: -1; opacity: 0;" class="resize-sensor" tabindex="-1" type="text/html" data="about:blank"></object></a>
+  <div data-transfer="false" class="vs-picker-menu vs-picker-select-menu v-transfer-dom" style="display: none;">
+    <div class="vs-picker-search-bar"><input placeholder="Search" class="vs-picker-search-bar-input"></div>
+    <div class="vs-picker-select-menu-items" style="max-height: 320px;">
+      <ul>
+        <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Eugenia</a></li>
+        <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Kariane</a></li>
+        <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Louisa</a></li>
+        <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Marty</a></li>
+        <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Kenya</a></li>
+        <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Hal</a></li>
+        <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Julius</a></li>
+        <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Travon</a></li>
+        <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Vincenza</a></li>
+        <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Dominic</a></li>
+        <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Pearlie</a></li>
+        <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Tyrel</a></li>
+        <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Jaylen</a></li>
+        <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Rogelio</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`SelectPicker demo renders container demo correctly 1`] = `
+<div class="container">
+  <div class="wrapper">
+    <div tabindex="-1" role="menu" class="vs-picker-select vs-picker-default vs-picker-placement-bottom-start vs-picker-toggle-wrapper" style="width: 224px;"><a role="button" tabindex="-1" class="vs-picker-toggle"><span class="vs-picker-toggle-placeholder">Select</span><span class="vs-picker-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span><object style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; pointer-events: none; z-index: -1; opacity: 0;" class="resize-sensor" tabindex="-1" type="text/html" data="about:blank"></object></a>
+      <div data-transfer="false" class="vs-picker-menu vs-picker-select-menu v-transfer-dom" style="display: none;">
+        <div class="vs-picker-search-bar"><input placeholder="Search" class="vs-picker-search-bar-input"></div>
+        <div class="vs-picker-select-menu-items" style="max-height: 320px;">
+          <ul>
+            <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Eugenia</a></li>
+            <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Kariane</a></li>
+            <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Louisa</a></li>
+            <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Marty</a></li>
+            <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Kenya</a></li>
+            <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Hal</a></li>
+            <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Julius</a></li>
+            <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Travon</a></li>
+            <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Vincenza</a></li>
+            <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Dominic</a></li>
+            <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Pearlie</a></li>
+            <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Tyrel</a></li>
+            <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Jaylen</a></li>
+            <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Rogelio</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`SelectPicker demo renders controlled demo correctly 1`] = `
+<div tabindex="-1" role="menu" class="vs-picker-select vs-picker-default vs-picker-placement-bottom-start vs-picker-toggle-wrapper vs-picker-has-value vs-picker-cleanable" style="width: 224px;"><a role="button" tabindex="-1" class="vs-picker-toggle active"><span class="vs-picker-toggle-value">Julius</span><span role="button" tabindex="-1" class="vs-picker-toggle-clean">✕</span><span class="vs-picker-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span><object style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; pointer-events: none; z-index: -1; opacity: 0;" class="resize-sensor" tabindex="-1" type="text/html" data="about:blank"></object></a>
+  <div data-transfer="false" class="vs-picker-menu vs-picker-select-menu v-transfer-dom" style="">
+    <div class="vs-picker-search-bar"><input placeholder="Search" class="vs-picker-search-bar-input"></div>
+    <div class="vs-picker-select-menu-items" style="max-height: 320px;">
+      <ul>
+        <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Eugenia</a></li>
+        <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Kariane</a></li>
+        <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Louisa</a></li>
+        <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Marty</a></li>
+        <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Kenya</a></li>
+        <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Hal</a></li>
+        <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item vs-picker-select-menu-item-active vs-picker-select-menu-item-focus">Julius</a></li>
+        <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Travon</a></li>
+        <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Vincenza</a></li>
+        <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Dominic</a></li>
+        <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Pearlie</a></li>
+        <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Tyrel</a></li>
+        <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Jaylen</a></li>
+        <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Rogelio</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`SelectPicker demo renders creatable demo correctly 1`] = `
+<div>
+  <div tabindex="-1" role="menu" class="vs-picker-select vs-picker-default vs-picker-placement-bottom-start vs-picker-toggle-wrapper" style="width: 224px;"><a role="button" tabindex="-1" class="vs-picker-toggle"><span class="vs-picker-toggle-placeholder">Select</span><span class="vs-picker-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span><object style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; pointer-events: none; z-index: -1; opacity: 0;" class="resize-sensor" tabindex="-1" type="text/html" data="about:blank"></object></a>
+    <div data-transfer="false" class="vs-picker-menu vs-picker-select-menu v-transfer-dom" style="display: none;">
+      <div class="vs-picker-search-bar"><input placeholder="Search" class="vs-picker-search-bar-input"></div>
+      <div class="vs-picker-select-menu-items" style="max-height: 320px;">
+        <ul>
+          <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Eugenia</a></li>
+          <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Kariane</a></li>
+          <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Louisa</a></li>
+          <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Marty</a></li>
+          <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Kenya</a></li>
+          <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Hal</a></li>
+          <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Julius</a></li>
+          <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Travon</a></li>
+          <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Vincenza</a></li>
+          <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Dominic</a></li>
+          <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Pearlie</a></li>
+          <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Tyrel</a></li>
+          <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Jaylen</a></li>
+          <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Rogelio</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div tabindex="-1" role="menu" class="vs-picker-select vs-picker-default vs-picker-placement-bottom-start vs-picker-toggle-wrapper" style="width: 224px;"><a role="button" tabindex="-1" class="vs-picker-toggle"><span class="vs-picker-toggle-placeholder">Select</span><span class="vs-picker-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span><object style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; pointer-events: none; z-index: -1; opacity: 0;" class="resize-sensor" tabindex="-1" type="text/html" data="about:blank"></object></a>
+    <div data-transfer="false" class="vs-picker-menu vs-picker-select-menu v-transfer-dom" style="display: none;">
+      <div class="vs-picker-search-bar"><input placeholder="Search" class="vs-picker-search-bar-input"></div>
+      <div class="vs-picker-select-menu-items" style="max-height: 320px;">
+        <ul>
+          <li class="vs-picker-select-menu-group">
+            <div role="menuitem" tabindex="-1" class="vs-picker-select-menu-group-title"><span>Master</span><span classname="vs-picker-select-menu-group-caret"></span></div>
+            <ul class="vs-picker-select-menu-group-children" appear="true">
+              <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Eugenia</a></li>
+              <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Kariane</a></li>
+              <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Louisa</a></li>
+              <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Marty</a></li>
+              <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Kenya</a></li>
+            </ul>
+          </li>
+          <li class="vs-picker-select-menu-group">
+            <div role="menuitem" tabindex="-1" class="vs-picker-select-menu-group-title"><span>Developer</span><span classname="vs-picker-select-menu-group-caret"></span></div>
+            <ul class="vs-picker-select-menu-group-children" appear="true">
+              <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Hal</a></li>
+              <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Julius</a></li>
+              <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Travon</a></li>
+              <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Vincenza</a></li>
+              <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Dominic</a></li>
+            </ul>
+          </li>
+          <li class="vs-picker-select-menu-group">
+            <div role="menuitem" tabindex="-1" class="vs-picker-select-menu-group-title"><span>Guest</span><span classname="vs-picker-select-menu-group-caret"></span></div>
+            <ul class="vs-picker-select-menu-group-children" appear="true">
+              <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Pearlie</a></li>
+              <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Tyrel</a></li>
+              <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Jaylen</a></li>
+              <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Rogelio</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`SelectPicker demo renders custom demo correctly 1`] = `
+<div tabindex="-1" role="menu" class="vs-picker-select vs-picker-default vs-picker-placement-bottom-start vs-picker-toggle-wrapper" style="width: 224px;"><a role="button" tabindex="-1" class="vs-picker-toggle"><span class="vs-picker-toggle-placeholder">Select User</span><span class="vs-picker-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span><object style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; pointer-events: none; z-index: -1; opacity: 0;" class="resize-sensor" tabindex="-1" type="text/html" data="about:blank"></object></a>
+  <div data-transfer="false" class="vs-picker-menu vs-picker-select-menu v-transfer-dom" style="display: none;">
+    <div class="vs-picker-search-bar"><input placeholder="Search" class="vs-picker-search-bar-input"></div>
+    <div class="vs-picker-select-menu-items" style="max-height: 320px;">
+      <ul>
+        <li class="vs-picker-select-menu-group">
+          <div role="menuitem" tabindex="-1" class="vs-picker-select-menu-group-title"><span>Master</span><span classname="vs-picker-select-menu-group-caret"></span></div>
+          <ul class="vs-picker-select-menu-group-children" appear="true">
+            <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">
+                <div><i class="vs-icon vs-icon-user"></i> {label}</div>
+              </a></li>
+            <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">
+                <div><i class="vs-icon vs-icon-user"></i> {label}</div>
+              </a></li>
+            <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">
+                <div><i class="vs-icon vs-icon-user"></i> {label}</div>
+              </a></li>
+            <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">
+                <div><i class="vs-icon vs-icon-user"></i> {label}</div>
+              </a></li>
+            <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">
+                <div><i class="vs-icon vs-icon-user"></i> {label}</div>
+              </a></li>
+          </ul>
+        </li>
+        <li class="vs-picker-select-menu-group">
+          <div role="menuitem" tabindex="-1" class="vs-picker-select-menu-group-title"><span>Developer</span><span classname="vs-picker-select-menu-group-caret"></span></div>
+          <ul class="vs-picker-select-menu-group-children" appear="true">
+            <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">
+                <div><i class="vs-icon vs-icon-user"></i> {label}</div>
+              </a></li>
+            <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">
+                <div><i class="vs-icon vs-icon-user"></i> {label}</div>
+              </a></li>
+            <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">
+                <div><i class="vs-icon vs-icon-user"></i> {label}</div>
+              </a></li>
+            <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">
+                <div><i class="vs-icon vs-icon-user"></i> {label}</div>
+              </a></li>
+            <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">
+                <div><i class="vs-icon vs-icon-user"></i> {label}</div>
+              </a></li>
+          </ul>
+        </li>
+        <li class="vs-picker-select-menu-group">
+          <div role="menuitem" tabindex="-1" class="vs-picker-select-menu-group-title"><span>Guest</span><span classname="vs-picker-select-menu-group-caret"></span></div>
+          <ul class="vs-picker-select-menu-group-children" appear="true">
+            <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">
+                <div><i class="vs-icon vs-icon-user"></i> {label}</div>
+              </a></li>
+            <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">
+                <div><i class="vs-icon vs-icon-user"></i> {label}</div>
+              </a></li>
+            <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">
+                <div><i class="vs-icon vs-icon-user"></i> {label}</div>
+              </a></li>
+            <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">
+                <div><i class="vs-icon vs-icon-user"></i> {label}</div>
+              </a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`SelectPicker demo renders disabled demo correctly 1`] = `
+<div>
+  <div tabindex="-1" role="menu" class="vs-picker-select vs-picker-default vs-picker-placement-bottom-start vs-picker-toggle-wrapper vs-picker-has-value vs-picker-disabled vs-picker-cleanable" style="width: 224px;"><a role="button" tabindex="-1" class="vs-picker-toggle"><span class="vs-picker-toggle-value">Julius</span><span class="vs-picker-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span><object style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; pointer-events: none; z-index: -1; opacity: 0;" class="resize-sensor" tabindex="-1" type="text/html" data="about:blank"></object></a>
+    <div data-transfer="false" class="vs-picker-menu vs-picker-select-menu v-transfer-dom" style="display: none;">
+      <div class="vs-picker-search-bar"><input placeholder="Search" class="vs-picker-search-bar-input"></div>
+      <div class="vs-picker-select-menu-items" style="max-height: 320px;">
+        <ul>
+          <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Eugenia</a></li>
+          <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Kariane</a></li>
+          <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Louisa</a></li>
+          <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Marty</a></li>
+          <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Kenya</a></li>
+          <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Hal</a></li>
+          <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item vs-picker-select-menu-item-active vs-picker-select-menu-item-focus">Julius</a></li>
+          <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Travon</a></li>
+          <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Vincenza</a></li>
+          <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Dominic</a></li>
+          <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Pearlie</a></li>
+          <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Tyrel</a></li>
+          <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Jaylen</a></li>
+          <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Rogelio</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <p>禁用选项</p>
+  <div tabindex="-1" role="menu" class="vs-picker-select vs-picker-default vs-picker-placement-bottom-start vs-picker-toggle-wrapper vs-picker-has-value vs-picker-cleanable" style="width: 224px;"><a role="button" tabindex="-1" class="vs-picker-toggle"><span class="vs-picker-toggle-value">Julius</span><span role="button" tabindex="-1" class="vs-picker-toggle-clean">✕</span><span class="vs-picker-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span><object style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; pointer-events: none; z-index: -1; opacity: 0;" class="resize-sensor" tabindex="-1" type="text/html" data="about:blank"></object></a>
+    <div data-transfer="false" class="vs-picker-menu vs-picker-select-menu v-transfer-dom" style="display: none;">
+      <div class="vs-picker-search-bar"><input placeholder="Search" class="vs-picker-search-bar-input"></div>
+      <div class="vs-picker-select-menu-items" style="max-height: 320px;">
+        <ul>
+          <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item vs-picker-select-menu-item-disabled">Eugenia</a></li>
+          <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Kariane</a></li>
+          <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Louisa</a></li>
+          <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Marty</a></li>
+          <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Kenya</a></li>
+          <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Hal</a></li>
+          <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item vs-picker-select-menu-item-active vs-picker-select-menu-item-focus">Julius</a></li>
+          <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item vs-picker-select-menu-item-disabled">Travon</a></li>
+          <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item vs-picker-select-menu-item-disabled">Vincenza</a></li>
+          <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Dominic</a></li>
+          <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Pearlie</a></li>
+          <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Tyrel</a></li>
+          <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Jaylen</a></li>
+          <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Rogelio</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`SelectPicker demo renders group demo correctly 1`] = `
+<div>
+  <div tabindex="-1" role="menu" class="vs-picker-select vs-picker-default vs-picker-placement-bottom-start vs-picker-toggle-wrapper" style="width: 224px;"><a role="button" tabindex="-1" class="vs-picker-toggle"><span class="vs-picker-toggle-placeholder">Select</span><span class="vs-picker-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span><object style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; pointer-events: none; z-index: -1; opacity: 0;" class="resize-sensor" tabindex="-1" type="text/html" data="about:blank"></object></a>
+    <div data-transfer="false" class="vs-picker-menu vs-picker-select-menu v-transfer-dom" style="display: none;">
+      <div class="vs-picker-search-bar"><input placeholder="Search" class="vs-picker-search-bar-input"></div>
+      <div class="vs-picker-select-menu-items" style="max-height: 320px;">
+        <ul>
+          <li class="vs-picker-select-menu-group">
+            <div role="menuitem" tabindex="-1" class="vs-picker-select-menu-group-title"><span>Master</span><span classname="vs-picker-select-menu-group-caret"></span></div>
+            <ul class="vs-picker-select-menu-group-children" appear="true">
+              <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Eugenia</a></li>
+              <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Kariane</a></li>
+              <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Louisa</a></li>
+              <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Marty</a></li>
+              <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Kenya</a></li>
+            </ul>
+          </li>
+          <li class="vs-picker-select-menu-group">
+            <div role="menuitem" tabindex="-1" class="vs-picker-select-menu-group-title"><span>Developer</span><span classname="vs-picker-select-menu-group-caret"></span></div>
+            <ul class="vs-picker-select-menu-group-children" appear="true">
+              <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Hal</a></li>
+              <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Julius</a></li>
+              <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Travon</a></li>
+              <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Vincenza</a></li>
+              <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Dominic</a></li>
+            </ul>
+          </li>
+          <li class="vs-picker-select-menu-group">
+            <div role="menuitem" tabindex="-1" class="vs-picker-select-menu-group-title"><span>Guest</span><span classname="vs-picker-select-menu-group-caret"></span></div>
+            <ul class="vs-picker-select-menu-group-children" appear="true">
+              <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Pearlie</a></li>
+              <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Tyrel</a></li>
+              <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Jaylen</a></li>
+              <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Rogelio</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <h5>排序：</h5>
+  <div tabindex="-1" role="menu" class="vs-picker-select vs-picker-default vs-picker-placement-bottom-start vs-picker-toggle-wrapper" style="width: 224px;"><a role="button" tabindex="-1" class="vs-picker-toggle"><span class="vs-picker-toggle-placeholder">Select</span><span class="vs-picker-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span><object style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; pointer-events: none; z-index: -1; opacity: 0;" class="resize-sensor" tabindex="-1" type="text/html" data="about:blank"></object></a>
+    <div data-transfer="false" class="vs-picker-menu vs-picker-select-menu v-transfer-dom" style="display: none;">
+      <div class="vs-picker-search-bar"><input placeholder="Search" class="vs-picker-search-bar-input"></div>
+      <div class="vs-picker-select-menu-items" style="max-height: 320px;">
+        <ul>
+          <li class="vs-picker-select-menu-group">
+            <div role="menuitem" tabindex="-1" class="vs-picker-select-menu-group-title"><span>Developer</span><span classname="vs-picker-select-menu-group-caret"></span></div>
+            <ul class="vs-picker-select-menu-group-children" appear="true">
+              <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Dominic</a></li>
+              <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Hal</a></li>
+              <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Julius</a></li>
+              <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Travon</a></li>
+              <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Vincenza</a></li>
+            </ul>
+          </li>
+          <li class="vs-picker-select-menu-group">
+            <div role="menuitem" tabindex="-1" class="vs-picker-select-menu-group-title"><span>Guest</span><span classname="vs-picker-select-menu-group-caret"></span></div>
+            <ul class="vs-picker-select-menu-group-children" appear="true">
+              <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Jaylen</a></li>
+              <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Pearlie</a></li>
+              <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Rogelio</a></li>
+              <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Tyrel</a></li>
+            </ul>
+          </li>
+          <li class="vs-picker-select-menu-group">
+            <div role="menuitem" tabindex="-1" class="vs-picker-select-menu-group-title"><span>Master</span><span classname="vs-picker-select-menu-group-caret"></span></div>
+            <ul class="vs-picker-select-menu-group-children" appear="true">
+              <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Eugenia</a></li>
+              <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Kariane</a></li>
+              <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Kenya</a></li>
+              <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Louisa</a></li>
+              <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Marty</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`SelectPicker demo renders placement demo correctly 1`] = `
+<div>
+  <table id="customTable">
+    <tbody>
+      <tr>
+        <td></td>
+        <td>
+          <div tabindex="-1" role="menu" class="vs-picker-select vs-picker-default vs-picker-placement-bottom-start vs-picker-toggle-wrapper"><a role="button" tabindex="-1" class="vs-picker-toggle"><span class="vs-picker-toggle-placeholder">bottom-start</span><span class="vs-picker-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span><object style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; pointer-events: none; z-index: -1; opacity: 0;" class="resize-sensor" tabindex="-1" type="text/html" data="about:blank"></object></a>
+            <div data-transfer="false" class="vs-picker-menu vs-picker-select-menu v-transfer-dom" style="display: none;">
+              <div class="vs-picker-search-bar"><input placeholder="Search" class="vs-picker-search-bar-input"></div>
+              <div class="vs-picker-select-menu-items" style="max-height: 320px;">
+                <ul>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Eugenia</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Kariane</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Louisa</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Marty</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Kenya</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Hal</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Julius</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Travon</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Vincenza</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Dominic</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Pearlie</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Tyrel</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Jaylen</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Rogelio</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </td>
+        <td>
+          <div tabindex="-1" role="menu" class="vs-picker-select vs-picker-default vs-picker-placement-bottom-end vs-picker-toggle-wrapper"><a role="button" tabindex="-1" class="vs-picker-toggle"><span class="vs-picker-toggle-placeholder">bottom-end</span><span class="vs-picker-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span><object style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; pointer-events: none; z-index: -1; opacity: 0;" class="resize-sensor" tabindex="-1" type="text/html" data="about:blank"></object></a>
+            <div data-transfer="false" class="vs-picker-menu vs-picker-select-menu v-transfer-dom" style="display: none;">
+              <div class="vs-picker-search-bar"><input placeholder="Search" class="vs-picker-search-bar-input"></div>
+              <div class="vs-picker-select-menu-items" style="max-height: 320px;">
+                <ul>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Eugenia</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Kariane</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Louisa</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Marty</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Kenya</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Hal</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Julius</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Travon</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Vincenza</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Dominic</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Pearlie</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Tyrel</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Jaylen</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Rogelio</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>
+          <div tabindex="-1" role="menu" class="vs-picker-select vs-picker-default vs-picker-placement-right-start vs-picker-toggle-wrapper"><a role="button" tabindex="-1" class="vs-picker-toggle"><span class="vs-picker-toggle-placeholder">right-start</span><span class="vs-picker-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span><object style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; pointer-events: none; z-index: -1; opacity: 0;" class="resize-sensor" tabindex="-1" type="text/html" data="about:blank"></object></a>
+            <div data-transfer="false" class="vs-picker-menu vs-picker-select-menu v-transfer-dom" style="display: none;">
+              <div class="vs-picker-search-bar"><input placeholder="Search" class="vs-picker-search-bar-input"></div>
+              <div class="vs-picker-select-menu-items" style="max-height: 320px;">
+                <ul>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Eugenia</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Kariane</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Louisa</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Marty</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Kenya</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Hal</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Julius</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Travon</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Vincenza</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Dominic</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Pearlie</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Tyrel</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Jaylen</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Rogelio</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </td>
+        <td></td>
+        <td></td>
+        <td>
+          <div tabindex="-1" role="menu" class="vs-picker-select vs-picker-default vs-picker-placement-left-start vs-picker-toggle-wrapper"><a role="button" tabindex="-1" class="vs-picker-toggle"><span class="vs-picker-toggle-placeholder">left-start</span><span class="vs-picker-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span><object style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; pointer-events: none; z-index: -1; opacity: 0;" class="resize-sensor" tabindex="-1" type="text/html" data="about:blank"></object></a>
+            <div data-transfer="false" class="vs-picker-menu vs-picker-select-menu v-transfer-dom" style="display: none;">
+              <div class="vs-picker-search-bar"><input placeholder="Search" class="vs-picker-search-bar-input"></div>
+              <div class="vs-picker-select-menu-items" style="max-height: 320px;">
+                <ul>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Eugenia</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Kariane</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Louisa</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Marty</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Kenya</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Hal</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Julius</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Travon</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Vincenza</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Dominic</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Pearlie</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Tyrel</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Jaylen</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Rogelio</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div tabindex="-1" role="menu" class="vs-picker-select vs-picker-default vs-picker-placement-right-end vs-picker-toggle-wrapper"><a role="button" tabindex="-1" class="vs-picker-toggle"><span class="vs-picker-toggle-placeholder">right-end</span><span class="vs-picker-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span><object style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; pointer-events: none; z-index: -1; opacity: 0;" class="resize-sensor" tabindex="-1" type="text/html" data="about:blank"></object></a>
+            <div data-transfer="false" class="vs-picker-menu vs-picker-select-menu v-transfer-dom" style="display: none;">
+              <div class="vs-picker-search-bar"><input placeholder="Search" class="vs-picker-search-bar-input"></div>
+              <div class="vs-picker-select-menu-items" style="max-height: 320px;">
+                <ul>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Eugenia</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Kariane</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Louisa</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Marty</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Kenya</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Hal</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Julius</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Travon</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Vincenza</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Dominic</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Pearlie</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Tyrel</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Jaylen</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Rogelio</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </td>
+        <td></td>
+        <td></td>
+        <td>
+          <div tabindex="-1" role="menu" class="vs-picker-select vs-picker-default vs-picker-placement-left-end vs-picker-toggle-wrapper"><a role="button" tabindex="-1" class="vs-picker-toggle"><span class="vs-picker-toggle-placeholder">left-end</span><span class="vs-picker-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span><object style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; pointer-events: none; z-index: -1; opacity: 0;" class="resize-sensor" tabindex="-1" type="text/html" data="about:blank"></object></a>
+            <div data-transfer="false" class="vs-picker-menu vs-picker-select-menu v-transfer-dom" style="display: none;">
+              <div class="vs-picker-search-bar"><input placeholder="Search" class="vs-picker-search-bar-input"></div>
+              <div class="vs-picker-select-menu-items" style="max-height: 320px;">
+                <ul>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Eugenia</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Kariane</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Louisa</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Marty</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Kenya</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Hal</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Julius</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Travon</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Vincenza</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Dominic</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Pearlie</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Tyrel</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Jaylen</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Rogelio</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>
+          <div tabindex="-1" role="menu" class="vs-picker-select vs-picker-default vs-picker-placement-top-start vs-picker-toggle-wrapper"><a role="button" tabindex="-1" class="vs-picker-toggle"><span class="vs-picker-toggle-placeholder">top-start</span><span class="vs-picker-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span><object style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; pointer-events: none; z-index: -1; opacity: 0;" class="resize-sensor" tabindex="-1" type="text/html" data="about:blank"></object></a>
+            <div data-transfer="false" class="vs-picker-menu vs-picker-select-menu v-transfer-dom" style="display: none;">
+              <div class="vs-picker-search-bar"><input placeholder="Search" class="vs-picker-search-bar-input"></div>
+              <div class="vs-picker-select-menu-items" style="max-height: 320px;">
+                <ul>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Eugenia</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Kariane</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Louisa</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Marty</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Kenya</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Hal</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Julius</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Travon</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Vincenza</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Dominic</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Pearlie</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Tyrel</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Jaylen</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Rogelio</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </td>
+        <td>
+          <div tabindex="-1" role="menu" class="vs-picker-select vs-picker-default vs-picker-placement-top-end vs-picker-toggle-wrapper"><a role="button" tabindex="-1" class="vs-picker-toggle"><span class="vs-picker-toggle-placeholder">top-end</span><span class="vs-picker-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span><object style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; pointer-events: none; z-index: -1; opacity: 0;" class="resize-sensor" tabindex="-1" type="text/html" data="about:blank"></object></a>
+            <div data-transfer="false" class="vs-picker-menu vs-picker-select-menu v-transfer-dom" style="display: none;">
+              <div class="vs-picker-search-bar"><input placeholder="Search" class="vs-picker-search-bar-input"></div>
+              <div class="vs-picker-select-menu-items" style="max-height: 320px;">
+                <ul>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Eugenia</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Kariane</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Louisa</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Marty</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Kenya</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Hal</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Julius</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Travon</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Vincenza</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Dominic</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Pearlie</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Tyrel</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Jaylen</a></li>
+                  <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Rogelio</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;
+
+exports[`SelectPicker demo renders searchable demo correctly 1`] = `
+<div tabindex="-1" role="menu" class="vs-picker-select vs-picker-default vs-picker-placement-bottom-start vs-picker-toggle-wrapper" style="width: 224px;"><a role="button" tabindex="-1" class="vs-picker-toggle"><span class="vs-picker-toggle-placeholder">Select</span><span class="vs-picker-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span><object style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; pointer-events: none; z-index: -1; opacity: 0;" class="resize-sensor" tabindex="-1" type="text/html" data="about:blank"></object></a>
+  <div data-transfer="false" class="vs-picker-menu vs-picker-select-menu v-transfer-dom" style="display: none;">
+    <div class="vs-picker-select-menu-items" style="max-height: 320px;">
+      <ul>
+        <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Eugenia</a></li>
+        <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Kariane</a></li>
+        <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Louisa</a></li>
+        <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Marty</a></li>
+        <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Kenya</a></li>
+        <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Hal</a></li>
+        <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Julius</a></li>
+        <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Travon</a></li>
+        <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Vincenza</a></li>
+        <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Dominic</a></li>
+        <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Pearlie</a></li>
+        <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Tyrel</a></li>
+        <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Jaylen</a></li>
+        <li role="menuitem"><a role="presentation" tabindex="-1" class="vs-picker-select-menu-item">Rogelio</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+`;

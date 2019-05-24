@@ -403,8 +403,8 @@ export default {
       );
       let label = _.get(item, this.labelKey);
 
-      if (this.$scopedSlots['value']) {
-        label = this.$scopedSlots['value']({ label, item });
+      if (this.$scopedSlots.value) {
+        label = this.$scopedSlots.value({ label, item });
       } else if (this.renderValue) {
         label = this.renderValue(h, label, item);
       }
