@@ -18,6 +18,7 @@ import {
   PickerDropdownMenuCheckItem,
   PickerToggle,
   PickerSearchBar,
+  PickerSelectedElement,
   getToggleWrapperClassName,
 } from 'components/_picker';
 
@@ -59,6 +60,7 @@ export default {
     searchable: VueTypes.bool,
     cleanable: VueTypes.bool,
     creatable: VueTypes.bool.def(false),
+    countable: VueTypes.bool,
     menuClassName: VueTypes.string,
     menuStyle: VueTypes.object,
     menuAutoWidth: VueTypes.bool,
@@ -187,20 +189,40 @@ export default {
   },
 
   render(h) {
-    const hasValue = !!(this.currentVal && this.currentVal.length);
     const selectedItems = this.currentVal.map(x =>
       findNode(this.rawDataWithCache, item =>
         shallowEqual(_.get(item, this.valueKey), x)
       )
     );
-    let selectedLabel = hasValue
-      ? this.$t('_.CheckPicker.selectedValues', [selectedItems.length])
-      : this.$slots.placeholder ||
-        this.placeholder ||
-        this.$t('_.Picker.placeholder');
+    const count = selectedItems.length;
+    const hasValue = !!count;
+    let selectedElement = this.$slots.placeholder || this.placeholder;
 
-    if (this.renderValue && hasValue) {
-      selectedLabel = this.renderValue(h, this.currentVal, selectedItems);
+    if (count > 0) {
+      selectedElement = (
+        <PickerSelectedElement
+          selectedItems={selectedItems}
+          countable={this.countable}
+          valueKey={this.valueKey}
+          labelKey={this.labelKey}
+          prefix={this._addPrefix}
+        />
+      );
+
+      if (this.$scopedSlots.value) {
+        selectedElement = this.$scopedSlots.value({
+          label: selectedElement,
+          items: selectedItems,
+          value: this.currentVal,
+        });
+      } else if (this.renderValue) {
+        selectedElement = this.renderValue(
+          h,
+          this.currentVal,
+          selectedItems,
+          selectedElement
+        );
+      }
     }
 
     const referenceData = {
@@ -215,15 +237,19 @@ export default {
       on: { keydown: this._handleKeydown },
       ref: 'reference',
     };
-    const toggleData = splitDataByComponent({
-      splitProps: {
-        ...this.$attrs,
-        hasValue,
-        cleanable: this.cleanable && !this.disabled,
-        componentClass: this.toggleComponentClass,
+    const toggleData = splitDataByComponent(
+      {
+        splitProps: {
+          ...this.$attrs,
+          hasValue,
+          cleanable: this.cleanable && !this.disabled,
+          componentClass: this.toggleComponentClass,
+        },
+        on: { clean: this._handleClean },
+        ref: 'toggle',
       },
-      on: { clean: this._handleClean },
-    });
+      PickerToggle
+    );
     const popperData = {
       directives: [
         { name: 'show', value: this.currentVisible },
@@ -237,7 +263,9 @@ export default {
 
     return (
       <div {...referenceData}>
-        <PickerToggle {...toggleData}>{selectedLabel}</PickerToggle>
+        <PickerToggle {...toggleData}>
+          {selectedElement || this.$t('_.Picker.placeholder')}
+        </PickerToggle>
         <Fade>{this._renderDropdownMenu(h, popperData)}</Fade>
       </div>
     );
@@ -248,6 +276,10 @@ export default {
       popperData = _.merge(popperData, {
         class: [this._addPrefix('check-menu'), this.menuClassName],
         style: this.menuStyle,
+        props: {
+          autoWidth: this.menuAutoWidth,
+          getToggleInstance: this._getToggleInstance,
+        },
         on: { keydown: this._handleKeydown },
       });
 
@@ -276,7 +308,14 @@ export default {
         },
         PickerDropdownMenu
       );
-      const menu = <PickerDropdownMenu {...menuData} />;
+      const menu = this.dataList.length ? (
+        <PickerDropdownMenu {...menuData} />
+      ) : (
+        <div class={this._addPrefix('none')}>
+          {' '}
+          {this.$t('_.InputPicker.noResultsText')}
+        </div>
+      );
 
       return (
         <PickerMenuWrapper {...popperData}>
@@ -289,7 +328,11 @@ export default {
               ref="search"
             />
           )}
-          {this.renderMenu ? this.renderMenu(h, menu) : menu}
+          {this.$scopedSlots.menu
+            ? this.$scopedSlots.menu({ menu })
+            : this.renderMenu
+            ? this.renderMenu(h, menu)
+            : menu}
           {this.$slots.footer}
         </PickerMenuWrapper>
       );
@@ -302,9 +345,15 @@ export default {
         label
       );
 
-      return this.renderMenuItem
+      return this.$scopedSlots['menu-item']
+        ? this.$scopedSlots['menu-item']({ label: newLabel, data })
+        : this.renderMenuItem
         ? this.renderMenuItem(h, newLabel, data)
         : newLabel;
+    },
+
+    _getToggleInstance() {
+      return this.$refs && this.$refs.toggle;
     },
 
     _shouldDisplay(label, searchKeyword) {
@@ -351,8 +400,8 @@ export default {
       }
     },
 
-    _handleSelect(item, event, checked) {
-      const { value, data } = item;
+    _handleSelect(value, item, event, checked) {
+      const { data } = item;
       let newVal = _.cloneDeep(this.currentVal);
 
       if (checked) {
@@ -372,6 +421,7 @@ export default {
 
       this.focusItemValue = value;
 
+      // this.$refs.search && this.$refs.search.focus();
       this._setVal(newVal, event);
     },
 
@@ -401,6 +451,7 @@ export default {
         down: this._handleFocusNext,
         up: this._handleFocusPrev,
         enter: this._handleFocusCurrent,
+        del: this._handleFocusDel,
         esc: this._closePopper,
       });
     },
@@ -418,10 +469,6 @@ export default {
       if (!length) return;
       if (index === -1) this.focusItemValue = list[0] && list[0].value;
       if (index + 1 < length) this.focusItemValue = list[index + 1].value;
-
-      this.$nextTick(
-        () => this.$refs.menu && this.$refs.menu._updateScrollPosition()
-      );
     },
 
     _handleFocusPrev() {
@@ -437,10 +484,6 @@ export default {
       if (!length) return;
       if (index === -1) this.focusItemValue = list[0] && list[0].value;
       if (index - 1 >= 0) this.focusItemValue = list[index - 1].value;
-
-      this.$nextTick(
-        () => this.$refs.menu && this.$refs.menu._updateScrollPosition()
-      );
     },
 
     _handleFocusCurrent(event) {
@@ -451,10 +494,23 @@ export default {
       if (!item) return;
 
       this._handleSelect(
+        item.value,
         item,
         event,
         !this.currentVal.some(x => shallowEqual(x, item.value))
       );
+    },
+
+    _handleFocusDel(event) {
+      if (this.searchKeyword) return;
+
+      const len = this.currentVal.length;
+      const value = this.currentVal[len - 1];
+      const data = findNode(this.rawDataWithCache, item =>
+        shallowEqual(_.get(item, this.valueKey), value)
+      );
+
+      if (value) this._handleSelect(value, { value, data }, event, false);
     },
 
     _addPrefix(cls) {

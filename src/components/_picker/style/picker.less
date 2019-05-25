@@ -51,6 +51,12 @@
     .ie-max-width(100%);
   }
 
+  // fix vue cannot support fragment
+  &-value-list--wrapper {
+    display: flex;
+    width: 100%;
+  }
+
   &-value-count {
     margin: 0 @picker-value-count-margin;
     background: @picker-value-count-background-color;

@@ -12,10 +12,10 @@ import Demo from 'stories/demo';
 
 const stories = storiesOf('Data Entry|CheckPicker', module);
 
-stories.add('default', () => ({
+stories.add('basic', () => ({
   render() {
     return (
-      <Demo title="Default">
+      <Demo title="Basic">
         <CheckPicker style={{ width: '224px' }} data={data} />
       </Demo>
     );
