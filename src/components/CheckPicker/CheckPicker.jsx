@@ -243,6 +243,7 @@ export default {
           ...this.$attrs,
           hasValue,
           cleanable: this.cleanable && !this.disabled,
+          active: this.currentVisible,
           componentClass: this.toggleComponentClass,
         },
         on: { clean: this._handleClean },
@@ -403,6 +404,9 @@ export default {
     _handleSelect(value, item, event, checked) {
       const { data } = item;
       let newVal = _.cloneDeep(this.currentVal);
+
+      // fix keydown problem
+      this.$refs.reference && this.$refs.reference.focus();
 
       if (checked) {
         // add new item
