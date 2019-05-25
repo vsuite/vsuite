@@ -82,6 +82,9 @@ export default {
     // slot-scope-menu-item
     // slot-scope-menu-group
 
+    // @change
+    // @search
+    // @group-title-click
     // @show
     // @hide
     // @visible-change
@@ -256,7 +259,10 @@ export default {
             dropdownMenuItemComponentClass: PickerDropdownMenuItem,
             classPrefix: this._addPrefix('select-menu'),
           },
-          on: { select: this._handleSelect },
+          on: {
+            select: this._handleSelect,
+            'group-title-click': this._handleGroupTitleClick,
+          },
           ref: 'menu',
         },
         PickerDropdownMenu
@@ -384,6 +390,10 @@ export default {
       this._closePopper();
 
       this._setVal(value, event);
+    },
+
+    _handleGroupTitleClick(event) {
+      this.$emit('group-title-click', event);
     },
 
     _handleSearch(val, event) {

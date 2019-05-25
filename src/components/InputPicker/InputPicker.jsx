@@ -88,6 +88,7 @@ export default {
 
     // @change
     // @search
+    // @group-title-click
     // @focus
     // @blur
     // @show
@@ -302,7 +303,10 @@ export default {
               : PickerDropdownMenuItem,
             classPrefix: menuClassPrefix,
           },
-          on: { select: this._handleSelect },
+          on: {
+            select: this._handleSelect,
+            'group-title-click': this._handleGroupTitleClick,
+          },
           ref: 'menu',
         },
         PickerDropdownMenu
@@ -491,6 +495,10 @@ export default {
       this._setVal(newVal, event);
     },
 
+    _handleGroupTitleClick(event) {
+      this.$emit('group-title-click', event);
+    },
+
     _handleRemoveItem(item, event) {
       event.stopPropagation();
 
@@ -599,6 +607,8 @@ export default {
 
         return;
       }
+
+      if (this.searchKeyword) return;
 
       const len = this.currentVal.length;
       const value = this.currentVal[len - 1];

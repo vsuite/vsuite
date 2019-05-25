@@ -28,6 +28,7 @@ import Toggle from 'components/Toggle';
 import InputPicker from 'components/InputPicker';
 import TagPicker from 'components/TagPicker';
 import SelectPicker from 'components/SelectPicker';
+import CheckPicker from 'components/CheckPicker';
 
 // Data Display
 import Tag from 'components/Tag';
@@ -87,6 +88,7 @@ export const components = {
   InputPicker,
   TagPicker,
   SelectPicker,
+  CheckPicker,
 
   Tag,
 

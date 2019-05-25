@@ -1,0 +1,15 @@
+export default [
+  'basic',
+  'appearance',
+  'sticky',
+  'block',
+  'group',
+  'placement',
+  'custom',
+  'disabled',
+  'searchable',
+  'extra-footer',
+  'async',
+  'container',
+  'controlled',
+];

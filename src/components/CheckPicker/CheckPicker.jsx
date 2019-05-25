@@ -3,7 +3,7 @@ import _ from 'lodash';
 import popperMixin from 'mixins/popper';
 import onMenuKeydown from 'utils/onMenuKeydown';
 import prefix, { defaultClassPrefix } from 'utils/prefix';
-import { findNode, flattenNodes, mapNode } from 'utils/tree';
+import { filterNodes, findNode, flattenNodes, mapNode } from 'utils/tree';
 import { splitDataByComponent } from 'utils/split';
 import { findComponentUpward } from 'utils/find';
 import { vueToString } from 'utils/node';
@@ -11,9 +11,11 @@ import getDataGroupBy from 'utils/getDataGroupBy';
 import shallowEqual from 'utils/shallowEqual';
 import invariant from 'utils/invariant';
 
+import { Fade } from 'components/Animation';
 import {
   PickerMenuWrapper,
   PickerDropdownMenu,
+  PickerDropdownMenuCheckItem,
   PickerToggle,
   PickerSearchBar,
   getToggleWrapperClassName,
@@ -59,16 +61,33 @@ export default {
     creatable: VueTypes.bool.def(false),
     menuClassName: VueTypes.string,
     menuStyle: VueTypes.object,
+    menuAutoWidth: VueTypes.bool,
+    sort: Function,
     renderMenu: Function,
     renderMenuItem: Function,
     renderMenuGroup: Function,
     renderValue: Function,
-    classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
     toggleComponentClass: VueTypes.oneOfType([
       VueTypes.string,
       VueTypes.object,
     ]),
-    // change, select, search
+    classPrefix: VueTypes.string.def(defaultClassPrefix(CLASS_PREFIX)),
+
+    // slot-header
+    // slot-footer
+    // slot-placeholder
+
+    // slot-scope-value
+    // slot-scope-menu
+    // slot-scope-menu-item
+    // slot-scope-menu-group
+
+    // @change
+    // @search
+    // @group-title-click
+    // @show
+    // @hide
+    // @visible-change
   },
 
   data() {
@@ -103,24 +122,40 @@ export default {
 
     dataList() {
       let list = [...this.rawData];
+      let filteredList = filterNodes(list, item =>
+        this._shouldDisplay(_.get(item, this.labelKey), this.searchKeyword)
+      );
 
       if (
         this.creatable &&
         this.searchKeyword &&
-        !findNode(list, item =>
-          this._shouldDisplay(_.get(item, this.labelKey), this.searchKeyword)
+        !findNode(
+          filteredList,
+          item => _.get(item, this.labelKey) === this.searchKeyword
         )
       ) {
-        list.push(this._createOption(this.searchKeyword));
+        filteredList.push(this._createOption(this.searchKeyword));
       }
 
       if (this.groupBy) {
-        list = getDataGroupBy(list, this.groupBy);
+        filteredList = getDataGroupBy(filteredList, this.groupBy, this.sort);
+      } else if (this.sort) {
+        filteredList = filteredList.sort(this.sort(false));
       }
 
-      return mapNode(list, (data, index, layer, children) => {
+      return mapNode(filteredList, (data, index, layer, children) => {
         const value = _.get(data, this.valueKey);
         const label = _.get(data, this.labelKey);
+
+        invariant.not(
+          _.isUndefined(label),
+          `labelKey "${this.labelKey}" is not defined in "data" : ${index}`
+        );
+
+        invariant.not(
+          _.isUndefined(value) && !children,
+          `valueKey "${this.valueKey}" is not defined in "data" : ${index} `
+        );
 
         return {
           key: `${layer}-${
@@ -138,6 +173,16 @@ export default {
 
     flatDataList() {
       return flattenNodes(this.dataList);
+    },
+  },
+
+  watch: {
+    currentVisible(val) {
+      if (val) {
+        this.$nextTick(
+          () => this.$refs.menu && this.$refs.menu._updateScrollPosition()
+        );
+      }
     },
   },
 
@@ -193,9 +238,7 @@ export default {
     return (
       <div {...referenceData}>
         <PickerToggle {...toggleData}>{selectedLabel}</PickerToggle>
-        <transition name="picker-fade">
-          {this._renderDropdownMenu(h, popperData)}
-        </transition>
+        <Fade>{this._renderDropdownMenu(h, popperData)}</Fade>
       </div>
     );
   },
@@ -213,19 +256,22 @@ export default {
           splitProps: {
             data: this.dataList,
             group: !_.isUndefined(this.groupBy),
-            checkable: true,
             maxHeight: this.maxHeight,
-            valueKey: this.valueKey,
-            labelKey: this.labelKey,
+            // valueKey: this.valueKey,
+            // labelKey: this.labelKey,
             disabledItemValues: this.disabledItemValues,
             activeItemValues: this.currentVal,
             focusItemValue: this.focusItemValue,
             renderMenuGroup: this.renderMenuGroup,
             renderMenuItem: this._renderMenuItem,
             dropdownMenuItemClassPrefix: this._addPrefix('check-menu-item'),
+            dropdownMenuItemComponentClass: PickerDropdownMenuCheckItem,
             classPrefix: this._addPrefix('check-menu'),
           },
-          on: { select: this._handleSelect },
+          on: {
+            select: this._handleSelect,
+            'group-title-click': this._handleGroupTitleClick,
+          },
           ref: 'menu',
         },
         PickerDropdownMenu
@@ -327,6 +373,10 @@ export default {
       this.focusItemValue = value;
 
       this._setVal(newVal, event);
+    },
+
+    _handleGroupTitleClick(event) {
+      this.$emit('group-title-click', event);
     },
 
     _handleSearch(val, event) {
