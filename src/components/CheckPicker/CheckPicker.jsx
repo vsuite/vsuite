@@ -61,6 +61,7 @@ export default {
     cleanable: VueTypes.bool,
     creatable: VueTypes.bool.def(false),
     countable: VueTypes.bool,
+    sticky: VueTypes.bool.def(false),
     menuClassName: VueTypes.string,
     menuStyle: VueTypes.object,
     menuAutoWidth: VueTypes.bool,
@@ -105,6 +106,7 @@ export default {
       innerVal: initVal,
       focusItemValue: initVal[0],
       searchKeyword: '',
+      stickyItems: [],
       newData: [],
     };
   },
@@ -124,15 +126,35 @@ export default {
 
     dataList() {
       let list = [...this.rawData];
-      let filteredList = filterNodes(list, item =>
-        this._shouldDisplay(_.get(item, this.labelKey), this.searchKeyword)
-      );
+      let filteredList = [];
+      let filteredStickyItems = [];
+
+      if (this.sticky) {
+        filteredStickyItems = filterNodes(this.stickyItems, item =>
+          this._shouldDisplay(_.get(item, this.labelKey), this.searchKeyword)
+        );
+        filteredList = filterNodes(
+          list,
+          item =>
+            this._shouldDisplay(
+              _.get(item, this.labelKey),
+              this.searchKeyword
+            ) &&
+            !this.stickyItems.some(v =>
+              shallowEqual(_.get(v, this.valueKey), _.get(item, this.valueKey))
+            )
+        );
+      } else {
+        filteredList = filterNodes(list, item =>
+          this._shouldDisplay(_.get(item, this.labelKey), this.searchKeyword)
+        );
+      }
 
       if (
         this.creatable &&
         this.searchKeyword &&
         !findNode(
-          filteredList,
+          [...filteredStickyItems, ...filteredList],
           item => _.get(item, this.labelKey) === this.searchKeyword
         )
       ) {
@@ -145,32 +167,39 @@ export default {
         filteredList = filteredList.sort(this.sort(false));
       }
 
-      return mapNode(filteredList, (data, index, layer, children) => {
-        const value = _.get(data, this.valueKey);
-        const label = _.get(data, this.labelKey);
+      if (this.sort) {
+        filteredStickyItems = filteredStickyItems.sort(this.sort(false));
+      }
 
-        invariant.not(
-          _.isUndefined(label),
-          `labelKey "${this.labelKey}" is not defined in "data" : ${index}`
-        );
+      return mapNode(
+        [...filteredStickyItems, ...filteredList],
+        (data, index, layer, children) => {
+          const value = _.get(data, this.valueKey);
+          const label = _.get(data, this.labelKey);
 
-        invariant.not(
-          _.isUndefined(value) && !children,
-          `valueKey "${this.valueKey}" is not defined in "data" : ${index} `
-        );
+          invariant.not(
+            _.isUndefined(label),
+            `labelKey "${this.labelKey}" is not defined in "data" : ${index}`
+          );
 
-        return {
-          key: `${layer}-${
-            _.isNumber(value) || _.isString(value) ? value : index
-          }`,
-          label,
-          value,
-          data,
-          visible: children
-            ? children.some(child => child.visible)
-            : this._shouldDisplay(label, this.searchKeyword),
-        };
-      });
+          invariant.not(
+            _.isUndefined(value) && !children,
+            `valueKey "${this.valueKey}" is not defined in "data" : ${index} `
+          );
+
+          return {
+            key: `${layer}-${
+              _.isNumber(value) || _.isString(value) ? value : index
+            }`,
+            label,
+            value,
+            data,
+            visible: children
+              ? children.some(child => child.visible)
+              : this._shouldDisplay(label, this.searchKeyword),
+          };
+        }
+      );
     },
 
     flatDataList() {
@@ -181,6 +210,10 @@ export default {
   watch: {
     currentVisible(val) {
       if (val) {
+        if (this.sticky) {
+          this._setStickyItems();
+        }
+
         this.$nextTick(
           () => this.$refs.menu && this.$refs.menu._updateScrollPosition()
         );
@@ -351,6 +384,18 @@ export default {
         : this.renderMenuItem
         ? this.renderMenuItem(h, newLabel, data)
         : newLabel;
+    },
+
+    _setStickyItems() {
+      let stickyItems = [];
+
+      if (this.currentVal.length) {
+        stickyItems = this.rawData.filter(item =>
+          this.currentVal.some(x => shallowEqual(_.get(item, this.valueKey), x))
+        );
+      }
+
+      this.stickyItems = stickyItems;
     },
 
     _getToggleInstance() {

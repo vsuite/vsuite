@@ -44,6 +44,29 @@ stories.add('appearance', () => ({
   },
 }));
 
+stories.add('sticky', () => ({
+  render() {
+    return (
+      <Demo title="Sticky">
+        <CheckPicker
+          style={{ width: '224px' }}
+          sticky
+          data={data}
+          defaultValue={['Kenya', 'Julius']}
+        />
+        <hr />
+        <CheckPicker
+          style={{ width: '224px' }}
+          sticky
+          groupBy="role"
+          data={data}
+          defaultValue={['Kenya', 'Julius']}
+        />
+      </Demo>
+    );
+  },
+}));
+
 stories.add('block', () => ({
   render() {
     return (
