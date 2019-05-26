@@ -2,39 +2,20 @@
 
 <!--start-code-->
 
-```js
-/**
- * import data from
- * https://github.com/rsuite/rsuite.github.io/blob/master/src/resources/data/users.js
- */
+```vue
+<template>
+  <CheckPicker style="width: 224px;" visible :data="data" :value="['Julius']" />
+</template>
 
-class Demo extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      value: []
-    };
-    this.handleChange = this.handleChange.bind(this);
-  }
+<script>
+import data from 'stories/data/user';
 
-  handleChange(value) {
-    this.setState({
-      value
-    });
-  }
-  render() {
-    return (
-      <CheckPicker
-        value={this.state.value}
-        onChange={this.handleChange}
-        data={data}
-        style={{ width: 224 }}
-      />
-    );
-  }
-}
-
-ReactDOM.render(<Demo />);
+export default {
+  data() {
+    return { data };
+  },
+};
+</script>
 ```
 
 <!--end-code-->

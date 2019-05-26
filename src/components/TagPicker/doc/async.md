@@ -70,7 +70,7 @@ export default {
 
           this.loading = false;
         });
-    }),
+    }, 300),
   },
 };
 </script>

@@ -4,6 +4,7 @@ export default [
   'sticky',
   'block',
   'group',
+  'creatable',
   'placement',
   'custom',
   'disabled',

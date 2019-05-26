@@ -2,16 +2,20 @@
 
 <!--start-code-->
 
-```js
-/**
- * import data from
- * https://github.com/rsuite/rsuite.github.io/blob/master/src/resources/data/users.js
- */
+```vue
+<template>
+  <CheckPicker style="width: 224px;" :searchable="false" :data="data" />
+</template>
 
-const instance = (
-  <CheckPicker data={data} searchable={false} style={{ width: 224 }} />
-);
-ReactDOM.render(instance);
+<script>
+import data from 'stories/data/user';
+
+export default {
+  data() {
+    return { data };
+  },
+};
+</script>
 ```
 
 <!--end-code-->

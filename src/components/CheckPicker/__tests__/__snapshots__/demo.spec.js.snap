@@ -1,0 +1,1495 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CheckPicker demo renders appearance demo correctly 1`] = `
+<div>
+  <div tabindex="-1" role="menu" class="vs-picker-check vs-picker-default vs-picker-placement-bottom-start vs-picker-toggle-wrapper vs-picker-countable" style="width: 224px;"><a role="button" tabindex="-1" class="vs-picker-toggle"><span class="vs-picker-toggle-placeholder">Default</span><span class="vs-picker-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span><object style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; pointer-events: none; z-index: -1; opacity: 0;" class="resize-sensor" tabindex="-1" type="text/html" data="about:blank"></object></a>
+    <div data-transfer="false" class="vs-picker-menu vs-picker-check-menu v-transfer-dom" style="display: none;">
+      <div class="vs-picker-search-bar"><input placeholder="Search" class="vs-picker-search-bar-input"></div>
+      <div class="vs-picker-check-menu-items" style="max-height: 320px;">
+        <ul>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Eugenia</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Kariane</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Louisa</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Marty</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Kenya</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Hal</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Julius</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Travon</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Vincenza</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Dominic</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Pearlie</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Tyrel</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Jaylen</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Rogelio</label></div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div tabindex="-1" role="menu" class="vs-picker-check vs-picker-subtle vs-picker-placement-bottom-start vs-picker-toggle-wrapper vs-picker-countable" style="width: 224px;"><a role="button" tabindex="-1" class="vs-picker-toggle"><span class="vs-picker-toggle-placeholder">Subtle</span><span class="vs-picker-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span><object style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; pointer-events: none; z-index: -1; opacity: 0;" class="resize-sensor" tabindex="-1" type="text/html" data="about:blank"></object></a>
+    <div data-transfer="false" class="vs-picker-menu vs-picker-check-menu v-transfer-dom" style="display: none;">
+      <div class="vs-picker-search-bar"><input placeholder="Search" class="vs-picker-search-bar-input"></div>
+      <div class="vs-picker-check-menu-items" style="max-height: 320px;">
+        <ul>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Eugenia</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Kariane</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Louisa</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Marty</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Kenya</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Hal</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Julius</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Travon</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Vincenza</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Dominic</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Pearlie</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Tyrel</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Jaylen</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Rogelio</label></div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`CheckPicker demo renders async demo correctly 1`] = `
+<div tabindex="-1" role="menu" class="vs-picker-check vs-picker-default vs-picker-placement-bottom-start vs-picker-toggle-wrapper vs-picker-countable" style="width: 300px;"><a role="button" tabindex="-1" class="vs-picker-toggle"><span class="vs-picker-toggle-placeholder">Select</span><span class="vs-picker-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span><object style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; pointer-events: none; z-index: -1; opacity: 0;" class="resize-sensor" tabindex="-1" type="text/html" data="about:blank"></object></a>
+  <div data-transfer="false" class="vs-picker-menu vs-picker-check-menu v-transfer-dom" style="display: none;">
+    <div class="vs-picker-search-bar"><input placeholder="Search" class="vs-picker-search-bar-input"></div>
+    <p style="padding: 4px; color: rgb(153, 153, 153); text-align: center;"><i class="vs-icon vs-icon-spinner vs-icon-spin"></i> Loading...
+    </p>
+  </div>
+</div>
+`;
+
+exports[`CheckPicker demo renders basic demo correctly 1`] = `
+<div tabindex="-1" role="menu" class="vs-picker-check vs-picker-default vs-picker-placement-bottom-start vs-picker-toggle-wrapper vs-picker-countable" style="width: 224px;"><a role="button" tabindex="-1" class="vs-picker-toggle"><span class="vs-picker-toggle-placeholder">Select</span><span class="vs-picker-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span><object style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; pointer-events: none; z-index: -1; opacity: 0;" class="resize-sensor" tabindex="-1" type="text/html" data="about:blank"></object></a>
+  <div data-transfer="false" class="vs-picker-menu vs-picker-check-menu v-transfer-dom" style="display: none;">
+    <div class="vs-picker-search-bar"><input placeholder="Search" class="vs-picker-search-bar-input"></div>
+    <div class="vs-picker-check-menu-items" style="max-height: 320px;">
+      <ul>
+        <li role="menuitem">
+          <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Eugenia</label></div>
+        </li>
+        <li role="menuitem">
+          <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Kariane</label></div>
+        </li>
+        <li role="menuitem">
+          <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Louisa</label></div>
+        </li>
+        <li role="menuitem">
+          <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Marty</label></div>
+        </li>
+        <li role="menuitem">
+          <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Kenya</label></div>
+        </li>
+        <li role="menuitem">
+          <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Hal</label></div>
+        </li>
+        <li role="menuitem">
+          <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Julius</label></div>
+        </li>
+        <li role="menuitem">
+          <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Travon</label></div>
+        </li>
+        <li role="menuitem">
+          <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Vincenza</label></div>
+        </li>
+        <li role="menuitem">
+          <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Dominic</label></div>
+        </li>
+        <li role="menuitem">
+          <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Pearlie</label></div>
+        </li>
+        <li role="menuitem">
+          <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Tyrel</label></div>
+        </li>
+        <li role="menuitem">
+          <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Jaylen</label></div>
+        </li>
+        <li role="menuitem">
+          <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Rogelio</label></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`CheckPicker demo renders block demo correctly 1`] = `
+<div tabindex="-1" role="menu" class="vs-picker-check vs-picker-default vs-picker-placement-bottom-start vs-picker-toggle-wrapper vs-picker-block vs-picker-countable" style="width: 224px;"><a role="button" tabindex="-1" class="vs-picker-toggle"><span class="vs-picker-toggle-placeholder">Select</span><span class="vs-picker-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span><object style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; pointer-events: none; z-index: -1; opacity: 0;" class="resize-sensor" tabindex="-1" type="text/html" data="about:blank"></object></a>
+  <div data-transfer="false" class="vs-picker-menu vs-picker-check-menu v-transfer-dom" style="display: none;">
+    <div class="vs-picker-search-bar"><input placeholder="Search" class="vs-picker-search-bar-input"></div>
+    <div class="vs-picker-check-menu-items" style="max-height: 320px;">
+      <ul>
+        <li role="menuitem">
+          <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Eugenia</label></div>
+        </li>
+        <li role="menuitem">
+          <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Kariane</label></div>
+        </li>
+        <li role="menuitem">
+          <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Louisa</label></div>
+        </li>
+        <li role="menuitem">
+          <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Marty</label></div>
+        </li>
+        <li role="menuitem">
+          <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Kenya</label></div>
+        </li>
+        <li role="menuitem">
+          <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Hal</label></div>
+        </li>
+        <li role="menuitem">
+          <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Julius</label></div>
+        </li>
+        <li role="menuitem">
+          <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Travon</label></div>
+        </li>
+        <li role="menuitem">
+          <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Vincenza</label></div>
+        </li>
+        <li role="menuitem">
+          <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Dominic</label></div>
+        </li>
+        <li role="menuitem">
+          <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Pearlie</label></div>
+        </li>
+        <li role="menuitem">
+          <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Tyrel</label></div>
+        </li>
+        <li role="menuitem">
+          <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Jaylen</label></div>
+        </li>
+        <li role="menuitem">
+          <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Rogelio</label></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`CheckPicker demo renders container demo correctly 1`] = `
+<div class="container">
+  <div class="wrapper">
+    <div tabindex="-1" role="menu" class="vs-picker-check vs-picker-default vs-picker-placement-bottom-start vs-picker-toggle-wrapper vs-picker-countable" style="width: 224px;"><a role="button" tabindex="-1" class="vs-picker-toggle"><span class="vs-picker-toggle-placeholder">Select</span><span class="vs-picker-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span><object style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; pointer-events: none; z-index: -1; opacity: 0;" class="resize-sensor" tabindex="-1" type="text/html" data="about:blank"></object></a>
+      <div data-transfer="false" class="vs-picker-menu vs-picker-check-menu v-transfer-dom" style="display: none;">
+        <div class="vs-picker-search-bar"><input placeholder="Search" class="vs-picker-search-bar-input"></div>
+        <div class="vs-picker-check-menu-items" style="max-height: 320px;">
+          <ul>
+            <li role="menuitem">
+              <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Eugenia</label></div>
+            </li>
+            <li role="menuitem">
+              <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Kariane</label></div>
+            </li>
+            <li role="menuitem">
+              <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Louisa</label></div>
+            </li>
+            <li role="menuitem">
+              <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Marty</label></div>
+            </li>
+            <li role="menuitem">
+              <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Kenya</label></div>
+            </li>
+            <li role="menuitem">
+              <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Hal</label></div>
+            </li>
+            <li role="menuitem">
+              <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Julius</label></div>
+            </li>
+            <li role="menuitem">
+              <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Travon</label></div>
+            </li>
+            <li role="menuitem">
+              <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Vincenza</label></div>
+            </li>
+            <li role="menuitem">
+              <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Dominic</label></div>
+            </li>
+            <li role="menuitem">
+              <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Pearlie</label></div>
+            </li>
+            <li role="menuitem">
+              <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Tyrel</label></div>
+            </li>
+            <li role="menuitem">
+              <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Jaylen</label></div>
+            </li>
+            <li role="menuitem">
+              <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Rogelio</label></div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`CheckPicker demo renders controlled demo correctly 1`] = `
+<div tabindex="-1" role="menu" class="vs-picker-check vs-picker-default vs-picker-placement-bottom-start vs-picker-toggle-wrapper vs-picker-has-value vs-picker-cleanable vs-picker-countable" style="width: 224px;"><a role="button" tabindex="-1" class="vs-picker-toggle active"><span class="vs-picker-toggle-value"><span class="vs-picker-value-list--wrapper"><span title="Julius" class="vs-picker-value-list"><span class="vs-picker-value-item--wrapper"><span class="vs-picker-value-item">Julius</span></span></span><span title="1" class="vs-picker-value-count">1</span></span></span><span role="button" tabindex="-1" class="vs-picker-toggle-clean">✕</span><span class="vs-picker-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span><object style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; pointer-events: none; z-index: -1; opacity: 0;" class="resize-sensor" tabindex="-1" type="text/html" data="about:blank"></object></a>
+  <div data-transfer="false" class="vs-picker-menu vs-picker-check-menu v-transfer-dom" style="">
+    <div class="vs-picker-search-bar"><input placeholder="Search" class="vs-picker-search-bar-input"></div>
+    <div class="vs-picker-check-menu-items" style="max-height: 320px;">
+      <ul>
+        <li role="menuitem">
+          <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Eugenia</label></div>
+        </li>
+        <li role="menuitem">
+          <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Kariane</label></div>
+        </li>
+        <li role="menuitem">
+          <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Louisa</label></div>
+        </li>
+        <li role="menuitem">
+          <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Marty</label></div>
+        </li>
+        <li role="menuitem">
+          <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Kenya</label></div>
+        </li>
+        <li role="menuitem">
+          <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Hal</label></div>
+        </li>
+        <li role="menuitem">
+          <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item vs-picker-check-menu-item-active vs-picker-check-menu-item-focus"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Julius</label></div>
+        </li>
+        <li role="menuitem">
+          <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Travon</label></div>
+        </li>
+        <li role="menuitem">
+          <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Vincenza</label></div>
+        </li>
+        <li role="menuitem">
+          <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Dominic</label></div>
+        </li>
+        <li role="menuitem">
+          <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Pearlie</label></div>
+        </li>
+        <li role="menuitem">
+          <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Tyrel</label></div>
+        </li>
+        <li role="menuitem">
+          <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Jaylen</label></div>
+        </li>
+        <li role="menuitem">
+          <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Rogelio</label></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`CheckPicker demo renders creatable demo correctly 1`] = `
+<div>
+  <div tabindex="-1" role="menu" class="vs-picker-check vs-picker-default vs-picker-placement-bottom-start vs-picker-toggle-wrapper vs-picker-countable" style="width: 224px;"><a role="button" tabindex="-1" class="vs-picker-toggle"><span class="vs-picker-toggle-placeholder">Select</span><span class="vs-picker-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span><object style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; pointer-events: none; z-index: -1; opacity: 0;" class="resize-sensor" tabindex="-1" type="text/html" data="about:blank"></object></a>
+    <div data-transfer="false" class="vs-picker-menu vs-picker-check-menu v-transfer-dom" style="display: none;">
+      <div class="vs-picker-search-bar"><input placeholder="Search" class="vs-picker-search-bar-input"></div>
+      <div class="vs-picker-check-menu-items" style="max-height: 320px;">
+        <ul>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Eugenia</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Kariane</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Louisa</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Marty</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Kenya</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Hal</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Julius</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Travon</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Vincenza</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Dominic</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Pearlie</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Tyrel</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Jaylen</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Rogelio</label></div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div tabindex="-1" role="menu" class="vs-picker-check vs-picker-default vs-picker-placement-bottom-start vs-picker-toggle-wrapper vs-picker-countable" style="width: 224px;"><a role="button" tabindex="-1" class="vs-picker-toggle"><span class="vs-picker-toggle-placeholder">Select</span><span class="vs-picker-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span><object style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; pointer-events: none; z-index: -1; opacity: 0;" class="resize-sensor" tabindex="-1" type="text/html" data="about:blank"></object></a>
+    <div data-transfer="false" class="vs-picker-menu vs-picker-check-menu v-transfer-dom" style="display: none;">
+      <div class="vs-picker-search-bar"><input placeholder="Search" class="vs-picker-search-bar-input"></div>
+      <div class="vs-picker-check-menu-items" style="max-height: 320px;">
+        <ul>
+          <li class="vs-picker-check-menu-group">
+            <div role="menuitem" tabindex="-1" class="vs-picker-check-menu-group-title"><span>Master</span><span classname="vs-picker-check-menu-group-caret"></span></div>
+            <ul class="vs-picker-check-menu-group-children" appear="true">
+              <li role="menuitem">
+                <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Eugenia</label></div>
+              </li>
+              <li role="menuitem">
+                <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Kariane</label></div>
+              </li>
+              <li role="menuitem">
+                <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Louisa</label></div>
+              </li>
+              <li role="menuitem">
+                <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Marty</label></div>
+              </li>
+              <li role="menuitem">
+                <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Kenya</label></div>
+              </li>
+            </ul>
+          </li>
+          <li class="vs-picker-check-menu-group">
+            <div role="menuitem" tabindex="-1" class="vs-picker-check-menu-group-title"><span>Developer</span><span classname="vs-picker-check-menu-group-caret"></span></div>
+            <ul class="vs-picker-check-menu-group-children" appear="true">
+              <li role="menuitem">
+                <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Hal</label></div>
+              </li>
+              <li role="menuitem">
+                <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Julius</label></div>
+              </li>
+              <li role="menuitem">
+                <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Travon</label></div>
+              </li>
+              <li role="menuitem">
+                <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Vincenza</label></div>
+              </li>
+              <li role="menuitem">
+                <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Dominic</label></div>
+              </li>
+            </ul>
+          </li>
+          <li class="vs-picker-check-menu-group">
+            <div role="menuitem" tabindex="-1" class="vs-picker-check-menu-group-title"><span>Guest</span><span classname="vs-picker-check-menu-group-caret"></span></div>
+            <ul class="vs-picker-check-menu-group-children" appear="true">
+              <li role="menuitem">
+                <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Pearlie</label></div>
+              </li>
+              <li role="menuitem">
+                <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Tyrel</label></div>
+              </li>
+              <li role="menuitem">
+                <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Jaylen</label></div>
+              </li>
+              <li role="menuitem">
+                <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Rogelio</label></div>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`CheckPicker demo renders custom demo correctly 1`] = `
+<div tabindex="-1" role="menu" class="vs-picker-check vs-picker-default vs-picker-placement-bottom-start vs-picker-toggle-wrapper vs-picker-countable" style="width: 224px;"><a role="button" tabindex="-1" class="vs-picker-toggle"><span class="vs-picker-toggle-placeholder">Select User</span><span class="vs-picker-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span><object style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; pointer-events: none; z-index: -1; opacity: 0;" class="resize-sensor" tabindex="-1" type="text/html" data="about:blank"></object></a>
+  <div data-transfer="false" class="vs-picker-menu vs-picker-check-menu v-transfer-dom" style="display: none;">
+    <div class="vs-picker-search-bar"><input placeholder="Search" class="vs-picker-search-bar-input"></div>
+    <div class="vs-picker-check-menu-items" style="max-height: 320px;">
+      <ul>
+        <li class="vs-picker-check-menu-group">
+          <div role="menuitem" tabindex="-1" class="vs-picker-check-menu-group-title"><span>Master</span><span classname="vs-picker-check-menu-group-caret"></span></div>
+          <ul class="vs-picker-check-menu-group-children" appear="true">
+            <li role="menuitem">
+              <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>
+                  <div><i class="vs-icon vs-icon-user"></i> {label}</div>
+                </label></div>
+            </li>
+            <li role="menuitem">
+              <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>
+                  <div><i class="vs-icon vs-icon-user"></i> {label}</div>
+                </label></div>
+            </li>
+            <li role="menuitem">
+              <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>
+                  <div><i class="vs-icon vs-icon-user"></i> {label}</div>
+                </label></div>
+            </li>
+            <li role="menuitem">
+              <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>
+                  <div><i class="vs-icon vs-icon-user"></i> {label}</div>
+                </label></div>
+            </li>
+            <li role="menuitem">
+              <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>
+                  <div><i class="vs-icon vs-icon-user"></i> {label}</div>
+                </label></div>
+            </li>
+          </ul>
+        </li>
+        <li class="vs-picker-check-menu-group">
+          <div role="menuitem" tabindex="-1" class="vs-picker-check-menu-group-title"><span>Developer</span><span classname="vs-picker-check-menu-group-caret"></span></div>
+          <ul class="vs-picker-check-menu-group-children" appear="true">
+            <li role="menuitem">
+              <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>
+                  <div><i class="vs-icon vs-icon-user"></i> {label}</div>
+                </label></div>
+            </li>
+            <li role="menuitem">
+              <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>
+                  <div><i class="vs-icon vs-icon-user"></i> {label}</div>
+                </label></div>
+            </li>
+            <li role="menuitem">
+              <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>
+                  <div><i class="vs-icon vs-icon-user"></i> {label}</div>
+                </label></div>
+            </li>
+            <li role="menuitem">
+              <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>
+                  <div><i class="vs-icon vs-icon-user"></i> {label}</div>
+                </label></div>
+            </li>
+            <li role="menuitem">
+              <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>
+                  <div><i class="vs-icon vs-icon-user"></i> {label}</div>
+                </label></div>
+            </li>
+          </ul>
+        </li>
+        <li class="vs-picker-check-menu-group">
+          <div role="menuitem" tabindex="-1" class="vs-picker-check-menu-group-title"><span>Guest</span><span classname="vs-picker-check-menu-group-caret"></span></div>
+          <ul class="vs-picker-check-menu-group-children" appear="true">
+            <li role="menuitem">
+              <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>
+                  <div><i class="vs-icon vs-icon-user"></i> {label}</div>
+                </label></div>
+            </li>
+            <li role="menuitem">
+              <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>
+                  <div><i class="vs-icon vs-icon-user"></i> {label}</div>
+                </label></div>
+            </li>
+            <li role="menuitem">
+              <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>
+                  <div><i class="vs-icon vs-icon-user"></i> {label}</div>
+                </label></div>
+            </li>
+            <li role="menuitem">
+              <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>
+                  <div><i class="vs-icon vs-icon-user"></i> {label}</div>
+                </label></div>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`CheckPicker demo renders disabled demo correctly 1`] = `
+<div>
+  <div tabindex="-1" role="menu" class="vs-picker-check vs-picker-default vs-picker-placement-bottom-start vs-picker-toggle-wrapper vs-picker-has-value vs-picker-disabled vs-picker-cleanable vs-picker-countable" style="width: 224px;"><a role="button" tabindex="-1" class="vs-picker-toggle"><span class="vs-picker-toggle-value"><span class="vs-picker-value-list--wrapper"><span title="Julius" class="vs-picker-value-list"><span class="vs-picker-value-item--wrapper"><span class="vs-picker-value-item">Julius</span></span></span><span title="1" class="vs-picker-value-count">1</span></span></span><span class="vs-picker-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span><object style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; pointer-events: none; z-index: -1; opacity: 0;" class="resize-sensor" tabindex="-1" type="text/html" data="about:blank"></object></a>
+    <div data-transfer="false" class="vs-picker-menu vs-picker-check-menu v-transfer-dom" style="display: none;">
+      <div class="vs-picker-search-bar"><input placeholder="Search" class="vs-picker-search-bar-input"></div>
+      <div class="vs-picker-check-menu-items" style="max-height: 320px;">
+        <ul>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Eugenia</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Kariane</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Louisa</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Marty</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Kenya</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Hal</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item vs-picker-check-menu-item-active vs-picker-check-menu-item-focus"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Julius</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Travon</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Vincenza</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Dominic</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Pearlie</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Tyrel</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Jaylen</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Rogelio</label></div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <p>禁用选项</p>
+  <div tabindex="-1" role="menu" class="vs-picker-check vs-picker-default vs-picker-placement-bottom-start vs-picker-toggle-wrapper vs-picker-has-value vs-picker-cleanable vs-picker-countable" style="width: 224px;"><a role="button" tabindex="-1" class="vs-picker-toggle"><span class="vs-picker-toggle-value"><span class="vs-picker-value-list--wrapper"><span title="Julius" class="vs-picker-value-list"><span class="vs-picker-value-item--wrapper"><span class="vs-picker-value-item">Julius</span></span></span><span title="1" class="vs-picker-value-count">1</span></span></span><span role="button" tabindex="-1" class="vs-picker-toggle-clean">✕</span><span class="vs-picker-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span><object style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; pointer-events: none; z-index: -1; opacity: 0;" class="resize-sensor" tabindex="-1" type="text/html" data="about:blank"></object></a>
+    <div data-transfer="false" class="vs-picker-menu vs-picker-check-menu v-transfer-dom" style="display: none;">
+      <div class="vs-picker-search-bar"><input placeholder="Search" class="vs-picker-search-bar-input"></div>
+      <div class="vs-picker-check-menu-items" style="max-height: 320px;">
+        <ul>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item vs-picker-check-menu-item-disabled"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox" disabled="disabled"><span class="vs-picker-check-menu-item-inner"></span></span>Eugenia</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Kariane</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Louisa</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Marty</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Kenya</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Hal</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item vs-picker-check-menu-item-active vs-picker-check-menu-item-focus"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Julius</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item vs-picker-check-menu-item-disabled"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox" disabled="disabled"><span class="vs-picker-check-menu-item-inner"></span></span>Travon</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item vs-picker-check-menu-item-disabled"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox" disabled="disabled"><span class="vs-picker-check-menu-item-inner"></span></span>Vincenza</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Dominic</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Pearlie</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Tyrel</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Jaylen</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Rogelio</label></div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`CheckPicker demo renders extra-footer demo correctly 1`] = `
+<div tabindex="-1" role="menu" class="vs-picker-check vs-picker-default vs-picker-placement-bottom-start vs-picker-toggle-wrapper vs-picker-countable" style="width: 224px;"><a role="button" tabindex="-1" class="vs-picker-toggle"><span class="vs-picker-toggle-placeholder">Select</span><span class="vs-picker-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span><object style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; pointer-events: none; z-index: -1; opacity: 0;" class="resize-sensor" tabindex="-1" type="text/html" data="about:blank"></object></a>
+  <div data-transfer="false" class="vs-picker-menu vs-picker-check-menu v-transfer-dom" style="display: none;">
+    <div class="vs-picker-search-bar"><input placeholder="Search" class="vs-picker-search-bar-input"></div>
+    <div class="vs-picker-check-menu-items" style="max-height: 320px;">
+      <ul>
+        <li role="menuitem">
+          <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Eugenia</label></div>
+        </li>
+        <li role="menuitem">
+          <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Kariane</label></div>
+        </li>
+        <li role="menuitem">
+          <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Louisa</label></div>
+        </li>
+        <li role="menuitem">
+          <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Marty</label></div>
+        </li>
+        <li role="menuitem">
+          <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Kenya</label></div>
+        </li>
+        <li role="menuitem">
+          <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Hal</label></div>
+        </li>
+        <li role="menuitem">
+          <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Julius</label></div>
+        </li>
+        <li role="menuitem">
+          <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Travon</label></div>
+        </li>
+        <li role="menuitem">
+          <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Vincenza</label></div>
+        </li>
+        <li role="menuitem">
+          <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Dominic</label></div>
+        </li>
+        <li role="menuitem">
+          <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Pearlie</label></div>
+        </li>
+        <li role="menuitem">
+          <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Tyrel</label></div>
+        </li>
+        <li role="menuitem">
+          <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Jaylen</label></div>
+        </li>
+        <li role="menuitem">
+          <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Rogelio</label></div>
+        </li>
+      </ul>
+    </div>
+    <div class="footer">
+      <div class="vs-checkbox vs-checkbox-inline">
+        <div class="vs-checkbox-checker"><label title=""><span tabindex="0" class="vs-checkbox-wrapper"><input type="checkbox"><span class="vs-checkbox-inner"></span></span>
+            Select All
+          </label></div>
+      </div> <button type="button" class="footer-button vs-btn vs-btn-primary vs-btn-sm">
+        Ok
+        <span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span></button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`CheckPicker demo renders group demo correctly 1`] = `
+<div>
+  <div tabindex="-1" role="menu" class="vs-picker-check vs-picker-default vs-picker-placement-bottom-start vs-picker-toggle-wrapper vs-picker-countable" style="width: 224px;"><a role="button" tabindex="-1" class="vs-picker-toggle"><span class="vs-picker-toggle-placeholder">Select</span><span class="vs-picker-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span><object style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; pointer-events: none; z-index: -1; opacity: 0;" class="resize-sensor" tabindex="-1" type="text/html" data="about:blank"></object></a>
+    <div data-transfer="false" class="vs-picker-menu vs-picker-check-menu v-transfer-dom" style="display: none;">
+      <div class="vs-picker-search-bar"><input placeholder="Search" class="vs-picker-search-bar-input"></div>
+      <div class="vs-picker-check-menu-items" style="max-height: 320px;">
+        <ul>
+          <li class="vs-picker-check-menu-group">
+            <div role="menuitem" tabindex="-1" class="vs-picker-check-menu-group-title"><span>Master</span><span classname="vs-picker-check-menu-group-caret"></span></div>
+            <ul class="vs-picker-check-menu-group-children" appear="true">
+              <li role="menuitem">
+                <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Eugenia</label></div>
+              </li>
+              <li role="menuitem">
+                <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Kariane</label></div>
+              </li>
+              <li role="menuitem">
+                <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Louisa</label></div>
+              </li>
+              <li role="menuitem">
+                <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Marty</label></div>
+              </li>
+              <li role="menuitem">
+                <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Kenya</label></div>
+              </li>
+            </ul>
+          </li>
+          <li class="vs-picker-check-menu-group">
+            <div role="menuitem" tabindex="-1" class="vs-picker-check-menu-group-title"><span>Developer</span><span classname="vs-picker-check-menu-group-caret"></span></div>
+            <ul class="vs-picker-check-menu-group-children" appear="true">
+              <li role="menuitem">
+                <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Hal</label></div>
+              </li>
+              <li role="menuitem">
+                <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Julius</label></div>
+              </li>
+              <li role="menuitem">
+                <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Travon</label></div>
+              </li>
+              <li role="menuitem">
+                <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Vincenza</label></div>
+              </li>
+              <li role="menuitem">
+                <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Dominic</label></div>
+              </li>
+            </ul>
+          </li>
+          <li class="vs-picker-check-menu-group">
+            <div role="menuitem" tabindex="-1" class="vs-picker-check-menu-group-title"><span>Guest</span><span classname="vs-picker-check-menu-group-caret"></span></div>
+            <ul class="vs-picker-check-menu-group-children" appear="true">
+              <li role="menuitem">
+                <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Pearlie</label></div>
+              </li>
+              <li role="menuitem">
+                <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Tyrel</label></div>
+              </li>
+              <li role="menuitem">
+                <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Jaylen</label></div>
+              </li>
+              <li role="menuitem">
+                <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Rogelio</label></div>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <h5>Sort:</h5>
+  <div tabindex="-1" role="menu" class="vs-picker-check vs-picker-default vs-picker-placement-bottom-start vs-picker-toggle-wrapper vs-picker-countable" style="width: 224px;"><a role="button" tabindex="-1" class="vs-picker-toggle"><span class="vs-picker-toggle-placeholder">Select</span><span class="vs-picker-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span><object style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; pointer-events: none; z-index: -1; opacity: 0;" class="resize-sensor" tabindex="-1" type="text/html" data="about:blank"></object></a>
+    <div data-transfer="false" class="vs-picker-menu vs-picker-check-menu v-transfer-dom" style="display: none;">
+      <div class="vs-picker-search-bar"><input placeholder="Search" class="vs-picker-search-bar-input"></div>
+      <div class="vs-picker-check-menu-items" style="max-height: 320px;">
+        <ul>
+          <li class="vs-picker-check-menu-group">
+            <div role="menuitem" tabindex="-1" class="vs-picker-check-menu-group-title"><span>Developer</span><span classname="vs-picker-check-menu-group-caret"></span></div>
+            <ul class="vs-picker-check-menu-group-children" appear="true">
+              <li role="menuitem">
+                <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Dominic</label></div>
+              </li>
+              <li role="menuitem">
+                <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Hal</label></div>
+              </li>
+              <li role="menuitem">
+                <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Julius</label></div>
+              </li>
+              <li role="menuitem">
+                <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Travon</label></div>
+              </li>
+              <li role="menuitem">
+                <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Vincenza</label></div>
+              </li>
+            </ul>
+          </li>
+          <li class="vs-picker-check-menu-group">
+            <div role="menuitem" tabindex="-1" class="vs-picker-check-menu-group-title"><span>Guest</span><span classname="vs-picker-check-menu-group-caret"></span></div>
+            <ul class="vs-picker-check-menu-group-children" appear="true">
+              <li role="menuitem">
+                <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Jaylen</label></div>
+              </li>
+              <li role="menuitem">
+                <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Pearlie</label></div>
+              </li>
+              <li role="menuitem">
+                <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Rogelio</label></div>
+              </li>
+              <li role="menuitem">
+                <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Tyrel</label></div>
+              </li>
+            </ul>
+          </li>
+          <li class="vs-picker-check-menu-group">
+            <div role="menuitem" tabindex="-1" class="vs-picker-check-menu-group-title"><span>Master</span><span classname="vs-picker-check-menu-group-caret"></span></div>
+            <ul class="vs-picker-check-menu-group-children" appear="true">
+              <li role="menuitem">
+                <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Eugenia</label></div>
+              </li>
+              <li role="menuitem">
+                <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Kariane</label></div>
+              </li>
+              <li role="menuitem">
+                <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Kenya</label></div>
+              </li>
+              <li role="menuitem">
+                <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Louisa</label></div>
+              </li>
+              <li role="menuitem">
+                <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Marty</label></div>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`CheckPicker demo renders placement demo correctly 1`] = `
+<div>
+  <table id="customTable">
+    <tbody>
+      <tr>
+        <td></td>
+        <td>
+          <div tabindex="-1" role="menu" class="vs-picker-check vs-picker-default vs-picker-placement-bottom-start vs-picker-toggle-wrapper vs-picker-countable"><a role="button" tabindex="-1" class="vs-picker-toggle"><span class="vs-picker-toggle-placeholder">bottom-start</span><span class="vs-picker-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span><object style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; pointer-events: none; z-index: -1; opacity: 0;" class="resize-sensor" tabindex="-1" type="text/html" data="about:blank"></object></a>
+            <div data-transfer="false" class="vs-picker-menu vs-picker-check-menu v-transfer-dom" style="display: none;">
+              <div class="vs-picker-search-bar"><input placeholder="Search" class="vs-picker-search-bar-input"></div>
+              <div class="vs-picker-check-menu-items" style="max-height: 320px;">
+                <ul>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Eugenia</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Kariane</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Louisa</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Marty</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Kenya</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Hal</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Julius</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Travon</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Vincenza</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Dominic</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Pearlie</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Tyrel</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Jaylen</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Rogelio</label></div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </td>
+        <td>
+          <div tabindex="-1" role="menu" class="vs-picker-check vs-picker-default vs-picker-placement-bottom-end vs-picker-toggle-wrapper vs-picker-countable"><a role="button" tabindex="-1" class="vs-picker-toggle"><span class="vs-picker-toggle-placeholder">bottom-end</span><span class="vs-picker-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span><object style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; pointer-events: none; z-index: -1; opacity: 0;" class="resize-sensor" tabindex="-1" type="text/html" data="about:blank"></object></a>
+            <div data-transfer="false" class="vs-picker-menu vs-picker-check-menu v-transfer-dom" style="display: none;">
+              <div class="vs-picker-search-bar"><input placeholder="Search" class="vs-picker-search-bar-input"></div>
+              <div class="vs-picker-check-menu-items" style="max-height: 320px;">
+                <ul>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Eugenia</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Kariane</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Louisa</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Marty</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Kenya</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Hal</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Julius</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Travon</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Vincenza</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Dominic</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Pearlie</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Tyrel</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Jaylen</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Rogelio</label></div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>
+          <div tabindex="-1" role="menu" class="vs-picker-check vs-picker-default vs-picker-placement-right-start vs-picker-toggle-wrapper vs-picker-countable"><a role="button" tabindex="-1" class="vs-picker-toggle"><span class="vs-picker-toggle-placeholder">right-start</span><span class="vs-picker-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span><object style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; pointer-events: none; z-index: -1; opacity: 0;" class="resize-sensor" tabindex="-1" type="text/html" data="about:blank"></object></a>
+            <div data-transfer="false" class="vs-picker-menu vs-picker-check-menu v-transfer-dom" style="display: none;">
+              <div class="vs-picker-search-bar"><input placeholder="Search" class="vs-picker-search-bar-input"></div>
+              <div class="vs-picker-check-menu-items" style="max-height: 320px;">
+                <ul>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Eugenia</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Kariane</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Louisa</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Marty</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Kenya</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Hal</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Julius</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Travon</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Vincenza</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Dominic</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Pearlie</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Tyrel</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Jaylen</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Rogelio</label></div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </td>
+        <td></td>
+        <td></td>
+        <td>
+          <div tabindex="-1" role="menu" class="vs-picker-check vs-picker-default vs-picker-placement-left-start vs-picker-toggle-wrapper vs-picker-countable"><a role="button" tabindex="-1" class="vs-picker-toggle"><span class="vs-picker-toggle-placeholder">left-start</span><span class="vs-picker-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span><object style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; pointer-events: none; z-index: -1; opacity: 0;" class="resize-sensor" tabindex="-1" type="text/html" data="about:blank"></object></a>
+            <div data-transfer="false" class="vs-picker-menu vs-picker-check-menu v-transfer-dom" style="display: none;">
+              <div class="vs-picker-search-bar"><input placeholder="Search" class="vs-picker-search-bar-input"></div>
+              <div class="vs-picker-check-menu-items" style="max-height: 320px;">
+                <ul>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Eugenia</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Kariane</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Louisa</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Marty</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Kenya</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Hal</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Julius</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Travon</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Vincenza</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Dominic</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Pearlie</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Tyrel</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Jaylen</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Rogelio</label></div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div tabindex="-1" role="menu" class="vs-picker-check vs-picker-default vs-picker-placement-right-end vs-picker-toggle-wrapper vs-picker-countable"><a role="button" tabindex="-1" class="vs-picker-toggle"><span class="vs-picker-toggle-placeholder">right-end</span><span class="vs-picker-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span><object style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; pointer-events: none; z-index: -1; opacity: 0;" class="resize-sensor" tabindex="-1" type="text/html" data="about:blank"></object></a>
+            <div data-transfer="false" class="vs-picker-menu vs-picker-check-menu v-transfer-dom" style="display: none;">
+              <div class="vs-picker-search-bar"><input placeholder="Search" class="vs-picker-search-bar-input"></div>
+              <div class="vs-picker-check-menu-items" style="max-height: 320px;">
+                <ul>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Eugenia</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Kariane</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Louisa</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Marty</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Kenya</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Hal</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Julius</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Travon</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Vincenza</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Dominic</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Pearlie</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Tyrel</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Jaylen</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Rogelio</label></div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </td>
+        <td></td>
+        <td></td>
+        <td>
+          <div tabindex="-1" role="menu" class="vs-picker-check vs-picker-default vs-picker-placement-left-end vs-picker-toggle-wrapper vs-picker-countable"><a role="button" tabindex="-1" class="vs-picker-toggle"><span class="vs-picker-toggle-placeholder">left-end</span><span class="vs-picker-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span><object style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; pointer-events: none; z-index: -1; opacity: 0;" class="resize-sensor" tabindex="-1" type="text/html" data="about:blank"></object></a>
+            <div data-transfer="false" class="vs-picker-menu vs-picker-check-menu v-transfer-dom" style="display: none;">
+              <div class="vs-picker-search-bar"><input placeholder="Search" class="vs-picker-search-bar-input"></div>
+              <div class="vs-picker-check-menu-items" style="max-height: 320px;">
+                <ul>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Eugenia</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Kariane</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Louisa</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Marty</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Kenya</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Hal</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Julius</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Travon</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Vincenza</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Dominic</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Pearlie</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Tyrel</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Jaylen</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Rogelio</label></div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>
+          <div tabindex="-1" role="menu" class="vs-picker-check vs-picker-default vs-picker-placement-top-start vs-picker-toggle-wrapper vs-picker-countable"><a role="button" tabindex="-1" class="vs-picker-toggle"><span class="vs-picker-toggle-placeholder">top-start</span><span class="vs-picker-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span><object style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; pointer-events: none; z-index: -1; opacity: 0;" class="resize-sensor" tabindex="-1" type="text/html" data="about:blank"></object></a>
+            <div data-transfer="false" class="vs-picker-menu vs-picker-check-menu v-transfer-dom" style="display: none;">
+              <div class="vs-picker-search-bar"><input placeholder="Search" class="vs-picker-search-bar-input"></div>
+              <div class="vs-picker-check-menu-items" style="max-height: 320px;">
+                <ul>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Eugenia</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Kariane</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Louisa</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Marty</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Kenya</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Hal</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Julius</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Travon</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Vincenza</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Dominic</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Pearlie</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Tyrel</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Jaylen</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Rogelio</label></div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </td>
+        <td>
+          <div tabindex="-1" role="menu" class="vs-picker-check vs-picker-default vs-picker-placement-top-end vs-picker-toggle-wrapper vs-picker-countable"><a role="button" tabindex="-1" class="vs-picker-toggle"><span class="vs-picker-toggle-placeholder">top-end</span><span class="vs-picker-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span><object style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; pointer-events: none; z-index: -1; opacity: 0;" class="resize-sensor" tabindex="-1" type="text/html" data="about:blank"></object></a>
+            <div data-transfer="false" class="vs-picker-menu vs-picker-check-menu v-transfer-dom" style="display: none;">
+              <div class="vs-picker-search-bar"><input placeholder="Search" class="vs-picker-search-bar-input"></div>
+              <div class="vs-picker-check-menu-items" style="max-height: 320px;">
+                <ul>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Eugenia</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Kariane</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Louisa</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Marty</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Kenya</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Hal</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Julius</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Travon</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Vincenza</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Dominic</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Pearlie</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Tyrel</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Jaylen</label></div>
+                  </li>
+                  <li role="menuitem">
+                    <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Rogelio</label></div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;
+
+exports[`CheckPicker demo renders searchable demo correctly 1`] = `
+<div tabindex="-1" role="menu" class="vs-picker-check vs-picker-default vs-picker-placement-bottom-start vs-picker-toggle-wrapper vs-picker-countable" style="width: 224px;"><a role="button" tabindex="-1" class="vs-picker-toggle"><span class="vs-picker-toggle-placeholder">Select</span><span class="vs-picker-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span><object style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; pointer-events: none; z-index: -1; opacity: 0;" class="resize-sensor" tabindex="-1" type="text/html" data="about:blank"></object></a>
+  <div data-transfer="false" class="vs-picker-menu vs-picker-check-menu v-transfer-dom" style="display: none;">
+    <div class="vs-picker-check-menu-items" style="max-height: 320px;">
+      <ul>
+        <li role="menuitem">
+          <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Eugenia</label></div>
+        </li>
+        <li role="menuitem">
+          <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Kariane</label></div>
+        </li>
+        <li role="menuitem">
+          <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Louisa</label></div>
+        </li>
+        <li role="menuitem">
+          <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Marty</label></div>
+        </li>
+        <li role="menuitem">
+          <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Kenya</label></div>
+        </li>
+        <li role="menuitem">
+          <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Hal</label></div>
+        </li>
+        <li role="menuitem">
+          <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Julius</label></div>
+        </li>
+        <li role="menuitem">
+          <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Travon</label></div>
+        </li>
+        <li role="menuitem">
+          <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Vincenza</label></div>
+        </li>
+        <li role="menuitem">
+          <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Dominic</label></div>
+        </li>
+        <li role="menuitem">
+          <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Pearlie</label></div>
+        </li>
+        <li role="menuitem">
+          <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Tyrel</label></div>
+        </li>
+        <li role="menuitem">
+          <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Jaylen</label></div>
+        </li>
+        <li role="menuitem">
+          <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Rogelio</label></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`CheckPicker demo renders sticky demo correctly 1`] = `
+<div>
+  <div tabindex="-1" role="menu" class="vs-picker-check vs-picker-default vs-picker-placement-bottom-start vs-picker-toggle-wrapper vs-picker-has-value vs-picker-cleanable vs-picker-countable" style="width: 224px;"><a role="button" tabindex="-1" class="vs-picker-toggle"><span class="vs-picker-toggle-value"><span class="vs-picker-value-list--wrapper"><span title="Kenya, Julius" class="vs-picker-value-list"><span class="vs-picker-value-item--wrapper"><span class="vs-picker-value-item">Kenya</span><span class="vs-picker-value-separator">,</span></span><span class="vs-picker-value-item--wrapper"><span class="vs-picker-value-item">Julius</span></span></span><span title="2" class="vs-picker-value-count">2</span></span></span><span role="button" tabindex="-1" class="vs-picker-toggle-clean">✕</span><span class="vs-picker-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span><object style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; pointer-events: none; z-index: -1; opacity: 0;" class="resize-sensor" tabindex="-1" type="text/html" data="about:blank"></object></a>
+    <div data-transfer="false" class="vs-picker-menu vs-picker-check-menu v-transfer-dom" style="display: none;">
+      <div class="vs-picker-search-bar"><input placeholder="Search" class="vs-picker-search-bar-input"></div>
+      <div class="vs-picker-check-menu-items" style="max-height: 320px;">
+        <ul>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Eugenia</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Kariane</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Louisa</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Marty</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item vs-picker-check-menu-item-active vs-picker-check-menu-item-focus"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Kenya</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Hal</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item vs-picker-check-menu-item-active"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Julius</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Travon</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Vincenza</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Dominic</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Pearlie</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Tyrel</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Jaylen</label></div>
+          </li>
+          <li role="menuitem">
+            <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Rogelio</label></div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div tabindex="-1" role="menu" class="vs-picker-check vs-picker-default vs-picker-placement-bottom-start vs-picker-toggle-wrapper vs-picker-has-value vs-picker-cleanable vs-picker-countable" style="width: 224px;"><a role="button" tabindex="-1" class="vs-picker-toggle"><span class="vs-picker-toggle-value"><span class="vs-picker-value-list--wrapper"><span title="Kenya, Julius" class="vs-picker-value-list"><span class="vs-picker-value-item--wrapper"><span class="vs-picker-value-item">Kenya</span><span class="vs-picker-value-separator">,</span></span><span class="vs-picker-value-item--wrapper"><span class="vs-picker-value-item">Julius</span></span></span><span title="2" class="vs-picker-value-count">2</span></span></span><span role="button" tabindex="-1" class="vs-picker-toggle-clean">✕</span><span class="vs-picker-toggle-caret"></span><span class="vs-ripple-pond"><span class="vs-ripple" style="display: none;" enteractiveclass="vs-ripple-rippling"></span></span><object style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; pointer-events: none; z-index: -1; opacity: 0;" class="resize-sensor" tabindex="-1" type="text/html" data="about:blank"></object></a>
+    <div data-transfer="false" class="vs-picker-menu vs-picker-check-menu v-transfer-dom" style="display: none;">
+      <div class="vs-picker-search-bar"><input placeholder="Search" class="vs-picker-search-bar-input"></div>
+      <div class="vs-picker-check-menu-items" style="max-height: 320px;">
+        <ul>
+          <li class="vs-picker-check-menu-group">
+            <div role="menuitem" tabindex="-1" class="vs-picker-check-menu-group-title"><span>Master</span><span classname="vs-picker-check-menu-group-caret"></span></div>
+            <ul class="vs-picker-check-menu-group-children" appear="true">
+              <li role="menuitem">
+                <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Eugenia</label></div>
+              </li>
+              <li role="menuitem">
+                <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Kariane</label></div>
+              </li>
+              <li role="menuitem">
+                <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Louisa</label></div>
+              </li>
+              <li role="menuitem">
+                <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Marty</label></div>
+              </li>
+              <li role="menuitem">
+                <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item vs-picker-check-menu-item-active vs-picker-check-menu-item-focus"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Kenya</label></div>
+              </li>
+            </ul>
+          </li>
+          <li class="vs-picker-check-menu-group">
+            <div role="menuitem" tabindex="-1" class="vs-picker-check-menu-group-title"><span>Developer</span><span classname="vs-picker-check-menu-group-caret"></span></div>
+            <ul class="vs-picker-check-menu-group-children" appear="true">
+              <li role="menuitem">
+                <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Hal</label></div>
+              </li>
+              <li role="menuitem">
+                <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item vs-picker-check-menu-item-active"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Julius</label></div>
+              </li>
+              <li role="menuitem">
+                <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Travon</label></div>
+              </li>
+              <li role="menuitem">
+                <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Vincenza</label></div>
+              </li>
+              <li role="menuitem">
+                <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Dominic</label></div>
+              </li>
+            </ul>
+          </li>
+          <li class="vs-picker-check-menu-group">
+            <div role="menuitem" tabindex="-1" class="vs-picker-check-menu-group-title"><span>Guest</span><span classname="vs-picker-check-menu-group-caret"></span></div>
+            <ul class="vs-picker-check-menu-group-children" appear="true">
+              <li role="menuitem">
+                <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Pearlie</label></div>
+              </li>
+              <li role="menuitem">
+                <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Tyrel</label></div>
+              </li>
+              <li role="menuitem">
+                <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Jaylen</label></div>
+              </li>
+              <li role="menuitem">
+                <div class="vs-picker-check-menu-item-checker"><label tabindex="-1" role="presentation" class="vs-picker-check-menu-item"><span class="vs-picker-check-menu-item-wrapper"><input type="checkbox"><span class="vs-picker-check-menu-item-inner"></span></span>Rogelio</label></div>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+`;

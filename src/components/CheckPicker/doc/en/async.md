@@ -2,51 +2,78 @@
 
 <!--start-code-->
 
-```js
-/**
- * import data from
- * https://github.com/rsuite/rsuite.github.io/blob/master/src/resources/data/users.js
- */
+```vue
+<template>
+  <CheckPicker
+    style="width: 300px"
+    :value="value"
+    :data="items"
+    :cacheData="cacheItems"
+    labelKey="login"
+    valueKey="id"
+    @change="_handleChange"
+    @search="_handleSearch"
+  >
+    <template slot="menu" slot-scope="{ menu }">
+      <p v-if="loading" style="padding: 4px; color: #999; text-align: center;">
+        <Icon icon="spinner" spin /> Loading...
+      </p>
+      <template v-else>{{ menu }}</template>
+    </template>
+  </CheckPicker>
+</template>
 
-class AsynExample extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      items: []
+<script>
+import _ from 'lodash';
+import axios from 'axios';
+
+export default {
+  data() {
+    return {
+      value: [],
+      items: [],
+      cacheItems: [],
+      loading: true,
     };
-    this.handleUpdate = this.handleUpdate.bind(this);
-  }
-  handleUpdate() {
-    if (this.state.items.length === 0) {
-      setTimeout(() => {
-        this.setState({ items: data });
-      }, 1000);
-    }
-  }
-  render() {
-    const { items } = this.state;
-    return (
-      <CheckPicker
-        data={items}
-        onOpen={this.handleUpdate}
-        onSearch={this.handleUpdate}
-        style={{ width: 224 }}
-        renderMenu={menu => {
-          if (items.length === 0) {
-            return (
-              <p style={{ padding: 4, color: '#999', textAlign: 'center' }}>
-                <Icon icon="spinner" spin /> loading...
-              </p>
-            );
-          }
-          return menu;
-        }}
-      />
-    );
-  }
-}
+  },
 
-ReactDOM.render(<AsynExample />);
+  mounted() {
+    this._getUsers('vue');
+  },
+
+  methods: {
+    _handleChange(val) {
+      this.value = val;
+    },
+
+    _handleSearch(val) {
+      this.loading = true;
+
+      this._getUsers(val || 'vue');
+    },
+
+    _getUsers: _.debounce(function(word) {
+      axios
+        .get('https://api.github.com/search/users', { params: { q: word } })
+        .then(({ data }) => {
+          this.cacheItems.push(
+            ...this.items.filter(x =>
+              this.value.some(y => shallowEqual(x.id, y))
+            )
+          );
+          this.items = data.items || [];
+          this.loading = false;
+        })
+        .catch(e => {
+          /* eslint-disable no-console */
+          console.log('Oops, error', e);
+
+          this.loading = false;
+        });
+    }, 300),
+  },
+};
+</script>
 ```
 
 <!--end-code-->

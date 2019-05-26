@@ -1,10 +1,14 @@
-### 受控
+### 可新建
 
 <!--start-code-->
 
 ```vue
 <template>
-  <CheckPicker style="width: 224px;" visible :data="data" :value="['Julius']" />
+  <div>
+    <CheckPicker creatable :data="data" style="width: 224px;" />
+    <hr />
+    <CheckPicker creatable :data="data" style="width: 224px;" groupBy="role" />
+  </div>
 </template>
 
 <script>

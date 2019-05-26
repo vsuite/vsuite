@@ -5,10 +5,15 @@
 ```vue
 <template>
   <div>
-    <TagPicker style="width: 300px" :data="data" groupBy="role" />
+    <CheckPicker style="width: 224px;" groupBy="role" :data="data" />
     <hr />
-    <h5>排序：</h5>
-    <TagPicker style="width: 300px" :data="data" groupBy="role" :sort="sort" />
+    <h5>Sort:</h5>
+    <CheckPicker
+      style="width: 224px;"
+      groupBy="role"
+      :data="data"
+      :sort="sort"
+    />
   </div>
 </template>
 

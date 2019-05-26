@@ -4,31 +4,35 @@
 
 <!--start-code-->
 
-```js
-/**
- * import data from
- * https://github.com/rsuite/rsuite.github.io/blob/master/src/resources/data/users.js
- */
-
-const instance = (
+```vue
+<template>
   <div>
     <CheckPicker
+      style="width: 224px;"
       sticky
-      data={data}
-      defaultValue={['Kenya', 'Julius']}
-      style={{ width: 224 }}
+      :data="data"
+      :defaultValue="['Kenya', 'Julius']"
     />
     <hr />
     <CheckPicker
+      style="width: 224px;"
       sticky
-      data={data}
       groupBy="role"
-      defaultValue={['Kenya', 'Julius']}
-      style={{ width: 224 }}
+      :data="data"
+      :defaultValue="['Kenya', 'Julius']"
     />
   </div>
-);
-ReactDOM.render(instance);
+</template>
+
+<script>
+import data from 'stories/data/user';
+
+export default {
+  data() {
+    return { data };
+  },
+};
+</script>
 ```
 
 <!--end-code-->

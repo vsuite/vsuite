@@ -2,41 +2,44 @@
 
 <!--start-code-->
 
-```js
-class Demo extends React.Component {
-  render() {
-    return (
-      <div
-        style={{
-          position: 'relative',
-          height: 200,
-          overflow: 'auto',
-          boxShadow: '#999 1px 1px 5px inset',
-          padding: 50
-        }}
-        ref={ref => {
-          this.container = ref;
-        }}
-      >
-        <div
-          style={{
-            height: 500
-          }}
-        >
-          <CheckPicker
-            style={{ width: 224 }}
-            container={() => {
-              return this.container;
-            }}
-            data={data}
-          />
-        </div>
-      </div>
-    );
-  }
+```vue
+<template>
+  <div class="container">
+    <div class="wrapper">
+      <CheckPicker style="width: 224px;" :data="data" :modifiers="modifiers" />
+    </div>
+  </div>
+</template>
+
+<script>
+import data from 'stories/data/user';
+
+export default {
+  data() {
+    return {
+      data,
+      modifiers: {
+        preventOverflow: { enabled: false },
+        flip: { enabled: false },
+      },
+    };
+  },
+};
+</script>
+
+<style>
+.container {
+  position: relative;
+  height: 200px;
+  overflow: auto;
+  box-shadow: #999 1px 1px 5px inset;
+  padding: 50px;
 }
 
-ReactDOM.render(<Demo />);
+.wrapper {
+  height: 500px;
+}
+</style>
 ```
 
 <!--end-code-->

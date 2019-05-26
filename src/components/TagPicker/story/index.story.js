@@ -239,7 +239,7 @@ stories.add('request', () => ({
 
           this.loading = false;
         });
-    }),
+    }, 300),
   },
 }));
 

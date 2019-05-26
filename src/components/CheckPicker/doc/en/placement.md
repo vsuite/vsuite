@@ -2,88 +2,97 @@
 
 <!--start-code-->
 
-```js
-/**
- * import data from
- * https://github.com/rsuite/rsuite.github.io/blob/master/src/resources/data/users.js
- */
-
-const CustomCheckPicker = ({ placement, ...rest }) => (
-  <CheckPicker
-    style={{ width: 150 }}
-    data={data}
-    placement={placement}
-    placeholder={placement}
-    {...rest}
-  />
-);
-
-const instance = (
+```vue
+<template>
   <div>
-    <table className="placement-table">
+    <table id="customTable">
       <tbody>
         <tr>
           <td />
           <td>
-            <CustomCheckPicker placement="topLeft" />
+            <CheckPicker
+              :data="data"
+              placement="bottom-start"
+              placeholder="bottom-start"
+            />
           </td>
           <td>
-            <CustomCheckPicker placement="topRight" />
+            <CheckPicker
+              :data="data"
+              placement="bottom-end"
+              placeholder="bottom-end"
+            />
           </td>
-          <td />
+          <td></td>
         </tr>
         <tr>
           <td>
-            <CustomCheckPicker placement="leftTop" />
+            <CheckPicker
+              :data="data"
+              placement="right-start"
+              placeholder="right-start"
+            />
           </td>
           <td />
           <td />
           <td>
-            <CustomCheckPicker placement="rightTop" />
+            <CheckPicker
+              :data="data"
+              placement="left-start"
+              placeholder="left-start"
+            />
           </td>
         </tr>
         <tr>
           <td>
-            <CustomCheckPicker placement="leftBottom" />
+            <CheckPicker
+              :data="data"
+              placement="right-end"
+              placeholder="right-end"
+            />
           </td>
           <td />
           <td />
           <td>
-            <CustomCheckPicker placement="rightBottom" />
+            <CheckPicker
+              :data="data"
+              placement="left-end"
+              placeholder="left-end"
+            />
           </td>
         </tr>
         <tr>
           <td />
           <td>
-            <CustomCheckPicker placement="bottomLeft" />
+            <CheckPicker
+              :data="data"
+              placement="top-start"
+              placeholder="top-start"
+            />
           </td>
           <td>
-            <CustomCheckPicker placement="bottomRight" />
+            <CheckPicker
+              :data="data"
+              placement="top-end"
+              placeholder="top-end"
+            />
           </td>
-          <td />
+          <td></td>
         </tr>
       </tbody>
     </table>
-    <hr />
-    <CustomCheckPicker placement="auto" />
-    <hr />
-    <CustomCheckPicker
-      placement="autoVerticalRight"
-      style={{ width: 200 }}
-    />{' '}
-    <CustomCheckPicker placement="autoVerticalLeft" style={{ width: 200 }} />
-    <hr />
-    <CustomCheckPicker
-      placement="autoHorizontalTop"
-      style={{ width: 200 }}
-    />{' '}
-    <CustomCheckPicker
-      placement="autoHorizontalBottom"
-      style={{ width: 200 }}
-    />
   </div>
-);
-ReactDOM.render(instance);
+</template>
+
+<script>
+import data from 'stories/data/user';
+
+export default {
+  data() {
+    return { data };
+  },
+};
+</script>
 ```
 
 <!--end-code-->

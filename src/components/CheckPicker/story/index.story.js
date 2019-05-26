@@ -82,8 +82,45 @@ stories.add('groupBy', () => ({
     return (
       <Demo title="GroupBy">
         <CheckPicker style={{ width: '224px' }} data={data} groupBy="role" />
+        <hr />
+        <h5>Sort:</h5>
+        <CheckPicker
+          style={{ width: '224px' }}
+          data={data}
+          groupBy="role"
+          sort={this.sort}
+        />
       </Demo>
     );
+  },
+
+  methods: {
+    sort(isGroup) {
+      if (isGroup) {
+        return (a, b) => {
+          return this.compare(a.groupTitle, b.groupTitle);
+        };
+      }
+
+      return (a, b) => {
+        return this.compare(a.value, b.value);
+      };
+    },
+
+    compare(a, b) {
+      let nameA = a.toUpperCase();
+      let nameB = b.toUpperCase();
+
+      if (nameA < nameB) {
+        return -1;
+      }
+
+      if (nameA > nameB) {
+        return 1;
+      }
+
+      return 0;
+    },
   },
 }));
 
@@ -329,7 +366,7 @@ stories.add('request', () => ({
           labelKey="login"
           valueKey="id"
           onChange={this._handleChange}
-          onSearch={_.debounce(this._handleSearch.bind(this), 300)}
+          onSearch={this._handleSearch}
           renderMenu={(h, menu) => {
             if (this.loading) {
               return (
@@ -359,7 +396,7 @@ stories.add('request', () => ({
       this._getUsers(val || 'vue');
     },
 
-    _getUsers(word) {
+    _getUsers: _.debounce(function(word) {
       axios
         .get('https://api.github.com/search/users', { params: { q: word } })
         .then(({ data }) => {
@@ -377,7 +414,36 @@ stories.add('request', () => ({
 
           this.loading = false;
         });
-    },
+    }, 300),
+  },
+}));
+
+stories.add('container', () => ({
+  render() {
+    return (
+      <Demo title="Container">
+        <div
+          style={{
+            position: 'relative',
+            height: '200px',
+            overflow: 'auto',
+            boxShadow: '#999 1px 1px 5px inset',
+            padding: '50px',
+          }}
+        >
+          <div style={{ height: '500px' }}>
+            <CheckPicker
+              style={{ width: '224px' }}
+              data={data}
+              modifiers={{
+                preventOverflow: { enabled: false },
+                flip: { enabled: false },
+              }}
+            />
+          </div>
+        </div>
+      </Demo>
+    );
   },
 }));
 
