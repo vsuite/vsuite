@@ -9,10 +9,10 @@ import Demo from 'stories/demo';
 
 const stories = storiesOf('Data Entry|TreePicker', module);
 
-stories.add('default', () => ({
+stories.add('basic', () => ({
   render() {
     return (
-      <Demo title="Default">
+      <Demo title="Basic">
         <TreePicker style={{ width: '246px' }} data={data} />
       </Demo>
     );

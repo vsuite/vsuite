@@ -29,6 +29,8 @@ import InputPicker from 'components/InputPicker';
 import TagPicker from 'components/TagPicker';
 import SelectPicker from 'components/SelectPicker';
 import CheckPicker from 'components/CheckPicker';
+import TreePicker from 'components/TreePicker';
+import CheckTreePicker from 'components/CheckTreePicker';
 
 // Data Display
 import Tag from 'components/Tag';
@@ -89,6 +91,8 @@ export const components = {
   TagPicker,
   SelectPicker,
   CheckPicker,
+  TreePicker,
+  CheckTreePicker,
 
   Tag,
 
