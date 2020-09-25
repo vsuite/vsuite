@@ -3,136 +3,46 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "private": true,
   "repository": "https://github.com/vsuite/vsuite.git",
+  "homepage": "https://vsuite.blackcater.org",
   "author": "blackcater <blackcater2015@gmail.com>",
   "workspaces": [
     "packages/*"
   ],
-  "files": [
-    "lib"
-  ],
-  "scripts": {
-    "dev": "start-storybook -p 9001 -s ./public,./brand -c .storybook",
-    "dist": "",
-    "dist:style": "",
-    "lint": "eslint --fix '{.storybook,src,docs,package}/**/*.{js,jsx,vue}'",
-    "test": "jest --maxWorkers=2",
-    "test-watch": "jest --maxWorkers=2 --watch",
-    "test-coverage": "jest --maxWorkers=2 --coverage",
-    "prettier": "prettier --write '{.storybook,src,docs,package}/**/*.{js,jsx,vue,less,md,html}'",
-    "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs",
-    "docs:deploy": "sh docs/deploy.sh"
-  },
-  "dependencies": {
-    "@vsuite/schema-typed": "*",
-    "dom-lib": "^1.1.1",
-    "element-resize-event": "^3.0.3",
-    "lodash": "^4.17.11",
-    "moment": "^2.24.0",
-    "popper.js": "^1.15.0",
-    "tinycolor2": "^1.4.1",
-    "v-click-outside-x": "^4.0.5",
-    "vue-types": "^1.5.3",
-    "vue-virtual-scroll-list": "^1.3.9"
-  },
-  "peerDependencies": {
-    "vue": ">=2.5.0"
-  },
+  "scripts": {},
   "devDependencies": {
-    "@babel/core": "^7.4.5",
-    "@babel/plugin-proposal-class-properties": "^7.4.4",
-    "@babel/plugin-proposal-export-default-from": "^7.2.0",
-    "@babel/plugin-proposal-export-namespace-from": "^7.2.0",
-    "@babel/plugin-proposal-object-rest-spread": "^7.4.4",
-    "@babel/preset-env": "^7.4.5",
-    "@commitlint/cli": "^8.0.0",
-    "@commitlint/config-angular": "^8.0.0",
-    "@storybook/addon-actions": "^5.1.9",
-    "@storybook/addon-backgrounds": "^5.1.9",
-    "@storybook/addon-knobs": "^5.1.9",
-    "@storybook/addon-links": "^5.1.9",
-    "@storybook/addon-notes": "^5.1.9",
-    "@storybook/addon-options": "^5.1.9",
-    "@storybook/addon-storysource": "^5.1.9",
-    "@storybook/addon-viewport": "^5.1.9",
-    "@storybook/addons": "^5.1.9",
-    "@storybook/theming": "^5.1.9",
-    "@storybook/vue": "^5.1.9",
-    "@vue/babel-preset-jsx": "^1.0.0",
-    "@vue/babel-helper-vue-jsx-merge-props": "^1.0.0",
-    "@vue/server-test-utils": "^1.0.0-beta.29",
-    "@vue/test-utils": "^1.0.0-beta.29",
-    "axios": "^0.19.0",
+    "@babel/core": "^7.11.6",
+    "@babel/preset-env": "^7.11.5",
+    "@babel/preset-typescript": "^7.10.4",
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
+    "@vue/test-utils": "^2.0.0-beta.5",
     "babel-core": "^7.0.0-bridge.0",
-    "babel-eslint": "^10.0.2",
-    "babel-jest": "^24.8.0",
-    "babel-loader": "^8.0.6",
-    "css-loader": "^3.0.0",
-    "codecov": "^3.5.0",
-    "coveralls": "^3.0.4",
-    "eslint": "^6.0.1",
-    "eslint-config-prettier": "^5.1.0",
-    "eslint-config-standard": "^12.0.0",
-    "eslint-formatter-pretty": "^2.1.1",
-    "eslint-plugin-import": "^2.18.0",
-    "eslint-plugin-node": "^9.1.0",
-    "eslint-plugin-prettier": "^3.1.0",
-    "eslint-plugin-promise": "^4.1.1",
-    "eslint-plugin-standard": "^4.0.0",
-    "eslint-plugin-vue": "^5.2.3",
-    "fast-glob": "^3.0.2",
-    "file-loader": "^4.0.0",
-    "husky": "^2.5.0",
-    "jest": "^24.8.0",
-    "jest-serializer-vue": "^2.0.2",
-    "less": "^3.9.0",
-    "less-loader": "^5.0.0",
-    "lint-staged": "^8.2.1",
-    "mockdate": "^2.0.3",
-    "prettier": "^1.18.2",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "style-loader": "^0.23.1",
-    "svg-sprite-loader": "^4.1.6",
-    "url-loader": "^2.0.0",
-    "vue": "^2.6.10",
-    "vue-eslint-parser": "^6.0.4",
-    "vue-jest": "^3.0.4",
-    "vue-json-pretty": "^1.6.0",
-    "vue-loader": "^15.7.0",
-    "vue-server-renderer": "^2.6.10",
-    "vue-style-loader": "^4.1.2",
-    "vue-template-compiler": "^2.6.10",
-    "webpack": "^4.35.0"
+    "babel-jest": "^26.3.0",
+    "husky": "^4.3.0",
+    "jest": "^26.4.2",
+    "lerna": "^3.22.1",
+    "lint-staged": "^10.4.0",
+    "prettier": "^2.1.2",
+    "typescript": "^4.0.3",
+    "vue-jest": "^5.0.0-alpha.4",
+    "webpack": "^4.44.2"
+  },
+  "engines": {
+    "node": ">=10.0.0"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged",
-      "commit-msg": "commitlint -e $GIT_PARAMS"
+      "pre-commit": "npm test",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
-  "lint-staged": {
-    "{.storybook,src,docs,package}/**/*.{js,jsx,vue}": [
-      "prettier --write",
-      "eslint --fix",
-      "git add"
-    ],
-    "{.storybook,src,docs,package}/**/*.{less.md,html}": [
-      "prettier --write",
-      "git add"
-    ]
-  },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-angular"
-    ]
-  },
+  "lint-staged": {},
   "browserslist": [
     "> 1%",
     "last 2 versions",
-    "ie >= 9"
+    "not ie <= 10"
   ],
-  "license": "MIT",
-  "private": true
+  "license": "MIT"
 }

@@ -1,11 +1,11 @@
 # editor
-.idea
+.idea/
 
-# gtm
-.gtm
-
-# OS
+# operating system
 .DS_Store
+
+# git
+.gtm/
 
 # node
 node_modules
@@ -16,10 +16,13 @@ yarn-debug.log*
 yarn-error.log*
 
 # build
-dist
-
-# storybook
-.cache
+dist/
 
 # jest
-coverage
+coverage/
+
+# cache / temp directory
+cache/
+.cache/
+temp/
+.temp/
